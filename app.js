@@ -247,8 +247,14 @@ document.addEventListener('DOMContentLoaded', function() {
             
             // TOUJOURS appeler directement l'API Replicate si le token est présent
             if (cfg.replicateApiToken) {
-                console.log('Appel direct à l\'API Replicate...');
-                processWithReplicateAPI(cfg);
+                console.log('Appel à l\'API Replicate (avec fallback Imgur si Railway échoue)...');
+                // Appeler processWithReplicateAPI qui gère le fallback automatiquement
+                processWithReplicateAPI(cfg).catch(error => {
+                    console.error('Erreur non gérée dans processWithReplicateAPI:', error);
+                    // Fallback final vers Imgur
+                    console.warn('🔄 Fallback final vers Imgur...');
+                    processWithReplicateBase64(cfg);
+                });
                 return;
             }
             
@@ -424,18 +430,23 @@ document.addEventListener('DOMContentLoaded', function() {
         // Replicate nécessite des URLs publiques, pas de base64
         async function processWithReplicateBase64(cfg) {
             try {
+                console.log('🔄 processWithReplicateBase64 appelé - Upload vers Imgur');
                 updatePreviewStatus('Conversion des images en base64 pour upload...');
                 
                 // Convertir les images en base64 pour upload vers Imgur
                 const userImageBase64 = await fileToBase64(userPhotoFile);
                 const productImageBase64 = await fileToBase64(productImageFile);
                 
+                console.log('✅ Images converties en base64');
+                
                 // Replicate nécessite des URLs publiques, pas de data URLs
                 // Utiliser Imgur pour obtenir des URLs publiques
                 updatePreviewStatus('Upload des images vers Imgur (service public gratuit)...');
                 
                 // Uploader vers Imgur pour obtenir des URLs publiques
+                console.log('📤 Upload photo utilisateur vers Imgur...');
                 const userImageUrl = await uploadToImgur(userImageBase64);
+                console.log('📤 Upload image produit vers Imgur...');
                 const productImageUrl = await uploadToImgur(productImageBase64);
                 
                 if (!userImageUrl || !productImageUrl) {
@@ -449,7 +460,7 @@ document.addEventListener('DOMContentLoaded', function() {
                 await createReplicatePrediction(cfg, userImageUrl, productImageUrl);
                 
             } catch (error) {
-                console.error('Erreur upload Imgur/Replicate:', error);
+                console.error('❌ Erreur upload Imgur/Replicate:', error);
                 showError(`Erreur lors de la génération: ${error.message}<br><br>Replicate nécessite des URLs publiques. Si l'upload vers Imgur échoue, vérifiez votre connexion internet.`);
                 resetButton();
             }
