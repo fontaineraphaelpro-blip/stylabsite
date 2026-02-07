@@ -130,6 +130,31 @@ Le fichier `vercel.json` configure automatiquement :
 - Headers de sécurité optimisés
 - Cache optimisé pour les assets statiques
 
+## 📤 Push automatique vers GitHub
+
+Des scripts sont disponibles pour automatiser le push vers GitHub après chaque modification.
+
+### Windows (PowerShell)
+
+```powershell
+.\push-to-github.ps1 "Votre message de commit"
+```
+
+### Linux/Mac (Bash)
+
+```bash
+chmod +x push-to-github.sh
+./push-to-github.sh "Votre message de commit"
+```
+
+### Push manuel
+
+```bash
+git add .
+git commit -m "Votre message de commit"
+git push origin main
+```
+
 ## 🔗 Liens
 
 - [App Shopify](https://apps.shopify.com/try-on-stylelab)

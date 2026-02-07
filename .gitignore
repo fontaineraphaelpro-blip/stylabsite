@@ -31,3 +31,7 @@ build/
 *.tmp
 *.temp
 .cache/
+
+# Scripts de push (optionnel - à garder dans le repo)
+# push-to-github.ps1
+# push-to-github.sh
