@@ -2429,6 +2429,44 @@
             const widgetBg = document.getElementById('widgetBg').value;
             const widgetColor = document.getElementById('widgetColor').value;
             
+            // Sauvegarder dans localStorage
+            const config = {
+                widgetText: widgetText,
+                widgetBg: widgetBg,
+                widgetColor: widgetColor
+            };
+            localStorage.setItem('vton-widget-config', JSON.stringify(config));
+            
+            // Mettre à jour le bouton si présent
+            const widgetButton = document.querySelector('.vton-trigger-btn');
+            if (widgetButton) {
+                // Fonction pour calculer le contraste
+                function getLuminance(hex) {
+                    const rgb = /^#?([a-f\d]{2})([a-f\d]{2})([a-f\d]{2})$/i.exec(hex);
+                    if (!rgb) return 0;
+                    const [r, g, b] = [parseInt(rgb[1], 16), parseInt(rgb[2], 16), parseInt(rgb[3], 16)].map(val => {
+                        val = val / 255;
+                        return val <= 0.03928 ? val / 12.92 : Math.pow((val + 0.055) / 1.055, 2.4);
+                    });
+                    return 0.2126 * r + 0.7152 * g + 0.0722 * b;
+                }
+                
+                function getContrastTextColor(bgColor, textColor) {
+                    const bgLuminance = getLuminance(bgColor);
+                    const textLuminance = getLuminance(textColor);
+                    const contrast = (Math.max(bgLuminance, textLuminance) + 0.05) / (Math.min(bgLuminance, textLuminance) + 0.05);
+                    if (contrast < 4.5) {
+                        return bgLuminance > 0.5 ? '#000000' : '#ffffff';
+                    }
+                    return textColor;
+                }
+                
+                const finalTextColor = getContrastTextColor(widgetBg, widgetColor);
+                widgetButton.textContent = widgetText;
+                widgetButton.style.backgroundColor = widgetBg;
+                widgetButton.style.color = finalTextColor;
+            }
+            
             alert('Configuration enregistrée !\n\nTexte: ' + widgetText + '\nCouleur fond: ' + widgetBg + '\nCouleur texte: ' + widgetColor);
         }
 
