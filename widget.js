@@ -41,6 +41,12 @@
         // Vider le container au cas où il y aurait du contenu
         container.innerHTML = '';
         
+        // S'assurer que le container est visible
+        container.style.display = 'block';
+        container.style.width = '100%';
+        container.style.visibility = 'visible';
+        container.style.opacity = '1';
+        
         const button = document.createElement('button');
         button.textContent = 'Essayer Virtuellement ✨';
         button.className = 'vton-trigger-btn';
