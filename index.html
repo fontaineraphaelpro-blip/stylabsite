@@ -555,24 +555,37 @@
             margin-bottom: 2rem;
         }
         .quantity-btn {
-            width: 40px;
-            height: 40px;
+            width: 44px;
+            height: 44px;
             border: 1px solid var(--border);
             background: var(--bg);
             border-radius: 6px;
             cursor: pointer;
-            font-size: 1.25rem;
+            font-size: 1.5rem;
+            font-weight: 600;
             display: flex;
             align-items: center;
             justify-content: center;
+            transition: all 0.2s;
+            color: var(--text);
+        }
+        .quantity-btn:hover {
+            background: var(--bg-gray);
+            border-color: var(--primary);
         }
         .quantity-input {
-            width: 60px;
+            width: 70px;
             text-align: center;
-            padding: 0.5rem;
+            padding: 0.625rem;
             border: 1px solid var(--border);
             border-radius: 6px;
             font-size: 1rem;
+            font-weight: 600;
+            color: var(--text);
+        }
+        .quantity-input:focus {
+            outline: none;
+            border-color: var(--primary);
         }
         .add-to-cart {
             width: 100%;
@@ -1575,6 +1588,21 @@
                         <h1>Oversized Tee</h1>
                         <div class="product-price-large">49€</div>
                         <p class="product-description">T-Shirt oversized en coton premium. Coupe streetwear, confortable et durable. Parfait pour un look urbain décontracté.</p>
+                        <div class="product-options">
+                            <div class="option-label">Taille</div>
+                            <div class="option-buttons">
+                                <button class="option-btn active" onclick="setActiveOption(this)">S</button>
+                                <button class="option-btn" onclick="setActiveOption(this)">M</button>
+                                <button class="option-btn" onclick="setActiveOption(this)">L</button>
+                                <button class="option-btn" onclick="setActiveOption(this)">XL</button>
+                            </div>
+                        </div>
+                        <div class="quantity-selector">
+                            <button class="quantity-btn" onclick="changeQuantity(-1)">−</button>
+                            <input type="number" class="quantity-input" id="quantity" value="1" min="1" max="10">
+                            <button class="quantity-btn" onclick="changeQuantity(1)">+</button>
+                            <span style="margin-left: auto; font-weight: 600; color: var(--text); font-size: 1.125rem;">Total: <span id="totalPrice">49€</span></span>
+                        </div>
                         <button class="add-to-cart" onclick="alert('Ajouté au panier !')">Ajouter au panier</button>
                         <div class="widget-container">
                             <div id="vton-widget-root"></div>
@@ -1934,14 +1962,15 @@
             const input = document.getElementById('quantity');
             let value = parseInt(input.value) + delta;
             if (value < 1) value = 1;
+            if (value > 10) value = 10;
             input.value = value;
             updateTotal();
         }
         function updateTotal() {
-            const quantity = parseInt(document.getElementById('quantity').value);
-            const price = 29.90;
-            const total = (quantity * price).toFixed(2);
-            document.getElementById('totalPrice').textContent = total + ' €';
+            const quantity = parseInt(document.getElementById('quantity').value) || 1;
+            const price = 49;
+            const total = (quantity * price);
+            document.getElementById('totalPrice').textContent = total + '€';
         }
         function toggleFaq(element) {
             const item = element.parentElement;
