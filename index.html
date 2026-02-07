@@ -25,10 +25,10 @@
                     <span class="logo-badge">Virtual Try‑On</span>
                     <button class="mobile-menu-btn" aria-label="Menu" id="mobileMenuBtn">☰</button>
                     <div class="nav-links" id="navLinks">
-                        <a href="#product-demo" class="nav-link">Démo Produit</a>
+                        <a href="#store" class="nav-link">Store</a>
+                        <a href="#product-demo" class="nav-link">Produit</a>
                         <a href="#dashboard-demo" class="nav-link">Dashboard</a>
                         <a href="#widget-config" class="nav-link">Configuration</a>
-                        <a href="/blog.html" class="nav-link">Blog</a>
                         <a href="https://apps.shopify.com/try-on-stylelab" target="_blank" rel="noopener" class="btn btn-primary">Installer l'App</a>
                     </div>
                 </div>
@@ -40,11 +40,78 @@
     <section class="hero" style="padding: 4rem 0; background: linear-gradient(135deg, #667eea 0%, #764ba2 100%); color: white; text-align: center;">
         <div class="container">
             <h1 class="hero-title" style="font-size: 3rem; font-weight: 800; margin-bottom: 1rem; color: white;">Virtual Try-On Shopify - Démo Complète</h1>
-            <p class="hero-subtitle" style="font-size: 1.25rem; margin-bottom: 2rem; color: rgba(255,255,255,0.9);">Tout est visible directement sur cette page : Produit, Widget, Dashboard et Configuration</p>
-            <div style="display: flex; gap: 1rem; justify-content: center; flex-wrap: wrap;">
-                <a href="#product-demo" style="padding: 0.75rem 1.5rem; background: white; color: #667eea; border-radius: 0.5rem; text-decoration: none; font-weight: 600;">Voir le Produit</a>
-                <a href="#dashboard-demo" style="padding: 0.75rem 1.5rem; background: rgba(255,255,255,0.2); color: white; border-radius: 0.5rem; text-decoration: none; font-weight: 600; border: 2px solid white;">Voir le Dashboard</a>
-                <a href="#widget-config" style="padding: 0.75rem 1.5rem; background: rgba(255,255,255,0.2); color: white; border-radius: 0.5rem; text-decoration: none; font-weight: 600; border: 2px solid white;">Voir la Config</a>
+            <p class="hero-subtitle" style="font-size: 1.25rem; margin-bottom: 2rem; color: rgba(255,255,255,0.9);">Tout est visible directement sur cette page : Store, Produit avec Widget, Dashboard et Configuration</p>
+        </div>
+    </section>
+
+    <!-- SECTION 0: STORE (LISTE DE PRODUITS) -->
+    <section id="store" style="padding: 2rem 0; background: white;">
+        <div class="container">
+            <h2 class="section-title" style="text-align: center; margin-bottom: 2rem; font-size: 2.5rem; font-weight: 800;">Store - Collection de Produits</h2>
+            
+            <div style="display: grid; grid-template-columns: repeat(auto-fill, minmax(280px, 1fr)); gap: 2rem; margin-top: 2rem;">
+                <div class="product-card" style="background: white; border-radius: 1rem; overflow: hidden; box-shadow: 0 4px 6px rgba(0,0,0,0.1); transition: all 0.3s; cursor: pointer;" onclick="scrollToProduct('product-demo')">
+                    <img src="https://images.unsplash.com/photo-1521572163474-6864f9cf17ab?w=600&h=600&fit=crop" 
+                         alt="T-Shirt Premium Coton Bio" 
+                         style="width: 100%; aspect-ratio: 1; object-fit: cover; background: #f3f4f6;">
+                    <div style="padding: 1.5rem;">
+                        <h3 style="font-size: 1.125rem; font-weight: 600; margin-bottom: 0.5rem; color: #111827;">T-Shirt Premium Coton Bio</h3>
+                        <div style="font-size: 1.25rem; font-weight: 700; color: #008060;">
+                            29,90 €
+                            <span style="font-size: 1rem; color: #6b7280; text-decoration: line-through; margin-left: 0.5rem;">39,90 €</span>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="product-card" style="background: white; border-radius: 1rem; overflow: hidden; box-shadow: 0 4px 6px rgba(0,0,0,0.1); transition: all 0.3s; cursor: pointer;" onclick="scrollToProduct('product-demo')">
+                    <img src="https://images.unsplash.com/photo-1618354691373-d851c5c3a990?w=600&h=600&fit=crop" 
+                         alt="Jean Slim Fit Denim" 
+                         style="width: 100%; aspect-ratio: 1; object-fit: cover; background: #f3f4f6;">
+                    <div style="padding: 1.5rem;">
+                        <h3 style="font-size: 1.125rem; font-weight: 600; margin-bottom: 0.5rem; color: #111827;">Jean Slim Fit Denim</h3>
+                        <div style="font-size: 1.25rem; font-weight: 700; color: #008060;">79,90 €</div>
+                    </div>
+                </div>
+
+                <div class="product-card" style="background: white; border-radius: 1rem; overflow: hidden; box-shadow: 0 4px 6px rgba(0,0,0,0.1); transition: all 0.3s; cursor: pointer;" onclick="scrollToProduct('product-demo')">
+                    <img src="https://images.unsplash.com/photo-1562157873-818bc0726f68?w=600&h=600&fit=crop" 
+                         alt="Veste en Cuir Vintage" 
+                         style="width: 100%; aspect-ratio: 1; object-fit: cover; background: #f3f4f6;">
+                    <div style="padding: 1.5rem;">
+                        <h3 style="font-size: 1.125rem; font-weight: 600; margin-bottom: 0.5rem; color: #111827;">Veste en Cuir Vintage</h3>
+                        <div style="font-size: 1.25rem; font-weight: 700; color: #008060;">149,90 €</div>
+                    </div>
+                </div>
+
+                <div class="product-card" style="background: white; border-radius: 1rem; overflow: hidden; box-shadow: 0 4px 6px rgba(0,0,0,0.1); transition: all 0.3s; cursor: pointer;" onclick="scrollToProduct('product-demo')">
+                    <img src="https://images.unsplash.com/photo-1594633313593-bab3825d0caf?w=600&h=600&fit=crop" 
+                         alt="Robe Midi Élégante" 
+                         style="width: 100%; aspect-ratio: 1; object-fit: cover; background: #f3f4f6;">
+                    <div style="padding: 1.5rem;">
+                        <h3 style="font-size: 1.125rem; font-weight: 600; margin-bottom: 0.5rem; color: #111827;">Robe Midi Élégante</h3>
+                        <div style="font-size: 1.25rem; font-weight: 700; color: #008060;">89,90 €</div>
+                    </div>
+                </div>
+
+                <div class="product-card" style="background: white; border-radius: 1rem; overflow: hidden; box-shadow: 0 4px 6px rgba(0,0,0,0.1); transition: all 0.3s; cursor: pointer;" onclick="scrollToProduct('product-demo')">
+                    <img src="https://images.unsplash.com/photo-1556821840-3a63f95609a4?w=600&h=600&fit=crop" 
+                         alt="Sweat à Capuche" 
+                         style="width: 100%; aspect-ratio: 1; object-fit: cover; background: #f3f4f6;">
+                    <div style="padding: 1.5rem;">
+                        <h3 style="font-size: 1.125rem; font-weight: 600; margin-bottom: 0.5rem; color: #111827;">Sweat à Capuche Oversized</h3>
+                        <div style="font-size: 1.25rem; font-weight: 700; color: #008060;">59,90 €</div>
+                    </div>
+                </div>
+
+                <div class="product-card" style="background: white; border-radius: 1rem; overflow: hidden; box-shadow: 0 4px 6px rgba(0,0,0,0.1); transition: all 0.3s; cursor: pointer;" onclick="scrollToProduct('product-demo')">
+                    <img src="https://images.unsplash.com/photo-1551028719-00167b16eac5?w=600&h=600&fit=crop" 
+                         alt="Pantalon Chino" 
+                         style="width: 100%; aspect-ratio: 1; object-fit: cover; background: #f3f4f6;">
+                    <div style="padding: 1.5rem;">
+                        <h3 style="font-size: 1.125rem; font-weight: 600; margin-bottom: 0.5rem; color: #111827;">Pantalon Chino Classique</h3>
+                        <div style="font-size: 1.25rem; font-weight: 700; color: #008060;">69,90 €</div>
+                    </div>
+                </div>
             </div>
         </div>
     </section>
@@ -52,7 +119,7 @@
     <!-- SECTION 1: PRODUIT AVEC WIDGET -->
     <section id="product-demo" style="padding: 2rem 0; background: #f9fafb;">
         <div class="container">
-            <h2 class="section-title" style="text-align: center; margin-bottom: 2rem;">1. Produit avec Widget Virtual Try-On</h2>
+            <h2 class="section-title" style="text-align: center; margin-bottom: 2rem; font-size: 2.5rem; font-weight: 800;">Produit avec Widget Virtual Try-On</h2>
             
             <div style="max-width: 1200px; margin: 0 auto; background: white; padding: 2rem; border-radius: 1rem; box-shadow: 0 4px 6px rgba(0,0,0,0.1);">
                 <div style="display: grid; grid-template-columns: 1fr 1fr; gap: 2rem; margin-bottom: 2rem;">
@@ -95,7 +162,7 @@
     <!-- SECTION 2: DASHBOARD -->
     <section id="dashboard-demo" style="padding: 2rem 0; background: white;">
         <div class="container">
-            <h2 class="section-title" style="text-align: center; margin-bottom: 2rem;">2. Dashboard - Statistiques et Activité</h2>
+            <h2 class="section-title" style="text-align: center; margin-bottom: 2rem; font-size: 2.5rem; font-weight: 800;">Dashboard - Statistiques et Activité</h2>
             
             <div class="demo-app-container" style="max-width: 1400px; margin: 0 auto;">
                 <div class="demo-header">
@@ -242,7 +309,7 @@
     <!-- SECTION 3: CONFIGURATION WIDGET -->
     <section id="widget-config" style="padding: 2rem 0; background: #f9fafb;">
         <div class="container">
-            <h2 class="section-title" style="text-align: center; margin-bottom: 2rem;">3. Configuration du Widget</h2>
+            <h2 class="section-title" style="text-align: center; margin-bottom: 2rem; font-size: 2.5rem; font-weight: 800;">Configuration du Widget</h2>
             
             <div class="demo-app-container" style="max-width: 1000px; margin: 0 auto;">
                 <div class="demo-header">
@@ -329,6 +396,11 @@
     </section>
 
     <script>
+        // Scroll to product function
+        function scrollToProduct(sectionId) {
+            document.getElementById(sectionId).scrollIntoView({ behavior: 'smooth' });
+        }
+
         // Product functions
         function changeMainImage(src) {
             document.getElementById('mainImage').src = src;
@@ -515,10 +587,10 @@
                     <h4>Navigation</h4>
                     <ul>
                         <li><a href="/">Accueil</a></li>
-                        <li><a href="#product-demo">Démo Produit</a></li>
+                        <li><a href="#store">Store</a></li>
+                        <li><a href="#product-demo">Produit</a></li>
                         <li><a href="#dashboard-demo">Dashboard</a></li>
                         <li><a href="#widget-config">Configuration</a></li>
-                        <li><a href="/blog.html">Blog</a></li>
                     </ul>
                 </div>
                 <div>
