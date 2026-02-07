@@ -30,7 +30,7 @@ const config = {
     hostName: getEnv('HOST_NAME', 'vton-production-890a.up.railway.app'),
     
     // Replicate AI Service Configuration
-    replicateApiToken: getEnv('REPLICATE_API_TOKEN', ''),
+    replicateApiToken: getEnv('REPLICATE_API_TOKEN', '').trim(),
     replicateApiUrl: 'https://api.replicate.com/v1',
     replicateModel: getEnv('REPLICATE_MODEL', 'bytedance/seedream-4.5'),
     replicatePrompt: getEnv('REPLICATE_PROMPT', "This is NOT a redesign task.\n\nIt is a garment transfer task.\n\nUse the clothing from the second image exactly as-is with zero creative interpretation.\n\nThe output must look like the REAL clothing item was physically worn by the person.\n\nNo invented graphics, no color changes, no simplification."),

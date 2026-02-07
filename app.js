@@ -223,7 +223,7 @@ document.addEventListener('DOMContentLoaded', function() {
             if (!cfg.replicateApiToken) {
                 console.error('❌ Token Replicate MANQUANT!');
                 console.error('Vérifiez que env.js contient REPLICATE_API_TOKEN');
-                showError('⚠️ Configuration manquante: Le token Replicate API n\'est pas configuré.<br><br>Pour utiliser la démo complète, vous devez :<br>1. Créer un fichier env.js avec votre REPLICATE_API_TOKEN<br>2. Ou configurer les variables d\'environnement dans Vercel<br><br>Consultez le README.md pour plus d\'informations.');
+                showError('⚠️ Configuration manquante: Le token Replicate API n\'est pas configuré.<br><br>Pour utiliser la démo complète, vous devez :<br>1. Configurer REPLICATE_API_TOKEN dans les variables d\'environnement Netlify<br>2. Redéployer le site (le script generate-env.js créera env.js automatiquement)<br>3. Ou créer un fichier env.js localement pour le développement<br><br>Consultez NETLIFY_SETUP.md pour plus d\'informations.');
                 resetButton();
                 return;
             }
