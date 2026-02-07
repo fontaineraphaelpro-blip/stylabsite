@@ -1,0 +1,15 @@
+# Fichiers de configuration avec secrets
+env.js
+
+# Fichiers système
+.DS_Store
+Thumbs.db
+
+# Fichiers d'éditeur
+.vscode/
+.idea/
+*.swp
+*.swo
+
+# Logs
+*.log
