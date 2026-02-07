@@ -1,0 +1,291 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Contact - Style Lab Virtual Try-On</title>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800;900&display=swap" rel="stylesheet">
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+        
+        :root {
+            --navy-900: #0a1628;
+            --blue-500: #2563eb;
+            --white: #ffffff;
+            --gray-300: #d1d5db;
+            --gray-400: #9ca3af;
+        }
+        
+        body {
+            font-family: 'Inter', -apple-system, BlinkMacSystemFont, sans-serif;
+            background: var(--navy-900);
+            color: var(--white);
+            line-height: 1.7;
+            -webkit-font-smoothing: antialiased;
+        }
+        
+        .container {
+            max-width: 900px;
+            margin: 0 auto;
+            padding: 2rem;
+        }
+        
+        header {
+            padding: 2rem 0;
+            border-bottom: 1px solid rgba(255, 255, 255, 0.1);
+            margin-bottom: 3rem;
+        }
+        
+        .logo {
+            font-size: 1.5rem;
+            font-weight: 800;
+            letter-spacing: -0.02em;
+            background: linear-gradient(135deg, var(--white) 0%, #67e8f9 100%);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
+            text-decoration: none;
+        }
+        
+        h1 {
+            font-size: clamp(2rem, 5vw, 3rem);
+            font-weight: 900;
+            margin-bottom: 1rem;
+            letter-spacing: -0.03em;
+        }
+        
+        .intro {
+            font-size: 1.125rem;
+            color: var(--gray-300);
+            margin-bottom: 3rem;
+        }
+        
+        .contact-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 2rem;
+            margin-bottom: 3rem;
+        }
+        
+        .contact-card {
+            background: rgba(255, 255, 255, 0.03);
+            border: 1px solid rgba(255, 255, 255, 0.1);
+            border-radius: 16px;
+            padding: 2rem;
+            text-align: center;
+        }
+        
+        .contact-icon {
+            font-size: 3rem;
+            margin-bottom: 1rem;
+        }
+        
+        .contact-card h3 {
+            font-size: 1.25rem;
+            font-weight: 700;
+            margin-bottom: 0.75rem;
+            color: #67e8f9;
+        }
+        
+        .contact-card p {
+            color: var(--gray-300);
+            margin-bottom: 1rem;
+        }
+        
+        .contact-link {
+            color: var(--white);
+            text-decoration: none;
+            font-weight: 600;
+            display: inline-block;
+            padding: 0.5rem 1rem;
+            background: rgba(255, 255, 255, 0.1);
+            border-radius: 8px;
+            transition: all 0.3s;
+        }
+        
+        .contact-link:hover {
+            background: rgba(255, 255, 255, 0.2);
+        }
+        
+        .form-section {
+            background: rgba(255, 255, 255, 0.03);
+            border: 1px solid rgba(255, 255, 255, 0.1);
+            border-radius: 16px;
+            padding: 2rem;
+            margin-top: 2rem;
+        }
+        
+        .form-section h2 {
+            font-size: 1.75rem;
+            font-weight: 800;
+            margin-bottom: 1.5rem;
+            letter-spacing: -0.02em;
+        }
+        
+        .form-group {
+            margin-bottom: 1.5rem;
+        }
+        
+        label {
+            display: block;
+            font-weight: 600;
+            margin-bottom: 0.5rem;
+            color: var(--gray-300);
+        }
+        
+        input, textarea {
+            width: 100%;
+            padding: 0.875rem;
+            background: rgba(255, 255, 255, 0.05);
+            border: 1px solid rgba(255, 255, 255, 0.2);
+            border-radius: 8px;
+            color: var(--white);
+            font-family: inherit;
+            font-size: 1rem;
+        }
+        
+        input:focus, textarea:focus {
+            outline: none;
+            border-color: #67e8f9;
+            background: rgba(255, 255, 255, 0.08);
+        }
+        
+        textarea {
+            min-height: 150px;
+            resize: vertical;
+        }
+        
+        .submit-btn {
+            width: 100%;
+            padding: 1rem 2rem;
+            background: linear-gradient(135deg, var(--blue-500) 0%, #1e40af 100%);
+            color: var(--white);
+            border: none;
+            border-radius: 8px;
+            font-weight: 700;
+            font-size: 1rem;
+            cursor: pointer;
+            transition: all 0.3s;
+        }
+        
+        .submit-btn:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 10px 30px rgba(37, 99, 235, 0.4);
+        }
+        
+        .back-link {
+            display: inline-block;
+            margin-top: 3rem;
+            padding: 0.875rem 2rem;
+            background: rgba(255, 255, 255, 0.05);
+            color: var(--white);
+            text-decoration: none;
+            border-radius: 8px;
+            border: 1px solid rgba(255, 255, 255, 0.2);
+            transition: all 0.3s;
+        }
+        
+        .back-link:hover {
+            background: rgba(255, 255, 255, 0.1);
+        }
+        
+        @media (max-width: 768px) {
+            .container {
+                padding: 1.5rem;
+            }
+            
+            .contact-grid {
+                grid-template-columns: 1fr;
+            }
+            
+            .form-section {
+                padding: 1.5rem;
+            }
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <header>
+            <a href="index.html" class="logo">Style Lab</a>
+        </header>
+        
+        <h1>Contactez-nous</h1>
+        <p class="intro">
+            Une question ? Une suggestion ? Notre équipe est là pour vous aider.
+        </p>
+        
+        <div class="contact-grid">
+            <div class="contact-card">
+                <div class="contact-icon">📧</div>
+                <h3>Email</h3>
+                <p>Pour toute question générale</p>
+                <a href="mailto:contact@stylelab.com" class="contact-link">contact@stylelab.com</a>
+            </div>
+            
+            <div class="contact-card">
+                <div class="contact-icon">🆘</div>
+                <h3>Support</h3>
+                <p>Besoin d'aide technique ?</p>
+                <a href="mailto:support@stylelab.com" class="contact-link">support@stylelab.com</a>
+            </div>
+            
+            <div class="contact-card">
+                <div class="contact-icon">💼</div>
+                <h3>Partenariats</h3>
+                <p>Opportunités business</p>
+                <a href="mailto:partnerships@stylelab.com" class="contact-link">partnerships@stylelab.com</a>
+            </div>
+        </div>
+        
+        <div class="form-section">
+            <h2>Envoyez-nous un message</h2>
+            <form id="contactForm" onsubmit="handleSubmit(event)">
+                <div class="form-group">
+                    <label for="name">Nom *</label>
+                    <input type="text" id="name" name="name" required>
+                </div>
+                
+                <div class="form-group">
+                    <label for="email">Email *</label>
+                    <input type="email" id="email" name="email" required>
+                </div>
+                
+                <div class="form-group">
+                    <label for="subject">Sujet *</label>
+                    <input type="text" id="subject" name="subject" required>
+                </div>
+                
+                <div class="form-group">
+                    <label for="message">Message *</label>
+                    <textarea id="message" name="message" required></textarea>
+                </div>
+                
+                <button type="submit" class="submit-btn">Envoyer le message</button>
+            </form>
+        </div>
+        
+        <a href="index.html" class="back-link">← Retour à l'accueil</a>
+    </div>
+    
+    <script>
+        function handleSubmit(event) {
+            event.preventDefault();
+            const formData = new FormData(event.target);
+            const data = Object.fromEntries(formData);
+            
+            // Créer le lien mailto
+            const subject = encodeURIComponent(data.subject);
+            const body = encodeURIComponent(`Nom: ${data.name}\nEmail: ${data.email}\n\nMessage:\n${data.message}`);
+            const mailtoLink = `mailto:contact@stylelab.com?subject=${subject}&body=${body}`;
+            
+            window.location.href = mailtoLink;
+        }
+    </script>
+</body>
+</html>
+

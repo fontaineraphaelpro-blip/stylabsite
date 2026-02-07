@@ -1,0 +1,237 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Support - Style Lab Virtual Try-On</title>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800;900&display=swap" rel="stylesheet">
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+        
+        :root {
+            --navy-900: #0a1628;
+            --blue-500: #2563eb;
+            --white: #ffffff;
+            --gray-300: #d1d5db;
+            --gray-400: #9ca3af;
+        }
+        
+        body {
+            font-family: 'Inter', -apple-system, BlinkMacSystemFont, sans-serif;
+            background: var(--navy-900);
+            color: var(--white);
+            line-height: 1.7;
+            -webkit-font-smoothing: antialiased;
+        }
+        
+        .container {
+            max-width: 900px;
+            margin: 0 auto;
+            padding: 2rem;
+        }
+        
+        header {
+            padding: 2rem 0;
+            border-bottom: 1px solid rgba(255, 255, 255, 0.1);
+            margin-bottom: 3rem;
+        }
+        
+        .logo {
+            font-size: 1.5rem;
+            font-weight: 800;
+            letter-spacing: -0.02em;
+            background: linear-gradient(135deg, var(--white) 0%, #67e8f9 100%);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
+            text-decoration: none;
+        }
+        
+        h1 {
+            font-size: clamp(2rem, 5vw, 3rem);
+            font-weight: 900;
+            margin-bottom: 1rem;
+            letter-spacing: -0.03em;
+        }
+        
+        .intro {
+            font-size: 1.125rem;
+            color: var(--gray-300);
+            margin-bottom: 3rem;
+        }
+        
+        .support-section {
+            background: rgba(255, 255, 255, 0.03);
+            border: 1px solid rgba(255, 255, 255, 0.1);
+            border-radius: 16px;
+            padding: 2rem;
+            margin-bottom: 2rem;
+        }
+        
+        h2 {
+            font-size: 1.75rem;
+            font-weight: 800;
+            margin-bottom: 1rem;
+            letter-spacing: -0.02em;
+        }
+        
+        h3 {
+            font-size: 1.25rem;
+            font-weight: 700;
+            margin-bottom: 0.75rem;
+            color: #67e8f9;
+        }
+        
+        p {
+            margin-bottom: 1rem;
+            color: var(--gray-300);
+        }
+        
+        ul {
+            margin-left: 2rem;
+            margin-bottom: 1.5rem;
+            color: var(--gray-300);
+        }
+        
+        li {
+            margin-bottom: 0.75rem;
+        }
+        
+        .contact-card {
+            background: linear-gradient(135deg, var(--blue-500) 0%, #1e40af 100%);
+            border-radius: 16px;
+            padding: 2rem;
+            margin-top: 2rem;
+            text-align: center;
+        }
+        
+        .contact-card h2 {
+            margin-bottom: 1rem;
+        }
+        
+        .contact-email {
+            font-size: 1.25rem;
+            font-weight: 600;
+            color: var(--white);
+            text-decoration: none;
+            display: inline-block;
+            margin-top: 1rem;
+            padding: 0.75rem 2rem;
+            background: rgba(255, 255, 255, 0.2);
+            border-radius: 8px;
+            transition: all 0.3s;
+        }
+        
+        .contact-email:hover {
+            background: rgba(255, 255, 255, 0.3);
+        }
+        
+        .back-link {
+            display: inline-block;
+            margin-top: 3rem;
+            padding: 0.875rem 2rem;
+            background: rgba(255, 255, 255, 0.05);
+            color: var(--white);
+            text-decoration: none;
+            border-radius: 8px;
+            border: 1px solid rgba(255, 255, 255, 0.2);
+            transition: all 0.3s;
+        }
+        
+        .back-link:hover {
+            background: rgba(255, 255, 255, 0.1);
+        }
+        
+        @media (max-width: 768px) {
+            .container {
+                padding: 1.5rem;
+            }
+            
+            .support-section {
+                padding: 1.5rem;
+            }
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <header>
+            <a href="index.html" class="logo">Style Lab</a>
+        </header>
+        
+        <h1>Centre d'aide</h1>
+        <p class="intro">
+            Nous sommes là pour vous aider. Trouvez des réponses à vos questions ou contactez notre équipe.
+        </p>
+        
+        <div class="support-section">
+            <h2>Questions fréquentes</h2>
+            
+            <h3>Installation</h3>
+            <p><strong>Comment installer l'application ?</strong></p>
+            <p>
+                L'installation se fait en quelques clics depuis le Shopify App Store. 
+                Une fois installée, l'application s'intègre automatiquement à votre boutique.
+            </p>
+            
+            <p><strong>L'application est-elle compatible avec mon thème ?</strong></p>
+            <p>
+                Oui, Style Lab Virtual Try-On est compatible avec tous les thèmes Shopify. 
+                Le widget s'intègre automatiquement via notre theme app extension.
+            </p>
+            
+            <h3>Fonctionnement</h3>
+            <p><strong>Comment fonctionne l'essayage virtuel ?</strong></p>
+            <p>
+                Vos clients peuvent uploader une photo ou utiliser leur caméra. 
+                Notre IA analyse la morphologie et superpose le vêtement de manière réaliste.
+            </p>
+            
+            <p><strong>Combien de temps prend la génération ?</strong></p>
+            <p>
+                La génération prend généralement entre 30 secondes et 2 minutes, 
+                selon la complexité de l'image et la charge du serveur.
+            </p>
+            
+            <h3>Facturation</h3>
+            <p><strong>Quand serai-je facturé ?</strong></p>
+            <p>
+                Après votre période d'essai gratuit de 14 jours, vous serez facturé 29€/mois. 
+                La facturation est automatique et mensuelle.
+            </p>
+            
+            <p><strong>Puis-je annuler à tout moment ?</strong></p>
+            <p>
+                Oui, vous pouvez annuler votre abonnement à tout moment depuis votre tableau de bord Shopify. 
+                Aucun engagement à long terme.
+            </p>
+        </div>
+        
+        <div class="support-section">
+            <h2>Ressources</h2>
+            <ul>
+                <li><a href="REPLICATE_SETUP.md" style="color: #67e8f9;">Guide de configuration API Replicate</a></li>
+                <li><a href="https://apps.shopify.com/style-lab-virtual-try-on" style="color: #67e8f9;" target="_blank">Page Shopify App Store</a></li>
+                <li>Documentation technique (à venir)</li>
+                <li>Vidéos tutoriels (à venir)</li>
+            </ul>
+        </div>
+        
+        <div class="contact-card">
+            <h2>Besoin d'aide supplémentaire ?</h2>
+            <p>Notre équipe est disponible pour vous aider</p>
+            <a href="mailto:support@stylelab.com" class="contact-email">support@stylelab.com</a>
+            <p style="margin-top: 1rem; font-size: 0.875rem; opacity: 0.9;">
+                Temps de réponse moyen : 24 heures
+            </p>
+        </div>
+        
+        <a href="index.html" class="back-link">← Retour à l'accueil</a>
+    </div>
+</body>
+</html>
+
