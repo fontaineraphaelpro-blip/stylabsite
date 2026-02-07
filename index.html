@@ -359,91 +359,6 @@
             letter-spacing: 0.05em;
             text-transform: uppercase;
         }
-        /* STATS BAR */
-        .stats-bar {
-            background: var(--bg);
-            border-top: 1px solid var(--border);
-            border-bottom: 1px solid var(--border);
-            padding: 4rem 2rem;
-            position: relative;
-            z-index: 10;
-        }
-        .stats-grid {
-            display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
-            gap: 2rem;
-            text-align: center;
-        }
-        .stat-item {
-            padding: 1rem;
-        }
-        .stat-value {
-            font-size: 3rem;
-            font-weight: 200;
-            color: var(--text);
-            margin-bottom: 0.75rem;
-            letter-spacing: -0.02em;
-        }
-        .stat-label {
-            color: var(--text-secondary);
-            font-size: 0.75rem;
-            font-weight: 300;
-            letter-spacing: 0.1em;
-            text-transform: uppercase;
-        }
-        /* FEATURE CARDS */
-        .feature-grid {
-            display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
-            gap: 2rem;
-            margin-top: 3rem;
-        }
-        .feature-card {
-            background: var(--bg);
-            border: none;
-            border-bottom: 1px solid var(--border);
-            border-radius: 0;
-            padding: 3rem 2rem;
-            transition: all 0.6s cubic-bezier(0.4, 0, 0.2, 1);
-            position: relative;
-            overflow: hidden;
-        }
-        .feature-card::before {
-            content: '';
-            position: absolute;
-            top: 0;
-            left: 0;
-            width: 1px;
-            height: 0;
-            background: var(--text);
-            transition: height 0.6s cubic-bezier(0.4, 0, 0.2, 1);
-        }
-        .feature-card:hover {
-            transform: translateX(8px);
-            background: var(--bg-gray);
-        }
-        .feature-card:hover::before {
-            height: 100%;
-        }
-        .feature-icon {
-            font-size: 2rem;
-            margin-bottom: 2rem;
-            opacity: 0.3;
-        }
-        .feature-card h3 {
-            font-size: 1.25rem;
-            font-weight: 300;
-            margin-bottom: 1.5rem;
-            color: var(--text);
-            letter-spacing: 0.05em;
-            text-transform: uppercase;
-        }
-        .feature-card p {
-            color: var(--text-secondary);
-            font-size: 0.9375rem;
-            line-height: 1.8;
-            font-weight: 300;
-        }
         /* PRODUCT PAGE - Shopify Style */
         .product-section {
             background: var(--bg-gray);
@@ -1462,9 +1377,6 @@
             }
             .hero h1 {
                 font-size: 1.75rem;
-            }
-            .stats-grid {
-                grid-template-columns: 1fr;
             }
             .store-grid {
                 grid-template-columns: 1fr;
