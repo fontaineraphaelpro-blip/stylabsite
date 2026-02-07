@@ -15,9 +15,10 @@ function getEnv(key, defaultValue = '') {
         }
     }
     // Essayer import.meta.env (pour Vite)
-    if (typeof import !== 'undefined' && import.meta && import.meta.env && import.meta.env[key]) {
-        return import.meta.env[key];
-    }
+    // Note: import est un mot réservé, on ne peut pas utiliser typeof import
+    // import.meta n'est disponible que dans les modules ES6, pas dans les scripts classiques
+    // Cette vérification est donc désactivée pour les scripts classiques
+    // Si vous utilisez Vite, les variables seront injectées directement dans le code
     return defaultValue;
 }
 
