@@ -337,20 +337,41 @@
 
         // Initialize VTON Widget
         function initVTON() {
+            console.log('🔧 initVTON called');
             const mainImage = document.getElementById('mainImage');
             const widgetRoot = document.getElementById('vton-widget-root');
-            if (mainImage && widgetRoot && window.initVTONWidget) {
-                window.initVTONWidget({
-                    containerId: 'vton-widget-root',
-                    productImageUrl: mainImage.src
-                });
+            console.log('📦 Elements check:', { 
+                mainImage: !!mainImage, 
+                widgetRoot: !!widgetRoot, 
+                initVTONWidget: !!window.initVTONWidget,
+                config: !!window.config
+            });
+            
+            if (mainImage && widgetRoot) {
+                if (window.initVTONWidget) {
+                    console.log('✅ Initializing widget with image:', mainImage.src);
+                    window.initVTONWidget({
+                        containerId: 'vton-widget-root',
+                        productImageUrl: mainImage.src
+                    });
+                } else {
+                    console.warn('⏳ window.initVTONWidget not available yet, retrying in 500ms...');
+                    setTimeout(initVTON, 500);
+                }
+            } else {
+                console.error('❌ Missing elements:', { mainImage: !!mainImage, widgetRoot: !!widgetRoot });
             }
         }
 
+        // Wait for DOM and scripts to be ready
         if (document.readyState === 'loading') {
-            document.addEventListener('DOMContentLoaded', initVTON);
+            document.addEventListener('DOMContentLoaded', function() {
+                console.log('📄 DOM loaded, initializing VTON in 500ms...');
+                setTimeout(initVTON, 500);
+            });
         } else {
-            setTimeout(initVTON, 100);
+            console.log('📄 DOM already ready, initializing VTON in 500ms...');
+            setTimeout(initVTON, 500);
         }
 
         // Dashboard animations
