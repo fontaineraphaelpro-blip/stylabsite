@@ -10,9 +10,81 @@
     <meta property="og:description" content="Augmentez vos conversions de 30% avec notre solution d'essayage virtuel alimentée par l'IA">
     <meta property="og:type" content="website">
     <meta name="twitter:card" content="summary_large_image">
-    <title>Style Lab Virtual Try-On - Essayage Virtuel IA pour Shopify | +30% Conversions</title>
+    <meta name="twitter:title" content="Style Lab Virtual Try-On - Essayage Virtuel IA pour Shopify">
+    <meta name="twitter:description" content="Augmentez vos conversions de 30% avec notre solution d'essayage virtuel alimentée par l'IA">
+    <meta name="robots" content="index, follow, max-image-preview:large, max-snippet:-1, max-video-preview:-1">
+    <meta name="googlebot" content="index, follow">
     <link rel="canonical" href="https://stylabsite-production.up.railway.app/">
-    <script src="env.js?v=4"></script>
+    <link rel="alternate" hreflang="fr" href="https://stylabsite-production.up.railway.app/">
+    <title>Style Lab Virtual Try-On - Essayage Virtuel IA pour Shopify | +30% Conversions</title>
+    <script type="application/ld+json">
+    {
+        "@context": "https://schema.org",
+        "@type": "SoftwareApplication",
+        "name": "Style Lab Virtual Try-On",
+        "applicationCategory": "E-commerce Application",
+        "operatingSystem": "Shopify",
+        "offers": {
+            "@type": "Offer",
+            "price": "0",
+            "priceCurrency": "EUR"
+        },
+        "aggregateRating": {
+            "@type": "AggregateRating",
+            "ratingValue": "4.9",
+            "ratingCount": "127"
+        },
+        "description": "Solution d'essayage virtuel alimentée par l'IA pour Shopify. Augmentez vos conversions de 30% avec notre technologie d'essayage virtuel.",
+        "screenshot": "https://stylabsite-production.up.railway.app/",
+        "featureList": "IA Avancée, Mobile-First, Conforme RGPD, Installation Rapide, Personnalisation, Analytics Avancés"
+    }
+    </script>
+    <script type="application/ld+json">
+    {
+        "@context": "https://schema.org",
+        "@type": "Organization",
+        "name": "Style Lab",
+        "url": "https://stylabsite-production.up.railway.app/",
+        "logo": "https://stylabsite-production.up.railway.app/logo.png",
+        "sameAs": [
+            "https://apps.shopify.com/style-lab-virtual-try-on"
+        ],
+        "contactPoint": {
+            "@type": "ContactPoint",
+            "contactType": "Customer Service",
+            "email": "contact@stylelab.com"
+        }
+    }
+    </script>
+    <script type="application/ld+json">
+    {
+        "@context": "https://schema.org",
+        "@type": "FAQPage",
+        "mainEntity": [{
+            "@type": "Question",
+            "name": "Comment fonctionne l'essayage virtuel ?",
+            "acceptedAnswer": {
+                "@type": "Answer",
+                "text": "L'essayage virtuel utilise l'intelligence artificielle pour superposer les vêtements sur une photo du client. Le client peut utiliser sa caméra en direct ou uploader une photo. Notre IA analyse la morphologie et adapte le vêtement de manière réaliste."
+            }
+        }, {
+            "@type": "Question",
+            "name": "Combien de temps prend l'installation ?",
+            "acceptedAnswer": {
+                "@type": "Answer",
+                "text": "L'installation prend moins de 3 minutes. Il suffit d'installer l'app depuis le Shopify App Store, de configurer le widget selon vos préférences, et c'est prêt ! Aucune connaissance technique requise."
+            }
+        }, {
+            "@type": "Question",
+            "name": "Est-ce compatible avec tous les thèmes Shopify ?",
+            "acceptedAnswer": {
+                "@type": "Answer",
+                "text": "Oui, notre widget est compatible avec tous les thèmes Shopify existants. Il s'intègre automatiquement dans vos pages produits via notre theme app extension."
+            }
+        }]
+    }
+    </script>
+    <script src="env.js?v=5"></script>
     <script src="config.js?v=4"></script>
     <script src="widget.js?v=4"></script>
     <script src="app.js?v=4"></script>
@@ -26,23 +98,37 @@
             --primary: #008060;
             --primary-dark: #006d4f;
             --secondary: #000000;
-            --text: #202223;
-            --text-secondary: #6d7175;
-            --border: #e1e3e5;
+            --text: #1a1a1a;
+            --text-secondary: #6b7280;
+            --border: #e5e7eb;
             --bg: #ffffff;
-            --bg-gray: #f6f6f7;
+            --bg-gray: #f9fafb;
+            --bg-gray-dark: #f3f4f6;
             --accent: #667eea;
             --accent-dark: #764ba2;
             --success: #008060;
-            --shadow: 0 1px 3px rgba(0,0,0,0.1);
-            --shadow-hover: 0 4px 12px rgba(0,0,0,0.15);
+            --shadow-sm: 0 1px 2px 0 rgba(0, 0, 0, 0.05);
+            --shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.1), 0 2px 4px -1px rgba(0, 0, 0, 0.06);
+            --shadow-md: 0 10px 15px -3px rgba(0, 0, 0, 0.1), 0 4px 6px -2px rgba(0, 0, 0, 0.05);
+            --shadow-lg: 0 20px 25px -5px rgba(0, 0, 0, 0.1), 0 10px 10px -5px rgba(0, 0, 0, 0.04);
+            --shadow-hover: 0 20px 25px -5px rgba(0, 0, 0, 0.15), 0 10px 10px -5px rgba(0, 0, 0, 0.08);
+        }
+        * {
+            scroll-behavior: smooth;
         }
         body {
-            font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, 'Helvetica Neue', Arial, sans-serif;
+            font-family: 'Inter', -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, 'Helvetica Neue', Arial, sans-serif;
             color: var(--text);
-            line-height: 1.6;
+            line-height: 1.7;
             background: var(--bg);
             font-size: 16px;
+            -webkit-font-smoothing: antialiased;
+            -moz-osx-font-smoothing: grayscale;
+        }
+        @supports (font-variation-settings: normal) {
+            body {
+                font-family: 'Inter var', 'Inter', -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
+            }
         }
         .container {
             max-width: 1400px;
@@ -51,11 +137,17 @@
         }
         /* HEADER */
         header {
-            background: var(--bg);
+            background: rgba(255, 255, 255, 0.8);
+            backdrop-filter: blur(12px);
+            -webkit-backdrop-filter: blur(12px);
             border-bottom: 1px solid var(--border);
             position: sticky;
             top: 0;
             z-index: 1000;
+            box-shadow: var(--shadow-sm);
+            transition: all 0.3s ease;
+        }
+        header:hover {
             box-shadow: var(--shadow);
         }
         .header-content {
@@ -66,12 +158,18 @@
         }
         .logo {
             font-size: 1.5rem;
-            font-weight: 700;
+            font-weight: 800;
             color: var(--text);
             text-decoration: none;
-            background: linear-gradient(135deg, var(--accent), var(--accent-dark));
+            background: linear-gradient(135deg, var(--accent) 0%, var(--accent-dark) 100%);
             -webkit-background-clip: text;
             -webkit-text-fill-color: transparent;
+            background-clip: text;
+            letter-spacing: -0.02em;
+            transition: transform 0.2s;
+        }
+        .logo:hover {
+            transform: scale(1.05);
         }
         nav {
             display: flex;
@@ -91,22 +189,25 @@
         .cta-button {
             background: var(--secondary);
             color: var(--bg);
-            padding: 0.625rem 1.25rem;
-            border-radius: 6px;
+            padding: 0.75rem 1.5rem;
+            border-radius: 8px;
             text-decoration: none;
             font-weight: 600;
             font-size: 0.875rem;
-            transition: all 0.2s;
+            transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+            box-shadow: var(--shadow-sm);
+            letter-spacing: -0.01em;
         }
         .cta-button:hover {
             background: #1a1a1a;
-            transform: translateY(-1px);
+            transform: translateY(-2px);
+            box-shadow: var(--shadow-md);
         }
         /* HERO */
         .hero {
             background: linear-gradient(135deg, var(--accent) 0%, var(--accent-dark) 100%);
             color: white;
-            padding: 6rem 2rem;
+            padding: 8rem 2rem;
             text-align: center;
             position: relative;
             overflow: hidden;
@@ -118,31 +219,44 @@
             left: 0;
             right: 0;
             bottom: 0;
-            background: url('data:image/svg+xml,<svg width="100" height="100" xmlns="http://www.w3.org/2000/svg"><defs><pattern id="grid" width="100" height="100" patternUnits="userSpaceOnUse"><path d="M 100 0 L 0 0 0 100" fill="none" stroke="rgba(255,255,255,0.05)" stroke-width="1"/></pattern></defs><rect width="100" height="100" fill="url(%23grid)"/></svg>');
-            opacity: 0.3;
+            background: 
+                radial-gradient(circle at 20% 50%, rgba(255, 255, 255, 0.1) 0%, transparent 50%),
+                radial-gradient(circle at 80% 80%, rgba(255, 255, 255, 0.1) 0%, transparent 50%),
+                url('data:image/svg+xml,<svg width="100" height="100" xmlns="http://www.w3.org/2000/svg"><defs><pattern id="grid" width="100" height="100" patternUnits="userSpaceOnUse"><path d="M 100 0 L 0 0 0 100" fill="none" stroke="rgba(255,255,255,0.05)" stroke-width="1"/></pattern></defs><rect width="100" height="100" fill="url(%23grid)"/></svg>');
+            opacity: 0.4;
+            animation: gradientShift 15s ease infinite;
+        }
+        @keyframes gradientShift {
+            0%, 100% { opacity: 0.4; }
+            50% { opacity: 0.6; }
         }
         .hero-content {
             position: relative;
             z-index: 1;
         }
         .hero h1 {
-            font-size: 3.5rem;
-            font-weight: 700;
+            font-size: clamp(2.5rem, 5vw, 4rem);
+            font-weight: 800;
             margin-bottom: 1.5rem;
-            line-height: 1.2;
+            line-height: 1.1;
+            letter-spacing: -0.03em;
+            text-shadow: 0 2px 20px rgba(0, 0, 0, 0.1);
         }
         .hero .subtitle {
-            font-size: 1.5rem;
+            font-size: clamp(1.25rem, 2.5vw, 1.75rem);
             margin-bottom: 1rem;
             opacity: 0.95;
+            font-weight: 600;
+            letter-spacing: -0.01em;
         }
         .hero .description {
-            font-size: 1.125rem;
+            font-size: clamp(1rem, 1.5vw, 1.25rem);
             margin-bottom: 2.5rem;
             opacity: 0.9;
             max-width: 700px;
             margin-left: auto;
             margin-right: auto;
+            line-height: 1.7;
         }
         .hero-badges {
             display: flex;
@@ -152,12 +266,21 @@
             flex-wrap: wrap;
         }
         .badge {
-            background: rgba(255,255,255,0.2);
-            backdrop-filter: blur(10px);
-            padding: 0.5rem 1rem;
-            border-radius: 20px;
+            background: rgba(255,255,255,0.15);
+            backdrop-filter: blur(12px);
+            -webkit-backdrop-filter: blur(12px);
+            padding: 0.625rem 1.25rem;
+            border-radius: 50px;
             font-size: 0.875rem;
-            font-weight: 500;
+            font-weight: 600;
+            border: 1px solid rgba(255,255,255,0.2);
+            transition: all 0.3s;
+            box-shadow: 0 4px 6px rgba(0,0,0,0.1);
+        }
+        .badge:hover {
+            background: rgba(255,255,255,0.25);
+            transform: translateY(-2px);
+            box-shadow: 0 6px 12px rgba(0,0,0,0.15);
         }
         .hero-buttons {
             display: flex;
@@ -168,31 +291,39 @@
         .btn-primary {
             background: var(--bg);
             color: var(--accent);
-            padding: 1rem 2.5rem;
-            border-radius: 6px;
+            padding: 1.125rem 2.75rem;
+            border-radius: 12px;
             text-decoration: none;
-            font-weight: 600;
+            font-weight: 700;
             font-size: 1rem;
-            transition: all 0.2s;
-            box-shadow: 0 4px 12px rgba(0,0,0,0.2);
+            transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+            box-shadow: 0 10px 25px rgba(0,0,0,0.2);
+            letter-spacing: -0.01em;
+            display: inline-block;
         }
         .btn-primary:hover {
-            transform: translateY(-2px);
-            box-shadow: 0 6px 20px rgba(0,0,0,0.3);
+            transform: translateY(-3px) scale(1.02);
+            box-shadow: 0 15px 35px rgba(0,0,0,0.3);
         }
         .btn-secondary {
-            background: transparent;
+            background: rgba(255,255,255,0.1);
+            backdrop-filter: blur(10px);
+            -webkit-backdrop-filter: blur(10px);
             color: var(--bg);
-            padding: 1rem 2.5rem;
-            border: 2px solid var(--bg);
-            border-radius: 6px;
+            padding: 1.125rem 2.75rem;
+            border: 2px solid rgba(255,255,255,0.3);
+            border-radius: 12px;
             text-decoration: none;
-            font-weight: 600;
+            font-weight: 700;
             font-size: 1rem;
-            transition: all 0.2s;
+            transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+            letter-spacing: -0.01em;
+            display: inline-block;
         }
         .btn-secondary:hover {
-            background: rgba(255,255,255,0.1);
+            background: rgba(255,255,255,0.2);
+            border-color: rgba(255,255,255,0.5);
+            transform: translateY(-2px);
         }
         /* SECTIONS */
         section {
@@ -206,19 +337,22 @@
         }
         .section-title {
             text-align: center;
-            font-size: 2.5rem;
-            font-weight: 700;
+            font-size: clamp(2rem, 4vw, 3rem);
+            font-weight: 800;
             margin-bottom: 1rem;
             color: var(--text);
+            letter-spacing: -0.02em;
+            line-height: 1.2;
         }
         .section-subtitle {
             text-align: center;
-            font-size: 1.125rem;
+            font-size: clamp(1rem, 1.5vw, 1.25rem);
             color: var(--text-secondary);
             margin-bottom: 3rem;
             max-width: 700px;
             margin-left: auto;
             margin-right: auto;
+            line-height: 1.7;
         }
         /* STATS BAR */
         .stats-bar {
@@ -257,15 +391,31 @@
         .feature-card {
             background: var(--bg);
             border: 1px solid var(--border);
-            border-radius: 12px;
-            padding: 2rem;
-            transition: all 0.3s;
-            box-shadow: var(--shadow);
+            border-radius: 16px;
+            padding: 2.5rem;
+            transition: all 0.4s cubic-bezier(0.4, 0, 0.2, 1);
+            box-shadow: var(--shadow-sm);
+            position: relative;
+            overflow: hidden;
+        }
+        .feature-card::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            height: 4px;
+            background: linear-gradient(90deg, var(--accent), var(--accent-dark));
+            transform: scaleX(0);
+            transition: transform 0.4s cubic-bezier(0.4, 0, 0.2, 1);
         }
         .feature-card:hover {
-            transform: translateY(-4px);
-            box-shadow: var(--shadow-hover);
+            transform: translateY(-8px);
+            box-shadow: var(--shadow-lg);
             border-color: var(--primary);
+        }
+        .feature-card:hover::before {
+            transform: scaleX(1);
         }
         .feature-icon {
             font-size: 3rem;
@@ -288,12 +438,23 @@
         }
         .product-demo {
             background: var(--bg);
-            border-radius: 12px;
-            padding: 3rem;
-            box-shadow: var(--shadow);
+            border-radius: 24px;
+            padding: 3.5rem;
+            box-shadow: var(--shadow-lg);
             border: 1px solid var(--border);
             max-width: 1200px;
             margin: 0 auto;
+            position: relative;
+            overflow: hidden;
+        }
+        .product-demo::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            height: 1px;
+            background: linear-gradient(90deg, transparent, var(--accent), transparent);
         }
         .product-layout {
             display: grid;
