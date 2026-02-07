@@ -77,31 +77,215 @@
     function createModal() {
         const modal = document.createElement('div');
         modal.id = 'vton-modal';
-        modal.style.cssText = 'display: none; position: fixed; top: 0; left: 0; width: 100%; height: 100%; background: rgba(0,0,0,0.8); z-index: 10000; align-items: center; justify-content: center;';
+        modal.style.cssText = 'display: none; position: fixed; top: 0; left: 0; width: 100%; height: 100%; background: rgba(0,0,0,0.75); backdrop-filter: blur(8px); z-index: 10000; align-items: center; justify-content: center; padding: 1rem;';
         
         const content = document.createElement('div');
-        content.style.cssText = 'background: white; padding: 3rem; border-radius: 0; max-width: 700px; width: 90%; max-height: 90vh; overflow-y: auto; position: relative;';
+        content.style.cssText = 'background: #ffffff; border-radius: 16px; max-width: 600px; width: 100%; max-height: 90vh; overflow-y: auto; position: relative; box-shadow: 0 20px 60px rgba(0,0,0,0.3);';
         
         content.innerHTML = `
-            <div style="display: flex; justify-content: space-between; align-items: center; margin-bottom: 2rem; padding-bottom: 1.5rem; border-bottom: 1px solid #e8e8e8;">
-                <h2 style="margin: 0; font-size: 1.5rem; font-weight: 300; letter-spacing: 0.1em; text-transform: uppercase;">Essayez virtuellement</h2>
-                <button id="vton-close" style="background: none; border: none; font-size: 2rem; cursor: pointer; color: #1a1a1a; line-height: 1; padding: 0; width: 32px; height: 32px; display: flex; align-items: center; justify-content: center; transition: opacity 0.3s;">×</button>
+            <style>
+                #vton-modal * {
+                    box-sizing: border-box;
+                }
+                .vton-header {
+                    display: flex;
+                    justify-content: space-between;
+                    align-items: center;
+                    padding: 1.5rem 2rem;
+                    border-bottom: 1px solid #e1e3e5;
+                    background: #fafbfc;
+                    border-radius: 16px 16px 0 0;
+                }
+                .vton-header h2 {
+                    margin: 0;
+                    font-size: 1.5rem;
+                    font-weight: 600;
+                    color: #202223;
+                    letter-spacing: -0.01em;
+                }
+                .vton-close-btn {
+                    background: none;
+                    border: none;
+                    font-size: 1.5rem;
+                    cursor: pointer;
+                    color: #6d7175;
+                    width: 32px;
+                    height: 32px;
+                    display: flex;
+                    align-items: center;
+                    justify-content: center;
+                    border-radius: 6px;
+                    transition: all 0.2s;
+                }
+                .vton-close-btn:hover {
+                    background: #e1e3e5;
+                    color: #202223;
+                }
+                .vton-body {
+                    padding: 2rem;
+                }
+                .vton-upload-card {
+                    border: 2px dashed #c9cccf;
+                    border-radius: 12px;
+                    padding: 3rem 2rem;
+                    text-align: center;
+                    cursor: pointer;
+                    transition: all 0.3s;
+                    background: #fafbfc;
+                    margin-bottom: 1.5rem;
+                }
+                .vton-upload-card:hover {
+                    border-color: #008060;
+                    background: #f0f9f7;
+                }
+                .vton-upload-icon {
+                    font-size: 3rem;
+                    margin-bottom: 1rem;
+                    color: #6d7175;
+                }
+                .vton-upload-text {
+                    margin: 0;
+                    color: #202223;
+                    font-size: 1rem;
+                    font-weight: 500;
+                    margin-bottom: 0.5rem;
+                }
+                .vton-upload-hint {
+                    margin: 0;
+                    color: #6d7175;
+                    font-size: 0.875rem;
+                }
+                .vton-preview-section {
+                    display: none;
+                    margin-bottom: 1.5rem;
+                }
+                .vton-preview-label {
+                    font-size: 0.8125rem;
+                    font-weight: 600;
+                    color: #6d7175;
+                    text-transform: uppercase;
+                    letter-spacing: 0.05em;
+                    margin-bottom: 0.75rem;
+                }
+                .vton-preview-img {
+                    width: 100%;
+                    border-radius: 12px;
+                    border: 1px solid #e1e3e5;
+                }
+                .vton-generate-btn {
+                    width: 100%;
+                    padding: 1rem 1.5rem;
+                    background: #008060;
+                    color: #ffffff;
+                    border: none;
+                    border-radius: 8px;
+                    font-weight: 600;
+                    font-size: 1rem;
+                    cursor: pointer;
+                    transition: all 0.2s;
+                    display: none;
+                    margin-bottom: 1.5rem;
+                }
+                .vton-generate-btn:hover:not(:disabled) {
+                    background: #006d4f;
+                    transform: translateY(-1px);
+                    box-shadow: 0 4px 12px rgba(0, 128, 96, 0.3);
+                }
+                .vton-generate-btn:disabled {
+                    opacity: 0.6;
+                    cursor: not-allowed;
+                }
+                .vton-loading {
+                    display: none;
+                    text-align: center;
+                    padding: 2rem;
+                    background: #f6f6f7;
+                    border-radius: 12px;
+                    margin-bottom: 1.5rem;
+                }
+                .vton-spinner {
+                    width: 40px;
+                    height: 40px;
+                    border: 4px solid #e1e3e5;
+                    border-top-color: #008060;
+                    border-radius: 50%;
+                    animation: spin 1s linear infinite;
+                    margin: 0 auto 1rem;
+                }
+                @keyframes spin {
+                    to { transform: rotate(360deg); }
+                }
+                .vton-loading-text {
+                    margin: 0;
+                    color: #202223;
+                    font-size: 0.9375rem;
+                    font-weight: 500;
+                }
+                .vton-result-section {
+                    display: none;
+                    margin-top: 1.5rem;
+                }
+                .vton-result-label {
+                    font-size: 0.8125rem;
+                    font-weight: 600;
+                    color: #6d7175;
+                    text-transform: uppercase;
+                    letter-spacing: 0.05em;
+                    margin-bottom: 0.75rem;
+                }
+                .vton-result-img {
+                    width: 100%;
+                    border-radius: 12px;
+                    border: 1px solid #e1e3e5;
+                    box-shadow: 0 2px 8px rgba(0,0,0,0.1);
+                }
+                .vton-error {
+                    display: none;
+                    padding: 1rem;
+                    background: #fee;
+                    border: 1px solid #fcc;
+                    border-radius: 8px;
+                    color: #d72c0d;
+                    font-size: 0.875rem;
+                    margin-bottom: 1rem;
+                }
+                @media (max-width: 768px) {
+                    .vton-body {
+                        padding: 1.5rem;
+                    }
+                    .vton-header {
+                        padding: 1.25rem 1.5rem;
+                    }
+                    .vton-upload-card {
+                        padding: 2rem 1.5rem;
+                    }
+                }
+            </style>
+            <div class="vton-header">
+                <h2>Essayez virtuellement</h2>
+                <button id="vton-close" class="vton-close-btn" aria-label="Fermer">×</button>
             </div>
-            <div id="vton-upload-area" style="border: 1px dashed #e8e8e8; padding: 3rem 2rem; text-align: center; margin-bottom: 2rem; cursor: pointer; transition: all 0.3s;">
-                <p style="margin: 0; color: #6b6b6b; font-size: 0.9375rem; font-weight: 300;">Cliquez pour télécharger votre photo</p>
-                <input type="file" id="vton-file-input" accept="image/*" style="display: none;">
-            </div>
-            <div id="vton-preview" style="display: none; margin-bottom: 2rem;">
-                <p style="margin-bottom: 1rem; font-size: 0.875rem; font-weight: 300; letter-spacing: 0.05em; text-transform: uppercase; color: #6b6b6b;">Votre photo</p>
-                <img id="vton-preview-img" style="max-width: 100%; display: block;">
-            </div>
-            <button id="vton-generate" style="width: 100%; padding: 1.25rem 2rem; background: #000; color: #fff; border: 1px solid #000; border-radius: 0; font-weight: 300; font-size: 0.875rem; letter-spacing: 0.2em; text-transform: uppercase; cursor: pointer; transition: all 0.4s; display: none;">Générer</button>
-            <div id="vton-loading" style="display: none; text-align: center; padding: 2rem; color: #6b6b6b;">
-                <p style="margin: 0; font-size: 0.875rem; font-weight: 300;">Génération en cours, veuillez patienter...</p>
-            </div>
-            <div id="vton-result" style="display: none; margin-top: 2rem;">
-                <p style="margin-bottom: 1rem; font-size: 0.875rem; font-weight: 300; letter-spacing: 0.05em; text-transform: uppercase; color: #6b6b6b;">Résultat</p>
-                <img id="vton-result-img" style="max-width: 100%; display: block;">
+            <div class="vton-body">
+                <div id="vton-error" class="vton-error"></div>
+                <div id="vton-upload-area" class="vton-upload-card">
+                    <div class="vton-upload-icon">📸</div>
+                    <p class="vton-upload-text">Téléchargez votre photo</p>
+                    <p class="vton-upload-hint">Cliquez ici ou glissez-déposez une image</p>
+                    <input type="file" id="vton-file-input" accept="image/*" style="display: none;">
+                </div>
+                <div id="vton-preview" class="vton-preview-section">
+                    <div class="vton-preview-label">Votre photo</div>
+                    <img id="vton-preview-img" class="vton-preview-img" alt="Photo utilisateur">
+                </div>
+                <button id="vton-generate" class="vton-generate-btn">Générer l'essayage virtuel</button>
+                <div id="vton-loading" class="vton-loading">
+                    <div class="vton-spinner"></div>
+                    <p class="vton-loading-text">Génération en cours... Cela peut prendre quelques instants</p>
+                </div>
+                <div id="vton-result" class="vton-result-section">
+                    <div class="vton-result-label">Résultat</div>
+                    <img id="vton-result-img" class="vton-result-img" alt="Résultat essayage virtuel">
+                </div>
             </div>
         `;
         
@@ -231,7 +415,9 @@
         generateBtn.disabled = true;
         generateBtn.style.display = 'none';
         const loadingDiv = document.getElementById('vton-loading');
+        const errorDiv = document.getElementById('vton-error');
         if (loadingDiv) loadingDiv.style.display = 'block';
+        if (errorDiv) errorDiv.style.display = 'none';
         resultDiv.style.display = 'none';
         
         try {
@@ -324,10 +510,14 @@
         } catch (error) {
             console.error('❌ Erreur:', error);
             const loadingDiv = document.getElementById('vton-loading');
+            const errorDiv = document.getElementById('vton-error');
             if (loadingDiv) loadingDiv.style.display = 'none';
+            if (errorDiv) {
+                errorDiv.textContent = 'Erreur: ' + error.message;
+                errorDiv.style.display = 'block';
+            }
             generateBtn.style.display = 'block';
-            generateBtn.textContent = 'Générer';
-            alert('Erreur: ' + error.message);
+            generateBtn.textContent = 'Réessayer';
         } finally {
             widgetState.isGenerating = false;
             generateBtn.disabled = false;
