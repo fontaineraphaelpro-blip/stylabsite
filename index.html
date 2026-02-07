@@ -5,7 +5,12 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Virtual Try-On Shopify pour boutiques France & Europe | StyleLab</title>
     <meta name="description" content="Solution Virtual Try-On Shopify pour boutiques France & Europe. Application essayage virtuel qui augmente les conversions jusqu'à 40% et réduit les retours jusqu'à 60%.">
-    <meta name="keywords" content="virtual try-on, shopify, essayage virtuel, e-commerce, IA, France, Europe, mode, vêtements">
+    <meta name="keywords" content="virtual try-on, shopify, essayage virtuel, e-commerce, IA, France, Europe, mode, vêtements, application shopify, essayage virtuel IA, augmentation conversions, réduction retours, boutique en ligne">
+    <meta name="author" content="StyleLab">
+    <meta name="robots" content="index, follow">
+    <meta name="language" content="French">
+    <meta name="geo.region" content="FR">
+    <meta name="geo.placename" content="France">
     
     <!-- Open Graph / Facebook -->
     <meta property="og:type" content="website">
@@ -21,6 +26,8 @@
     
     <link rel="icon" type="image/svg+xml" href="/favicon.svg">
     <link rel="canonical" href="https://stylelab.io/">
+    <link rel="alternate" hreflang="fr" href="https://stylelab.io/">
+    <link rel="alternate" hreflang="en" href="https://stylelab.io/en/">
     <link rel="stylesheet" href="style.css">
     <script src="env.js"></script>
     <script src="config.js"></script>
@@ -36,16 +43,56 @@
       "name": "Style Lab Virtual Try-On",
       "applicationCategory": "BusinessApplication",
       "operatingSystem": "Web",
+      "url": "https://stylelab.io/",
+      "description": "Solution Virtual Try-On Shopify pour boutiques France & Europe. Application essayage virtuel qui augmente les conversions jusqu'à 40% et réduit les retours jusqu'à 60%.",
       "offers": {
         "@type": "Offer",
         "price": "0",
-        "priceCurrency": "EUR"
+        "priceCurrency": "EUR",
+        "availability": "https://schema.org/InStock"
       },
       "aggregateRating": {
         "@type": "AggregateRating",
         "ratingValue": "4.8",
-        "ratingCount": "127"
-      }
+        "ratingCount": "127",
+        "bestRating": "5",
+        "worstRating": "1"
+      },
+      "provider": {
+        "@type": "Organization",
+        "name": "StyleLab",
+        "url": "https://stylelab.io/",
+        "logo": "https://stylelab.io/logo.png",
+        "sameAs": [
+          "https://apps.shopify.com/try-on-stylelab"
+        ]
+      },
+      "featureList": [
+        "IA Avancée pour rendu ultra-réaliste",
+        "Mobile-First optimisé",
+        "Conforme RGPD",
+        "Installation en 3 minutes",
+        "Personnalisation complète",
+        "Analytics avancés"
+      ]
+    }
+    </script>
+    <script type="application/ld+json">
+    {
+      "@context": "https://schema.org",
+      "@type": "Organization",
+      "name": "StyleLab",
+      "url": "https://stylelab.io/",
+      "logo": "https://stylelab.io/logo.png",
+      "contactPoint": {
+        "@type": "ContactPoint",
+        "email": "support@stylelab.io",
+        "contactType": "customer support",
+        "availableLanguage": ["French", "English"]
+      },
+      "sameAs": [
+        "https://apps.shopify.com/try-on-stylelab"
+      ]
     }
     </script>
 </head>
@@ -73,11 +120,11 @@
     </header>
 
     <!-- Hero -->
-    <section class="hero">
+    <section class="hero" itemscope itemtype="https://schema.org/WebPage">
         <div class="container">
             <div class="hero-content">
-                <h1 class="hero-title">Virtual Try-On Shopify pour boutiques France & Europe</h1>
-                <p class="hero-subtitle">Augmentez vos conversions jusqu'à 40% et réduisez les retours jusqu'à 60% avec notre solution d'essayage virtuel IA. Installation en 3 minutes, sans code.</p>
+                <h1 class="hero-title" itemprop="name">Virtual Try-On Shopify pour boutiques France & Europe</h1>
+                <p class="hero-subtitle" itemprop="description">Augmentez vos conversions jusqu'à 40% et réduisez les retours jusqu'à 60% avec notre solution d'essayage virtuel IA. Installation en 3 minutes, sans code.</p>
                 <div class="hero-cta">
                     <a href="https://apps.shopify.com/try-on-stylelab" target="_blank" rel="noopener" class="btn btn-primary btn-large">Commencer Gratuitement</a>
                     <a href="#demo" class="btn btn-secondary btn-large">Voir la Démo</a>
@@ -93,23 +140,23 @@
     </section>
 
     <!-- Stats -->
-    <section class="stats">
+    <section class="stats" itemscope itemtype="https://schema.org/ItemList">
         <div class="container">
             <div class="stats-grid">
-                <div class="stat-item">
-                    <div class="stat-value">+40%</div>
+                <div class="stat-item" itemprop="itemListElement" itemscope itemtype="https://schema.org/ListItem">
+                    <div class="stat-value" itemprop="name">+40%</div>
                     <div class="stat-label">Conversions</div>
                 </div>
-                <div class="stat-item">
-                    <div class="stat-value">-60%</div>
+                <div class="stat-item" itemprop="itemListElement" itemscope itemtype="https://schema.org/ListItem">
+                    <div class="stat-value" itemprop="name">-60%</div>
                     <div class="stat-label">Retours</div>
                 </div>
-                <div class="stat-item">
-                    <div class="stat-value">95%</div>
+                <div class="stat-item" itemprop="itemListElement" itemscope itemtype="https://schema.org/ListItem">
+                    <div class="stat-value" itemprop="name">95%</div>
                     <div class="stat-label">Précision IA</div>
                 </div>
-                <div class="stat-item">
-                    <div class="stat-value">3min</div>
+                <div class="stat-item" itemprop="itemListElement" itemscope itemtype="https://schema.org/ListItem">
+                    <div class="stat-value" itemprop="name">3min</div>
                     <div class="stat-label">Installation</div>
                 </div>
             </div>
@@ -270,21 +317,25 @@
     </section>
 
     <!-- Testimonials Section - New -->
-    <section id="temoignages" class="testimonials">
+    <section id="temoignages" class="testimonials" itemscope itemtype="https://schema.org/Review">
         <div class="container">
             <h2 class="section-title">Ce que disent nos clients</h2>
             <p class="section-subtitle">Rejoignez les centaines de boutiques qui ont transformé leur e-commerce</p>
             <div class="testimonials-grid">
-                <div class="testimonial-card">
+                <div class="testimonial-card" itemscope itemtype="https://schema.org/Review">
                     <div class="testimonial-header">
                         <div class="testimonial-avatar">M</div>
                         <div class="testimonial-info">
-                            <h4>Marie Dubois</h4>
-                            <p class="testimonial-role">Fondatrice, ChicMode Paris</p>
+                            <h4 itemprop="author" itemscope itemtype="https://schema.org/Person"><span itemprop="name">Marie Dubois</span></h4>
+                            <p class="testimonial-role" itemprop="author" itemscope itemtype="https://schema.org/Organization"><span itemprop="jobTitle">Fondatrice</span>, <span itemprop="name">ChicMode Paris</span></p>
                         </div>
                     </div>
-                    <div class="testimonial-stars">★★★★★</div>
-                    <p class="testimonial-text">"Depuis l'installation de Style Lab, nos conversions ont augmenté de 45% et nos retours ont chuté drastiquement. C'est un game-changer pour notre boutique !"</p>
+                    <div class="testimonial-stars" itemprop="reviewRating" itemscope itemtype="https://schema.org/Rating">
+                        <meta itemprop="ratingValue" content="5">
+                        <meta itemprop="bestRating" content="5">
+                        ★★★★★
+                    </div>
+                    <p class="testimonial-text" itemprop="reviewBody">"Depuis l'installation de Style Lab, nos conversions ont augmenté de 45% et nos retours ont chuté drastiquement. C'est un game-changer pour notre boutique !"</p>
                 </div>
                 <div class="testimonial-card">
                     <div class="testimonial-header">
@@ -407,7 +458,7 @@
                         </div>
                         <h3 class="blog-title">Qu'est-ce que le Virtual Try-On ?</h3>
                         <p class="blog-excerpt">Le virtual try-on (essayage virtuel) est une technologie qui permet aux clients d'essayer des produits virtuellement avant l'achat. Grâce à l'intelligence artificielle et la réalité augmentée, les utilisateurs peuvent voir en temps réel comment un vêtement, accessoire ou produit cosmétique leur va, directement depuis leur smartphone ou ordinateur.</p>
-                        <a href="/blog.html" class="blog-link">En savoir plus</a>
+                        <a href="/blog-qu-est-ce-que-le-virtual-try-on.html" class="blog-link">Lire l'article complet</a>
                     </div>
                 </div>
                 <div class="blog-card">
@@ -419,7 +470,7 @@
                         </div>
                         <h3 class="blog-title">Impact sur les conversions e-commerce</h3>
                         <p class="blog-excerpt">Les études montrent que l'intégration d'un système de virtual try-on augmente les taux de conversion de 40% en moyenne. Les clients qui utilisent cette technologie sont 3 fois plus susceptibles d'effectuer un achat, et 60% moins susceptibles de retourner leurs produits.</p>
-                        <a href="/blog.html" class="blog-link">Voir les statistiques</a>
+                        <a href="/blog-impact-conversions-ecommerce.html" class="blog-link">Lire l'article complet</a>
                     </div>
                 </div>
                 <div class="blog-card">
@@ -431,7 +482,7 @@
                         </div>
                         <h3 class="blog-title">L'avenir du e-commerce en France</h3>
                         <p class="blog-excerpt">Le marché français du e-commerce adopte massivement les technologies d'essayage virtuel. Les boutiques en ligne qui proposent du virtual try-on voient leur taux d'engagement augmenter de 300% et leurs retours produits diminuer significativement, réduisant les coûts logistiques et améliorant la satisfaction client.</p>
-                        <a href="/blog.html" class="blog-link">Découvrir les tendances</a>
+                        <a href="/blog-avenir-ecommerce-france.html" class="blog-link">Lire l'article complet</a>
                     </div>
                 </div>
             </div>
