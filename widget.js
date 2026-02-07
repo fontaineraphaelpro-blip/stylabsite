@@ -47,19 +47,103 @@
         container.style.visibility = 'visible';
         container.style.opacity = '1';
         
-        const button = document.createElement('button');
-        button.textContent = 'Essayer Virtuellement ✨';
-        button.className = 'vton-trigger-btn';
-        button.style.cssText = 'width: 100%; padding: 1.25rem 2rem; background: #000; color: #fff; border: 1px solid #000; border-radius: 0; font-weight: 300; font-size: 0.875rem; letter-spacing: 0.2em; text-transform: uppercase; cursor: pointer; transition: all 0.4s cubic-bezier(0.4, 0, 0.2, 1); display: block;';
+        // Valeurs par défaut (comme dans l'app)
+        const defaultWidgetText = 'Try It On Now ✨';
+        const defaultWidgetBg = '#000000';
+        const defaultWidgetColor = '#ffffff';
         
+        // Fonction pour calculer la luminance d'une couleur
+        function getLuminance(hex) {
+            const rgb = hexToRgb(hex);
+            if (!rgb) return 0;
+            const [r, g, b] = rgb.map(val => {
+                val = val / 255;
+                return val <= 0.03928 ? val / 12.92 : Math.pow((val + 0.055) / 1.055, 2.4);
+            });
+            return 0.2126 * r + 0.7152 * g + 0.0722 * b;
+        }
+        
+        function hexToRgb(hex) {
+            const result = /^#?([a-f\d]{2})([a-f\d]{2})([a-f\d]{2})$/i.exec(hex);
+            return result ? [
+                parseInt(result[1], 16),
+                parseInt(result[2], 16),
+                parseInt(result[3], 16)
+            ] : null;
+        }
+        
+        // Calculer la couleur de texte appropriée selon le contraste
+        function getContrastTextColor(bgColor, textColor) {
+            const bgLuminance = getLuminance(bgColor);
+            const textLuminance = getLuminance(textColor);
+            const contrast = (Math.max(bgLuminance, textLuminance) + 0.05) / (Math.min(bgLuminance, textLuminance) + 0.05);
+            
+            // Si le contraste est trop faible (moins de 4.5:1 pour WCAG AA), utiliser une couleur automatique
+            if (contrast < 4.5) {
+                return bgLuminance > 0.5 ? '#000000' : '#ffffff';
+            }
+            return textColor;
+        }
+        
+        // Récupérer les valeurs de configuration (si disponibles depuis la config)
+        let widgetText = defaultWidgetText;
+        let widgetBg = defaultWidgetBg;
+        let widgetColor = defaultWidgetColor;
+        
+        // Essayer de récupérer depuis la config ou localStorage
+        try {
+            const savedConfig = localStorage.getItem('vton-widget-config');
+            if (savedConfig) {
+                const config = JSON.parse(savedConfig);
+                widgetText = config.widgetText || defaultWidgetText;
+                widgetBg = config.widgetBg || defaultWidgetBg;
+                widgetColor = config.widgetColor || defaultWidgetColor;
+            }
+        } catch (e) {
+            console.log('Pas de config sauvegardée, utilisation des valeurs par défaut');
+        }
+        
+        // Calculer la couleur de texte finale avec contraste
+        const finalTextColor = getContrastTextColor(widgetBg, widgetColor);
+        
+        const button = document.createElement('button');
+        button.textContent = widgetText;
+        button.className = 'vton-trigger-btn';
+        button.type = 'button';
+        
+        // Style Shopify Polaris (comme dans l'app)
+        button.style.cssText = `
+            width: 100%;
+            padding: 14px 24px;
+            background: ${widgetBg};
+            color: ${finalTextColor};
+            border: none;
+            border-radius: 4px;
+            font-size: 16px;
+            font-weight: 600;
+            cursor: pointer;
+            transition: opacity 0.2s, background-color 0.2s;
+            display: block;
+            font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, 'Helvetica Neue', Arial, sans-serif;
+            line-height: 1.5;
+            text-align: center;
+        `;
+        
+        // Hover effect subtil (comme Shopify Polaris)
         button.addEventListener('mouseenter', function() {
-            this.style.background = 'transparent';
-            this.style.color = '#000';
+            const rgb = hexToRgb(widgetBg);
+            if (rgb) {
+                const [r, g, b] = rgb;
+                // Assombrir légèrement au hover
+                const darkerR = Math.max(0, r - 10);
+                const darkerG = Math.max(0, g - 10);
+                const darkerB = Math.max(0, b - 10);
+                this.style.backgroundColor = `rgb(${darkerR}, ${darkerG}, ${darkerB})`;
+            }
         });
         
         button.addEventListener('mouseleave', function() {
-            this.style.background = '#000';
-            this.style.color = '#fff';
+            this.style.backgroundColor = widgetBg;
         });
         
         button.addEventListener('click', function() {
@@ -68,7 +152,7 @@
         });
         
         container.appendChild(button);
-        console.log('✅ Bouton ajouté au container');
+        console.log('✅ Bouton ajouté au container avec style app');
         
         createModal();
         console.log('✅ Modal créé');
