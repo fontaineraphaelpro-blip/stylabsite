@@ -669,7 +669,8 @@
     try {
       // Utiliser la logique existante d'app.js
       // Le widget utilise directement les fonctions d'app.js via les variables globales
-      if (window.cfg && window.cfg.replicateApiToken) {
+      const cfg = window.config || window.cfg;
+      if (cfg && cfg.replicateApiToken) {
         await generateWithReplicate();
       } else {
         throw new Error('Token Replicate non configuré. Vérifiez votre configuration.');
@@ -692,9 +693,10 @@
   
   // Generate with Replicate (logique simplifiée)
   async function generateWithReplicate() {
-    // Vérifier la configuration
-    if (!window.cfg || !window.cfg.replicateApiToken) {
-      throw new Error('Token Replicate non configuré. Vérifiez votre configuration.');
+    // Vérifier la configuration (utiliser window.config de config.js)
+    const cfg = window.config || window.cfg;
+    if (!cfg || !cfg.replicateApiToken) {
+      throw new Error('Token Replicate non configuré. Vérifiez votre configuration dans env.js.');
     }
     
     // Convertir la photo en base64
@@ -782,9 +784,14 @@
   
   // Create Replicate prediction
   async function createReplicatePrediction(userImageUrl, productImageUrl) {
-    const cfg = window.cfg;
+    // Utiliser window.config (de config.js) ou window.cfg en fallback
+    const cfg = window.config || window.cfg;
     if (!cfg) {
-      throw new Error('Configuration non disponible');
+      throw new Error('Configuration non disponible. Vérifiez que config.js est chargé.');
+    }
+    
+    if (!cfg.replicateApiToken) {
+      throw new Error('Token Replicate non configuré. Vérifiez votre configuration dans env.js.');
     }
     
     const response = await fetch(`${cfg.replicateApiUrl}/predictions`, {
@@ -823,7 +830,10 @@
   
   // Poll prediction status
   async function pollPredictionStatus(predictionId) {
-    const cfg = window.cfg;
+    const cfg = window.config || window.cfg;
+    if (!cfg) {
+      throw new Error('Configuration non disponible. Vérifiez que config.js est chargé.');
+    }
     const maxAttempts = 60;
     let attempts = 0;
     

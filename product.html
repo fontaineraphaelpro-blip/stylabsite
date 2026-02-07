@@ -1,0 +1,498 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>T-Shirt Premium Coton Bio - StyleLab Store</title>
+    <meta name="description" content="T-Shirt Premium en coton biologique. Essayez-le virtuellement avant d'acheter avec notre technologie Virtual Try-On.">
+    <link rel="stylesheet" href="style.css">
+    <script src="env.js"></script>
+    <script src="config.js"></script>
+    <script src="widget.js"></script>
+    <script src="app.js"></script>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+    <style>
+        .store-header {
+            background: var(--white);
+            border-bottom: 1px solid var(--gray-200);
+            padding: 1rem 0;
+            position: sticky;
+            top: 0;
+            z-index: 100;
+            box-shadow: var(--shadow-sm);
+        }
+
+        .store-header-content {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 0 1.5rem;
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+        }
+
+        .store-logo {
+            font-size: 1.5rem;
+            font-weight: 800;
+            color: var(--primary);
+            text-decoration: none;
+        }
+
+        .store-nav {
+            display: flex;
+            gap: 2rem;
+            align-items: center;
+        }
+
+        .store-nav a {
+            color: var(--gray-700);
+            text-decoration: none;
+            font-weight: 500;
+            transition: color 0.2s;
+        }
+
+        .store-nav a:hover {
+            color: var(--primary);
+        }
+
+        .product-page {
+            padding: 3rem 0;
+        }
+
+        .product-container {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 4rem;
+            margin-bottom: 4rem;
+        }
+
+        .product-gallery {
+            position: sticky;
+            top: 100px;
+            height: fit-content;
+        }
+
+        .product-main-image {
+            width: 100%;
+            aspect-ratio: 1;
+            object-fit: cover;
+            border-radius: 1rem;
+            border: 1px solid var(--gray-200);
+            margin-bottom: 1rem;
+            background: var(--gray-100);
+        }
+
+        .product-thumbnails {
+            display: flex;
+            gap: 0.75rem;
+            overflow-x: auto;
+        }
+
+        .product-thumbnail {
+            width: 80px;
+            height: 80px;
+            object-fit: cover;
+            border-radius: 0.5rem;
+            border: 2px solid var(--gray-200);
+            cursor: pointer;
+            transition: border-color 0.2s;
+            flex-shrink: 0;
+        }
+
+        .product-thumbnail:hover,
+        .product-thumbnail.active {
+            border-color: var(--primary);
+        }
+
+        .product-info {
+            padding-top: 1rem;
+        }
+
+        .product-vendor {
+            font-size: 0.875rem;
+            color: var(--gray-600);
+            font-weight: 600;
+            margin-bottom: 0.5rem;
+            text-transform: uppercase;
+            letter-spacing: 0.05em;
+        }
+
+        .product-title {
+            font-size: clamp(1.75rem, 4vw, 2.5rem);
+            font-weight: 800;
+            color: var(--gray-900);
+            margin-bottom: 1rem;
+            line-height: 1.2;
+        }
+
+        .product-price {
+            font-size: 2rem;
+            font-weight: 800;
+            color: var(--primary);
+            margin-bottom: 1.5rem;
+        }
+
+        .product-price-compare {
+            font-size: 1.5rem;
+            color: var(--gray-600);
+            text-decoration: line-through;
+            margin-left: 0.75rem;
+        }
+
+        .product-description {
+            font-size: 1rem;
+            color: var(--gray-700);
+            line-height: 1.7;
+            margin-bottom: 2rem;
+        }
+
+        .product-options {
+            margin-bottom: 2rem;
+        }
+
+        .product-option {
+            margin-bottom: 1.5rem;
+        }
+
+        .product-option-label {
+            font-size: 0.875rem;
+            font-weight: 600;
+            color: var(--gray-900);
+            margin-bottom: 0.5rem;
+            display: block;
+        }
+
+        .product-option-values {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 0.5rem;
+        }
+
+        .product-option-value {
+            padding: 0.625rem 1.25rem;
+            border: 2px solid var(--gray-200);
+            border-radius: 0.5rem;
+            background: var(--white);
+            cursor: pointer;
+            font-size: 0.875rem;
+            font-weight: 500;
+            color: var(--gray-900);
+            transition: all 0.2s;
+        }
+
+        .product-option-value:hover {
+            border-color: var(--primary);
+        }
+
+        .product-option-value.selected {
+            border-color: var(--primary);
+            background: var(--primary);
+            color: var(--white);
+        }
+
+        .product-quantity {
+            margin-bottom: 1.5rem;
+        }
+
+        .quantity-selector {
+            display: flex;
+            align-items: center;
+            gap: 0.75rem;
+        }
+
+        .quantity-btn {
+            width: 40px;
+            height: 40px;
+            border: 1px solid var(--gray-200);
+            background: var(--white);
+            border-radius: 0.5rem;
+            cursor: pointer;
+            font-size: 1.125rem;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            transition: all 0.2s;
+        }
+
+        .quantity-btn:hover {
+            border-color: var(--primary);
+            background: var(--gray-50);
+        }
+
+        .quantity-input {
+            width: 80px;
+            height: 40px;
+            border: 1px solid var(--gray-200);
+            border-radius: 0.5rem;
+            text-align: center;
+            font-size: 1rem;
+            font-weight: 500;
+        }
+
+        .add-to-cart-btn {
+            width: 100%;
+            padding: 1rem 2rem;
+            background: var(--primary);
+            color: var(--white);
+            border: none;
+            border-radius: 0.625rem;
+            font-size: 1rem;
+            font-weight: 600;
+            cursor: pointer;
+            transition: all 0.3s;
+            margin-bottom: 1rem;
+        }
+
+        .add-to-cart-btn:hover {
+            background: var(--primary-dark);
+            transform: translateY(-2px);
+            box-shadow: var(--shadow-lg);
+        }
+
+        .product-features {
+            margin-top: 2rem;
+            padding-top: 2rem;
+            border-top: 1px solid var(--gray-200);
+        }
+
+        .product-feature {
+            display: flex;
+            align-items: center;
+            gap: 0.75rem;
+            margin-bottom: 1rem;
+            font-size: 0.875rem;
+            color: var(--gray-700);
+        }
+
+        .product-feature-icon {
+            width: 20px;
+            height: 20px;
+            color: var(--green);
+            flex-shrink: 0;
+        }
+
+        /* Virtual Try-On Widget Section - Intégré naturellement */
+        .vton-section {
+            margin-top: 3rem;
+            padding-top: 3rem;
+            border-top: 2px solid var(--gray-200);
+        }
+
+        .vton-section h3 {
+            font-size: 1.5rem;
+            font-weight: 700;
+            color: var(--gray-900);
+            margin-bottom: 0.75rem;
+        }
+
+        .vton-section p {
+            font-size: 1rem;
+            color: var(--gray-600);
+            margin-bottom: 1.5rem;
+        }
+
+        /* Le widget s'intègre ici */
+        #vton-widget-root {
+            margin-top: 1.5rem;
+        }
+
+        /* Responsive */
+        @media (max-width: 1024px) {
+            .product-container {
+                grid-template-columns: 1fr;
+                gap: 2rem;
+            }
+
+            .product-gallery {
+                position: static;
+            }
+        }
+
+        @media (max-width: 640px) {
+            .product-page {
+                padding: 1.5rem 0;
+            }
+
+            .store-nav {
+                display: none;
+            }
+        }
+    </style>
+</head>
+<body>
+    <!-- Store Header -->
+    <header class="store-header">
+        <div class="store-header-content">
+            <a href="store.html" class="store-logo">StyleLab Store</a>
+            <nav class="store-nav">
+                <a href="store.html">Accueil</a>
+                <a href="store.html#products">Produits</a>
+                <a href="/">À propos</a>
+                <a href="/">Contact</a>
+            </nav>
+        </div>
+    </header>
+
+    <!-- Product Page -->
+    <div class="product-page">
+        <div class="container">
+            <div class="product-container">
+                <!-- Product Gallery -->
+                <div class="product-gallery">
+                    <img src="https://images.unsplash.com/photo-1521572163474-6864f9cf17ab?w=800&h=800&fit=crop" 
+                         alt="T-Shirt Premium Coton Bio" 
+                         class="product-main-image" 
+                         id="mainImage">
+                    <div class="product-thumbnails">
+                        <img src="https://images.unsplash.com/photo-1521572163474-6864f9cf17ab?w=200&h=200&fit=crop" 
+                             alt="T-Shirt Vue 1" 
+                             class="product-thumbnail active"
+                             onclick="changeMainImage(this.src.replace('w=200&h=200', 'w=800&h=800'))">
+                        <img src="https://images.unsplash.com/photo-1618354691373-d851c5c3a990?w=200&h=200&fit=crop" 
+                             alt="T-Shirt Vue 2" 
+                             class="product-thumbnail"
+                             onclick="changeMainImage(this.src.replace('w=200&h=200', 'w=800&h=800'))">
+                        <img src="https://images.unsplash.com/photo-1562157873-818bc0726f68?w=200&h=200&fit=crop" 
+                             alt="T-Shirt Vue 3" 
+                             class="product-thumbnail"
+                             onclick="changeMainImage(this.src.replace('w=200&h=200', 'w=800&h=800'))">
+                    </div>
+                </div>
+
+                <!-- Product Info -->
+                <div class="product-info">
+                    <div class="product-vendor">StyleLab</div>
+                    <h1 class="product-title">T-Shirt Premium Coton Bio</h1>
+                    <div class="product-price">
+                        29,90 €
+                        <span class="product-price-compare">39,90 €</span>
+                    </div>
+                    <p class="product-description">
+                        Découvrez notre T-Shirt Premium en coton biologique certifié. Conçu pour un confort optimal et une durabilité exceptionnelle, ce t-shirt allie style et éthique. Matière douce et respirante, coupe moderne et couleurs intenses qui résistent au lavage.
+                    </p>
+
+                    <!-- Product Options -->
+                    <div class="product-options">
+                        <div class="product-option">
+                            <label class="product-option-label">Taille</label>
+                            <div class="product-option-values">
+                                <button class="product-option-value" onclick="selectOption(this, 'size')">XS</button>
+                                <button class="product-option-value selected" onclick="selectOption(this, 'size')">S</button>
+                                <button class="product-option-value" onclick="selectOption(this, 'size')">M</button>
+                                <button class="product-option-value" onclick="selectOption(this, 'size')">L</button>
+                                <button class="product-option-value" onclick="selectOption(this, 'size')">XL</button>
+                            </div>
+                        </div>
+                        <div class="product-option">
+                            <label class="product-option-label">Couleur</label>
+                            <div class="product-option-values">
+                                <button class="product-option-value selected" onclick="selectOption(this, 'color')">Noir</button>
+                                <button class="product-option-value" onclick="selectOption(this, 'color')">Blanc</button>
+                                <button class="product-option-value" onclick="selectOption(this, 'color')">Gris</button>
+                                <button class="product-option-value" onclick="selectOption(this, 'color')">Bleu</button>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Quantity -->
+                    <div class="product-quantity">
+                        <label class="product-option-label">Quantité</label>
+                        <div class="quantity-selector">
+                            <button class="quantity-btn" onclick="changeQuantity(-1)">−</button>
+                            <input type="number" class="quantity-input" value="1" min="1" id="quantity">
+                            <button class="quantity-btn" onclick="changeQuantity(1)">+</button>
+                        </div>
+                    </div>
+
+                    <!-- Add to Cart -->
+                    <button class="add-to-cart-btn" onclick="addToCart()">Ajouter au panier</button>
+
+                    <!-- Product Features -->
+                    <div class="product-features">
+                        <div class="product-feature">
+                            <svg class="product-feature-icon" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 13l4 4L19 7"></path>
+                            </svg>
+                            <span>Livraison gratuite en France métropolitaine</span>
+                        </div>
+                        <div class="product-feature">
+                            <svg class="product-feature-icon" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 13l4 4L19 7"></path>
+                            </svg>
+                            <span>Retours gratuits sous 30 jours</span>
+                        </div>
+                        <div class="product-feature">
+                            <svg class="product-feature-icon" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 13l4 4L19 7"></path>
+                            </svg>
+                            <span>Coton biologique certifié GOTS</span>
+                        </div>
+                        <div class="product-feature">
+                            <svg class="product-feature-icon" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 13l4 4L19 7"></path>
+                            </svg>
+                            <span>Fabriqué en Europe</span>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Virtual Try-On Widget Section - Intégré naturellement -->
+            <div class="vton-section">
+                <h3>Essayez ce produit virtuellement</h3>
+                <p>Utilisez notre technologie Virtual Try-On pour voir comment ce t-shirt vous va avant d'acheter. Prenez une photo ou utilisez votre caméra pour un essayage virtuel en temps réel.</p>
+                <div id="vton-widget-root"></div>
+            </div>
+        </div>
+    </div>
+
+    <script>
+        // Thumbnail image change
+        function changeMainImage(src) {
+            document.getElementById('mainImage').src = src;
+            document.querySelectorAll('.product-thumbnail').forEach(thumb => {
+                thumb.classList.remove('active');
+            });
+            event.target.classList.add('active');
+        }
+
+        // Option selection
+        function selectOption(element, type) {
+            const siblings = element.parentElement.querySelectorAll('.product-option-value');
+            siblings.forEach(sibling => sibling.classList.remove('selected'));
+            element.classList.add('selected');
+        }
+
+        // Quantity change
+        function changeQuantity(delta) {
+            const input = document.getElementById('quantity');
+            const currentValue = parseInt(input.value);
+            const newValue = Math.max(1, currentValue + delta);
+            input.value = newValue;
+        }
+
+        // Add to cart
+        function addToCart() {
+            const size = document.querySelector('.product-option-values .selected')?.textContent || 'S';
+            const quantity = document.getElementById('quantity').value;
+            alert(`Ajouté au panier : T-Shirt Premium (${size}) x${quantity}`);
+        }
+
+        // Initialize Virtual Try-On Widget avec l'image produit
+        document.addEventListener('DOMContentLoaded', function() {
+            const productImageUrl = document.getElementById('mainImage').src;
+            
+            // Initialiser le widget avec l'image produit
+            if (window.initVTONWidget) {
+                window.initVTONWidget({
+                    containerId: 'vton-widget-root',
+                    productImageUrl: productImageUrl
+                });
+            }
+        });
+    </script>
+</body>
+</html>
+
