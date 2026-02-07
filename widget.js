@@ -310,15 +310,7 @@
             fileInput.click();
         });
         
-        uploadArea.addEventListener('mouseenter', function() {
-            this.style.borderColor = '#1a1a1a';
-            this.style.backgroundColor = '#fafafa';
-        });
-        
-        uploadArea.addEventListener('mouseleave', function() {
-            this.style.borderColor = '#e8e8e8';
-            this.style.backgroundColor = 'transparent';
-        });
+        // Hover effects are handled by CSS
         
         fileInput.addEventListener('change', function(e) {
             const file = e.target.files[0];
