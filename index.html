@@ -3,45 +3,24 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Virtual Try-On Shopify - Démo Complète | StyleLab</title>
-    <meta name="description" content="Démo complète : Store, Produit avec Widget Virtual Try-On, Dashboard et Configuration. Tout visible directement sur la page d'accueil.">
-    <link rel="stylesheet" href="style.css">
+    <title>Virtual Try-On Shopify - Démo | StyleLab</title>
     <link rel="stylesheet" href="demo-app.css">
-    <style>
-        /* Styles inline pour garantir que tout s'affiche */
-        * {
-            box-sizing: border-box;
-        }
-        body {
-            margin: 0;
-            padding: 0;
-            font-family: 'Inter', -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif;
-            display: block !important;
-            visibility: visible !important;
-            opacity: 1 !important;
-        }
-        section {
-            display: block !important;
-            visibility: visible !important;
-            opacity: 1 !important;
-        }
-    </style>
     <script src="env.js"></script>
     <script src="config.js"></script>
     <script src="widget.js"></script>
     <script src="app.js"></script>
 </head>
-<body>
-    <!-- Header -->
-    <header style="background: #fff; padding: 1rem 2rem; border-bottom: 1px solid #e5e7eb; position: sticky; top: 0; z-index: 1000; box-shadow: 0 1px 3px rgba(0,0,0,0.1);">
+<body style="margin: 0; padding: 0; font-family: 'Inter', sans-serif; background: #ffffff;">
+    
+    <!-- HEADER -->
+    <header style="background: white; padding: 1rem 2rem; border-bottom: 1px solid #e5e7eb; position: sticky; top: 0; z-index: 1000;">
         <div style="max-width: 1400px; margin: 0 auto; display: flex; justify-content: space-between; align-items: center;">
-            <a href="/" style="font-size: 1.5rem; font-weight: 800; color: #111827; text-decoration: none;">Style Lab</a>
-            <nav style="display: flex; gap: 2rem; align-items: center;">
+            <div style="font-size: 1.5rem; font-weight: 800; color: #111827;">Style Lab</div>
+            <nav style="display: flex; gap: 2rem;">
                 <a href="#store" style="color: #111827; text-decoration: none; font-weight: 500;">Store</a>
-                <a href="#product-demo" style="color: #111827; text-decoration: none; font-weight: 500;">Produit</a>
-                <a href="#dashboard-demo" style="color: #111827; text-decoration: none; font-weight: 500;">Dashboard</a>
-                <a href="#widget-config" style="color: #111827; text-decoration: none; font-weight: 500;">Configuration</a>
-                <a href="https://apps.shopify.com/try-on-stylelab" target="_blank" rel="noopener" style="background: #008060; color: white; padding: 0.5rem 1.5rem; border-radius: 0.5rem; text-decoration: none; font-weight: 600;">Installer l'App</a>
+                <a href="#produit" style="color: #111827; text-decoration: none; font-weight: 500;">Produit</a>
+                <a href="#dashboard" style="color: #111827; text-decoration: none; font-weight: 500;">Dashboard</a>
+                <a href="#config" style="color: #111827; text-decoration: none; font-weight: 500;">Config</a>
             </nav>
         </div>
     </header>
@@ -49,91 +28,55 @@
     <!-- HERO -->
     <section style="padding: 5rem 2rem; background: linear-gradient(135deg, #667eea 0%, #764ba2 100%); color: white; text-align: center;">
         <div style="max-width: 1200px; margin: 0 auto;">
-            <h1 style="font-size: clamp(2rem, 5vw, 3.5rem); font-weight: 800; margin-bottom: 1rem; color: white;">Virtual Try-On Shopify</h1>
-            <p style="font-size: 1.25rem; margin-bottom: 2rem; color: rgba(255,255,255,0.9); max-width: 800px; margin-left: auto; margin-right: auto;">Démo complète : Store, Produit avec Widget, Dashboard et Configuration. Tout visible directement sur cette page.</p>
+            <h1 style="font-size: 3.5rem; font-weight: 800; margin-bottom: 1rem;">Virtual Try-On Shopify</h1>
+            <p style="font-size: 1.5rem; margin-bottom: 0; opacity: 0.9;">Démo complète : Store, Produit, Dashboard, Configuration</p>
         </div>
     </section>
 
-    <!-- SECTION 1: STORE (LISTE DE PRODUITS) -->
+    <!-- STORE -->
     <section id="store" style="padding: 4rem 2rem; background: white;">
         <div style="max-width: 1400px; margin: 0 auto;">
-            <h2 style="text-align: center; margin-bottom: 3rem; font-size: 2.5rem; font-weight: 800; color: #111827;">Store - Collection de Produits</h2>
-            
+            <h2 style="text-align: center; font-size: 2.5rem; font-weight: 800; margin-bottom: 3rem; color: #111827;">Store</h2>
             <div style="display: grid; grid-template-columns: repeat(auto-fill, minmax(280px, 1fr)); gap: 2rem;">
-                <div style="background: white; border-radius: 1rem; overflow: hidden; box-shadow: 0 4px 6px rgba(0,0,0,0.1); cursor: pointer; transition: transform 0.3s;" 
-                     onmouseover="this.style.transform='translateY(-8px)'" 
-                     onmouseout="this.style.transform='translateY(0)'"
-                     onclick="document.getElementById('product-demo').scrollIntoView({behavior: 'smooth'})">
-                    <img src="https://images.unsplash.com/photo-1521572163474-6864f9cf17ab?w=600&h=600&fit=crop" 
-                         alt="T-Shirt Premium Coton Bio" 
-                         style="width: 100%; aspect-ratio: 1; object-fit: cover;">
+                <div style="background: white; border-radius: 1rem; box-shadow: 0 4px 6px rgba(0,0,0,0.1); overflow: hidden; cursor: pointer;" onclick="document.getElementById('produit').scrollIntoView({behavior: 'smooth'})">
+                    <img src="https://images.unsplash.com/photo-1521572163474-6864f9cf17ab?w=600&h=600&fit=crop" style="width: 100%; aspect-ratio: 1; object-fit: cover;">
                     <div style="padding: 1.5rem;">
-                        <h3 style="font-size: 1.125rem; font-weight: 600; margin-bottom: 0.5rem; color: #111827;">T-Shirt Premium Coton Bio</h3>
+                        <h3 style="font-size: 1.125rem; font-weight: 600; margin-bottom: 0.5rem; color: #111827;">T-Shirt Premium</h3>
                         <div style="font-size: 1.25rem; font-weight: 700; color: #008060;">29,90 €</div>
                     </div>
                 </div>
-
-                <div style="background: white; border-radius: 1rem; overflow: hidden; box-shadow: 0 4px 6px rgba(0,0,0,0.1); cursor: pointer; transition: transform 0.3s;" 
-                     onmouseover="this.style.transform='translateY(-8px)'" 
-                     onmouseout="this.style.transform='translateY(0)'"
-                     onclick="document.getElementById('product-demo').scrollIntoView({behavior: 'smooth'})">
-                    <img src="https://images.unsplash.com/photo-1618354691373-d851c5c3a990?w=600&h=600&fit=crop" 
-                         alt="Jean Slim Fit Denim" 
-                         style="width: 100%; aspect-ratio: 1; object-fit: cover;">
+                <div style="background: white; border-radius: 1rem; box-shadow: 0 4px 6px rgba(0,0,0,0.1); overflow: hidden; cursor: pointer;" onclick="document.getElementById('produit').scrollIntoView({behavior: 'smooth'})">
+                    <img src="https://images.unsplash.com/photo-1618354691373-d851c5c3a990?w=600&h=600&fit=crop" style="width: 100%; aspect-ratio: 1; object-fit: cover;">
                     <div style="padding: 1.5rem;">
-                        <h3 style="font-size: 1.125rem; font-weight: 600; margin-bottom: 0.5rem; color: #111827;">Jean Slim Fit Denim</h3>
+                        <h3 style="font-size: 1.125rem; font-weight: 600; margin-bottom: 0.5rem; color: #111827;">Jean Slim Fit</h3>
                         <div style="font-size: 1.25rem; font-weight: 700; color: #008060;">79,90 €</div>
                     </div>
                 </div>
-
-                <div style="background: white; border-radius: 1rem; overflow: hidden; box-shadow: 0 4px 6px rgba(0,0,0,0.1); cursor: pointer; transition: transform 0.3s;" 
-                     onmouseover="this.style.transform='translateY(-8px)'" 
-                     onmouseout="this.style.transform='translateY(0)'"
-                     onclick="document.getElementById('product-demo').scrollIntoView({behavior: 'smooth'})">
-                    <img src="https://images.unsplash.com/photo-1562157873-818bc0726f68?w=600&h=600&fit=crop" 
-                         alt="Veste en Cuir Vintage" 
-                         style="width: 100%; aspect-ratio: 1; object-fit: cover;">
+                <div style="background: white; border-radius: 1rem; box-shadow: 0 4px 6px rgba(0,0,0,0.1); overflow: hidden; cursor: pointer;" onclick="document.getElementById('produit').scrollIntoView({behavior: 'smooth'})">
+                    <img src="https://images.unsplash.com/photo-1562157873-818bc0726f68?w=600&h=600&fit=crop" style="width: 100%; aspect-ratio: 1; object-fit: cover;">
                     <div style="padding: 1.5rem;">
-                        <h3 style="font-size: 1.125rem; font-weight: 600; margin-bottom: 0.5rem; color: #111827;">Veste en Cuir Vintage</h3>
+                        <h3 style="font-size: 1.125rem; font-weight: 600; margin-bottom: 0.5rem; color: #111827;">Veste Cuir</h3>
                         <div style="font-size: 1.25rem; font-weight: 700; color: #008060;">149,90 €</div>
                     </div>
                 </div>
-
-                <div style="background: white; border-radius: 1rem; overflow: hidden; box-shadow: 0 4px 6px rgba(0,0,0,0.1); cursor: pointer; transition: transform 0.3s;" 
-                     onmouseover="this.style.transform='translateY(-8px)'" 
-                     onmouseout="this.style.transform='translateY(0)'"
-                     onclick="document.getElementById('product-demo').scrollIntoView({behavior: 'smooth'})">
-                    <img src="https://images.unsplash.com/photo-1594633313593-bab3825d0caf?w=600&h=600&fit=crop" 
-                         alt="Robe Midi Élégante" 
-                         style="width: 100%; aspect-ratio: 1; object-fit: cover;">
+                <div style="background: white; border-radius: 1rem; box-shadow: 0 4px 6px rgba(0,0,0,0.1); overflow: hidden; cursor: pointer;" onclick="document.getElementById('produit').scrollIntoView({behavior: 'smooth'})">
+                    <img src="https://images.unsplash.com/photo-1594633313593-bab3825d0caf?w=600&h=600&fit=crop" style="width: 100%; aspect-ratio: 1; object-fit: cover;">
                     <div style="padding: 1.5rem;">
-                        <h3 style="font-size: 1.125rem; font-weight: 600; margin-bottom: 0.5rem; color: #111827;">Robe Midi Élégante</h3>
+                        <h3 style="font-size: 1.125rem; font-weight: 600; margin-bottom: 0.5rem; color: #111827;">Robe Midi</h3>
                         <div style="font-size: 1.25rem; font-weight: 700; color: #008060;">89,90 €</div>
                     </div>
                 </div>
-
-                <div style="background: white; border-radius: 1rem; overflow: hidden; box-shadow: 0 4px 6px rgba(0,0,0,0.1); cursor: pointer; transition: transform 0.3s;" 
-                     onmouseover="this.style.transform='translateY(-8px)'" 
-                     onmouseout="this.style.transform='translateY(0)'"
-                     onclick="document.getElementById('product-demo').scrollIntoView({behavior: 'smooth'})">
-                    <img src="https://images.unsplash.com/photo-1556821840-3a63f95609a4?w=600&h=600&fit=crop" 
-                         alt="Sweat à Capuche" 
-                         style="width: 100%; aspect-ratio: 1; object-fit: cover;">
+                <div style="background: white; border-radius: 1rem; box-shadow: 0 4px 6px rgba(0,0,0,0.1); overflow: hidden; cursor: pointer;" onclick="document.getElementById('produit').scrollIntoView({behavior: 'smooth'})">
+                    <img src="https://images.unsplash.com/photo-1556821840-3a63f95609a4?w=600&h=600&fit=crop" style="width: 100%; aspect-ratio: 1; object-fit: cover;">
                     <div style="padding: 1.5rem;">
-                        <h3 style="font-size: 1.125rem; font-weight: 600; margin-bottom: 0.5rem; color: #111827;">Sweat à Capuche Oversized</h3>
+                        <h3 style="font-size: 1.125rem; font-weight: 600; margin-bottom: 0.5rem; color: #111827;">Sweat Capuche</h3>
                         <div style="font-size: 1.25rem; font-weight: 700; color: #008060;">59,90 €</div>
                     </div>
                 </div>
-
-                <div style="background: white; border-radius: 1rem; overflow: hidden; box-shadow: 0 4px 6px rgba(0,0,0,0.1); cursor: pointer; transition: transform 0.3s;" 
-                     onmouseover="this.style.transform='translateY(-8px)'" 
-                     onmouseout="this.style.transform='translateY(0)'"
-                     onclick="document.getElementById('product-demo').scrollIntoView({behavior: 'smooth'})">
-                    <img src="https://images.unsplash.com/photo-1551028719-00167b16eac5?w=600&h=600&fit=crop" 
-                         alt="Pantalon Chino" 
-                         style="width: 100%; aspect-ratio: 1; object-fit: cover;">
+                <div style="background: white; border-radius: 1rem; box-shadow: 0 4px 6px rgba(0,0,0,0.1); overflow: hidden; cursor: pointer;" onclick="document.getElementById('produit').scrollIntoView({behavior: 'smooth'})">
+                    <img src="https://images.unsplash.com/photo-1551028719-00167b16eac5?w=600&h=600&fit=crop" style="width: 100%; aspect-ratio: 1; object-fit: cover;">
                     <div style="padding: 1.5rem;">
-                        <h3 style="font-size: 1.125rem; font-weight: 600; margin-bottom: 0.5rem; color: #111827;">Pantalon Chino Classique</h3>
+                        <h3 style="font-size: 1.125rem; font-weight: 600; margin-bottom: 0.5rem; color: #111827;">Pantalon Chino</h3>
                         <div style="font-size: 1.25rem; font-weight: 700; color: #008060;">69,90 €</div>
                     </div>
                 </div>
@@ -141,71 +84,44 @@
         </div>
     </section>
 
-    <!-- SECTION 2: PRODUIT AVEC WIDGET -->
-    <section id="product-demo" style="padding: 4rem 2rem; background: #f9fafb;">
-        <div style="max-width: 1400px; margin: 0 auto;">
-            <h2 style="text-align: center; margin-bottom: 3rem; font-size: 2.5rem; font-weight: 800; color: #111827;">Produit avec Widget Virtual Try-On</h2>
-            
-            <div style="max-width: 1200px; margin: 0 auto; background: white; padding: 3rem; border-radius: 1rem; box-shadow: 0 4px 6px rgba(0,0,0,0.1);">
+    <!-- PRODUIT -->
+    <section id="produit" style="padding: 4rem 2rem; background: #f9fafb;">
+        <div style="max-width: 1200px; margin: 0 auto;">
+            <h2 style="text-align: center; font-size: 2.5rem; font-weight: 800; margin-bottom: 3rem; color: #111827;">Produit avec Widget</h2>
+            <div style="background: white; padding: 3rem; border-radius: 1rem; box-shadow: 0 4px 6px rgba(0,0,0,0.1);">
                 <div style="display: grid; grid-template-columns: 1fr 1fr; gap: 3rem; margin-bottom: 3rem;">
-                    <!-- Product Gallery -->
                     <div>
-                        <img src="https://images.unsplash.com/photo-1521572163474-6864f9cf17ab?w=800&h=800&fit=crop" 
-                             alt="T-Shirt Premium" 
-                             id="mainImage"
-                             style="width: 100%; aspect-ratio: 1; object-fit: cover; border-radius: 0.5rem; border: 1px solid #e5e7eb; margin-bottom: 1rem;">
+                        <img src="https://images.unsplash.com/photo-1521572163474-6864f9cf17ab?w=800&h=800&fit=crop" id="mainImage" style="width: 100%; aspect-ratio: 1; object-fit: cover; border-radius: 0.5rem; border: 1px solid #e5e7eb; margin-bottom: 1rem;">
                         <div style="display: flex; gap: 0.5rem;">
-                            <img src="https://images.unsplash.com/photo-1521572163474-6864f9cf17ab?w=200&h=200&fit=crop" 
-                                 class="product-thumbnail active"
-                                 onclick="changeMainImage(this.src.replace('w=200&h=200', 'w=800&h=800'))"
-                                 style="width: 60px; height: 60px; object-fit: cover; border-radius: 0.5rem; border: 2px solid #008060; cursor: pointer;">
-                            <img src="https://images.unsplash.com/photo-1618354691373-d851c5c3a990?w=200&h=200&fit=crop" 
-                                 class="product-thumbnail"
-                                 onclick="changeMainImage(this.src.replace('w=200&h=200', 'w=800&h=800'))"
-                                 style="width: 60px; height: 60px; object-fit: cover; border-radius: 0.5rem; border: 2px solid #e5e7eb; cursor: pointer;">
+                            <img src="https://images.unsplash.com/photo-1521572163474-6864f9cf17ab?w=200&h=200&fit=crop" onclick="changeMainImage(this.src.replace('w=200&h=200', 'w=800&h=800'))" style="width: 60px; height: 60px; object-fit: cover; border-radius: 0.5rem; border: 2px solid #008060; cursor: pointer;">
+                            <img src="https://images.unsplash.com/photo-1618354691373-d851c5c3a990?w=200&h=200&fit=crop" onclick="changeMainImage(this.src.replace('w=200&h=200', 'w=800&h=800'))" style="width: 60px; height: 60px; object-fit: cover; border-radius: 0.5rem; border: 2px solid #e5e7eb; cursor: pointer;">
                         </div>
                     </div>
-
-                    <!-- Product Info -->
                     <div>
-                        <h1 style="font-size: 2.5rem; font-weight: 800; margin-bottom: 1rem; color: #111827;">T-Shirt Premium Coton Bio</h1>
+                        <h1 style="font-size: 2.5rem; font-weight: 800; margin-bottom: 1rem; color: #111827;">T-Shirt Premium</h1>
                         <div style="font-size: 2.5rem; font-weight: 800; color: #008060; margin-bottom: 1rem;">29,90 €</div>
-                        <p style="margin-bottom: 1.5rem; color: #6b7280; font-size: 1.125rem; line-height: 1.6;">T-Shirt en coton biologique certifié. Confort optimal et durabilité exceptionnelle. Parfait pour un usage quotidien.</p>
-                        <button style="width: 100%; padding: 1rem; background: #008060; color: white; border: none; border-radius: 0.5rem; font-weight: 600; font-size: 1.125rem; cursor: pointer; transition: background 0.3s;" 
-                                onmouseover="this.style.background='#006E52'" 
-                                onmouseout="this.style.background='#008060'"
-                                onclick="alert('Ajouté au panier !')">Ajouter au panier</button>
+                        <p style="margin-bottom: 1.5rem; color: #6b7280; font-size: 1.125rem;">T-Shirt en coton biologique certifié. Confort optimal.</p>
+                        <button style="width: 100%; padding: 1rem; background: #008060; color: white; border: none; border-radius: 0.5rem; font-weight: 600; font-size: 1.125rem; cursor: pointer;" onclick="alert('Ajouté au panier !')">Ajouter au panier</button>
                     </div>
                 </div>
-
-                <!-- Widget VTON -->
                 <div style="border-top: 2px solid #e5e7eb; padding-top: 2rem; margin-top: 2rem;">
-                    <h3 style="margin-bottom: 1.5rem; font-size: 1.5rem; font-weight: 700; color: #111827;">Essayez ce produit virtuellement</h3>
+                    <h3 style="margin-bottom: 1.5rem; font-size: 1.5rem; font-weight: 700; color: #111827;">Essayez virtuellement</h3>
                     <div id="vton-widget-root"></div>
                 </div>
             </div>
         </div>
     </section>
 
-    <!-- SECTION 3: DASHBOARD -->
-    <section id="dashboard-demo" style="padding: 4rem 2rem; background: white;">
+    <!-- DASHBOARD -->
+    <section id="dashboard" style="padding: 4rem 2rem; background: white;">
         <div style="max-width: 1400px; margin: 0 auto;">
-            <h2 style="text-align: center; margin-bottom: 3rem; font-size: 2.5rem; font-weight: 800; color: #111827;">Dashboard - Statistiques et Activité</h2>
-            
+            <h2 style="text-align: center; font-size: 2.5rem; font-weight: 800; margin-bottom: 3rem; color: #111827;">Dashboard</h2>
             <div class="demo-app-container">
                 <div class="demo-header">
                     <h1>Dashboard - StyleLab Virtual Try-On</h1>
-                    <p>Vue d'ensemble de votre activité et statistiques</p>
+                    <p>Vue d'ensemble de votre activité</p>
                     <span class="demo-badge">DÉMO INTERACTIVE</span>
                 </div>
-
-                <div class="banner banner-info">
-                    <div>
-                        <strong>⭐ Aimez-vous Virtual Try-On ?</strong>
-                        <p style="margin-top: 4px; font-size: 14px;">Laissez-nous un avis sur le Shopify App Store !</p>
-                    </div>
-                </div>
-
                 <div class="stats-grid">
                     <div class="stat-card">
                         <div class="stat-icon-wrapper">
@@ -248,7 +164,6 @@
                         <div class="stat-label">Taux de Conversion</div>
                     </div>
                 </div>
-
                 <div class="dashboard-section">
                     <h2>Générations Quotidiennes (7 Derniers Jours)</h2>
                     <div class="graph-container-large">
@@ -256,76 +171,37 @@
                             <div class="graph-bar-item">
                                 <div class="graph-bar-value">142</div>
                                 <div class="graph-bar" style="height: 65%"></div>
-                                <div class="graph-bar-label">Lun 3</div>
+                                <div class="graph-bar-label">Lun</div>
                             </div>
                             <div class="graph-bar-item">
                                 <div class="graph-bar-value">198</div>
                                 <div class="graph-bar" style="height: 90%"></div>
-                                <div class="graph-bar-label">Mar 4</div>
+                                <div class="graph-bar-label">Mar</div>
                             </div>
                             <div class="graph-bar-item">
                                 <div class="graph-bar-value">165</div>
                                 <div class="graph-bar" style="height: 75%"></div>
-                                <div class="graph-bar-label">Mer 5</div>
+                                <div class="graph-bar-label">Mer</div>
                             </div>
                             <div class="graph-bar-item">
                                 <div class="graph-bar-value">223</div>
                                 <div class="graph-bar" style="height: 100%"></div>
-                                <div class="graph-bar-label">Jeu 6</div>
+                                <div class="graph-bar-label">Jeu</div>
                             </div>
                             <div class="graph-bar-item">
                                 <div class="graph-bar-value">187</div>
                                 <div class="graph-bar" style="height: 85%"></div>
-                                <div class="graph-bar-label">Ven 7</div>
+                                <div class="graph-bar-label">Ven</div>
                             </div>
                             <div class="graph-bar-item">
                                 <div class="graph-bar-value">156</div>
                                 <div class="graph-bar" style="height: 70%"></div>
-                                <div class="graph-bar-label">Sam 8</div>
+                                <div class="graph-bar-label">Sam</div>
                             </div>
                             <div class="graph-bar-item">
                                 <div class="graph-bar-value">201</div>
                                 <div class="graph-bar graph-bar-today" style="height: 92%"></div>
-                                <div class="graph-bar-label graph-bar-label-today">Dim 9</div>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-
-                <div class="two-columns">
-                    <div class="dashboard-section">
-                        <h2>Produits les Plus Essayés</h2>
-                        <div class="products-list">
-                            <div class="product-item">
-                                <span class="product-name">T-Shirt Premium Coton Bio</span>
-                                <span class="badge badge-info">342 try-ons</span>
-                            </div>
-                            <div class="product-item">
-                                <span class="product-name">Jean Slim Fit Denim</span>
-                                <span class="badge badge-info">287 try-ons</span>
-                            </div>
-                            <div class="product-item">
-                                <span class="product-name">Veste en Cuir Vintage</span>
-                                <span class="badge badge-info">198 try-ons</span>
-                            </div>
-                        </div>
-                    </div>
-                    <div class="dashboard-section">
-                        <h2>Activité Récente</h2>
-                        <div class="activity-list">
-                            <div class="activity-item">
-                                <div class="activity-info">
-                                    <p class="activity-title">T-Shirt Premium Coton Bio</p>
-                                    <p class="activity-date">Aujourd'hui, 14:32</p>
-                                </div>
-                                <span class="badge badge-success">✓ Succès</span>
-                            </div>
-                            <div class="activity-item">
-                                <div class="activity-info">
-                                    <p class="activity-title">Jean Slim Fit Denim</p>
-                                    <p class="activity-date">Aujourd'hui, 14:18</p>
-                                </div>
-                                <span class="badge badge-success">✓ Succès</span>
+                                <div class="graph-bar-label graph-bar-label-today">Dim</div>
                             </div>
                         </div>
                     </div>
@@ -334,188 +210,83 @@
         </div>
     </section>
 
-    <!-- SECTION 4: CONFIGURATION WIDGET -->
-    <section id="widget-config" style="padding: 4rem 2rem; background: #f9fafb;">
+    <!-- CONFIGURATION -->
+    <section id="config" style="padding: 4rem 2rem; background: #f9fafb;">
         <div style="max-width: 1000px; margin: 0 auto;">
-            <h2 style="text-align: center; margin-bottom: 3rem; font-size: 2.5rem; font-weight: 800; color: #111827;">Configuration du Widget</h2>
-            
+            <h2 style="text-align: center; font-size: 2.5rem; font-weight: 800; margin-bottom: 3rem; color: #111827;">Configuration Widget</h2>
             <div class="demo-app-container">
                 <div class="demo-header">
                     <h1>Configuration du Widget</h1>
-                    <p>Personnalisez l'apparence du widget Virtual Try-On</p>
+                    <p>Personnalisez l'apparence du widget</p>
                     <span class="demo-badge">DÉMO INTERACTIVE</span>
                 </div>
-
-                <div class="banner banner-info" id="infoBanner">
-                    <div>
-                        <strong>Important : Extension de thème requise</strong>
-                        <p style="margin-top: 4px; font-size: 14px;">N'oubliez pas d'installer l'extension de thème sur vos pages produit !</p>
-                    </div>
-                    <button class="banner-close" onclick="document.getElementById('infoBanner').style.display='none'">×</button>
-                </div>
-
-                <div class="banner banner-success" id="successBanner" style="display: none;">
-                    <div>
-                        <strong>Configuration enregistrée avec succès !</strong>
-                        <p style="margin-top: 4px; font-size: 14px;">Les modifications sont maintenant dans la base de données.</p>
-                    </div>
-                    <button class="banner-close" onclick="document.getElementById('successBanner').style.display='none'">×</button>
-                </div>
-
                 <div class="card">
-                    <h2>Paramètres du Widget</h2>
+                    <h2>Paramètres</h2>
                     <div class="divider"></div>
-
                     <form id="widgetForm">
                         <div class="form-group">
                             <label for="widgetText">Texte du Bouton</label>
-                            <input type="text" id="widgetText" name="widgetText" value="Essayer Virtuellement ✨" placeholder="Texte du bouton" />
-                            <p class="help-text">Le texte affiché sur le bouton du widget</p>
+                            <input type="text" id="widgetText" value="Essayer Virtuellement ✨" />
+                            <p class="help-text">Le texte affiché sur le bouton</p>
                         </div>
-
                         <div class="form-group">
                             <label>Couleur de Fond</label>
                             <div class="color-input-group">
-                                <div class="color-picker-wrapper">
-                                    <input type="color" id="widgetBgColor" value="#000000" class="color-picker" />
-                                </div>
-                                <div class="color-input-wrapper">
-                                    <input type="text" id="widgetBg" name="widgetBg" value="#000000" placeholder="#000000" />
-                                    <p class="help-text">Code couleur hexadécimal</p>
-                                </div>
+                                <input type="color" id="widgetBgColor" value="#000000" />
+                                <input type="text" id="widgetBg" value="#000000" />
                             </div>
                         </div>
-
                         <div class="form-group">
                             <label>Couleur du Texte</label>
                             <div class="color-input-group">
-                                <div class="color-picker-wrapper">
-                                    <input type="color" id="widgetColorPicker" value="#ffffff" class="color-picker" />
-                                </div>
-                                <div class="color-input-wrapper">
-                                    <input type="text" id="widgetColor" name="widgetColor" value="#ffffff" placeholder="#ffffff" />
-                                    <p class="help-text">Code couleur hexadécimal</p>
-                                </div>
+                                <input type="color" id="widgetColorPicker" value="#ffffff" />
+                                <input type="text" id="widgetColor" value="#ffffff" />
                             </div>
                         </div>
-
                         <div class="divider"></div>
-                        <button type="submit" class="btn btn-primary" id="saveBtn">Enregistrer la Configuration</button>
+                        <button type="submit" class="btn btn-primary" id="saveBtn">Enregistrer</button>
                     </form>
-
                     <div class="divider"></div>
-                    <h3>Aperçu en Temps Réel</h3>
+                    <h3>Aperçu</h3>
                     <div class="preview-card">
-                        <div class="widget-preview">
-                            <button type="button" class="widget-preview-button" id="previewButton" disabled>Essayer Virtuellement ✨</button>
-                        </div>
-                    </div>
-
-                    <div class="divider"></div>
-                    <h3>Valeurs Actuelles</h3>
-                    <div class="current-values">
-                        <p><strong>Texte :</strong> <span id="currentText">Essayer Virtuellement ✨</span></p>
-                        <p><strong>Couleur de Fond :</strong> <span id="currentBg">#000000</span></p>
-                        <p><strong>Couleur du Texte :</strong> <span id="currentColor">#ffffff</span></p>
+                        <button type="button" id="previewButton" disabled style="padding: 1rem 2rem; border: none; border-radius: 0.5rem; font-weight: 600; cursor: default;">Essayer Virtuellement ✨</button>
                     </div>
                 </div>
             </div>
         </div>
     </section>
 
-    <!-- Footer -->
+    <!-- FOOTER -->
     <footer style="background: #1f2937; color: white; padding: 3rem 2rem; margin-top: 4rem;">
-        <div style="max-width: 1400px; margin: 0 auto;">
-            <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(200px, 1fr)); gap: 2rem;">
-                <div>
-                    <h3 style="margin-bottom: 1rem; font-size: 1.25rem;">Style Lab Virtual Try‑On</h3>
-                    <p style="color: rgba(255,255,255,0.7);">Solution d'essayage virtuel IA pour boutiques Shopify en France et Europe</p>
-                </div>
-                <div>
-                    <h4 style="margin-bottom: 1rem; font-size: 1rem;">Navigation</h4>
-                    <ul style="list-style: none; padding: 0;">
-                        <li style="margin-bottom: 0.5rem;"><a href="#store" style="color: rgba(255,255,255,0.8); text-decoration: none;">Store</a></li>
-                        <li style="margin-bottom: 0.5rem;"><a href="#product-demo" style="color: rgba(255,255,255,0.8); text-decoration: none;">Produit</a></li>
-                        <li style="margin-bottom: 0.5rem;"><a href="#dashboard-demo" style="color: rgba(255,255,255,0.8); text-decoration: none;">Dashboard</a></li>
-                        <li style="margin-bottom: 0.5rem;"><a href="#widget-config" style="color: rgba(255,255,255,0.8); text-decoration: none;">Configuration</a></li>
-                    </ul>
-                </div>
-                <div>
-                    <h4 style="margin-bottom: 1rem; font-size: 1rem;">Ressources</h4>
-                    <ul style="list-style: none; padding: 0;">
-                        <li style="margin-bottom: 0.5rem;"><a href="https://apps.shopify.com/try-on-stylelab" target="_blank" rel="noopener" style="color: rgba(255,255,255,0.8); text-decoration: none;">App Shopify</a></li>
-                    </ul>
-                </div>
-                <div>
-                    <h4 style="margin-bottom: 1rem; font-size: 1rem;">Contact</h4>
-                    <ul style="list-style: none; padding: 0;">
-                        <li style="margin-bottom: 0.5rem;"><a href="mailto:support@stylelab.io" style="color: rgba(255,255,255,0.8); text-decoration: none;">support@stylelab.io</a></li>
-                    </ul>
-                </div>
-            </div>
-            <div style="text-align: center; margin-top: 2rem; padding-top: 2rem; border-top: 1px solid rgba(255,255,255,0.1);">
-                <p style="color: rgba(255,255,255,0.6);">&copy; 2026 Style Lab Virtual Try‑On. Tous droits réservés.</p>
-            </div>
+        <div style="max-width: 1400px; margin: 0 auto; text-align: center;">
+            <p>&copy; 2026 Style Lab Virtual Try‑On. Tous droits réservés.</p>
         </div>
     </footer>
 
     <script>
-        // Product functions
         function changeMainImage(src) {
-            const mainImage = document.getElementById('mainImage');
-            if (mainImage) {
-                mainImage.src = src;
-                document.querySelectorAll('.product-thumbnail').forEach(thumb => {
-                    thumb.classList.remove('active');
-                    thumb.style.borderColor = '#e5e7eb';
-                });
-                if (event && event.target) {
-                    event.target.classList.add('active');
-                    event.target.style.borderColor = '#008060';
-                }
-            }
+            document.getElementById('mainImage').src = src;
         }
 
-        // Initialize VTON Widget
         function initVTON() {
-            console.log('🔧 initVTON called');
             const mainImage = document.getElementById('mainImage');
             const widgetRoot = document.getElementById('vton-widget-root');
-            console.log('📦 Elements check:', { 
-                mainImage: !!mainImage, 
-                widgetRoot: !!widgetRoot, 
-                initVTONWidget: !!window.initVTONWidget,
-                config: !!window.config
-            });
-            
-            if (mainImage && widgetRoot) {
-                if (window.initVTONWidget) {
-                    console.log('✅ Initializing widget with image:', mainImage.src);
-                    window.initVTONWidget({
-                        containerId: 'vton-widget-root',
-                        productImageUrl: mainImage.src
-                    });
-                } else {
-                    console.warn('⏳ window.initVTONWidget not available yet, retrying in 500ms...');
-                    setTimeout(initVTON, 500);
-                }
-            } else {
-                console.error('❌ Missing elements:', { mainImage: !!mainImage, widgetRoot: !!widgetRoot });
+            if (mainImage && widgetRoot && window.initVTONWidget) {
+                window.initVTONWidget({
+                    containerId: 'vton-widget-root',
+                    productImageUrl: mainImage.src
+                });
+            } else if (mainImage && widgetRoot) {
+                setTimeout(initVTON, 500);
             }
         }
 
-        // Wait for DOM and scripts to be ready
         if (document.readyState === 'loading') {
-            document.addEventListener('DOMContentLoaded', function() {
-                console.log('📄 DOM loaded, initializing VTON in 500ms...');
-                setTimeout(initVTON, 500);
-            });
+            document.addEventListener('DOMContentLoaded', () => setTimeout(initVTON, 500));
         } else {
-            console.log('📄 DOM already ready, initializing VTON in 500ms...');
             setTimeout(initVTON, 500);
         }
 
-        // Dashboard animations
         document.addEventListener('DOMContentLoaded', function() {
             const bars = document.querySelectorAll('.graph-bar');
             bars.forEach((bar, index) => {
@@ -526,10 +297,7 @@
                     bar.style.height = height;
                 }, index * 100);
             });
-        });
 
-        // Widget Configuration Script
-        (function() {
             const widgetTextInput = document.getElementById('widgetText');
             const widgetBgInput = document.getElementById('widgetBg');
             const widgetBgColorPicker = document.getElementById('widgetBgColor');
@@ -537,106 +305,35 @@
             const widgetColorPicker = document.getElementById('widgetColorPicker');
             const previewButton = document.getElementById('previewButton');
             const form = document.getElementById('widgetForm');
-            const saveBtn = document.getElementById('saveBtn');
-            const successBanner = document.getElementById('successBanner');
-            const currentText = document.getElementById('currentText');
-            const currentBg = document.getElementById('currentBg');
-            const currentColor = document.getElementById('currentColor');
 
-            if (!widgetTextInput || !form) return;
+            if (widgetTextInput && previewButton) {
+                function updatePreview() {
+                    previewButton.textContent = widgetTextInput.value || "Essayer Virtuellement ✨";
+                    previewButton.style.backgroundColor = widgetBgInput.value || "#000000";
+                    previewButton.style.color = widgetColorInput.value || "#ffffff";
+                }
 
-            function getLuminance(hex) {
-                const result = /^#?([a-f\d]{2})([a-f\d]{2})([a-f\d]{2})$/i.exec(hex);
-                if (!result) return 0;
-                const [r, g, b] = result.slice(1).map(val => {
-                    val = parseInt(val, 16) / 255;
-                    return val <= 0.03928 ? val / 12.92 : Math.pow((val + 0.055) / 1.055, 2.4);
+                if (widgetBgColorPicker) widgetBgColorPicker.addEventListener('input', (e) => {
+                    widgetBgInput.value = e.target.value;
+                    updatePreview();
                 });
-                return 0.2126 * r + 0.7152 * g + 0.0722 * b;
-            }
 
-            function getContrastTextColor(bgColor, textColor) {
-                const bgLuminance = getLuminance(bgColor);
-                const textLuminance = getLuminance(textColor);
-                const contrast = (Math.max(bgLuminance, textLuminance) + 0.05) / (Math.min(bgLuminance, textLuminance) + 0.05);
-                if (contrast < 4.5) {
-                    return bgLuminance > 0.5 ? "#000000" : "#ffffff";
-                }
-                return textColor;
-            }
-
-            function updatePreview() {
-                if (!previewButton) return;
-                const text = widgetTextInput.value || "Essayer Virtuellement ✨";
-                const bg = widgetBgInput.value || "#000000";
-                const color = widgetColorInput.value || "#ffffff";
-                previewButton.textContent = text;
-                previewButton.style.backgroundColor = bg;
-                previewButton.style.color = getContrastTextColor(bg, color);
-            }
-
-            if (widgetBgColorPicker) widgetBgColorPicker.addEventListener('input', function(e) {
-                widgetBgInput.value = e.target.value;
-                updatePreview();
-            });
-
-            if (widgetColorPicker) widgetColorPicker.addEventListener('input', function(e) {
-                widgetColorInput.value = e.target.value;
-                updatePreview();
-            });
-
-            if (widgetBgInput) widgetBgInput.addEventListener('input', function(e) {
-                const value = e.target.value;
-                if (/^#[0-9A-F]{6}$/i.test(value) && widgetBgColorPicker) {
-                    widgetBgColorPicker.value = value;
+                if (widgetColorPicker) widgetColorPicker.addEventListener('input', (e) => {
+                    widgetColorInput.value = e.target.value;
                     updatePreview();
-                }
-            });
+                });
 
-            if (widgetColorInput) widgetColorInput.addEventListener('input', function(e) {
-                const value = e.target.value;
-                if (/^#[0-9A-F]{6}$/i.test(value) && widgetColorPicker) {
-                    widgetColorPicker.value = value;
-                    updatePreview();
-                }
-            });
+                if (widgetTextInput) widgetTextInput.addEventListener('input', updatePreview);
+                updatePreview();
+            }
 
-            if (widgetTextInput) widgetTextInput.addEventListener('input', updatePreview);
-            updatePreview();
-
-            if (form && saveBtn) {
-                form.addEventListener('submit', function(e) {
+            if (form) {
+                form.addEventListener('submit', (e) => {
                     e.preventDefault();
-                    saveBtn.disabled = true;
-                    saveBtn.textContent = 'Enregistrement...';
-                    if (successBanner) successBanner.style.display = 'none';
-                    
-                    setTimeout(() => {
-                        const text = widgetTextInput.value || "Essayer Virtuellement ✨";
-                        const bg = widgetBgInput.value || "#000000";
-                        const color = widgetColorInput.value || "#ffffff";
-                        
-                        if (!/^#[0-9A-F]{6}$/i.test(bg) || !/^#[0-9A-F]{6}$/i.test(color)) {
-                            saveBtn.disabled = false;
-                            saveBtn.textContent = 'Enregistrer la Configuration';
-                            return;
-                        }
-                        
-                        if (currentText) currentText.textContent = text;
-                        if (currentBg) currentBg.textContent = bg;
-                        if (currentColor) currentColor.textContent = color;
-                        if (successBanner) successBanner.style.display = 'flex';
-                        
-                        setTimeout(() => {
-                            if (successBanner) successBanner.style.display = 'none';
-                        }, 5000);
-                        
-                        saveBtn.disabled = false;
-                        saveBtn.textContent = 'Enregistrer la Configuration';
-                    }, 800);
+                    alert('Configuration enregistrée !');
                 });
             }
-        })();
+        });
     </script>
 </body>
 </html>
