@@ -45,6 +45,11 @@
             line-height: 1.6;
             overflow-x: hidden;
             -webkit-font-smoothing: antialiased;
+            -webkit-tap-highlight-color: transparent;
+        }
+        
+        * {
+            -webkit-tap-highlight-color: transparent;
         }
         
         /* ANIMATED BACKGROUND */
@@ -1797,12 +1802,55 @@
             .quantity-btn,
             .add-to-cart,
             .btn-primary,
-            .btn-secondary {
+            .btn-secondary,
+            .btn-save,
+            .preview-button {
                 min-height: 44px;
+                min-width: 44px;
             }
             
             .faq-question {
                 min-height: 44px;
+            }
+            
+            .product-thumbnails img {
+                min-width: 60px;
+                min-height: 60px;
+            }
+            
+            .color-picker {
+                min-width: 60px;
+                min-height: 60px;
+            }
+            
+            /* Larger touch targets on mobile */
+            .quantity-input {
+                min-height: 44px;
+                font-size: 1.125rem;
+            }
+            
+            .form-input {
+                min-height: 44px;
+                font-size: 1rem;
+            }
+        }
+        
+        /* Prevent text selection on buttons */
+        button,
+        .btn-primary,
+        .btn-secondary,
+        .option-btn,
+        .quantity-btn {
+            -webkit-user-select: none;
+            -moz-user-select: none;
+            -ms-user-select: none;
+            user-select: none;
+        }
+        
+        /* Smooth scrolling on mobile */
+        @media (max-width: 768px) {
+            html {
+                scroll-padding-top: 80px;
             }
         }
     </style>
