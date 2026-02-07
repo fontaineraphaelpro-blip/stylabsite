@@ -706,25 +706,28 @@
       throw new Error('Échec de l\'upload vers Imgur. Veuillez réessayer.');
     }
     
-    // Obtenir l'image produit (depuis la démo existante ou utiliser une image par défaut)
-    let productImageUrl = null;
-    const productImageInput = document.querySelector('#product-image');
-    if (productImageInput && productImageInput.files && productImageInput.files[0]) {
-      const productFile = productImageInput.files[0];
-      const productBase64 = await fileToBase64(productFile);
-      productImageUrl = await uploadToImgur(productBase64);
-    } else {
-      // Utiliser une image produit par défaut si disponible
-      const defaultProductImg = document.querySelector('.demo-preview img');
-      if (defaultProductImg && defaultProductImg.src) {
-        productImageUrl = defaultProductImg.src;
+    // Obtenir l'image produit (depuis widgetState, input file, ou image par défaut)
+    let productImageUrl = widgetState.productImageUrl;
+    
+    if (!productImageUrl) {
+      const productImageInput = document.querySelector('#product-image');
+      if (productImageInput && productImageInput.files && productImageInput.files[0]) {
+        const productFile = productImageInput.files[0];
+        const productBase64 = await fileToBase64(productFile);
+        productImageUrl = await uploadToImgur(productBase64);
       } else {
-        throw new Error('Veuillez sélectionner une image produit.');
+        // Utiliser l'image produit par défaut depuis la démo ou l'image principale de la page produit
+        const defaultProductImg = document.querySelector('.demo-preview img') || 
+                                  document.querySelector('.product-main-image') ||
+                                  document.querySelector('#mainImage');
+        if (defaultProductImg && defaultProductImg.src) {
+          productImageUrl = defaultProductImg.src;
+        }
       }
     }
     
     if (!productImageUrl) {
-      throw new Error('Image produit manquante.');
+      throw new Error('Image produit manquante. Veuillez télécharger une image produit.');
     }
     
     // Créer la prédiction Replicate
