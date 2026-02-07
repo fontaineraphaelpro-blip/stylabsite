@@ -1,0 +1,11 @@
+# Fichiers à ignorer lors du déploiement Vercel
+env.js
+.env
+node_modules/
+.git/
+.vscode/
+.idea/
+*.log
+.DS_Store
+Thumbs.db
+

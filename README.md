@@ -88,8 +88,51 @@ npx http-server
 
 Tous droits réservés © 2026 Style Lab Virtual Try-On
 
+## 🚀 Déploiement sur Vercel
+
+Ce projet est entièrement compatible avec Vercel. Le dépôt Git contient tous les fichiers nécessaires pour un déploiement automatique.
+
+### Déploiement automatique depuis GitHub
+
+1. **Connecter le dépôt à Vercel** :
+   - Allez sur [vercel.com](https://vercel.com)
+   - Connectez votre compte GitHub
+   - Importez le dépôt `fontaineraphaelpro-blip/stylabsite`
+   - Vercel détectera automatiquement la configuration
+
+2. **Configuration des variables d'environnement** :
+   - Dans les paramètres du projet Vercel, ajoutez vos variables d'environnement
+   - Créez un fichier `env.js` via les variables d'environnement Vercel
+   - Ou utilisez les variables d'environnement Vercel directement dans le code
+
+3. **Déploiement** :
+   - Vercel déploiera automatiquement à chaque push sur `main`
+   - Les déploiements sont automatiques et instantanés
+
+### Fichiers de configuration Vercel
+
+- `vercel.json` : Configuration des routes, headers et cache
+- `package.json` : Métadonnées du projet (optionnel mais recommandé)
+
+### Routes configurées
+
+- `/` → `index.html`
+- `/blog` → `blog.html`
+- `/blog-qu-est-ce-que-le-virtual-try-on` → `blog-qu-est-ce-que-le-virtual-try-on.html`
+- `/blog-impact-conversions-ecommerce` → `blog-impact-conversions-ecommerce.html`
+- `/blog-avenir-ecommerce-france` → `blog-avenir-ecommerce-france.html`
+
+### Headers de sécurité
+
+Le fichier `vercel.json` configure automatiquement :
+- Protection XSS
+- Protection clickjacking
+- Headers de sécurité optimisés
+- Cache optimisé pour les assets statiques
+
 ## 🔗 Liens
 
 - [App Shopify](https://apps.shopify.com/try-on-stylelab)
 - [Documentation API Replicate](REPLICATE_API.md)
+- [Déployer sur Vercel](https://vercel.com/docs)
 

@@ -1,0 +1,28 @@
+{
+  "name": "stylelab-virtual-try-on",
+  "version": "1.0.0",
+  "description": "Site web SEO optimisé pour StyleLab Virtual Try-On - Solution d'essayage virtuel Shopify",
+  "private": true,
+  "scripts": {
+    "dev": "npx http-server . -p 3000 -o",
+    "start": "npx http-server . -p 3000",
+    "build": "echo 'Site statique - pas de build nécessaire'"
+  },
+  "keywords": [
+    "virtual-try-on",
+    "shopify",
+    "e-commerce",
+    "essayage-virtuel",
+    "seo"
+  ],
+  "author": "StyleLab",
+  "license": "UNLICENSED",
+  "engines": {
+    "node": ">=14.x"
+  },
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/fontaineraphaelpro-blip/stylabsite.git"
+  }
+}
+
