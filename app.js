@@ -275,26 +275,38 @@ document.addEventListener('DOMContentLoaded', function() {
                 formData.append('user_photo', userPhotoFile);
                 formData.append('product_image', productImageFile);
                 
+                // Essayer d'uploader vers Railway, mais si ça échoue, passer directement à Imgur
                 let uploadResponse;
+                let useImgur = false;
+                
                 try {
+                    // Timeout de 5 secondes pour éviter d'attendre trop longtemps
+                    const controller = new AbortController();
+                    const timeoutId = setTimeout(() => controller.abort(), 5000);
+                    
                     uploadResponse = await fetch(uploadUrl, {
                         method: 'POST',
                         body: formData,
-                        // Mode 'no-cors' pour éviter les erreurs CORS, mais on ne pourra pas lire la réponse
-                        // On va plutôt utiliser un timeout et catch l'erreur
+                        signal: controller.signal
                     });
                     
-                    console.log('Réponse upload:', uploadResponse.status, uploadResponse.statusText);
+                    clearTimeout(timeoutId);
+                    console.log('Réponse upload Railway:', uploadResponse.status, uploadResponse.statusText);
                     
                     if (!uploadResponse.ok) {
-                        throw new Error(`Upload failed: ${uploadResponse.status} ${uploadResponse.statusText}`);
+                        console.warn('Upload Railway échoué:', uploadResponse.status);
+                        useImgur = true;
                     }
                 } catch (error) {
-                    // Erreur réseau, CORS, ou 404 - passer directement à Imgur
-                    console.warn('⚠️ Upload Railway échoué (erreur réseau/CORS/404):', error.message);
+                    // Erreur réseau, CORS, timeout, ou 404 - passer directement à Imgur
+                    console.warn('⚠️ Upload Railway échoué (erreur réseau/CORS/timeout):', error.name, error.message);
+                    useImgur = true;
+                }
+                
+                // Si Railway a échoué, utiliser Imgur directement
+                if (useImgur) {
                     console.warn('🔄 Passage automatique vers Imgur (service public)...');
                     updatePreviewStatus('Upload Railway indisponible, utilisation d\'Imgur...');
-                    // Passer directement à Imgur (qui génère des URLs publiques)
                     await processWithReplicateBase64(cfg);
                     return; // Important : ne pas continuer avec le code Railway
                 }
