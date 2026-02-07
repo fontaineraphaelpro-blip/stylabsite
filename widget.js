@@ -956,7 +956,13 @@
   
   // Initialize when DOM is ready
   if (document.readyState === 'loading') {
-    document.addEventListener('DOMContentLoaded', initWidget);
+    // Initialize widget when DOM is ready (only if no manual init)
+  document.addEventListener('DOMContentLoaded', function() {
+    // Only auto-init if widget hasn't been manually initialized
+    if (!document.querySelector('[data-vton-widget="true"]')) {
+      initWidget();
+    }
+  });
   } else {
     initWidget();
   }
