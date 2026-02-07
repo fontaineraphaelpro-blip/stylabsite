@@ -852,16 +852,32 @@
         }
 
         // Initialize Virtual Try-On Widget
-        document.addEventListener('DOMContentLoaded', function() {
+        function initVTON() {
             const mainImage = document.getElementById('mainImage');
-            if (mainImage && window.initVTONWidget) {
+            const widgetRoot = document.getElementById('vton-widget-root');
+            if (mainImage && widgetRoot && window.initVTONWidget) {
                 const productImageUrl = mainImage.src;
+                console.log('Initializing VTON widget with image:', productImageUrl);
                 window.initVTONWidget({
                     containerId: 'vton-widget-root',
                     productImageUrl: productImageUrl
                 });
+            } else {
+                console.warn('VTON Widget initialization failed:', {
+                    mainImage: !!mainImage,
+                    widgetRoot: !!widgetRoot,
+                    initVTONWidget: !!window.initVTONWidget
+                });
             }
-        });
+        }
+
+        // Try to initialize immediately if DOM is ready
+        if (document.readyState === 'loading') {
+            document.addEventListener('DOMContentLoaded', initVTON);
+        } else {
+            // DOM is already ready
+            setTimeout(initVTON, 100);
+        }
 
         // Widget Configuration Script
         (function() {
