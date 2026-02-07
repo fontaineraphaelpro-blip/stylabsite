@@ -111,40 +111,108 @@
         button.className = 'vton-trigger-btn';
         button.type = 'button';
         
-        // Style Shopify Polaris (comme dans l'app)
+        // Style moderne et premium pour le bouton Virtual Try-On
         button.style.cssText = `
             width: 100%;
-            padding: 14px 24px;
-            background: ${widgetBg};
+            padding: 16px 28px;
+            background: linear-gradient(135deg, ${widgetBg} 0%, ${darkenColor(widgetBg, 10)} 100%);
             color: ${finalTextColor};
-            border: none;
-            border-radius: 4px;
+            border: 2px solid ${widgetBg};
+            border-radius: 12px;
             font-size: 16px;
-            font-weight: 600;
+            font-weight: 700;
             cursor: pointer;
-            transition: opacity 0.2s, background-color 0.2s;
-            display: block;
+            transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            gap: 8px;
             font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, 'Helvetica Neue', Arial, sans-serif;
             line-height: 1.5;
             text-align: center;
+            box-shadow: 0 4px 12px rgba(0, 0, 0, 0.15), 0 2px 4px rgba(0, 0, 0, 0.1);
+            position: relative;
+            overflow: hidden;
+            text-transform: none;
+            letter-spacing: 0.02em;
         `;
         
-        // Hover effect subtil (comme Shopify Polaris)
+        // Ajouter une icône sparkle si le texte contient ✨
+        if (widgetText.includes('✨')) {
+            const icon = document.createElement('span');
+            icon.innerHTML = '✨';
+            icon.style.cssText = 'font-size: 18px; display: inline-block; transition: transform 0.3s ease;';
+            button.innerHTML = widgetText.replace('✨', '') + ' <span style="font-size: 18px;">✨</span>';
+        }
+        
+        // Effet de brillance au hover
+        const shine = document.createElement('div');
+        shine.style.cssText = `
+            position: absolute;
+            top: 0;
+            left: -100%;
+            width: 100%;
+            height: 100%;
+            background: linear-gradient(90deg, transparent, rgba(255, 255, 255, 0.3), transparent);
+            transition: left 0.5s ease;
+            pointer-events: none;
+        `;
+        button.appendChild(shine);
+        
+        // Hover effect amélioré
         button.addEventListener('mouseenter', function() {
             const rgb = hexToRgb(widgetBg);
             if (rgb) {
                 const [r, g, b] = rgb;
-                // Assombrir légèrement au hover
-                const darkerR = Math.max(0, r - 10);
-                const darkerG = Math.max(0, g - 10);
-                const darkerB = Math.max(0, b - 10);
-                this.style.backgroundColor = `rgb(${darkerR}, ${darkerG}, ${darkerB})`;
+                // Éclaircir au hover pour un effet premium
+                const lighterR = Math.min(255, r + 15);
+                const lighterG = Math.min(255, g + 15);
+                const lighterB = Math.min(255, b + 15);
+                this.style.background = `linear-gradient(135deg, rgb(${lighterR}, ${lighterG}, ${lighterB}) 0%, ${widgetBg} 100%)`;
+                this.style.transform = 'translateY(-2px)';
+                this.style.boxShadow = '0 8px 20px rgba(0, 0, 0, 0.2), 0 4px 8px rgba(0, 0, 0, 0.15)';
+                shine.style.left = '100%';
+            }
+            
+            // Animation de l'icône
+            const iconSpan = this.querySelector('span');
+            if (iconSpan) {
+                iconSpan.style.transform = 'rotate(15deg) scale(1.1)';
             }
         });
         
         button.addEventListener('mouseleave', function() {
-            this.style.backgroundColor = widgetBg;
+            this.style.background = `linear-gradient(135deg, ${widgetBg} 0%, ${darkenColor(widgetBg, 10)} 100%)`;
+            this.style.transform = 'translateY(0)';
+            this.style.boxShadow = '0 4px 12px rgba(0, 0, 0, 0.15), 0 2px 4px rgba(0, 0, 0, 0.1)';
+            shine.style.left = '-100%';
+            
+            // Reset animation icône
+            const iconSpan = this.querySelector('span');
+            if (iconSpan) {
+                iconSpan.style.transform = 'rotate(0deg) scale(1)';
+            }
         });
+        
+        // Active effect (clic)
+        button.addEventListener('mousedown', function() {
+            this.style.transform = 'translateY(0) scale(0.98)';
+        });
+        
+        button.addEventListener('mouseup', function() {
+            this.style.transform = 'translateY(-2px) scale(1)';
+        });
+        
+        // Fonction helper pour assombrir une couleur
+        function darkenColor(hex, percent) {
+            const rgb = hexToRgb(hex);
+            if (!rgb) return hex;
+            const [r, g, b] = rgb;
+            const darkerR = Math.max(0, Math.floor(r * (1 - percent / 100)));
+            const darkerG = Math.max(0, Math.floor(g * (1 - percent / 100)));
+            const darkerB = Math.max(0, Math.floor(b * (1 - percent / 100)));
+            return `rgb(${darkerR}, ${darkerG}, ${darkerB})`;
+        }
         
         button.addEventListener('click', function() {
             console.log('🖱️ Bouton cliqué');
@@ -557,40 +625,23 @@
         const resultDiv = document.getElementById('vton-result');
         const resultImg = document.getElementById('vton-result-img');
         
-        // Vérifier la configuration
-        console.log('🔍 Vérification configuration...', {
-            config: !!window.config,
-            token: !!window.config?.replicateApiToken,
-            tokenLength: window.config?.replicateApiToken?.length
-        });
+        // Token Replicate API (fallback depuis variable d'environnement ou config)
+        // Le token est défini dans env.js (non commité pour sécurité)
+        const REPLICATE_TOKEN = window._env?.REPLICATE_API_TOKEN || window.config?.replicateApiToken || '';
+        const token = REPLICATE_TOKEN;
         
-        if (!window.config) {
-            const errorMsg = '⚠️ Configuration non chargée. Vérifiez que config.js est chargé.';
-            console.error(errorMsg);
-            const errorDiv = document.getElementById('vton-error');
-            if (errorDiv) {
-                errorDiv.textContent = errorMsg;
-                errorDiv.style.display = 'block';
-            } else {
-                alert(errorMsg);
-            }
-            return;
-        }
-        
-        // Vérification détaillée du token
-        const token = window.config.replicateApiToken;
-        console.log('🔍 Vérification token dans widget.js:', {
-            token: token ? `${token.substring(0, 10)}...` : 'VIDE',
+        console.log('🔍 Vérification token:', {
+            fromConfig: !!window.config?.replicateApiToken,
+            usingFallback: !window.config?.replicateApiToken,
             tokenLength: token?.length || 0,
-            isEmpty: !token || token === '',
-            isString: typeof token === 'string',
-            startsWithR8: token?.startsWith('r8_')
+            isValid: token && token.length > 0 && token.startsWith('r8_')
         });
         
-        if (!token || token === '' || token.trim() === '') {
-            const errorMsg = '⚠️ API Replicate non configurée. Ajoutez votre token dans env.js (REPLICATE_API_TOKEN)';
-            console.error('❌ Token manquant ou vide:', {
-                token: token,
+        // Vérification finale du token
+        if (!token || typeof token !== 'string' || token.trim() === '' || !token.startsWith('r8_')) {
+            const errorMsg = '⚠️ Token Replicate invalide. Vérifiez votre configuration.';
+            console.error('❌ Token invalide:', {
+                token: token ? token.substring(0, 10) + '...' : 'VIDE',
                 type: typeof token,
                 length: token?.length
             });
@@ -604,7 +655,7 @@
             return;
         }
         
-        console.log('✅ Token valide détecté');
+        console.log('✅ Token valide:', token.substring(0, 15) + '...');
         
         widgetState.isGenerating = true;
         generateBtn.disabled = true;
@@ -662,10 +713,12 @@
                 hasToken: !!window.config.replicateApiToken
             });
             
+            // Récupérer le token depuis config ou env
+            const apiToken = window.config?.replicateApiToken || window._env?.REPLICATE_API_TOKEN || '';
             const response = await fetch(apiUrl, {
                 method: 'POST',
                 headers: {
-                    'Authorization': `Token ${window.config.replicateApiToken}`,
+                    'Authorization': `Token ${apiToken || token}`,
                     'Content-Type': 'application/json'
                 },
                 body: JSON.stringify(requestBody)
@@ -704,9 +757,11 @@
                 
                 console.log(`🔄 Tentative ${attempts}/${maxAttempts}...`);
                 
+                // Récupérer le token depuis config ou env
+                const apiToken = window.config?.replicateApiToken || window._env?.REPLICATE_API_TOKEN || token;
                 const statusResponse = await fetch(`https://api.replicate.com/v1/predictions/${prediction.id}`, {
                     headers: {
-                        'Authorization': `Token ${window.config.replicateApiToken}`
+                        'Authorization': `Token ${apiToken}`
                     }
                 });
                 
