@@ -223,7 +223,7 @@ document.addEventListener('DOMContentLoaded', function() {
             if (!cfg.replicateApiToken) {
                 console.error('❌ Token Replicate MANQUANT!');
                 console.error('Vérifiez que env.js contient REPLICATE_API_TOKEN');
-                showError('Token Replicate non configuré. Vérifiez la console pour plus de détails.');
+                showError('⚠️ Configuration manquante: Le token Replicate API n\'est pas configuré.<br><br>Pour utiliser la démo complète, vous devez :<br>1. Créer un fichier env.js avec votre REPLICATE_API_TOKEN<br>2. Ou configurer les variables d\'environnement dans Vercel<br><br>Consultez le README.md pour plus d\'informations.');
                 resetButton();
                 return;
             }
@@ -285,8 +285,9 @@ document.addEventListener('DOMContentLoaded', function() {
                 if (!uploadResponse.ok) {
                     const errorText = await uploadResponse.text();
                     console.error('Erreur upload:', errorText);
+                    console.warn('Upload échoué, tentative avec base64 (mode démo)...');
+                    updatePreviewStatus('Mode démo: utilisation directe des images...');
                     // Si l'upload échoue, essayer avec base64
-                    console.warn('Upload échoué, tentative avec base64...');
                     await processWithReplicateBase64(cfg);
                     return;
                 }
@@ -389,17 +390,23 @@ document.addEventListener('DOMContentLoaded', function() {
         // Fonction alternative avec base64 (fallback)
         async function processWithReplicateBase64(cfg) {
             try {
-                updatePreviewStatus('Conversion des images...');
+                updatePreviewStatus('Mode démo: Conversion des images en base64...');
                 
                 // Convertir les images en base64
                 const userImageBase64 = await fileToBase64(userPhotoFile);
                 const productImageBase64 = await fileToBase64(productImageFile);
                 
-                // Créer des URLs data pour Replicate (certains modèles l'acceptent)
+                // Note: Replicate nécessite des URLs publiques, pas des data URLs
+                // Pour une vraie démo, il faut un service d'upload d'images
+                // Ici on va utiliser une approche alternative ou afficher un message
+                
+                updatePreviewStatus('⚠️ Mode démo: Replicate nécessite des URLs publiques.<br>Pour une démo complète, configurez un service d\'upload d\'images ou utilisez l\'API Railway.');
+                
+                // Essayer quand même avec data URLs (peut ne pas fonctionner selon le modèle)
                 const userImageDataUrl = `data:image/jpeg;base64,${userImageBase64}`;
                 const productImageDataUrl = `data:image/jpeg;base64,${productImageBase64}`;
                 
-                updatePreviewStatus('Création de la prédiction Replicate...');
+                updatePreviewStatus('Tentative avec data URLs (peut ne pas fonctionner)...');
                 
                 const predictionResponse = await fetch(`${cfg.replicateApiUrl}/predictions`, {
                     method: 'POST',
@@ -561,7 +568,7 @@ document.addEventListener('DOMContentLoaded', function() {
         
         // Fonction pour mettre à jour le statut dans le preview
         function updatePreviewStatus(message) {
-            preview.innerHTML = `<p style="color: var(--primary); font-weight: 600; text-align: center;">${message}</p>`;
+            preview.innerHTML = `<div style="color: var(--primary); font-weight: 600; text-align: center; padding: 2rem; background: #eff6ff; border-radius: 0.75rem; border: 2px solid #bfdbfe;">${message}</div>`;
         }
         
         // Fonction pour afficher le résultat
@@ -603,7 +610,7 @@ document.addEventListener('DOMContentLoaded', function() {
         }
         
         function showError(message) {
-            preview.innerHTML = `<p style="color: #ef4444; font-weight: 600;">${message}</p>`;
+            preview.innerHTML = `<div style="color: #ef4444; font-weight: 600; padding: 1.5rem; background: #fef2f2; border-radius: 0.75rem; border: 2px solid #fecaca;">${message}</div>`;
         }
         
         function resetButton() {
