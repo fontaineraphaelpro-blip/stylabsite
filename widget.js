@@ -11,47 +11,61 @@
     };
     
     function initWidget(options = {}) {
+        console.log('🔧 initWidget appelé avec options:', options);
         const containerId = options.containerId || 'vton-widget-root';
         const productImageUrl = options.productImageUrl || null;
         
         if (productImageUrl) {
             widgetState.productImageUrl = productImageUrl;
+            console.log('📸 Image produit définie:', productImageUrl);
         }
         
         let container = document.getElementById(containerId);
         if (!container) {
-            console.warn('Container non trouvé:', containerId);
+            console.warn('❌ Container non trouvé:', containerId);
+            console.log('🔍 Recherche de tous les éléments avec id contenant "vton"...');
+            const allElements = document.querySelectorAll('[id*="vton"]');
+            console.log('Éléments trouvés:', allElements);
             return;
         }
         
+        console.log('✅ Container trouvé:', container);
+        
         if (container.hasAttribute('data-vton-initialized')) {
+            console.log('⚠️ Widget déjà initialisé');
             return;
         }
         
         container.setAttribute('data-vton-initialized', 'true');
         
+        // Vider le container au cas où il y aurait du contenu
+        container.innerHTML = '';
+        
         const button = document.createElement('button');
         button.textContent = 'Essayer Virtuellement ✨';
         button.className = 'vton-trigger-btn';
-        button.style.cssText = 'width: 100%; padding: 1.25rem 2rem; background: var(--secondary, #000); color: var(--bg, #fff); border: 1px solid var(--secondary, #000); border-radius: 0; font-weight: 300; font-size: 0.875rem; letter-spacing: 0.2em; text-transform: uppercase; cursor: pointer; transition: all 0.4s cubic-bezier(0.4, 0, 0.2, 1);';
+        button.style.cssText = 'width: 100%; padding: 1.25rem 2rem; background: #000; color: #fff; border: 1px solid #000; border-radius: 0; font-weight: 300; font-size: 0.875rem; letter-spacing: 0.2em; text-transform: uppercase; cursor: pointer; transition: all 0.4s cubic-bezier(0.4, 0, 0.2, 1); display: block;';
         
         button.addEventListener('mouseenter', function() {
             this.style.background = 'transparent';
-            this.style.color = 'var(--secondary, #000)';
+            this.style.color = '#000';
         });
         
         button.addEventListener('mouseleave', function() {
-            this.style.background = 'var(--secondary, #000)';
-            this.style.color = 'var(--bg, #fff)';
+            this.style.background = '#000';
+            this.style.color = '#fff';
         });
         
         button.addEventListener('click', function() {
+            console.log('🖱️ Bouton cliqué');
             openModal();
         });
         
         container.appendChild(button);
+        console.log('✅ Bouton ajouté au container');
         
         createModal();
+        console.log('✅ Modal créé');
     }
     
     function createModal() {

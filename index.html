@@ -1407,51 +1407,96 @@
         // Initialisation du widget VTON
         function initVTON() {
             console.log('🔄 Initialisation VTON...');
+            console.log('🔍 État actuel:', {
+                initVTONWidget: typeof window.initVTONWidget,
+                widgetRoot: !!document.getElementById('vton-widget-root'),
+                readyState: document.readyState
+            });
+            
             const mainImage = document.querySelector('.product-main-image img, #mainImage, .product-images img');
             const widgetRoot = document.getElementById('vton-widget-root');
             
-            if (widgetRoot && window.initVTONWidget) {
-                let productImageUrl = null;
-                
-                if (mainImage) {
-                    productImageUrl = mainImage.src || mainImage.getAttribute('src');
-                    console.log('📸 Image produit trouvée:', productImageUrl);
-                } else {
-                    // Fallback: utiliser l'image par défaut
-                    productImageUrl = 'https://images.unsplash.com/photo-1521572163474-6864f9cf17ab?w=800';
-                    console.log('⚠️ Image produit non trouvée, utilisation image par défaut');
-                }
-                
+            if (!widgetRoot) {
+                console.error('❌ Container vton-widget-root non trouvé dans le DOM');
+                console.log('🔍 Recherche de tous les éléments...');
+                const allDivs = document.querySelectorAll('div[id]');
+                console.log('Divs avec id:', Array.from(allDivs).map(d => d.id));
+                setTimeout(initVTON, 1000);
+                return;
+            }
+            
+            if (!window.initVTONWidget) {
+                console.error('❌ window.initVTONWidget non défini');
+                console.log('🔍 Scripts chargés:', {
+                    env: typeof window._env,
+                    config: typeof window.config,
+                    initVTONWidget: typeof window.initVTONWidget
+                });
+                setTimeout(initVTON, 500);
+                return;
+            }
+            
+            let productImageUrl = null;
+            
+            if (mainImage) {
+                productImageUrl = mainImage.src || mainImage.getAttribute('src');
+                console.log('📸 Image produit trouvée:', productImageUrl);
+            } else {
+                // Fallback: utiliser l'image par défaut
+                productImageUrl = 'https://images.unsplash.com/photo-1521572163474-6864f9cf17ab?w=800';
+                console.log('⚠️ Image produit non trouvée, utilisation image par défaut');
+            }
+            
+            console.log('🚀 Appel de initVTONWidget...');
+            try {
                 window.initVTONWidget({
                     containerId: 'vton-widget-root',
                     productImageUrl: productImageUrl
                 });
-                console.log('✅ VTON initialisé');
-            } else {
-                console.log('⏳ En attente des éléments...', {
-                    widgetRoot: !!widgetRoot,
-                    initVTONWidget: !!window.initVTONWidget
-                });
-                setTimeout(initVTON, 500);
+                console.log('✅ VTON initialisé avec succès');
+            } catch (error) {
+                console.error('❌ Erreur lors de l\'initialisation:', error);
             }
         }
         
         // Attendre que tous les scripts soient chargés
         function waitForScripts() {
-            if (window.initVTONWidget && document.getElementById('vton-widget-root')) {
+            const widgetRoot = document.getElementById('vton-widget-root');
+            const hasWidget = typeof window.initVTONWidget === 'function';
+            
+            console.log('⏳ Attente scripts...', {
+                widgetRoot: !!widgetRoot,
+                hasWidget: hasWidget
+            });
+            
+            if (hasWidget && widgetRoot) {
+                console.log('✅ Tous les éléments prêts, initialisation...');
                 initVTON();
             } else {
                 setTimeout(waitForScripts, 200);
             }
         }
         
+        // Initialisation immédiate si déjà chargé
+        if (document.readyState === 'complete' || document.readyState === 'interactive') {
+            console.log('📄 Page déjà chargée, initialisation immédiate');
+            setTimeout(waitForScripts, 100);
+        }
+        
         if (document.readyState === 'loading') {
             document.addEventListener('DOMContentLoaded', function() {
-                setTimeout(waitForScripts, 500);
+                console.log('📄 DOMContentLoaded déclenché');
+                setTimeout(waitForScripts, 300);
             });
-        } else {
-            setTimeout(waitForScripts, 500);
         }
+        
+        // Fallback: essayer après un délai plus long
+        setTimeout(function() {
+            if (!document.getElementById('vton-widget-root') || !document.getElementById('vton-widget-root').querySelector('button')) {
+                console.log('🔄 Tentative d\'initialisation après timeout...');
+                waitForScripts();
+            }
+        }, 2000);
     </script>
 </body>
 </html>
