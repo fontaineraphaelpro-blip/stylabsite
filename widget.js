@@ -394,7 +394,42 @@
             fileInput.click();
         });
         
-        // Hover effects are handled by CSS
+        // Drag and drop support
+        uploadArea.addEventListener('dragover', function(e) {
+            e.preventDefault();
+            e.stopPropagation();
+            this.style.borderColor = '#008060';
+            this.style.backgroundColor = '#f0f9f7';
+        });
+        
+        uploadArea.addEventListener('dragleave', function(e) {
+            e.preventDefault();
+            e.stopPropagation();
+            this.style.borderColor = '#c9cccf';
+            this.style.backgroundColor = '#fafbfc';
+        });
+        
+        uploadArea.addEventListener('drop', function(e) {
+            e.preventDefault();
+            e.stopPropagation();
+            this.style.borderColor = '#c9cccf';
+            this.style.backgroundColor = '#fafbfc';
+            
+            const files = e.dataTransfer.files;
+            if (files.length > 0) {
+                const file = files[0];
+                if (file.type.startsWith('image/')) {
+                    fileInput.files = files;
+                    fileInput.dispatchEvent(new Event('change', { bubbles: true }));
+                } else {
+                    const errorDiv = document.getElementById('vton-error');
+                    if (errorDiv) {
+                        errorDiv.textContent = 'Veuillez déposer une image';
+                        errorDiv.style.display = 'block';
+                    }
+                }
+            }
+        });
         
         fileInput.addEventListener('change', function(e) {
             const file = e.target.files[0];
@@ -408,13 +443,34 @@
                     }
                 }
                 
+                console.log('📁 Fichier sélectionné:', {
+                    name: file.name,
+                    size: file.size,
+                    type: file.type
+                });
+                
                 const reader = new FileReader();
                 reader.onload = function(e) {
+                    console.log('✅ Fichier lu avec succès');
                     widgetState.userPhoto = file;
                     previewImg.src = e.target.result;
                     previewDiv.style.display = 'block';
                     generateBtn.style.display = 'block';
                     uploadArea.style.display = 'none';
+                    
+                    // Hide error if any
+                    const errorDiv = document.getElementById('vton-error');
+                    if (errorDiv) errorDiv.style.display = 'none';
+                    
+                    console.log('✅ Photo utilisateur prête pour génération');
+                };
+                reader.onerror = function(e) {
+                    console.error('❌ Erreur lecture fichier:', e);
+                    const errorDiv = document.getElementById('vton-error');
+                    if (errorDiv) {
+                        errorDiv.textContent = 'Erreur lors de la lecture du fichier';
+                        errorDiv.style.display = 'block';
+                    }
                 };
                 reader.readAsDataURL(file);
             }
@@ -501,8 +557,36 @@
         const resultDiv = document.getElementById('vton-result');
         const resultImg = document.getElementById('vton-result-img');
         
-        if (!window.config || !window.config.replicateApiToken) {
-            alert('⚠️ API Replicate non configurée. Vérifiez env.js');
+        // Vérifier la configuration
+        console.log('🔍 Vérification configuration...', {
+            config: !!window.config,
+            token: !!window.config?.replicateApiToken,
+            tokenLength: window.config?.replicateApiToken?.length
+        });
+        
+        if (!window.config) {
+            const errorMsg = '⚠️ Configuration non chargée. Vérifiez que config.js est chargé.';
+            console.error(errorMsg);
+            const errorDiv = document.getElementById('vton-error');
+            if (errorDiv) {
+                errorDiv.textContent = errorMsg;
+                errorDiv.style.display = 'block';
+            } else {
+                alert(errorMsg);
+            }
+            return;
+        }
+        
+        if (!window.config.replicateApiToken || window.config.replicateApiToken === '') {
+            const errorMsg = '⚠️ API Replicate non configurée. Ajoutez votre token dans env.js (REPLICATE_API_TOKEN)';
+            console.error(errorMsg);
+            const errorDiv = document.getElementById('vton-error');
+            if (errorDiv) {
+                errorDiv.textContent = errorMsg;
+                errorDiv.style.display = 'block';
+            } else {
+                alert(errorMsg);
+            }
             return;
         }
         
@@ -524,38 +608,68 @@
             // Get product image URL
             let productImageUrl = widgetState.productImageUrl;
             if (!productImageUrl) {
-                const mainImage = document.querySelector('.product-main-image img, #mainImage');
+                const mainImage = document.querySelector('.product-images img, .product-main-image img, #mainImage');
                 if (mainImage) {
                     productImageUrl = mainImage.src || mainImage.getAttribute('src');
+                    console.log('📸 Image produit trouvée dans le DOM:', productImageUrl);
+                } else {
+                    console.warn('⚠️ Aucune image produit trouvée dans le DOM');
                 }
             }
             
             if (!productImageUrl) {
-                throw new Error('Image produit non trouvée');
+                throw new Error('Image produit non trouvée. Assurez-vous que l\'image produit est visible sur la page.');
             }
             
-            console.log('🖼️ Image produit:', productImageUrl);
+            console.log('🖼️ Image produit utilisée:', productImageUrl);
             
             // Call Replicate API
             console.log('🤖 Appel API Replicate...');
-            const response = await fetch('https://api.replicate.com/v1/predictions', {
+            console.log('📤 Données envoyées:', {
+                human: userPhotoUrl.substring(0, 50) + '...',
+                garment: productImageUrl.substring(0, 50) + '...',
+                model: window.config.replicateModel
+            });
+            
+            const apiUrl = 'https://api.replicate.com/v1/predictions';
+            const requestBody = {
+                version: 'a0f39caf49b493dfc97d745772a7da0589f5d04cb3d1e1bcc9f79f67d0a5b94f',
+                input: {
+                    human: userPhotoUrl,
+                    garment: productImageUrl
+                }
+            };
+            
+            console.log('📡 Requête API:', {
+                url: apiUrl,
+                method: 'POST',
+                hasToken: !!window.config.replicateApiToken
+            });
+            
+            const response = await fetch(apiUrl, {
                 method: 'POST',
                 headers: {
                     'Authorization': `Token ${window.config.replicateApiToken}`,
                     'Content-Type': 'application/json'
                 },
-                body: JSON.stringify({
-                    version: 'a0f39caf49b493dfc97d745772a7da0589f5d04cb3d1e1bcc9f79f67d0a5b94f',
-                    input: {
-                        human: userPhotoUrl,
-                        garment: productImageUrl
-                    }
-                })
+                body: JSON.stringify(requestBody)
+            });
+            
+            console.log('📥 Réponse API:', {
+                status: response.status,
+                statusText: response.statusText,
+                ok: response.ok
             });
             
             if (!response.ok) {
-                const errorData = await response.json();
-                throw new Error(errorData.detail || 'Erreur API Replicate');
+                let errorData;
+                try {
+                    errorData = await response.json();
+                    console.error('❌ Erreur API:', errorData);
+                } catch (e) {
+                    errorData = { detail: `Erreur HTTP ${response.status}: ${response.statusText}` };
+                }
+                throw new Error(errorData.detail || errorData.error || 'Erreur API Replicate');
             }
             
             const prediction = await response.json();
@@ -564,10 +678,15 @@
             // Poll for result
             let result = null;
             let attempts = 0;
-            const maxAttempts = 60;
+            const maxAttempts = 90; // Augmenté à 90 tentatives (3 minutes)
+            
+            console.log('⏳ Attente du résultat (polling)...');
             
             while (!result && attempts < maxAttempts) {
                 await new Promise(resolve => setTimeout(resolve, 2000));
+                attempts++;
+                
+                console.log(`🔄 Tentative ${attempts}/${maxAttempts}...`);
                 
                 const statusResponse = await fetch(`https://api.replicate.com/v1/predictions/${prediction.id}`, {
                     headers: {
@@ -575,21 +694,38 @@
                     }
                 });
                 
+                if (!statusResponse.ok) {
+                    console.error('❌ Erreur lors de la vérification du statut:', statusResponse.status);
+                    throw new Error(`Erreur lors de la vérification du statut: ${statusResponse.status}`);
+                }
+                
                 const statusData = await statusResponse.json();
-                console.log('📊 Statut:', statusData.status);
+                console.log('📊 Statut:', statusData.status, {
+                    id: prediction.id,
+                    attempt: attempts
+                });
                 
                 if (statusData.status === 'succeeded') {
                     result = statusData.output;
+                    console.log('✅ Génération réussie !', result);
                     break;
                 } else if (statusData.status === 'failed') {
-                    throw new Error('La génération a échoué');
+                    const errorMsg = statusData.error || 'La génération a échoué';
+                    console.error('❌ Génération échouée:', errorMsg);
+                    throw new Error(errorMsg);
+                } else if (statusData.status === 'canceled') {
+                    throw new Error('La génération a été annulée');
                 }
                 
-                attempts++;
+                // Mettre à jour le message de chargement
+                const loadingText = document.querySelector('.vton-loading-text');
+                if (loadingText) {
+                    loadingText.textContent = `Génération en cours... (${attempts * 2}s)`;
+                }
             }
             
             if (!result) {
-                throw new Error('Timeout: La génération prend trop de temps');
+                throw new Error(`Timeout: La génération prend trop de temps (${maxAttempts * 2} secondes maximum)`);
             }
             
             // Display result
