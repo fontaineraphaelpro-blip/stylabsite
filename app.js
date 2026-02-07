@@ -279,7 +279,9 @@ document.addEventListener('DOMContentLoaded', function() {
                 try {
                     uploadResponse = await fetch(uploadUrl, {
                         method: 'POST',
-                        body: formData
+                        body: formData,
+                        // Mode 'no-cors' pour éviter les erreurs CORS, mais on ne pourra pas lire la réponse
+                        // On va plutôt utiliser un timeout et catch l'erreur
                     });
                     
                     console.log('Réponse upload:', uploadResponse.status, uploadResponse.statusText);
@@ -288,12 +290,13 @@ document.addEventListener('DOMContentLoaded', function() {
                         throw new Error(`Upload failed: ${uploadResponse.status} ${uploadResponse.statusText}`);
                     }
                 } catch (error) {
-                    // Erreur réseau, CORS, ou 404 - passer directement à base64
-                    console.warn('Upload échoué (erreur réseau/CORS/404):', error.message);
-                    console.warn('Passage automatique au mode base64 (sans upload)...');
-                    updatePreviewStatus('Mode direct: utilisation des images sans upload...');
+                    // Erreur réseau, CORS, ou 404 - passer directement à Imgur
+                    console.warn('⚠️ Upload Railway échoué (erreur réseau/CORS/404):', error.message);
+                    console.warn('🔄 Passage automatique vers Imgur (service public)...');
+                    updatePreviewStatus('Upload Railway indisponible, utilisation d\'Imgur...');
+                    // Passer directement à Imgur (qui génère des URLs publiques)
                     await processWithReplicateBase64(cfg);
-                    return;
+                    return; // Important : ne pas continuer avec le code Railway
                 }
                 
                 const uploadData = await uploadResponse.json();
