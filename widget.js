@@ -421,13 +421,32 @@
         });
         
         generateBtn.addEventListener('click', function() {
+            console.log('🖱️ Bouton générer cliqué');
+            console.log('📊 État widget:', {
+                userPhoto: !!widgetState.userPhoto,
+                productImageUrl: widgetState.productImageUrl,
+                isGenerating: widgetState.isGenerating
+            });
+            
             if (!widgetState.userPhoto) {
-                alert('Veuillez télécharger votre photo');
+                const errorDiv = document.getElementById('vton-error');
+                if (errorDiv) {
+                    errorDiv.textContent = 'Veuillez télécharger votre photo';
+                    errorDiv.style.display = 'block';
+                } else {
+                    alert('Veuillez télécharger votre photo');
+                }
                 return;
             }
             
             if (!widgetState.productImageUrl) {
-                alert('Image produit non trouvée');
+                const errorDiv = document.getElementById('vton-error');
+                if (errorDiv) {
+                    errorDiv.textContent = 'Image produit non trouvée';
+                    errorDiv.style.display = 'block';
+                } else {
+                    alert('Image produit non trouvée');
+                }
                 return;
             }
             
