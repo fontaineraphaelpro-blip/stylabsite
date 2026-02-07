@@ -1132,10 +1132,116 @@
             .feature-card h3 {
                 font-size: 1.25rem;
             }
-            /* STORE GRID MOBILE */
+        /* STORE STREETWEAR STYLE */
+        .store-section {
+            background: #0a0a0a;
+            color: #ffffff;
+        }
+        .store-section .section-title {
+            color: #ffffff;
+            font-weight: 900;
+            letter-spacing: -0.03em;
+            text-transform: uppercase;
+            font-size: clamp(2rem, 4vw, 3.5rem);
+        }
+        .store-section .section-subtitle {
+            color: rgba(255,255,255,0.7);
+        }
+        .store-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(280px, 1fr));
+            gap: 2rem;
+            margin-top: 3rem;
+        }
+        .product-card-streetwear {
+            background: #1a1a1a;
+            border: 1px solid #2a2a2a;
+            border-radius: 0;
+            overflow: hidden;
+            cursor: pointer;
+            transition: all 0.4s cubic-bezier(0.4, 0, 0.2, 1);
+            position: relative;
+        }
+        .product-card-streetwear::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            background: linear-gradient(180deg, transparent 0%, rgba(0,0,0,0.8) 100%);
+            opacity: 0;
+            transition: opacity 0.4s;
+            z-index: 1;
+        }
+        .product-card-streetwear:hover {
+            transform: translateY(-8px);
+            border-color: #ffffff;
+            box-shadow: 0 20px 40px rgba(0,0,0,0.5);
+        }
+        .product-card-streetwear:hover::before {
+            opacity: 1;
+        }
+        .product-card-streetwear img {
+            width: 100%;
+            height: 350px;
+            object-fit: cover;
+            filter: grayscale(20%);
+            transition: all 0.4s;
+        }
+        .product-card-streetwear:hover img {
+            filter: grayscale(0%);
+            transform: scale(1.05);
+        }
+        .product-card-streetwear-content {
+            padding: 1.5rem;
+            position: relative;
+            z-index: 2;
+            background: #1a1a1a;
+        }
+        .product-card-streetwear h3 {
+            font-size: 1.25rem;
+            font-weight: 800;
+            margin-bottom: 0.5rem;
+            color: #ffffff;
+            letter-spacing: -0.02em;
+            text-transform: uppercase;
+        }
+        .product-card-streetwear .product-price-streetwear {
+            font-size: 1.5rem;
+            font-weight: 900;
+            color: #ffffff;
+            letter-spacing: -0.02em;
+        }
+        .product-badge {
+            position: absolute;
+            top: 1rem;
+            right: 1rem;
+            background: #ffffff;
+            color: #000000;
+            padding: 0.5rem 1rem;
+            font-size: 0.75rem;
+            font-weight: 800;
+            text-transform: uppercase;
+            letter-spacing: 0.1em;
+            z-index: 3;
+        }
+        /* STORE GRID MOBILE */
             .store-grid {
                 grid-template-columns: repeat(2, 1fr);
                 gap: 1rem;
+            }
+            .product-card-streetwear img {
+                height: 250px;
+            }
+            .product-card-streetwear-content {
+                padding: 1.25rem;
+            }
+            .product-card-streetwear h3 {
+                font-size: 1.125rem;
+            }
+            .product-price-streetwear {
+                font-size: 1.25rem;
             }
             /* PRODUCT PAGE MOBILE */
             .product-demo {
@@ -1356,6 +1462,60 @@
         </div>
     </section>
 
+    <!-- STORE DEMO -->
+    <section id="demo" class="store-section">
+        <div class="container">
+            <h2 class="section-title">STREETWEAR COLLECTION</h2>
+            <p class="section-subtitle">Découvrez notre collection et testez le widget Virtual Try-On en action</p>
+            <div class="store-grid">
+                <div class="product-card-streetwear" onclick="document.getElementById('produit').scrollIntoView({behavior: 'smooth'})">
+                    <span class="product-badge">NEW</span>
+                    <img src="https://images.unsplash.com/photo-1521572163474-6864f9cf17ab?w=600&h=600&fit=crop" alt="Oversized Tee">
+                    <div class="product-card-streetwear-content">
+                        <h3>Oversized Tee</h3>
+                        <div class="product-price-streetwear">49€</div>
+                    </div>
+                </div>
+                <div class="product-card-streetwear" onclick="document.getElementById('produit').scrollIntoView({behavior: 'smooth'})">
+                    <img src="https://images.unsplash.com/photo-1618354691373-d851c5c3a990?w=600&h=600&fit=crop" alt="Cargo Pants">
+                    <div class="product-card-streetwear-content">
+                        <h3>Cargo Pants</h3>
+                        <div class="product-price-streetwear">89€</div>
+                    </div>
+                </div>
+                <div class="product-card-streetwear" onclick="document.getElementById('produit').scrollIntoView({behavior: 'smooth'})">
+                    <span class="product-badge">HOT</span>
+                    <img src="https://images.unsplash.com/photo-1562157873-818bc0726f68?w=600&h=600&fit=crop" alt="Hoodie">
+                    <div class="product-card-streetwear-content">
+                        <h3>Hoodie</h3>
+                        <div class="product-price-streetwear">79€</div>
+                    </div>
+                </div>
+                <div class="product-card-streetwear" onclick="document.getElementById('produit').scrollIntoView({behavior: 'smooth'})">
+                    <img src="https://images.unsplash.com/photo-1594633313593-bab3825d0caf?w=600&h=600&fit=crop" alt="Sneakers">
+                    <div class="product-card-streetwear-content">
+                        <h3>Sneakers</h3>
+                        <div class="product-price-streetwear">129€</div>
+                    </div>
+                </div>
+                <div class="product-card-streetwear" onclick="document.getElementById('produit').scrollIntoView({behavior: 'smooth'})">
+                    <img src="https://images.unsplash.com/photo-1556821840-3a63f95609a4?w=600&h=600&fit=crop" alt="Cap">
+                    <div class="product-card-streetwear-content">
+                        <h3>Cap</h3>
+                        <div class="product-price-streetwear">29€</div>
+                    </div>
+                </div>
+                <div class="product-card-streetwear" onclick="document.getElementById('produit').scrollIntoView({behavior: 'smooth'})">
+                    <img src="https://images.unsplash.com/photo-1551028719-00167b16eac5?w=600&h=600&fit=crop" alt="Joggers">
+                    <div class="product-card-streetwear-content">
+                        <h3>Joggers</h3>
+                        <div class="product-price-streetwear">69€</div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
     <!-- FONCTIONNALITÉS -->
     <section id="fonctionnalites" class="section-white">
         <div class="container">
@@ -1396,44 +1556,6 @@
         </div>
     </section>
 
-    <!-- STORE DEMO -->
-    <section id="demo" class="section-gray">
-        <div class="container">
-            <h2 class="section-title">Découvrez notre Store de Démonstration</h2>
-            <p class="section-subtitle">Parcourez notre boutique fictive et testez le widget Virtual Try-On en action</p>
-            <div class="store-grid" style="display: grid; grid-template-columns: repeat(auto-fill, minmax(250px, 1fr)); gap: 1.5rem; margin-top: 2rem;">
-                <div class="feature-card" onclick="document.getElementById('produit').scrollIntoView({behavior: 'smooth'})" style="cursor: pointer; padding: 0; overflow: hidden;">
-                    <img src="https://images.unsplash.com/photo-1521572163474-6864f9cf17ab?w=600&h=600&fit=crop" alt="T-Shirt Premium" style="width: 100%; height: 250px; object-fit: cover;">
-                    <div style="padding: 1.5rem;">
-                        <h3 style="font-size: 1.125rem; font-weight: 600; margin-bottom: 0.5rem; color: var(--text);">T-Shirt Premium</h3>
-                        <div style="font-size: 1.125rem; font-weight: 600; color: var(--primary);">29,90 €</div>
-                    </div>
-                </div>
-                <div class="feature-card" onclick="document.getElementById('produit').scrollIntoView({behavior: 'smooth'})" style="cursor: pointer; padding: 0; overflow: hidden;">
-                    <img src="https://images.unsplash.com/photo-1618354691373-d851c5c3a990?w=600&h=600&fit=crop" alt="Jean Slim Fit" style="width: 100%; height: 250px; object-fit: cover;">
-                    <div style="padding: 1.5rem;">
-                        <h3 style="font-size: 1.125rem; font-weight: 600; margin-bottom: 0.5rem; color: var(--text);">Jean Slim Fit</h3>
-                        <div style="font-size: 1.125rem; font-weight: 600; color: var(--primary);">79,90 €</div>
-                    </div>
-                </div>
-                <div class="feature-card" onclick="document.getElementById('produit').scrollIntoView({behavior: 'smooth'})" style="cursor: pointer; padding: 0; overflow: hidden;">
-                    <img src="https://images.unsplash.com/photo-1562157873-818bc0726f68?w=600&h=600&fit=crop" alt="Veste Cuir" style="width: 100%; height: 250px; object-fit: cover;">
-                    <div style="padding: 1.5rem;">
-                        <h3 style="font-size: 1.125rem; font-weight: 600; margin-bottom: 0.5rem; color: var(--text);">Veste Cuir</h3>
-                        <div style="font-size: 1.125rem; font-weight: 600; color: var(--primary);">149,90 €</div>
-                    </div>
-                </div>
-                <div class="feature-card" onclick="document.getElementById('produit').scrollIntoView({behavior: 'smooth'})" style="cursor: pointer; padding: 0; overflow: hidden;">
-                    <img src="https://images.unsplash.com/photo-1594633313593-bab3825d0caf?w=600&h=600&fit=crop" alt="Robe Midi" style="width: 100%; height: 250px; object-fit: cover;">
-                    <div style="padding: 1.5rem;">
-                        <h3 style="font-size: 1.125rem; font-weight: 600; margin-bottom: 0.5rem; color: var(--text);">Robe Midi</h3>
-                        <div style="font-size: 1.125rem; font-weight: 600; color: var(--primary);">89,90 €</div>
-                    </div>
-                </div>
-            </div>
-        </div>
-    </section>
-
     <!-- PRODUIT AVEC WIDGET - Shopify Style -->
     <section id="produit" class="product-section">
         <div class="container">
@@ -1450,24 +1572,9 @@
                     </div>
                     <div class="product-info">
                         <div class="product-vendor">STYLE LAB</div>
-                        <h1>T-Shirt Premium</h1>
-                        <div class="product-price-large">29,90 €</div>
-                        <p class="product-description">T-Shirt en coton biologique certifié GOTS. Confortable, durable et respectueux de l'environnement. Parfait pour un usage quotidien. Disponible en plusieurs tailles et couleurs.</p>
-                        <div class="product-options">
-                            <div class="option-label">Taille</div>
-                            <div class="option-buttons">
-                                <button class="option-btn active" onclick="setActiveOption(this)">S</button>
-                                <button class="option-btn" onclick="setActiveOption(this)">M</button>
-                                <button class="option-btn" onclick="setActiveOption(this)">L</button>
-                                <button class="option-btn" onclick="setActiveOption(this)">XL</button>
-                            </div>
-                        </div>
-                        <div class="quantity-selector">
-                            <button class="quantity-btn" onclick="changeQuantity(-1)">-</button>
-                            <input type="number" class="quantity-input" id="quantity" value="1" min="1">
-                            <button class="quantity-btn" onclick="changeQuantity(1)">+</button>
-                            <span style="margin-left: auto; font-weight: 600; color: var(--text);">Total: <span id="totalPrice">29,90 €</span></span>
-                        </div>
+                        <h1>Oversized Tee</h1>
+                        <div class="product-price-large">49€</div>
+                        <p class="product-description">T-Shirt oversized en coton premium. Coupe streetwear, confortable et durable. Parfait pour un look urbain décontracté.</p>
                         <button class="add-to-cart" onclick="alert('Ajouté au panier !')">Ajouter au panier</button>
                         <div class="widget-container">
                             <div id="vton-widget-root"></div>
