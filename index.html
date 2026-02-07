@@ -222,7 +222,7 @@
         }
         nav {
             display: flex;
-            gap: 2rem;
+            gap: 1.5rem;
             align-items: center;
         }
         nav a {
@@ -234,6 +234,14 @@
         }
         nav a:hover {
             color: var(--text);
+        }
+        @media (max-width: 1024px) {
+            nav a {
+                display: none;
+            }
+            nav a:last-of-type {
+                display: block;
+            }
         }
         .cta-button {
             background: var(--secondary);
@@ -256,10 +264,14 @@
         .hero {
             background: linear-gradient(135deg, var(--accent) 0%, var(--accent-dark) 100%);
             color: white;
-            padding: 8rem 2rem;
+            padding: 10rem 2rem 6rem;
             text-align: center;
             position: relative;
             overflow: hidden;
+            min-height: 70vh;
+            display: flex;
+            align-items: center;
+            justify-content: center;
         }
         .hero::before {
             content: '';
@@ -268,83 +280,51 @@
             left: 0;
             right: 0;
             bottom: 0;
-            background: 
-                radial-gradient(circle at 20% 50%, rgba(255, 255, 255, 0.1) 0%, transparent 50%),
-                radial-gradient(circle at 80% 80%, rgba(255, 255, 255, 0.1) 0%, transparent 50%),
-                url('data:image/svg+xml,<svg width="100" height="100" xmlns="http://www.w3.org/2000/svg"><defs><pattern id="grid" width="100" height="100" patternUnits="userSpaceOnUse"><path d="M 100 0 L 0 0 0 100" fill="none" stroke="rgba(255,255,255,0.05)" stroke-width="1"/></pattern></defs><rect width="100" height="100" fill="url(%23grid)"/></svg>');
-            opacity: 0.4;
-            animation: gradientShift 15s ease infinite;
-        }
-        @keyframes gradientShift {
-            0%, 100% { opacity: 0.4; }
-            50% { opacity: 0.6; }
+            background: radial-gradient(circle at 50% 50%, rgba(255, 255, 255, 0.08) 0%, transparent 70%);
+            opacity: 0.5;
         }
         .hero-content {
             position: relative;
             z-index: 1;
         }
         .hero h1 {
-            font-size: clamp(2.5rem, 5vw, 4rem);
+            font-size: clamp(2.5rem, 5vw, 4.5rem);
             font-weight: 800;
             margin-bottom: 1.5rem;
             line-height: 1.1;
-            letter-spacing: -0.03em;
-            text-shadow: 0 2px 20px rgba(0, 0, 0, 0.1);
+            letter-spacing: -0.04em;
         }
         .hero .subtitle {
             font-size: clamp(1.25rem, 2.5vw, 1.75rem);
-            margin-bottom: 1rem;
+            margin-bottom: 2rem;
             opacity: 0.95;
-            font-weight: 600;
+            font-weight: 500;
             letter-spacing: -0.01em;
-        }
-        .hero .description {
-            font-size: clamp(1rem, 1.5vw, 1.25rem);
-            margin-bottom: 2.5rem;
-            opacity: 0.9;
-            max-width: 700px;
+            max-width: 600px;
             margin-left: auto;
             margin-right: auto;
-            line-height: 1.7;
+        }
+        .hero .description {
+            display: none;
         }
         .hero-badges {
-            display: flex;
-            gap: 1rem;
-            justify-content: center;
-            margin-bottom: 2.5rem;
-            flex-wrap: wrap;
-        }
-        .badge {
-            background: rgba(255,255,255,0.15);
-            backdrop-filter: blur(12px);
-            -webkit-backdrop-filter: blur(12px);
-            padding: 0.625rem 1.25rem;
-            border-radius: 50px;
-            font-size: 0.875rem;
-            font-weight: 600;
-            border: 1px solid rgba(255,255,255,0.2);
-            transition: all 0.3s;
-            box-shadow: 0 4px 6px rgba(0,0,0,0.1);
-        }
-        .badge:hover {
-            background: rgba(255,255,255,0.25);
-            transform: translateY(-2px);
-            box-shadow: 0 6px 12px rgba(0,0,0,0.15);
+            display: none;
         }
         .hero-buttons {
             display: flex;
             gap: 1rem;
             justify-content: center;
             flex-wrap: wrap;
+            margin-top: 1rem;
         }
         .btn-primary {
             background: var(--bg);
             color: var(--accent);
-            padding: 1.125rem 2.75rem;
+            padding: 1.25rem 3rem;
             border-radius: 12px;
             text-decoration: none;
             font-weight: 700;
-            font-size: 1rem;
+            font-size: 1.0625rem;
             transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
             box-shadow: 0 10px 25px rgba(0,0,0,0.2);
             letter-spacing: -0.01em;
@@ -355,24 +335,7 @@
             box-shadow: 0 15px 35px rgba(0,0,0,0.3);
         }
         .btn-secondary {
-            background: rgba(255,255,255,0.1);
-            backdrop-filter: blur(10px);
-            -webkit-backdrop-filter: blur(10px);
-            color: var(--bg);
-            padding: 1.125rem 2.75rem;
-            border: 2px solid rgba(255,255,255,0.3);
-            border-radius: 12px;
-            text-decoration: none;
-            font-weight: 700;
-            font-size: 1rem;
-            transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
-            letter-spacing: -0.01em;
-            display: inline-block;
-        }
-        .btn-secondary:hover {
-            background: rgba(255,255,255,0.2);
-            border-color: rgba(255,255,255,0.5);
-            transform: translateY(-2px);
+            display: none;
         }
         /* SECTIONS */
         section {
@@ -405,10 +368,13 @@
         }
         /* STATS BAR */
         .stats-bar {
-            background: var(--bg);
+            background: var(--bg-gray);
             border-top: 1px solid var(--border);
-            border-bottom: 1px solid var(--border);
-            padding: 2rem;
+            padding: 3rem 2rem;
+            margin-top: -2rem;
+            position: relative;
+            z-index: 10;
+            border-radius: 24px 24px 0 0;
         }
         .stats-grid {
             display: grid;
@@ -1362,19 +1328,11 @@
     <section class="hero">
         <div class="hero-content">
             <div class="container">
-                <h1>Virtual Try-On pour Shopify</h1>
-                <p class="subtitle">Augmentez vos conversions de 30% avec l'essayage virtuel IA</p>
-                <p class="description">Solution d'essayage virtuel alimentée par l'intelligence artificielle. Installation en 3 minutes, conforme RGPD, optimisée pour mobile.</p>
-                <div class="hero-badges">
-                    <span class="badge">✨ Installation 3 min</span>
-                    <span class="badge">🔒 Conforme RGPD</span>
-                    <span class="badge">📱 Mobile-First</span>
-                    <span class="badge">🚀 +30% Conversions</span>
-                </div>
-                <div class="hero-buttons">
-                    <a href="#demo" class="btn-primary">Voir la Démo</a>
-                    <a href="https://apps.shopify.com/style-lab-virtual-try-on" class="btn-secondary" target="_blank">Installer sur Shopify</a>
-                </div>
+            <h1>Virtual Try-On pour Shopify</h1>
+            <p class="subtitle">Augmentez vos conversions de 30% avec l'essayage virtuel alimenté par l'IA</p>
+            <div class="hero-buttons">
+                <a href="#demo" class="btn-primary">Découvrir la Démo</a>
+            </div>
             </div>
         </div>
     </section>
