@@ -4,109 +4,113 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Virtual Try-On Shopify - Démo Complète | StyleLab</title>
-    <meta name="description" content="Démo complète : Produit avec Widget Virtual Try-On, Dashboard et Configuration. Tout visible directement sur la page d'accueil.">
     <link rel="stylesheet" href="style.css">
     <link rel="stylesheet" href="demo-app.css">
-    <link rel="preconnect" href="https://fonts.googleapis.com">
-    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800;900&display=swap" rel="stylesheet">
     <script src="env.js"></script>
     <script src="config.js"></script>
     <script src="widget.js"></script>
     <script src="app.js"></script>
+    <style>
+        /* FORCE VISIBILITY */
+        body, html {
+            display: block !important;
+            visibility: visible !important;
+            opacity: 1 !important;
+            min-height: 100vh !important;
+        }
+        section {
+            display: block !important;
+            visibility: visible !important;
+            opacity: 1 !important;
+        }
+        .container {
+            display: block !important;
+            visibility: visible !important;
+        }
+    </style>
 </head>
-<body style="display: block !important; visibility: visible !important; opacity: 1 !important; min-height: 100vh;">
+<body style="margin: 0; padding: 0; font-family: Arial, sans-serif;">
     <!-- Header -->
-    <header class="header">
-        <nav class="nav">
-            <div class="container">
-                <div class="nav-container">
-                    <a href="/" class="logo" aria-label="Style Lab Accueil">Style Lab</a>
-                    <span class="logo-badge">Virtual Try‑On</span>
-                    <button class="mobile-menu-btn" aria-label="Menu" id="mobileMenuBtn">☰</button>
-                    <div class="nav-links" id="navLinks">
-                        <a href="#store" class="nav-link">Store</a>
-                        <a href="#product-demo" class="nav-link">Produit</a>
-                        <a href="#dashboard-demo" class="nav-link">Dashboard</a>
-                        <a href="#widget-config" class="nav-link">Configuration</a>
-                        <a href="https://apps.shopify.com/try-on-stylelab" target="_blank" rel="noopener" class="btn btn-primary">Installer l'App</a>
-                    </div>
-                </div>
-            </div>
-        </nav>
+    <header style="background: #fff; padding: 1rem; border-bottom: 1px solid #ddd; position: sticky; top: 0; z-index: 1000;">
+        <div style="max-width: 1200px; margin: 0 auto; display: flex; justify-content: space-between; align-items: center;">
+            <a href="/" style="font-size: 1.5rem; font-weight: bold; color: #000; text-decoration: none;">Style Lab</a>
+            <nav style="display: flex; gap: 1rem;">
+                <a href="#store" style="color: #000; text-decoration: none;">Store</a>
+                <a href="#product-demo" style="color: #000; text-decoration: none;">Produit</a>
+                <a href="#dashboard-demo" style="color: #000; text-decoration: none;">Dashboard</a>
+                <a href="#widget-config" style="color: #000; text-decoration: none;">Configuration</a>
+            </nav>
+        </div>
     </header>
 
     <!-- HERO -->
-    <section class="hero" style="padding: 4rem 0; background: linear-gradient(135deg, #667eea 0%, #764ba2 100%); color: white; text-align: center;">
-        <div class="container">
-            <h1 class="hero-title" style="font-size: 3rem; font-weight: 800; margin-bottom: 1rem; color: white;">Virtual Try-On Shopify - Démo Complète</h1>
-            <p class="hero-subtitle" style="font-size: 1.25rem; margin-bottom: 2rem; color: rgba(255,255,255,0.9);">Tout est visible directement sur cette page : Store, Produit avec Widget, Dashboard et Configuration</p>
+    <section style="padding: 4rem 2rem; background: linear-gradient(135deg, #667eea 0%, #764ba2 100%); color: white; text-align: center;">
+        <div style="max-width: 1200px; margin: 0 auto;">
+            <h1 style="font-size: 3rem; font-weight: 800; margin-bottom: 1rem; color: white;">Virtual Try-On Shopify - Démo Complète</h1>
+            <p style="font-size: 1.25rem; margin-bottom: 2rem; color: rgba(255,255,255,0.9);">Tout est visible directement sur cette page : Store, Produit avec Widget, Dashboard et Configuration</p>
         </div>
     </section>
 
     <!-- SECTION 0: STORE (LISTE DE PRODUITS) -->
-    <section id="store" style="padding: 2rem 0; background: white; display: block !important; visibility: visible !important; opacity: 1 !important;">
-        <div class="container" style="max-width: 1200px; margin: 0 auto; padding: 0 1.5rem; display: block !important;">
-            <h2 class="section-title" style="text-align: center; margin-bottom: 2rem; font-size: 2.5rem; font-weight: 800; color: #111827; display: block !important;">Store - Collection de Produits</h2>
+    <section id="store" style="padding: 3rem 2rem; background: white; display: block !important;">
+        <div style="max-width: 1200px; margin: 0 auto;">
+            <h2 style="text-align: center; margin-bottom: 2rem; font-size: 2.5rem; font-weight: 800; color: #111827;">Store - Collection de Produits</h2>
             
-            <div style="display: grid !important; grid-template-columns: repeat(auto-fill, minmax(280px, 1fr)) !important; gap: 2rem; margin-top: 2rem; visibility: visible !important; opacity: 1 !important;">
-                <div class="product-card" style="background: white; border-radius: 1rem; overflow: hidden; box-shadow: 0 4px 6px rgba(0,0,0,0.1); transition: all 0.3s; cursor: pointer;" onclick="scrollToProduct('product-demo')">
+            <div style="display: grid; grid-template-columns: repeat(auto-fill, minmax(280px, 1fr)); gap: 2rem; margin-top: 2rem;">
+                <div style="background: white; border-radius: 1rem; overflow: hidden; box-shadow: 0 4px 6px rgba(0,0,0,0.1); cursor: pointer;" onclick="document.getElementById('product-demo').scrollIntoView({behavior: 'smooth'})">
                     <img src="https://images.unsplash.com/photo-1521572163474-6864f9cf17ab?w=600&h=600&fit=crop" 
                          alt="T-Shirt Premium Coton Bio" 
-                         style="width: 100%; aspect-ratio: 1; object-fit: cover; background: #f3f4f6;">
+                         style="width: 100%; aspect-ratio: 1; object-fit: cover;">
                     <div style="padding: 1.5rem;">
                         <h3 style="font-size: 1.125rem; font-weight: 600; margin-bottom: 0.5rem; color: #111827;">T-Shirt Premium Coton Bio</h3>
-                        <div style="font-size: 1.25rem; font-weight: 700; color: #008060;">
-                            29,90 €
-                            <span style="font-size: 1rem; color: #6b7280; text-decoration: line-through; margin-left: 0.5rem;">39,90 €</span>
-                        </div>
+                        <div style="font-size: 1.25rem; font-weight: 700; color: #008060;">29,90 €</div>
                     </div>
                 </div>
 
-                <div class="product-card" style="background: white; border-radius: 1rem; overflow: hidden; box-shadow: 0 4px 6px rgba(0,0,0,0.1); transition: all 0.3s; cursor: pointer;" onclick="scrollToProduct('product-demo')">
+                <div style="background: white; border-radius: 1rem; overflow: hidden; box-shadow: 0 4px 6px rgba(0,0,0,0.1); cursor: pointer;" onclick="document.getElementById('product-demo').scrollIntoView({behavior: 'smooth'})">
                     <img src="https://images.unsplash.com/photo-1618354691373-d851c5c3a990?w=600&h=600&fit=crop" 
                          alt="Jean Slim Fit Denim" 
-                         style="width: 100%; aspect-ratio: 1; object-fit: cover; background: #f3f4f6;">
+                         style="width: 100%; aspect-ratio: 1; object-fit: cover;">
                     <div style="padding: 1.5rem;">
                         <h3 style="font-size: 1.125rem; font-weight: 600; margin-bottom: 0.5rem; color: #111827;">Jean Slim Fit Denim</h3>
                         <div style="font-size: 1.25rem; font-weight: 700; color: #008060;">79,90 €</div>
                     </div>
                 </div>
 
-                <div class="product-card" style="background: white; border-radius: 1rem; overflow: hidden; box-shadow: 0 4px 6px rgba(0,0,0,0.1); transition: all 0.3s; cursor: pointer;" onclick="scrollToProduct('product-demo')">
+                <div style="background: white; border-radius: 1rem; overflow: hidden; box-shadow: 0 4px 6px rgba(0,0,0,0.1); cursor: pointer;" onclick="document.getElementById('product-demo').scrollIntoView({behavior: 'smooth'})">
                     <img src="https://images.unsplash.com/photo-1562157873-818bc0726f68?w=600&h=600&fit=crop" 
                          alt="Veste en Cuir Vintage" 
-                         style="width: 100%; aspect-ratio: 1; object-fit: cover; background: #f3f4f6;">
+                         style="width: 100%; aspect-ratio: 1; object-fit: cover;">
                     <div style="padding: 1.5rem;">
                         <h3 style="font-size: 1.125rem; font-weight: 600; margin-bottom: 0.5rem; color: #111827;">Veste en Cuir Vintage</h3>
                         <div style="font-size: 1.25rem; font-weight: 700; color: #008060;">149,90 €</div>
                     </div>
                 </div>
 
-                <div class="product-card" style="background: white; border-radius: 1rem; overflow: hidden; box-shadow: 0 4px 6px rgba(0,0,0,0.1); transition: all 0.3s; cursor: pointer;" onclick="scrollToProduct('product-demo')">
+                <div style="background: white; border-radius: 1rem; overflow: hidden; box-shadow: 0 4px 6px rgba(0,0,0,0.1); cursor: pointer;" onclick="document.getElementById('product-demo').scrollIntoView({behavior: 'smooth'})">
                     <img src="https://images.unsplash.com/photo-1594633313593-bab3825d0caf?w=600&h=600&fit=crop" 
                          alt="Robe Midi Élégante" 
-                         style="width: 100%; aspect-ratio: 1; object-fit: cover; background: #f3f4f6;">
+                         style="width: 100%; aspect-ratio: 1; object-fit: cover;">
                     <div style="padding: 1.5rem;">
                         <h3 style="font-size: 1.125rem; font-weight: 600; margin-bottom: 0.5rem; color: #111827;">Robe Midi Élégante</h3>
                         <div style="font-size: 1.25rem; font-weight: 700; color: #008060;">89,90 €</div>
                     </div>
                 </div>
 
-                <div class="product-card" style="background: white; border-radius: 1rem; overflow: hidden; box-shadow: 0 4px 6px rgba(0,0,0,0.1); transition: all 0.3s; cursor: pointer;" onclick="scrollToProduct('product-demo')">
+                <div style="background: white; border-radius: 1rem; overflow: hidden; box-shadow: 0 4px 6px rgba(0,0,0,0.1); cursor: pointer;" onclick="document.getElementById('product-demo').scrollIntoView({behavior: 'smooth'})">
                     <img src="https://images.unsplash.com/photo-1556821840-3a63f95609a4?w=600&h=600&fit=crop" 
                          alt="Sweat à Capuche" 
-                         style="width: 100%; aspect-ratio: 1; object-fit: cover; background: #f3f4f6;">
+                         style="width: 100%; aspect-ratio: 1; object-fit: cover;">
                     <div style="padding: 1.5rem;">
                         <h3 style="font-size: 1.125rem; font-weight: 600; margin-bottom: 0.5rem; color: #111827;">Sweat à Capuche Oversized</h3>
                         <div style="font-size: 1.25rem; font-weight: 700; color: #008060;">59,90 €</div>
                     </div>
                 </div>
 
-                <div class="product-card" style="background: white; border-radius: 1rem; overflow: hidden; box-shadow: 0 4px 6px rgba(0,0,0,0.1); transition: all 0.3s; cursor: pointer;" onclick="scrollToProduct('product-demo')">
+                <div style="background: white; border-radius: 1rem; overflow: hidden; box-shadow: 0 4px 6px rgba(0,0,0,0.1); cursor: pointer;" onclick="document.getElementById('product-demo').scrollIntoView({behavior: 'smooth'})">
                     <img src="https://images.unsplash.com/photo-1551028719-00167b16eac5?w=600&h=600&fit=crop" 
                          alt="Pantalon Chino" 
-                         style="width: 100%; aspect-ratio: 1; object-fit: cover; background: #f3f4f6;">
+                         style="width: 100%; aspect-ratio: 1; object-fit: cover;">
                     <div style="padding: 1.5rem;">
                         <h3 style="font-size: 1.125rem; font-weight: 600; margin-bottom: 0.5rem; color: #111827;">Pantalon Chino Classique</h3>
                         <div style="font-size: 1.25rem; font-weight: 700; color: #008060;">69,90 €</div>
@@ -117,9 +121,9 @@
     </section>
 
     <!-- SECTION 1: PRODUIT AVEC WIDGET -->
-    <section id="product-demo" style="padding: 2rem 0; background: #f9fafb; display: block !important; visibility: visible !important; opacity: 1 !important;">
-        <div class="container" style="max-width: 1200px; margin: 0 auto; padding: 0 1.5rem; display: block !important;">
-            <h2 class="section-title" style="text-align: center; margin-bottom: 2rem; font-size: 2.5rem; font-weight: 800; color: #111827; display: block !important;">Produit avec Widget Virtual Try-On</h2>
+    <section id="product-demo" style="padding: 3rem 2rem; background: #f9fafb; display: block !important;">
+        <div style="max-width: 1200px; margin: 0 auto;">
+            <h2 style="text-align: center; margin-bottom: 2rem; font-size: 2.5rem; font-weight: 800; color: #111827;">Produit avec Widget Virtual Try-On</h2>
             
             <div style="max-width: 1200px; margin: 0 auto; background: white; padding: 2rem; border-radius: 1rem; box-shadow: 0 4px 6px rgba(0,0,0,0.1);">
                 <div style="display: grid; grid-template-columns: 1fr 1fr; gap: 2rem; margin-bottom: 2rem;">
@@ -143,16 +147,16 @@
 
                     <!-- Product Info -->
                     <div>
-                        <h1 style="font-size: 2rem; font-weight: 800; margin-bottom: 1rem;">T-Shirt Premium Coton Bio</h1>
+                        <h1 style="font-size: 2rem; font-weight: 800; margin-bottom: 1rem; color: #111827;">T-Shirt Premium Coton Bio</h1>
                         <div style="font-size: 2rem; font-weight: 800; color: #008060; margin-bottom: 1rem;">29,90 €</div>
                         <p style="margin-bottom: 1.5rem; color: #6b7280;">T-Shirt en coton biologique certifié. Confort optimal et durabilité exceptionnelle.</p>
-                        <button class="btn btn-primary" style="width: 100%; padding: 1rem;" onclick="alert('Ajouté au panier !')">Ajouter au panier</button>
+                        <button style="width: 100%; padding: 1rem; background: #008060; color: white; border: none; border-radius: 0.5rem; font-weight: 600; cursor: pointer;" onclick="alert('Ajouté au panier !')">Ajouter au panier</button>
                     </div>
                 </div>
 
                 <!-- Widget VTON -->
                 <div style="border-top: 2px solid #e5e7eb; padding-top: 2rem; margin-top: 2rem;">
-                    <h3 style="margin-bottom: 1rem;">Essayez ce produit virtuellement</h3>
+                    <h3 style="margin-bottom: 1rem; color: #111827;">Essayez ce produit virtuellement</h3>
                     <div id="vton-widget-root"></div>
                 </div>
             </div>
@@ -160,9 +164,9 @@
     </section>
 
     <!-- SECTION 2: DASHBOARD -->
-    <section id="dashboard-demo" style="padding: 2rem 0; background: white; display: block !important; visibility: visible !important; opacity: 1 !important;">
-        <div class="container" style="max-width: 1200px; margin: 0 auto; padding: 0 1.5rem; display: block !important;">
-            <h2 class="section-title" style="text-align: center; margin-bottom: 2rem; font-size: 2.5rem; font-weight: 800; color: #111827; display: block !important;">Dashboard - Statistiques et Activité</h2>
+    <section id="dashboard-demo" style="padding: 3rem 2rem; background: white; display: block !important;">
+        <div style="max-width: 1400px; margin: 0 auto;">
+            <h2 style="text-align: center; margin-bottom: 2rem; font-size: 2.5rem; font-weight: 800; color: #111827;">Dashboard - Statistiques et Activité</h2>
             
             <div class="demo-app-container" style="max-width: 1400px; margin: 0 auto;">
                 <div class="demo-header">
@@ -307,9 +311,9 @@
     </section>
 
     <!-- SECTION 3: CONFIGURATION WIDGET -->
-    <section id="widget-config" style="padding: 2rem 0; background: #f9fafb; display: block !important; visibility: visible !important; opacity: 1 !important;">
-        <div class="container" style="max-width: 1200px; margin: 0 auto; padding: 0 1.5rem; display: block !important;">
-            <h2 class="section-title" style="text-align: center; margin-bottom: 2rem; font-size: 2.5rem; font-weight: 800; color: #111827; display: block !important;">Configuration du Widget</h2>
+    <section id="widget-config" style="padding: 3rem 2rem; background: #f9fafb; display: block !important;">
+        <div style="max-width: 1000px; margin: 0 auto;">
+            <h2 style="text-align: center; margin-bottom: 2rem; font-size: 2.5rem; font-weight: 800; color: #111827;">Configuration du Widget</h2>
             
             <div class="demo-app-container" style="max-width: 1000px; margin: 0 auto;">
                 <div class="demo-header">
@@ -396,20 +400,20 @@
     </section>
 
     <script>
-        // Scroll to product function
-        function scrollToProduct(sectionId) {
-            document.getElementById(sectionId).scrollIntoView({ behavior: 'smooth' });
-        }
-
         // Product functions
         function changeMainImage(src) {
-            document.getElementById('mainImage').src = src;
-            document.querySelectorAll('.product-thumbnail').forEach(thumb => {
-                thumb.classList.remove('active');
-                thumb.style.borderColor = '#e5e7eb';
-            });
-            event.target.classList.add('active');
-            event.target.style.borderColor = '#008060';
+            const mainImage = document.getElementById('mainImage');
+            if (mainImage) {
+                mainImage.src = src;
+                document.querySelectorAll('.product-thumbnail').forEach(thumb => {
+                    thumb.classList.remove('active');
+                    thumb.style.borderColor = '#e5e7eb';
+                });
+                if (event && event.target) {
+                    event.target.classList.add('active');
+                    event.target.style.borderColor = '#008060';
+                }
+            }
         }
 
         // Initialize VTON Widget
@@ -576,66 +580,40 @@
     </script>
 
     <!-- Footer -->
-    <footer class="footer">
-        <div class="container">
-            <div class="footer-grid">
+    <footer style="background: #1f2937; color: white; padding: 3rem 2rem; margin-top: 4rem;">
+        <div style="max-width: 1200px; margin: 0 auto;">
+            <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(200px, 1fr)); gap: 2rem;">
                 <div>
-                    <h3>Style Lab Virtual Try‑On</h3>
+                    <h3 style="margin-bottom: 1rem;">Style Lab Virtual Try‑On</h3>
                     <p>Solution d'essayage virtuel IA pour boutiques Shopify en France et Europe</p>
                 </div>
                 <div>
-                    <h4>Navigation</h4>
-                    <ul>
-                        <li><a href="/">Accueil</a></li>
-                        <li><a href="#store">Store</a></li>
-                        <li><a href="#product-demo">Produit</a></li>
-                        <li><a href="#dashboard-demo">Dashboard</a></li>
-                        <li><a href="#widget-config">Configuration</a></li>
+                    <h4 style="margin-bottom: 1rem;">Navigation</h4>
+                    <ul style="list-style: none; padding: 0;">
+                        <li style="margin-bottom: 0.5rem;"><a href="/" style="color: rgba(255,255,255,0.8); text-decoration: none;">Accueil</a></li>
+                        <li style="margin-bottom: 0.5rem;"><a href="#store" style="color: rgba(255,255,255,0.8); text-decoration: none;">Store</a></li>
+                        <li style="margin-bottom: 0.5rem;"><a href="#product-demo" style="color: rgba(255,255,255,0.8); text-decoration: none;">Produit</a></li>
+                        <li style="margin-bottom: 0.5rem;"><a href="#dashboard-demo" style="color: rgba(255,255,255,0.8); text-decoration: none;">Dashboard</a></li>
+                        <li style="margin-bottom: 0.5rem;"><a href="#widget-config" style="color: rgba(255,255,255,0.8); text-decoration: none;">Configuration</a></li>
                     </ul>
                 </div>
                 <div>
-                    <h4>Ressources</h4>
-                    <ul>
-                        <li><a href="https://apps.shopify.com/try-on-stylelab" target="_blank" rel="noopener">App Shopify</a></li>
-                        <li><a href="/documentation.html">Documentation</a></li>
-                        <li><a href="/support.html">Support</a></li>
+                    <h4 style="margin-bottom: 1rem;">Ressources</h4>
+                    <ul style="list-style: none; padding: 0;">
+                        <li style="margin-bottom: 0.5rem;"><a href="https://apps.shopify.com/try-on-stylelab" target="_blank" rel="noopener" style="color: rgba(255,255,255,0.8); text-decoration: none;">App Shopify</a></li>
                     </ul>
                 </div>
                 <div>
-                    <h4>Contact</h4>
-                    <ul>
-                        <li><a href="mailto:support@stylelab.io">support@stylelab.io</a></li>
-                        <li><a href="tel:+33123456789">+33 1 23 45 67 89</a></li>
+                    <h4 style="margin-bottom: 1rem;">Contact</h4>
+                    <ul style="list-style: none; padding: 0;">
+                        <li style="margin-bottom: 0.5rem;"><a href="mailto:support@stylelab.io" style="color: rgba(255,255,255,0.8); text-decoration: none;">support@stylelab.io</a></li>
                     </ul>
                 </div>
             </div>
-            <div class="footer-bottom">
+            <div style="text-align: center; margin-top: 2rem; padding-top: 2rem; border-top: 1px solid rgba(255,255,255,0.1);">
                 <p>&copy; 2026 Style Lab Virtual Try‑On. Tous droits réservés.</p>
             </div>
         </div>
     </footer>
-
-    <script>
-        // Mobile menu toggle
-        document.addEventListener('DOMContentLoaded', function() {
-            const mobileMenuBtn = document.getElementById('mobileMenuBtn');
-            const navLinks = document.getElementById('navLinks');
-            
-            if (mobileMenuBtn && navLinks) {
-                mobileMenuBtn.addEventListener('click', () => {
-                    navLinks.classList.toggle('active');
-                    mobileMenuBtn.textContent = navLinks.classList.contains('active') ? '✕' : '☰';
-                });
-
-                document.querySelectorAll('.nav-link').forEach(link => {
-                    link.addEventListener('click', () => {
-                        navLinks.classList.remove('active');
-                        mobileMenuBtn.textContent = '☰';
-                    });
-                });
-            }
-        });
-    </script>
 </body>
 </html>
-
