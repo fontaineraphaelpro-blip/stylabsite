@@ -5,10 +5,29 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=5.0, user-scalable=yes">
     <title>Style Lab Virtual Try-On — Augmentez vos ventes de 30% dès aujourd'hui</title>
     <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800;900&display=swap" rel="stylesheet">
-    <script src="env.js?v=7"></script>
-    <script src="config.js?v=6"></script>
-    <script src="widget.js?v=5"></script>
-    <script src="app.js?v=5"></script>
+    <script>
+        console.log('🚀 INDEX.HTML - Scripts en cours de chargement...');
+        console.log('🚀 INDEX.HTML - window._env avant chargement:', window._env);
+    </script>
+    <script src="env.js?v=8" onerror="console.error('❌ ERREUR: env.js n\'a pas pu être chargé')"></script>
+    <script>
+        console.log('🚀 INDEX.HTML - env.js chargé, window._env:', window._env);
+    </script>
+    <script src="config.js?v=7" onerror="console.error('❌ ERREUR: config.js n\'a pas pu être chargé')"></script>
+    <script>
+        console.log('🚀 INDEX.HTML - config.js chargé, window.config:', window.config);
+    </script>
+    <script src="widget.js?v=6" onerror="console.error('❌ ERREUR: widget.js n\'a pas pu être chargé')"></script>
+    <script src="app.js?v=6" onerror="console.error('❌ ERREUR: app.js n\'a pas pu être chargé')"></script>
+    <script>
+        console.log('🚀 INDEX.HTML - Tous les scripts chargés');
+        console.log('🚀 INDEX.HTML - Vérification finale:', {
+            _env: !!window._env,
+            _envToken: window._env?.REPLICATE_API_TOKEN ? window._env.REPLICATE_API_TOKEN.substring(0, 15) + '...' : 'VIDE',
+            config: !!window.config,
+            configToken: window.config?.replicateApiToken ? window.config.replicateApiToken.substring(0, 15) + '...' : 'VIDE'
+        });
+    </script>
     <style>
         * {
             margin: 0;
@@ -1825,7 +1844,7 @@
     <div class="animated-bg">
         <div class="gradient-orb orb-1"></div>
         <div class="gradient-orb orb-2"></div>
-    </div>
+                    </div>
 
     <!-- Sticky CTA Bar (shows on scroll) -->
     <div class="sticky-cta" id="stickyCta">
@@ -1852,19 +1871,19 @@
                 <a href="https://apps.shopify.com/try-on-stylelab" class="btn-primary btn-small" target="_blank" rel="noopener noreferrer">
                     Installer maintenant
                 </a>
+                </div>
             </div>
-        </div>
-    </nav>
+        </nav>
 
     <!-- Hero Section -->
     <section class="hero">
-        <div class="hero-content">
+            <div class="hero-content">
             <div class="hero-badge">
                 <div class="badge-icon">
                     <span class="pulse-dot"></span>
                     <span>+127 boutiques installées cette semaine</span>
                 </div>
-            </div>
+                </div>
             
             <h1>
                 Augmentez vos ventes de <span class="gradient-text">30%</span><br>
@@ -1881,7 +1900,7 @@
                 <div class="proof-item">
                     <div class="proof-stars">★★★★★</div>
                     <div class="proof-text"><span class="proof-number">4.9/5</span> sur Shopify</div>
-                </div>
+            </div>
                 <div class="proof-item">
                     <div class="proof-text"><span class="proof-number">500+</span> boutiques</div>
                 </div>
@@ -1939,7 +1958,7 @@
             <p class="section-subtitle">
                 Des résultats mesurables dès la première semaine
             </p>
-        </div>
+                    </div>
         <div class="benefits-grid">
             <div class="benefit-card">
                 <div class="benefit-icon">📈</div>
@@ -1949,7 +1968,7 @@
                     Augmentation moyenne de 30% du taux de conversion.
                 </p>
                 <span class="benefit-stat">+30% de conversions</span>
-            </div>
+                        </div>
             <div class="benefit-card">
                 <div class="benefit-icon">💰</div>
                 <h3 class="benefit-title">Réduisez les retours</h3>
@@ -1958,7 +1977,7 @@
                     Économisez sur les coûts de logistique et de gestion.
                 </p>
                 <span class="benefit-stat">-45% de retours</span>
-            </div>
+                        </div>
             <div class="benefit-card">
                 <div class="benefit-icon">⚡</div>
                 <h3 class="benefit-title">ROI immédiat</h3>
@@ -1976,7 +1995,7 @@
         <div class="section-header">
             <h2 class="section-title">Essayez-le en action</h2>
             <p class="section-subtitle">Découvrez comment le widget s'intègre naturellement dans vos pages produits Shopify</p>
-        </div>
+                    </div>
         <div class="product-demo-container">
             <div class="product-layout">
                 <div class="product-images">
@@ -1984,8 +2003,8 @@
                     <div class="product-thumbnails">
                         <img src="https://images.unsplash.com/photo-1521572163474-6864f9cf17ab?w=200&h=200&fit=crop" onclick="changeMainImage(this.src.replace('w=200&h=200', 'w=800&h=800')); setActiveThumbnail(this)" class="active" alt="T-Shirt Blanc">
                         <img src="https://images.unsplash.com/photo-1618354691373-d851c5c3a990?w=200&h=200&fit=crop" onclick="changeMainImage(this.src.replace('w=200&h=200', 'w=800&h=800')); setActiveThumbnail(this)" alt="T-Shirt Noir">
-                    </div>
                 </div>
+                    </div>
                 <div class="product-info">
                     <div class="product-vendor">STYLE LAB</div>
                     <h1>Oversized Tee</h1>
@@ -1998,21 +2017,21 @@
                             <button class="option-btn" onclick="setActiveOption(this)">M</button>
                             <button class="option-btn" onclick="setActiveOption(this)">L</button>
                             <button class="option-btn" onclick="setActiveOption(this)">XL</button>
-                        </div>
+                </div>
                     </div>
                     <div class="quantity-selector">
                         <button class="quantity-btn" onclick="changeQuantity(-1)">−</button>
                         <input type="number" class="quantity-input" id="quantity" value="1" min="1" max="10">
                         <button class="quantity-btn" onclick="changeQuantity(1)">+</button>
                         <span style="margin-left: auto; font-weight: 700;">Total: <span id="totalPrice">49€</span></span>
-                    </div>
+                </div>
                     <button class="add-to-cart" onclick="alert('Ajouté au panier !')">Ajouter au panier</button>
                     <div class="widget-container">
                         <div id="vton-widget-root"></div>
                     </div>
                 </div>
-            </div>
-        </div>
+                    </div>
+                </div>
     </section>
 
     <!-- DASHBOARD SECTION -->
@@ -2020,7 +2039,7 @@
         <div class="section-header">
             <h2 class="section-title">Dashboard Analytics</h2>
             <p class="section-subtitle">Suivez vos performances en temps réel</p>
-        </div>
+                    </div>
         <div class="dashboard-container">
             <div class="stats-grid-dashboard">
                 <div class="stat-card">
@@ -2061,7 +2080,7 @@
             <div class="config-header">
                 <h2>Personnalisation du Widget</h2>
                 <p>Adaptez l'apparence du widget à votre identité de marque</p>
-            </div>
+                </div>
             <form id="widgetConfigForm">
                 <div class="form-group">
                     <label class="form-label">Texte du bouton</label>
@@ -2072,14 +2091,14 @@
                     <div class="color-input-group">
                         <input type="color" class="color-picker" id="widgetBg" value="#000000">
                         <input type="text" class="form-input" id="widgetBgText" value="#000000" placeholder="#000000">
-                    </div>
+                </div>
                 </div>
                 <div class="form-group">
                     <label class="form-label">Couleur du texte</label>
                     <div class="color-input-group">
                         <input type="color" class="color-picker" id="widgetColor" value="#ffffff">
                         <input type="text" class="form-input" id="widgetColorText" value="#ffffff" placeholder="#ffffff">
-                    </div>
+                </div>
                 </div>
                 <button type="button" class="btn-save" onclick="saveConfig()">Enregistrer la configuration</button>
             </form>
@@ -2099,23 +2118,23 @@
             </p>
         </div>
         <div class="steps-container">
-            <div class="step">
-                <div class="step-number">1</div>
+                <div class="step">
+                    <div class="step-number">1</div>
                 <h3 class="step-title">Installez l'app</h3>
                 <p class="step-description">
                     Un clic depuis le Shopify App Store. 
                     Compatible avec tous les thèmes.
                 </p>
-            </div>
-            <div class="step">
-                <div class="step-number">2</div>
+                </div>
+                <div class="step">
+                    <div class="step-number">2</div>
                 <h3 class="step-title">Personnalisez</h3>
                 <p class="step-description">
                     Adaptez les couleurs et le texte à votre marque en quelques clics.
                 </p>
-            </div>
-            <div class="step">
-                <div class="step-number">3</div>
+                </div>
+                <div class="step">
+                    <div class="step-number">3</div>
                 <h3 class="step-title">C'est prêt !</h3>
                 <p class="step-description">
                     Le widget apparaît automatiquement sur vos pages produits.
@@ -2132,15 +2151,15 @@
                 Ce que nos clients disent de Style Lab
             </p>
         </div>
-        <div class="testimonials-grid">
-            <div class="testimonial-card">
-                <div class="testimonial-header">
+            <div class="testimonials-grid">
+                <div class="testimonial-card">
+                    <div class="testimonial-header">
                     <div class="stars">★★★★★</div>
                     <div class="verified-badge">
                         <span>✓</span>
                         <span>Vérifié</span>
+                        </div>
                     </div>
-                </div>
                 <p class="testimonial-text">
                     "Incroyable ! Nos conversions ont explosé de 38% en seulement 2 mois. 
                     Le ROI est juste fou. Meilleur investissement de l'année."
@@ -2154,18 +2173,18 @@
                     <div class="author-info">
                         <h4>Sophie Martin</h4>
                         <p>Mode & Style Paris</p>
+                        </div>
                     </div>
                 </div>
-            </div>
             
-            <div class="testimonial-card">
-                <div class="testimonial-header">
+                <div class="testimonial-card">
+                    <div class="testimonial-header">
                     <div class="stars">★★★★★</div>
                     <div class="verified-badge">
                         <span>✓</span>
                         <span>Vérifié</span>
+                        </div>
                     </div>
-                </div>
                 <p class="testimonial-text">
                     "Installation ultra-rapide, interface intuitive. 
                     Nos retours ont chuté de 52%. Je recommande à 100%."
@@ -2179,8 +2198,8 @@
                     <div class="author-info">
                         <h4>Jean Dubois</h4>
                         <p>Fashion Store Lyon</p>
-                    </div>
-                </div>
+            </div>
+        </div>
             </div>
             
             <div class="testimonial-card">
@@ -2198,16 +2217,16 @@
                 <div class="testimonial-result">
                     <div class="result-label">Augmentation panier moyen</div>
                     <div class="result-value">+42%</div>
-                </div>
+                    </div>
                 <div class="testimonial-author">
                     <div class="author-avatar">ML</div>
                     <div class="author-info">
                         <h4>Marie Leclerc</h4>
                         <p>Urban Clothing</p>
+                </div>
                     </div>
                 </div>
-            </div>
-        </div>
+                    </div>
     </section>
 
     <!-- Pricing Tease -->
@@ -2226,15 +2245,15 @@
                 <div class="pricing-feature">
                     <span class="checkmark">✓</span>
                     <span>Analytics avancés</span>
-                </div>
+            </div>
                 <div class="pricing-feature">
                     <span class="checkmark">✓</span>
                     <span>Support prioritaire</span>
-                </div>
+        </div>
                 <div class="pricing-feature">
                     <span class="checkmark">✓</span>
                     <span>Personnalisation totale</span>
-                </div>
+            </div>
             </div>
             <a href="https://apps.shopify.com/try-on-stylelab" class="btn-primary" style="width: auto; display: inline-flex;" target="_blank" rel="noopener noreferrer">
                 <span>Commencer gratuitement</span>
@@ -2250,35 +2269,35 @@
     <section class="faq-section">
         <div class="section-header">
             <h2 class="section-title">Questions fréquentes</h2>
-        </div>
+                        </div>
         <div class="faq-container">
             <div class="faq-item">
                 <div class="faq-question" onclick="toggleFaq(this)">
                     <span>L'essai gratuit est-il vraiment sans engagement ?</span>
                     <span class="faq-icon">+</span>
-                </div>
+                    </div>
                 <div class="faq-answer">
                     Oui à 100% ! Aucune carte bancaire demandée. Testez toutes les fonctionnalités pendant 14 jours. 
                     Si vous n'êtes pas conquis, annulez en 1 clic.
                 </div>
-            </div>
+                        </div>
             
             <div class="faq-item">
                 <div class="faq-question" onclick="toggleFaq(this)">
                     <span>Est-ce vraiment aussi rapide à installer ?</span>
                     <span class="faq-icon">+</span>
-                </div>
+                    </div>
                 <div class="faq-answer">
                     Oui ! Installation depuis le Shopify App Store en 1 clic. Configuration en 2 minutes. 
                     Aucun code requis, compatible avec tous les thèmes.
                 </div>
-            </div>
+                        </div>
             
             <div class="faq-item">
                 <div class="faq-question" onclick="toggleFaq(this)">
                     <span>Puis-je vraiment voir des résultats dès la première semaine ?</span>
                     <span class="faq-icon">+</span>
-                </div>
+                    </div>
                 <div class="faq-answer">
                     Absolument. 87% de nos clients constatent une amélioration de leurs conversions dès la première semaine. 
                     ROI moyen en 18 jours.
@@ -2298,7 +2317,7 @@
                 <div class="final-cta-feature">
                     <span>✓</span>
                     <span>14 jours gratuits</span>
-                </div>
+            </div>
                 <div class="final-cta-feature">
                     <span>✓</span>
                     <span>Installation en 3 min</span>
@@ -2530,14 +2549,14 @@
             anchor.addEventListener('click', function (e) {
                 const href = this.getAttribute('href');
                 if (href !== '#' && href !== '#blog') {
-                    e.preventDefault();
+                e.preventDefault();
                     const target = document.querySelector(href);
-                    if (target) {
-                        target.scrollIntoView({
-                            behavior: 'smooth',
-                            block: 'start'
-                        });
-                    }
+                if (target) {
+                    target.scrollIntoView({
+                        behavior: 'smooth',
+                        block: 'start'
+                    });
+                }
                 }
             });
         });
