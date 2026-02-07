@@ -3,264 +3,172 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Virtual Try-On Shopify - Démo | StyleLab</title>
-    <link rel="stylesheet" href="demo-app.css">
+    <title>Virtual Try-On - StyleLab</title>
     <script src="env.js"></script>
     <script src="config.js"></script>
     <script src="widget.js"></script>
     <script src="app.js"></script>
 </head>
-<body style="margin: 0; padding: 0; font-family: 'Inter', sans-serif; background: #ffffff;">
-    
-    <!-- HEADER -->
-    <header style="background: white; padding: 1rem 2rem; border-bottom: 1px solid #e5e7eb; position: sticky; top: 0; z-index: 1000;">
+<body>
+    <header style="padding: 1rem 2rem; background: white; border-bottom: 1px solid #ddd;">
         <div style="max-width: 1400px; margin: 0 auto; display: flex; justify-content: space-between; align-items: center;">
-            <div style="font-size: 1.5rem; font-weight: 800; color: #111827;">Style Lab</div>
+            <div style="font-size: 1.5rem; font-weight: bold;">Style Lab</div>
             <nav style="display: flex; gap: 2rem;">
-                <a href="#store" style="color: #111827; text-decoration: none; font-weight: 500;">Store</a>
-                <a href="#produit" style="color: #111827; text-decoration: none; font-weight: 500;">Produit</a>
-                <a href="#dashboard" style="color: #111827; text-decoration: none; font-weight: 500;">Dashboard</a>
-                <a href="#config" style="color: #111827; text-decoration: none; font-weight: 500;">Config</a>
+                <a href="#store" style="text-decoration: none; color: #000;">Store</a>
+                <a href="#produit" style="text-decoration: none; color: #000;">Produit</a>
+                <a href="#dashboard" style="text-decoration: none; color: #000;">Dashboard</a>
+                <a href="#config" style="text-decoration: none; color: #000;">Config</a>
             </nav>
         </div>
     </header>
 
-    <!-- HERO -->
-    <section style="padding: 5rem 2rem; background: linear-gradient(135deg, #667eea 0%, #764ba2 100%); color: white; text-align: center;">
-        <div style="max-width: 1200px; margin: 0 auto;">
-            <h1 style="font-size: 3.5rem; font-weight: 800; margin-bottom: 1rem;">Virtual Try-On Shopify</h1>
-            <p style="font-size: 1.5rem; margin-bottom: 0; opacity: 0.9;">Démo complète : Store, Produit, Dashboard, Configuration</p>
-        </div>
+    <section style="padding: 4rem 2rem; background: linear-gradient(135deg, #667eea 0%, #764ba2 100%); color: white; text-align: center;">
+        <h1 style="font-size: 3rem; margin-bottom: 1rem;">Virtual Try-On Shopify</h1>
+        <p style="font-size: 1.25rem;">Démo complète</p>
     </section>
 
-    <!-- STORE -->
     <section id="store" style="padding: 4rem 2rem; background: white;">
-        <div style="max-width: 1400px; margin: 0 auto;">
-            <h2 style="text-align: center; font-size: 2.5rem; font-weight: 800; margin-bottom: 3rem; color: #111827;">Store</h2>
-            <div style="display: grid; grid-template-columns: repeat(auto-fill, minmax(280px, 1fr)); gap: 2rem;">
-                <div style="background: white; border-radius: 1rem; box-shadow: 0 4px 6px rgba(0,0,0,0.1); overflow: hidden; cursor: pointer;" onclick="document.getElementById('produit').scrollIntoView({behavior: 'smooth'})">
-                    <img src="https://images.unsplash.com/photo-1521572163474-6864f9cf17ab?w=600&h=600&fit=crop" style="width: 100%; aspect-ratio: 1; object-fit: cover;">
-                    <div style="padding: 1.5rem;">
-                        <h3 style="font-size: 1.125rem; font-weight: 600; margin-bottom: 0.5rem; color: #111827;">T-Shirt Premium</h3>
-                        <div style="font-size: 1.25rem; font-weight: 700; color: #008060;">29,90 €</div>
-                    </div>
+        <h2 style="text-align: center; font-size: 2rem; margin-bottom: 2rem;">Store</h2>
+        <div style="display: grid; grid-template-columns: repeat(auto-fill, minmax(250px, 1fr)); gap: 2rem; max-width: 1400px; margin: 0 auto;">
+            <div style="border: 1px solid #ddd; border-radius: 8px; overflow: hidden; cursor: pointer;" onclick="document.getElementById('produit').scrollIntoView({behavior: 'smooth'})">
+                <img src="https://images.unsplash.com/photo-1521572163474-6864f9cf17ab?w=600&h=600&fit=crop" style="width: 100%; height: 250px; object-fit: cover;">
+                <div style="padding: 1rem;">
+                    <h3 style="margin: 0 0 0.5rem 0;">T-Shirt Premium</h3>
+                    <div style="font-weight: bold; color: #008060;">29,90 €</div>
                 </div>
-                <div style="background: white; border-radius: 1rem; box-shadow: 0 4px 6px rgba(0,0,0,0.1); overflow: hidden; cursor: pointer;" onclick="document.getElementById('produit').scrollIntoView({behavior: 'smooth'})">
-                    <img src="https://images.unsplash.com/photo-1618354691373-d851c5c3a990?w=600&h=600&fit=crop" style="width: 100%; aspect-ratio: 1; object-fit: cover;">
-                    <div style="padding: 1.5rem;">
-                        <h3 style="font-size: 1.125rem; font-weight: 600; margin-bottom: 0.5rem; color: #111827;">Jean Slim Fit</h3>
-                        <div style="font-size: 1.25rem; font-weight: 700; color: #008060;">79,90 €</div>
-                    </div>
+            </div>
+            <div style="border: 1px solid #ddd; border-radius: 8px; overflow: hidden; cursor: pointer;" onclick="document.getElementById('produit').scrollIntoView({behavior: 'smooth'})">
+                <img src="https://images.unsplash.com/photo-1618354691373-d851c5c3a990?w=600&h=600&fit=crop" style="width: 100%; height: 250px; object-fit: cover;">
+                <div style="padding: 1rem;">
+                    <h3 style="margin: 0 0 0.5rem 0;">Jean Slim Fit</h3>
+                    <div style="font-weight: bold; color: #008060;">79,90 €</div>
                 </div>
-                <div style="background: white; border-radius: 1rem; box-shadow: 0 4px 6px rgba(0,0,0,0.1); overflow: hidden; cursor: pointer;" onclick="document.getElementById('produit').scrollIntoView({behavior: 'smooth'})">
-                    <img src="https://images.unsplash.com/photo-1562157873-818bc0726f68?w=600&h=600&fit=crop" style="width: 100%; aspect-ratio: 1; object-fit: cover;">
-                    <div style="padding: 1.5rem;">
-                        <h3 style="font-size: 1.125rem; font-weight: 600; margin-bottom: 0.5rem; color: #111827;">Veste Cuir</h3>
-                        <div style="font-size: 1.25rem; font-weight: 700; color: #008060;">149,90 €</div>
-                    </div>
+            </div>
+            <div style="border: 1px solid #ddd; border-radius: 8px; overflow: hidden; cursor: pointer;" onclick="document.getElementById('produit').scrollIntoView({behavior: 'smooth'})">
+                <img src="https://images.unsplash.com/photo-1562157873-818bc0726f68?w=600&h=600&fit=crop" style="width: 100%; height: 250px; object-fit: cover;">
+                <div style="padding: 1rem;">
+                    <h3 style="margin: 0 0 0.5rem 0;">Veste Cuir</h3>
+                    <div style="font-weight: bold; color: #008060;">149,90 €</div>
                 </div>
-                <div style="background: white; border-radius: 1rem; box-shadow: 0 4px 6px rgba(0,0,0,0.1); overflow: hidden; cursor: pointer;" onclick="document.getElementById('produit').scrollIntoView({behavior: 'smooth'})">
-                    <img src="https://images.unsplash.com/photo-1594633313593-bab3825d0caf?w=600&h=600&fit=crop" style="width: 100%; aspect-ratio: 1; object-fit: cover;">
-                    <div style="padding: 1.5rem;">
-                        <h3 style="font-size: 1.125rem; font-weight: 600; margin-bottom: 0.5rem; color: #111827;">Robe Midi</h3>
-                        <div style="font-size: 1.25rem; font-weight: 700; color: #008060;">89,90 €</div>
-                    </div>
+            </div>
+            <div style="border: 1px solid #ddd; border-radius: 8px; overflow: hidden; cursor: pointer;" onclick="document.getElementById('produit').scrollIntoView({behavior: 'smooth'})">
+                <img src="https://images.unsplash.com/photo-1594633313593-bab3825d0caf?w=600&h=600&fit=crop" style="width: 100%; height: 250px; object-fit: cover;">
+                <div style="padding: 1rem;">
+                    <h3 style="margin: 0 0 0.5rem 0;">Robe Midi</h3>
+                    <div style="font-weight: bold; color: #008060;">89,90 €</div>
                 </div>
-                <div style="background: white; border-radius: 1rem; box-shadow: 0 4px 6px rgba(0,0,0,0.1); overflow: hidden; cursor: pointer;" onclick="document.getElementById('produit').scrollIntoView({behavior: 'smooth'})">
-                    <img src="https://images.unsplash.com/photo-1556821840-3a63f95609a4?w=600&h=600&fit=crop" style="width: 100%; aspect-ratio: 1; object-fit: cover;">
-                    <div style="padding: 1.5rem;">
-                        <h3 style="font-size: 1.125rem; font-weight: 600; margin-bottom: 0.5rem; color: #111827;">Sweat Capuche</h3>
-                        <div style="font-size: 1.25rem; font-weight: 700; color: #008060;">59,90 €</div>
-                    </div>
+            </div>
+            <div style="border: 1px solid #ddd; border-radius: 8px; overflow: hidden; cursor: pointer;" onclick="document.getElementById('produit').scrollIntoView({behavior: 'smooth'})">
+                <img src="https://images.unsplash.com/photo-1556821840-3a63f95609a4?w=600&h=600&fit=crop" style="width: 100%; height: 250px; object-fit: cover;">
+                <div style="padding: 1rem;">
+                    <h3 style="margin: 0 0 0.5rem 0;">Sweat Capuche</h3>
+                    <div style="font-weight: bold; color: #008060;">59,90 €</div>
                 </div>
-                <div style="background: white; border-radius: 1rem; box-shadow: 0 4px 6px rgba(0,0,0,0.1); overflow: hidden; cursor: pointer;" onclick="document.getElementById('produit').scrollIntoView({behavior: 'smooth'})">
-                    <img src="https://images.unsplash.com/photo-1551028719-00167b16eac5?w=600&h=600&fit=crop" style="width: 100%; aspect-ratio: 1; object-fit: cover;">
-                    <div style="padding: 1.5rem;">
-                        <h3 style="font-size: 1.125rem; font-weight: 600; margin-bottom: 0.5rem; color: #111827;">Pantalon Chino</h3>
-                        <div style="font-size: 1.25rem; font-weight: 700; color: #008060;">69,90 €</div>
-                    </div>
+            </div>
+            <div style="border: 1px solid #ddd; border-radius: 8px; overflow: hidden; cursor: pointer;" onclick="document.getElementById('produit').scrollIntoView({behavior: 'smooth'})">
+                <img src="https://images.unsplash.com/photo-1551028719-00167b16eac5?w=600&h=600&fit=crop" style="width: 100%; height: 250px; object-fit: cover;">
+                <div style="padding: 1rem;">
+                    <h3 style="margin: 0 0 0.5rem 0;">Pantalon Chino</h3>
+                    <div style="font-weight: bold; color: #008060;">69,90 €</div>
                 </div>
             </div>
         </div>
     </section>
 
-    <!-- PRODUIT -->
     <section id="produit" style="padding: 4rem 2rem; background: #f9fafb;">
-        <div style="max-width: 1200px; margin: 0 auto;">
-            <h2 style="text-align: center; font-size: 2.5rem; font-weight: 800; margin-bottom: 3rem; color: #111827;">Produit avec Widget</h2>
-            <div style="background: white; padding: 3rem; border-radius: 1rem; box-shadow: 0 4px 6px rgba(0,0,0,0.1);">
-                <div style="display: grid; grid-template-columns: 1fr 1fr; gap: 3rem; margin-bottom: 3rem;">
-                    <div>
-                        <img src="https://images.unsplash.com/photo-1521572163474-6864f9cf17ab?w=800&h=800&fit=crop" id="mainImage" style="width: 100%; aspect-ratio: 1; object-fit: cover; border-radius: 0.5rem; border: 1px solid #e5e7eb; margin-bottom: 1rem;">
-                        <div style="display: flex; gap: 0.5rem;">
-                            <img src="https://images.unsplash.com/photo-1521572163474-6864f9cf17ab?w=200&h=200&fit=crop" onclick="changeMainImage(this.src.replace('w=200&h=200', 'w=800&h=800'))" style="width: 60px; height: 60px; object-fit: cover; border-radius: 0.5rem; border: 2px solid #008060; cursor: pointer;">
-                            <img src="https://images.unsplash.com/photo-1618354691373-d851c5c3a990?w=200&h=200&fit=crop" onclick="changeMainImage(this.src.replace('w=200&h=200', 'w=800&h=800'))" style="width: 60px; height: 60px; object-fit: cover; border-radius: 0.5rem; border: 2px solid #e5e7eb; cursor: pointer;">
-                        </div>
-                    </div>
-                    <div>
-                        <h1 style="font-size: 2.5rem; font-weight: 800; margin-bottom: 1rem; color: #111827;">T-Shirt Premium</h1>
-                        <div style="font-size: 2.5rem; font-weight: 800; color: #008060; margin-bottom: 1rem;">29,90 €</div>
-                        <p style="margin-bottom: 1.5rem; color: #6b7280; font-size: 1.125rem;">T-Shirt en coton biologique certifié. Confort optimal.</p>
-                        <button style="width: 100%; padding: 1rem; background: #008060; color: white; border: none; border-radius: 0.5rem; font-weight: 600; font-size: 1.125rem; cursor: pointer;" onclick="alert('Ajouté au panier !')">Ajouter au panier</button>
+        <h2 style="text-align: center; font-size: 2rem; margin-bottom: 2rem;">Produit avec Widget</h2>
+        <div style="max-width: 1200px; margin: 0 auto; background: white; padding: 2rem; border-radius: 8px; box-shadow: 0 2px 8px rgba(0,0,0,0.1);">
+            <div style="display: grid; grid-template-columns: 1fr 1fr; gap: 2rem; margin-bottom: 2rem;">
+                <div>
+                    <img src="https://images.unsplash.com/photo-1521572163474-6864f9cf17ab?w=800&h=800&fit=crop" id="mainImage" style="width: 100%; border-radius: 8px; margin-bottom: 1rem;">
+                    <div style="display: flex; gap: 0.5rem;">
+                        <img src="https://images.unsplash.com/photo-1521572163474-6864f9cf17ab?w=200&h=200&fit=crop" onclick="changeMainImage(this.src.replace('w=200&h=200', 'w=800&h=800'))" style="width: 60px; height: 60px; object-fit: cover; border-radius: 4px; border: 2px solid #008060; cursor: pointer;">
+                        <img src="https://images.unsplash.com/photo-1618354691373-d851c5c3a990?w=200&h=200&fit=crop" onclick="changeMainImage(this.src.replace('w=200&h=200', 'w=800&h=800'))" style="width: 60px; height: 60px; object-fit: cover; border-radius: 4px; border: 1px solid #ddd; cursor: pointer;">
                     </div>
                 </div>
-                <div style="border-top: 2px solid #e5e7eb; padding-top: 2rem; margin-top: 2rem;">
-                    <h3 style="margin-bottom: 1.5rem; font-size: 1.5rem; font-weight: 700; color: #111827;">Essayez virtuellement</h3>
-                    <div id="vton-widget-root"></div>
+                <div>
+                    <h1 style="font-size: 2rem; margin-bottom: 1rem;">T-Shirt Premium</h1>
+                    <div style="font-size: 2rem; font-weight: bold; color: #008060; margin-bottom: 1rem;">29,90 €</div>
+                    <p style="margin-bottom: 1.5rem; color: #666;">T-Shirt en coton biologique certifié.</p>
+                    <button style="width: 100%; padding: 1rem; background: #008060; color: white; border: none; border-radius: 4px; font-weight: bold; cursor: pointer;" onclick="alert('Ajouté au panier !')">Ajouter au panier</button>
                 </div>
+            </div>
+            <div style="border-top: 1px solid #ddd; padding-top: 2rem;">
+                <h3 style="margin-bottom: 1rem;">Essayez virtuellement</h3>
+                <div id="vton-widget-root"></div>
             </div>
         </div>
     </section>
 
-    <!-- DASHBOARD -->
     <section id="dashboard" style="padding: 4rem 2rem; background: white;">
-        <div style="max-width: 1400px; margin: 0 auto;">
-            <h2 style="text-align: center; font-size: 2.5rem; font-weight: 800; margin-bottom: 3rem; color: #111827;">Dashboard</h2>
-            <div class="demo-app-container">
-                <div class="demo-header">
-                    <h1>Dashboard - StyleLab Virtual Try-On</h1>
-                    <p>Vue d'ensemble de votre activité</p>
-                    <span class="demo-badge">DÉMO INTERACTIVE</span>
+        <h2 style="text-align: center; font-size: 2rem; margin-bottom: 2rem;">Dashboard</h2>
+        <div style="max-width: 1400px; margin: 0 auto; background: #f9fafb; padding: 2rem; border-radius: 8px;">
+            <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(200px, 1fr)); gap: 1rem; margin-bottom: 2rem;">
+                <div style="background: white; padding: 1.5rem; border-radius: 8px; text-align: center;">
+                    <div style="font-size: 2rem; font-weight: bold; color: #008060;">1,247</div>
+                    <div style="color: #666;">Crédits Restants</div>
                 </div>
-                <div class="stats-grid">
-                    <div class="stat-card">
-                        <div class="stat-icon-wrapper">
-                            <svg width="20" height="20" viewBox="0 0 20 20" fill="none" xmlns="http://www.w3.org/2000/svg">
-                                <path d="M2.5 5.83333H17.5M2.5 5.83333C1.39543 5.83333 0.5 6.72876 0.5 7.83333V15.8333C0.5 16.9379 1.39543 17.8333 2.5 17.8333H17.5C18.6046 17.8333 19.5 16.9379 19.5 15.8333V7.83333C19.5 6.72876 18.6046 5.83333 17.5 5.83333M2.5 5.83333V4.16667C2.5 3.0621 3.39543 2.16667 4.5 2.16667H15.5C16.6046 2.16667 17.5 3.0621 17.5 4.16667V5.83333" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/>
-                            </svg>
-                        </div>
-                        <div class="stat-value">1,247</div>
-                        <div class="stat-label">Crédits Restants</div>
-                    </div>
-                    <div class="stat-card">
-                        <div class="stat-icon-wrapper">
-                            <svg width="20" height="20" viewBox="0 0 20 20" fill="none" xmlns="http://www.w3.org/2000/svg">
-                                <path d="M2.5 15.8333L10 2.5L17.5 15.8333H2.5Z" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/>
-                                <path d="M10 12.5V8.33333" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/>
-                            </svg>
-                        </div>
-                        <div class="stat-value">3,842</div>
-                        <div class="stat-label">Total Try-ons (30j)</div>
-                    </div>
-                    <div class="stat-card">
-                        <div class="stat-icon-wrapper">
-                            <svg width="20" height="20" viewBox="0 0 20 20" fill="none" xmlns="http://www.w3.org/2000/svg">
-                                <path d="M2.5 2.5H4.16667L5.83333 12.5H15.8333L17.5 5.83333H5.83333" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/>
-                                <circle cx="7.5" cy="16.6667" r="1.66667" stroke="currentColor" stroke-width="1.5"/>
-                                <circle cx="15" cy="16.6667" r="1.66667" stroke="currentColor" stroke-width="1.5"/>
-                            </svg>
-                        </div>
-                        <div class="stat-value">1,156</div>
-                        <div class="stat-label">Add to Cart</div>
-                    </div>
-                    <div class="stat-card">
-                        <div class="stat-icon-wrapper">
-                            <svg width="20" height="20" viewBox="0 0 20 20" fill="none" xmlns="http://www.w3.org/2000/svg">
-                                <path d="M2.5 15.8333L7.5 10.8333L12.5 15.8333L17.5 10.8333" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/>
-                                <path d="M7.5 10.8333V2.5H12.5V10.8333" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/>
-                            </svg>
-                        </div>
-                        <div class="stat-value">30.1%</div>
-                        <div class="stat-label">Taux de Conversion</div>
-                    </div>
+                <div style="background: white; padding: 1.5rem; border-radius: 8px; text-align: center;">
+                    <div style="font-size: 2rem; font-weight: bold; color: #008060;">3,842</div>
+                    <div style="color: #666;">Total Try-ons</div>
                 </div>
-                <div class="dashboard-section">
-                    <h2>Générations Quotidiennes (7 Derniers Jours)</h2>
-                    <div class="graph-container-large">
-                        <div class="graph-bars">
-                            <div class="graph-bar-item">
-                                <div class="graph-bar-value">142</div>
-                                <div class="graph-bar" style="height: 65%"></div>
-                                <div class="graph-bar-label">Lun</div>
-                            </div>
-                            <div class="graph-bar-item">
-                                <div class="graph-bar-value">198</div>
-                                <div class="graph-bar" style="height: 90%"></div>
-                                <div class="graph-bar-label">Mar</div>
-                            </div>
-                            <div class="graph-bar-item">
-                                <div class="graph-bar-value">165</div>
-                                <div class="graph-bar" style="height: 75%"></div>
-                                <div class="graph-bar-label">Mer</div>
-                            </div>
-                            <div class="graph-bar-item">
-                                <div class="graph-bar-value">223</div>
-                                <div class="graph-bar" style="height: 100%"></div>
-                                <div class="graph-bar-label">Jeu</div>
-                            </div>
-                            <div class="graph-bar-item">
-                                <div class="graph-bar-value">187</div>
-                                <div class="graph-bar" style="height: 85%"></div>
-                                <div class="graph-bar-label">Ven</div>
-                            </div>
-                            <div class="graph-bar-item">
-                                <div class="graph-bar-value">156</div>
-                                <div class="graph-bar" style="height: 70%"></div>
-                                <div class="graph-bar-label">Sam</div>
-                            </div>
-                            <div class="graph-bar-item">
-                                <div class="graph-bar-value">201</div>
-                                <div class="graph-bar graph-bar-today" style="height: 92%"></div>
-                                <div class="graph-bar-label graph-bar-label-today">Dim</div>
-                            </div>
-                        </div>
-                    </div>
+                <div style="background: white; padding: 1.5rem; border-radius: 8px; text-align: center;">
+                    <div style="font-size: 2rem; font-weight: bold; color: #008060;">1,156</div>
+                    <div style="color: #666;">Add to Cart</div>
+                </div>
+                <div style="background: white; padding: 1.5rem; border-radius: 8px; text-align: center;">
+                    <div style="font-size: 2rem; font-weight: bold; color: #008060;">30.1%</div>
+                    <div style="color: #666;">Taux Conversion</div>
+                </div>
+            </div>
+            <div style="background: white; padding: 2rem; border-radius: 8px;">
+                <h3 style="margin-bottom: 1rem;">Générations Quotidiennes</h3>
+                <div style="display: flex; gap: 1rem; align-items: flex-end; height: 200px;">
+                    <div style="flex: 1; background: #008060; border-radius: 4px 4px 0 0;" style="height: 65%;"></div>
+                    <div style="flex: 1; background: #008060; border-radius: 4px 4px 0 0;" style="height: 90%;"></div>
+                    <div style="flex: 1; background: #008060; border-radius: 4px 4px 0 0;" style="height: 75%;"></div>
+                    <div style="flex: 1; background: #008060; border-radius: 4px 4px 0 0;" style="height: 100%;"></div>
+                    <div style="flex: 1; background: #008060; border-radius: 4px 4px 0 0;" style="height: 85%;"></div>
+                    <div style="flex: 1; background: #008060; border-radius: 4px 4px 0 0;" style="height: 70%;"></div>
+                    <div style="flex: 1; background: #008060; border-radius: 4px 4px 0 0;" style="height: 92%;"></div>
                 </div>
             </div>
         </div>
     </section>
 
-    <!-- CONFIGURATION -->
     <section id="config" style="padding: 4rem 2rem; background: #f9fafb;">
-        <div style="max-width: 1000px; margin: 0 auto;">
-            <h2 style="text-align: center; font-size: 2.5rem; font-weight: 800; margin-bottom: 3rem; color: #111827;">Configuration Widget</h2>
-            <div class="demo-app-container">
-                <div class="demo-header">
-                    <h1>Configuration du Widget</h1>
-                    <p>Personnalisez l'apparence du widget</p>
-                    <span class="demo-badge">DÉMO INTERACTIVE</span>
+        <h2 style="text-align: center; font-size: 2rem; margin-bottom: 2rem;">Configuration Widget</h2>
+        <div style="max-width: 800px; margin: 0 auto; background: white; padding: 2rem; border-radius: 8px; box-shadow: 0 2px 8px rgba(0,0,0,0.1);">
+            <form id="widgetForm">
+                <div style="margin-bottom: 1.5rem;">
+                    <label style="display: block; margin-bottom: 0.5rem; font-weight: bold;">Texte du Bouton</label>
+                    <input type="text" id="widgetText" value="Essayer Virtuellement ✨" style="width: 100%; padding: 0.75rem; border: 1px solid #ddd; border-radius: 4px;">
                 </div>
-                <div class="card">
-                    <h2>Paramètres</h2>
-                    <div class="divider"></div>
-                    <form id="widgetForm">
-                        <div class="form-group">
-                            <label for="widgetText">Texte du Bouton</label>
-                            <input type="text" id="widgetText" value="Essayer Virtuellement ✨" />
-                            <p class="help-text">Le texte affiché sur le bouton</p>
-                        </div>
-                        <div class="form-group">
-                            <label>Couleur de Fond</label>
-                            <div class="color-input-group">
-                                <input type="color" id="widgetBgColor" value="#000000" />
-                                <input type="text" id="widgetBg" value="#000000" />
-                            </div>
-                        </div>
-                        <div class="form-group">
-                            <label>Couleur du Texte</label>
-                            <div class="color-input-group">
-                                <input type="color" id="widgetColorPicker" value="#ffffff" />
-                                <input type="text" id="widgetColor" value="#ffffff" />
-                            </div>
-                        </div>
-                        <div class="divider"></div>
-                        <button type="submit" class="btn btn-primary" id="saveBtn">Enregistrer</button>
-                    </form>
-                    <div class="divider"></div>
-                    <h3>Aperçu</h3>
-                    <div class="preview-card">
-                        <button type="button" id="previewButton" disabled style="padding: 1rem 2rem; border: none; border-radius: 0.5rem; font-weight: 600; cursor: default;">Essayer Virtuellement ✨</button>
+                <div style="margin-bottom: 1.5rem;">
+                    <label style="display: block; margin-bottom: 0.5rem; font-weight: bold;">Couleur de Fond</label>
+                    <div style="display: flex; gap: 1rem;">
+                        <input type="color" id="widgetBgColor" value="#000000" style="width: 60px; height: 40px;">
+                        <input type="text" id="widgetBg" value="#000000" style="flex: 1; padding: 0.75rem; border: 1px solid #ddd; border-radius: 4px;">
                     </div>
                 </div>
+                <div style="margin-bottom: 1.5rem;">
+                    <label style="display: block; margin-bottom: 0.5rem; font-weight: bold;">Couleur du Texte</label>
+                    <div style="display: flex; gap: 1rem;">
+                        <input type="color" id="widgetColorPicker" value="#ffffff" style="width: 60px; height: 40px;">
+                        <input type="text" id="widgetColor" value="#ffffff" style="flex: 1; padding: 0.75rem; border: 1px solid #ddd; border-radius: 4px;">
+                    </div>
+                </div>
+                <button type="submit" style="width: 100%; padding: 1rem; background: #008060; color: white; border: none; border-radius: 4px; font-weight: bold; cursor: pointer;">Enregistrer</button>
+            </form>
+            <div style="margin-top: 2rem; padding-top: 2rem; border-top: 1px solid #ddd;">
+                <h3 style="margin-bottom: 1rem;">Aperçu</h3>
+                <button id="previewButton" disabled style="padding: 1rem 2rem; background: #000; color: #fff; border: none; border-radius: 4px; font-weight: bold;">Essayer Virtuellement ✨</button>
             </div>
         </div>
     </section>
 
-    <!-- FOOTER -->
-    <footer style="background: #1f2937; color: white; padding: 3rem 2rem; margin-top: 4rem;">
-        <div style="max-width: 1400px; margin: 0 auto; text-align: center;">
-            <p>&copy; 2026 Style Lab Virtual Try‑On. Tous droits réservés.</p>
-        </div>
+    <footer style="background: #1f2937; color: white; padding: 2rem; text-align: center; margin-top: 4rem;">
+        <p>&copy; 2026 Style Lab Virtual Try‑On</p>
     </footer>
 
     <script>
@@ -288,16 +196,6 @@
         }
 
         document.addEventListener('DOMContentLoaded', function() {
-            const bars = document.querySelectorAll('.graph-bar');
-            bars.forEach((bar, index) => {
-                const height = bar.style.height;
-                bar.style.height = '0%';
-                setTimeout(() => {
-                    bar.style.transition = 'height 0.6s ease';
-                    bar.style.height = height;
-                }, index * 100);
-            });
-
             const widgetTextInput = document.getElementById('widgetText');
             const widgetBgInput = document.getElementById('widgetBg');
             const widgetBgColorPicker = document.getElementById('widgetBgColor');
@@ -306,29 +204,36 @@
             const previewButton = document.getElementById('previewButton');
             const form = document.getElementById('widgetForm');
 
-            if (widgetTextInput && previewButton) {
-                function updatePreview() {
+            function updatePreview() {
+                if (previewButton && widgetTextInput && widgetBgInput && widgetColorInput) {
                     previewButton.textContent = widgetTextInput.value || "Essayer Virtuellement ✨";
                     previewButton.style.backgroundColor = widgetBgInput.value || "#000000";
                     previewButton.style.color = widgetColorInput.value || "#ffffff";
                 }
+            }
 
-                if (widgetBgColorPicker) widgetBgColorPicker.addEventListener('input', (e) => {
+            if (widgetBgColorPicker) {
+                widgetBgColorPicker.addEventListener('input', function(e) {
                     widgetBgInput.value = e.target.value;
                     updatePreview();
                 });
+            }
 
-                if (widgetColorPicker) widgetColorPicker.addEventListener('input', (e) => {
+            if (widgetColorPicker) {
+                widgetColorPicker.addEventListener('input', function(e) {
                     widgetColorInput.value = e.target.value;
                     updatePreview();
                 });
-
-                if (widgetTextInput) widgetTextInput.addEventListener('input', updatePreview);
-                updatePreview();
             }
 
+            if (widgetTextInput) {
+                widgetTextInput.addEventListener('input', updatePreview);
+            }
+
+            updatePreview();
+
             if (form) {
-                form.addEventListener('submit', (e) => {
+                form.addEventListener('submit', function(e) {
                     e.preventDefault();
                     alert('Configuration enregistrée !');
                 });
@@ -337,3 +242,4 @@
     </script>
 </body>
 </html>
+
