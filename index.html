@@ -2,7 +2,7 @@
 <html lang="fr">
 <head>
     <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=5.0, user-scalable=yes">
     <meta name="description" content="Style Lab Virtual Try-On - Solution d'essayage virtuel IA pour Shopify. Augmentez vos conversions de 30% avec notre technologie d'essayage virtuel. Installation en 3 minutes, conforme RGPD.">
     <meta name="keywords" content="virtual try-on, shopify app, essayage virtuel, IA e-commerce, augmentation conversion, shopify widget, virtual fitting">
     <meta name="author" content="Style Lab">
@@ -1063,18 +1063,281 @@
             color: rgba(255,255,255,0.6);
             font-size: 0.875rem;
         }
+        /* MOBILE RESPONSIVE */
+        @media (max-width: 1024px) {
+            .container {
+                padding: 0 1.5rem;
+            }
+            section {
+                padding: 3rem 1.5rem;
+            }
+            .hero {
+                padding: 4rem 1.5rem;
+            }
+            .product-layout {
+                gap: 2rem;
+            }
+        }
         @media (max-width: 768px) {
+            .container {
+                padding: 0 1rem;
+            }
+            section {
+                padding: 2.5rem 1rem;
+            }
+            /* HEADER MOBILE */
+            .header-content {
+                padding: 1rem;
+                flex-wrap: wrap;
+            }
+            nav {
+                gap: 1rem;
+                flex-wrap: wrap;
+                font-size: 0.8125rem;
+            }
+            nav a {
+                font-size: 0.8125rem;
+            }
+            .cta-button {
+                padding: 0.5rem 1rem;
+                font-size: 0.8125rem;
+            }
+            /* HERO MOBILE */
+            .hero {
+                padding: 3rem 1rem;
+            }
             .hero h1 {
                 font-size: 2rem;
+                margin-bottom: 1rem;
+            }
+            .hero .subtitle {
+                font-size: 1.125rem;
+            }
+            .hero .description {
+                font-size: 1rem;
+                margin-bottom: 2rem;
+            }
+            .hero-badges {
+                gap: 0.5rem;
+                margin-bottom: 2rem;
+            }
+            .badge {
+                padding: 0.5rem 1rem;
+                font-size: 0.75rem;
+            }
+            .hero-buttons {
+                flex-direction: column;
+                width: 100%;
+            }
+            .btn-primary,
+            .btn-secondary {
+                width: 100%;
+                padding: 1rem 2rem;
+            }
+            /* STATS BAR MOBILE */
+            .stats-bar {
+                padding: 1.5rem 1rem;
+            }
+            .stats-grid {
+                grid-template-columns: repeat(2, 1fr);
+                gap: 1rem;
+            }
+            .stat-value {
+                font-size: 1.75rem;
+            }
+            .stat-label {
+                font-size: 0.75rem;
+            }
+            /* SECTIONS MOBILE */
+            .section-title {
+                font-size: 1.75rem;
+                margin-bottom: 0.75rem;
+            }
+            .section-subtitle {
+                font-size: 0.9375rem;
+                margin-bottom: 2rem;
+            }
+            /* FEATURE CARDS MOBILE */
+            .feature-grid {
+                grid-template-columns: 1fr;
+                gap: 1.5rem;
+            }
+            .feature-card {
+                padding: 2rem;
+            }
+            .feature-icon {
+                font-size: 2.5rem;
+            }
+            .feature-card h3 {
+                font-size: 1.25rem;
+            }
+            /* STORE GRID MOBILE */
+            .store-grid {
+                grid-template-columns: repeat(2, 1fr);
+                gap: 1rem;
+            }
+            /* PRODUCT PAGE MOBILE */
+            .product-demo {
+                padding: 1.5rem;
+                border-radius: 16px;
             }
             .product-layout {
                 grid-template-columns: 1fr;
+                gap: 2rem;
             }
             .product-images {
                 position: static;
             }
-            .section-title {
-                font-size: 2rem;
+            .product-info h1 {
+                font-size: 1.5rem;
+            }
+            .product-price-large {
+                font-size: 1.5rem;
+            }
+            .product-thumbnails {
+                gap: 0.5rem;
+            }
+            .product-thumbnails img {
+                width: 50px;
+                height: 50px;
+            }
+            .option-buttons {
+                gap: 0.5rem;
+            }
+            .option-btn {
+                padding: 0.625rem 1.25rem;
+                font-size: 0.8125rem;
+            }
+            .quantity-selector {
+                flex-wrap: wrap;
+            }
+            .quantity-selector span {
+                width: 100%;
+                margin-top: 0.5rem;
+            }
+            /* TESTIMONIALS MOBILE */
+            .testimonials-grid {
+                grid-template-columns: 1fr;
+                gap: 1.5rem;
+            }
+            .testimonial-card {
+                padding: 1.5rem;
+            }
+            /* DASHBOARD MOBILE */
+            .dashboard-container {
+                padding: 1.5rem;
+            }
+            .stats-grid-dashboard {
+                grid-template-columns: repeat(2, 1fr);
+                gap: 1rem;
+            }
+            .stat-card {
+                padding: 1.25rem;
+            }
+            .stat-value {
+                font-size: 1.5rem;
+            }
+            .chart-container {
+                padding: 1.5rem;
+            }
+            .chart-bars {
+                gap: 0.5rem;
+            }
+            /* CONFIG MOBILE */
+            .config-container {
+                padding: 1.5rem;
+            }
+            .color-input-group {
+                flex-direction: column;
+            }
+            .color-picker {
+                width: 100%;
+                height: 50px;
+            }
+            /* FAQ MOBILE */
+            .faq-container {
+                padding: 0;
+            }
+            .faq-question {
+                padding: 1.25rem;
+                font-size: 0.9375rem;
+            }
+            .faq-answer {
+                padding: 0 1.25rem 1.25rem 1.25rem;
+                font-size: 0.875rem;
+            }
+            /* BLOG MOBILE */
+            .blog-grid {
+                grid-template-columns: 1fr;
+                gap: 1.5rem;
+            }
+            .blog-content {
+                padding: 1.5rem;
+            }
+            .blog-title {
+                font-size: 1.25rem;
+            }
+            .blog-meta {
+                flex-direction: column;
+                align-items: flex-start;
+                gap: 0.5rem;
+            }
+            /* CTA MOBILE */
+            .cta-section {
+                padding: 3rem 1rem;
+            }
+            .cta-section h2 {
+                font-size: 1.75rem;
+            }
+            .cta-section p {
+                font-size: 1rem;
+            }
+            /* FOOTER MOBILE */
+            footer {
+                padding: 3rem 1rem 2rem;
+            }
+            .footer-grid {
+                grid-template-columns: repeat(2, 1fr);
+                gap: 2rem;
+            }
+        }
+        @media (max-width: 480px) {
+            .container {
+                padding: 0 0.75rem;
+            }
+            section {
+                padding: 2rem 0.75rem;
+            }
+            .hero {
+                padding: 2.5rem 0.75rem;
+            }
+            .hero h1 {
+                font-size: 1.75rem;
+            }
+            .stats-grid {
+                grid-template-columns: 1fr;
+            }
+            .store-grid {
+                grid-template-columns: 1fr;
+            }
+            .stats-grid-dashboard {
+                grid-template-columns: 1fr;
+            }
+            .footer-grid {
+                grid-template-columns: 1fr;
+            }
+            .header-content {
+                flex-direction: column;
+                align-items: flex-start;
+                gap: 1rem;
+            }
+            nav {
+                width: 100%;
+                justify-content: space-between;
+            }
+            .cta-button {
+                width: 100%;
+                text-align: center;
             }
         }
     </style>
