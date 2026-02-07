@@ -235,14 +235,6 @@
         nav a:hover {
             color: var(--text);
         }
-        @media (max-width: 1024px) {
-            nav a {
-                display: none;
-            }
-            nav a:last-of-type {
-                display: block;
-            }
-        }
         .cta-button {
             background: var(--secondary);
             color: var(--bg);
@@ -1060,6 +1052,9 @@
                 gap: 1rem;
                 flex-wrap: wrap;
                 font-size: 0.8125rem;
+            }
+            nav a:not(.cta-button) {
+                display: none;
             }
             nav a {
                 font-size: 0.8125rem;
