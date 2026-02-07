@@ -8,4 +8,5 @@ node_modules/
 *.log
 .DS_Store
 Thumbs.db
-
+create-env.js
+test-config.html
