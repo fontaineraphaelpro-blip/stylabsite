@@ -38,6 +38,12 @@ document.addEventListener('DOMContentLoaded', function() {
     const tryOnBtn = document.getElementById('tryOnBtn');
     const preview = document.getElementById('preview');
     
+    // Vérifier si les éléments existent (pour les pages qui utilisent app.js directement)
+    if (!userPhotoInput || !productImageInput || !tryOnBtn || !preview) {
+        console.log('ℹ️ app.js: Éléments de démo non trouvés. Le widget VTON est probablement géré par widget.js.');
+        return; // Sortir si les éléments n'existent pas
+    }
+    
     let userPhotoFile = null;
     let productImageFile = null;
     
