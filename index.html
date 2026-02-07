@@ -113,30 +113,33 @@
     </section>
 
     <!-- DASHBOARD -->
-    <section id="dashboard" style="padding: 2rem 2rem; background: white;">
-        <h2 style="text-align: center; font-size: 1.5rem; margin-bottom: 1rem;">Dashboard</h2>
-        <div style="max-width: 1400px; margin: 0 auto; background: #f9fafb; padding: 1.5rem; border-radius: 8px;">
-            <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(180px, 1fr)); gap: 1rem; margin-bottom: 1.5rem;">
-                <div style="background: white; padding: 1.5rem; border-radius: 8px; text-align: center;">
-                    <div style="font-size: 2rem; font-weight: bold; color: #008060;">1,247</div>
-                    <div style="color: #666;">Crédits Restants</div>
+    <section id="dashboard" style="padding: 2rem 2rem; background: #f6f6f7; min-height: 100vh;">
+        <div style="max-width: 1400px; margin: 0 auto;">
+            <div style="background: white; padding: 2rem; border-radius: 8px; box-shadow: 0 1px 3px rgba(0,0,0,0.1); margin-bottom: 1.5rem;">
+                <h2 style="font-size: 1.75rem; font-weight: 600; color: #202223; margin: 0 0 0.5rem 0;">Dashboard</h2>
+                <p style="color: #6d7175; margin: 0; font-size: 0.875rem;">Statistiques et performances de votre Virtual Try-On</p>
+            </div>
+            <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(200px, 1fr)); gap: 1rem; margin-bottom: 1.5rem;">
+                <div style="background: white; padding: 1.5rem; border-radius: 8px; box-shadow: 0 1px 3px rgba(0,0,0,0.1); border: 1px solid #e1e3e5;">
+                    <div style="font-size: 2rem; font-weight: 600; color: #008060; margin-bottom: 0.5rem;">1,247</div>
+                    <div style="color: #6d7175; font-size: 0.875rem;">Crédits Restants</div>
                 </div>
-                <div style="background: white; padding: 1.5rem; border-radius: 8px; text-align: center;">
-                    <div style="font-size: 2rem; font-weight: bold; color: #008060;">3,842</div>
-                    <div style="color: #666;">Total Try-ons</div>
+                <div style="background: white; padding: 1.5rem; border-radius: 8px; box-shadow: 0 1px 3px rgba(0,0,0,0.1); border: 1px solid #e1e3e5;">
+                    <div style="font-size: 2rem; font-weight: 600; color: #008060; margin-bottom: 0.5rem;">3,842</div>
+                    <div style="color: #6d7175; font-size: 0.875rem;">Total Try-ons</div>
                 </div>
-                <div style="background: white; padding: 1.5rem; border-radius: 8px; text-align: center;">
-                    <div style="font-size: 2rem; font-weight: bold; color: #008060;">1,156</div>
-                    <div style="color: #666;">Add to Cart</div>
+                <div style="background: white; padding: 1.5rem; border-radius: 8px; box-shadow: 0 1px 3px rgba(0,0,0,0.1); border: 1px solid #e1e3e5;">
+                    <div style="font-size: 2rem; font-weight: 600; color: #008060; margin-bottom: 0.5rem;">1,156</div>
+                    <div style="color: #6d7175; font-size: 0.875rem;">Add to Cart</div>
                 </div>
-                <div style="background: white; padding: 1.5rem; border-radius: 8px; text-align: center;">
-                    <div style="font-size: 2rem; font-weight: bold; color: #008060;">30.1%</div>
-                    <div style="color: #666;">Taux Conversion</div>
+                <div style="background: white; padding: 1.5rem; border-radius: 8px; box-shadow: 0 1px 3px rgba(0,0,0,0.1); border: 1px solid #e1e3e5;">
+                    <div style="font-size: 2rem; font-weight: 600; color: #008060; margin-bottom: 0.5rem;">30.1%</div>
+                    <div style="color: #6d7175; font-size: 0.875rem;">Taux Conversion</div>
                 </div>
             </div>
-            <div style="background: white; padding: 2rem; border-radius: 8px;">
-                <h3 style="margin-bottom: 1rem;">Générations Quotidiennes</h3>
-                <div style="display: flex; gap: 1rem; align-items: flex-end; height: 200px;">
+            <div style="background: white; padding: 2rem; border-radius: 8px; box-shadow: 0 1px 3px rgba(0,0,0,0.1); border: 1px solid #e1e3e5;">
+                <h3 style="font-size: 1.25rem; font-weight: 600; color: #202223; margin: 0 0 1.5rem 0;">Générations Quotidiennes</h3>
+                <div style="display: flex; gap: 1rem; align-items: flex-end; height: 200px; padding: 1rem 0;">
                     <div style="flex: 1; background: #008060; border-radius: 4px 4px 0 0; height: 65%;"></div>
                     <div style="flex: 1; background: #008060; border-radius: 4px 4px 0 0; height: 90%;"></div>
                     <div style="flex: 1; background: #008060; border-radius: 4px 4px 0 0; height: 75%;"></div>
@@ -150,33 +153,53 @@
     </section>
 
     <!-- CONFIGURATION -->
-    <section id="config" style="padding: 2rem 2rem; background: #f9fafb;">
-        <h2 style="text-align: center; font-size: 1.5rem; margin-bottom: 1rem;">Configuration Widget</h2>
-        <div style="max-width: 800px; margin: 0 auto; background: white; padding: 1.5rem; border-radius: 8px; box-shadow: 0 2px 8px rgba(0,0,0,0.1);">
-            <form id="widgetForm">
+    <section id="config" style="padding: 2rem 2rem; background: #f6f6f7; min-height: 100vh;">
+        <div style="max-width: 800px; margin: 0 auto;">
+            <div style="background: white; padding: 2rem; border-radius: 8px; box-shadow: 0 1px 3px rgba(0,0,0,0.1); border: 1px solid #e1e3e5;">
                 <div style="margin-bottom: 1.5rem;">
-                    <label style="display: block; margin-bottom: 0.5rem; font-weight: bold;">Texte du Bouton</label>
-                    <input type="text" id="widgetText" value="Essayer Virtuellement ✨" style="width: 100%; padding: 0.75rem; border: 1px solid #ddd; border-radius: 4px; box-sizing: border-box;">
+                    <h2 style="font-size: 1.75rem; font-weight: 600; color: #202223; margin: 0 0 0.5rem 0;">Widget Configuration</h2>
+                    <p style="color: #6d7175; margin: 0; font-size: 0.875rem;">Customize the appearance of the Virtual Try-On widget on your store</p>
                 </div>
-                <div style="margin-bottom: 1.5rem;">
-                    <label style="display: block; margin-bottom: 0.5rem; font-weight: bold;">Couleur de Fond</label>
-                    <div style="display: flex; gap: 1rem;">
-                        <input type="color" id="widgetBgColor" value="#000000" style="width: 60px; height: 40px;">
-                        <input type="text" id="widgetBg" value="#000000" style="flex: 1; padding: 0.75rem; border: 1px solid #ddd; border-radius: 4px; box-sizing: border-box;">
+                <div style="height: 1px; background: #e1e3e5; margin: 1.5rem 0;"></div>
+                <form id="widgetForm">
+                    <div style="margin-bottom: 1.5rem;">
+                        <label style="display: block; margin-bottom: 0.5rem; font-weight: 500; color: #202223; font-size: 0.875rem;">Button Text</label>
+                        <input type="text" id="widgetText" value="Try It On Now ✨" style="width: 100%; padding: 0.75rem; border: 1px solid #e1e3e5; border-radius: 4px; box-sizing: border-box; font-size: 0.875rem; color: #202223; background: white;" onfocus="this.style.borderColor='#008060'; this.style.outline='none';" onblur="this.style.borderColor='#e1e3e5';">
+                        <p style="margin: 0.5rem 0 0 0; color: #6d7175; font-size: 0.75rem;">The text displayed on the widget button</p>
+                    </div>
+                    <div style="margin-bottom: 1.5rem;">
+                        <label style="display: block; margin-bottom: 0.5rem; font-weight: 500; color: #202223; font-size: 0.875rem;">Background Color</label>
+                        <div style="display: flex; gap: 0.75rem; align-items: flex-start;">
+                            <input type="color" id="widgetBgColor" value="#000000" style="width: 60px; height: 40px; border: 1px solid #e1e3e5; border-radius: 4px; cursor: pointer;">
+                            <div style="flex: 1;">
+                                <input type="text" id="widgetBg" value="#000000" style="width: 100%; padding: 0.75rem; border: 1px solid #e1e3e5; border-radius: 4px; box-sizing: border-box; font-size: 0.875rem; color: #202223; background: white;" onfocus="this.style.borderColor='#008060'; this.style.outline='none';" onblur="this.style.borderColor='#e1e3e5';">
+                                <p style="margin: 0.5rem 0 0 0; color: #6d7175; font-size: 0.75rem;">Hexadecimal color code</p>
+                            </div>
+                        </div>
+                    </div>
+                    <div style="margin-bottom: 1.5rem;">
+                        <label style="display: block; margin-bottom: 0.5rem; font-weight: 500; color: #202223; font-size: 0.875rem;">Text Color</label>
+                        <div style="display: flex; gap: 0.75rem; align-items: flex-start;">
+                            <input type="color" id="widgetColorPicker" value="#ffffff" style="width: 60px; height: 40px; border: 1px solid #e1e3e5; border-radius: 4px; cursor: pointer;">
+                            <div style="flex: 1;">
+                                <input type="text" id="widgetColor" value="#ffffff" style="width: 100%; padding: 0.75rem; border: 1px solid #e1e3e5; border-radius: 4px; box-sizing: border-box; font-size: 0.875rem; color: #202223; background: white;" onfocus="this.style.borderColor='#008060'; this.style.outline='none';" onblur="this.style.borderColor='#e1e3e5';">
+                                <p style="margin: 0.5rem 0 0 0; color: #6d7175; font-size: 0.75rem;">Hexadecimal color code</p>
+                            </div>
+                        </div>
+                    </div>
+                    <div style="height: 1px; background: #e1e3e5; margin: 1.5rem 0;"></div>
+                    <button type="submit" style="width: 100%; padding: 0.875rem 1.5rem; background: #000000; color: #ffffff; border: 1px solid #000000; border-radius: 4px; font-weight: 600; font-size: 0.875rem; cursor: pointer; transition: background 0.2s;" onmouseover="this.style.background='#1a1a1a';" onmouseout="this.style.background='#000000';">
+                        <span style="color: #ffffff;">Save Configuration</span>
+                    </button>
+                </form>
+                <div style="height: 1px; background: #e1e3e5; margin: 1.5rem 0;"></div>
+                <div style="margin-top: 1.5rem;">
+                    <h3 style="font-size: 1rem; font-weight: 600; color: #202223; margin: 0 0 0.75rem 0;">Real-time Preview</h3>
+                    <p style="color: #6d7175; margin: 0 0 1rem 0; font-size: 0.875rem;">Here is a preview of your widget as it will appear on your product pages. Changes are applied in real-time.</p>
+                    <div style="background: #f6f6f7; padding: 1rem; border-radius: 4px; border: 1px solid #e1e3e5;">
+                        <button id="previewButton" disabled style="width: 100%; padding: 0.875rem 1.5rem; background: #000000; color: #ffffff; border: none; border-radius: 4px; font-weight: 600; font-size: 1rem; cursor: default;">Try It On Now ✨</button>
                     </div>
                 </div>
-                <div style="margin-bottom: 1.5rem;">
-                    <label style="display: block; margin-bottom: 0.5rem; font-weight: bold;">Couleur du Texte</label>
-                    <div style="display: flex; gap: 1rem;">
-                        <input type="color" id="widgetColorPicker" value="#ffffff" style="width: 60px; height: 40px;">
-                        <input type="text" id="widgetColor" value="#ffffff" style="flex: 1; padding: 0.75rem; border: 1px solid #ddd; border-radius: 4px; box-sizing: border-box;">
-                    </div>
-                </div>
-                <button type="submit" style="width: 100%; padding: 1rem; background: #008060; color: white; border: none; border-radius: 4px; font-weight: bold; cursor: pointer;">Enregistrer</button>
-            </form>
-            <div style="margin-top: 2rem; padding-top: 2rem; border-top: 1px solid #ddd;">
-                <h3 style="margin-bottom: 1rem;">Aperçu</h3>
-                <button id="previewButton" disabled style="padding: 1rem 2rem; background: #000; color: #fff; border: none; border-radius: 4px; font-weight: bold;">Essayer Virtuellement ✨</button>
             </div>
         </div>
     </section>
