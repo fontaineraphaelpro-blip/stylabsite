@@ -2,7 +2,7 @@
 <html lang="fr">
 <head>
     <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=5.0, user-scalable=yes">
     <title>Style Lab Virtual Try-On — Augmentez vos ventes de 30% dès aujourd'hui</title>
     <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800;900&display=swap" rel="stylesheet">
     <script src="env.js?v=6"></script>
@@ -1302,8 +1302,51 @@
         }
         
         /* RESPONSIVE */
+        @media (max-width: 1024px) {
+            .nav-container {
+                padding: 0 1.5rem;
+            }
+            
+            .hero {
+                padding: 3rem 1.5rem 2rem;
+            }
+            
+            .stats-container,
+            .product-demo-container,
+            .dashboard-container,
+            .config-container {
+                padding: 3rem 2rem;
+            }
+            
+            .benefits-grid {
+                grid-template-columns: repeat(2, 1fr);
+            }
+            
+            .testimonials-grid {
+                grid-template-columns: repeat(2, 1fr);
+            }
+        }
+        
         @media (max-width: 768px) {
+            .nav-container {
+                padding: 0 1rem;
+            }
+            
+            .nav-right {
+                gap: 0.5rem;
+            }
+            
+            .btn-small {
+                padding: 0.75rem 1.5rem;
+                font-size: 0.875rem;
+            }
+            
+            .sticky-cta {
+                padding: 0.75rem 0;
+            }
+            
             .sticky-cta-content {
+                padding: 0 1rem;
                 flex-direction: column;
                 gap: 1rem;
             }
@@ -1312,56 +1355,454 @@
                 flex-direction: column;
                 text-align: center;
                 gap: 0.5rem;
+                width: 100%;
+            }
+            
+            .sticky-cta-text strong {
+                font-size: 1rem;
+            }
+            
+            .trust-badge {
+                font-size: 0.75rem;
             }
             
             .hero {
-                padding: 3rem 1rem 2rem;
+                padding: 2rem 1rem;
+                min-height: 85vh;
+            }
+            
+            .hero h1 {
+                font-size: clamp(2rem, 8vw, 3.5rem);
+                margin-bottom: 1rem;
+            }
+            
+            .hero-subtitle {
+                font-size: clamp(1rem, 3vw, 1.125rem);
+                margin-bottom: 2rem;
+            }
+            
+            .hero-badge {
+                padding: 0.5rem 1rem;
+                font-size: 0.875rem;
+                margin-bottom: 1.5rem;
             }
             
             .social-proof-strip {
                 gap: 1.5rem;
+                margin-bottom: 2rem;
+            }
+            
+            .proof-item {
+                gap: 0.25rem;
+            }
+            
+            .proof-stars {
+                font-size: 1rem;
+            }
+            
+            .proof-text {
+                font-size: 0.75rem;
             }
             
             .cta-group {
                 flex-direction: column;
+                gap: 0.75rem;
+                margin-bottom: 1.5rem;
             }
             
             .btn-primary,
             .btn-secondary {
                 width: 100%;
+                padding: 1.25rem 2rem;
+                font-size: 1rem;
+            }
+            
+            .cta-subtext {
+                font-size: 0.75rem;
+            }
+            
+            .trust-section {
+                padding: 2rem 1rem;
+            }
+            
+            .trust-logos {
+                gap: 2rem;
+            }
+            
+            .trust-logo {
+                font-size: 1.25rem;
+            }
+            
+            .stats-section,
+            .benefits-section,
+            .product-demo-section,
+            .dashboard-section,
+            .config-section,
+            .how-it-works,
+            .testimonials-section,
+            .pricing-tease,
+            .faq-section,
+            .final-cta {
+                padding: 3rem 1rem;
+            }
+            
+            .section-header {
+                margin-bottom: 2.5rem;
+            }
+            
+            .section-title {
+                font-size: clamp(2rem, 6vw, 2.5rem);
+                margin-bottom: 1rem;
+            }
+            
+            .section-subtitle {
+                font-size: 1rem;
+            }
+            
+            .stats-container,
+            .product-demo-container,
+            .dashboard-container,
+            .config-container,
+            .pricing-box {
+                padding: 2rem 1.5rem;
+                border-radius: 24px;
             }
             
             .stats-grid {
                 grid-template-columns: repeat(2, 1fr);
-                gap: 2rem;
+                gap: 1.5rem;
+            }
+            
+            .stat-number {
+                font-size: 3rem;
+            }
+            
+            .stat-label {
+                font-size: 0.875rem;
             }
             
             .benefits-grid {
                 grid-template-columns: 1fr;
+                gap: 1.5rem;
+            }
+            
+            .benefit-card {
+                padding: 2rem;
+            }
+            
+            .benefit-icon {
+                width: 60px;
+                height: 60px;
+                font-size: 2rem;
+                margin-bottom: 1.5rem;
+            }
+            
+            .benefit-title {
+                font-size: 1.5rem;
+            }
+            
+            .benefit-description {
+                font-size: 1rem;
+            }
+            
+            .product-layout {
+                grid-template-columns: 1fr;
+                gap: 2rem;
+            }
+            
+            .product-info h1 {
+                font-size: 2rem;
+            }
+            
+            .product-price-large {
+                font-size: 1.75rem;
+            }
+            
+            .product-thumbnails {
+                gap: 0.75rem;
+            }
+            
+            .product-thumbnails img {
+                width: 60px;
+                height: 60px;
+            }
+            
+            .option-buttons {
+                gap: 0.5rem;
+            }
+            
+            .option-btn {
+                padding: 0.625rem 1.25rem;
+                font-size: 0.8125rem;
+            }
+            
+            .quantity-selector {
+                flex-wrap: wrap;
+            }
+            
+            .add-to-cart {
+                padding: 1.25rem;
+                font-size: 1rem;
+            }
+            
+            .dashboard-header h2 {
+                font-size: 2rem;
+            }
+            
+            .stats-grid-dashboard {
+                grid-template-columns: repeat(2, 1fr);
+                gap: 1rem;
+            }
+            
+            .stat-card {
+                padding: 1.5rem;
+            }
+            
+            .stat-value {
+                font-size: 2rem;
+            }
+            
+            .chart-container {
+                padding: 1.5rem;
+            }
+            
+            .chart {
+                height: 150px;
+            }
+            
+            .config-header h2 {
+                font-size: 2rem;
+            }
+            
+            .form-group {
+                margin-bottom: 1.5rem;
+            }
+            
+            .color-input-group {
+                flex-direction: column;
+                align-items: flex-start;
             }
             
             .steps-container {
                 grid-template-columns: 1fr;
+                gap: 2rem;
+            }
+            
+            .step-number {
+                width: 60px;
+                height: 60px;
+                font-size: 1.5rem;
+            }
+            
+            .step-title {
+                font-size: 1.25rem;
             }
             
             .testimonials-grid {
                 grid-template-columns: 1fr;
+                gap: 1.5rem;
+            }
+            
+            .testimonial-card {
+                padding: 2rem;
+            }
+            
+            .testimonial-text {
+                font-size: 1rem;
+            }
+            
+            .result-value {
+                font-size: 1.75rem;
+            }
+            
+            .pricing-box {
+                padding: 2.5rem 1.5rem;
+            }
+            
+            .pricing-title {
+                font-size: 2rem;
+            }
+            
+            .pricing-subtitle {
+                font-size: 1rem;
             }
             
             .pricing-features {
                 grid-template-columns: 1fr;
+                gap: 0.75rem;
+            }
+            
+            .faq-container {
+                padding: 0;
+            }
+            
+            .faq-question {
+                padding: 1.25rem;
+                font-size: 1rem;
+            }
+            
+            .faq-answer {
+                padding: 0 1.25rem 1.25rem;
             }
             
             .final-cta-box {
                 padding: 3rem 2rem;
             }
             
-            .product-layout {
+            .final-cta-title {
+                font-size: clamp(2rem, 6vw, 2.5rem);
+            }
+            
+            .final-cta-subtitle {
+                font-size: 1.125rem;
+            }
+            
+            .final-cta-features {
+                flex-direction: column;
+                gap: 1rem;
+            }
+            
+            .btn-white {
+                padding: 1.25rem 2.5rem;
+                font-size: 1.125rem;
+            }
+            
+            .footer-links {
+                flex-direction: column;
+                gap: 1rem;
+            }
+        }
+        
+        @media (max-width: 480px) {
+            .nav-container {
+                padding: 0 0.75rem;
+            }
+            
+            .logo {
+                font-size: 1.25rem;
+            }
+            
+            .nav-right {
+                flex-direction: column;
+                gap: 0.5rem;
+            }
+            
+            .btn-small {
+                padding: 0.625rem 1.25rem;
+                font-size: 0.8125rem;
+            }
+            
+            .hero {
+                padding: 1.5rem 0.75rem;
+                min-height: 80vh;
+            }
+            
+            .hero-badge {
+                padding: 0.5rem 0.875rem;
+                font-size: 0.8125rem;
+            }
+            
+            .social-proof-strip {
+                gap: 1rem;
+            }
+            
+            .stats-section,
+            .benefits-section,
+            .product-demo-section,
+            .dashboard-section,
+            .config-section,
+            .how-it-works,
+            .testimonials-section,
+            .pricing-tease,
+            .faq-section,
+            .final-cta {
+                padding: 2rem 0.75rem;
+            }
+            
+            .stats-container,
+            .product-demo-container,
+            .dashboard-container,
+            .config-container,
+            .pricing-box {
+                padding: 1.5rem 1rem;
+            }
+            
+            .stats-grid {
                 grid-template-columns: 1fr;
+                gap: 1rem;
+            }
+            
+            .stat-number {
+                font-size: 2.5rem;
+            }
+            
+            .benefit-card {
+                padding: 1.5rem;
+            }
+            
+            .product-info h1 {
+                font-size: 1.75rem;
+            }
+            
+            .product-price-large {
+                font-size: 1.5rem;
             }
             
             .stats-grid-dashboard {
-                grid-template-columns: repeat(2, 1fr);
+                grid-template-columns: 1fr;
+            }
+            
+            .config-header h2 {
+                font-size: 1.75rem;
+            }
+            
+            .step-number {
+                width: 50px;
+                height: 50px;
+                font-size: 1.25rem;
+            }
+            
+            .testimonial-card {
+                padding: 1.5rem;
+            }
+            
+            .pricing-title {
+                font-size: 1.75rem;
+            }
+            
+            .final-cta-box {
+                padding: 2rem 1.5rem;
+            }
+        }
+        
+        @media (max-width: 360px) {
+            .hero h1 {
+                font-size: 1.75rem;
+            }
+            
+            .section-title {
+                font-size: 1.75rem;
+            }
+            
+            .btn-primary,
+            .btn-secondary {
+                padding: 1rem 1.5rem;
+                font-size: 0.9375rem;
+            }
+        }
+        
+        /* Touch-friendly improvements */
+        @media (hover: none) and (pointer: coarse) {
+            .option-btn,
+            .quantity-btn,
+            .add-to-cart,
+            .btn-primary,
+            .btn-secondary {
+                min-height: 44px;
+            }
+            
+            .faq-question {
+                min-height: 44px;
             }
         }
     </style>
