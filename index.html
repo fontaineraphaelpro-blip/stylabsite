@@ -1990,9 +1990,31 @@
             }
         }
         if (document.readyState === 'loading') {
-            document.addEventListener('DOMContentLoaded', () => setTimeout(initVTON, 500));
+            document.addEventListener('DOMContentLoaded', () => {
+                setTimeout(initVTON, 500);
+                const quantityInput = document.getElementById('quantity');
+                if (quantityInput) {
+                    quantityInput.addEventListener('input', function() {
+                        let value = parseInt(this.value) || 1;
+                        if (value < 1) value = 1;
+                        if (value > 10) value = 10;
+                        this.value = value;
+                        updateTotal();
+                    });
+                }
+            });
         } else {
             setTimeout(initVTON, 500);
+            const quantityInput = document.getElementById('quantity');
+            if (quantityInput) {
+                quantityInput.addEventListener('input', function() {
+                    let value = parseInt(this.value) || 1;
+                    if (value < 1) value = 1;
+                    if (value > 10) value = 10;
+                    this.value = value;
+                    updateTotal();
+                });
+            }
         }
         document.getElementById('quantity').addEventListener('input', updateTotal);
         document.addEventListener('DOMContentLoaded', function() {
