@@ -5,7 +5,7 @@
   "private": true,
   "scripts": {
     "dev": "npx http-server . -p 3000 -o",
-    "start": "npx http-server . -p 3000",
+    "start": "npx http-server . -p $PORT || npx http-server . -p 3000",
     "build": "node generate-env.js",
     "prebuild": "node generate-env.js"
   },

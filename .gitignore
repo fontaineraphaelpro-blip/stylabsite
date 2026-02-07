@@ -1,7 +1,7 @@
 # Environment variables
 .env
 env.js
-# Note: env.js est généré automatiquement par generate-env.js sur Netlify
+# Note: env.js est généré automatiquement par generate-env.js (Netlify/Railway)
 
 # Node modules
 node_modules/

@@ -88,7 +88,36 @@ npx http-server
 
 Tous droits réservés © 2026 Style Lab Virtual Try-On
 
-## 🚀 Déploiement sur Vercel
+## 🚂 Déploiement sur Railway
+
+Ce projet est entièrement compatible avec Railway. Le dépôt Git contient tous les fichiers nécessaires pour un déploiement automatique.
+
+### Déploiement automatique depuis GitHub
+
+1. **Connecter le dépôt à Railway** :
+   - Allez sur [railway.app](https://railway.app)
+   - **New Project** → **Deploy from GitHub repo**
+   - Importez le dépôt `fontaineraphaelpro-blip/stylabsite`
+   - Railway détectera automatiquement la configuration
+
+2. **Configuration des variables d'environnement** :
+   - Dans les **Variables** du projet Railway, ajoutez vos variables d'environnement
+   - Ajoutez `REPLICATE_API_TOKEN` avec votre token
+   - Le script `generate-env.js` créera automatiquement `env.js` lors du build
+
+3. **Déploiement** :
+   - Railway déploiera automatiquement à chaque push sur `main`
+   - Les déploiements sont automatiques et instantanés
+
+### Fichiers de configuration Railway
+
+- `railway.json` : Configuration Railway (optionnel)
+- `package.json` : Scripts de build et start
+- `generate-env.js` : Script qui génère env.js depuis les variables Railway
+
+Voir `RAILWAY_SETUP.md` pour plus de détails.
+
+## 🚀 Déploiement sur Vercel (Alternative)
 
 Ce projet est entièrement compatible avec Vercel. Le dépôt Git contient tous les fichiers nécessaires pour un déploiement automatique.
 

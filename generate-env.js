@@ -8,8 +8,8 @@ const path = require('path');
 const envVars = {
     'VITE_API_URL': process.env.VITE_API_URL || 'https://api.kaiden.io/v1',
     'VITE_API_KEY': process.env.VITE_API_KEY || 'your_api_key_here',
-    'APP_URL': process.env.APP_URL || process.env.NETLIFY_URL || 'https://vton-production-890a.up.railway.app',
-    'HOST_NAME': process.env.HOST_NAME || process.env.NETLIFY_URL?.replace('https://', '') || 'vton-production-890a.up.railway.app',
+    'APP_URL': process.env.APP_URL || process.env.RAILWAY_PUBLIC_DOMAIN || process.env.RAILWAY_STATIC_URL || 'https://vton-production-890a.up.railway.app',
+    'HOST_NAME': process.env.HOST_NAME || process.env.RAILWAY_PUBLIC_DOMAIN || (process.env.RAILWAY_STATIC_URL ? process.env.RAILWAY_STATIC_URL.replace('https://', '') : null) || 'vton-production-890a.up.railway.app',
     'REPLICATE_API_TOKEN': process.env.REPLICATE_API_TOKEN || '',
     'VITE_AI_SERVICE_URL': process.env.VITE_AI_SERVICE_URL || 'https://ai-service.kaiden.io',
     'VITE_AI_API_KEY': process.env.VITE_AI_API_KEY || 'your_ai_api_key_here',
