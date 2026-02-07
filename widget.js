@@ -647,13 +647,11 @@
     
     try {
       // Utiliser la logique existante d'app.js
-      // On va appeler directement les fonctions d'app.js si disponibles
-      if (typeof window.vtonGenerate === 'function') {
-        // Si la fonction globale existe, l'utiliser
-        await window.vtonGenerate(widgetState.userPhoto);
-      } else {
-        // Sinon, utiliser la logique directe avec Replicate
+      // Le widget utilise directement les fonctions d'app.js via les variables globales
+      if (window.cfg && window.cfg.replicateApiToken) {
         await generateWithReplicate();
+      } else {
+        throw new Error('Token Replicate non configuré. Vérifiez votre configuration.');
       }
     } catch (err) {
       error('[VTON Widget] Generation error:', err);
