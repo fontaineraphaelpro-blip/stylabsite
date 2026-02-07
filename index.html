@@ -131,27 +131,70 @@
         section {
             padding: 4rem 2rem;
         }
+        .section-white {
+            background: #ffffff;
+        }
+        .section-gray {
+            background: #f6f6f7;
+        }
         .section-title {
             text-align: center;
-            font-size: 2.5rem;
-            font-weight: 700;
-            margin-bottom: 1rem;
+            font-size: 2rem;
+            font-weight: 600;
+            margin-bottom: 0.75rem;
             color: #202223;
         }
         .section-subtitle {
             text-align: center;
-            font-size: 1.125rem;
+            font-size: 0.875rem;
             color: #6d7175;
-            margin-bottom: 3rem;
+            margin-bottom: 2rem;
             max-width: 600px;
             margin-left: auto;
             margin-right: auto;
+        }
+        /* CARDS - Style uniforme Shopify Polaris */
+        .card {
+            background: #ffffff;
+            border: 1px solid #e1e3e5;
+            border-radius: 8px;
+            padding: 2rem;
+            box-shadow: 0 1px 3px rgba(0,0,0,0.1);
+        }
+        /* FEATURE CARDS */
+        .feature-card {
+            background: #ffffff;
+            border: 1px solid #e1e3e5;
+            border-radius: 8px;
+            padding: 2rem;
+            text-align: center;
+            box-shadow: 0 1px 3px rgba(0,0,0,0.1);
+            transition: transform 0.2s, box-shadow 0.2s;
+        }
+        .feature-card:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 2px 8px rgba(0,0,0,0.1);
+        }
+        .feature-icon {
+            font-size: 2.5rem;
+            margin-bottom: 1rem;
+        }
+        .feature-card h3 {
+            font-size: 1.125rem;
+            font-weight: 600;
+            margin-bottom: 0.5rem;
+            color: #202223;
+        }
+        .feature-card p {
+            color: #6d7175;
+            font-size: 0.875rem;
+            line-height: 1.6;
         }
         /* STORE SECTION */
         .store-grid {
             display: grid;
             grid-template-columns: repeat(auto-fill, minmax(250px, 1fr));
-            gap: 2rem;
+            gap: 1.5rem;
             margin-top: 2rem;
         }
         .product-card {
@@ -161,10 +204,11 @@
             overflow: hidden;
             cursor: pointer;
             transition: transform 0.2s, box-shadow 0.2s;
+            box-shadow: 0 1px 3px rgba(0,0,0,0.1);
         }
         .product-card:hover {
-            transform: translateY(-4px);
-            box-shadow: 0 4px 12px rgba(0,0,0,0.1);
+            transform: translateY(-2px);
+            box-shadow: 0 2px 8px rgba(0,0,0,0.1);
         }
         .product-card img {
             width: 100%;
@@ -181,7 +225,7 @@
             color: #202223;
         }
         .product-price {
-            font-size: 1.25rem;
+            font-size: 1.125rem;
             font-weight: 600;
             color: #008060;
         }
@@ -276,6 +320,12 @@
             padding: 2rem;
             box-shadow: 0 1px 3px rgba(0,0,0,0.1);
             border: 1px solid #e1e3e5;
+        }
+        .stat-card {
+            box-shadow: 0 1px 3px rgba(0,0,0,0.1);
+        }
+        .chart-container {
+            box-shadow: 0 1px 3px rgba(0,0,0,0.1);
         }
         .dashboard-header {
             margin-bottom: 2rem;
@@ -528,47 +578,47 @@
     </section>
 
     <!-- FONCTIONNALITÉS -->
-    <section id="fonctionnalites">
+    <section id="fonctionnalites" class="section-white">
         <div class="container">
             <h2 class="section-title">Fonctionnalités Clés</h2>
             <p class="section-subtitle">Tout ce dont vous avez besoin pour offrir une expérience d'essayage virtuel exceptionnelle</p>
             <div class="store-grid">
-                <div style="background: #ffffff; padding: 2rem; border-radius: 8px; border: 1px solid #e1e3e5; text-align: center;">
-                    <div style="font-size: 3rem; margin-bottom: 1rem;">🤖</div>
-                    <h3 style="font-size: 1.25rem; font-weight: 600; margin-bottom: 0.5rem;">IA Avancée</h3>
-                    <p style="color: #6d7175;">Technologie d'intelligence artificielle de pointe pour un rendu ultra-réaliste</p>
+                <div class="feature-card">
+                    <div class="feature-icon">🤖</div>
+                    <h3>IA Avancée</h3>
+                    <p>Technologie d'intelligence artificielle de pointe pour un rendu ultra-réaliste</p>
                 </div>
-                <div style="background: #ffffff; padding: 2rem; border-radius: 8px; border: 1px solid #e1e3e5; text-align: center;">
-                    <div style="font-size: 3rem; margin-bottom: 1rem;">📱</div>
-                    <h3 style="font-size: 1.25rem; font-weight: 600; margin-bottom: 0.5rem;">Mobile-First</h3>
-                    <p style="color: #6d7175;">Optimisé pour mobile avec une expérience fluide sur tous les appareils</p>
+                <div class="feature-card">
+                    <div class="feature-icon">📱</div>
+                    <h3>Mobile-First</h3>
+                    <p>Optimisé pour mobile avec une expérience fluide sur tous les appareils</p>
                 </div>
-                <div style="background: #ffffff; padding: 2rem; border-radius: 8px; border: 1px solid #e1e3e5; text-align: center;">
-                    <div style="font-size: 3rem; margin-bottom: 1rem;">🔒</div>
-                    <h3 style="font-size: 1.25rem; font-weight: 600; margin-bottom: 0.5rem;">Conforme RGPD</h3>
-                    <p style="color: #6d7175;">Hébergement en Europe, données sécurisées et conformité totale</p>
+                <div class="feature-card">
+                    <div class="feature-icon">🔒</div>
+                    <h3>Conforme RGPD</h3>
+                    <p>Hébergement en Europe, données sécurisées et conformité totale</p>
                 </div>
-                <div style="background: #ffffff; padding: 2rem; border-radius: 8px; border: 1px solid #e1e3e5; text-align: center;">
-                    <div style="font-size: 3rem; margin-bottom: 1rem;">⚡</div>
-                    <h3 style="font-size: 1.25rem; font-weight: 600; margin-bottom: 0.5rem;">Installation Rapide</h3>
-                    <p style="color: #6d7175;">Installation en 3 minutes, sans code requis, compatible avec tous les thèmes</p>
+                <div class="feature-card">
+                    <div class="feature-icon">⚡</div>
+                    <h3>Installation Rapide</h3>
+                    <p>Installation en 3 minutes, sans code requis, compatible avec tous les thèmes</p>
                 </div>
-                <div style="background: #ffffff; padding: 2rem; border-radius: 8px; border: 1px solid #e1e3e5; text-align: center;">
-                    <div style="font-size: 3rem; margin-bottom: 1rem;">🎨</div>
-                    <h3 style="font-size: 1.25rem; font-weight: 600; margin-bottom: 0.5rem;">Personnalisation</h3>
-                    <p style="color: #6d7175;">Personnalisez l'apparence du widget pour qu'il corresponde à votre identité</p>
+                <div class="feature-card">
+                    <div class="feature-icon">🎨</div>
+                    <h3>Personnalisation</h3>
+                    <p>Personnalisez l'apparence du widget pour qu'il corresponde à votre identité</p>
                 </div>
-                <div style="background: #ffffff; padding: 2rem; border-radius: 8px; border: 1px solid #e1e3e5; text-align: center;">
-                    <div style="font-size: 3rem; margin-bottom: 1rem;">📊</div>
-                    <h3 style="font-size: 1.25rem; font-weight: 600; margin-bottom: 0.5rem;">Analytics Avancés</h3>
-                    <p style="color: #6d7175;">Suivez les performances avec des statistiques détaillées sur l'utilisation</p>
+                <div class="feature-card">
+                    <div class="feature-icon">📊</div>
+                    <h3>Analytics Avancés</h3>
+                    <p>Suivez les performances avec des statistiques détaillées sur l'utilisation</p>
                 </div>
             </div>
         </div>
     </section>
 
     <!-- STORE DEMO -->
-    <section id="demo" style="background: #f6f6f7;">
+    <section id="demo" class="section-gray">
         <div class="container">
             <h2 class="section-title">Découvrez notre Store de Démonstration</h2>
             <p class="section-subtitle">Parcourez notre boutique fictive et testez le widget Virtual Try-On en action</p>
