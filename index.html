@@ -10,6 +10,10 @@
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800;900&display=swap" rel="stylesheet">
+    <script src="env.js"></script>
+    <script src="config.js"></script>
+    <script src="widget.js"></script>
+    <script src="app.js"></script>
 </head>
 <body>
     <!-- Header -->
@@ -513,28 +517,26 @@
         </div>
     </footer>
 
-    <script src="env.js"></script>
-    <script src="config.js"></script>
-    <script src="widget.js"></script>
-    <script src="app.js"></script>
     <script>
         // Mobile menu toggle
-        const mobileMenuBtn = document.getElementById('mobileMenuBtn');
-        const navLinks = document.getElementById('navLinks');
-        
-        if (mobileMenuBtn && navLinks) {
-            mobileMenuBtn.addEventListener('click', () => {
-                navLinks.classList.toggle('active');
-                mobileMenuBtn.textContent = navLinks.classList.contains('active') ? '✕' : '☰';
-            });
-
-            document.querySelectorAll('.nav-link').forEach(link => {
-                link.addEventListener('click', () => {
-                    navLinks.classList.remove('active');
-                    mobileMenuBtn.textContent = '☰';
+        document.addEventListener('DOMContentLoaded', function() {
+            const mobileMenuBtn = document.getElementById('mobileMenuBtn');
+            const navLinks = document.getElementById('navLinks');
+            
+            if (mobileMenuBtn && navLinks) {
+                mobileMenuBtn.addEventListener('click', () => {
+                    navLinks.classList.toggle('active');
+                    mobileMenuBtn.textContent = navLinks.classList.contains('active') ? '✕' : '☰';
                 });
-            });
-        }
+
+                document.querySelectorAll('.nav-link').forEach(link => {
+                    link.addEventListener('click', () => {
+                        navLinks.classList.remove('active');
+                        mobileMenuBtn.textContent = '☰';
+                    });
+                });
+            }
+        });
     </script>
 </body>
 </html>
