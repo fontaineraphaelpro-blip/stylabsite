@@ -577,9 +577,23 @@
             return;
         }
         
-        if (!window.config.replicateApiToken || window.config.replicateApiToken === '') {
+        // Vérification détaillée du token
+        const token = window.config.replicateApiToken;
+        console.log('🔍 Vérification token dans widget.js:', {
+            token: token ? `${token.substring(0, 10)}...` : 'VIDE',
+            tokenLength: token?.length || 0,
+            isEmpty: !token || token === '',
+            isString: typeof token === 'string',
+            startsWithR8: token?.startsWith('r8_')
+        });
+        
+        if (!token || token === '' || token.trim() === '') {
             const errorMsg = '⚠️ API Replicate non configurée. Ajoutez votre token dans env.js (REPLICATE_API_TOKEN)';
-            console.error(errorMsg);
+            console.error('❌ Token manquant ou vide:', {
+                token: token,
+                type: typeof token,
+                length: token?.length
+            });
             const errorDiv = document.getElementById('vton-error');
             if (errorDiv) {
                 errorDiv.textContent = errorMsg;
@@ -589,6 +603,8 @@
             }
             return;
         }
+        
+        console.log('✅ Token valide détecté');
         
         widgetState.isGenerating = true;
         generateBtn.disabled = true;
