@@ -467,7 +467,7 @@
         }
       </style>
       <button class="vton-widget-button" id="vton-open-modal-btn">
-        Essayer Virtuellement
+        Essayer Virtuellement ✨
       </button>
       <div id="vton-modal-overlay" class="vton-modal-overlay">
         <div class="vton-modal">
@@ -849,6 +849,7 @@
         const response = await fetch(`${cfg.replicateApiUrl}/predictions/${predictionId}`, {
           headers: {
             'Authorization': `Token ${cfg.replicateApiToken}`,
+            'Content-Type': 'application/json',
           }
         });
         
