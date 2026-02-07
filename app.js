@@ -388,7 +388,21 @@ document.addEventListener('DOMContentLoaded', function() {
                 pollPredictionStatus(prediction.id, cfg);
                 
             } catch (error) {
-                console.error('Erreur Replicate:', error);
+                console.error('Erreur Replicate (upload Railway):', error);
+                
+                // Si c'est une erreur réseau/CORS, essayer Imgur en fallback
+                if (error.message && (error.message.includes('NetworkError') || error.message.includes('CORS') || error.message.includes('fetch') || error.name === 'TypeError')) {
+                    console.warn('🔄 Erreur réseau/CORS détectée, passage automatique à Imgur...');
+                    updatePreviewStatus('Erreur réseau, passage à Imgur (service alternatif)...');
+                    try {
+                        await processWithReplicateBase64(cfg);
+                        return; // Ne pas afficher l'erreur si Imgur fonctionne
+                    } catch (imgurError) {
+                        console.error('Erreur Imgur aussi:', imgurError);
+                        // Si Imgur échoue aussi, afficher l'erreur
+                    }
+                }
+                
                 showError(`Erreur lors de la génération: ${error.message}`);
                 resetButton();
             }
