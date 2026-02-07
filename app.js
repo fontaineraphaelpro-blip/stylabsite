@@ -391,74 +391,37 @@ document.addEventListener('DOMContentLoaded', function() {
             }
         }
         
-        // Fonction alternative avec base64 (fallback)
+        // Fonction alternative avec upload vers Imgur (fallback)
+        // Replicate nécessite des URLs publiques, pas de base64
         async function processWithReplicateBase64(cfg) {
             try {
-                updatePreviewStatus('Mode démo: Conversion des images en base64...');
+                updatePreviewStatus('Conversion des images en base64 pour upload...');
                 
-                // Convertir les images en base64
+                // Convertir les images en base64 pour upload vers Imgur
                 const userImageBase64 = await fileToBase64(userPhotoFile);
                 const productImageBase64 = await fileToBase64(productImageFile);
                 
-                // Note: Replicate nécessite des URLs publiques, pas des data URLs
-                // Pour une vraie démo, il faut un service d'upload d'images
-                // Ici on va utiliser une approche alternative ou afficher un message
+                // Replicate nécessite des URLs publiques, pas de data URLs
+                // Utiliser Imgur pour obtenir des URLs publiques
+                updatePreviewStatus('Upload des images vers Imgur (service public gratuit)...');
                 
-                updatePreviewStatus('⚠️ Mode démo: Replicate nécessite des URLs publiques.<br>Pour une démo complète, configurez un service d\'upload d\'images ou utilisez l\'API Railway.');
+                // Uploader vers Imgur pour obtenir des URLs publiques
+                const userImageUrl = await uploadToImgur(userImageBase64);
+                const productImageUrl = await uploadToImgur(productImageBase64);
                 
-                // Essayer quand même avec data URLs (peut ne pas fonctionner selon le modèle)
-                const userImageDataUrl = `data:image/jpeg;base64,${userImageBase64}`;
-                const productImageDataUrl = `data:image/jpeg;base64,${productImageBase64}`;
-                
-                updatePreviewStatus('Tentative avec data URLs (peut ne pas fonctionner)...');
-                
-                const predictionResponse = await fetch(`${cfg.replicateApiUrl}/predictions`, {
-                    method: 'POST',
-                    headers: {
-                        'Authorization': `Token ${cfg.replicateApiToken}`,
-                        'Content-Type': 'application/json',
-                    },
-                    body: JSON.stringify({
-                        version: cfg.replicateModel || 'bytedance/seedream-4.5',
-                        input: {
-                            aspect_ratio: "1:1",
-                            height: cfg.replicateImageSize || 2048,
-                            image_input: [
-                                userImageDataUrl,  // Photo de la personne (première image)
-                                productImageDataUrl // Image du vêtement (deuxième image)
-                            ],
-                            max_images: 10,
-                            prompt: cfg.replicatePrompt || "This is NOT a redesign task.\n\nIt is a garment transfer task.\n\nUse the clothing from the second image exactly as-is with zero creative interpretation.\n\nThe output must look like the REAL clothing item was physically worn by the person.\n\nNo invented graphics, no color changes, no simplification.",
-                            sequential_image_generation: "disabled",
-                            size: "custom",
-                            width: cfg.replicateImageSize || 2048
-                        }
-                    })
-                });
-                
-                if (!predictionResponse.ok) {
-                    const errorText = await predictionResponse.text();
-                    let errorData;
-                    try {
-                        errorData = JSON.parse(errorText);
-                    } catch (e) {
-                        errorData = { detail: errorText };
-                    }
-                    throw new Error(errorData.detail || `Erreur API Replicate: ${predictionResponse.status}`);
+                if (!userImageUrl || !productImageUrl) {
+                    throw new Error('Échec de l\'upload vers Imgur. Veuillez réessayer. Replicate nécessite des URLs publiques pour fonctionner.');
                 }
                 
-                const prediction = await predictionResponse.json();
+                console.log('✅ Images uploadées vers Imgur:', { userImageUrl, productImageUrl });
+                updatePreviewStatus('Création de la prédiction Replicate avec les URLs publiques...');
                 
-                if (!prediction.id) {
-                    throw new Error('ID de prédiction manquant dans la réponse');
-                }
-                
-                updatePreviewStatus('Génération en cours...');
-                pollPredictionStatus(prediction.id, cfg);
+                // Utiliser les URLs Imgur (publiques) pour Replicate
+                await createReplicatePrediction(cfg, userImageUrl, productImageUrl);
                 
             } catch (error) {
-                console.error('Erreur Replicate (base64):', error);
-                showError(`Erreur lors de la génération: ${error.message}`);
+                console.error('Erreur upload Imgur/Replicate:', error);
+                showError(`Erreur lors de la génération: ${error.message}<br><br>Replicate nécessite des URLs publiques. Si l'upload vers Imgur échoue, vérifiez votre connexion internet.`);
                 resetButton();
             }
         }
@@ -478,12 +441,14 @@ document.addEventListener('DOMContentLoaded', function() {
         }
         
         // Fonction pour uploader une image vers Imgur (service public gratuit)
+        // Imgur fournit des URLs publiques que Replicate peut utiliser
         async function uploadToImgur(base64Image) {
             try {
+                console.log('Upload vers Imgur...');
                 const response = await fetch('https://api.imgur.com/3/image', {
                     method: 'POST',
                     headers: {
-                        'Authorization': 'Client-ID 546c25a59c58ad7', // Client ID public Imgur (gratuit)
+                        'Authorization': 'Client-ID 546c25a59c58ad7', // Client ID public Imgur (gratuit, sans limite)
                         'Content-Type': 'application/json',
                     },
                     body: JSON.stringify({
@@ -493,17 +458,21 @@ document.addEventListener('DOMContentLoaded', function() {
                 });
                 
                 if (!response.ok) {
-                    console.warn('Erreur Imgur:', response.status);
+                    const errorText = await response.text();
+                    console.error('Erreur Imgur:', response.status, errorText);
                     return null;
                 }
                 
                 const data = await response.json();
                 if (data.success && data.data && data.data.link) {
+                    console.log('✅ Image uploadée vers Imgur:', data.data.link);
                     return data.data.link;
+                } else {
+                    console.error('Réponse Imgur invalide:', data);
+                    return null;
                 }
-                return null;
             } catch (error) {
-                console.warn('Erreur upload Imgur:', error);
+                console.error('Erreur upload Imgur:', error);
                 return null;
             }
         }
