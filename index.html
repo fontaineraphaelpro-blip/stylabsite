@@ -300,17 +300,6 @@
         .add-to-cart:hover {
             background: #006d4f;
         }
-        .widget-section {
-            border-top: 1px solid #e1e3e5;
-            padding-top: 2rem;
-            margin-top: 2rem;
-        }
-        .widget-section h3 {
-            font-size: 1rem;
-            font-weight: 600;
-            margin-bottom: 1rem;
-            color: #202223;
-        }
         /* DASHBOARD SECTION - Shopify Polaris Style */
         .dashboard-section {
             background: #f6f6f7;
@@ -689,11 +678,10 @@
                         <div class="product-price-large">29,90 €</div>
                         <p class="product-description">T-Shirt en coton biologique certifié. Confortable, durable et respectueux de l'environnement. Parfait pour un usage quotidien.</p>
                         <button class="add-to-cart" onclick="alert('Ajouté au panier !')">Ajouter au panier</button>
+                        <div style="margin-top: 1rem;">
+                            <div id="vton-widget-root"></div>
+                        </div>
                     </div>
-                </div>
-                <div class="widget-section">
-                    <h3>Essayez virtuellement</h3>
-                    <div id="vton-widget-root"></div>
                 </div>
             </div>
         </div>
