@@ -4,26 +4,46 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Virtual Try-On Shopify - Démo Complète | StyleLab</title>
+    <meta name="description" content="Démo complète : Produit avec Widget Virtual Try-On, Dashboard et Configuration. Tout visible directement sur la page d'accueil.">
     <link rel="stylesheet" href="style.css">
     <link rel="stylesheet" href="demo-app.css">
-    <script src="env.js"></script>
-    <script src="config.js"></script>
-    <script src="widget.js"></script>
-    <script src="app.js"></script>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800;900&display=swap" rel="stylesheet">
 </head>
 <body>
+    <!-- Header -->
+    <header class="header">
+        <nav class="nav">
+            <div class="container">
+                <div class="nav-container">
+                    <a href="/" class="logo" aria-label="Style Lab Accueil">Style Lab</a>
+                    <span class="logo-badge">Virtual Try‑On</span>
+                    <button class="mobile-menu-btn" aria-label="Menu" id="mobileMenuBtn">☰</button>
+                    <div class="nav-links" id="navLinks">
+                        <a href="#product-demo" class="nav-link">Démo Produit</a>
+                        <a href="#dashboard-demo" class="nav-link">Dashboard</a>
+                        <a href="#widget-config" class="nav-link">Configuration</a>
+                        <a href="/blog.html" class="nav-link">Blog</a>
+                        <a href="https://apps.shopify.com/try-on-stylelab" target="_blank" rel="noopener" class="btn btn-primary">Installer l'App</a>
+                    </div>
+                </div>
+            </div>
+        </nav>
+    </header>
+
     <!-- HERO -->
     <section class="hero">
         <div class="container">
-            <h1>Virtual Try-On Shopify - Démo Complète</h1>
-            <p>Tout est visible directement sur cette page : Produit, Widget, Dashboard et Configuration</p>
+            <h1 class="hero-title">Virtual Try-On Shopify - Démo Complète</h1>
+            <p class="hero-subtitle">Tout est visible directement sur cette page : Produit, Widget, Dashboard et Configuration</p>
         </div>
     </section>
 
     <!-- SECTION 1: PRODUIT AVEC WIDGET -->
-    <section style="padding: 2rem 0; background: #f9fafb;">
+    <section id="product-demo" style="padding: 2rem 0; background: #f9fafb;">
         <div class="container">
-            <h2 style="text-align: center; margin-bottom: 2rem;">1. Produit avec Widget Virtual Try-On</h2>
+            <h2 class="section-title" style="text-align: center; margin-bottom: 2rem;">1. Produit avec Widget Virtual Try-On</h2>
             
             <div style="max-width: 1200px; margin: 0 auto; background: white; padding: 2rem; border-radius: 1rem; box-shadow: 0 4px 6px rgba(0,0,0,0.1);">
                 <div style="display: grid; grid-template-columns: 1fr 1fr; gap: 2rem; margin-bottom: 2rem;">
@@ -64,9 +84,9 @@
     </section>
 
     <!-- SECTION 2: DASHBOARD -->
-    <section style="padding: 2rem 0; background: white;">
+    <section id="dashboard-demo" style="padding: 2rem 0; background: white;">
         <div class="container">
-            <h2 style="text-align: center; margin-bottom: 2rem;">2. Dashboard - Statistiques et Activité</h2>
+            <h2 class="section-title" style="text-align: center; margin-bottom: 2rem;">2. Dashboard - Statistiques et Activité</h2>
             
             <div class="demo-app-container" style="max-width: 1400px; margin: 0 auto;">
                 <div class="demo-header">
@@ -211,9 +231,9 @@
     </section>
 
     <!-- SECTION 3: CONFIGURATION WIDGET -->
-    <section style="padding: 2rem 0; background: #f9fafb;">
+    <section id="widget-config" style="padding: 2rem 0; background: #f9fafb;">
         <div class="container">
-            <h2 style="text-align: center; margin-bottom: 2rem;">3. Configuration du Widget</h2>
+            <h2 class="section-title" style="text-align: center; margin-bottom: 2rem;">3. Configuration du Widget</h2>
             
             <div class="demo-app-container" style="max-width: 1000px; margin: 0 auto;">
                 <div class="demo-header">
@@ -451,6 +471,70 @@
                 });
             }
         })();
+    </script>
+
+    <!-- Footer -->
+    <footer class="footer">
+        <div class="container">
+            <div class="footer-grid">
+                <div>
+                    <h3>Style Lab Virtual Try‑On</h3>
+                    <p>Solution d'essayage virtuel IA pour boutiques Shopify en France et Europe</p>
+                </div>
+                <div>
+                    <h4>Navigation</h4>
+                    <ul>
+                        <li><a href="/">Accueil</a></li>
+                        <li><a href="#product-demo">Démo Produit</a></li>
+                        <li><a href="#dashboard-demo">Dashboard</a></li>
+                        <li><a href="#widget-config">Configuration</a></li>
+                        <li><a href="/blog.html">Blog</a></li>
+                    </ul>
+                </div>
+                <div>
+                    <h4>Ressources</h4>
+                    <ul>
+                        <li><a href="https://apps.shopify.com/try-on-stylelab" target="_blank" rel="noopener">App Shopify</a></li>
+                        <li><a href="/documentation.html">Documentation</a></li>
+                        <li><a href="/support.html">Support</a></li>
+                    </ul>
+                </div>
+                <div>
+                    <h4>Contact</h4>
+                    <ul>
+                        <li><a href="mailto:support@stylelab.io">support@stylelab.io</a></li>
+                        <li><a href="tel:+33123456789">+33 1 23 45 67 89</a></li>
+                    </ul>
+                </div>
+            </div>
+            <div class="footer-bottom">
+                <p>&copy; 2026 Style Lab Virtual Try‑On. Tous droits réservés.</p>
+            </div>
+        </div>
+    </footer>
+
+    <script src="env.js"></script>
+    <script src="config.js"></script>
+    <script src="widget.js"></script>
+    <script src="app.js"></script>
+    <script>
+        // Mobile menu toggle
+        const mobileMenuBtn = document.getElementById('mobileMenuBtn');
+        const navLinks = document.getElementById('navLinks');
+        
+        if (mobileMenuBtn && navLinks) {
+            mobileMenuBtn.addEventListener('click', () => {
+                navLinks.classList.toggle('active');
+                mobileMenuBtn.textContent = navLinks.classList.contains('active') ? '✕' : '☰';
+            });
+
+            document.querySelectorAll('.nav-link').forEach(link => {
+                link.addEventListener('click', () => {
+                    navLinks.classList.remove('active');
+                    mobileMenuBtn.textContent = '☰';
+                });
+            });
+        }
     </script>
 </body>
 </html>
