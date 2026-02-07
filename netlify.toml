@@ -1,0 +1,53 @@
+# Configuration Netlify
+[build]
+  # Commande de build (génère env.js depuis les variables d'environnement)
+  command = "npm run build"
+  # Répertoire de publication (racine pour site statique)
+  publish = "."
+
+# Redirections et rewrites
+[[redirects]]
+  from = "/blog"
+  to = "/blog.html"
+  status = 200
+
+[[redirects]]
+  from = "/blog-qu-est-ce-que-le-virtual-try-on"
+  to = "/blog-qu-est-ce-que-le-virtual-try-on.html"
+  status = 200
+
+[[redirects]]
+  from = "/blog-impact-conversions-ecommerce"
+  to = "/blog-impact-conversions-ecommerce.html"
+  status = 200
+
+[[redirects]]
+  from = "/blog-avenir-ecommerce-france"
+  to = "/blog-avenir-ecommerce-france.html"
+  status = 200
+
+# Headers de sécurité
+[[headers]]
+  for = "/*"
+  [headers.values]
+    X-Content-Type-Options = "nosniff"
+    X-Frame-Options = "DENY"
+    X-XSS-Protection = "1; mode=block"
+    Referrer-Policy = "strict-origin-when-cross-origin"
+
+# Cache pour les assets statiques
+[[headers]]
+  for = "/*.css"
+  [headers.values]
+    Cache-Control = "public, max-age=31536000, immutable"
+
+[[headers]]
+  for = "/*.js"
+  [headers.values]
+    Cache-Control = "public, max-age=31536000, immutable"
+
+[[headers]]
+  for = "/*.html"
+  [headers.values]
+    Cache-Control = "public, max-age=0, must-revalidate"
+

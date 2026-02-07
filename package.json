@@ -6,7 +6,8 @@
   "scripts": {
     "dev": "npx http-server . -p 3000 -o",
     "start": "npx http-server . -p 3000",
-    "build": "echo 'Site statique - pas de build nécessaire'"
+    "build": "node generate-env.js",
+    "prebuild": "node generate-env.js"
   },
   "keywords": [
     "virtual-try-on",
