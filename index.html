@@ -3,234 +3,82 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Virtual Try-On Shopify pour boutiques France & Europe | StyleLab</title>
-    <meta name="description" content="Solution Virtual Try-On Shopify pour boutiques France & Europe. Application essayage virtuel qui augmente les conversions jusqu'à 40% et réduit les retours jusqu'à 60%.">
-    <meta name="keywords" content="virtual try-on, shopify, essayage virtuel, e-commerce, IA, France, Europe, mode, vêtements, application shopify, essayage virtuel IA, augmentation conversions, réduction retours, boutique en ligne">
-    <meta name="author" content="StyleLab">
-    <meta name="robots" content="index, follow">
-    <meta name="language" content="French">
-    <meta name="geo.region" content="FR">
-    <meta name="geo.placename" content="France">
-    
-    <!-- Open Graph / Facebook -->
-    <meta property="og:type" content="website">
-    <meta property="og:url" content="https://stylelab.io/">
-    <meta property="og:title" content="Virtual Try-On Shopify pour boutiques France & Europe | StyleLab">
-    <meta property="og:description" content="Augmentez vos conversions jusqu'à 40% et réduisez les retours jusqu'à 60% avec notre solution d'essayage virtuel IA">
-    
-    <!-- Twitter -->
-    <meta property="twitter:card" content="summary_large_image">
-    <meta property="twitter:url" content="https://stylelab.io/">
-    <meta property="twitter:title" content="Virtual Try-On Shopify pour boutiques France & Europe | StyleLab">
-    <meta property="twitter:description" content="Augmentez vos conversions jusqu'à 40% et réduisez les retours jusqu'à 60% avec notre solution d'essayage virtuel IA">
-    
-    <link rel="icon" type="image/svg+xml" href="/favicon.svg">
-    <link rel="canonical" href="https://stylelab.io/">
-    <link rel="alternate" hreflang="fr" href="https://stylelab.io/">
-    <link rel="alternate" hreflang="en" href="https://stylelab.io/en/">
+    <title>Virtual Try-On Shopify - Démo Complète | StyleLab</title>
     <link rel="stylesheet" href="style.css">
     <link rel="stylesheet" href="demo-app.css">
-    <link rel="preconnect" href="https://fonts.googleapis.com">
-    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800;900&display=swap" rel="stylesheet">
-    
-    <!-- Schema.org markup -->
-    <script type="application/ld+json">
-    {
-      "@context": "https://schema.org",
-      "@type": "SoftwareApplication",
-      "name": "Style Lab Virtual Try-On",
-      "applicationCategory": "BusinessApplication",
-      "operatingSystem": "Web",
-      "url": "https://stylelab.io/",
-      "description": "Solution Virtual Try-On Shopify pour boutiques France & Europe. Application essayage virtuel qui augmente les conversions jusqu'à 40% et réduit les retours jusqu'à 60%.",
-      "offers": {
-        "@type": "Offer",
-        "price": "0",
-        "priceCurrency": "EUR",
-        "availability": "https://schema.org/InStock"
-      },
-      "aggregateRating": {
-        "@type": "AggregateRating",
-        "ratingValue": "4.8",
-        "ratingCount": "127",
-        "bestRating": "5",
-        "worstRating": "1"
-      },
-      "provider": {
-        "@type": "Organization",
-        "name": "StyleLab",
-        "url": "https://stylelab.io/",
-        "logo": "https://stylelab.io/logo.png",
-        "sameAs": [
-          "https://apps.shopify.com/try-on-stylelab"
-        ]
-      },
-      "featureList": [
-        "IA Avancée pour rendu ultra-réaliste",
-        "Mobile-First optimisé",
-        "Conforme RGPD",
-        "Installation en 3 minutes",
-        "Personnalisation complète",
-        "Analytics avancés"
-      ]
-    }
-    </script>
-    <script type="application/ld+json">
-    {
-      "@context": "https://schema.org",
-      "@type": "Organization",
-      "name": "StyleLab",
-      "url": "https://stylelab.io/",
-      "logo": "https://stylelab.io/logo.png",
-      "contactPoint": {
-        "@type": "ContactPoint",
-        "email": "support@stylelab.io",
-        "contactType": "customer support",
-        "availableLanguage": ["French", "English"]
-      },
-      "sameAs": [
-        "https://apps.shopify.com/try-on-stylelab"
-      ]
-    }
-    </script>
+    <script src="env.js"></script>
+    <script src="config.js"></script>
+    <script src="widget.js"></script>
+    <script src="app.js"></script>
 </head>
 <body>
-    <!-- Header -->
-    <header class="header">
-        <nav class="nav">
-            <div class="container">
-                <div class="nav-container">
-                    <a href="/" class="logo" aria-label="Style Lab Accueil">Style Lab</a>
-                    <span class="logo-badge">Virtual Try‑On</span>
-                    <button class="mobile-menu-btn" aria-label="Menu" id="mobileMenuBtn">
-                        ☰
-                    </button>
-                    <div class="nav-links" id="navLinks">
-                        <a href="#fonctionnalites" class="nav-link">Fonctionnalités</a>
-                        <a href="#avantages" class="nav-link">Avantages</a>
-                        <a href="#temoignages" class="nav-link">Témoignages</a>
-                        <a href="/blog.html" class="nav-link">Blog</a>
-                        <a href="https://apps.shopify.com/try-on-stylelab" target="_blank" rel="noopener" class="btn btn-primary">Installer l'App</a>
-                    </div>
-                </div>
-            </div>
-        </nav>
-    </header>
-
-    <!-- Hero -->
-    <section class="hero" itemscope itemtype="https://schema.org/WebPage">
+    <!-- HERO -->
+    <section class="hero">
         <div class="container">
-            <div class="hero-content">
-                <h1 class="hero-title" itemprop="name">Virtual Try-On Shopify pour boutiques France & Europe</h1>
-                <p class="hero-subtitle" itemprop="description">Augmentez vos conversions jusqu'à 40% et réduisez les retours jusqu'à 60% avec notre solution d'essayage virtuel IA. Installation en 3 minutes, sans code.</p>
-                <div class="hero-cta">
-                    <a href="https://apps.shopify.com/try-on-stylelab" target="_blank" rel="noopener" class="btn btn-primary btn-large">Commencer Gratuitement</a>
-                </div>
-                <div class="trust-bar">
-                    <div class="trust-item">✓ Installation 3 min</div>
-                    <div class="trust-item">✓ Sans code</div>
-                    <div class="trust-item">✓ Support FR + EN</div>
-                    <div class="trust-item">✓ Conforme RGPD</div>
-                </div>
-            </div>
+            <h1>Virtual Try-On Shopify - Démo Complète</h1>
+            <p>Tout est visible directement sur cette page : Produit, Widget, Dashboard et Configuration</p>
         </div>
     </section>
 
-    <!-- Stats -->
-    <section class="stats" itemscope itemtype="https://schema.org/ItemList">
+    <!-- SECTION 1: PRODUIT AVEC WIDGET -->
+    <section style="padding: 2rem 0; background: #f9fafb;">
         <div class="container">
-            <div class="stats-grid">
-                <div class="stat-item" itemprop="itemListElement" itemscope itemtype="https://schema.org/ListItem">
-                    <div class="stat-value" itemprop="name">+40%</div>
-                    <div class="stat-label">Conversions</div>
-                </div>
-                <div class="stat-item" itemprop="itemListElement" itemscope itemtype="https://schema.org/ListItem">
-                    <div class="stat-value" itemprop="name">-60%</div>
-                    <div class="stat-label">Retours</div>
-                </div>
-                <div class="stat-item" itemprop="itemListElement" itemscope itemtype="https://schema.org/ListItem">
-                    <div class="stat-value" itemprop="name">95%</div>
-                    <div class="stat-label">Précision IA</div>
-                </div>
-                <div class="stat-item" itemprop="itemListElement" itemscope itemtype="https://schema.org/ListItem">
-                    <div class="stat-value" itemprop="name">3min</div>
-                    <div class="stat-label">Installation</div>
-                </div>
-            </div>
-        </div>
-    </section>
-
-    <!-- Product Demo Section with Widget - TOUT VISIBLE DIRECTEMENT -->
-    <section id="product-demo" class="product-demo-section" style="padding: 1.5rem 0; background: var(--gray-50);">
-        <div class="container">
-            <h2 class="section-title" style="margin-bottom: 0.75rem; font-size: 1.75rem;">Essayez le Virtual Try-On</h2>
-            <p class="section-subtitle" style="margin-bottom: 1rem; font-size: 0.95rem;">Testez notre widget directement sur cette page produit de démonstration</p>
+            <h2 style="text-align: center; margin-bottom: 2rem;">1. Produit avec Widget Virtual Try-On</h2>
             
-            <div style="max-width: 1200px; margin: 0 auto;">
-                <div style="display: grid; grid-template-columns: 1fr 1fr; gap: 1.5rem; margin-bottom: 1rem; background: var(--white); padding: 1rem; border-radius: 0.75rem; box-shadow: var(--shadow-lg);">
+            <div style="max-width: 1200px; margin: 0 auto; background: white; padding: 2rem; border-radius: 1rem; box-shadow: 0 4px 6px rgba(0,0,0,0.1);">
+                <div style="display: grid; grid-template-columns: 1fr 1fr; gap: 2rem; margin-bottom: 2rem;">
                     <!-- Product Gallery -->
                     <div>
                         <img src="https://images.unsplash.com/photo-1521572163474-6864f9cf17ab?w=800&h=800&fit=crop" 
-                             alt="T-Shirt Premium Coton Bio" 
-                             class="product-main-image" 
+                             alt="T-Shirt Premium" 
                              id="mainImage"
-                             style="width: 100%; aspect-ratio: 1; object-fit: cover; border-radius: 1rem; border: 1px solid var(--gray-200); margin-bottom: 1rem; background: var(--gray-100);">
-                        <div style="display: flex; gap: 0.75rem; overflow-x: auto;">
+                             style="width: 100%; aspect-ratio: 1; object-fit: cover; border-radius: 0.5rem; border: 1px solid #e5e7eb; margin-bottom: 1rem;">
+                        <div style="display: flex; gap: 0.5rem;">
                             <img src="https://images.unsplash.com/photo-1521572163474-6864f9cf17ab?w=200&h=200&fit=crop" 
-                                 alt="T-Shirt Vue 1" 
                                  class="product-thumbnail active"
                                  onclick="changeMainImage(this.src.replace('w=200&h=200', 'w=800&h=800'))"
-                                 style="width: 80px; height: 80px; object-fit: cover; border-radius: 0.5rem; border: 2px solid var(--primary); cursor: pointer; flex-shrink: 0;">
+                                 style="width: 60px; height: 60px; object-fit: cover; border-radius: 0.5rem; border: 2px solid #008060; cursor: pointer;">
                             <img src="https://images.unsplash.com/photo-1618354691373-d851c5c3a990?w=200&h=200&fit=crop" 
-                                 alt="T-Shirt Vue 2" 
                                  class="product-thumbnail"
                                  onclick="changeMainImage(this.src.replace('w=200&h=200', 'w=800&h=800'))"
-                                 style="width: 80px; height: 80px; object-fit: cover; border-radius: 0.5rem; border: 2px solid var(--gray-200); cursor: pointer; flex-shrink: 0;">
+                                 style="width: 60px; height: 60px; object-fit: cover; border-radius: 0.5rem; border: 2px solid #e5e7eb; cursor: pointer;">
                         </div>
                     </div>
 
                     <!-- Product Info -->
                     <div>
-                        <div style="font-size: 0.875rem; color: var(--gray-600); font-weight: 600; margin-bottom: 0.5rem; text-transform: uppercase; letter-spacing: 0.05em;">StyleLab</div>
-                        <h1 style="font-size: clamp(1.75rem, 4vw, 2.5rem); font-weight: 800; color: var(--gray-900); margin-bottom: 1rem; line-height: 1.2;">T-Shirt Premium Coton Bio</h1>
-                        <div style="font-size: 2rem; font-weight: 800; color: var(--primary); margin-bottom: 1.5rem;">
-                            29,90 €
-                            <span style="font-size: 1.5rem; color: var(--gray-600); text-decoration: line-through; margin-left: 0.75rem;">39,90 €</span>
-                        </div>
-                        <p style="font-size: 1rem; color: var(--gray-700); line-height: 1.7; margin-bottom: 2rem;">
-                            Découvrez notre T-Shirt Premium en coton biologique certifié. Conçu pour un confort optimal et une durabilité exceptionnelle.
-                        </p>
-                        <button class="btn btn-primary" style="width: 100%; margin-bottom: 1rem;" onclick="alert('Ajouté au panier !')">Ajouter au panier</button>
+                        <h1 style="font-size: 2rem; font-weight: 800; margin-bottom: 1rem;">T-Shirt Premium Coton Bio</h1>
+                        <div style="font-size: 2rem; font-weight: 800; color: #008060; margin-bottom: 1rem;">29,90 €</div>
+                        <p style="margin-bottom: 1.5rem; color: #6b7280;">T-Shirt en coton biologique certifié. Confort optimal et durabilité exceptionnelle.</p>
+                        <button class="btn btn-primary" style="width: 100%; padding: 1rem;" onclick="alert('Ajouté au panier !')">Ajouter au panier</button>
                     </div>
                 </div>
 
-                <!-- Virtual Try-On Widget Section -->
-                <div style="background: var(--white); padding: 1.5rem; border-radius: 1rem; box-shadow: var(--shadow-lg); margin-top: 1rem;">
-                    <h3 style="font-size: 1.5rem; font-weight: 700; color: var(--gray-900); margin-bottom: 0.75rem;">Essayez ce produit virtuellement</h3>
-                    <p style="font-size: 1rem; color: var(--gray-600); margin-bottom: 1.5rem;">
-                        Utilisez notre technologie Virtual Try-On pour voir comment ce t-shirt vous va avant d'acheter.
-                    </p>
+                <!-- Widget VTON -->
+                <div style="border-top: 2px solid #e5e7eb; padding-top: 2rem; margin-top: 2rem;">
+                    <h3 style="margin-bottom: 1rem;">Essayez ce produit virtuellement</h3>
                     <div id="vton-widget-root"></div>
                 </div>
             </div>
         </div>
     </section>
 
-    <!-- Dashboard Section - TOUT AFFICHÉ DIRECTEMENT -->
-    <section id="dashboard-demo" class="dashboard-demo-section" style="padding: 2rem 0; background: var(--white);">
+    <!-- SECTION 2: DASHBOARD -->
+    <section style="padding: 2rem 0; background: white;">
         <div class="container">
-            <div class="demo-app-container" style="max-width: 1400px;">
-                <div class="demo-header" style="margin-bottom: 0.75rem; padding: 1rem 1.5rem;">
-                    <h1 style="font-size: 1.5rem; margin-bottom: 0.25rem;">Dashboard - StyleLab Virtual Try-On</h1>
-                    <p style="margin-bottom: 0.25rem; font-size: 0.9rem;">Vue d'ensemble de votre activité et statistiques</p>
-                    <span class="demo-badge" style="font-size: 0.7rem; padding: 0.25rem 0.5rem;">DÉMO INTERACTIVE</span>
+            <h2 style="text-align: center; margin-bottom: 2rem;">2. Dashboard - Statistiques et Activité</h2>
+            
+            <div class="demo-app-container" style="max-width: 1400px; margin: 0 auto;">
+                <div class="demo-header">
+                    <h1>Dashboard - StyleLab Virtual Try-On</h1>
+                    <p>Vue d'ensemble de votre activité et statistiques</p>
+                    <span class="demo-badge">DÉMO INTERACTIVE</span>
                 </div>
 
                 <div class="banner banner-info">
                     <div>
                         <strong>⭐ Aimez-vous Virtual Try-On ?</strong>
-                        <p style="margin-top: 4px; font-size: 14px;">Laissez-nous un avis sur le Shopify App Store pour nous aider à améliorer !</p>
+                        <p style="margin-top: 4px; font-size: 14px;">Laissez-nous un avis sur le Shopify App Store !</p>
                     </div>
                 </div>
 
@@ -362,23 +210,22 @@
         </div>
     </section>
 
-    <!-- Widget Configuration Section - TOUT AFFICHÉ DIRECTEMENT -->
-    <section id="widget-config" class="widget-config-section" style="padding: 2rem 0; background: var(--gray-50);">
+    <!-- SECTION 3: CONFIGURATION WIDGET -->
+    <section style="padding: 2rem 0; background: #f9fafb;">
         <div class="container">
-            <div class="demo-app-container" style="max-width: 1000px;">
-                <div class="demo-header" style="margin-bottom: 0.75rem; padding: 1rem 1.5rem;">
-                    <h1 style="font-size: 1.5rem; margin-bottom: 0.25rem;">Configuration du Widget</h1>
-                    <p style="margin-bottom: 0.25rem; font-size: 0.9rem;">Personnalisez l'apparence du widget Virtual Try-On sur votre boutique</p>
-                    <span class="demo-badge" style="font-size: 0.7rem; padding: 0.25rem 0.5rem;">DÉMO INTERACTIVE</span>
+            <h2 style="text-align: center; margin-bottom: 2rem;">3. Configuration du Widget</h2>
+            
+            <div class="demo-app-container" style="max-width: 1000px; margin: 0 auto;">
+                <div class="demo-header">
+                    <h1>Configuration du Widget</h1>
+                    <p>Personnalisez l'apparence du widget Virtual Try-On</p>
+                    <span class="demo-badge">DÉMO INTERACTIVE</span>
                 </div>
 
                 <div class="banner banner-info" id="infoBanner">
                     <div>
                         <strong>Important : Extension de thème requise</strong>
-                        <p style="margin-top: 4px; font-size: 14px;">
-                            N'oubliez pas d'installer l'extension de thème sur vos pages produit !<br>
-                            Allez dans l'éditeur de thème et ajoutez une section "Apps" à votre modèle de produit.
-                        </p>
+                        <p style="margin-top: 4px; font-size: 14px;">N'oubliez pas d'installer l'extension de thème sur vos pages produit !</p>
                     </div>
                     <button class="banner-close" onclick="document.getElementById('infoBanner').style.display='none'">×</button>
                 </div>
@@ -386,9 +233,7 @@
                 <div class="banner banner-success" id="successBanner" style="display: none;">
                     <div>
                         <strong>Configuration enregistrée avec succès !</strong>
-                        <p style="margin-top: 4px; font-size: 14px;">
-                            Les modifications sont maintenant dans la base de données et seront automatiquement chargées par le widget sur vos pages produit.
-                        </p>
+                        <p style="margin-top: 4px; font-size: 14px;">Les modifications sont maintenant dans la base de données.</p>
                     </div>
                     <button class="banner-close" onclick="document.getElementById('successBanner').style.display='none'">×</button>
                 </div>
@@ -431,27 +276,19 @@
                         </div>
 
                         <div class="divider"></div>
-
                         <button type="submit" class="btn btn-primary" id="saveBtn">Enregistrer la Configuration</button>
                     </form>
 
                     <div class="divider"></div>
-
                     <h3>Aperçu en Temps Réel</h3>
-                    <p style="font-size: 14px; color: var(--color-text-secondary); margin-bottom: var(--spacing-md);">
-                        Voici un aperçu de votre widget tel qu'il apparaîtra sur vos pages produit.
-                    </p>
                     <div class="preview-card">
                         <div class="widget-preview">
-                            <button type="button" class="widget-preview-button" id="previewButton" disabled>
-                                Essayer Virtuellement ✨
-                            </button>
+                            <button type="button" class="widget-preview-button" id="previewButton" disabled>Essayer Virtuellement ✨</button>
                         </div>
                     </div>
 
                     <div class="divider"></div>
-
-                    <h3>Valeurs Actuelles dans la Base de Données</h3>
+                    <h3>Valeurs Actuelles</h3>
                     <div class="current-values">
                         <p><strong>Texte :</strong> <span id="currentText">Essayer Virtuellement ✨</span></p>
                         <p><strong>Couleur de Fond :</strong> <span id="currentBg">#000000</span></p>
@@ -462,424 +299,48 @@
         </div>
     </section>
 
-    <!-- Benefits Section - New SEO optimized -->
-    <section id="avantages" class="benefits">
-        <div class="container">
-            <h2 class="section-title">Pourquoi choisir Style Lab Virtual Try-On ?</h2>
-            <p class="section-subtitle">Une solution complète pour transformer votre boutique e-commerce</p>
-            <div class="benefits-grid">
-                <div class="benefit-item">
-                    <div class="benefit-icon">📈</div>
-                    <div class="benefit-content">
-                        <h3>Augmentation des conversions</h3>
-                        <p>Nos clients constatent une augmentation moyenne de 40% du taux de conversion grâce à l'expérience immersive offerte par le virtual try-on.</p>
-                    </div>
-                </div>
-                <div class="benefit-item">
-                    <div class="benefit-icon">💰</div>
-                    <div class="benefit-content">
-                        <h3>Réduction des retours</h3>
-                        <p>Diminuez vos retours de 60% en permettant aux clients de visualiser précisément le rendu avant achat.</p>
-                    </div>
-                </div>
-                <div class="benefit-item">
-                    <div class="benefit-icon">⚡</div>
-                    <div class="benefit-content">
-                        <h3>Mise en place rapide</h3>
-                        <p>Installation en moins de 3 minutes sur votre boutique Shopify. Aucune compétence technique requise.</p>
-                    </div>
-                </div>
-                <div class="benefit-item">
-                    <div class="benefit-icon">🎯</div>
-                    <div class="benefit-content">
-                        <h3>IA ultra-précise</h3>
-                        <p>Notre technologie d'intelligence artificielle garantit un rendu réaliste à 95% pour une expérience client optimale.</p>
-                    </div>
-                </div>
-                <div class="benefit-item">
-                    <div class="benefit-icon">🔒</div>
-                    <div class="benefit-content">
-                        <h3>Sécurité et conformité</h3>
-                        <p>Hébergement en Europe, conformité RGPD totale, et protection des données clients garantie.</p>
-                    </div>
-                </div>
-                <div class="benefit-item">
-                    <div class="benefit-icon">🌍</div>
-                    <div class="benefit-content">
-                        <h3>Support multilingue</h3>
-                        <p>Interface disponible en français et anglais avec un support client dédié pour la France et l'Europe.</p>
-                    </div>
-                </div>
-            </div>
-        </div>
-    </section>
-
-    <!-- Features -->
-    <section id="fonctionnalites" class="features">
-        <div class="container">
-            <h2 class="section-title">Fonctionnalités Clés</h2>
-            <p class="section-subtitle">Tout ce dont vous avez besoin pour offrir une expérience d'essayage virtuel exceptionnelle</p>
-            <div class="features-grid">
-                <div class="feature-card">
-                    <div class="feature-icon">🤖</div>
-                    <h3>IA Avancée</h3>
-                    <p>Technologie d'intelligence artificielle de pointe pour un rendu ultra-réaliste et une détection morphologique précise</p>
-                </div>
-                <div class="feature-card">
-                    <div class="feature-icon">📱</div>
-                    <h3>Mobile-First</h3>
-                    <p>Optimisé pour mobile avec une expérience fluide sur tous les appareils : smartphone, tablette et desktop</p>
-                </div>
-                <div class="feature-card">
-                    <div class="feature-icon">🔒</div>
-                    <h3>Conforme RGPD</h3>
-                    <p>Hébergement en Europe, données sécurisées et conformité totale avec les réglementations européennes</p>
-                </div>
-                <div class="feature-card">
-                    <div class="feature-icon">⚡</div>
-                    <h3>Installation Rapide</h3>
-                    <p>Installation en 3 minutes, sans code requis, compatible avec tous les thèmes Shopify existants</p>
-                </div>
-                <div class="feature-card">
-                    <div class="feature-icon">🎨</div>
-                    <h3>Personnalisation</h3>
-                    <p>Personnalisez l'apparence du widget pour qu'il corresponde parfaitement à votre identité de marque</p>
-                </div>
-                <div class="feature-card">
-                    <div class="feature-icon">📊</div>
-                    <h3>Analytics Avancés</h3>
-                    <p>Suivez les performances avec des statistiques détaillées sur l'utilisation et l'impact sur vos ventes</p>
-                </div>
-            </div>
-        </div>
-    </section>
-
-    <!-- How It Works -->
-    <section class="how-it-works">
-        <div class="container">
-            <h2 class="section-title">Comment ça marche</h2>
-            <p class="section-subtitle">3 étapes simples pour révolutionner votre boutique en ligne</p>
-            <div class="steps">
-                <div class="step">
-                    <div class="step-number">1</div>
-                    <h3>Installez l'app</h3>
-                    <p>Ajoutez Style Lab Virtual Try-On à votre boutique Shopify en un clic depuis l'App Store. Installation instantanée et automatique.</p>
-                </div>
-                <div class="step">
-                    <div class="step-number">2</div>
-                    <h3>Activez le widget</h3>
-                    <p>Le widget apparaît automatiquement sur vos pages produits. Personnalisez les paramètres selon vos préférences.</p>
-                </div>
-                <div class="step">
-                    <div class="step-number">3</div>
-                    <h3>Vos clients essaient</h3>
-                    <p>Vos clients utilisent leur caméra ou uploadent une photo pour voir les produits sur eux en temps réel.</p>
-                </div>
-            </div>
-        </div>
-    </section>
-
-    <!-- Testimonials Section - New -->
-    <section id="temoignages" class="testimonials" itemscope itemtype="https://schema.org/Review">
-        <div class="container">
-            <h2 class="section-title">Ce que disent nos clients</h2>
-            <p class="section-subtitle">Rejoignez les centaines de boutiques qui ont transformé leur e-commerce</p>
-            <div class="testimonials-grid">
-                <div class="testimonial-card" itemscope itemtype="https://schema.org/Review">
-                    <div class="testimonial-header">
-                        <div class="testimonial-avatar">M</div>
-                        <div class="testimonial-info">
-                            <h4 itemprop="author" itemscope itemtype="https://schema.org/Person"><span itemprop="name">Marie Dubois</span></h4>
-                            <p class="testimonial-role" itemprop="author" itemscope itemtype="https://schema.org/Organization"><span itemprop="jobTitle">Fondatrice</span>, <span itemprop="name">ChicMode Paris</span></p>
-                        </div>
-                    </div>
-                    <div class="testimonial-stars" itemprop="reviewRating" itemscope itemtype="https://schema.org/Rating">
-                        <meta itemprop="ratingValue" content="5">
-                        <meta itemprop="bestRating" content="5">
-                        ★★★★★
-                    </div>
-                    <p class="testimonial-text" itemprop="reviewBody">"Depuis l'installation de Style Lab, nos conversions ont augmenté de 45% et nos retours ont chuté drastiquement. C'est un game-changer pour notre boutique !"</p>
-                </div>
-                <div class="testimonial-card">
-                    <div class="testimonial-header">
-                        <div class="testimonial-avatar">T</div>
-                        <div class="testimonial-info">
-                            <h4>Thomas Laurent</h4>
-                            <p class="testimonial-role">CEO, UrbanStyle</p>
-                        </div>
-                    </div>
-                    <div class="testimonial-stars">★★★★★</div>
-                    <p class="testimonial-text">"L'installation a pris littéralement 2 minutes. L'interface est intuitive et nos clients adorent essayer les vêtements virtuellement avant d'acheter."</p>
-                </div>
-                <div class="testimonial-card">
-                    <div class="testimonial-header">
-                        <div class="testimonial-avatar">S</div>
-                        <div class="testimonial-info">
-                            <h4>Sophie Martin</h4>
-                            <p class="testimonial-role">Directrice e-commerce, LuxeFashion</p>
-                        </div>
-                    </div>
-                    <div class="testimonial-stars">★★★★★</div>
-                    <p class="testimonial-text">"La qualité du rendu IA est impressionnante. Nos clients sont plus confiants dans leurs achats et nous voyons une vraie différence dans nos métriques."</p>
-                </div>
-            </div>
-        </div>
-    </section>
-
-    <!-- Use Cases Section - New SEO optimized -->
-    <section class="benefits">
-        <div class="container">
-            <h2 class="section-title">Pour quels types de produits ?</h2>
-            <p class="section-subtitle">Style Lab Virtual Try-On s'adapte à de nombreuses catégories de produits</p>
-            <div class="benefits-grid">
-                <div class="benefit-item">
-                    <div class="benefit-icon">👕</div>
-                    <div class="benefit-content">
-                        <h3>Vêtements</h3>
-                        <p>T-shirts, chemises, robes, vestes - visualisez la coupe et le style sur différentes morphologies.</p>
-                    </div>
-                </div>
-                <div class="benefit-item">
-                    <div class="benefit-icon">👓</div>
-                    <div class="benefit-content">
-                        <h3>Accessoires</h3>
-                        <p>Lunettes, chapeaux, écharpes - essayez virtuellement tous vos accessoires de mode.</p>
-                    </div>
-                </div>
-                <div class="benefit-item">
-                    <div class="benefit-icon">💄</div>
-                    <div class="benefit-content">
-                        <h3>Cosmétiques</h3>
-                        <p>Maquillage, rouge à lèvres - testez les couleurs et rendus avant l'achat.</p>
-                    </div>
-                </div>
-                <div class="benefit-item">
-                    <div class="benefit-icon">⌚</div>
-                    <div class="benefit-content">
-                        <h3>Bijoux & Montres</h3>
-                        <p>Visualisez comment les bijoux et montres s'harmonisent avec votre style.</p>
-                    </div>
-                </div>
-            </div>
-        </div>
-    </section>
-
-    <!-- FAQ -->
-    <section class="faq">
-        <div class="container">
-            <h2 class="section-title">Questions Fréquentes</h2>
-            <p class="section-subtitle">Tout ce que vous devez savoir sur Style Lab Virtual Try-On</p>
-            <div class="faq-list">
-                <details class="faq-item">
-                    <summary>Comment fonctionne un virtual try-on sur Shopify ?</summary>
-                    <p>Un virtual try-on Shopify fonctionne grâce à l'intelligence artificielle qui analyse la morphologie du client via la caméra ou une photo uploadée. L'IA détecte les points de référence clés du corps et du visage, puis superpose l'image du produit en temps réel avec un ajustement précis à la morphologie. La technologie utilise des algorithmes de deep learning entraînés sur des millions d'images pour garantir un rendu ultra-réaliste.</p>
-                </details>
-                <details class="faq-item">
-                    <summary>Est-ce que l'essayage virtuel réduit vraiment les retours ?</summary>
-                    <p>Oui, notre solution réduit les retours jusqu'à 60% et augmente les conversions jusqu'à 40%. Les boutiques Shopify utilisant la technologie virtual try-on constatent des améliorations mesurables car les clients peuvent visualiser précisément le rendu du produit avant l'achat, ce qui réduit drastiquement les déceptions et les erreurs de taille. Nos données montrent que les clients qui utilisent le virtual try-on sont 3x plus susceptibles de finaliser leur achat.</p>
-                </details>
-                <details class="faq-item">
-                    <summary>Le virtual try-on est-il conforme RGPD ?</summary>
-                    <p>Oui, notre application garantit une conformité totale avec le RGPD et les réglementations européennes : hébergement sécurisé des données dans l'Union Européenne (serveurs basés en France), consentement explicite requis avant toute activation de la caméra, traitement transparent des données avec possibilité de consultation, droit à l'effacement immédiat des données, et aucune conservation des images sans autorisation. Nous prenons la protection des données très au sérieux.</p>
-                </details>
-                <details class="faq-item">
-                    <summary>Combien de temps prend l'installation ?</summary>
-                    <p>L'installation prend moins de 3 minutes chrono. Il suffit de télécharger l'app depuis le Shopify App Store, de l'activer dans votre tableau de bord, et le widget s'intègre automatiquement avec tous les thèmes Shopify sans nécessiter la moindre ligne de code. Notre système détecte automatiquement vos pages produits et configure le widget de manière optimale.</p>
-                </details>
-                <details class="faq-item">
-                    <summary>Style Lab fonctionne-t-il sur mobile ?</summary>
-                    <p>Absolument ! Style Lab est optimisé mobile-first. Plus de 70% des utilisateurs e-commerce achètent depuis leur smartphone, c'est pourquoi nous avons développé une expérience parfaitement fluide sur mobile. Le widget s'adapte automatiquement à toutes les tailles d'écran et utilise la caméra frontale des smartphones pour un essayage virtuel en temps réel.</p>
-                </details>
-                <details class="faq-item">
-                    <summary>Quel est le coût de Style Lab Virtual Try-On ?</summary>
-                    <p>Style Lab propose un plan gratuit avec 4 générations par mois, ainsi que des plans payants à partir de 29$/mois (100 générations) incluant des fonctionnalités avancées, un support prioritaire, des analytics détaillés et une personnalisation complète. Tous nos plans incluent une période d'essai gratuite sans engagement ni carte bancaire requise.</p>
-                </details>
-                <details class="faq-item">
-                    <summary>Ai-je besoin de compétences techniques pour installer Style Lab ?</summary>
-                    <p>Aucune compétence technique n'est nécessaire ! Style Lab est conçu pour être installé et configuré par n'importe qui en quelques clics. Notre interface intuitive vous guide à chaque étape, et si vous avez besoin d'aide, notre équipe de support est disponible pour vous accompagner.</p>
-                </details>
-                <details class="faq-item">
-                    <summary>Puis-je personnaliser l'apparence du widget ?</summary>
-                    <p>Oui, Style Lab offre de nombreuses options de personnalisation : couleurs adaptées à votre charte graphique, choix de la position du widget sur la page produit, textes et labels personnalisables, et design responsive qui s'adapte à votre thème Shopify. Les plans premium offrent encore plus d'options de personnalisation avancée.</p>
-                </details>
-            </div>
-        </div>
-    </section>
-
-    <!-- SEO Content Section - New -->
-    <section class="blog-section">
-        <div class="container">
-            <h2 class="section-title">Virtual Try-On : La révolution e-commerce</h2>
-            <p class="section-subtitle">Découvrez comment la technologie d'essayage virtuel transforme l'expérience d'achat en ligne</p>
-            <div class="blog-grid">
-                <div class="blog-card">
-                    <div class="blog-card-image">🎯</div>
-                    <div class="blog-card-content">
-                        <div class="blog-card-header">
-                            <span class="blog-category">Guide</span>
-                            <span class="blog-date">2026</span>
-                        </div>
-                        <h3 class="blog-title">Qu'est-ce que le Virtual Try-On ?</h3>
-                        <p class="blog-excerpt">Le virtual try-on (essayage virtuel) est une technologie qui permet aux clients d'essayer des produits virtuellement avant l'achat. Grâce à l'intelligence artificielle et la réalité augmentée, les utilisateurs peuvent voir en temps réel comment un vêtement, accessoire ou produit cosmétique leur va, directement depuis leur smartphone ou ordinateur.</p>
-                        <a href="/blog-qu-est-ce-que-le-virtual-try-on.html" class="blog-link">Lire l'article complet</a>
-                    </div>
-                </div>
-                <div class="blog-card">
-                    <div class="blog-card-image">📊</div>
-                    <div class="blog-card-content">
-                        <div class="blog-card-header">
-                            <span class="blog-category">Statistiques</span>
-                            <span class="blog-date">2026</span>
-                        </div>
-                        <h3 class="blog-title">Impact sur les conversions e-commerce</h3>
-                        <p class="blog-excerpt">Les études montrent que l'intégration d'un système de virtual try-on augmente les taux de conversion de 40% en moyenne. Les clients qui utilisent cette technologie sont 3 fois plus susceptibles d'effectuer un achat, et 60% moins susceptibles de retourner leurs produits.</p>
-                        <a href="/blog-impact-conversions-ecommerce.html" class="blog-link">Lire l'article complet</a>
-                    </div>
-                </div>
-                <div class="blog-card">
-                    <div class="blog-card-image">🚀</div>
-                    <div class="blog-card-content">
-                        <div class="blog-card-header">
-                            <span class="blog-category">Tendances</span>
-                            <span class="blog-date">2026</span>
-                        </div>
-                        <h3 class="blog-title">L'avenir du e-commerce en France</h3>
-                        <p class="blog-excerpt">Le marché français du e-commerce adopte massivement les technologies d'essayage virtuel. Les boutiques en ligne qui proposent du virtual try-on voient leur taux d'engagement augmenter de 300% et leurs retours produits diminuer significativement, réduisant les coûts logistiques et améliorant la satisfaction client.</p>
-                        <a href="/blog-avenir-ecommerce-france.html" class="blog-link">Lire l'article complet</a>
-                    </div>
-                </div>
-            </div>
-        </div>
-    </section>
-
-    <!-- CTA Final -->
-    <section class="cta-final">
-        <div class="container">
-            <div class="cta-final-content">
-                <h2>Prêt à augmenter vos conversions ?</h2>
-                <p>Rejoignez les centaines de boutiques Shopify qui utilisent Style Lab pour transformer leur expérience client et booster leurs ventes</p>
-                <a href="https://apps.shopify.com/try-on-stylelab" target="_blank" rel="noopener" class="btn btn-white btn-large">Installer Maintenant - Gratuit</a>
-            </div>
-        </div>
-    </section>
-
-    <!-- Footer -->
-    <footer class="footer">
-        <div class="container">
-            <div class="footer-grid">
-                <div>
-                    <h3>Style Lab Virtual Try‑On</h3>
-                    <p>Solution d'essayage virtuel IA pour boutiques Shopify en France et Europe</p>
-                    <p style="margin-top: 1rem; color: rgba(255, 255, 255, 0.6); font-size: 0.875rem;">Augmentez vos conversions jusqu'à 40% et réduisez vos retours jusqu'à 60%</p>
-                </div>
-                <div>
-                    <h4>Navigation</h4>
-                    <ul>
-                        <li><a href="/">Accueil</a></li>
-                        <li><a href="#fonctionnalites">Fonctionnalités</a></li>
-                        <li><a href="#avantages">Avantages</a></li>
-                        <li><a href="#temoignages">Témoignages</a></li>
-                        <li><a href="/blog.html">Blog</a></li>
-                    </ul>
-                </div>
-                <div>
-                    <h4>Ressources</h4>
-                    <ul>
-                        <li><a href="https://apps.shopify.com/try-on-stylelab" target="_blank" rel="noopener">App Shopify</a></li>
-                        <li><a href="/documentation.html">Documentation</a></li>
-                        <li><a href="/support.html">Support</a></li>
-                        <li><a href="/pricing.html">Tarifs</a></li>
-                    </ul>
-                </div>
-                <div>
-                    <h4>Légal</h4>
-                    <ul>
-                        <li><a href="/mentions-legales.html">Mentions légales</a></li>
-                        <li><a href="/politique-de-confidentialite.html">Confidentialité</a></li>
-                        <li><a href="/cgv.html">CGV</a></li>
-                        <li><a href="/rgpd.html">RGPD</a></li>
-                    </ul>
-                </div>
-                <div>
-                    <h4>Contact</h4>
-                    <ul>
-                        <li><a href="mailto:support@stylelab.io">support@stylelab.io</a></li>
-                        <li><a href="tel:+33123456789">+33 1 23 45 67 89</a></li>
-                        <li>Du lundi au vendredi<br>9h - 18h (CET)</li>
-                    </ul>
-                </div>
-            </div>
-            <div class="footer-bottom">
-                <p>&copy; 2026 Style Lab Virtual Try‑On. Tous droits réservés. | Virtual try-on Shopify pour France & Europe</p>
-            </div>
-        </div>
-    </footer>
-
-    <script src="env.js"></script>
-    <script src="config.js"></script>
-    <script src="widget.js"></script>
-    <script src="app.js"></script>
     <script>
-        // Product demo functions
+        // Product functions
         function changeMainImage(src) {
-            const mainImage = document.getElementById('mainImage');
-            if (mainImage) {
-                mainImage.src = src;
-                document.querySelectorAll('.product-thumbnail').forEach(thumb => {
-                    thumb.classList.remove('active');
-                    if (thumb.src === src || thumb.src.replace('w=200&h=200', 'w=800&h=800') === src) {
-                        thumb.classList.add('active');
-                    }
-                });
-            }
+            document.getElementById('mainImage').src = src;
+            document.querySelectorAll('.product-thumbnail').forEach(thumb => {
+                thumb.classList.remove('active');
+                thumb.style.borderColor = '#e5e7eb';
+            });
+            event.target.classList.add('active');
+            event.target.style.borderColor = '#008060';
         }
 
-        function selectOption(element, type) {
-            const siblings = element.parentElement.querySelectorAll('.product-option-value');
-            siblings.forEach(sibling => sibling.classList.remove('selected'));
-            element.classList.add('selected');
-        }
-
-        function changeQuantity(delta) {
-            const input = document.getElementById('quantity');
-            if (input) {
-                const currentValue = parseInt(input.value);
-                const newValue = Math.max(1, currentValue + delta);
-                input.value = newValue;
-            }
-        }
-
-        function addToCart() {
-            alert('Ajouté au panier !');
-        }
-
-        // Initialize Virtual Try-On Widget
+        // Initialize VTON Widget
         function initVTON() {
             const mainImage = document.getElementById('mainImage');
             const widgetRoot = document.getElementById('vton-widget-root');
             if (mainImage && widgetRoot && window.initVTONWidget) {
-                const productImageUrl = mainImage.src;
-                console.log('Initializing VTON widget with image:', productImageUrl);
                 window.initVTONWidget({
                     containerId: 'vton-widget-root',
-                    productImageUrl: productImageUrl
-                });
-            } else {
-                console.warn('VTON Widget initialization failed:', {
-                    mainImage: !!mainImage,
-                    widgetRoot: !!widgetRoot,
-                    initVTONWidget: !!window.initVTONWidget
+                    productImageUrl: mainImage.src
                 });
             }
         }
 
-        // Try to initialize immediately if DOM is ready
         if (document.readyState === 'loading') {
             document.addEventListener('DOMContentLoaded', initVTON);
         } else {
-            // DOM is already ready
             setTimeout(initVTON, 100);
         }
+
+        // Dashboard animations
+        document.addEventListener('DOMContentLoaded', function() {
+            const bars = document.querySelectorAll('.graph-bar');
+            bars.forEach((bar, index) => {
+                const height = bar.style.height;
+                bar.style.height = '0%';
+                setTimeout(() => {
+                    bar.style.transition = 'height 0.6s ease';
+                    bar.style.height = height;
+                }, index * 100);
+            });
+        });
 
         // Widget Configuration Script
         (function() {
@@ -892,8 +353,6 @@
             const form = document.getElementById('widgetForm');
             const saveBtn = document.getElementById('saveBtn');
             const successBanner = document.getElementById('successBanner');
-            const errorBanner = document.getElementById('errorBanner');
-            const errorMessage = document.getElementById('errorMessage');
             const currentText = document.getElementById('currentText');
             const currentBg = document.getElementById('currentBg');
             const currentColor = document.getElementById('currentColor');
@@ -930,44 +389,33 @@
                 previewButton.style.color = getContrastTextColor(bg, color);
             }
 
-            if (widgetBgColorPicker) {
-                widgetBgColorPicker.addEventListener('input', function(e) {
-                    widgetBgInput.value = e.target.value;
+            if (widgetBgColorPicker) widgetBgColorPicker.addEventListener('input', function(e) {
+                widgetBgInput.value = e.target.value;
+                updatePreview();
+            });
+
+            if (widgetColorPicker) widgetColorPicker.addEventListener('input', function(e) {
+                widgetColorInput.value = e.target.value;
+                updatePreview();
+            });
+
+            if (widgetBgInput) widgetBgInput.addEventListener('input', function(e) {
+                const value = e.target.value;
+                if (/^#[0-9A-F]{6}$/i.test(value) && widgetBgColorPicker) {
+                    widgetBgColorPicker.value = value;
                     updatePreview();
-                });
-            }
+                }
+            });
 
-            if (widgetColorPicker) {
-                widgetColorPicker.addEventListener('input', function(e) {
-                    widgetColorInput.value = e.target.value;
+            if (widgetColorInput) widgetColorInput.addEventListener('input', function(e) {
+                const value = e.target.value;
+                if (/^#[0-9A-F]{6}$/i.test(value) && widgetColorPicker) {
+                    widgetColorPicker.value = value;
                     updatePreview();
-                });
-            }
+                }
+            });
 
-            if (widgetBgInput) {
-                widgetBgInput.addEventListener('input', function(e) {
-                    const value = e.target.value;
-                    if (/^#[0-9A-F]{6}$/i.test(value) && widgetBgColorPicker) {
-                        widgetBgColorPicker.value = value;
-                        updatePreview();
-                    }
-                });
-            }
-
-            if (widgetColorInput) {
-                widgetColorInput.addEventListener('input', function(e) {
-                    const value = e.target.value;
-                    if (/^#[0-9A-F]{6}$/i.test(value) && widgetColorPicker) {
-                        widgetColorPicker.value = value;
-                        updatePreview();
-                    }
-                });
-            }
-
-            if (widgetTextInput) {
-                widgetTextInput.addEventListener('input', updatePreview);
-            }
-
+            if (widgetTextInput) widgetTextInput.addEventListener('input', updatePreview);
             updatePreview();
 
             if (form && saveBtn) {
@@ -976,24 +424,13 @@
                     saveBtn.disabled = true;
                     saveBtn.textContent = 'Enregistrement...';
                     if (successBanner) successBanner.style.display = 'none';
-                    if (errorBanner) errorBanner.style.display = 'none';
                     
                     setTimeout(() => {
                         const text = widgetTextInput.value || "Essayer Virtuellement ✨";
                         const bg = widgetBgInput.value || "#000000";
                         const color = widgetColorInput.value || "#ffffff";
                         
-                        if (!/^#[0-9A-F]{6}$/i.test(bg)) {
-                            if (errorMessage) errorMessage.textContent = 'Couleur de fond invalide.';
-                            if (errorBanner) errorBanner.style.display = 'flex';
-                            saveBtn.disabled = false;
-                            saveBtn.textContent = 'Enregistrer la Configuration';
-                            return;
-                        }
-                        
-                        if (!/^#[0-9A-F]{6}$/i.test(color)) {
-                            if (errorMessage) errorMessage.textContent = 'Couleur du texte invalide.';
-                            if (errorBanner) errorBanner.style.display = 'flex';
+                        if (!/^#[0-9A-F]{6}$/i.test(bg) || !/^#[0-9A-F]{6}$/i.test(color)) {
                             saveBtn.disabled = false;
                             saveBtn.textContent = 'Enregistrer la Configuration';
                             return;
@@ -1014,77 +451,6 @@
                 });
             }
         })();
-
-        // Dashboard animations
-        document.addEventListener('DOMContentLoaded', function() {
-            const bars = document.querySelectorAll('.graph-bar');
-            bars.forEach((bar, index) => {
-                const height = bar.style.height;
-                bar.style.height = '0%';
-                setTimeout(() => {
-                    bar.style.transition = 'height 0.6s ease';
-                    bar.style.height = height;
-                }, index * 100);
-            });
-        });
-
-        // Mobile menu toggle
-        const mobileMenuBtn = document.getElementById('mobileMenuBtn');
-        const navLinks = document.getElementById('navLinks');
-        
-        mobileMenuBtn.addEventListener('click', () => {
-            navLinks.classList.toggle('active');
-            mobileMenuBtn.textContent = navLinks.classList.contains('active') ? '✕' : '☰';
-        });
-
-        // Close mobile menu when clicking a link
-        document.querySelectorAll('.nav-link').forEach(link => {
-            link.addEventListener('click', () => {
-                navLinks.classList.remove('active');
-                mobileMenuBtn.textContent = '☰';
-            });
-        });
-
-        // Close mobile menu when clicking outside
-        document.addEventListener('click', (e) => {
-            if (!navLinks.contains(e.target) && !mobileMenuBtn.contains(e.target)) {
-                navLinks.classList.remove('active');
-                mobileMenuBtn.textContent = '☰';
-            }
-        });
-
-        // Smooth scroll for anchor links
-        document.querySelectorAll('a[href^="#"]').forEach(anchor => {
-            anchor.addEventListener('click', function (e) {
-                e.preventDefault();
-                const target = document.querySelector(this.getAttribute('href'));
-                if (target) {
-                    target.scrollIntoView({
-                        behavior: 'smooth',
-                        block: 'start'
-                    });
-                }
-            });
-        });
-
-        // Add animation on scroll
-        const observerOptions = {
-            threshold: 0.1,
-            rootMargin: '0px 0px -50px 0px'
-        };
-
-        const observer = new IntersectionObserver((entries) => {
-            entries.forEach(entry => {
-                if (entry.isIntersecting) {
-                    entry.target.classList.add('animate-slide-in');
-                }
-            });
-        }, observerOptions);
-
-        // Observe elements for animation
-        document.querySelectorAll('.feature-card, .benefit-item, .testimonial-card, .blog-card, .step').forEach(el => {
-            observer.observe(el);
-        });
     </script>
 </body>
 </html>
