@@ -1403,5 +1403,55 @@
             });
         });
     </script>
+    <script>
+        // Initialisation du widget VTON
+        function initVTON() {
+            console.log('🔄 Initialisation VTON...');
+            const mainImage = document.querySelector('.product-main-image img, #mainImage, .product-images img');
+            const widgetRoot = document.getElementById('vton-widget-root');
+            
+            if (widgetRoot && window.initVTONWidget) {
+                let productImageUrl = null;
+                
+                if (mainImage) {
+                    productImageUrl = mainImage.src || mainImage.getAttribute('src');
+                    console.log('📸 Image produit trouvée:', productImageUrl);
+                } else {
+                    // Fallback: utiliser l'image par défaut
+                    productImageUrl = 'https://images.unsplash.com/photo-1521572163474-6864f9cf17ab?w=800';
+                    console.log('⚠️ Image produit non trouvée, utilisation image par défaut');
+                }
+                
+                window.initVTONWidget({
+                    containerId: 'vton-widget-root',
+                    productImageUrl: productImageUrl
+                });
+                console.log('✅ VTON initialisé');
+            } else {
+                console.log('⏳ En attente des éléments...', {
+                    widgetRoot: !!widgetRoot,
+                    initVTONWidget: !!window.initVTONWidget
+                });
+                setTimeout(initVTON, 500);
+            }
+        }
+        
+        // Attendre que tous les scripts soient chargés
+        function waitForScripts() {
+            if (window.initVTONWidget && document.getElementById('vton-widget-root')) {
+                initVTON();
+            } else {
+                setTimeout(waitForScripts, 200);
+            }
+        }
+        
+        if (document.readyState === 'loading') {
+            document.addEventListener('DOMContentLoaded', function() {
+                setTimeout(waitForScripts, 500);
+            });
+        } else {
+            setTimeout(waitForScripts, 500);
+        }
+    </script>
 </body>
 </html>
