@@ -14,6 +14,7 @@
   let widgetState = {
     userPhoto: null,
     productImage: null,
+    productImageUrl: null,
     resultImageUrl: null,
     isGenerating: false,
     modalOpen: false,
@@ -21,35 +22,52 @@
   };
   
   // Initialize widget when DOM is ready
-  function initWidget() {
-    log('[VTON Widget] Initializing widget...');
+  function initWidget(options = {}) {
+    log('[VTON Widget] Initializing widget...', options);
     
-    // Find demo section
-    const demoSection = document.getElementById('demo');
-    if (!demoSection) {
-      warn('[VTON Widget] Demo section not found');
-      return;
+    const containerId = options.containerId || 'vton-widget-root';
+    const productImageUrl = options.productImageUrl || null;
+    
+    // Set product image URL if provided
+    if (productImageUrl) {
+      widgetState.productImageUrl = productImageUrl;
+    }
+    
+    // Find container
+    let container = document.getElementById(containerId);
+    
+    // If container not found, try to find demo section (backward compatibility)
+    if (!container) {
+      const demoSection = document.getElementById('demo');
+      if (demoSection) {
+        const demoCard = demoSection.querySelector('.demo-card');
+        if (demoCard) {
+          container = document.createElement('div');
+          container.id = 'vton-widget-container';
+          container.setAttribute('data-vton-widget', 'true');
+          demoCard.insertBefore(container, demoCard.firstChild);
+        } else {
+          container = demoSection;
+        }
+      } else {
+        warn('[VTON Widget] Container not found:', containerId);
+        return;
+      }
     }
     
     // Check if widget already exists
-    if (document.getElementById('vton-widget-container')) {
-      warn('[VTON Widget] Widget already exists');
+    if (container.querySelector('[data-vton-widget="true"]')) {
+      warn('[VTON Widget] Widget already exists in container');
       return;
     }
     
-    // Create widget container
-    const container = document.createElement('div');
-    container.id = 'vton-widget-container';
-    container.setAttribute('data-vton-widget', 'true');
-    
-    // Find demo card to insert widget
-    const demoCard = demoSection.querySelector('.demo-card');
-    if (demoCard) {
-      // Insert widget at the beginning of demo card
-      demoCard.insertBefore(container, demoCard.firstChild);
-    } else {
-      // Fallback: insert in demo section
-      demoSection.appendChild(container);
+    // Create widget container if needed
+    if (!container.hasAttribute('data-vton-widget')) {
+      const widgetContainer = document.createElement('div');
+      widgetContainer.id = 'vton-widget-container';
+      widgetContainer.setAttribute('data-vton-widget', 'true');
+      container.appendChild(widgetContainer);
+      container = widgetContainer;
     }
     
     // Render widget
@@ -57,6 +75,9 @@
     
     log('[VTON Widget] Widget initialized successfully');
   }
+  
+  // Expose initVTONWidget globally for manual initialization
+  window.initVTONWidget = initWidget;
   
   // Render widget HTML
   function renderWidget(container) {
