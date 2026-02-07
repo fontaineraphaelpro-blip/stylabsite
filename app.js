@@ -275,19 +275,23 @@ document.addEventListener('DOMContentLoaded', function() {
                 formData.append('user_photo', userPhotoFile);
                 formData.append('product_image', productImageFile);
                 
-                const uploadResponse = await fetch(uploadUrl, {
-                    method: 'POST',
-                    body: formData
-                });
-                
-                console.log('Réponse upload:', uploadResponse.status, uploadResponse.statusText);
-                
-                if (!uploadResponse.ok) {
-                    const errorText = await uploadResponse.text();
-                    console.error('Erreur upload:', errorText);
-                    console.warn('Upload échoué, tentative avec base64 (mode démo)...');
-                    updatePreviewStatus('Mode démo: utilisation directe des images...');
-                    // Si l'upload échoue, essayer avec base64
+                let uploadResponse;
+                try {
+                    uploadResponse = await fetch(uploadUrl, {
+                        method: 'POST',
+                        body: formData
+                    });
+                    
+                    console.log('Réponse upload:', uploadResponse.status, uploadResponse.statusText);
+                    
+                    if (!uploadResponse.ok) {
+                        throw new Error(`Upload failed: ${uploadResponse.status} ${uploadResponse.statusText}`);
+                    }
+                } catch (error) {
+                    // Erreur réseau, CORS, ou 404 - passer directement à base64
+                    console.warn('Upload échoué (erreur réseau/CORS/404):', error.message);
+                    console.warn('Passage automatique au mode base64 (sans upload)...');
+                    updatePreviewStatus('Mode direct: utilisation des images sans upload...');
                     await processWithReplicateBase64(cfg);
                     return;
                 }
@@ -471,6 +475,92 @@ document.addEventListener('DOMContentLoaded', function() {
                 reader.onerror = reject;
                 reader.readAsDataURL(file);
             });
+        }
+        
+        // Fonction pour uploader une image vers Imgur (service public gratuit)
+        async function uploadToImgur(base64Image) {
+            try {
+                const response = await fetch('https://api.imgur.com/3/image', {
+                    method: 'POST',
+                    headers: {
+                        'Authorization': 'Client-ID 546c25a59c58ad7', // Client ID public Imgur (gratuit)
+                        'Content-Type': 'application/json',
+                    },
+                    body: JSON.stringify({
+                        image: base64Image,
+                        type: 'base64'
+                    })
+                });
+                
+                if (!response.ok) {
+                    console.warn('Erreur Imgur:', response.status);
+                    return null;
+                }
+                
+                const data = await response.json();
+                if (data.success && data.data && data.data.link) {
+                    return data.data.link;
+                }
+                return null;
+            } catch (error) {
+                console.warn('Erreur upload Imgur:', error);
+                return null;
+            }
+        }
+        
+        // Fonction pour créer une prédiction Replicate avec des URLs d'images
+        async function createReplicatePrediction(cfg, userImageUrl, productImageUrl) {
+            try {
+                updatePreviewStatus('Création de la prédiction Replicate...');
+                
+                const predictionResponse = await fetch(`${cfg.replicateApiUrl}/predictions`, {
+                    method: 'POST',
+                    headers: {
+                        'Authorization': `Token ${cfg.replicateApiToken}`,
+                        'Content-Type': 'application/json',
+                    },
+                    body: JSON.stringify({
+                        version: cfg.replicateModel || 'bytedance/seedream-4.5',
+                        input: {
+                            aspect_ratio: "1:1",
+                            height: cfg.replicateImageSize || 2048,
+                            image_input: [
+                                userImageUrl,  // Photo de la personne (première image)
+                                productImageUrl // Image du vêtement (deuxième image)
+                            ],
+                            max_images: 10,
+                            prompt: cfg.replicatePrompt || "This is NOT a redesign task.\n\nIt is a garment transfer task.\n\nUse the clothing from the second image exactly as-is with zero creative interpretation.\n\nThe output must look like the REAL clothing item was physically worn by the person.\n\nNo invented graphics, no color changes, no simplification.",
+                            sequential_image_generation: "disabled",
+                            size: "custom",
+                            width: cfg.replicateImageSize || 2048
+                        }
+                    })
+                });
+                
+                if (!predictionResponse.ok) {
+                    const errorText = await predictionResponse.text();
+                    let errorData;
+                    try {
+                        errorData = JSON.parse(errorText);
+                    } catch (e) {
+                        errorData = { detail: errorText };
+                    }
+                    throw new Error(errorData.detail || `Erreur API Replicate: ${predictionResponse.status}`);
+                }
+                
+                const prediction = await predictionResponse.json();
+                
+                if (!prediction.id) {
+                    throw new Error('ID de prédiction manquant dans la réponse');
+                }
+                
+                updatePreviewStatus('Génération en cours...');
+                pollPredictionStatus(prediction.id, cfg);
+            } catch (error) {
+                console.error('Erreur création prédiction Replicate:', error);
+                showError(`Erreur lors de la création de la prédiction: ${error.message}`);
+                resetButton();
+            }
         }
         
         // Fonction pour vérifier le statut de la prédiction (polling)
