@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html lang="fr">
+<html lang="en">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
@@ -214,39 +214,39 @@
             <a href="index.html" class="logo">Virtual Try-On</a>
         </header>
         
-        <h1>Contactez-nous</h1>
+        <h1>Contact us</h1>
         <p class="intro">
-            Une question ? Une suggestion ? Notre équipe est là pour vous aider.
+            A question? A suggestion? Our team is here to help.
         </p>
         
         <div class="contact-grid">
             <div class="contact-card">
                 <div class="contact-icon">📧</div>
                 <h3>Email</h3>
-                <p>Pour toute question générale</p>
+                <p>For any general question</p>
                 <a href="mailto:contact@stylelab.com" class="contact-link">contact@stylelab.com</a>
             </div>
             
             <div class="contact-card">
                 <div class="contact-icon">🆘</div>
                 <h3>Support</h3>
-                <p>Besoin d'aide technique ?</p>
+                <p>Need technical help?</p>
                 <a href="mailto:support@stylelab.com" class="contact-link">support@stylelab.com</a>
             </div>
             
             <div class="contact-card">
                 <div class="contact-icon">💼</div>
-                <h3>Partenariats</h3>
-                <p>Opportunités business</p>
+                <h3>Partnerships</h3>
+                <p>Business opportunities</p>
                 <a href="mailto:partnerships@stylelab.com" class="contact-link">partnerships@stylelab.com</a>
             </div>
         </div>
         
         <div class="form-section">
-            <h2>Envoyez-nous un message</h2>
+            <h2>Send us a message</h2>
             <form id="contactForm" onsubmit="handleSubmit(event)">
                 <div class="form-group">
-                    <label for="name">Nom *</label>
+                    <label for="name">Name *</label>
                     <input type="text" id="name" name="name" required>
                 </div>
                 
@@ -256,7 +256,7 @@
                 </div>
                 
                 <div class="form-group">
-                    <label for="subject">Sujet *</label>
+                    <label for="subject">Subject *</label>
                     <input type="text" id="subject" name="subject" required>
                 </div>
                 
@@ -265,11 +265,11 @@
                     <textarea id="message" name="message" required></textarea>
                 </div>
                 
-                <button type="submit" class="submit-btn">Envoyer le message</button>
+                <button type="submit" class="submit-btn">Send message</button>
             </form>
         </div>
         
-        <a href="index.html" class="back-link">← Retour à l'accueil</a>
+        <a href="index.html" class="back-link">← Back to homepage</a>
     </div>
     
     <script>
@@ -278,9 +278,8 @@
             const formData = new FormData(event.target);
             const data = Object.fromEntries(formData);
             
-            // Créer le lien mailto
             const subject = encodeURIComponent(data.subject);
-            const body = encodeURIComponent(`Nom: ${data.name}\nEmail: ${data.email}\n\nMessage:\n${data.message}`);
+            const body = encodeURIComponent(`Name: ${data.name}\nEmail: ${data.email}\n\nMessage:\n${data.message}`);
             const mailtoLink = `mailto:contact@stylelab.com?subject=${subject}&body=${body}`;
             
             window.location.href = mailtoLink;
