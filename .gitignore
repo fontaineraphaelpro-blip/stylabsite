@@ -1,6 +1,3 @@
-# Fichiers de configuration avec secrets
-env.js
-
 # Fichiers système
 .DS_Store
 Thumbs.db

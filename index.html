@@ -771,7 +771,9 @@
             display: flex; align-items: center; gap: 0.4rem;
         }
         .trial-widget-wrap p::before { content: "↓"; font-size: 1rem; }
-        #vton-widget-root { width: 100%; min-height: 52px; }
+        /* Le widget Virtual Try-On (vton-widget.js) gere son propre styling Shadow DOM */
+        #vton-mount { width: 100%; min-height: 56px; margin-top: 0.5rem; }
+        .product-form__buttons { margin-top: 1rem; }
         .trial-foot {
             display: flex; flex-wrap: wrap; gap: 0.75rem; align-items: center;
             font-size: 0.8rem; color: var(--muted); margin-top: 0.5rem;
@@ -946,12 +948,14 @@
                         <h2>Essai interactif · fiche produit démo</h2>
                         <span class="trial-badge">Live · même widget Shopify</span>
                     </div>
-                    <div class="trial-layout">
-                        <div class="trial-gallery product-images">
+                    <!-- product__media wrapper requis pour que vton-widget.js detecte l'image produit automatiquement -->
+                    <div class="trial-layout product product__info-wrapper" data-product-id="gid://shopify/Product/15436964036948" data-product-handle="shadow-stripe-collared-soccer-jersey-4">
+                        <div class="trial-gallery product__media">
                             <img
                                 id="mainImage"
-                                class="product-main-image"
+                                class="product-featured-image"
                                 src="https://cdn.shopify.com/s/files/1/1024/3558/6388/files/2261c8aad94d4247a2336c80f5ea202a.png?v=1779276174"
+                                data-product-image
                                 alt="Shadow Stripe Collared Soccer Jersey — maillot vert Brésil pour essayage virtuel"
                                 width="700" height="700" loading="eager"
                                 itemprop="image">
@@ -964,13 +968,13 @@
                                 </button>
                             </div>
                         </div>
-                        <div class="trial-product">
+                        <div class="trial-product product__info">
                             <p class="trial-vendor" itemprop="brand">REMADE ICONS · Démo officielle</p>
                             <h3 itemprop="name">Shadow Stripe Collared Soccer Jersey</h3>
                             <p class="trial-price"><span itemprop="offers" itemscope itemtype="https://schema.org/Offer"><meta itemprop="priceCurrency" content="EUR"><span itemprop="price">18,12</span> €</span></p>
                             <p class="trial-desc" itemprop="description">
-                                Cliquez sur <strong>Try it on</strong> ci-dessous — c’est le widget Virtual Try-On by StyleLab,
-                                identique à celui installé sur les pages produit Shopify.
+                                Cliquez sur <strong>Try it on</strong> ci-dessous — c’est <em>exactement</em> le widget Virtual Try-On by StyleLab
+                                installé sur les pages produit Shopify.
                             </p>
                             <div class="trial-options">
                                 <label>Taille</label>
@@ -978,10 +982,14 @@
                                     <span class="on">M</span><span>L</span><span>XL</span><span>2XL</span>
                                 </div>
                             </div>
-                            <div class="trial-widget-wrap">
-                                <p>Essayez le vêtement en 1 clic</p>
-                                <div id="vton-widget-root" role="region" aria-label="Widget essayage virtuel StyleLab"></div>
-                            </div>
+                            <!-- product-form / cart form requis pour que le widget se place au bon endroit -->
+                            <form action="#" class="product-form" onsubmit="return false;">
+                                <div class="product-form__buttons">
+                                    <button type="button" class="btn" style="background:#0f172a;color:#fff;padding:0.85rem 1.5rem;border-radius:10px;font-weight:600;width:100%;cursor:default;" aria-label="Ajouter au panier (démo)">Add to cart</button>
+                                </div>
+                                <!-- ancre custom pour le widget StyleLab -->
+                                <div id="vton-mount" data-vton-mount></div>
+                            </form>
                             <div class="trial-foot">
                                 <span class="trial-privacy">
                                     <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="3" y="11" width="18" height="11" rx="2"/><path d="M7 11V7a5 5 0 0110 0v4"/></svg>
@@ -994,6 +1002,21 @@
                             </div>
                         </div>
                     </div>
+
+                    <!-- VTON embed slot — meme contrat que le block Shopify (extensions/vton-widget/blocks/vton-widget.liquid) -->
+                    <div
+                        id="vton-embed-slot"
+                        data-vton-embed-slot
+                        data-vton-embed-primary="1"
+                        data-vton-page-type="product"
+                        data-vton-template="product"
+                        data-vton-custom-anchor="#vton-mount"
+                        data-vton-app-url="https://vton-production-890a.up.railway.app"
+                        data-vton-product-id="gid://shopify/Product/15436964036948"
+                        data-vton-product-handle="shadow-stripe-collared-soccer-jersey-4"
+                        style="display:none;"
+                        aria-hidden="true"
+                    ></div>
                 </article>
             </div>
         </section>
@@ -1538,9 +1561,60 @@
         <a href="https://apps.shopify.com/try-on-stylelab" class="btn btn-primary" target="_blank" rel="noopener">Installer</a>
     </div>
 
-    <script src="env.js?v=9" onerror="console.warn('env.js absent — copiez env.example.js pour activer l\'IA live')"></script>
-    <script src="config.js?v=8"></script>
-    <script src="widget.js?v=7"></script>
+    <!-- Boot du widget Virtual Try-On (exact meme code que sur les boutiques Shopify) -->
+    <script>
+      (function () {
+        if (window.VTON_LIQUID) return;
+        var slot = document.getElementById('vton-embed-slot');
+        if (!slot) return;
+
+        var APP_URL = (slot.getAttribute('data-vton-app-url') || 'https://vton-production-890a.up.railway.app').replace(/\/$/, '');
+        var DEMO_SHOP = 's1qf3z-70.myshopify.com';
+
+        window.VTON_LIQUID = {
+          productId: slot.getAttribute('data-vton-product-id') || null,
+          productHandle: slot.getAttribute('data-vton-product-handle') || null,
+          customAnchor: slot.getAttribute('data-vton-custom-anchor') || '#vton-mount',
+          appUrl: APP_URL,
+          pageType: 'product',
+          templateName: 'product',
+          // shop forcé sur le demo shop (plan Studio, sans quota) — voir app/lib/demo-shops.shared.ts
+          shop: DEMO_SHOP
+        };
+        // Le widget interroge `window.Shopify.shop` pour resoudre le domaine — on le simule pour rester fidele.
+        window.Shopify = window.Shopify || {};
+        if (!window.Shopify.shop) window.Shopify.shop = DEMO_SHOP;
+        if (!window.Shopify.product) {
+          window.Shopify.product = {
+            id: 15436964036948,
+            handle: 'shadow-stripe-collared-soccer-jersey-4'
+          };
+        }
+
+        // Proxy fetch — le widget appelle window.location.origin + '/apps/tryon/*'
+        // mais sur le site marketing il n'y a pas de Shopify App Proxy : on redirige
+        // toutes ces requetes vers l'app deployee sur Railway.
+        var originalFetch = window.fetch.bind(window);
+        window.fetch = function (input, init) {
+          try {
+            var url = typeof input === 'string' ? input : (input && input.url) || '';
+            if (url && url.indexOf('/apps/tryon/') !== -1) {
+              var path = url.replace(/^https?:\/\/[^/]+/, '');
+              var rewritten = APP_URL + path;
+              init = init || {};
+              init.mode = 'cors';
+              init.credentials = 'omit';
+              init.headers = Object.assign({}, init.headers || {}, {
+                'X-Vton-Origin': 'marketing-site'
+              });
+              return originalFetch(rewritten, init);
+            }
+          } catch (e) { /* fall through */ }
+          return originalFetch(input, init);
+        };
+      })();
+    </script>
+    <script src="vton-widget.js?v=1" defer crossorigin="anonymous"></script>
     <script>
         (function() {
             var header = document.getElementById('header');
@@ -1649,8 +1723,6 @@
                 }));
             } catch (e) {}
 
-            var PRODUCT_IMG = 'https://cdn.shopify.com/s/files/1/1024/3558/6388/files/2261c8aad94d4247a2336c80f5ea202a.png?v=1779276174';
-
             document.querySelectorAll('.trial-thumbs button').forEach(function(btn) {
                 btn.addEventListener('click', function() {
                     var src = btn.getAttribute('data-src');
@@ -1659,23 +1731,7 @@
                     document.querySelectorAll('.trial-thumbs button').forEach(function(b) { b.classList.toggle('active', b === btn); });
                 });
             });
-
-            function initDemoWidget() {
-                if (!window.initVTONWidget) return false;
-                var root = document.getElementById('vton-widget-root');
-                if (!root || root.hasAttribute('data-vton-initialized')) return true;
-                window.initVTONWidget({
-                    containerId: 'vton-widget-root',
-                    productImageUrl: document.getElementById('mainImage')?.src || PRODUCT_IMG
-                });
-                return true;
-            }
-            if (!initDemoWidget()) {
-                var tries = 0;
-                var t = setInterval(function() {
-                    if (initDemoWidget() || ++tries > 25) clearInterval(t);
-                }, 200);
-            }
+            // Le vrai widget Virtual Try-On (vton-widget.js) prend le relai sur #vton-mount automatiquement.
         })();
     </script>
 </body>
