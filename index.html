@@ -486,158 +486,371 @@
             box-shadow: 0 6px 16px rgba(20,83,45,0.25);
         }
 
-        /* Inside the app — deep feature grid */
-        #inside { padding: 6rem 0; }
-        .inside-grid {
-            display: grid; grid-template-columns: repeat(3, 1fr); gap: 1.25rem;
-            margin-top: 3rem;
+        /* Inside the app — merchant-friendly visual showcase with HTML/CSS UI mockups */
+        #inside { padding: 6rem 0; background: #fff; }
+        .ui-row {
+            display: grid; grid-template-columns: 0.95fr 1.15fr; gap: 4rem;
+            align-items: center; margin-top: 4rem;
         }
-        .inside-card {
-            background: rgba(255, 255, 255, 0.025);
-            border: 1px solid rgba(255, 255, 255, 0.08);
-            border-radius: 18px;
-            padding: 1.75rem;
-            display: flex; flex-direction: column; gap: 1rem;
-            transition: all 0.3s ease;
-        }
-        .inside-card:hover {
-            background: rgba(255, 255, 255, 0.04);
-            border-color: rgba(163, 230, 53, 0.2);
-            transform: translateY(-2px);
-        }
-        .inside-card-head h3 {
-            font-size: 1.15rem; font-weight: 700; letter-spacing: -0.01em;
-            color: #fff; margin: 0.5rem 0 0.35rem;
-        }
-        .inside-card-head p {
-            font-size: 0.85rem; color: #a8a29e; line-height: 1.55;
-        }
-        .inside-tag {
+        .ui-row:first-of-type { margin-top: 3rem; }
+        .ui-row-reverse { direction: rtl; }
+        .ui-row-reverse > * { direction: ltr; }
+        .ui-row-text .ui-tag {
             display: inline-block; font-family: var(--mono);
-            font-size: 0.66rem; letter-spacing: 0.08em; text-transform: uppercase;
-            color: #a3e635; background: rgba(163, 230, 53, 0.08);
-            border: 1px solid rgba(163, 230, 53, 0.15);
-            padding: 0.3rem 0.6rem; border-radius: 999px;
+            font-size: 0.7rem; letter-spacing: 0.12em; text-transform: uppercase;
+            color: var(--green-700); margin-bottom: 1rem;
         }
-        .inside-list {
+        .ui-row-text h3 {
+            font-family: var(--serif); font-size: clamp(1.6rem, 2.4vw, 2.1rem);
+            font-weight: 400; line-height: 1.15; letter-spacing: -0.02em;
+            margin-bottom: 1rem; color: var(--ink);
+        }
+        .ui-row-text .ui-desc {
+            font-size: 1rem; color: var(--muted); line-height: 1.65;
+            margin-bottom: 1.5rem;
+        }
+        .ui-bullets {
             list-style: none; padding: 0; margin: 0;
             display: flex; flex-direction: column; gap: 0.6rem;
         }
-        .inside-list li {
-            font-size: 0.86rem; color: #d6d3d1; line-height: 1.55;
-            padding-left: 1.1rem; position: relative;
+        .ui-bullets li {
+            font-size: 0.9rem; color: var(--text); line-height: 1.5;
+            padding-left: 1.5rem; position: relative;
         }
-        .inside-list li::before {
+        .ui-bullets li::before {
             content: ""; position: absolute; left: 0; top: 0.55rem;
-            width: 6px; height: 6px; border-radius: 50%;
-            background: #a3e635;
-        }
-        .inside-list li strong { color: #fff; font-weight: 600; }
-        .inside-list li code, .inside-card-head code {
-            font-family: var(--mono); font-size: 0.78rem;
-            background: rgba(163, 230, 53, 0.08); color: #d9f99d;
-            padding: 0.08rem 0.35rem; border-radius: 4px;
-        }
-        .inside-list li em { color: #fafaf9; font-style: italic; }
-        @media (max-width: 980px) {
-            .inside-grid { grid-template-columns: repeat(2, 1fr); }
-        }
-        @media (max-width: 640px) {
-            .inside-grid { grid-template-columns: 1fr; }
+            width: 16px; height: 2px; background: var(--green-700);
         }
 
-        /* Engineering grid */
-        #engineering { padding: 6rem 0; }
-        .eng-grid {
-            display: grid; grid-template-columns: repeat(4, 1fr); gap: 1.1rem;
-            margin-top: 3rem;
+        /* UI window mockup chrome */
+        .ui-window {
+            background: #fff; border-radius: 16px;
+            border: 1px solid var(--line);
+            box-shadow: 0 30px 60px -25px rgba(15, 23, 42, 0.25),
+                        0 12px 30px -12px rgba(15, 23, 42, 0.12);
+            overflow: hidden; transform: translateY(0);
+            transition: transform 0.4s var(--ease);
         }
-        .eng-card {
-            background: #fff; border: 1px solid var(--line); border-radius: 16px;
-            padding: 1.5rem; display: flex; flex-direction: column; gap: 0.85rem;
-            transition: all 0.25s ease;
+        .ui-row:hover .ui-window { transform: translateY(-4px); }
+        .ui-window-bar {
+            display: flex; align-items: center; gap: 0.5rem;
+            padding: 0.7rem 1rem; border-bottom: 1px solid var(--line);
+            background: linear-gradient(to bottom, #fafafa, #f4f4f5);
         }
-        .eng-card:hover {
-            border-color: var(--green-300);
-            box-shadow: 0 12px 28px -16px rgba(20, 83, 45, 0.18);
-            transform: translateY(-2px);
+        .ui-dot {
+            width: 11px; height: 11px; border-radius: 50%;
         }
-        .eng-card p { font-size: 0.85rem; color: var(--muted); line-height: 1.55; flex: 1; }
-        .eng-card code {
-            font-family: var(--mono); font-size: 0.78rem;
-            background: var(--green-50); color: var(--green-900);
-            padding: 0.08rem 0.35rem; border-radius: 4px;
+        .ui-dot-red { background: #fb7185; }
+        .ui-dot-yellow { background: #fbbf24; }
+        .ui-dot-green { background: #4ade80; }
+        .ui-window-title {
+            margin-left: auto; margin-right: auto;
+            font-family: var(--mono); font-size: 0.74rem; color: var(--muted);
         }
-        .eng-header { display: flex; flex-direction: column; gap: 0.5rem; }
-        .eng-header h3 { font-size: 1.02rem; font-weight: 700; letter-spacing: -0.01em; }
-        .eng-pill {
+        .ui-window-body { padding: 1.5rem; display: flex; flex-direction: column; gap: 1.1rem; }
+        .ui-page-title { display: flex; align-items: flex-start; justify-content: space-between; }
+        .ui-page-title small {
             display: inline-block; font-family: var(--mono); font-size: 0.66rem;
-            letter-spacing: 0.08em; text-transform: uppercase;
-            background: var(--green-900); color: #fff;
-            padding: 0.25rem 0.55rem; border-radius: 999px; align-self: flex-start;
+            text-transform: uppercase; letter-spacing: 0.08em;
+            color: var(--green-700); background: var(--green-50);
+            padding: 0.25rem 0.6rem; border-radius: 999px; margin-bottom: 0.55rem;
         }
-        .eng-stat {
-            display: flex; align-items: baseline; gap: 0.5rem;
-            padding-top: 0.85rem; border-top: 1px solid var(--line);
-            margin-top: auto;
+        .ui-page-title h4 {
+            font-size: 1.1rem; font-weight: 700; letter-spacing: -0.01em;
+            color: var(--ink); margin-bottom: 0.25rem;
         }
-        .eng-stat strong { font-size: 1.05rem; font-weight: 700; color: var(--ink); font-family: var(--serif); }
-        .eng-stat span { font-size: 0.74rem; color: var(--muted); font-family: var(--mono); }
-        @media (max-width: 980px) {
-            .eng-grid { grid-template-columns: repeat(2, 1fr); }
+        .ui-page-title span { font-size: 0.8rem; color: var(--muted); }
+
+        /* KPI cards inside mockup */
+        .ui-kpis { display: grid; grid-template-columns: repeat(4, 1fr); gap: 0.6rem; }
+        .ui-kpi {
+            background: #fafafa; border: 1px solid var(--line);
+            border-radius: 10px; padding: 0.75rem 0.85rem;
+            display: flex; flex-direction: column; gap: 0.2rem;
         }
-        @media (max-width: 560px) {
-            .eng-grid { grid-template-columns: 1fr; }
+        .ui-kpi span { font-size: 0.7rem; color: var(--muted); }
+        .ui-kpi strong {
+            font-family: var(--serif); font-size: 1.45rem; font-weight: 400;
+            color: var(--ink); letter-spacing: -0.02em;
+        }
+        .ui-kpi-accent { background: linear-gradient(135deg, var(--green-50), #ecfccb); border-color: var(--green-200); }
+        .ui-kpi-accent strong { color: var(--green-900); }
+
+        /* Generic card inside mockup */
+        .ui-card {
+            background: #fafafa; border: 1px solid var(--line);
+            border-radius: 10px; padding: 1rem;
+        }
+        .ui-card-head {
+            display: flex; align-items: center; justify-content: space-between;
+            margin-bottom: 0.75rem;
+        }
+        .ui-card-head h5 { font-size: 0.84rem; font-weight: 600; color: var(--ink); }
+        .ui-link { font-size: 0.72rem; color: var(--green-700); font-weight: 600; text-decoration: none; }
+        .ui-chart { width: 100%; height: 64px; display: block; }
+        .ui-chart-labels {
+            display: grid; grid-template-columns: repeat(8, 1fr); gap: 0.25rem;
+            margin-top: 0.4rem;
+        }
+        .ui-chart-labels span {
+            font-family: var(--mono); font-size: 0.6rem; color: var(--muted);
+            text-align: center;
+        }
+        .ui-chart-labels span:last-child { color: var(--green-700); font-weight: 700; }
+
+        /* Section title inside mockup */
+        .ui-section-title { display: flex; align-items: center; gap: 0.6rem; }
+        .ui-section-title h5 {
+            font-size: 0.86rem; font-weight: 600; color: var(--ink);
+            letter-spacing: -0.005em;
+        }
+        .ui-badge {
+            font-family: var(--mono); font-size: 0.62rem; text-transform: uppercase;
+            letter-spacing: 0.08em; color: var(--green-700); background: var(--green-50);
+            border: 1px solid var(--green-200); padding: 0.15rem 0.5rem; border-radius: 999px;
         }
 
-        /* Privacy section */
-        #privacy { padding: 6rem 0; }
-        .privacy-grid {
-            display: grid; grid-template-columns: 1fr 1fr; gap: 1.5rem;
+        /* Form fields inside mockup */
+        .ui-field { display: flex; flex-direction: column; gap: 0.35rem; }
+        .ui-field span { font-size: 0.74rem; color: var(--muted); font-weight: 500; }
+        .ui-input {
+            background: #fff; border: 1px solid var(--line); border-radius: 8px;
+            padding: 0.55rem 0.8rem; font-size: 0.84rem; color: var(--ink);
+        }
+        .ui-presets { display: flex; flex-direction: column; gap: 0.5rem; }
+        .ui-presets > span { font-size: 0.74rem; color: var(--muted); font-weight: 500; }
+        .ui-preset-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 0.4rem; }
+        .ui-preset {
+            font-size: 0.74rem; font-weight: 600; border: 1px solid transparent;
+            padding: 0.45rem 0.7rem; border-radius: 7px; cursor: default;
+        }
+        .ui-preset-active { box-shadow: 0 0 0 2px var(--green-700); }
+
+        .ui-preview-line {
+            display: flex; align-items: center; justify-content: space-between;
+            padding: 0.6rem 0; border-top: 1px dashed var(--line); border-bottom: 1px dashed var(--line);
+        }
+        .ui-preview-line > span { font-size: 0.74rem; color: var(--muted); font-weight: 500; }
+        .ui-fake-btn {
+            display: inline-flex; align-items: center; gap: 0.45rem;
+            font-size: 0.82rem; font-weight: 600; border: none;
+            padding: 0.55rem 0.95rem; border-radius: 8px; cursor: default;
+        }
+        .ui-divider { height: 1px; background: var(--line); margin: 0.25rem 0; }
+
+        /* Toggle */
+        .ui-toggle-row, .ui-slider-row { display: flex; align-items: center; justify-content: space-between; }
+        .ui-toggle-row > span:first-child, .ui-slider-row > span:first-child {
+            font-size: 0.82rem; color: var(--ink);
+        }
+        .ui-toggle {
+            width: 36px; height: 20px; border-radius: 999px; background: #e2e8f0;
+            position: relative; transition: background 0.2s ease;
+            display: inline-block; flex-shrink: 0;
+        }
+        .ui-toggle > span {
+            position: absolute; top: 2px; left: 2px; width: 16px; height: 16px;
+            background: #fff; border-radius: 50%; transition: left 0.2s ease;
+            box-shadow: 0 1px 3px rgba(0,0,0,0.2);
+        }
+        .ui-toggle-on { background: var(--green-700); }
+        .ui-toggle-on > span { left: 18px; }
+
+        .ui-slider {
+            flex: 1; max-width: 50%; height: 6px; border-radius: 999px;
+            background: #e2e8f0; overflow: hidden;
+        }
+        .ui-slider-fill { height: 100%; background: var(--green-700); border-radius: 999px; }
+
+        .ui-ab-stats {
+            display: grid; grid-template-columns: 1fr 1fr; gap: 0.5rem;
+        }
+        .ui-ab-stats > div {
+            background: #fafafa; border: 1px solid var(--line); border-radius: 8px;
+            padding: 0.6rem 0.8rem; display: flex; flex-direction: column; gap: 0.15rem;
+        }
+        .ui-ab-stats span { font-size: 0.7rem; color: var(--muted); }
+        .ui-ab-stats strong {
+            font-size: 0.86rem; font-weight: 700; color: var(--ink);
+            letter-spacing: -0.005em;
+        }
+        .ui-ab-stats > div:first-child strong { color: var(--green-700); }
+
+        /* Search bar */
+        .ui-search {
+            display: flex; align-items: center; gap: 0.5rem;
+            background: #fafafa; border: 1px solid var(--line); border-radius: 8px;
+            padding: 0.55rem 0.8rem; font-size: 0.82rem; color: var(--muted);
+        }
+
+        /* Table */
+        .ui-table { display: flex; flex-direction: column; }
+        .ui-thead, .ui-trow {
+            display: grid; gap: 0.5rem; padding: 0.7rem 0.5rem;
+            border-bottom: 1px solid var(--line);
+        }
+        .ui-thead {
+            grid-template-columns: 2fr 0.8fr 0.7fr 1.4fr 0.7fr;
+            font-family: var(--mono); font-size: 0.66rem; text-transform: uppercase;
+            letter-spacing: 0.06em; color: var(--muted);
+        }
+        .ui-trow {
+            grid-template-columns: 2fr 0.8fr 0.7fr 1.4fr 0.7fr;
+            font-size: 0.8rem; color: var(--ink); align-items: center;
+        }
+        .ui-trow:last-child { border-bottom: none; }
+        .ui-product { display: flex; align-items: center; gap: 0.6rem; }
+        .ui-thumb {
+            width: 28px; height: 28px; border-radius: 6px; flex-shrink: 0;
+        }
+        .ui-status-active {
+            font-size: 0.7rem; color: var(--green-700); font-weight: 600;
+            background: var(--green-50); padding: 0.2rem 0.5rem;
+            border-radius: 4px; align-self: flex-start;
+        }
+        .ui-photo { display: flex; align-items: center; gap: 0.4rem; font-size: 0.78rem; color: var(--muted); }
+        .ui-photo-dot {
+            width: 8px; height: 8px; border-radius: 50%;
+            background: #d4d4d8; flex-shrink: 0;
+        }
+        .ui-photo-dot-custom { background: var(--green-700); }
+        .ui-truncate { overflow: hidden; text-overflow: ellipsis; white-space: nowrap; }
+
+        /* Log table variant */
+        .ui-table-log .ui-thead, .ui-table-log .ui-trow {
+            grid-template-columns: 1.3fr 1.8fr 0.9fr 0.8fr;
+        }
+        .ui-pill {
+            font-size: 0.7rem; font-weight: 600; padding: 0.2rem 0.55rem;
+            border-radius: 4px; text-align: center; width: fit-content;
+        }
+        .ui-pill-success { background: var(--green-50); color: var(--green-700); }
+        .ui-pill-error { background: #fee2e2; color: #b91c1c; }
+
+        @media (max-width: 900px) {
+            .ui-row, .ui-row-reverse { grid-template-columns: 1fr; gap: 2rem; direction: ltr; }
+            .ui-kpis { grid-template-columns: repeat(2, 1fr); }
+            .ui-thead, .ui-trow { grid-template-columns: 1.4fr 0.7fr 0.6fr; }
+            .ui-thead span:nth-child(4), .ui-trow span:nth-child(4),
+            .ui-thead span:nth-child(5), .ui-trow span:nth-child(5) { display: none; }
+            .ui-table-log .ui-thead, .ui-table-log .ui-trow {
+                grid-template-columns: 1.2fr 0.8fr 0.6fr;
+            }
+            .ui-table-log .ui-thead span:nth-child(2), .ui-table-log .ui-trow span:nth-child(2) { display: none; }
+        }
+
+        /* How it works flow */
+        #engineering { padding: 6rem 0; }
+        .hiw-flow {
+            display: grid; grid-template-columns: 1fr auto 1fr auto 1fr; gap: 1rem;
+            align-items: stretch; margin-top: 3rem;
+        }
+        .hiw-step {
+            background: #fff; border-radius: 18px; padding: 1.75rem;
+            border: 1px solid var(--green-200); display: flex; flex-direction: column; gap: 0.65rem;
+            box-shadow: 0 10px 30px -16px rgba(20, 83, 45, 0.15);
+            transition: transform 0.25s ease, box-shadow 0.25s ease;
+        }
+        .hiw-step:hover {
+            transform: translateY(-3px);
+            box-shadow: 0 18px 40px -20px rgba(20, 83, 45, 0.25);
+        }
+        .hiw-num {
+            font-family: var(--serif); font-size: 2.2rem; font-weight: 400;
+            line-height: 1; color: var(--green-700); letter-spacing: -0.02em;
+        }
+        .hiw-step h3 {
+            font-size: 1.15rem; font-weight: 700; letter-spacing: -0.01em;
+            color: var(--ink); line-height: 1.3;
+        }
+        .hiw-step p { font-size: 0.92rem; color: var(--muted); line-height: 1.6; flex: 1; }
+        .hiw-time {
+            display: inline-flex; align-items: center; gap: 0.35rem;
+            font-family: var(--mono); font-size: 0.74rem;
+            color: var(--green-700); align-self: flex-start;
+            background: var(--green-50); padding: 0.3rem 0.7rem; border-radius: 999px;
+        }
+        .hiw-arrow {
+            display: flex; align-items: center; color: var(--green-300);
+            padding: 0 0.5rem;
+        }
+        .hiw-arrow svg { width: 40px; }
+
+        .hiw-trust {
+            display: grid; grid-template-columns: repeat(3, 1fr); gap: 1rem;
+            margin-top: 3rem; background: #fff; border-radius: 18px;
+            padding: 2rem; border: 1px solid var(--green-200);
+        }
+        .hiw-trust > div { display: flex; flex-direction: column; gap: 0.3rem; }
+        .hiw-trust strong {
+            font-size: 0.96rem; font-weight: 700; color: var(--ink);
+            letter-spacing: -0.005em;
+        }
+        .hiw-trust span { font-size: 0.84rem; color: var(--muted); line-height: 1.5; }
+
+        @media (max-width: 980px) {
+            .hiw-flow { grid-template-columns: 1fr; }
+            .hiw-arrow { transform: rotate(90deg); justify-self: center; }
+            .hiw-trust { grid-template-columns: 1fr; }
+        }
+
+        /* Privacy section — light & merchant-friendly */
+        #privacy { padding: 6rem 0; background: #fff; }
+        .privacy-two {
+            display: grid; grid-template-columns: 1fr 1fr; gap: 1.25rem;
             margin-top: 3rem;
         }
-        .privacy-block {
-            background: var(--green-50); border: 1px solid var(--green-200);
-            border-radius: 16px; padding: 1.85rem;
+        .privacy-card {
+            background: #fff; border-radius: 18px; padding: 2rem;
+            border: 1px solid var(--line); display: flex; flex-direction: column; gap: 1.1rem;
+            transition: transform 0.25s ease, box-shadow 0.25s ease;
         }
-        .privacy-block.privacy-no {
-            background: #fef2f2; border-color: #fecaca;
+        .privacy-card:hover {
+            transform: translateY(-3px);
+            box-shadow: 0 18px 40px -22px rgba(15, 23, 42, 0.15);
         }
-        .privacy-block h3 {
-            font-size: 1.1rem; font-weight: 700; letter-spacing: -0.01em;
-            margin-bottom: 1rem;
+        .privacy-card-yes {
+            background: linear-gradient(180deg, var(--green-50), #fff);
+            border-color: var(--green-200);
         }
-        .check-list, .cross-list {
+        .privacy-icon {
+            width: 44px; height: 44px; border-radius: 12px;
+            background: #f1f5f9; color: var(--ink);
+            display: grid; place-items: center;
+        }
+        .privacy-card-yes .privacy-icon {
+            background: var(--green-700); color: #fff;
+        }
+        .privacy-card h3 {
+            font-size: 1.05rem; font-weight: 700; color: var(--ink);
+            letter-spacing: -0.01em;
+        }
+        .privacy-list {
             list-style: none; padding: 0; margin: 0;
-            display: flex; flex-direction: column; gap: 0.7rem;
+            display: flex; flex-direction: column; gap: 0.55rem;
         }
-        .check-list li, .cross-list li {
-            font-size: 0.88rem; color: var(--text); line-height: 1.5;
+        .privacy-list li {
+            font-size: 0.92rem; color: var(--text); line-height: 1.5;
             padding-left: 1.6rem; position: relative;
         }
-        .check-list li::before {
-            content: "\2713"; position: absolute; left: 0; top: 0;
-            font-weight: 700; color: var(--green-700);
+        .privacy-list li::before {
+            content: ""; position: absolute; left: 0; top: 0.55rem;
+            width: 8px; height: 8px; border-radius: 50%;
+            background: var(--green-700);
         }
-        .cross-list li::before {
-            content: "\2715"; position: absolute; left: 0; top: 0;
-            font-weight: 700; color: #dc2626;
+        .privacy-list-no li::before { background: #cbd5e1; }
+        .privacy-mini-strip {
+            display: flex; flex-wrap: wrap; justify-content: center; gap: 0.6rem;
+            margin-top: 2rem;
         }
-        .privacy-strip {
-            display: grid; grid-template-columns: repeat(4, 1fr); gap: 1rem;
-            margin-top: 1.75rem;
-            background: var(--ink); color: #fff; padding: 1.75rem;
-            border-radius: 18px;
+        .privacy-mini-strip span {
+            font-family: var(--mono); font-size: 0.74rem;
+            background: var(--green-50); color: var(--green-900);
+            border: 1px solid var(--green-200);
+            padding: 0.45rem 0.85rem; border-radius: 999px;
         }
-        .privacy-strip > div { display: flex; flex-direction: column; gap: 0.25rem; }
-        .privacy-strip strong { font-size: 0.95rem; font-weight: 700; }
-        .privacy-strip span { font-size: 0.74rem; color: #a8a29e; font-family: var(--mono); }
-        @media (max-width: 980px) {
-            .privacy-grid { grid-template-columns: 1fr; }
-            .privacy-strip { grid-template-columns: repeat(2, 1fr); }
-        }
-        @media (max-width: 560px) {
-            .privacy-strip { grid-template-columns: 1fr; }
+        @media (max-width: 760px) {
+            .privacy-two { grid-template-columns: 1fr; }
         }
 
         /* Dark metrics */
@@ -934,8 +1147,29 @@
             display: flex; align-items: center; gap: 0.4rem;
         }
         .trial-widget-wrap p::before { content: "↓"; font-size: 1rem; }
-        /* Le widget Virtual Try-On (vton-widget.js) gere son propre styling Shadow DOM */
+        /* The Virtual Try-On widget (vton-widget.js) ships its own Shadow DOM styling */
         #vton-mount { width: 100%; min-height: 56px; margin-top: 0.5rem; }
+        .vton-placeholder { display: flex; flex-direction: column; gap: 0.5rem; align-items: stretch; }
+        .vton-placeholder-btn {
+            display: flex; align-items: center; justify-content: center; gap: 0.6rem;
+            width: 100%; padding: 0.95rem 1.5rem; border-radius: 12px;
+            background: linear-gradient(135deg, var(--green-900), var(--green-950));
+            color: #ecfdf5; font-weight: 600; font-size: 0.96rem; letter-spacing: -0.005em;
+            border: none; cursor: progress; box-shadow: 0 10px 24px -10px rgba(20, 83, 45, 0.45);
+            position: relative; overflow: hidden;
+        }
+        .vton-placeholder-btn::after {
+            content: ""; position: absolute; inset: 0;
+            background: linear-gradient(90deg, transparent, rgba(255,255,255,0.18), transparent);
+            transform: translateX(-100%);
+            animation: vton-shimmer 1.6s infinite;
+        }
+        @keyframes vton-shimmer { to { transform: translateX(100%); } }
+        .vton-placeholder small {
+            font-size: 0.78rem; color: var(--muted); text-align: center;
+            line-height: 1.5;
+        }
+        .vton-placeholder small a { color: var(--green-700); font-weight: 600; }
         .product-form__buttons { margin-top: 1rem; }
         .trial-foot {
             display: flex; flex-wrap: wrap; gap: 0.75rem; align-items: center;
@@ -973,8 +1207,8 @@
             </a>
             <nav class="nav-links" aria-label="Main">
                 <a href="#try-it">Free trial</a>
-                <a href="#inside">Features</a>
-                <a href="#engineering">Engineering</a>
+                <a href="#inside">Inside the app</a>
+                <a href="#engineering">How it works</a>
                 <a href="#pricing">Pricing</a>
                 <a href="#faq">FAQ</a>
             </nav>
@@ -987,8 +1221,8 @@
     </header>
     <div class="mobile-drawer" id="mobileDrawer">
         <a href="#try-it">Free trial</a>
-        <a href="#inside">Features</a>
-        <a href="#engineering">Engineering</a>
+        <a href="#inside">Inside the app</a>
+        <a href="#engineering">How it works</a>
         <a href="#privacy">Privacy</a>
         <a href="#pricing">Pricing</a>
         <a href="#faq">FAQ</a>
@@ -1156,7 +1390,18 @@
                                     <button type="button" class="btn" style="background:#0f172a;color:#fff;padding:0.85rem 1.5rem;border-radius:10px;font-weight:600;width:100%;cursor:default;" aria-label="Add to cart (demo)">Add to cart</button>
                                 </div>
                                 <!-- custom anchor for the StyleLab widget -->
-                                <div id="vton-mount" data-vton-mount></div>
+                                <div id="vton-mount" data-vton-mount>
+                                    <!-- placeholder shown until vton-widget.js mounts itself -->
+                                    <div id="vton-mount-placeholder" class="vton-placeholder">
+                                        <button type="button" class="vton-placeholder-btn" aria-label="Try it on (loading widget)">
+                                            <svg viewBox="0 0 24 24" width="18" height="18" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+                                                <circle cx="12" cy="8" r="4"/><path d="M4 21c0-4.4 3.6-8 8-8s8 3.6 8 8"/>
+                                            </svg>
+                                            <span>Loading try-on widget…</span>
+                                        </button>
+                                        <small>If nothing appears in 5 seconds, <a href="https://remadeicons.shop/products/shadow-stripe-collared-soccer-jersey-4" target="_blank" rel="noopener">open the live demo store →</a></small>
+                                    </div>
+                                </div>
                             </form>
                             <div class="trial-foot">
                                 <span class="trial-privacy">
@@ -1276,205 +1521,239 @@
             </div>
         </section>
 
-        <!-- INSIDE THE APP -->
-        <section id="inside" style="background: var(--ink); color: #f5f5f4;">
+        <!-- INSIDE THE APP — merchant-facing UI mockups built from the real app code -->
+        <section id="inside">
             <div class="wrap">
                 <div class="section-head center reveal">
-                    <p class="section-label" style="color: #a3e635;">Inside the app</p>
-                    <h2 class="section-title" style="color: #fff;">Every screen, every feature — code-grounded.</h2>
-                    <p class="section-desc" style="color: #d6d3d1;">Below is the complete StyleLab Virtual Try-On surface area, exactly as it ships today. Each capability listed maps to live code in the app — admin routes, storefront widget, and backend services.</p>
+                    <p class="section-label">Inside the app</p>
+                    <h2 class="section-title">Exactly what you&rsquo;ll see after install.</h2>
+                    <p class="section-desc">Four screens, zero learning curve. Everything is native to Shopify and works out of the box on every plan.</p>
                 </div>
 
-                <div class="inside-grid reveal">
-                    <article class="inside-card">
-                        <div class="inside-card-head">
-                            <span class="inside-tag">Admin · /app</span>
-                            <h3>Dashboard</h3>
-                            <p>Overview of try-on activity and store settings in one page.</p>
-                        </div>
-                        <ul class="inside-list">
-                            <li><strong>4 KPI cards</strong> linking onward: Generations left, Generations (30 days), Add to Cart, Conversion Rate.</li>
-                            <li><strong>Daily try-ons</strong> — SVG line chart of the last 7 days with today highlighted (UTC).</li>
-                            <li><strong>Top products</strong> — up to 10 products ranked by try-on count, with badges.</li>
-                            <li><strong>Recent activity</strong> — last 5 try-ons with Success / Failed badges.</li>
-                            <li><strong>Store settings panel</strong>: enable / disable on store, daily limit, max try-ons per user, monthly quota.</li>
-                            <li><strong>Onboarding guide</strong> auto-collapses when the 3 steps complete.</li>
-                            <li><strong>Review prompt</strong> appears after 10+ successful try-ons (Shopify App Store).</li>
+                <!-- DASHBOARD MOCKUP -->
+                <div class="ui-row reveal">
+                    <div class="ui-row-text">
+                        <p class="ui-tag">Dashboard</p>
+                        <h3>Know what your try-on does to revenue — in one glance.</h3>
+                        <p class="ui-desc">Generations left, try-ons this month, add-to-carts, conversion rate. Plus a 7-day chart, your top products and the latest sessions. No Google Analytics setup required.</p>
+                        <ul class="ui-bullets">
+                            <li>4 live KPIs synced with your store</li>
+                            <li>Top 10 products by try-on volume</li>
+                            <li>Recent sessions with success / failure badges</li>
                         </ul>
-                    </article>
+                    </div>
+                    <div class="ui-mock reveal-delay-1">
+                        <div class="ui-window" aria-hidden="true">
+                            <div class="ui-window-bar"><span class="ui-dot ui-dot-red"></span><span class="ui-dot ui-dot-yellow"></span><span class="ui-dot ui-dot-green"></span><span class="ui-window-title">Shopify admin · VTON Magic</span></div>
+                            <div class="ui-window-body">
+                                <div class="ui-page-title">
+                                    <div>
+                                        <small>Storefront active</small>
+                                        <h4>Virtual Try-On on your product pages</h4>
+                                        <span>2,000 generations left &middot; 318 generations in the last 30 days</span>
+                                    </div>
+                                </div>
+                                <div class="ui-kpis">
+                                    <div class="ui-kpi"><span>Generations left</span><strong>2,000</strong></div>
+                                    <div class="ui-kpi"><span>Generations (30 days)</span><strong>318</strong></div>
+                                    <div class="ui-kpi"><span>Add to Cart</span><strong>247</strong></div>
+                                    <div class="ui-kpi ui-kpi-accent"><span>Conversion Rate</span><strong>77.8%</strong></div>
+                                </div>
+                                <div class="ui-card">
+                                    <div class="ui-card-head">
+                                        <h5>Daily try-ons (last 7 days)</h5>
+                                        <a href="#" class="ui-link">View history</a>
+                                    </div>
+                                    <svg class="ui-chart" viewBox="0 0 320 80" preserveAspectRatio="none" aria-hidden="true">
+                                        <defs>
+                                            <linearGradient id="ui-fill" x1="0" y1="0" x2="0" y2="1">
+                                                <stop offset="0%" stop-color="#14532d" stop-opacity="0.35"/>
+                                                <stop offset="100%" stop-color="#14532d" stop-opacity="0"/>
+                                            </linearGradient>
+                                        </defs>
+                                        <path d="M0,55 L45,40 L90,48 L135,28 L180,32 L225,16 L270,22 L320,10 L320,80 L0,80 Z" fill="url(#ui-fill)"/>
+                                        <path d="M0,55 L45,40 L90,48 L135,28 L180,32 L225,16 L270,22 L320,10" fill="none" stroke="#14532d" stroke-width="2"/>
+                                        <circle cx="320" cy="10" r="3.5" fill="#14532d"/>
+                                    </svg>
+                                    <div class="ui-chart-labels"><span>Thu</span><span>Fri</span><span>Sat</span><span>Sun</span><span>Mon</span><span>Tue</span><span>Wed</span><span>Today</span></div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
 
-                    <article class="inside-card">
-                        <div class="inside-card-head">
-                            <span class="inside-tag">Admin · /app/products</span>
-                            <h3>Products manager</h3>
-                            <p>25 products per page with search, pagination, and per-product try-on controls.</p>
-                        </div>
-                        <ul class="inside-list">
-                            <li><strong>Per-product try-on toggle</strong> — enabled by default on new products.</li>
-                            <li><strong>AI garment photo picker</strong>: choose any product image, or <em>upload a custom flat-lay</em> to Shopify Files (never shown in the store gallery).</li>
-                            <li>Columns: Product, Status, Inventory, Try-on usage, AI garment photo, Try-on enabled, Actions.</li>
-                            <li>Mobile-friendly: stacked cards with the same controls.</li>
-                            <li>Background garment uploader with success / failure toast that persists across pages.</li>
-                            <li>Cursor pagination via Shopify Admin GraphQL (Previous / Next).</li>
+                <!-- WIDGET CUSTOMIZATION + A/B -->
+                <div class="ui-row ui-row-reverse reveal">
+                    <div class="ui-row-text">
+                        <p class="ui-tag">Widget &amp; A/B test</p>
+                        <h3>On-brand in 30 seconds. A/B-tested for free.</h3>
+                        <p class="ui-desc">Six quick-style presets or any hex color. Live preview while you tweak. Then split your traffic 10/90 to 90/10 to prove the cart impact — included on every plan.</p>
+                        <ul class="ui-bullets">
+                            <li>6 presets &middot; Classic, Ivory, Navy, Forest, Wine, Violet</li>
+                            <li>A/B traffic slider with 30-day stats per bucket</li>
+                            <li>Optional custom placement via the Shopify theme editor</li>
                         </ul>
-                    </article>
+                    </div>
+                    <div class="ui-mock reveal-delay-1">
+                        <div class="ui-window" aria-hidden="true">
+                            <div class="ui-window-bar"><span class="ui-dot ui-dot-red"></span><span class="ui-dot ui-dot-yellow"></span><span class="ui-dot ui-dot-green"></span><span class="ui-window-title">VTON Magic &middot; Widget</span></div>
+                            <div class="ui-window-body">
+                                <div class="ui-section-title"><h5>Button style</h5></div>
+                                <label class="ui-field">
+                                    <span>Button text</span>
+                                    <div class="ui-input">Try it on</div>
+                                </label>
+                                <div class="ui-presets">
+                                    <span>Quick styles</span>
+                                    <div class="ui-preset-grid">
+                                        <button type="button" class="ui-preset" style="background:#111827;color:#fff;">Classic</button>
+                                        <button type="button" class="ui-preset" style="background:#fef3c7;color:#78350f;">Ivory</button>
+                                        <button type="button" class="ui-preset" style="background:#1e3a8a;color:#fff;">Navy</button>
+                                        <button type="button" class="ui-preset ui-preset-active" style="background:#14532d;color:#ecfdf5;">Forest</button>
+                                        <button type="button" class="ui-preset" style="background:#7f1d1d;color:#fff;">Wine</button>
+                                        <button type="button" class="ui-preset" style="background:#5b21b6;color:#fff;">Violet</button>
+                                    </div>
+                                </div>
+                                <div class="ui-preview-line">
+                                    <span>Live preview</span>
+                                    <button type="button" class="ui-fake-btn" style="background:#14532d;color:#ecfdf5;">
+                                        <svg viewBox="0 0 24 24" width="14" height="14" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="8" r="4"/><path d="M4 21c0-4.4 3.6-8 8-8s8 3.6 8 8"/></svg>
+                                        Try it on
+                                    </button>
+                                </div>
+                                <div class="ui-divider"></div>
+                                <div class="ui-section-title">
+                                    <h5>A/B test: try-on vs no try-on</h5>
+                                    <span class="ui-badge">Included</span>
+                                </div>
+                                <div class="ui-toggle-row">
+                                    <span>Enable A/B test on the storefront</span>
+                                    <span class="ui-toggle ui-toggle-on"><span></span></span>
+                                </div>
+                                <div class="ui-slider-row">
+                                    <span>Show try-on to <strong>60%</strong> of visitors</span>
+                                    <div class="ui-slider"><div class="ui-slider-fill" style="width:60%"></div></div>
+                                </div>
+                                <div class="ui-ab-stats">
+                                    <div><span>With try-on (60%)</span><strong>+ 76% ATC rate</strong></div>
+                                    <div><span>Without (40%)</span><strong>4.2% ATC rate</strong></div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
 
-                    <article class="inside-card">
-                        <div class="inside-card-head">
-                            <span class="inside-tag">Admin · /app/widget</span>
-                            <h3>Widget &amp; A/B test</h3>
-                            <p>Style the storefront button and split traffic in two clicks.</p>
-                        </div>
-                        <ul class="inside-list">
-                            <li><strong>Button text</strong> field (default <code>Try it on</code>).</li>
-                            <li><strong>6 quick-style presets</strong>: Classic, Ivory, Navy, Forest, Wine, Violet.</li>
-                            <li><strong>Background + Text color</strong> — hex inputs with 8 + 6 preset swatches and live preview.</li>
-                            <li><strong>A/B test toggle</strong> + <strong>traffic slider</strong> from 10% to 90% (5-point steps).</li>
-                            <li><strong>30-day A/B stats</strong>: page views, try-ons, ATC, ATC rate per bucket (try-on vs control).</li>
-                            <li>Theme-embed activation shortcut to the Shopify theme editor.</li>
+                <!-- PRODUCTS MANAGER -->
+                <div class="ui-row reveal">
+                    <div class="ui-row-text">
+                        <p class="ui-tag">Products</p>
+                        <h3>Pick which products get try-on. Upload a flat-lay for crisper results.</h3>
+                        <p class="ui-desc">Enable or disable try-on per product in one click. Upload a clean flat-lay garment photo for the AI &mdash; it&rsquo;s stored privately and never shows up in your customer-facing gallery.</p>
+                        <ul class="ui-bullets">
+                            <li>Per-product toggle, on by default</li>
+                            <li>AI garment photo uploaded to Shopify Files</li>
+                            <li>Search and pagination across your full catalog</li>
                         </ul>
-                    </article>
+                    </div>
+                    <div class="ui-mock reveal-delay-1">
+                        <div class="ui-window" aria-hidden="true">
+                            <div class="ui-window-bar"><span class="ui-dot ui-dot-red"></span><span class="ui-dot ui-dot-yellow"></span><span class="ui-dot ui-dot-green"></span><span class="ui-window-title">VTON Magic &middot; Products</span></div>
+                            <div class="ui-window-body">
+                                <div class="ui-search">
+                                    <svg viewBox="0 0 24 24" width="14" height="14" fill="none" stroke="currentColor" stroke-width="2"><circle cx="11" cy="11" r="7"/><path d="M21 21l-4.3-4.3"/></svg>
+                                    <span>Search by title or handle</span>
+                                </div>
+                                <div class="ui-table">
+                                    <div class="ui-thead">
+                                        <span>Product</span><span>Status</span><span>Try-ons</span><span>Garment photo</span><span>Try-on</span>
+                                    </div>
+                                    <div class="ui-trow">
+                                        <span class="ui-product"><span class="ui-thumb" style="background:linear-gradient(135deg,#16a34a,#14532d);"></span>Shadow Stripe Soccer Jersey</span>
+                                        <span class="ui-status-active">Active</span>
+                                        <span>318</span>
+                                        <span class="ui-photo"><span class="ui-photo-dot ui-photo-dot-custom"></span>Custom flat-lay</span>
+                                        <span><span class="ui-toggle ui-toggle-on"><span></span></span></span>
+                                    </div>
+                                    <div class="ui-trow">
+                                        <span class="ui-product"><span class="ui-thumb" style="background:linear-gradient(135deg,#fef3c7,#fbbf24);"></span>Ivory Trench Coat</span>
+                                        <span class="ui-status-active">Active</span>
+                                        <span>104</span>
+                                        <span class="ui-photo"><span class="ui-photo-dot"></span>Default image</span>
+                                        <span><span class="ui-toggle ui-toggle-on"><span></span></span></span>
+                                    </div>
+                                    <div class="ui-trow">
+                                        <span class="ui-product"><span class="ui-thumb" style="background:linear-gradient(135deg,#1e3a8a,#0c1222);"></span>Navy Wool Polo</span>
+                                        <span class="ui-status-active">Active</span>
+                                        <span>52</span>
+                                        <span class="ui-photo"><span class="ui-photo-dot ui-photo-dot-custom"></span>Custom flat-lay</span>
+                                        <span><span class="ui-toggle ui-toggle-on"><span></span></span></span>
+                                    </div>
+                                    <div class="ui-trow">
+                                        <span class="ui-product"><span class="ui-thumb" style="background:linear-gradient(135deg,#7f1d1d,#fb7185);"></span>Wine Velvet Dress</span>
+                                        <span class="ui-status-active">Active</span>
+                                        <span>26</span>
+                                        <span class="ui-photo"><span class="ui-photo-dot"></span>Default image</span>
+                                        <span><span class="ui-toggle"><span></span></span></span>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
 
-                    <article class="inside-card">
-                        <div class="inside-card-head">
-                            <span class="inside-tag">Admin · /app/history</span>
-                            <h3>Try-on log</h3>
-                            <p>Every shopper session, with the data merchants actually need.</p>
-                        </div>
-                        <ul class="inside-list">
-                            <li><strong>Summary KPIs</strong>: Total attempts, Success rate, Average latency (seconds).</li>
-                            <li>Columns: Date (UTC), Product, Customer (id or IP), Status (Success / Error), Latency, Error.</li>
-                            <li>Latency badge turns critical when generation exceeds 3 seconds.</li>
-                            <li>Auto-enrichment of product titles from the Shopify catalog.</li>
-                            <li>Graceful empty state and reload-on-error notification.</li>
+                <!-- HISTORY / TRY-ON LOG -->
+                <div class="ui-row ui-row-reverse reveal">
+                    <div class="ui-row-text">
+                        <p class="ui-tag">History</p>
+                        <h3>Every shopper session, with the data that matters.</h3>
+                        <p class="ui-desc">Total attempts, success rate, average latency &mdash; and a full session log to debug or report on. No CSV export needed; it&rsquo;s all in your Shopify admin.</p>
+                        <ul class="ui-bullets">
+                            <li>Success / Error badges per session</li>
+                            <li>Latency in seconds (red beyond 3s)</li>
+                            <li>Auto product-name enrichment</li>
                         </ul>
-                    </article>
-
-                    <article class="inside-card">
-                        <div class="inside-card-head">
-                            <span class="inside-tag">Admin · /app/credits</span>
-                            <h3>Plans &amp; generations</h3>
-                            <p>Shopify-native billing with a transparent, code-backed pricing model.</p>
+                    </div>
+                    <div class="ui-mock reveal-delay-1">
+                        <div class="ui-window" aria-hidden="true">
+                            <div class="ui-window-bar"><span class="ui-dot ui-dot-red"></span><span class="ui-dot ui-dot-yellow"></span><span class="ui-dot ui-dot-green"></span><span class="ui-window-title">VTON Magic &middot; History</span></div>
+                            <div class="ui-window-body">
+                                <div class="ui-kpis">
+                                    <div class="ui-kpi"><span>Total attempts</span><strong>1,284</strong></div>
+                                    <div class="ui-kpi"><span>Success rate</span><strong>97.1%</strong></div>
+                                    <div class="ui-kpi"><span>Avg latency</span><strong>29.4s</strong></div>
+                                </div>
+                                <div class="ui-table ui-table-log">
+                                    <div class="ui-thead">
+                                        <span>Date</span><span>Product</span><span>Status</span><span>Latency</span>
+                                    </div>
+                                    <div class="ui-trow">
+                                        <span>Today, 18:42</span>
+                                        <span class="ui-truncate">Shadow Stripe Soccer Jersey</span>
+                                        <span class="ui-pill ui-pill-success">Success</span>
+                                        <span>28.7s</span>
+                                    </div>
+                                    <div class="ui-trow">
+                                        <span>Today, 18:14</span>
+                                        <span class="ui-truncate">Ivory Trench Coat</span>
+                                        <span class="ui-pill ui-pill-success">Success</span>
+                                        <span>31.2s</span>
+                                    </div>
+                                    <div class="ui-trow">
+                                        <span>Today, 17:55</span>
+                                        <span class="ui-truncate">Navy Wool Polo</span>
+                                        <span class="ui-pill ui-pill-error">Error</span>
+                                        <span>&mdash;</span>
+                                    </div>
+                                    <div class="ui-trow">
+                                        <span>Today, 17:21</span>
+                                        <span class="ui-truncate">Shadow Stripe Soccer Jersey</span>
+                                        <span class="ui-pill ui-pill-success">Success</span>
+                                        <span>26.8s</span>
+                                    </div>
+                                </div>
+                            </div>
                         </div>
-                        <ul class="inside-list">
-                            <li>Four live plans: <strong>Free $0 / 50</strong>, <strong>Starter $19 / 300</strong>, <strong>Growth $49 / 1,000</strong>, <strong>Scale $149 / 4,000</strong>.</li>
-                            <li><strong>Most popular</strong> badge on Growth, <strong>Current</strong> badge on the active plan.</li>
-                            <li>This-month usage meter with 80% warning state.</li>
-                            <li>Try-on → cart conversion summary computed live.</li>
-                            <li>Five-question billing FAQ inline on the page.</li>
-                            <li>Shopify approval flow with billing callback that rehydrates the session.</li>
-                        </ul>
-                    </article>
-
-                    <article class="inside-card">
-                        <div class="inside-card-head">
-                            <span class="inside-tag">Storefront · widget</span>
-                            <h3>The widget on every product page</h3>
-                            <p>A 5,000+ line Shadow DOM widget engineered for 100% Shopify theme coverage.</p>
-                        </div>
-                        <ul class="inside-list">
-                            <li><strong>Closed Shadow DOM</strong> — zero CSS conflicts with the theme.</li>
-                            <li><strong>9-layer DOM anchor</strong>: custom selector → product form + ATC → global ATC → product-form element → product-info containers (Dawn / PageFly / GemPages / Shogun + 25 more) → embed slot → sticky ATC bar → main → floating fallback.</li>
-                            <li><strong>MutationObserver</strong> waits up to 12 seconds for late-rendered sections.</li>
-                            <li>Boot retries at 800ms, 2s, 4.5s, 9s, 15s, 22s + Shopify section reload hooks.</li>
-                            <li>Mounts only on <code>/products/*</code> — never on cart, search, header or drawers.</li>
-                            <li>Self-heals if a theme removes the container (re-injects up to 6 times).</li>
-                        </ul>
-                    </article>
-
-                    <article class="inside-card">
-                        <div class="inside-card-head">
-                            <span class="inside-tag">Storefront · upload</span>
-                            <h3>Shopper photo upload</h3>
-                            <p>One panel, OS-native camera or gallery, with reassuring privacy copy.</p>
-                        </div>
-                        <ul class="inside-list">
-                            <li>Accepts JPG, PNG, WebP, HEIC / HEIF up to <strong>10 MB</strong>.</li>
-                            <li>Live thumbnail preview after pick.</li>
-                            <li>Inline notice: <em>Secure processing — your photo is not stored.</em></li>
-                            <li><strong>16px font-size</strong> on input to block iOS zoom.</li>
-                            <li>Funnel progress: <em>Upload your photo → Creating your try-on → Your result</em>.</li>
-                        </ul>
-                    </article>
-
-                    <article class="inside-card">
-                        <div class="inside-card-head">
-                            <span class="inside-tag">Storefront · generation</span>
-                            <h3>Live progress &amp; background mode</h3>
-                            <p>Asynchronous generation with rotating contextual copy and a closeable modal.</p>
-                        </div>
-                        <ul class="inside-list">
-                            <li>Progress bar eases from 5% to ~92% over the first 28 seconds.</li>
-                            <li>Rotating messages every 3 seconds across 4 phases (0–9s, 10–19s, 20–29s, 30s+).</li>
-                            <li>Rotating tips every 8 seconds (lighting, average time, privacy).</li>
-                            <li><strong>Close modal anytime</strong> — generation continues in the background; a toast brings shoppers back when ready.</li>
-                            <li><strong>Async job polling</strong> every 2.5 seconds, up to 80 attempts (~200s total).</li>
-                            <li>Localized strings in English and French (auto-detected via <code>html lang</code>).</li>
-                        </ul>
-                    </article>
-
-                    <article class="inside-card">
-                        <div class="inside-card-head">
-                            <span class="inside-tag">Storefront · result</span>
-                            <h3>Result &amp; add to cart</h3>
-                            <p>A native-feeling Shopify result modal — variants, sold-out states, urgency, share.</p>
-                        </div>
-                        <ul class="inside-list">
-                            <li><strong>Variant picker</strong> with sold-out detection (option marked &ldquo;(sold out)&rdquo;).</li>
-                            <li><strong>Low-stock urgency badge</strong> when variant inventory is between 1 and 8 units.</li>
-                            <li>Add to cart via Shopify Ajax <code>/cart/add.js</code> with theme drawer events broadcasted.</li>
-                            <li>Native <strong>fly-to-cart</strong> animation + cart icon bump + success toast.</li>
-                            <li>Variant selection is synchronized back into the theme's own product form.</li>
-                            <li>Share block: native Web Share, WhatsApp deep-link, copy result link.</li>
-                            <li>&ldquo;Try another photo&rdquo; resets the modal without leaving the page.</li>
-                        </ul>
-                    </article>
-
-                    <article class="inside-card">
-                        <div class="inside-card-head">
-                            <span class="inside-tag">Backend · engine</span>
-                            <h3>AI engine &amp; safety nets</h3>
-                            <p>Bytedance Seedream 4.5 on Replicate, with fail-safes everywhere.</p>
-                        </div>
-                        <ul class="inside-list">
-                            <li>Default model: <code>bytedance/seedream-4.5</code> — configurable via env var.</li>
-                            <li>Resolution: <strong>2K</strong>, aspect ratio <strong>1:1</strong>, max 1 image.</li>
-                            <li>Prompt enforces garment identity, color, pattern, and fit preservation.</li>
-                            <li>Replicate retries up to <strong>3 times</strong> on transient errors.</li>
-                            <li><strong>Free retry within 24h</strong> on any failed job — no credit charged.</li>
-                            <li>Auto-retry once on AI failure with reassuring copy: <em>&ldquo;You were not charged for the failed attempt.&rdquo;</em></li>
-                        </ul>
-                    </article>
-
-                    <article class="inside-card">
-                        <div class="inside-card-head">
-                            <span class="inside-tag">Backend · billing</span>
-                            <h3>Pay-per-success billing</h3>
-                            <p>Credits debit only on success — and we wrote it that way in the code.</p>
-                        </div>
-                        <ul class="inside-list">
-                            <li>Generate API returns <code>credit_policy: "charged_only_on_success"</code>.</li>
-                            <li>Five enforcement gates: shop enabled → credits &gt; 0 → monthly quota → daily store cap → daily per-shopper cap.</li>
-                            <li>Default caps: <strong>100 try-ons / store / day</strong>, <strong>5 / shopper IP / day</strong> — both fully editable.</li>
-                            <li>Monthly usage tracked from successful logs, auto-resets each calendar month.</li>
-                            <li><strong>Credits alert banner</strong> at 80% usage on every admin page.</li>
-                        </ul>
-                    </article>
-
-                    <article class="inside-card">
-                        <div class="inside-card-head">
-                            <span class="inside-tag">Backend · privacy</span>
-                            <h3>Privacy &amp; GDPR</h3>
-                            <p>The simplest privacy story in the category — and it's enforced in the schema.</p>
-                        </div>
-                        <ul class="inside-list">
-                            <li>Shopper upload photos are <strong>never persisted</strong> — base64 flows in-memory to Replicate.</li>
-                            <li>Only the result URL and operational metadata (latency, success / fail, IP for rate-limit) are stored.</li>
-                            <li>Three GDPR webhooks implemented: <code>customers/data_request</code>, <code>customers/redact</code>, <code>shop/redact</code>.</li>
-                            <li>Uninstall webhook clears all shop tables: logs, settings, rate limits, sessions.</li>
-                            <li>App Proxy HMAC signature verification on every storefront call.</li>
-                        </ul>
-                    </article>
+                    </div>
                 </div>
             </div>
         </section>
@@ -1529,9 +1808,9 @@
         <section id="features">
             <div class="wrap">
                 <div class="section-head reveal">
-                    <p class="section-label">Highlights</p>
+                    <p class="section-label">Why merchants love it</p>
                     <h2 class="section-title">The details competitors don&rsquo;t ship.</h2>
-                    <p class="section-desc">Beyond the obvious AI try-on, StyleLab includes the engineering choices that make the difference: branded widget, A/B test, smart quotas, native shopper sharing, background generation, and pay-per-success billing &mdash; every one of them in the default install, on every plan.</p>
+                    <p class="section-desc">A branded button, an A/B test that actually proves the lift, smart usage limits, native sharing, background renders, and pay-only-on-success billing &mdash; all of it included on every plan, free included.</p>
                 </div>
                 <div class="bento">
                     <div class="bento-item span-8 reveal bento-shot">
@@ -1549,7 +1828,7 @@
                                 <svg viewBox="0 0 24 24" width="20" height="20" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><polygon points="13 2 3 14 12 14 11 22 21 10 12 10 13 2"/></svg>
                             </div>
                             <h3>One-click install</h3>
-                            <p>App Store &rarr; OAuth &rarr; button on every product page. Theme app embed + ScriptTag dual install.</p>
+                            <p>From the Shopify App Store to a live try-on button on every product page &mdash; in under 5 minutes, no theme editing.</p>
                         </div>
                     </div>
                     <div class="bento-item span-4 reveal">
@@ -1648,116 +1927,101 @@
             </div>
         </section>
 
-        <!-- ENGINEERING -->
-        <section id="engineering" style="background: #fafaf9;">
+        <!-- HOW IT WORKS — three steps from install to first sale -->
+        <section id="engineering" style="background: var(--green-50);">
             <div class="wrap">
-                <div class="section-head reveal">
-                    <p class="section-label">Engineering</p>
-                    <h2 class="section-title">Built like a Shopify-native app — because it is one.</h2>
-                    <p class="section-desc">Remix + Polaris + Prisma + PostgreSQL on Railway. Shopify Admin GraphQL. Theme App Extension + auto-installed ScriptTag. App Proxy with HMAC verification. The same engineering stack used by Shopify's own apps.</p>
+                <div class="section-head center reveal">
+                    <p class="section-label">How it works</p>
+                    <h2 class="section-title">Install, customize, sell — in that order.</h2>
+                    <p class="section-desc">No code, no theme editing, no developer. Three steps to a live try-on button on every product page of your store.</p>
                 </div>
-                <div class="eng-grid reveal">
-                    <div class="eng-card">
-                        <div class="eng-header">
-                            <span class="eng-pill">AI</span>
-                            <h3>Bytedance Seedream 4.5</h3>
-                        </div>
-                        <p>Served via Replicate. 2K resolution, 1:1 ratio, max 1 image. Prompt enforces garment identity, color, pattern, fit. Up to 3 server-side retries on transient errors.</p>
-                        <div class="eng-stat"><strong>~30s</strong><span>average generation</span></div>
+                <div class="hiw-flow">
+                    <div class="hiw-step reveal">
+                        <div class="hiw-num">01</div>
+                        <h3>Install from the App Store</h3>
+                        <p>One click. Shopify handles the auth, we install the widget on every product page automatically. No theme editing required.</p>
+                        <div class="hiw-time"><svg viewBox="0 0 24 24" width="14" height="14" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="12" r="10"/><polyline points="12 6 12 12 16 14"/></svg> &lt; 2 min</div>
                     </div>
-                    <div class="eng-card">
-                        <div class="eng-header">
-                            <span class="eng-pill">Install</span>
-                            <h3>Dual storefront install</h3>
-                        </div>
-                        <p>Theme App Extension exposes a Body app embed; a ScriptTag is auto-registered after OAuth as a fallback. Together they guarantee the widget loads on every product page across every theme.</p>
-                        <div class="eng-stat"><strong>2 layers</strong><span>theme embed + ScriptTag</span></div>
+                    <div class="hiw-arrow reveal reveal-delay-1" aria-hidden="true">
+                        <svg viewBox="0 0 40 12" fill="none" stroke="currentColor" stroke-width="1.5"><path d="M0 6 L34 6 M28 1 L34 6 L28 11"/></svg>
                     </div>
-                    <div class="eng-card">
-                        <div class="eng-header">
-                            <span class="eng-pill">Theme</span>
-                            <h3>Closed Shadow DOM widget</h3>
-                        </div>
-                        <p>A 5,000+ line widget with isolated styles, 9-layer DOM anchor strategy, and a MutationObserver retry loop up to 12 seconds. Compatible with Dawn, PageFly, GemPages, Shogun, and 25+ other theme conventions.</p>
-                        <div class="eng-stat"><strong>30+ themes</strong><span>auto-detected anchors</span></div>
+                    <div class="hiw-step reveal reveal-delay-1">
+                        <div class="hiw-num">02</div>
+                        <h3>Customize in the dashboard</h3>
+                        <p>Pick your button color, upload a flat-lay garment photo per product, optionally turn on the A/B test. Live preview on every change.</p>
+                        <div class="hiw-time"><svg viewBox="0 0 24 24" width="14" height="14" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="12" r="10"/><polyline points="12 6 12 12 16 14"/></svg> 5 min</div>
                     </div>
-                    <div class="eng-card">
-                        <div class="eng-header">
-                            <span class="eng-pill">API</span>
-                            <h3>App Proxy + GraphQL</h3>
-                        </div>
-                        <p>All storefront traffic flows through Shopify App Proxy (<code>/apps/tryon/*</code>) with HMAC signature verification. The admin app talks only to Shopify Admin GraphQL — REST is disabled.</p>
-                        <div class="eng-stat"><strong>HMAC</strong><span>signed proxy requests</span></div>
+                    <div class="hiw-arrow reveal reveal-delay-2" aria-hidden="true">
+                        <svg viewBox="0 0 40 12" fill="none" stroke="currentColor" stroke-width="1.5"><path d="M0 6 L34 6 M28 1 L34 6 L28 11"/></svg>
                     </div>
-                    <div class="eng-card">
-                        <div class="eng-header">
-                            <span class="eng-pill">Perf</span>
-                            <h3>Caching layers</h3>
-                        </div>
-                        <p>Status endpoint cached for 5 seconds in memory, layout cache 20 seconds, ScriptTag GraphQL 8-second timeout. Async generation returns a <code>job_id</code> immediately; clients poll every 2.5s.</p>
-                        <div class="eng-stat"><strong>5,000+</strong><span>cached status entries</span></div>
+                    <div class="hiw-step reveal reveal-delay-2">
+                        <div class="hiw-num">03</div>
+                        <h3>Watch shoppers buy</h3>
+                        <p>Your customers see the try-on button, upload a photo, get their result in ~30s, and add to cart with one tap. You see the lift in the dashboard.</p>
+                        <div class="hiw-time"><svg viewBox="0 0 24 24" width="14" height="14" fill="none" stroke="currentColor" stroke-width="2"><path d="M3 3v18h18"/><path d="M7 14l4-4 4 4 6-6"/></svg> live now</div>
                     </div>
-                    <div class="eng-card">
-                        <div class="eng-header">
-                            <span class="eng-pill">Data</span>
-                            <h3>PostgreSQL on Railway</h3>
-                        </div>
-                        <p>Prisma for the Shopify session table, raw SQL for business tables (<code>shops</code>, <code>tryon_logs</code>, <code>product_settings</code>, <code>rate_limits</code>, <code>ab_events</code>). 20-connection pool with TLS in production.</p>
-                        <div class="eng-stat"><strong>5 tables</strong><span>+ Shopify session</span></div>
+                </div>
+
+                <!-- Trust strip -->
+                <div class="hiw-trust reveal">
+                    <div>
+                        <strong>Bytedance Seedream 4.5</strong>
+                        <span>Photorealistic AI engine, identity-preserving, 2K quality.</span>
                     </div>
-                    <div class="eng-card">
-                        <div class="eng-header">
-                            <span class="eng-pill">Health</span>
-                            <h3>Live deploy traceability</h3>
-                        </div>
-                        <p>The <code>/health</code> endpoint returns the 7-character git commit running in production, enabling uptime monitors and deploy verification without authentication.</p>
-                        <div class="eng-stat"><strong>commit-pinned</strong><span>every deployment</span></div>
+                    <div>
+                        <strong>Works on every Shopify theme</strong>
+                        <span>Dawn, PageFly, GemPages, Shogun &mdash; auto-detected, no code changes.</span>
                     </div>
-                    <div class="eng-card">
-                        <div class="eng-header">
-                            <span class="eng-pill">DX</span>
-                            <h3>Shopify-native auth</h3>
-                        </div>
-                        <p>OAuth via <code>@shopify/shopify-app-remix</code> with <code>unstable_newEmbeddedAuthStrategy</code>. Sessions stored in Prisma. <code>app/scopes_update</code> webhook auto-rotates sessions on scope changes.</p>
-                        <div class="eng-stat"><strong>3 webhooks</strong><span>GDPR + uninstall + scopes</span></div>
+                    <div>
+                        <strong>Native Shopify billing</strong>
+                        <span>Charged through your Shopify account. Cancel any time.</span>
                     </div>
                 </div>
             </div>
         </section>
 
-        <!-- PRIVACY & TRUST -->
-        <section id="privacy" style="background: #fff;">
+        <!-- PRIVACY & TRUST — light, merchant-friendly -->
+        <section id="privacy">
             <div class="wrap">
-                <div class="section-head reveal">
+                <div class="section-head center reveal">
                     <p class="section-label">Privacy &amp; trust</p>
-                    <h2 class="section-title">The shortest privacy story in the category.</h2>
-                    <p class="section-desc">Shopper photos never touch persistent storage. We log result URLs and operational data only. Three Shopify GDPR webhooks are implemented and verifiable in the codebase.</p>
+                    <h2 class="section-title">The cleanest privacy story in the category.</h2>
+                    <p class="section-desc">Your shoppers&rsquo; photos are processed and then gone. We only keep what helps you understand performance.</p>
                 </div>
-                <div class="privacy-grid reveal">
-                    <div class="privacy-block">
-                        <h3>What we store</h3>
-                        <ul class="check-list">
-                            <li><strong>Result image URL</strong> hosted on Replicate CDN.</li>
-                            <li><strong>Try-on log metadata</strong>: shop, product, customer ID or IP, latency, success / failure, error.</li>
-                            <li><strong>Anonymous visitor ID</strong> in shopper's localStorage for A/B bucketing.</li>
-                            <li><strong>Custom garment images</strong> uploaded by merchants — stored in Shopify Files.</li>
+                <div class="privacy-two reveal">
+                    <div class="privacy-card">
+                        <div class="privacy-icon" aria-hidden="true">
+                            <svg viewBox="0 0 24 24" width="22" height="22" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                                <rect x="3" y="11" width="18" height="11" rx="2"/>
+                                <path d="M7 11V7a5 5 0 0110 0v4"/>
+                            </svg>
+                        </div>
+                        <h3>What we never keep</h3>
+                        <ul class="privacy-list privacy-list-no">
+                            <li>The shopper&rsquo;s uploaded photo</li>
+                            <li>Their name, address, or payment info</li>
+                            <li>Any identifying data in GDPR exports</li>
                         </ul>
                     </div>
-                    <div class="privacy-block privacy-no">
-                        <h3>What we never store</h3>
-                        <ul class="cross-list">
-                            <li><strong>The shopper's uploaded photo</strong> — sent in-memory to the AI engine and discarded.</li>
-                            <li><strong>The shopper's name, address, or payment info</strong> — we don't ask, we don't see.</li>
-                            <li><strong>The garment image alongside the user photo</strong> after generation completes.</li>
-                            <li><strong>Identifying data in GDPR data-request exports</strong> — only log metadata.</li>
+                    <div class="privacy-card privacy-card-yes">
+                        <div class="privacy-icon" aria-hidden="true">
+                            <svg viewBox="0 0 24 24" width="22" height="22" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                                <path d="M3 3v18h18"/><path d="M7 14l4-4 4 4 6-6"/>
+                            </svg>
+                        </div>
+                        <h3>What we keep (just for your dashboard)</h3>
+                        <ul class="privacy-list">
+                            <li>The generated try-on image URL</li>
+                            <li>Success / failure, latency, product viewed</li>
+                            <li>Your own flat-lay photos, in Shopify Files</li>
                         </ul>
                     </div>
                 </div>
-                <div class="privacy-strip reveal">
-                    <div><strong>3 GDPR webhooks</strong><span>customers/data_request · customers/redact · shop/redact</span></div>
-                    <div><strong>Uninstall = data-wipe</strong><span>logs, settings, rate limits, sessions deleted</span></div>
-                    <div><strong>HMAC verified</strong><span>every storefront call signed by Shopify App Proxy</span></div>
-                    <div><strong>EU data</strong><span>Replicate processing · Shopify CDN result hosting</span></div>
+                <div class="privacy-mini-strip reveal">
+                    <span>GDPR webhooks shipped</span>
+                    <span>Uninstall = full data wipe</span>
+                    <span>Native Shopify billing</span>
+                    <span>Cancel any time</span>
                 </div>
             </div>
         </section>
@@ -1844,18 +2108,18 @@
                     <div class="compare-card us">
                         <h3>Virtual Try-On by StyleLab</h3>
                         <ul>
-                            <li><strong>Free live trial on the vendor website</strong> — the exact storefront widget, not a video</li>
-                            <li><strong>One-click install</strong> from the Shopify App Store · auto-anchors the button via 9-layer DOM strategy</li>
-                            <li><strong>Pay-per-success billing</strong>: <code>credit_policy: "charged_only_on_success"</code> — failed AI never charges</li>
-                            <li><strong>Free 24h retry</strong> on any failed try-on, server-validated</li>
-                            <li><strong>Native A/B test</strong> try-on vs control, 10-90% slider, 30-day stats — included on every plan</li>
-                            <li><strong>Per-product flat-lay garment photo</strong> uploaded to Shopify Files, never shown in gallery</li>
-                            <li><strong>Async generation</strong>: shoppers can close the modal and receive a "ready" toast</li>
-                            <li><strong>Closed Shadow DOM widget</strong> — zero CSS conflicts with any theme</li>
-                            <li><strong>Built on Replicate Seedream 4.5</strong> — 2K, photorealistic, identity-preserving</li>
-                            <li><strong>Native conversion dashboard</strong> inside the Shopify admin (no Google Analytics needed)</li>
-                            <li><strong>EN + FR auto-detected</strong> shopper UX via <code>html lang</code></li>
-                            <li><strong>Three GDPR webhooks</strong> · shopper photos never persisted</li>
+                            <li><strong>Free live trial on this website</strong> — the real widget, not a video</li>
+                            <li><strong>One-click install</strong>, automatic button on every product page</li>
+                            <li><strong>Pay only when it works</strong> — failed AI never costs a credit</li>
+                            <li><strong>Free 24-hour retry</strong> on any failed try-on</li>
+                            <li><strong>A/B test included on every plan</strong> — measure the cart lift</li>
+                            <li><strong>Per-product flat-lay photo</strong> for crisper AI results</li>
+                            <li><strong>Background mode</strong> — shoppers can close the window and get notified when ready</li>
+                            <li><strong>Works on every Shopify theme</strong>, no code changes</li>
+                            <li><strong>Powered by Bytedance Seedream 4.5</strong>, best-in-class fashion AI</li>
+                            <li><strong>Native dashboard in your Shopify admin</strong> — no Google Analytics setup</li>
+                            <li><strong>Auto-detects French storefronts</strong> for shopper-facing text</li>
+                            <li><strong>Shopper photos never stored</strong>, GDPR-ready out of the box</li>
                         </ul>
                     </div>
                     <div class="compare-card them">
@@ -1945,28 +2209,28 @@
                         <div class="faq-a">Other apps offer try-on on Shopify (TryOn Virtual, generic AR apps). StyleLab stands apart on: an interactive trial on the vendor site, A/B test included, per-product flat-lay photos, pay-on-success billing, and a widget UX aligned with Shopify standards. See the <a href="#compare">comparison section</a>.</div>
                     </div>
                     <div class="faq-item">
-                        <div class="faq-q" tabindex="0">Which AI model is used to generate the try-on? <span class="icon">+</span></div>
-                        <div class="faq-a">The default model is <strong>Bytedance Seedream 4.5</strong> served through Replicate, at 2K resolution and a 1:1 aspect ratio. The prompt enforces garment identity, color, pattern, and fit preservation. The model can be reconfigured via the <code>REPLICATE_MODEL</code> environment variable, and Replicate calls include up to 3 server-side retries on transient errors.</div>
+                        <div class="faq-q" tabindex="0">Which AI engine powers the try-on? <span class="icon">+</span></div>
+                        <div class="faq-a">We use <strong>Bytedance Seedream 4.5</strong>, the same identity-preserving photorealistic engine that powers some of the best AI fashion experiences today. The model is tuned to keep your garment&rsquo;s exact colors, pattern and fit. Average render time: about 30 seconds, in high-resolution 2K.</div>
                     </div>
                     <div class="faq-item">
-                        <div class="faq-q" tabindex="0">Does the widget work on themes like Dawn, PageFly, or GemPages? <span class="icon">+</span></div>
-                        <div class="faq-a">Yes. The widget runs inside a closed Shadow DOM with a 9-layer DOM anchor strategy: it first tries a custom CSS selector (configurable in the theme app embed), then the product form + Add-to-cart button, sticky ATC bars, product info containers across 30+ theme conventions (Dawn, PageFly, GemPages, Shogun, etc.), the embed slot, the <code>main</code> element, and finally a floating fallback. A MutationObserver waits up to 12 seconds for late-rendered sections, with boot retries at 800ms, 2s, 4.5s, 9s, 15s, and 22s.</div>
+                        <div class="faq-q" tabindex="0">Does the widget work with my Shopify theme? <span class="icon">+</span></div>
+                        <div class="faq-a">Yes. Virtual Try-On by StyleLab is built to install itself near the &ldquo;Add to cart&rdquo; button on every Shopify product page automatically, with no theme editing. It&rsquo;s tested on Dawn, PageFly, GemPages, Shogun and 25+ other popular themes. If you ever want to tweak the placement, a one-line setting in the Shopify theme editor lets you point it anywhere on the page.</div>
                     </div>
                     <div class="faq-item">
-                        <div class="faq-q" tabindex="0">Can the shopper close the modal while the AI is generating? <span class="icon">+</span></div>
-                        <div class="faq-a">Yes. Generation is fully asynchronous: the POST returns a <code>job_id</code> immediately and the widget polls every 2.5 seconds. The shopper can close the modal, browse, and continue shopping. A "Ready" badge appears on the button and a toast notifies them when the result is available. Both states are localized in English and French.</div>
+                        <div class="faq-q" tabindex="0">Can a shopper close the modal while the AI is rendering? <span class="icon">+</span></div>
+                        <div class="faq-a">Yes &mdash; this is one of our favorite shopper-side features. The render runs in the background. Your customer can close the window, browse other products, and they&rsquo;ll see a &ldquo;ready&rdquo; notification when their try-on is done. They never feel stuck.</div>
                     </div>
                     <div class="faq-item">
-                        <div class="faq-q" tabindex="0">How does Virtual Try-On by StyleLab handle GDPR? <span class="icon">+</span></div>
-                        <div class="faq-a">The app implements the three mandatory Shopify GDPR webhooks: <code>customers/data_request</code>, <code>customers/redact</code>, and <code>shop/redact</code>. Shopper upload photos are never persisted &mdash; they flow in-memory to the AI engine and are discarded. Only the generated result URL and operational metadata (latency, success / failure, IP for daily rate limiting) are stored in the <code>tryon_logs</code> table. On uninstall, all shop data is deleted.</div>
+                        <div class="faq-q" tabindex="0">How does Virtual Try-On by StyleLab handle privacy and GDPR? <span class="icon">+</span></div>
+                        <div class="faq-a">Shopper photos are <strong>never stored</strong> &mdash; they are processed and then gone. We only keep the generated try-on image and basic performance data so your dashboard can show meaningful numbers. Shopify&rsquo;s three mandatory GDPR webhooks are implemented, and uninstalling the app wipes all of your store&rsquo;s data.</div>
                     </div>
                     <div class="faq-item">
                         <div class="faq-q" tabindex="0">Can I limit the number of try-ons per visitor or per day? <span class="icon">+</span></div>
-                        <div class="faq-a">Yes. Every shop ships with two configurable quotas in the Dashboard: a <strong>daily store cap</strong> (default 100 successful try-ons per day) and a <strong>per-shopper IP cap</strong> (default 5 per day). Set either to 0 to disable. A monthly quota is also enforced from the plan. All four limits (credits, monthly, daily store, daily per-shopper) are validated before AI generation runs.</div>
+                        <div class="faq-a">Yes. From your dashboard you can set a daily cap for the whole store (default: 100) and a per-shopper cap (default: 5/day). Set either to 0 to disable. Combined with the monthly quota from your plan, you stay in full control of your AI usage.</div>
                     </div>
                     <div class="faq-item">
-                        <div class="faq-q" tabindex="0">Is Virtual Try-On by StyleLab translated into French? <span class="icon">+</span></div>
-                        <div class="faq-a">The storefront widget auto-detects shopper language via <code>document.documentElement.lang</code>: when the page declares <code>lang="fr"</code>, key shopper interactions (ready toasts, error states, "added to cart" confirmation, cart toast, modal hints) display in French. The admin UI ships in English &mdash; this is the language most Shopify merchants are already familiar with from the Shopify Admin itself.</div>
+                        <div class="faq-q" tabindex="0">Is Virtual Try-On by StyleLab available in French? <span class="icon">+</span></div>
+                        <div class="faq-a">The shopper-facing widget automatically detects French Shopify storefronts and translates key messages (ready / error notifications, &ldquo;added to cart&rdquo; confirmation, modal hints) into French. Your admin dashboard is in English, the same language Shopify itself uses for most merchant tools.</div>
                     </div>
                     <div class="faq-item">
                         <div class="faq-q" tabindex="0">How does StyleLab compare to AR-based try-on apps? <span class="icon">+</span></div>
@@ -2117,7 +2381,7 @@
         <a href="https://apps.shopify.com/try-on-stylelab" class="btn btn-primary" target="_blank" rel="noopener">Install</a>
     </div>
 
-    <!-- Boot du widget Virtual Try-On (exact meme code que sur les boutiques Shopify) -->
+    <!-- VTON widget boot — same contract as the Shopify theme app embed -->
     <script>
       (function () {
         if (window.VTON_LIQUID) return;
@@ -2126,18 +2390,28 @@
 
         var APP_URL = (slot.getAttribute('data-vton-app-url') || 'https://vton-production-890a.up.railway.app').replace(/\/$/, '');
         var DEMO_SHOP = 's1qf3z-70.myshopify.com';
+        var PRODUCT_ID = slot.getAttribute('data-vton-product-id') || null;
+
+        // Proactively clear any stale negative status cache from a previous visit
+        // (the widget caches "disabled" in sessionStorage for 5 minutes).
+        try {
+          var keys = [];
+          for (var i = 0; i < sessionStorage.length; i++) {
+            var k = sessionStorage.key(i);
+            if (k && k.indexOf('vton:status:') === 0) keys.push(k);
+          }
+          keys.forEach(function (k) { sessionStorage.removeItem(k); });
+        } catch (e) { /* ignore */ }
 
         window.VTON_LIQUID = {
-          productId: slot.getAttribute('data-vton-product-id') || null,
+          productId: PRODUCT_ID,
           productHandle: slot.getAttribute('data-vton-product-handle') || null,
           customAnchor: slot.getAttribute('data-vton-custom-anchor') || '#vton-mount',
           appUrl: APP_URL,
           pageType: 'product',
           templateName: 'product',
-          // shop forced to the demo shop (Studio plan, no quota) — see app/lib/demo-shops.shared.ts
           shop: DEMO_SHOP
         };
-        // The widget reads `window.Shopify.shop` to resolve the domain — we simulate it for fidelity.
         window.Shopify = window.Shopify || {};
         if (!window.Shopify.shop) window.Shopify.shop = DEMO_SHOP;
         if (!window.Shopify.product) {
@@ -2147,9 +2421,7 @@
           };
         }
 
-        // Fetch proxy — the widget calls window.location.origin + '/apps/tryon/*'
-        // but the marketing site has no Shopify App Proxy, so we redirect
-        // every such request to the live app on Railway.
+        // Proxy /apps/tryon/* → live Railway backend with the marketing-site origin header.
         var originalFetch = window.fetch.bind(window);
         window.fetch = function (input, init) {
           try {
@@ -2168,9 +2440,24 @@
           } catch (e) { /* fall through */ }
           return originalFetch(input, init);
         };
+
+        // Hide the placeholder as soon as the widget actually injects itself.
+        var mount = document.getElementById('vton-mount');
+        var placeholder = document.getElementById('vton-mount-placeholder');
+        if (mount && placeholder) {
+          var io = new MutationObserver(function () {
+            if (document.querySelector('#vton-widget-container, [data-vton-widget="true"]')) {
+              placeholder.style.display = 'none';
+              try { io.disconnect(); } catch (e) {}
+            }
+          });
+          io.observe(document.body, { childList: true, subtree: true });
+          // Safety net: hide after 20s even if the observer misses an injection edge-case.
+          setTimeout(function () { try { io.disconnect(); } catch (e) {} }, 20000);
+        }
       })();
     </script>
-    <script src="vton-widget.js?v=1" defer crossorigin="anonymous"></script>
+    <script src="vton-widget.js?v=2" defer crossorigin="anonymous"></script>
     <script>
         (function() {
             var header = document.getElementById('header');
