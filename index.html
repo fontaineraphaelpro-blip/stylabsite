@@ -1005,23 +1005,122 @@
         }
         .sticky-mobile-cta .btn { flex: 1; padding: 0.75rem; font-size: 0.85rem; }
 
+        /* ----- Tablet & below ----- */
         @media (max-width: 1024px) {
-            .hero-grid, .demo-inner, .journey, .bento-item.span-8, .bento-item.span-4, .bento-item.span-6, .pricing, .metrics-grid, .compare-grid { grid-template-columns: 1fr; }
+            .hero-grid, .demo-inner, .journey, .bento-item.span-8, .bento-item.span-4, .bento-item.span-6, .metrics-grid, .compare-grid { grid-template-columns: 1fr; }
             .bento-item { grid-column: span 12 !important; }
             .mockup-stage { height: 400px; }
             .nav-links { display: none; }
             .menu-btn { display: flex; }
             .price-card.featured { transform: none; }
             .sticky-mobile-cta { display: flex; }
-            body { padding-bottom: 70px; }
+            body { padding-bottom: 76px; }
+            .pricing { grid-template-columns: repeat(2, 1fr); }
+            .demo-inner { gap: 2rem; }
         }
+
+        /* ----- Small tablet & large phone ----- */
+        @media (max-width: 768px) {
+            section { padding: 3.25rem 0; }
+            #inside, #engineering, #privacy { padding: 3.5rem 0; }
+            .section-head { margin-bottom: 2rem; }
+            .hero { padding-top: 5.5rem; padding-bottom: 2.5rem; }
+            .hero-metrics { gap: 1.25rem 1.5rem; padding-top: 1.25rem; }
+            .hero-btns { gap: 0.5rem; }
+            .hero-btns .btn { flex: 1 1 calc(50% - 0.25rem); justify-content: center; }
+            .mockup-stage { height: 280px; }
+            .demo-block { padding: 1.75rem 1.25rem; }
+            .demo-block h2 { font-size: 1.5rem; }
+            .metrics-dark { padding: 1.75rem 1.25rem; }
+            .tldr { padding: 1.5rem 1.25rem; border-radius: 18px; }
+            .trial-header { padding: 1rem 1.25rem; }
+            .trial-product { padding: 1.5rem !important; }
+            .trial-gallery { padding: 1rem !important; }
+            .trial-foot { font-size: 0.78rem; gap: 0.55rem 0.65rem; }
+            .trial-foot > span:not(.trial-privacy) { display: none; }
+            .showcase-tabs { padding: 0.5rem; }
+            .showcase-caption { flex-direction: column; align-items: flex-start; gap: 1rem; padding: 1.5rem !important; }
+            .price-card { padding: 1.75rem 1.25rem; }
+            .compare-card { padding: 1.5rem; }
+            .compare-card ul li { font-size: 0.92rem; }
+            .faq-q { font-size: 0.96rem; padding: 1.1rem 0; }
+            .faq-a { font-size: 0.92rem; padding-bottom: 1.1rem; }
+            .seo-guide { padding: 3rem 0; }
+            .ui-window-body { padding: 1.1rem; gap: 0.85rem; }
+            .ui-kpis { gap: 0.5rem; }
+            .ui-kpi { padding: 0.6rem 0.7rem; }
+            .ui-kpi strong { font-size: 1.2rem; }
+            .hiw-step { padding: 1.5rem 1.25rem; }
+            .hiw-trust { padding: 1.5rem; margin-top: 2rem; gap: 1.25rem; }
+        }
+
+        /* ----- Phone ----- */
         @media (max-width: 640px) {
-            .hero { padding-top: 6.5rem; }
-            .mockup-stage { height: 320px; }
-            .mockup-card.main { width: 85%; }
-            .demo-block { padding: 2rem 1.5rem; }
-            .metrics-dark { padding: 2rem; }
-            .metrics-grid { grid-template-columns: repeat(2, 1fr); }
+            .wrap { width: min(1240px, 100% - 1.5rem); }
+            section { padding: 2.75rem 0; }
+            .hero { padding-top: 5rem; }
+            .hero h1 { font-size: clamp(1.85rem, 8vw, 2.4rem); letter-spacing: -0.03em; }
+            .hero-lead { font-size: 1rem; margin-bottom: 1.5rem; }
+            .hero-btns .btn { padding: 0.7rem 1rem; font-size: 0.86rem; }
+            .hero-metrics { padding-top: 1rem; gap: 1rem 1.25rem; }
+            .metric strong { font-size: 1.25rem; }
+            .mockup-stage { height: 240px; }
+            .mockup-card.main { width: 80%; }
+            .metrics-grid { grid-template-columns: repeat(2, 1fr); gap: 1rem; }
+            .section-label { font-size: 0.68rem; }
+            .section-title { font-size: clamp(1.45rem, 6.5vw, 1.95rem); }
+            .section-desc { font-size: 0.95rem; }
+            .tldr-badge { font-size: 0.64rem; padding: 0.25rem 0.55rem; }
+            .tldr h2 { font-size: clamp(1.15rem, 5vw, 1.5rem); }
+            .tldr-body { font-size: 0.93rem; }
+            .tldr-fact { padding: 0.55rem 0.65rem; }
+            .tldr-fact span { font-size: 0.6rem; }
+            .tldr-fact strong { font-size: 0.78rem; }
+            .pricing { grid-template-columns: 1fr; gap: 1rem; }
+            .price-card { padding: 1.5rem 1.25rem; }
+            .price-amt { font-size: 2rem; }
+            .compare-grid { gap: 1rem; }
+            .compare-card { padding: 1.5rem 1.25rem; }
+            .ui-window-body { padding: 1rem; }
+            .ui-kpis { grid-template-columns: repeat(2, 1fr); }
+            .ui-kpi strong { font-size: 1.1rem; }
+            .ui-chart { height: 56px; }
+            .ui-chart-labels span { font-size: 0.55rem; }
+            .ui-preset-grid { grid-template-columns: repeat(2, 1fr); }
+            .ui-thead, .ui-trow { padding: 0.55rem 0.35rem; font-size: 0.74rem; }
+            .ui-table-log .ui-thead, .ui-table-log .ui-trow { grid-template-columns: 1fr 0.7fr 0.5fr; }
+            .ui-thumb { width: 22px; height: 22px; }
+            .ui-row, .ui-row-reverse { gap: 1.5rem; margin-top: 2.5rem; }
+            .ui-row:first-of-type { margin-top: 2rem; }
+            .ui-row-text h3 { font-size: clamp(1.25rem, 5.5vw, 1.55rem); }
+            .ui-row-text .ui-desc { font-size: 0.92rem; }
+            .hiw-step h3 { font-size: 1.05rem; }
+            .hiw-step p { font-size: 0.88rem; }
+            .privacy-card { padding: 1.5rem 1.25rem; }
+            .privacy-card h3 { font-size: 1rem; }
+            .privacy-list li { font-size: 0.88rem; }
+            .privacy-mini-strip span { font-size: 0.7rem; padding: 0.35rem 0.7rem; }
+            .cta-final { padding: 2.5rem 1.5rem; }
+            .footer-top { gap: 1.5rem; }
+            .footer-links { gap: 1.2rem; }
+            .brand-name span { display: none; }
+        }
+
+        /* ----- Small phone ----- */
+        @media (max-width: 420px) {
+            .hero { padding-top: 4.5rem; }
+            .hero h1 { font-size: clamp(1.7rem, 9vw, 2.1rem); }
+            .hero-btns .btn { flex: 1 1 100%; }
+            .hero-metrics { gap: 0.9rem 1rem; }
+            .metric strong { font-size: 1.15rem; }
+            .metric span { font-size: 0.66rem; }
+            .tldr-facts { grid-template-columns: 1fr 1fr; }
+            .nav .brand-name { font-size: 0.92rem; }
+            .ui-kpis { grid-template-columns: 1fr 1fr; }
+            .ui-window-title { display: none; }
+            .ui-preview-line { flex-direction: column; align-items: flex-start; gap: 0.5rem; }
+            .sticky-mobile-cta { padding: 0.6rem 0.75rem; }
+            .sticky-mobile-cta .btn { padding: 0.65rem; font-size: 0.8rem; }
         }
 
         /* TL;DR — citation-ready answer block */
