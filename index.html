@@ -2523,7 +2523,8 @@
           };
         }
 
-        // Proxy /apps/tryon/* → live Railway backend with the marketing-site origin header.
+        // Proxy /apps/tryon/* → Railway. Only POST /generate gets X-Vton-Origin — adding it
+        // on GET /status breaks CORS (backend Allow-Headers is Content-Type only).
         var originalFetch = window.fetch.bind(window);
         window.fetch = function (input, init) {
           try {
@@ -2534,32 +2535,54 @@
               init = init || {};
               init.mode = 'cors';
               init.credentials = 'omit';
-              init.headers = Object.assign({}, init.headers || {}, {
-                'X-Vton-Origin': 'marketing-site'
-              });
+              var method = (init.method || 'GET').toUpperCase();
+              var headers = Object.assign({}, init.headers || {});
+              if (method === 'POST' && path.indexOf('/apps/tryon/generate') !== -1) {
+                headers['X-Vton-Origin'] = 'marketing-site';
+              }
+              init.headers = headers;
               return originalFetch(rewritten, init);
             }
           } catch (e) { /* fall through */ }
           return originalFetch(input, init);
         };
 
-        // Hide the placeholder as soon as the widget actually injects itself.
+        // Placeholder lifecycle: hide when widget mounts, show help if it never does.
         var mount = document.getElementById('vton-mount');
         var placeholder = document.getElementById('vton-mount-placeholder');
+        var placeholderMsg = placeholder && placeholder.querySelector('small');
+        function hideVtonPlaceholder() {
+          if (placeholder) placeholder.style.display = 'none';
+        }
+        function showVtonPlaceholderError(msg) {
+          if (!placeholder) return;
+          placeholder.style.display = 'flex';
+          var btn = placeholder.querySelector('.vton-placeholder-btn span');
+          if (btn) btn.textContent = 'Widget unavailable';
+          if (placeholderMsg) placeholderMsg.innerHTML = msg;
+        }
         if (mount && placeholder) {
           var io = new MutationObserver(function () {
             if (document.querySelector('#vton-widget-container, [data-vton-widget="true"]')) {
-              placeholder.style.display = 'none';
+              hideVtonPlaceholder();
               try { io.disconnect(); } catch (e) {}
             }
           });
           io.observe(document.body, { childList: true, subtree: true });
-          // Safety net: hide after 20s even if the observer misses an injection edge-case.
-          setTimeout(function () { try { io.disconnect(); } catch (e) {} }, 20000);
+          setTimeout(function () {
+            try { io.disconnect(); } catch (e) {}
+            if (!document.querySelector('#vton-widget-container, [data-vton-widget="true"]')) {
+              showVtonPlaceholderError(
+                'Could not load the try-on widget. ' +
+                '<a href="https://remadeicons.shop/products/shadow-stripe-collared-soccer-jersey-4" target="_blank" rel="noopener">Open the live demo store →</a>'
+              );
+            }
+          }, 12000);
         }
+        window.__vtonHidePlaceholder = hideVtonPlaceholder;
       })();
     </script>
-    <script src="vton-widget.js?v=2" defer crossorigin="anonymous"></script>
+    <script src="vton-widget.js?v=3" defer></script>
     <script>
         (function() {
             var header = document.getElementById('header');
