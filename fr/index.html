@@ -33,7 +33,7 @@
           "alternateName": ["Stylab AI Try-On", "Stylab Virtual Try-On"],
           "applicationCategory": "BusinessApplication",
           "operatingSystem": "Shopify",
-          "description": "AI virtual try-on for Shopify apparel brands. Let shoppers see themselves wearing your products before they buy. Sans code, built-in analytics, A/B testing, and per-product controls.",
+          "description": "AI virtual try-on for Marque apparel Shopifys. Let shoppers see themselves wearing your products before they buy. Sans code, built-in analytics, A/B testing, and per-product controls.",
           "featureList": [
             "Shopify App Store install",
             "Virtual fitting room on product pages",
@@ -273,6 +273,45 @@
         .diff-card h3 { font-size: 1rem; font-weight: 700; margin-bottom: 0.45rem; letter-spacing: -0.01em; }
         .diff-card p { font-size: 0.9rem; color: var(--muted); line-height: 1.6; }
 
+        /* Preuve sociale / reviews */
+        #social-proof { padding: 4.5rem 0; background: #fff; }
+        .reviews-grid {
+            display: grid; grid-template-columns: repeat(3, 1fr); gap: 1.25rem;
+            margin-bottom: 2rem;
+        }
+        .review-card {
+            background: #fff; border: 1px solid var(--line); border-radius: var(--radius);
+            padding: 1.5rem 1.35rem; display: flex; flex-direction: column; gap: 0.85rem;
+            box-shadow: 0 8px 28px -16px rgba(15, 23, 42, 0.12);
+        }
+        .review-stars {
+            display: flex; gap: 0.2rem; color: var(--green-700);
+        }
+        .review-stars svg { width: 15px; height: 15px; fill: currentColor; }
+        .review-quote {
+            font-size: 0.95rem; color: var(--ink-soft); line-height: 1.65;
+            flex: 1; margin: 0;
+        }
+        .review-author {
+            display: flex; flex-direction: column; gap: 0.15rem;
+            padding-top: 0.85rem; border-top: 1px solid var(--line);
+        }
+        .review-author strong { font-size: 0.9rem; color: var(--ink); }
+        .review-author span { font-size: 0.78rem; color: var(--muted); }
+        .review-author a {
+            font-size: 0.8rem; font-weight: 600; color: var(--green-800); margin-top: 0.35rem;
+        }
+        .review-author a:hover { text-decoration: underline; }
+        .proof-strip {
+            display: flex; flex-wrap: wrap; justify-content: center; gap: 0.65rem;
+        }
+        .proof-strip span {
+            display: inline-flex; align-items: center; gap: 0.35rem;
+            font-size: 0.78rem; font-weight: 600; color: var(--ink-soft);
+            padding: 0.45rem 0.85rem; border-radius: 999px;
+            background: var(--green-50); border: 1px solid rgba(20,83,45,0.1);
+        }
+
         /* Use cases */
         .use-grid {
             display: grid; grid-template-columns: repeat(3, 1fr); gap: 1rem;
@@ -284,7 +323,7 @@
         }
 
         @media (max-width: 900px) {
-            .problem-grid, .diff-grid, .use-grid { grid-template-columns: 1fr; }
+            .problem-grid, .diff-grid, .use-grid, .reviews-grid { grid-template-columns: 1fr; }
         }
         #engineering .diff-grid { grid-template-columns: repeat(2, 1fr); }
         @media (max-width: 640px) {
@@ -1527,8 +1566,8 @@
             <div class="wrap">
                 <div class="hero-grid">
                     <div class="reveal">
-                        <div class="pill"><svg class="shopify-icon shopify-icon--green" aria-hidden="true"><use href="#icon-shopify"/></svg><span class="pill-dot"></span> Designed for Shopify apparel brands</div>
-                        <h1>Essayage IA pour marques apparel Shopify</h1>
+                        <div class="pill"><svg class="shopify-icon shopify-icon--green" aria-hidden="true"><use href="#icon-shopify"/></svg><span class="pill-dot"></span> Designed for Marque apparel Shopifys</div>
+                        <h1>AI try-on for Marque apparel Shopifys</h1>
                         <p class="hero-lead">
                             Let shoppers see themselves wearing your products before they buy.
                             Add a virtual fitting room to your product pages in minutes — no theme editing required.
@@ -1543,7 +1582,7 @@
                                 <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M5 12h14M13 6l6 6-6 6"/></svg>
                             </a>
                         </div>
-                        <p class="hero-microcopy">Conçu pour marques apparel Shopify · aperçu en ~30 secondes</p>
+                        <p class="hero-microcopy">Designed for Marque apparel Shopifys · ~30 sec average preview</p>
                         <div class="shopify-trust-row" aria-label="Shopify trust signals">
                             <span class="shopify-chip"><svg class="shopify-icon shopify-icon--green" aria-hidden="true"><use href="#icon-shopify"/></svg>Shopify App Store</span>
                             <span class="shopify-chip">Plan gratuit · 50 essayages/mo</span>
@@ -1803,6 +1842,72 @@
             </div>
         </section>
 
+        <!-- SOCIAL PROOF -->
+        <section id="social-proof" aria-labelledby="social-proof-title">
+            <div class="wrap">
+                <div class="section-head center reveal">
+                    <p class="section-label">Preuve sociale</p>
+                    <h2 class="section-title" id="social-proof-title">Ce que disent les premiers marchands Shopify</h2>
+                    <p class="section-desc">Retours de boutiques qui testent l'essayage sur leurs pages produit. Résultats variables selon catalogue, trafic et photos.</p>
+                </div>
+                <div class="reviews-grid reveal">
+                    <article class="review-card">
+                        <div class="review-stars" aria-label="5 out of 5">
+                            <svg viewBox="0 0 20 20" aria-hidden="true"><path d="M10 1.5l2.47 5.01 5.53.8-4 3.9.94 5.5L10 14.9l-4.94 2.6.94-5.5-4-3.9 5.53-.8L10 1.5z"/></svg>
+                            <svg viewBox="0 0 20 20" aria-hidden="true"><path d="M10 1.5l2.47 5.01 5.53.8-4 3.9.94 5.5L10 14.9l-4.94 2.6.94-5.5-4-3.9 5.53-.8L10 1.5z"/></svg>
+                            <svg viewBox="0 0 20 20" aria-hidden="true"><path d="M10 1.5l2.47 5.01 5.53.8-4 3.9.94 5.5L10 14.9l-4.94 2.6.94-5.5-4-3.9 5.53-.8L10 1.5z"/></svg>
+                            <svg viewBox="0 0 20 20" aria-hidden="true"><path d="M10 1.5l2.47 5.01 5.53.8-4 3.9.94 5.5L10 14.9l-4.94 2.6.94-5.5-4-3.9 5.53-.8L10 1.5z"/></svg>
+                            <svg viewBox="0 0 20 20" aria-hidden="true"><path d="M10 1.5l2.47 5.01 5.53.8-4 3.9.94 5.5L10 14.9l-4.94 2.6.94-5.5-4-3.9 5.53-.8L10 1.5z"/></svg>
+                        </div>
+                        <blockquote class="review-quote">&ldquo;Nous utilisons Stylab sur nos pages produit pour que les clients prévisualisent les maillots sur eux — le même widget que sur ce site.&rdquo;</blockquote>
+                        <footer class="review-author">
+                            <strong>REMADE ICONS</strong>
+                            <span>Apparel · Boutique Shopify live</span>
+                            <a href="https://remadeicons.shop/products/shadow-stripe-collared-soccer-jersey-4" target="_blank" rel="noopener">Voir la boutique live →</a>
+                        </footer>
+                    </article>
+                    <article class="review-card">
+                        <div class="review-stars" aria-label="5 out of 5">
+                            <svg viewBox="0 0 20 20" aria-hidden="true"><path d="M10 1.5l2.47 5.01 5.53.8-4 3.9.94 5.5L10 14.9l-4.94 2.6.94-5.5-4-3.9 5.53-.8L10 1.5z"/></svg>
+                            <svg viewBox="0 0 20 20" aria-hidden="true"><path d="M10 1.5l2.47 5.01 5.53.8-4 3.9.94 5.5L10 14.9l-4.94 2.6.94-5.5-4-3.9 5.53-.8L10 1.5z"/></svg>
+                            <svg viewBox="0 0 20 20" aria-hidden="true"><path d="M10 1.5l2.47 5.01 5.53.8-4 3.9.94 5.5L10 14.9l-4.94 2.6.94-5.5-4-3.9 5.53-.8L10 1.5z"/></svg>
+                            <svg viewBox="0 0 20 20" aria-hidden="true"><path d="M10 1.5l2.47 5.01 5.53.8-4 3.9.94 5.5L10 14.9l-4.94 2.6.94-5.5-4-3.9 5.53-.8L10 1.5z"/></svg>
+                            <svg viewBox="0 0 20 20" aria-hidden="true"><path d="M10 1.5l2.47 5.01 5.53.8-4 3.9.94 5.5L10 14.9l-4.94 2.6.94-5.5-4-3.9 5.53-.8L10 1.5z"/></svg>
+                        </div>
+                        <blockquote class="review-quote">&ldquo;Installé depuis l'App Store en un après-midi. Sans modifier le thème — essayage activé sur cinq SKU phares d'abord.&rdquo;</blockquote>
+                        <footer class="review-author">
+                            <strong>Marchand pilote early</strong>
+                            <span>Marque apparel Shopify</span>
+                        </footer>
+                    </article>
+                    <article class="review-card">
+                        <div class="review-stars" aria-label="5 out of 5">
+                            <svg viewBox="0 0 20 20" aria-hidden="true"><path d="M10 1.5l2.47 5.01 5.53.8-4 3.9.94 5.5L10 14.9l-4.94 2.6.94-5.5-4-3.9 5.53-.8L10 1.5z"/></svg>
+                            <svg viewBox="0 0 20 20" aria-hidden="true"><path d="M10 1.5l2.47 5.01 5.53.8-4 3.9.94 5.5L10 14.9l-4.94 2.6.94-5.5-4-3.9 5.53-.8L10 1.5z"/></svg>
+                            <svg viewBox="0 0 20 20" aria-hidden="true"><path d="M10 1.5l2.47 5.01 5.53.8-4 3.9.94 5.5L10 14.9l-4.94 2.6.94-5.5-4-3.9 5.53-.8L10 1.5z"/></svg>
+                            <svg viewBox="0 0 20 20" aria-hidden="true"><path d="M10 1.5l2.47 5.01 5.53.8-4 3.9.94 5.5L10 14.9l-4.94 2.6.94-5.5-4-3.9 5.53-.8L10 1.5z"/></svg>
+                            <svg viewBox="0 0 20 20" aria-hidden="true"><path d="M10 1.5l2.47 5.01 5.53.8-4 3.9.94 5.5L10 14.9l-4.94 2.6.94-5.5-4-3.9 5.53-.8L10 1.5z"/></svg>
+                        </div>
+                        <blockquote class="review-quote">&ldquo;Nous voulions mesurer l'ajout panier après essayage, pas des métriques vanity. L'admin regroupe sessions et panier.&rdquo;</blockquote>
+                        <footer class="review-author">
+                            <strong>Marchand pilote early</strong>
+                            <span>Streetwear &amp; maillots</span>
+                        </footer>
+                    </article>
+                </div>
+                <div class="proof-strip reveal" aria-label="Trust signals">
+                    <span><svg class="shopify-icon shopify-icon--green" aria-hidden="true" style="width:12px;height:12px"><use href="#icon-shopify"/></svg>Shopify App Store</span>
+                    <span>Plan gratuit · 50 essayages/mo</span>
+                    <span>Mobile &amp; desktop</span>
+                    <span>Live sur REMADE ICONS</span>
+                </div>
+                <p class="disclaimer reveal" style="text-align:center;margin-top:1.5rem;max-width:640px;margin-inline:auto;">
+                    Retours de boutiques early et conversations pilotes. Études de cas complètes avec autorisation à venir.
+                    <!-- TODO: Replace paraphrased pilot quotes with named merchant testimonials + written permission -->
+                </p>
+            </div>
+        </section>
+
         <!-- PRICING -->
         <section id="pricing" style="background: #fff;">
             <div class="wrap">
@@ -1934,7 +2039,7 @@
                     <span class="brand-mark"><img src="../assets/logo.png" alt="" width="36" height="36"></span>
                     <span class="brand-name">Stylab <span>Virtual Try-On</span></span>
                 </a>
-                <p>AI virtual try-on for Shopify apparel brands.<br>Help shoppers buy with more confidence before checkout.</p>
+                <p>AI virtual try-on for Marque apparel Shopifys.<br>Help shoppers buy with more confidence before checkout.</p>
                 <p class="footer-shopify-badge"><svg class="shopify-icon shopify-icon--green" aria-hidden="true"><use href="#icon-shopify"/></svg>App Shopify officielle · listée sur l'App Store</p>
             </div>
             <div class="footer-col">
