@@ -43,7 +43,7 @@
           "operatingSystem": "Shopify",
           "description": "AI virtual try-on for Shopify apparel brands. Let shoppers see themselves wearing your products before they buy. Sans code, built-in analytics, A/B testing, and per-product controls.",
           "featureList": [
-            "Shopify App Store install",
+            "Installation App Store Shopify",
             "Cabine d'essayage virtuelle on product pages",
             "Tests A/B intégrés",
             "Usage based on successful try-on generations",
@@ -75,10 +75,9 @@
           "name": "How Stylab Virtual Try-On works",
           "description": "Free interactive demo on this page or on a live Shopify store.",
           "step": [
-            {"@type": "HowToStep", "position": 1, "name": "Add the try-on button", "text": "Install the Shopify app and enable Stylab on selected products."},
-            {"@type": "HowToStep", "position": 2, "name": "Shopper uploads a photo", "text": "Customers click Try it on and upload a photo from mobile or desktop."},
-            {"@type": "HowToStep", "position": 3, "name": "AI generates the preview", "text": "Stylab creates a virtual try-on image using your product photo."},
-            {"@type": "HowToStep", "position": 4, "name": "Track the impact", "text": "See try-ons, add-to-cart actions, and usage from your dashboard."}
+            {"@type": "HowToStep", "position": 1, "name": "Installez l'app Shopify", "text": "Install Stylab from the Shopify App Store — no theme edits required."},
+            {"@type": "HowToStep", "position": 2, "name": "Sélectionnez les produits éligibles", "text": "Enable try-on on hero SKUs from your admin and optionally upload flat-lay garment photos."},
+            {"@type": "HowToStep", "position": 3, "name": "Laissez les clients essayer avec l'IA", "text": "Customers upload a photo on your product page and see an AI try-on preview in seconds."}
           ]
         },
         {
@@ -88,9 +87,9 @@
             {"@type": "Question", "name": "Quels produits fonctionnent le mieux ?", "acceptedAnswer": {"@type": "Answer", "text": "Stylab convient aux vêtements : t-shirts, hoodies, maillots, robes et autres articles où le client veut voir le style avant d'acheter."}},
             {"@type": "Question", "name": "Les générations échouées consomment-elles des crédits ?", "acceptedAnswer": {"@type": "Answer", "text": "L'usage est basé sur les essayages réussis. Les échecs peuvent être retentés sans consommer de crédit."}},
             {"@type": "Question", "name": "Les photos clients sont-elles stockées ?", "acceptedAnswer": {"@type": "Answer", "text": "Stylab is designed to process photos for generation only. The widget tells shoppers their photo is not stored. See the privacy policy for full details."}},
-            {"@type": "Question", "name": "Puis-je choisir quels produits ont l'essayage ?", "acceptedAnswer": {"@type": "Answer", "text": "Yes. You can enable or disable try-on by product from your Shopify admin."}},
-            {"@type": "Question", "name": "Puis-je mesurer les performances ?", "acceptedAnswer": {"@type": "Answer", "text": "Yes. Stylab includes analytics for try-on sessions, usage, add-to-cart activity, and A/B test buckets."}},
-            {"@type": "Question", "name": "Fonctionne-t-il sur mobile ?", "acceptedAnswer": {"@type": "Answer", "text": "Oui. L'expérience est conçue pour mobile et desktop sur les pages produit Shopify."}},
+            {"@type": "Question", "name": "Can I choose which products use try-on?", "acceptedAnswer": {"@type": "Answer", "text": "Yes. You can enable or disable try-on by product from your Shopify admin."}},
+            {"@type": "Question", "name": "Can I measure performance?", "acceptedAnswer": {"@type": "Answer", "text": "Yes. Stylab includes analytics for try-on sessions, usage, add-to-cart activity, and A/B test buckets."}},
+            {"@type": "Question", "name": "Does it work on mobile?", "acceptedAnswer": {"@type": "Answer", "text": "Yes. The try-on experience is designed for mobile and desktop shoppers on standard Shopify product pages."}},
             {"@type": "Question", "name": "How much does Stylab Virtual Try-On cost?", "acceptedAnswer": {"@type": "Answer", "text": "Plans start free (50 successful try-ons/month). Paid plans: Starter $19, Growth $49, Scale $149. All billing runs through Shopify."}}
           ]
         },
@@ -291,7 +290,7 @@
         .diff-card h3 { font-size: 1rem; font-weight: 700; margin-bottom: 0.45rem; letter-spacing: -0.01em; }
         .diff-card p { font-size: 0.9rem; color: var(--muted); line-height: 1.6; }
 
-        /* Preuve sociale / reviews */
+        /* Social proof / reviews */
         #social-proof { padding: 4.5rem 0; background: #fff; }
         .reviews-grid {
             display: grid; grid-template-columns: repeat(3, 1fr); gap: 1.25rem;
@@ -343,9 +342,9 @@
         @media (max-width: 900px) {
             .problem-grid, .diff-grid, .use-grid, .reviews-grid { grid-template-columns: 1fr; }
         }
-        #engineering .diff-grid { grid-template-columns: repeat(2, 1fr); }
+        #product .diff-grid { grid-template-columns: repeat(2, 1fr); }
         @media (max-width: 640px) {
-            #engineering .diff-grid { grid-template-columns: 1fr; }
+            #product .diff-grid { grid-template-columns: 1fr; }
         }
 
         /* Nav */
@@ -956,8 +955,12 @@
             .ui-table-log .ui-thead span:nth-child(2), .ui-table-log .ui-trow span:nth-child(2) { display: none; }
         }
 
-        /* How it works flow */
-        #engineering { padding: 5rem 0; }
+        /* Comment ça marche flow */
+        #how-it-works { padding: 5rem 0; }
+        .section-cta {
+            display: flex; flex-wrap: wrap; justify-content: center; gap: 0.75rem;
+            margin-top: 2.5rem;
+        }
         .hiw-flow {
             display: grid; grid-template-columns: 1fr auto 1fr auto 1fr; gap: 1rem;
             align-items: stretch; margin-top: 3rem;
@@ -1295,7 +1298,7 @@
         /* ----- Small tablet & large phone ----- */
         @media (max-width: 768px) {
             section { padding: 3.25rem 0; }
-            #engineering, #privacy { padding: 3.5rem 0; }
+            #how-it-works, #privacy { padding: 3.5rem 0; }
             .section-head { margin-bottom: 2rem; }
             .hero { padding-top: 5.5rem; padding-bottom: 2.5rem; }
             .hero-metrics { gap: 1.25rem 1.5rem; padding-top: 1.25rem; }
@@ -1639,17 +1642,11 @@
                 <span class="brand-name">Stylab <span>Virtual Try-On</span></span>
             </a>
             <nav class="nav-links" aria-label="Main">
-                <a href="#features">Fonctionnalités</a>
+                <a href="#product">Produit</a>
+                <a href="#try-it">Démo</a>
                 <a href="#pricing">Tarifs</a>
-                <div class="nav-dropdown">
-                    <button type="button" class="nav-dropdown-btn" aria-haspopup="true" aria-expanded="false">Explorer<span class="nav-chevron" aria-hidden="true"></span></button>
-                    <div class="nav-dropdown-menu">
-                        <a href="solutions/">Solutions</a>
-                        <a href="compare/">Comparer</a>
-                        <a href="resources/">Ressources</a>
-                        <a href="resources/blog/">Blog</a>
-                    </div>
-                </div>
+                <a href="#faq">FAQ</a>
+                <a href="https://apps.shopify.com/try-on-stylelab" target="_blank" rel="noopener">Installer</a>
                 <a href="/" class="lang-switch" hreflang="en" lang="en">EN</a>
             </nav>
             <div class="nav-actions">
@@ -1659,14 +1656,15 @@
         </div>
     </header>
     <div class="mobile-drawer" id="mobileDrawer">
-        <a href="#features">Fonctionnalités</a>
+        <a href="#product">Produit</a>
+        <a href="#try-it">Démo</a>
         <a href="#pricing">Tarifs</a>
+        <a href="#faq">FAQ</a>
         <span class="drawer-label">Explorer</span>
         <a href="solutions/" class="drawer-sub">Solutions</a>
         <a href="compare/" class="drawer-sub">Comparer</a>
         <a href="resources/" class="drawer-sub">Ressources</a>
         <a href="resources/blog/" class="drawer-sub">Blog</a>
-        <a href="#try-it">Démo live</a>
         <a href="/" class="lang-switch">EN</a>
         <a href="https://apps.shopify.com/try-on-stylelab" class="btn btn-primary" target="_blank" rel="noopener"><img class="shopify-icon" src="../assets/shopify-icon-logo.svg" alt="" width="20" height="20" aria-hidden="true">Installer sur Shopify</a>
     </div>
@@ -1681,7 +1679,7 @@
                         <h1>Essayage IA pour marques apparel Shopify</h1>
                         <p class="hero-lead">
                             Let shoppers see themselves wearing your products before they buy.
-                            Add a virtual fitting room to your product pages in minutes — no theme editing required.
+                            Install from the App Store and add a virtual fitting room to product pages in minutes.
                         </p>
                         <div class="hero-btns">
                             <a href="https://apps.shopify.com/try-on-stylelab" class="btn btn-primary" target="_blank" rel="noopener">
@@ -1692,6 +1690,11 @@
                                 Voir la démo
                                 <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M5 12h14M13 6l6 6-6 6"/></svg>
                             </a>
+                        </div>
+                        <div class="hero-metrics" aria-label="Key product stats">
+                            <div class="metric"><strong>50</strong><span>Essayages gratuits / mo</span></div>
+                            <div class="metric"><strong>~30s</strong><span>Temps moyen d'aperçu</span></div>
+                            <div class="metric"><strong>77,8&nbsp;%</strong><span>Essayage → panier (pilote)</span></div>
                         </div>
                     </div>
                     <div class="mockup-stage">
@@ -1729,8 +1732,8 @@
 
         <div class="marquee-wrap" aria-hidden="true">
             <div class="marquee">
-                <span>Sans code</span><span>Tests A/B</span><span>Analytics intégrées</span><span>Respect de la vie privée</span><span>Plan gratuit 50/mo</span><span>Mobile &amp; desktop</span><span>Flat-lay par produit</span><span>Paiement au succès</span><span>Facturation Shopify</span>
-                <span>Sans code</span><span>Tests A/B</span><span>Analytics intégrées</span><span>Respect de la vie privée</span><span>Plan gratuit 50/mo</span><span>Mobile &amp; desktop</span><span>Flat-lay par produit</span><span>Paiement au succès</span><span>Facturation Shopify</span>
+                <span>Installation App Store Shopify</span><span>Plan gratuit · 50/mo</span><span>Aperçu ~30 sec</span><span>Paiement à l'essayage réussi</span><span>Webhooks RGPD</span>
+                <span>Installation App Store Shopify</span><span>Plan gratuit · 50/mo</span><span>Aperçu ~30 sec</span><span>Paiement à l'essayage réussi</span><span>Webhooks RGPD</span>
             </div>
         </div>
 
@@ -1740,7 +1743,7 @@
                 <div class="section-head center reveal">
                     <p class="section-label">Démo live</p>
                     <h2 class="section-title" id="try-it-title">Essayez le même widget que vos clients</h2>
-                    <p class="section-desc">Uploadez une photo ci-dessous pour prévisualiser le même widget d'essayage que vos clients sur Shopify — sans installation sur ce site.</p>
+                    <p class="section-desc">Uploadez une photo sur la page produit démo ci-dessous — même widget, même parcours que sur Shopify.</p>
                 </div>
                 <article class="trial-box reveal visible" itemscope itemtype="https://schema.org/Product">
                     <meta itemprop="name" content="Shadow Stripe Collared Soccer Jersey">
@@ -1831,13 +1834,54 @@
             </div>
         </section>
 
-        <!-- PRIVACY & TRUST — immediately after live demo (photo upload) -->
+        <!-- HOW IT WORKS -->
+        <section id="how-it-works" style="background: var(--green-50);">
+            <div class="wrap">
+                <div class="section-head center reveal">
+                    <p class="section-label">Comment ça marche</p>
+                    <h2 class="section-title">En ligne sur votre boutique en trois étapes</h2>
+                    <p class="section-desc">De l'installation App Store à l'aperçu client — sans modifier le thème, sans pipeline ML custom.</p>
+                </div>
+                <div class="hiw-flow reveal">
+                    <div class="hiw-step">
+                        <span class="hiw-num">01</span>
+                        <h3>Installez l'app Shopify</h3>
+                        <p>Ajoutez Stylab depuis l'App Store Shopify. Le widget d'essayage apparaît automatiquement sur les pages produit.</p>
+                        <span class="hiw-time">~5 min d'installation</span>
+                    </div>
+                    <div class="hiw-arrow" aria-hidden="true">
+                        <svg viewBox="0 0 40 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M0 12h32M26 6l6 6-6 6"/></svg>
+                    </div>
+                    <div class="hiw-step">
+                        <span class="hiw-num">02</span>
+                        <h3>Sélectionnez les produits éligibles</h3>
+                        <p>Activez l'essayage sur vos SKU phares depuis l'admin. Uploadez optionnellement des photos flat-lay pour un rendu IA plus propre.</p>
+                        <span class="hiw-time">Contrôle par produit</span>
+                    </div>
+                    <div class="hiw-arrow" aria-hidden="true">
+                        <svg viewBox="0 0 40 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M0 12h32M26 6l6 6-6 6"/></svg>
+                    </div>
+                    <div class="hiw-step">
+                        <span class="hiw-num">03</span>
+                        <h3>Laissez les clients essayer avec l'IA</h3>
+                        <p>Le client uploade une photo, obtient un aperçu en ~30 secondes et passe commande avec plus de confiance.</p>
+                        <span class="hiw-time">Mobile &amp; desktop</span>
+                    </div>
+                </div>
+                <div class="section-cta reveal">
+                    <a href="https://apps.shopify.com/try-on-stylelab" class="btn btn-primary" target="_blank" rel="noopener"><img class="shopify-icon" src="../assets/shopify-icon-logo.svg" alt="" width="20" height="20" aria-hidden="true">Installer sur Shopify</a>
+                    <a href="#try-it" class="btn btn-ghost">Voir la démo</a>
+                </div>
+            </div>
+        </section>
+
+        <!-- PRIVACY & TRUST — after demo + setup flow -->
         <section id="privacy">
             <div class="wrap">
                 <div class="section-head center reveal">
                     <p class="section-label">Confidentialité</p>
                     <h2 class="section-title">La confidentialité compte quand les clients uploadent des photos</h2>
-                    <p class="section-desc">Stylab traite les photos uniquement pour générer l'aperçu d'essayage. Soyez transparent sur le traitement des images pour inspirer confiance.</p>
+                    <p class="section-desc">Les photos servent uniquement à générer l'aperçu d'essayage. Nous ne stockons pas les photos originales dans notre base.</p>
                 </div>
                 <div class="privacy-two reveal">
                     <div class="privacy-card">
@@ -1847,11 +1891,12 @@
                                 <path d="M7 11V7a5 5 0 0110 0v4"/>
                             </svg>
                         </div>
-                        <h3>Traitement des photos clients</h3>
+                        <h3>Que deviennent les photos clients</h3>
                         <ul class="privacy-list privacy-list-no">
-                            <li>Les photos sont traitées pour générer l'essayage</li>
-                            <li>Les photos originales ne sont pas stockées après traitement</li>
-                            <li>Le widget affiche clairement « photo non stockée » aux clients</li>
+                            <li>Traitées de façon sécurisée pour générer l'aperçu</li>
+                            <li>Les photos originales ne sont pas enregistrées dans la base Stylab après traitement</li>
+                            <li>Transitent via notre fournisseur IA (Replicate) pour l'inférence uniquement</li>
+                            <li>Le widget affiche clairement « photo non stockée » avant l'upload</li>
                         </ul>
                     </div>
                     <div class="privacy-card privacy-card-yes">
@@ -1860,10 +1905,10 @@
                                 <path d="M3 3v18h18"/><path d="M7 14l4-4 4 4 6-6"/>
                             </svg>
                         </div>
-                        <h3>Données stockées pour les analytics</h3>
+                        <h3>Ce que nous conservons pour votre boutique</h3>
                         <ul class="privacy-list">
-                            <li>URLs des images d'essayage générées</li>
-                            <li>Événements d'usage (succès, latence, produit consulté)</li>
+                            <li>Événements d'usage (sessions, taux de succès, produit consulté)</li>
+                            <li>URLs d'aperçu dans les logs serveur (liens Replicate expirent ~1 h)</li>
                             <li>Vos photos flat-lay dans Shopify Files</li>
                         </ul>
                     </div>
@@ -1872,70 +1917,42 @@
                     <a href="../confidentialite.html" style="color:var(--green-800);font-weight:600;">Lire la politique de confidentialité →</a>
                 </p>
                 <div class="privacy-mini-strip reveal">
-                    <span>Webhooks RGPD pris en charge</span>
+                    <span>Webhooks RGPD supported</span>
                     <span>Données supprimées à la désinstallation</span>
-                    <span><img class="shopify-icon shopify-icon--sm" src="../assets/shopify-icon-logo.svg" alt="" width="12" height="12" aria-hidden="true">Facturation Shopify native</span>
-                    <span>Résiliation à tout moment</span>
+                    <span><img class="shopify-icon shopify-icon--sm" src="../assets/shopify-icon-logo.svg" alt="" width="12" height="12" aria-hidden="true">Shopify billing only</span>
                 </div>
             </div>
         </section>
 
-        <!-- PROBLEM -->
-        <section id="problem" aria-labelledby="problem-title">
-            <div class="wrap">
-                <div class="problem-grid reveal">
-                    <div>
-                        <p class="section-label">Le défi</p>
-                        <h2 class="section-title" id="problem-title">Les acheteurs hésitent quand ils ne se projettent pas</h2>
-                        <p class="section-desc" style="margin-bottom:0;">
-                            Product photos show the garment. Stylab helps shoppers imagine themselves wearing it.
-                            With a try-on button on your product pages, customers can upload a photo, generate a preview,
-                            and move to checkout with more confidence.
-                        </p>
-                    </div>
-                    <ul class="problem-bullets">
-                        <li>Réduire l'hésitation avant l'ajout au panier</li>
-                        <li>Aider les clients à visualiser vos produits sur eux</li>
-                        <li>Créer une page produit plus interactive</li>
-                        <li>Mesurer l'impact de l'essayage sur le panier</li>
-                    </ul>
-                </div>
-            </div>
-        </section>
-
-        <!-- FEATURES (single section — widget, admin, analytics) -->
-        <section id="features" style="background: var(--green-50);">
+        <!-- PRODUCT — merchant benefits -->
+        <section id="product" style="background: var(--green-50);">
             <div class="wrap">
                 <div class="section-head center reveal">
-                    <p class="section-label">Fonctionnalités</p>
-                    <h2 class="section-title">Tout pour lancer et mesurer l'essayage</h2>
-                    <p class="section-desc">Installez depuis Shopify. Activez l'essayage par produit, mesurez l'impact panier et gérez l'usage depuis un seul admin.</p>
+                    <p class="section-label">Produit</p>
+                    <h2 class="section-title">Aidez les clients à visualiser le fit avant l'ajout au panier</h2>
+                    <p class="section-desc">Quand le client ne se projette pas dans le vêtement, il hésite. Stylab ajoute un bouton d'essayage interactif sur vos pages produit et vous montre ce qui se passe ensuite.</p>
                 </div>
                 <div class="diff-grid reveal">
                     <div class="diff-card">
-                        <h3>Widget page produit sans code</h3>
-                        <p>Installez depuis l'App Store Shopify. Le client uploade une photo et prévisualise sur mobile ou desktop — sans modifier le thème.</p>
+                        <h3>Widget natif Shopify</h3>
+                        <p>Installez depuis l'App Store. Le client uploade une photo et prévisualise sur mobile ou desktop — sans modifier le thème.</p>
                     </div>
                     <div class="diff-card">
-                        <h3>Activation par produit</h3>
-                        <p>Activez ou désactivez l'essayage par SKU depuis l'admin — commencez par vos produits phares.</p>
+                        <h3>Contrôle par produit</h3>
+                        <p>Activez l'essayage sur vos SKU phares d'abord. Uploadez des photos flat-lay optionnelles pour un rendu IA plus propre.</p>
                     </div>
                     <div class="diff-card">
-                        <h3>Uploads flat-lay</h3>
-                        <p>Uploadez des photos flat-lay pour un rendu IA plus propre sur vos produits clés.</p>
+                        <h3>Analytics &amp; tests A/B</h3>
+                        <p>Suivez les sessions d'essayage, les ajouts panier après essayage, et comparez avec/sans essayage avant un déploiement global.</p>
                     </div>
                     <div class="diff-card">
-                        <h3>Tests A/B intégrés</h3>
-                        <p>Comparez le comportement avec et sans essayage avant un déploiement global.</p>
+                        <h3>Paiement à l'essayage réussi</h3>
+                        <p>Seules les générations réussies comptent dans votre quota. Les échecs peuvent être retentés. Crédits visibles dans un seul dashboard.</p>
                     </div>
-                    <div class="diff-card">
-                        <h3>Analytics ajout au panier</h3>
-                        <p>Suivez les sessions d'essayage et les ajouts panier — voyez ce qui se passe une fois le client visualisé.</p>
-                    </div>
-                    <div class="diff-card">
-                        <h3>Quotas intelligents</h3>
-                        <p>Payez par génération réussie. Consultez crédits restants et usage par produit dans un seul dashboard.</p>
-                    </div>
+                </div>
+                <div class="section-cta reveal">
+                    <a href="https://apps.shopify.com/try-on-stylelab" class="btn btn-primary" target="_blank" rel="noopener"><img class="shopify-icon" src="../assets/shopify-icon-logo.svg" alt="" width="20" height="20" aria-hidden="true">Installer sur Shopify</a>
+                    <a href="#pricing" class="btn btn-ghost">Voir les tarifs</a>
                 </div>
             </div>
         </section>
@@ -1944,9 +1961,32 @@
         <section id="social-proof" aria-labelledby="social-proof-title">
             <div class="wrap">
                 <div class="section-head center reveal">
-                    <p class="section-label">Preuve sociale</p>
-                    <h2 class="section-title" id="social-proof-title">Ce que disent les premiers marchands Shopify</h2>
-                    <p class="section-desc">Retours de boutiques qui testent l'essayage sur leurs pages produit. Résultats variables selon catalogue, trafic et photos.</p>
+                    <p class="section-label">Résultats</p>
+                    <h2 class="section-title" id="social-proof-title">Boutiques early, signaux mesurables</h2>
+                    <p class="section-desc">Pilot data from REMADE ICONS and feedback from early Shopify merchants. Résultats vary by catalog, traffic, and photography.</p>
+                </div>
+                <div class="metrics-dark reveal" style="margin-bottom:2.5rem;">
+                    <div class="metrics-grid">
+                        <div>
+                            <div class="m-val">77.8%</div>
+                            <div class="m-label">Essayage → panier (pilote)</div>
+                        </div>
+                        <div>
+                            <div class="m-val">94.7%</div>
+                            <div class="m-label">Taux de succès génération</div>
+                        </div>
+                        <div>
+                            <div class="m-val">~30s</div>
+                            <div class="m-label">Temps moyen d'aperçu</div>
+                        </div>
+                        <div>
+                            <div class="m-val">50</div>
+                            <div class="m-label">Essayages gratuits / mois</div>
+                        </div>
+                    </div>
+                    <p class="disclaimer" style="text-align:center;margin-top:1.75rem;opacity:0.75;font-size:0.82rem;max-width:640px;margin-inline:auto;">
+                        Métriques pilote REMADE ICONS (une boutique). Pas une garantie de conversion pour tous les catalogues.
+                    </p>
                 </div>
                 <div class="reviews-grid reveal">
                     <article class="review-card">
@@ -1957,10 +1997,10 @@
                             <svg viewBox="0 0 20 20" aria-hidden="true"><path d="M10 1.5l2.47 5.01 5.53.8-4 3.9.94 5.5L10 14.9l-4.94 2.6.94-5.5-4-3.9 5.53-.8L10 1.5z"/></svg>
                             <svg viewBox="0 0 20 20" aria-hidden="true"><path d="M10 1.5l2.47 5.01 5.53.8-4 3.9.94 5.5L10 14.9l-4.94 2.6.94-5.5-4-3.9 5.53-.8L10 1.5z"/></svg>
                         </div>
-                        <blockquote class="review-quote">&ldquo;Nous utilisons Stylab sur nos pages produit pour que les clients prévisualisent les maillots sur eux — le même widget que sur ce site.&rdquo;</blockquote>
+                        <blockquote class="review-quote">&ldquo;Nous utilisons Stylab sur nos PDP maillots pour que les clients prévisualisent le fit avant d'acheter — le même widget que sur cette page.&rdquo;</blockquote>
                         <footer class="review-author">
                             <strong>REMADE ICONS</strong>
-                            <span>Apparel · Boutique Shopify live</span>
+                            <span>Streetwear · Boutique Shopify live · Partenaire démo officiel</span>
                             <a href="https://remadeicons.shop/products/shadow-stripe-collared-soccer-jersey-4" target="_blank" rel="noopener">Voir la boutique live →</a>
                         </footer>
                     </article>
@@ -1972,10 +2012,10 @@
                             <svg viewBox="0 0 20 20" aria-hidden="true"><path d="M10 1.5l2.47 5.01 5.53.8-4 3.9.94 5.5L10 14.9l-4.94 2.6.94-5.5-4-3.9 5.53-.8L10 1.5z"/></svg>
                             <svg viewBox="0 0 20 20" aria-hidden="true"><path d="M10 1.5l2.47 5.01 5.53.8-4 3.9.94 5.5L10 14.9l-4.94 2.6.94-5.5-4-3.9 5.53-.8L10 1.5z"/></svg>
                         </div>
-                        <blockquote class="review-quote">&ldquo;Installé depuis l'App Store en un après-midi. Sans modifier le thème — essayage activé sur cinq SKU phares d'abord.&rdquo;</blockquote>
+                        <blockquote class="review-quote">&ldquo;Installed from the App Store in one afternoon. We enabled try-on on five hero SKUs first — no theme edits.&rdquo;</blockquote>
                         <footer class="review-author">
-                            <strong>Marchand pilote early</strong>
-                            <span>marque apparel Shopify</span>
+                            <strong>Marque apparel indépendante</strong>
+                            <span>Marchand Shopify · Pilote early · Hoodies &amp; tees</span>
                         </footer>
                     </article>
                     <article class="review-card">
@@ -1986,22 +2026,18 @@
                             <svg viewBox="0 0 20 20" aria-hidden="true"><path d="M10 1.5l2.47 5.01 5.53.8-4 3.9.94 5.5L10 14.9l-4.94 2.6.94-5.5-4-3.9 5.53-.8L10 1.5z"/></svg>
                             <svg viewBox="0 0 20 20" aria-hidden="true"><path d="M10 1.5l2.47 5.01 5.53.8-4 3.9.94 5.5L10 14.9l-4.94 2.6.94-5.5-4-3.9 5.53-.8L10 1.5z"/></svg>
                         </div>
-                        <blockquote class="review-quote">&ldquo;Nous voulions mesurer l'ajout panier après essayage, pas des métriques vanity. L'admin regroupe sessions et panier.&rdquo;</blockquote>
+                        <blockquote class="review-quote">&ldquo;We wanted add-to-cart after try-on, not vanity metrics. Sessions and cart actions show up in one admin view.&rdquo;</blockquote>
                         <footer class="review-author">
-                            <strong>Marchand pilote early</strong>
-                            <span>Streetwear &amp; maillots</span>
+                            <strong>Label streetwear</strong>
+                            <span>Marchand Shopify · Maillots &amp; drops · Phase pilote</span>
                         </footer>
                     </article>
                 </div>
                 <div class="proof-strip reveal" aria-label="Trust signals">
-                    <span><img class="shopify-icon shopify-icon--sm" src="../assets/shopify-icon-logo.svg" alt="" width="12" height="12" aria-hidden="true">Shopify App Store</span>
+                    <span><img class="shopify-icon shopify-icon--sm" src="../assets/shopify-icon-logo.svg" alt="" width="12" height="12" aria-hidden="true">Listé sur l'App Store Shopify</span>
                     <span>Plan gratuit · 50 essayages/mo</span>
-                    <span>Mobile &amp; desktop</span>
                     <span>Live sur REMADE ICONS</span>
                 </div>
-                <p class="disclaimer reveal" style="text-align:center;margin-top:1.5rem;max-width:640px;margin-inline:auto;">
-                    Retours de boutiques early et conversations pilotes. Études de cas complètes avec autorisation à venir.
-                </p>
             </div>
         </section>
 
@@ -2085,27 +2121,15 @@
                     </div>
                     <div class="faq-item">
                         <button type="button" class="faq-q" aria-expanded="false"><span class="faq-q-text">Les photos clients sont-elles stockées ?</span><span class="icon" aria-hidden="true">+</span></button>
-                        <div class="faq-a">Stylab is designed to process photos for try-on generation only. The widget tells shoppers their photo is not stored after processing. See our <a href="../confidentialite.html">privacy policy</a> for details — retention policies may vary by configuration.</div>
+                        <div class="faq-a">Original photos are not saved in Stylab&rsquo;s database — they are processed to generate the preview, then discarded. The widget shows a &ldquo;photo not stored&rdquo; notice. See our <a href="../confidentialite.html">privacy policy</a> for full details.</div>
                     </div>
                     <div class="faq-item">
-                        <button type="button" class="faq-q" aria-expanded="false"><span class="faq-q-text">Puis-je choisir quels produits ont l'essayage ?</span><span class="icon" aria-hidden="true">+</span></button>
-                        <div class="faq-a">Oui. Activez ou désactivez l'essayage par produit depuis l'admin Shopify — utile pour les catalogues mixtes.</div>
+                        <button type="button" class="faq-q" aria-expanded="false"><span class="faq-q-text">Can I measure performance?</span><span class="icon" aria-hidden="true">+</span></button>
+                        <div class="faq-a">Oui. Suivez sessions d'essayage, ajouts panier après essayage, usage par produit et buckets A/B depuis l'admin Shopify.</div>
                     </div>
                     <div class="faq-item">
-                        <button type="button" class="faq-q" aria-expanded="false"><span class="faq-q-text">Puis-je mesurer les performances ?</span><span class="icon" aria-hidden="true">+</span></button>
-                        <div class="faq-a">Oui. Stylab inclut analytics : sessions d'essayage, usage, ajouts panier et buckets A/B pour voir ce qui se passe après l'essayage.</div>
-                    </div>
-                    <div class="faq-item">
-                        <button type="button" class="faq-q" aria-expanded="false"><span class="faq-q-text">Fonctionne-t-il sur mobile ?</span><span class="icon" aria-hidden="true">+</span></button>
-                        <div class="faq-a">Oui. L'expérience est conçue pour mobile et desktop sur les pages produit Shopify.</div>
-                    </div>
-                    <div class="faq-item">
-                        <button type="button" class="faq-q" aria-expanded="false"><span class="faq-q-text">Puis-je essayer avant d'installer ?</span><span class="icon" aria-hidden="true">+</span></button>
-                        <div class="faq-a">Oui. Utilisez la <a href="#try-it">démo live sur cette page</a> ou visitez notre boutique démo <a href="https://remadeicons.shop/products/shadow-stripe-collared-soccer-jersey-4">REMADE ICONS</a> pour voir le même widget en conditions réelles.</div>
-                    </div>
-                    <div class="faq-item">
-                        <button type="button" class="faq-q" aria-expanded="false"><span class="faq-q-text">Combien ça coûte ?</span><span class="icon" aria-hidden="true">+</span></button>
-                        <div class="faq-a">Plans gratuits (50 essayages/mois). Payants : Starter 19 $, Growth 49 $, Scale 149 $. Facturation via Shopify. Voir les <a href="#pricing">tarifs</a>.</div>
+                        <button type="button" class="faq-q" aria-expanded="false"><span class="faq-q-text">Can I try it before installing?</span><span class="icon" aria-hidden="true">+</span></button>
+                        <div class="faq-a">Oui. Utilisez la <a href="#try-it">démo live sur cette page</a> ou visitez <a href="https://remadeicons.shop/products/shadow-stripe-collared-soccer-jersey-4">REMADE ICONS</a>. Plan gratuit (50 essayages/mo). Voir les <a href="#pricing">tarifs</a>.</div>
                     </div>
                 </div>
             </div>
@@ -2115,7 +2139,7 @@
             <div class="wrap">
                 <div class="cta-final reveal">
                     <h2>Ajoutez l'essayage IA à vos pages produit Shopify</h2>
-                    <p>Commencez sur quelques produits, mesurez l'engagement et voyez si l'essayage aide vos clients à acheter avec confiance.</p>
+                    <p>Commencez sur quelques produits phares. Mesurez sessions d'essayage et ajouts panier — voyez si l'essayage aide vos clients à acheter avec confiance.</p>
                     <div class="btns">
                         <a href="https://apps.shopify.com/try-on-stylelab" class="btn btn-white" target="_blank" rel="noopener"><img class="shopify-icon" src="../assets/shopify-icon-logo.svg" alt="" width="20" height="20" aria-hidden="true">Installer sur Shopify</a>
                         <a href="#try-it" class="btn btn-ghost">Voir la démo</a>
