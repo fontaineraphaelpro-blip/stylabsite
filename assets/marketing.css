@@ -233,6 +233,20 @@ a { color: inherit; text-decoration: none; }
 .prose blockquote strong { color: var(--green-900); }
 .prose hr { border: none; border-top: 1px solid var(--line); margin: 2rem 0; }
 
+.article-tldr {
+    max-width: 720px; margin: 0 auto 1.75rem;
+    padding: 1.15rem 1.25rem; border-radius: 12px;
+    background: var(--green-50); border: 1px solid rgba(20,83,45,0.12);
+}
+.article-tldr-label {
+    font-size: 0.72rem; font-weight: 700; text-transform: uppercase;
+    letter-spacing: 0.08em; color: var(--green-800); margin-bottom: 0.45rem;
+}
+.article-tldr p:last-child {
+    font-size: 0.92rem; color: var(--ink-soft); line-height: 1.6; margin: 0;
+}
+.blog-article .meta time { color: inherit; }
+
 .diff-grid {
     display: grid; grid-template-columns: repeat(3, 1fr); gap: 1.25rem;
 }
@@ -253,6 +267,7 @@ a { color: inherit; text-decoration: none; }
 .blog-card:hover { transform: translateY(-3px); box-shadow: var(--shadow); }
 .blog-card-body { padding: 1.35rem; }
 .blog-card .tag { font-size: 0.72rem; font-weight: 700; color: var(--green-800); text-transform: uppercase; letter-spacing: 0.05em; }
+.blog-card h2 { font-size: 1.05rem; font-weight: 700; margin: 0.5rem 0; line-height: 1.35; }
 .blog-card h3 { font-size: 1.05rem; font-weight: 700; margin: 0.5rem 0; line-height: 1.35; }
 .blog-card p { font-size: 0.88rem; color: var(--muted); line-height: 1.55; }
 .blog-card .meta { font-size: 0.78rem; color: var(--muted); margin-top: 0.85rem; }

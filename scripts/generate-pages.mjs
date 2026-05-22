@@ -7,6 +7,172 @@ import { SHOPIFY_COMPARE, API_COMPARE, SOLUTIONS, COMPARE_HUB } from './compare-
 
 const __dirname = path.dirname(fileURLToPath(import.meta.url));
 const ROOT = path.join(__dirname, '..');
+const SITE_URL = 'https://www.stylabtryon.site';
+const OG_IMAGE = `${SITE_URL}/assets/screenshots/result-modal.png`;
+
+function escapeAttr(s) {
+  return String(s)
+    .replace(/&/g, '&amp;')
+    .replace(/"/g, '&quot;')
+    .replace(/</g, '&lt;');
+}
+
+function blogCanonicalPath(locale, slug) {
+  return locale === 'fr' ? `/fr/resources/blog/${slug}.html` : `/resources/blog/${slug}.html`;
+}
+
+function pagePathPair(pagePath) {
+  const enPath = pagePath.startsWith('/fr/') ? (pagePath.slice(3) || '/') : pagePath;
+  const frPath = pagePath.startsWith('/fr/') ? pagePath : (pagePath === '/' ? '/fr/' : `/fr${pagePath}`);
+  return { enPath, frPath };
+}
+
+function pageHeadMeta({ locale, pagePath, title, description, type = 'website' }) {
+  const url = `${SITE_URL}${pagePath}`;
+  const { enPath, frPath } = pagePathPair(pagePath);
+  const enUrl = `${SITE_URL}${enPath}`;
+  const frUrl = `${SITE_URL}${frPath}`;
+  const plainTitle = title.replace(/ \| Stylab$/, '');
+  const jsonLd = {
+    '@context': 'https://schema.org',
+    '@type': 'WebPage',
+    name: plainTitle,
+    description,
+    url,
+    inLanguage: locale === 'fr' ? 'fr-FR' : 'en-US',
+    isPartOf: { '@type': 'WebSite', name: 'Stylab Virtual Try-On', url: `${SITE_URL}/` },
+  };
+
+  return `
+    <link rel="canonical" href="${url}">
+    <link rel="alternate" hreflang="en" href="${enUrl}">
+    <link rel="alternate" hreflang="fr" href="${frUrl}">
+    <link rel="alternate" hreflang="x-default" href="${enUrl}">
+    <meta property="og:type" content="${type}">
+    <meta property="og:title" content="${escapeAttr(title)}">
+    <meta property="og:description" content="${escapeAttr(description)}">
+    <meta property="og:url" content="${url}">
+    <meta property="og:site_name" content="Stylab Virtual Try-On">
+    <meta property="og:locale" content="${locale === 'fr' ? 'fr_FR' : 'en_US'}">
+    <meta property="og:locale:alternate" content="${locale === 'fr' ? 'en_US' : 'fr_FR'}">
+    <meta property="og:image" content="${OG_IMAGE}">
+    <meta name="twitter:card" content="summary_large_image">
+    <meta name="twitter:title" content="${escapeAttr(plainTitle)}">
+    <meta name="twitter:description" content="${escapeAttr(description)}">
+    <meta name="twitter:image" content="${OG_IMAGE}">
+    <script type="application/ld+json">${JSON.stringify(jsonLd)}</script>`;
+}
+
+function blogIndexHeadMeta(locale) {
+  const pagePath = locale === 'fr' ? '/fr/resources/blog/' : '/resources/blog/';
+  const title = locale === 'fr' ? 'Blog Stylab | Guides essayage virtuel Shopify' : 'Stylab Blog | Shopify Virtual Try-On Guides';
+  const description = locale === 'fr'
+    ? 'Guides pratiques pour marchands apparel Shopify : déploiement essayage, A/B test, photos flat-lay, mobile et privacy.'
+    : 'Practical Shopify virtual try-on guides for apparel merchants: rollout, A/B testing, flat-lay photos, mobile, and privacy.';
+  const url = `${SITE_URL}${pagePath}`;
+  const { enPath, frPath } = pagePathPair(pagePath);
+  const jsonLd = {
+    '@context': 'https://schema.org',
+    '@type': 'Blog',
+    name: locale === 'fr' ? 'Blog Stylab' : 'Stylab Blog',
+    description,
+    url,
+    inLanguage: locale === 'fr' ? 'fr-FR' : 'en-US',
+    publisher: { '@type': 'Organization', name: 'Stylab Virtual Try-On', logo: { '@type': 'ImageObject', url: `${SITE_URL}/assets/logo.png` } },
+  };
+
+  return `
+    <link rel="canonical" href="${url}">
+    <link rel="alternate" hreflang="en" href="${SITE_URL}${enPath}">
+    <link rel="alternate" hreflang="fr" href="${SITE_URL}${frPath}">
+    <link rel="alternate" hreflang="x-default" href="${SITE_URL}${enPath}">
+    <meta property="og:type" content="website">
+    <meta property="og:title" content="${escapeAttr(title)}">
+    <meta property="og:description" content="${escapeAttr(description)}">
+    <meta property="og:url" content="${url}">
+    <meta property="og:site_name" content="Stylab Virtual Try-On">
+    <meta property="og:locale" content="${locale === 'fr' ? 'fr_FR' : 'en_US'}">
+    <meta property="og:image" content="${OG_IMAGE}">
+    <meta name="twitter:card" content="summary_large_image">
+    <meta name="twitter:title" content="${escapeAttr(title)}">
+    <meta name="twitter:description" content="${escapeAttr(description)}">
+    <meta name="twitter:image" content="${OG_IMAGE}">
+    <script type="application/ld+json">${JSON.stringify(jsonLd)}</script>`;
+}
+
+function blogHeadMeta({ locale, post }) {
+  const title = t(post.title, locale);
+  const desc = t(post.excerpt, locale);
+  const path = blogCanonicalPath(locale, post.slug);
+  const url = `${SITE_URL}${path}`;
+  const altPath = blogCanonicalPath(locale === 'en' ? 'fr' : 'en', post.slug);
+  const altUrl = `${SITE_URL}${altPath}`;
+  const defaultUrl = `${SITE_URL}/resources/blog/${post.slug}.html`;
+  const image = OG_IMAGE;
+  const jsonLd = {
+    '@context': 'https://schema.org',
+    '@type': 'Article',
+    headline: title,
+    description: desc,
+    datePublished: post.dateISO,
+    dateModified: post.dateModified || post.dateISO,
+    author: { '@type': 'Organization', name: 'Style Lab' },
+    publisher: {
+      '@type': 'Organization',
+      name: 'Stylab Virtual Try-On',
+      logo: { '@type': 'ImageObject', url: image },
+    },
+    mainEntityOfPage: { '@type': 'WebPage', '@id': url },
+    inLanguage: locale === 'fr' ? 'fr-FR' : 'en-US',
+    image,
+  };
+  if (post.summary) jsonLd.abstract = t(post.summary, locale);
+
+  return `
+    <link rel="canonical" href="${url}">
+    <link rel="alternate" hreflang="${locale}" href="${url}">
+    <link rel="alternate" hreflang="${locale === 'en' ? 'fr' : 'en'}" href="${altUrl}">
+    <link rel="alternate" hreflang="x-default" href="${defaultUrl}">
+    <meta property="og:type" content="article">
+    <meta property="og:title" content="${escapeAttr(title)} | Stylab">
+    <meta property="og:description" content="${escapeAttr(desc)}">
+    <meta property="og:url" content="${url}">
+    <meta property="og:site_name" content="Stylab Virtual Try-On">
+    <meta property="og:locale" content="${locale === 'fr' ? 'fr_FR' : 'en_US'}">
+    <meta property="article:published_time" content="${post.dateISO}">
+    <meta property="og:image" content="${image}">
+    <meta name="twitter:card" content="summary_large_image">
+    <meta name="twitter:title" content="${escapeAttr(title)}">
+    <meta name="twitter:description" content="${escapeAttr(desc)}">
+    <meta name="twitter:image" content="${image}">
+    <script type="application/ld+json">${JSON.stringify(jsonLd)}</script>`;
+}
+
+function blogArticleBody(post, locale, u, px, demoHref) {
+  const title = t(post.title, locale);
+  const excerpt = t(post.excerpt, locale);
+  const tag = t(post.tag, locale);
+  const summary = post.summary ? t(post.summary, locale) : '';
+  const tldrLabel = locale === 'fr' ? 'En bref' : 'TL;DR';
+  const content = injectBlogContent(t(post.content, locale), demoHref);
+
+  return `<article class="blog-article" itemscope itemtype="https://schema.org/Article">
+        <meta itemprop="headline" content="${escapeAttr(title)}">
+        <meta itemprop="datePublished" content="${post.dateISO}">
+        <section class="page-hero"><div class="wrap reveal">
+            <p class="breadcrumb"><a href="../index.html">${u.footerResources}</a> / <a href="index.html">${u.blog}</a></p>
+            <p class="pill">${tag}</p>
+            <h1 itemprop="name">${title}</h1>
+            <p class="lead" itemprop="description">${excerpt}</p>
+            <p class="meta"><time datetime="${post.dateISO}" itemprop="datePublished">${post.date}</time></p>
+        </div></section>
+        <section class="section section-white">
+            <div class="wrap">
+                ${summary ? `<aside class="article-tldr reveal" role="note" aria-label="${tldrLabel}"><p class="article-tldr-label">${tldrLabel}</p><p>${summary}</p></aside>` : ''}
+                <div class="prose reveal" itemprop="articleBody">${content}</div>
+            </div>
+        </section></article>${cta(locale, 2)}`;
+}
 
 function paths(locale, depth) {
   const toSiteRoot = depth + (locale === 'fr' ? 1 : 0);
@@ -87,7 +253,8 @@ function comparePage(locale, depth, data) {
   const title = locale === 'fr'
     ? `Stylab vs ${comp} | ${isApi ? 'Comparaison API' : 'Comparaison Shopify'}`
     : `Stylab vs ${comp} | ${isApi ? 'API vs Shopify App' : 'Shopify Virtual Try-On'} Comparison`;
-  return layout({ locale, depth, title, description: t(data.summary, locale), body, activeNav: 'compare', section: 'compare' });
+  const pagePath = `${locale === 'fr' ? '/fr' : ''}/compare/${isApi ? 'api/' : ''}${data.slug}.html`;
+  return layout({ locale, depth, title, description: t(data.summary, locale), body, activeNav: 'compare', section: 'compare', pagePath });
 }
 
 function t(obj, locale) {
@@ -163,13 +330,14 @@ function injectBlogContent(html, demoHref) {
   return html.replace(/\{\{DEMO_LINK\}\}/g, demoHref);
 }
 
-function layout({ locale, depth, title, description, body, activeNav, extraScripts = '', section = '' }) {
+function layout({ locale, depth, title, description, body, activeNav, extraScripts = '', section = '', headExtra = '', pagePath = '' }) {
   const px = paths(locale, depth);
   const u = UI[locale];
   const home = px.home;
   const pricingHref = `${home}#pricing`;
   const featuresHref = `${home}#features`;
   const langSwitch = langHref(locale, section);
+  const seoHead = headExtra || (pagePath ? pageHeadMeta({ locale, pagePath, title, description }) : '');
 
   return `<!DOCTYPE html>
 <html lang="${u.lang}">
@@ -177,9 +345,9 @@ function layout({ locale, depth, title, description, body, activeNav, extraScrip
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>${title}</title>
-    <meta name="description" content="${description}">
-    <meta name="robots" content="index, follow">
-    <link rel="icon" type="image/png" href="${px.assets}logo.png">
+    <meta name="description" content="${escapeAttr(description)}">
+    <meta name="robots" content="index, follow, max-image-preview:large">
+    <link rel="icon" type="image/png" href="${px.assets}logo.png">${seoHead}
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Inter+Tight:wght@400;500;600;700;800&family=Geist:wght@500;600;700;800;900&display=swap" rel="stylesheet">
@@ -265,6 +433,7 @@ function generateLocale(locale) {
     description: locale === 'fr' ? 'Comparez Stylab avec Genlook, Antla, Banuba et plus.' : 'Compare Stylab with Genlook, Antla, Banuba, and API platforms.',
     activeNav: 'compare',
     section: 'compare',
+    pagePath: `${locale === 'fr' ? '/fr' : ''}/compare/`,
     body: `
         <section class="page-hero"><div class="wrap reveal"><p class="pill">${u.compare}</p><h1>${locale === 'fr' ? 'Comment Stylab se compare' : 'How Stylab compares'}</h1><p class="lead">${locale === 'fr' ? 'Guides factuels pour shortlister, piloter et mesurer — pas du SEO générique.' : 'Factual guides to shortlist, pilot, and measure — not generic SEO filler.'}</p></div></section>
         <section class="section section-green"><div class="wrap prose reveal">${t(COMPARE_HUB.intro, locale)}</div></section>
@@ -282,6 +451,7 @@ function generateLocale(locale) {
     title: locale === 'fr' ? 'Solutions Stylab' : 'Stylab Solutions',
     description: t(SOLUTIONS[0].lead, locale),
     section: 'solutions',
+    pagePath: `${locale === 'fr' ? '/fr' : ''}/solutions/`,
     body: `<section class="page-hero"><div class="wrap reveal"><p class="pill">${u.solutions}</p><h1>${locale === 'fr' ? 'Pour marchands apparel Shopify' : 'Built for Shopify apparel merchants'}</h1></div></section>
         <section class="section section-white"><div class="wrap hub-grid reveal">${SOLUTIONS.map(s => `<a href="${s.slug}.html" class="hub-card"><h3>${t(s.title, locale)}</h3><p>${t(s.lead, locale).slice(0, 90)}…</p><span class="arrow">${u.learnMore}</span></a>`).join('')}</div></section>${cta(locale, 1)}`,
   }));
@@ -292,6 +462,7 @@ function generateLocale(locale) {
       title: `${t(s.title, locale)} | Stylab`,
       description: t(s.lead, locale),
       section: 'solutions',
+      pagePath: `${locale === 'fr' ? '/fr' : ''}/solutions/${s.slug}.html`,
       body: `<section class="page-hero"><div class="wrap reveal"><p class="breadcrumb"><a href="index.html">${u.solutions}</a></p><h1>${t(s.title, locale)}</h1><p class="lead">${t(s.lead, locale)}</p><div class="btns"><a href="${APP_URL}" class="btn btn-primary" target="_blank" rel="noopener">${u.install}</a><a href="${paths(locale, 1).home}#try-it" class="btn btn-ghost">${u.viewDemo}</a></div></div></section>
             <section class="section section-white"><div class="wrap"><ul class="problem-bullets reveal" style="max-width:560px;margin:0 auto">${t(s.bullets, locale).map(b => `<li>${b}</li>`).join('')}</ul>${s.note ? `<p class="disclaimer" style="max-width:560px;margin:2rem auto 0">${t(s.note, locale)}</p>` : ''}</div></section>${cta(locale, 1)}`,
     }));
@@ -314,7 +485,13 @@ function generateLocale(locale) {
         </div></section>${cta(locale, 1)}`;
 
   writeFile(`${base}resources/index.html`, layout({
-    locale, depth: 1, title: locale === 'fr' ? 'Ressources Stylab' : 'Stylab Resources', description: 'Docs, blog, tools', section: 'resources',
+    locale, depth: 1,
+    title: locale === 'fr' ? 'Ressources Stylab' : 'Stylab Resources',
+    description: locale === 'fr'
+      ? 'Documentation, blog, outils gratuits et changelog pour lancer l\'essayage virtuel sur Shopify.'
+      : 'Documentation, blog, free tools, and changelog to launch virtual try-on on Shopify.',
+    section: 'resources',
+    pagePath: `${locale === 'fr' ? '/fr' : ''}/resources/`,
     body: `<section class="page-hero"><div class="wrap reveal"><p class="pill">${u.footerResources}</p><h1>${locale === 'fr' ? 'Apprendre et lancer' : 'Learn and launch'}</h1></div></section>
         <section class="section section-white"><div class="wrap hub-grid reveal">
             <a href="free-tools.html" class="hub-card"><h3>${u.freeTools}</h3><p>${locale === 'fr' ? 'Calculateur usage & checklist' : 'Usage calculator & checklists'}</p><span class="arrow">→</span></a>
@@ -327,8 +504,11 @@ function generateLocale(locale) {
   writeFile(`${base}resources/free-tools.html`, layout({
     locale, depth: 1,
     title: locale === 'fr' ? 'Outils gratuits' : 'Free Tools | Stylab',
-    description: 'ROI calculator',
+    description: locale === 'fr'
+      ? 'Calculateur ROI essayage virtuel, checklist de déploiement et planificateur A/B pour marchands Shopify apparel.'
+      : 'Virtual try-on ROI calculator, rollout checklist, and A/B planner for Shopify apparel merchants.',
     section: 'resources',
+    pagePath: `${locale === 'fr' ? '/fr' : ''}/resources/free-tools.html`,
     extraScripts: `<script src="${paths(locale, 1).assets}roi-calculator.js"></script>`,
     body: `<section class="page-hero"><div class="wrap reveal"><h1>${u.freeTools}</h1><p class="lead">${locale === 'fr' ? 'Planifiez votre déploiement essayage.' : 'Plan your try-on rollout.'}</p></div></section>
         <section class="section section-white"><div class="wrap"><div class="diff-grid reveal">
@@ -338,17 +518,38 @@ function generateLocale(locale) {
         </div></div></section>${roiBlock(locale)}${cta(locale, 1)}`,
   }));
 
-  writeFile(`${base}resources/documentation.html`, layout({ locale, depth: 1, title: 'Documentation | Stylab', description: 'Docs', section: 'resources', body: docBody }));
+  writeFile(`${base}resources/documentation.html`, layout({
+    locale, depth: 1,
+    title: locale === 'fr' ? 'Documentation | Stylab' : 'Documentation | Stylab',
+    description: locale === 'fr'
+      ? 'Installez et configurez Stylab sur Shopify : activation par produit, widget, tests A/B et analytics.'
+      : 'Install and configure Stylab on Shopify: per-product activation, widget setup, A/B testing, and analytics.',
+    section: 'resources',
+    pagePath: `${locale === 'fr' ? '/fr' : ''}/resources/documentation.html`,
+    body: docBody,
+  }));
   writeFile(`${base}resources/changelog.html`, layout({
-    locale, depth: 1, title: 'Changelog | Stylab', description: 'Updates', section: 'resources',
+    locale, depth: 1,
+    title: locale === 'fr' ? 'Changelog | Stylab' : 'Changelog | Stylab',
+    description: locale === 'fr'
+      ? 'Mises à jour du site marketing Stylab, comparaisons, blog et outils pour l\'essayage virtuel Shopify.'
+      : 'Stylab marketing site updates: comparisons, blog, tools, and Shopify virtual try-on resources.',
+    section: 'resources',
+    pagePath: `${locale === 'fr' ? '/fr' : ''}/resources/changelog.html`,
     body: `<section class="page-hero"><div class="wrap reveal"><h1>${u.changelog}</h1></div></section>
         <section class="section section-white"><div class="wrap prose reveal"><h2>May 2026</h2><ul><li>${locale === 'fr' ? 'Site FR + comparaisons + simulateur ROI' : 'FR site + comparisons + ROI simulator'}</li><li>Stylab vs Genlook page</li><li>Full blog articles</li></ul></div></section>${cta(locale, 1)}`,
   }));
 
   writeFile(`${base}resources/blog/index.html`, layout({
-    locale, depth: 2, title: 'Blog | Stylab', description: 'Blog', section: 'blog',
+    locale, depth: 2,
+    title: locale === 'fr' ? 'Blog Stylab | Guides essayage virtuel Shopify' : 'Stylab Blog | Shopify Virtual Try-On Guides',
+    description: locale === 'fr'
+      ? 'Guides pratiques pour marchands apparel Shopify : déploiement essayage, A/B test, photos flat-lay, mobile et privacy.'
+      : 'Practical Shopify virtual try-on guides for apparel merchants: rollout, A/B testing, flat-lay photos, mobile, and privacy.',
+    section: 'blog',
+    headExtra: blogIndexHeadMeta(locale),
     body: `<section class="page-hero"><div class="wrap reveal"><p class="breadcrumb"><a href="../index.html">${u.footerResources}</a> / ${u.blog}</p><h1>${u.blog}</h1><p class="lead">${locale === 'fr' ? 'Guides pratiques pour marchands apparel Shopify.' : 'Practical guides for Shopify apparel merchants.'}</p></div></section>
-        <section class="section section-white"><div class="wrap blog-grid reveal">${BLOG_POSTS.map(p => `<a href="${p.slug}.html" class="blog-card"><div class="blog-card-body"><span class="tag">${t(p.tag, locale)}</span><h3>${t(p.title, locale)}</h3><p>${t(p.excerpt, locale)}</p><p class="meta">${p.date}</p></div></a>`).join('')}</div></section>${cta(locale, 2)}`,
+        <section class="section section-white"><div class="wrap blog-grid reveal">${BLOG_POSTS.map(p => `<a href="${p.slug}.html" class="blog-card"><div class="blog-card-body"><span class="tag">${t(p.tag, locale)}</span><h2>${t(p.title, locale)}</h2><p>${t(p.excerpt, locale)}</p><p class="meta"><time datetime="${p.dateISO}">${p.date}</time></p></div></a>`).join('')}</div></section>${cta(locale, 2)}`,
   }));
 
   BLOG_POSTS.forEach(p => {
@@ -359,8 +560,8 @@ function generateLocale(locale) {
       title: `${t(p.title, locale)} | Stylab`,
       description: t(p.excerpt, locale),
       section: 'blog',
-      body: `<section class="page-hero"><div class="wrap reveal"><p class="breadcrumb"><a href="../index.html">${u.footerResources}</a> / <a href="index.html">${u.blog}</a></p><p class="pill">${t(p.tag, locale)}</p><h1>${t(p.title, locale)}</h1><p class="lead">${t(p.excerpt, locale)}</p><p class="meta">${p.date}</p></div></section>
-            <section class="section section-white"><div class="wrap prose reveal">${injectBlogContent(t(p.content, locale), demoHref)}</div></section>${cta(locale, 2)}`,
+      headExtra: blogHeadMeta({ locale, post: p }),
+      body: blogArticleBody(p, locale, u, px, demoHref),
     }));
   });
 }

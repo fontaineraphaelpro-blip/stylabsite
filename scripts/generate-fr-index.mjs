@@ -59,8 +59,14 @@ const replacements = [
   ['View live store →', 'Voir la boutique live →'],
   ['Installed from the App Store in one afternoon. No theme edits — we enabled try-on on five hero SKUs first.', 'Installé depuis l\'App Store en un après-midi. Sans modifier le thème — essayage activé sur cinq SKU phares d\'abord.'],
   ['Early pilot merchant', 'Marchand pilote early'],
-  ['Shopify apparel brand', 'Marque apparel Shopify'],
-  ['We wanted add-to-cart after try-on, not vanity metrics. The admin shows sessions and cart actions in one place.', 'Nous voulions mesurer l\'ajout panier après essayage, pas des métriques vanity. L\'admin regroupe sessions et panier.'],
+  ['<span>Shopify apparel brand</span>', '<span>marque apparel Shopify</span>'],
+  // Hero & phrases longues AVANT toute substitution partielle
+  ['Built for Shopify apparel brands', 'Conçu pour marques apparel Shopify'],
+  ['AI try-on for Shopify apparel brands', 'Essayage IA pour marques apparel Shopify'],
+  ['Designed for Shopify apparel brands · ~30 sec average preview', 'Conçu pour marques apparel Shopify · aperçu en ~30 secondes'],
+  ['Designed for Shopify apparel brands · Preview generated in seconds', 'Conçu pour marques apparel Shopify · aperçu en ~30 secondes'],
+  ['AI virtual try-on for Shopify apparel brands.<br>Help shoppers visualize your products before they buy.', 'Essayage virtuel IA pour marques apparel Shopify.<br>Aidez vos clients à visualiser vos produits avant d\'acheter.'],
+  ['AI virtual try-on for Shopify apparel brands.<br>Help shoppers buy with more confidence before checkout.', 'Essayage virtuel IA pour marques apparel Shopify.<br>Aidez vos clients à acheter avec plus de confiance.'],
   ['Streetwear &amp; jerseys', 'Streetwear &amp; maillots'],
   ['Live on REMADE ICONS', 'Live sur REMADE ICONS'],
   ['Feedback from early stores and pilot conversations. Full case studies with permission coming as we collect more data.', 'Retours de boutiques early et conversations pilotes. Études de cas complètes avec autorisation à venir.'],
@@ -68,16 +74,12 @@ const replacements = [
   ['View live demo', 'Voir la démo'],
   ['Install on Shopify', 'Installer sur Shopify'],
   ['FAQ', 'FAQ'],
-  // Hero
-  ['Built for Shopify apparel brands', 'Conçu pour marques apparel Shopify'],
-  ['AI try-on for Shopify apparel brands', 'Essayage IA pour marques apparel Shopify'],
   ['Let shoppers see themselves wearing your products before they buy.\n                            Add a virtual fitting room to your product pages in minutes — no theme editing required.', 'Permettez à vos clients de se voir porter vos produits avant d\'acheter.\n                            Ajoutez une cabine d\'essayage virtuelle en quelques minutes — sans modifier votre thème.'],
   ['Free plan available · No-code setup · Works on mobile and desktop', 'Plan gratuit · Installation sans code · Mobile et desktop'],
   ['Free plan · 50 try-ons/mo', 'Plan gratuit · 50 essayages/mo'],
   ['No-code setup', 'Sans code'],
   ['Mobile-ready', 'Mobile'],
-  ['Designed for Shopify apparel brands · ~30 sec average preview', 'Conçu pour marques apparel Shopify · aperçu en ~30 secondes'],
-  ['Designed for Shopify apparel brands · Preview generated in seconds', 'Conçu pour marques apparel Shopify · aperçu en ~30 secondes'],
+  ['We wanted add-to-cart after try-on, not vanity metrics. The admin shows sessions and cart actions in one place.', 'Nous voulions mesurer l\'ajout panier après essayage, pas des métriques vanity. L\'admin regroupe sessions et panier.'],
   ['Free try-ons / month', 'Essayages gratuits / mois'],
   ['App Store rating', 'Note App Store'],
   ['Same widget on Shopify', 'Même widget sur Shopify'],
@@ -108,7 +110,6 @@ const replacements = [
   ['Add AI try-on to your Shopify product pages', 'Ajoutez l\'essayage IA à vos pages produit Shopify'],
   ['Start with a few products, measure shopper engagement, and see whether try-on helps customers buy with more confidence.', 'Commencez sur quelques produits, mesurez l\'engagement et voyez si l\'essayage aide vos clients à acheter avec confiance.'],
   // Footer tagline
-  ['AI virtual try-on for Shopify apparel brands.<br>Help shoppers visualize your products before they buy.', 'Essayage virtuel IA pour marques apparel Shopify.<br>Aidez vos clients à visualiser vos produits avant d\'acheter.'],
   ['Fashion Brands', 'Marques mode'],
   ['Streetwear', 'Streetwear'],
   ['Enterprise', 'Enterprise'],
@@ -131,7 +132,58 @@ for (const [from, to] of replacements) {
 // Lang switcher in nav
 html = html.replace(
   '<a href="/fr/" class="lang-switch" hreflang="fr" lang="fr">FR</a>',
-  '<a href="/" class="lang-switch">EN</a>'
+  '<a href="/" class="lang-switch" hreflang="en" lang="en">EN</a>'
+);
+
+// FR homepage SEO head
+html = html.replace(
+  '<link rel="canonical" href="https://www.stylabtryon.site/">',
+  '<link rel="canonical" href="https://www.stylabtryon.site/fr/">'
+);
+html = html.replace(
+  '<link rel="alternate" hreflang="en" href="https://www.stylabtryon.site/">',
+  '<link rel="alternate" hreflang="en" href="https://www.stylabtryon.site/">'
+);
+html = html.replace(
+  '<meta property="og:locale" content="en_US">',
+  '<meta property="og:locale" content="fr_FR">'
+);
+html = html.replace(
+  '<meta property="og:locale:alternate" content="fr_FR">',
+  '<meta property="og:locale:alternate" content="en_US">'
+);
+html = html.replace(
+  'content="Stylab Virtual Try-On — AI Try-On for Shopify Apparel"',
+  'content="Stylab Virtual Try-On — Essayage IA pour Shopify Apparel"'
+);
+html = html.replace(
+  'content="Let shoppers see themselves wearing your products before they buy. No-code setup, built-in analytics, and a free plan to get started."',
+  'content="Permettez à vos clients de se voir porter vos produits avant d\'acheter. Installation sans code, analytics intégrées et plan gratuit."'
+);
+html = html.replace(
+  '<meta property="og:url" content="https://www.stylabtryon.site/">',
+  '<meta property="og:url" content="https://www.stylabtryon.site/fr/">'
+);
+html = html.replace(
+  '<meta name="twitter:title" content="Stylab Virtual Try-On — AI Try-On for Shopify Apparel">',
+  '<meta name="twitter:title" content="Stylab Virtual Try-On — Essayage IA pour Shopify Apparel">'
+);
+html = html.replace(
+  '<meta name="twitter:description" content="Let shoppers see themselves wearing your products before they buy. No-code setup, built-in analytics, and a free plan to get started.">',
+  '<meta name="twitter:description" content="Permettez à vos clients de se voir porter vos produits avant d\'acheter. Installation sans code, analytics intégrées et plan gratuit.">'
+);
+html = html.replace('"inLanguage": ["en-US", "fr-FR"]', '"inLanguage": "fr-FR"');
+html = html.replace(
+  '"description": "AI virtual try-on for Shopify apparel brands. Let shoppers see themselves wearing your products before they buy. No-code setup, built-in analytics, A/B testing, and per-product controls."',
+  '"description": "Essayage virtuel IA pour marques apparel Shopify. Permettez à vos clients de se voir porter vos produits. Installation sans code, analytics, tests A/B et contrôle par produit."'
+);
+html = html.replace(
+  '"@type": "WebSite",\n          "name": "Stylab Virtual Try-On",\n          "url": "https://www.stylabtryon.site/"',
+  '"@type": "WebSite",\n          "name": "Stylab Virtual Try-On",\n          "url": "https://www.stylabtryon.site/fr/"'
+);
+html = html.replace(
+  '"@type": "Organization",\n          "name": "Style Lab",\n          "url": "https://www.stylabtryon.site/"',
+  '"@type": "Organization",\n          "name": "Style Lab",\n          "url": "https://www.stylabtryon.site/fr/"'
 );
 
 // Add vs Genlook to footer if not present

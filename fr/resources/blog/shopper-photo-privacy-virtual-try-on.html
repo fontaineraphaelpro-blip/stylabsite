@@ -3,27 +3,27 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>A/B testing de l'essayage virtuel sur Shopify | Stylab</title>
-    <meta name="description" content="Protocole pas à pas pour comparer essayage vs contrôle sur Shopify — checklist, métriques utiles et décision après 30 jours.">
+    <title>Confidentialité des photos clients pour l'essayage virtuel Shopify | Stylab</title>
+    <meta name="description" content="Que deviennent les photos clients pendant l'essayage IA, quoi dire sur la PDP, et comment Stylab gère rétention, RGPD et désinstallation — pour marchands et revue conformité.">
     <meta name="robots" content="index, follow, max-image-preview:large">
     <link rel="icon" type="image/png" href="../../../assets/logo.png">
-    <link rel="canonical" href="https://www.stylabtryon.site/fr/resources/blog/ab-test-virtual-try-on.html">
-    <link rel="alternate" hreflang="fr" href="https://www.stylabtryon.site/fr/resources/blog/ab-test-virtual-try-on.html">
-    <link rel="alternate" hreflang="en" href="https://www.stylabtryon.site/resources/blog/ab-test-virtual-try-on.html">
-    <link rel="alternate" hreflang="x-default" href="https://www.stylabtryon.site/resources/blog/ab-test-virtual-try-on.html">
+    <link rel="canonical" href="https://www.stylabtryon.site/fr/resources/blog/shopper-photo-privacy-virtual-try-on.html">
+    <link rel="alternate" hreflang="fr" href="https://www.stylabtryon.site/fr/resources/blog/shopper-photo-privacy-virtual-try-on.html">
+    <link rel="alternate" hreflang="en" href="https://www.stylabtryon.site/resources/blog/shopper-photo-privacy-virtual-try-on.html">
+    <link rel="alternate" hreflang="x-default" href="https://www.stylabtryon.site/resources/blog/shopper-photo-privacy-virtual-try-on.html">
     <meta property="og:type" content="article">
-    <meta property="og:title" content="A/B testing de l'essayage virtuel sur Shopify | Stylab">
-    <meta property="og:description" content="Protocole pas à pas pour comparer essayage vs contrôle sur Shopify — checklist, métriques utiles et décision après 30 jours.">
-    <meta property="og:url" content="https://www.stylabtryon.site/fr/resources/blog/ab-test-virtual-try-on.html">
+    <meta property="og:title" content="Confidentialité des photos clients pour l'essayage virtuel Shopify | Stylab">
+    <meta property="og:description" content="Que deviennent les photos clients pendant l'essayage IA, quoi dire sur la PDP, et comment Stylab gère rétention, RGPD et désinstallation — pour marchands et revue conformité.">
+    <meta property="og:url" content="https://www.stylabtryon.site/fr/resources/blog/shopper-photo-privacy-virtual-try-on.html">
     <meta property="og:site_name" content="Stylab Virtual Try-On">
     <meta property="og:locale" content="fr_FR">
-    <meta property="article:published_time" content="2026-05-10">
+    <meta property="article:published_time" content="2026-05-17">
     <meta property="og:image" content="https://www.stylabtryon.site/assets/screenshots/result-modal.png">
     <meta name="twitter:card" content="summary_large_image">
-    <meta name="twitter:title" content="A/B testing de l'essayage virtuel sur Shopify">
-    <meta name="twitter:description" content="Protocole pas à pas pour comparer essayage vs contrôle sur Shopify — checklist, métriques utiles et décision après 30 jours.">
+    <meta name="twitter:title" content="Confidentialité des photos clients pour l'essayage virtuel Shopify">
+    <meta name="twitter:description" content="Que deviennent les photos clients pendant l'essayage IA, quoi dire sur la PDP, et comment Stylab gère rétention, RGPD et désinstallation — pour marchands et revue conformité.">
     <meta name="twitter:image" content="https://www.stylabtryon.site/assets/screenshots/result-modal.png">
-    <script type="application/ld+json">{"@context":"https://schema.org","@type":"Article","headline":"A/B testing de l'essayage virtuel sur Shopify","description":"Protocole pas à pas pour comparer essayage vs contrôle sur Shopify — checklist, métriques utiles et décision après 30 jours.","datePublished":"2026-05-10","dateModified":"2026-05-10","author":{"@type":"Organization","name":"Style Lab"},"publisher":{"@type":"Organization","name":"Stylab Virtual Try-On","logo":{"@type":"ImageObject","url":"https://www.stylabtryon.site/assets/screenshots/result-modal.png"}},"mainEntityOfPage":{"@type":"WebPage","@id":"https://www.stylabtryon.site/fr/resources/blog/ab-test-virtual-try-on.html"},"inLanguage":"fr-FR","image":"https://www.stylabtryon.site/assets/screenshots/result-modal.png","abstract":"Lancez un A/B 30 jours à 50/50 sur 2–5 SKU, suivez l'ajout panier par bucket (pas le volume brut), puis décidez d'élargir, itérer ou pause avec un groupe contrôle."}</script>
+    <script type="application/ld+json">{"@context":"https://schema.org","@type":"Article","headline":"Confidentialité des photos clients pour l'essayage virtuel Shopify","description":"Que deviennent les photos clients pendant l'essayage IA, quoi dire sur la PDP, et comment Stylab gère rétention, RGPD et désinstallation — pour marchands et revue conformité.","datePublished":"2026-05-17","dateModified":"2026-05-17","author":{"@type":"Organization","name":"Style Lab"},"publisher":{"@type":"Organization","name":"Stylab Virtual Try-On","logo":{"@type":"ImageObject","url":"https://www.stylabtryon.site/assets/screenshots/result-modal.png"}},"mainEntityOfPage":{"@type":"WebPage","@id":"https://www.stylabtryon.site/fr/resources/blog/shopper-photo-privacy-virtual-try-on.html"},"inLanguage":"fr-FR","image":"https://www.stylabtryon.site/assets/screenshots/result-modal.png","abstract":"Les clients voient une notice confidentialité avant upload ; photos traitées pour la génération, originaux non conservés pour le marketing, données supprimées à la désinstallation — confirmez dans votre politique live."}</script>
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Inter+Tight:wght@400;500;600;700;800&family=Geist:wght@500;600;700;800;900&display=swap" rel="stylesheet">
@@ -67,93 +67,72 @@
         <a href="https://apps.shopify.com/try-on-stylelab" class="btn btn-primary" target="_blank" rel="noopener">Installer sur Shopify</a>
     </div>
     <main class="page-main"><article class="blog-article" itemscope itemtype="https://schema.org/Article">
-        <meta itemprop="headline" content="A/B testing de l'essayage virtuel sur Shopify">
-        <meta itemprop="datePublished" content="2026-05-10">
+        <meta itemprop="headline" content="Confidentialité des photos clients pour l'essayage virtuel Shopify">
+        <meta itemprop="datePublished" content="2026-05-17">
         <section class="page-hero"><div class="wrap reveal">
             <p class="breadcrumb"><a href="../index.html">Ressources</a> / <a href="index.html">Blog</a></p>
-            <p class="pill">Analytics</p>
-            <h1 itemprop="name">A/B testing de l'essayage virtuel sur Shopify</h1>
-            <p class="lead" itemprop="description">Protocole pas à pas pour comparer essayage vs contrôle sur Shopify — checklist, métriques utiles et décision après 30 jours.</p>
-            <p class="meta"><time datetime="2026-05-10" itemprop="datePublished">May 10, 2026</time></p>
+            <p class="pill">Confidentialité</p>
+            <h1 itemprop="name">Confidentialité des photos clients pour l'essayage virtuel Shopify</h1>
+            <p class="lead" itemprop="description">Que deviennent les photos clients pendant l'essayage IA, quoi dire sur la PDP, et comment Stylab gère rétention, RGPD et désinstallation — pour marchands et revue conformité.</p>
+            <p class="meta"><time datetime="2026-05-17" itemprop="datePublished">May 17, 2026</time></p>
         </div></section>
         <section class="section section-white">
             <div class="wrap">
-                <aside class="article-tldr reveal" role="note" aria-label="En bref"><p class="article-tldr-label">En bref</p><p>Lancez un A/B 30 jours à 50/50 sur 2–5 SKU, suivez l'ajout panier par bucket (pas le volume brut), puis décidez d'élargir, itérer ou pause avec un groupe contrôle.</p></aside>
-                <div class="prose reveal" itemprop="articleBody"><p>Vous avez installé l'essayage. Les sessions montent. Mais l'essayage a-t-il changé le comportement — ou une promo, des ads ou la saisonnalité ? Sans groupe contrôle, impossible de le savoir.</p>
-<p>Ce guide explique comment mener un A/B test propre sur vos pages produit Shopify avec les buckets de trafic intégrés à Stylab.</p>
+                <aside class="article-tldr reveal" role="note" aria-label="En bref"><p class="article-tldr-label">En bref</p><p>Les clients voient une notice confidentialité avant upload ; photos traitées pour la génération, originaux non conservés pour le marketing, données supprimées à la désinstallation — confirmez dans votre politique live.</p></aside>
+                <div class="prose reveal" itemprop="articleBody"><p>L'essayage virtuel exige une photo client. Ce point génère plus de questions juridiques, support et PR qu'aucune comparaison de fonctionnalités. Les marchands ont besoin de réponses claires pour la PDP, la FAQ et la conformité interne — sans sur-promettre.</p>
+<p>Cet article résume la conception Stylab pour les images clients. Confirmez toujours avec votre version déployée et politique de confidentialité publiée.</p>
 
-<h2>Pourquoi deviner échoue</h2>
+<h2>Ce que vivent les clients</h2>
 <ul>
-<li>Comparer ce mois au mois dernier pendant une soldes</li>
-<li>Activer l'essayage partout et attribuer tout lift panier au widget</li>
-<li>Ne regarder que le volume de sessions d'essayage</li>
-<li>Arrêter au bout d'une semaine avec un trafic insuffisant</li>
+<li>Avant upload, le widget affiche une <strong>notice confidentialité</strong> expliquant l'usage pour générer l'essayage</li>
+<li>Le client choisit une photo sur l'appareil (ou caméra sur mobile)</li>
+<li>Après traitement, il voit le résultat généré dans le contexte fiche produit</li>
 </ul>
-<p>L'A/B test divise les visiteurs sur les <em>mêmes PDP</em> : un groupe voit l'essayage, l'autre non. Même trafic, mêmes prix, mêmes photos.</p>
 
-<h2>Comment fonctionne l'A/B Stylab</h2>
-<p>Depuis <strong>Widget</strong> dans l'admin :</p>
+<h2>Ce que les marchands peuvent dire</h2>
+<h3>Formulations sûres</h3>
+<ul>
+<li>« Votre photo sert uniquement à générer votre aperçu essayage. »</li>
+<li>« Voir notre politique de confidentialité pour le traitement des données essayage. »</li>
+<li>« L'essayage est optionnel — vous pouvez acheter sans l'utiliser. »</li>
+</ul>
+<h3>À éviter sans vérification</h3>
+<ul>
+<li>« Photos jamais stockées » — préciser originaux, dérivés ou événements analytics</li>
+<li>« 100 % conforme RGPD » — préférer « webhooks RGPD supportés » + lien politique</li>
+<li>Réutiliser les photos essayage en pub ou email sans consentement explicite</li>
+</ul>
+
+<h2>Catégories de données (conceptuel)</h2>
+<ul>
+<li><strong>Upload client (original)</strong> — envoyé pour inférence ; conçu pour ne pas être conservé pour le marketing après traitement</li>
+<li><strong>Image essayage générée</strong> — montrée au client ; URL temporaire possible pour affichage</li>
+<li><strong>Événements d'usage</strong> — démarrage, complétion, signaux ajout panier pour analytics marchand</li>
+<li><strong>Métadonnées boutique/produit</strong> — scopes app Shopify standard pour configuration</li>
+</ul>
+
+<h2>RGPD et désinstallation</h2>
+<ul>
+<li>Stylab supporte les webhooks RGPD Shopify — flux demande et suppression client pour boutiques UE</li>
+<li>À la désinstallation, données app liées au marchand supprimées selon règles Shopify — vérifiez le déploiement live</li>
+<li>Lien politique : <a href="../../confidentialite.html">confidentialite.html</a></li>
+</ul>
+
+<h2>Checklist marchand avant lancement</h2>
 <ol>
-<li>Activez l'A/B testing</li>
-<li>Réglez le slider (10 %–90 % voient l'essayage)</li>
-<li>Chaque visiteur reste dans le même bucket</li>
+<li>Juridique revoit Stylab + politique boutique ensemble</li>
+<li>FAQ : essayage optionnel + lien politique confidentialité</li>
+<li>Script support « où est passée ma photo ? » — un paragraphe, sans jargon</li>
+<li>Pas d'export images essayage vers Klaviyo ou ads sans consentement séparé</li>
+<li>Après changement thème, revérifier la notice sur mobile</li>
 </ol>
-<p>Comparez après suffisamment de temps :</p>
-<ul>
-<li>Vues page par bucket</li>
-<li>Sessions d'essayage (groupe test)</li>
-<li>Ajouts panier et taux par bucket</li>
-</ul>
 
-<h2>Checklist avant le test</h2>
+<h2>Ressources</h2>
 <ul>
-<li>2–5 produits à trafic hebdomadaire stable</li>
-<li>Photos garment OK — voir <a href="flat-lay-photos-better-tryon.html">guide flat-lay</a></li>
-<li>Geler prix, visuels hero et gros changements ads pendant 30 jours</li>
-<li>Noter le taux ajout panier baseline dans Shopify analytics</li>
-<li>Estimer le volume avec notre <a href="../free-tools.html">calculateur d'usage</a></li>
-</ul>
-
-<h2>Protocole 30 jours</h2>
-<ol>
-<li><strong>Semaine 0</strong> — Essayage activé sans A/B 3–5 jours pour valider le widget</li>
-<li><strong>Jour 1</strong> — A/B 50/50, ne pas toucher au slider</li>
-<li><strong>Semaines 1–4</strong> — Suivi hebdo : adoption essayage, taux panier par bucket, échecs</li>
-<li><strong>Jour 30</strong> — Décision selon le framework ci-dessous</li>
-</ol>
-<blockquote><strong>Peu de trafic ?</strong> Moins de ~500 vues PDP en 30 jours : prolongez le test ou regroupez des SKU similaires.</blockquote>
-
-<h2>Métriques utiles vs vanity metrics</h2>
-<h3>À suivre</h3>
-<ul>
-<li><strong>Taux ajout panier</strong> — bucket test vs contrôle</li>
-<li><strong>Adoption essayage</strong> — les clients cliquent-ils ?</li>
-<li><strong>Parcours essayage → panier</strong></li>
-<li><strong>Taux d'échec génération</strong> — souvent un problème de photo, pas de fit produit</li>
-</ul>
-<h3>Ne pas sur-interpréter seuls</h3>
-<ul>
-<li>Volume brut de sessions sans contrôle</li>
-<li>CA boutique global pendant une promo</li>
-<li>Couverture presse ou réseaux</li>
-</ul>
-
-<h2>Décider après 30 jours</h2>
-<ul>
-<li><strong>Étendre</strong> — taux panier test ≥ contrôle et adoption significative</li>
-<li><strong>Itérer</strong> — forte adoption mais panier plat : photos, copy bouton, sélection SKU</li>
-<li><strong>Pause SKU</strong> — usage quasi nul après 30 jours</li>
-<li><strong>Prolonger</strong> — données insuffisantes</li>
-</ul>
-<p>Les résultats varient. Stylab aide à mesurer — sans garantir un lift précis.</p>
-
-<h2>Guides associés</h2>
-<ul>
-<li><a href="reduce-purchase-hesitation-shopify.html">Déploiement 5 SKU contre l'hésitation</a></li>
-<li><a href="flat-lay-photos-better-tryon.html">Améliorer le rendu avec des flat-lays</a></li>
-<li><a href="../free-tools.html">Estimateur d'usage gratuit</a></li>
-</ul>
-<p><a href="../../index.html#try-it">Essayer la démo live →</a></p></div>
+<li><a href="mobile-first-virtual-try-on-shopify.html">Checklist mobile-first</a></li>
+<li><a href="reduce-purchase-hesitation-shopify.html">Guide déploiement 5 SKU</a></li>
+<li><a href="../../confidentialite.html">Politique confidentialité Stylab</a></li>
+</ul></div>
             </div>
         </section></article><section class="section"><div class="wrap"><div class="cta-final reveal"><h2>Ajoutez l'essayage IA à vos pages produit Shopify</h2><p>Commencez sur quelques produits, mesurez l'engagement, et voyez si l'essayage aide vos clients à acheter avec plus de confiance.</p><div class="btns"><a href="https://apps.shopify.com/try-on-stylelab" class="btn btn-primary" target="_blank" rel="noopener">Installer sur Shopify</a><a href="../../index.html#try-it" class="btn btn-ghost">Voir la démo</a></div></div></div></section></main>
     <footer>

@@ -66,6 +66,7 @@ One early pilot store (REMADE ICONS) reported **77.8% try-on → add-to-cart** i
 - GDPR webhooks supported in codebase
 - Data removed when the app is uninstalled (confirm deployed behavior)
 - Privacy policy: confidentialite.html on marketing site
+- Terms of service: conditions.html on marketing site
 
 ## Best for
 
@@ -75,6 +76,7 @@ One early pilot store (REMADE ICONS) reported **77.8% try-on → add-to-cart** i
 
 ## Marketing site sections
 
+- Homepage EN: `/` · Homepage FR: `/fr/`
 - Hero + problem: top of page, `#problem`
 - Live demo widget: `#try-it`
 - Pilot result: `#pilot`
@@ -100,6 +102,20 @@ Fashion Brands, Streetwear, Enterprise, PrestaShop (Shopify-only today), API (co
 ## Resources (`/resources/`)
 
 Free Tools, Blog, Documentation, Changelog
+
+### Blog articles (EN)
+
+- /resources/blog/reduce-purchase-hesitation-shopify.html — 5-SKU rollout, reduce purchase hesitation
+- /resources/blog/ab-test-virtual-try-on.html — A/B testing try-on vs control on Shopify
+- /resources/blog/flat-lay-photos-better-tryon.html — flat-lay garment photos for AI quality
+- /resources/blog/mobile-first-virtual-try-on-shopify.html — mobile PDP placement and upload UX
+- /resources/blog/choose-virtual-try-on-plan-shopify.html — plan selection and volume estimation
+- /resources/blog/shopper-photo-privacy-virtual-try-on.html — shopper photo privacy for merchants
+
+### Blog articles (FR)
+
+- /fr/resources/blog/ — index
+- French versions of all articles above under /fr/resources/blog/
 
 ## Demo product
 
