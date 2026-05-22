@@ -214,8 +214,9 @@
             width: 1.25em; height: 1.25em; flex-shrink: 0;
             display: block; object-fit: contain;
         }
-        .shopify-icon--green { color: #95BF47; }
-        .shopify-icon--white { color: #fff; }
+        .shopify-icon--sm {
+            width: 12px; height: 12px; display: inline-block; vertical-align: -2px;
+        }
         .shopify-chip {
             display: inline-flex; align-items: center; gap: 0.4rem;
             padding: 0.38rem 0.75rem; border-radius: 999px;
@@ -1589,11 +1590,6 @@
     </style>
 </head>
 <body>
-    <svg xmlns="http://www.w3.org/2000/svg" style="display:none" aria-hidden="true">
-        <symbol id="icon-shopify" viewBox="0 0 24 24">
-            <path fill="currentColor" d="M15.34 5.66c0-1.19-.97-2.16-2.16-2.16s-2.16.97-2.16 2.16c0 .15.02.3.05.44H8.93c.03-.14.05-.29.05-.44C8.98 4.47 8.01 3.5 6.82 3.5S4.66 4.47 4.66 5.66c0 .15.02.3.05.44H2.49c-.83 0-1.5.67-1.5 1.5v.98l.74 13.86c.05.94.84 1.69 1.78 1.69h15.98c.94 0 1.73-.75 1.78-1.69l.74-13.86V7.16c0-.83-.67-1.5-1.5-1.5h-2.22c.03-.14.05-.29.05-.44 0-1.19-.97-2.16-2.16-2.16s-2.16.97-2.16 2.16c0 .15.02.3.05.44h-1.1c-.03-.14-.05-.29-.05-.44zm-2.16-.98c.54 0 .98.44.98.98s-.44.98-.98.98-.98-.44-.98-.98.44-.98.98-.98zM6.82 4.68c.54 0 .98.44.98.98s-.44.98-.98.98-.98-.44-.98-.98.44-.98.98-.98zM3.49 8.14h17.02l-.7 13.12H4.19L3.49 8.14z"/>
-        </symbol>
-    </svg>
     <div class="ambient" aria-hidden="true"></div>
     <div class="grain" aria-hidden="true"></div>
 
@@ -1642,7 +1638,7 @@
             <div class="wrap">
                 <div class="hero-grid">
                     <div class="reveal">
-                        <div class="pill"><svg class="shopify-icon shopify-icon--green" aria-hidden="true"><use href="#icon-shopify"/></svg><span class="pill-dot"></span> Designed for Shopify apparel brands</div>
+                        <div class="pill"><img class="shopify-icon" src="../assets/shopify-icon-logo.svg" alt="" width="20" height="20" aria-hidden="true"><span class="pill-dot"></span> Designed for Shopify apparel brands</div>
                         <h1>Essayage IA pour marques apparel Shopify</h1>
                         <p class="hero-lead">
                             Let shoppers see themselves wearing your products before they buy.
@@ -1660,7 +1656,7 @@
                         </div>
                         <p class="hero-microcopy">Conçu pour marques apparel Shopify · aperçu en ~30 secondes</p>
                         <div class="shopify-trust-row" aria-label="Shopify trust signals">
-                            <span class="shopify-chip"><svg class="shopify-icon shopify-icon--green" aria-hidden="true"><use href="#icon-shopify"/></svg>Shopify App Store</span>
+                            <span class="shopify-chip"><img class="shopify-icon" src="../assets/shopify-icon-logo.svg" alt="" width="20" height="20" aria-hidden="true">Shopify App Store</span>
                             <span class="shopify-chip">Plan gratuit · 50 essayages/mo</span>
                             <span class="shopify-chip">Sans code</span>
                             <span class="shopify-chip">Mobile</span>
@@ -1721,7 +1717,7 @@
                     <link itemprop="image" href="https://cdn.shopify.com/s/files/1/1024/3558/6388/files/2261c8aad94d4247a2336c80f5ea202a.png">
                     <div class="trial-header">
                         <h2>Essai interactif · page produit démo</h2>
-                        <span class="trial-badge"><svg class="shopify-icon shopify-icon--green" aria-hidden="true"><use href="#icon-shopify"/></svg>Live · même widget Shopify</span>
+                        <span class="trial-badge"><img class="shopify-icon" src="../assets/shopify-icon-logo.svg" alt="" width="20" height="20" aria-hidden="true">Live · même widget Shopify</span>
                     </div>
                     <!-- .product__media wrapper required so vton-widget.js auto-detects the product image -->
                     <div class="trial-layout product product__info-wrapper" data-product-id="gid://shopify/Product/15436964036948" data-product-handle="shadow-stripe-collared-soccer-jersey-4">
@@ -1760,7 +1756,7 @@
                             <!-- product-form required so vton-widget.js detects product context -->
                             <form action="#" class="product-form" onsubmit="return false;">
                                 <div class="trial-buy">
-                                    <button type="button" class="trial-btn-shopify trial-btn-atc" aria-label="Add to cart (demo)"><svg class="shopify-icon" aria-hidden="true"><use href="#icon-shopify"/></svg>Add to cart</button>
+                                    <button type="button" class="trial-btn-shopify trial-btn-atc" aria-label="Add to cart (demo)"><img class="shopify-icon" src="../assets/shopify-icon-logo.svg" alt="" width="20" height="20" aria-hidden="true">Add to cart</button>
                                     <div id="vton-mount-placeholder" class="vton-placeholder">
                                         <button type="button" class="vton-placeholder-btn" aria-label="Try it on (loading widget)">
                                             <svg viewBox="0 0 24 24" width="18" height="18" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
@@ -1852,7 +1848,7 @@
                 <div class="privacy-mini-strip reveal">
                     <span>GDPR webhooks supported</span>
                     <span>Data removed on uninstall</span>
-                    <span><svg class="shopify-icon shopify-icon--green" aria-hidden="true" style="width:12px;height:12px;display:inline-block;vertical-align:-2px;margin-right:3px"><use href="#icon-shopify"/></svg>Native Shopify billing</span>
+                    <span><img class="shopify-icon shopify-icon--sm" src="../assets/shopify-icon-logo.svg" alt="" width="12" height="12" aria-hidden="true">Native Shopify billing</span>
                     <span>Cancel any time</span>
                 </div>
             </div>
@@ -1972,7 +1968,7 @@
                     </article>
                 </div>
                 <div class="proof-strip reveal" aria-label="Trust signals">
-                    <span><svg class="shopify-icon shopify-icon--green" aria-hidden="true" style="width:12px;height:12px"><use href="#icon-shopify"/></svg>Shopify App Store</span>
+                    <span><img class="shopify-icon shopify-icon--sm" src="../assets/shopify-icon-logo.svg" alt="" width="12" height="12" aria-hidden="true">Shopify App Store</span>
                     <span>Plan gratuit · 50 essayages/mo</span>
                     <span>Mobile &amp; desktop</span>
                     <span>Live sur REMADE ICONS</span>
@@ -1992,7 +1988,7 @@
                     <h2 class="section-title">Commencez gratuit, évoluez avec l'usage</h2>
                     <p class="section-desc">Usage is based on successful try-on generations. Failed generations can be retried. No seats, no install fees.</p>
                     <!-- TODO: Confirm failed generations do not consume credits -->
-                    <p class="pricing-shopify-note"><svg class="shopify-icon shopify-icon--green" aria-hidden="true"><use href="#icon-shopify"/></svg>Plans billed through Shopify · cancel anytime from your admin</p>
+                    <p class="pricing-shopify-note"><img class="shopify-icon" src="../assets/shopify-icon-logo.svg" alt="" width="20" height="20" aria-hidden="true">Plans billed through Shopify · cancel anytime from your admin</p>
                 </div>
                 <div class="pricing reveal">
                     <div class="price-card">
@@ -2116,7 +2112,7 @@
                     <span class="brand-name">Stylab <span>Virtual Try-On</span></span>
                 </a>
                 <p>Essayage virtuel IA pour marques apparel Shopify.<br>Aidez vos clients à acheter avec plus de confiance.</p>
-                <p class="footer-shopify-badge"><svg class="shopify-icon shopify-icon--green" aria-hidden="true"><use href="#icon-shopify"/></svg>App Shopify officielle · listée sur l'App Store</p>
+                <p class="footer-shopify-badge"><img class="shopify-icon" src="../assets/shopify-icon-logo.svg" alt="" width="20" height="20" aria-hidden="true">App Shopify officielle · listée sur l'App Store</p>
             </div>
             <div class="footer-col">
                 <h4>Découvrir</h4>
