@@ -3,7 +3,7 @@ import fs from 'fs';
 import path from 'path';
 import { fileURLToPath } from 'url';
 import { APP_URL, UI, BLOG_POSTS } from './page-data.mjs';
-import { SHOPIFY_COMPARE, API_COMPARE, SOLUTIONS } from './compare-data.mjs';
+import { SHOPIFY_COMPARE, API_COMPARE, SOLUTIONS, COMPARE_HUB } from './compare-data.mjs';
 
 const __dirname = path.dirname(fileURLToPath(import.meta.url));
 const ROOT = path.join(__dirname, '..');
@@ -50,26 +50,44 @@ function comparePage(locale, depth, data) {
   const u = UI[locale];
   const px = paths(locale, depth);
   const comp = data.competitor;
-  const rows = data.rows.map(r => `<tr><td>${r.feature}</td><td>${cell(r.stylab)}</td><td>${cell(r.other)}</td></tr>`).join('');
+  const isApi = depth === 2;
+  const rows = data.rows.map(r => `<tr><td>${t(r.feature, locale)}</td><td>${cell(t(r.stylab, locale))}</td><td>${cell(t(r.other, locale))}</td></tr>`).join('');
+  const overviewBlock = data.overview ? `
+        <section class="section section-green"><div class="wrap prose reveal">${t(data.overview, locale)}</div></section>` : '';
+  const evalLabel = locale === 'fr' ? 'Guide pratique' : 'Practical guide';
+  const evalTitle = locale === 'fr' ? 'Comment évaluer les deux options' : 'How to evaluate both options';
+  const evalBlock = data.evaluation ? `
+        <section class="section section-white"><div class="wrap">
+            <div class="section-head reveal"><p class="section-label">${evalLabel}</p><h2 class="section-title">${evalTitle}</h2></div>
+            <div class="prose reveal">${t(data.evaluation, locale)}</div>
+        </div></section>` : '';
+  const pitfallsLabel = locale === 'fr' ? 'Erreurs fréquentes' : 'Common mistakes';
+  const pitfallsBlock = data.pitfalls ? `
+        <section class="section" style="background:var(--green-50);"><div class="wrap">
+            <div class="section-head reveal"><p class="section-label">${pitfallsLabel}</p><h2 class="section-title">${locale === 'fr' ? 'À éviter lors de la comparaison' : 'Avoid when comparing'}</h2></div>
+            <div class="prose reveal">${t(data.pitfalls, locale)}</div>
+        </div></section>` : '';
   const body = `
         <section class="page-hero"><div class="wrap reveal">
             <p class="breadcrumb"><a href="${px.compare}">${u.compare}</a> / Stylab vs ${comp}</p>
             <p class="pill">${u.comparison}</p>
             <h1>Stylab vs ${comp}</h1>
-            <p class="lead">${data.summary}</p>
+            <p class="lead">${t(data.summary, locale)}</p>
             <div class="btns"><a href="${APP_URL}" class="btn btn-primary" target="_blank" rel="noopener">${u.installStylab}</a><a href="${px.home}#try-it" class="btn btn-ghost">${u.viewDemo}</a></div>
-        </div></section>
+        </div></section>${overviewBlock}
         <section class="section section-white"><div class="wrap reveal">
-            <div class="section-head center"><p class="section-label">${u.sideBySide}</p><h2 class="section-title">${u.featureComparison}</h2><p class="section-desc">${data.competitorDesc}</p></div>
-            <div class="compare-table-wrap"><table class="compare-table"><thead><tr><th>Feature</th><th>Stylab</th><th>${comp}</th></tr></thead><tbody>${rows}</tbody></table></div>
+            <div class="section-head center"><p class="section-label">${u.sideBySide}</p><h2 class="section-title">${u.featureComparison}</h2><p class="section-desc">${t(data.competitorDesc, locale)}</p></div>
+            <div class="compare-table-wrap"><table class="compare-table"><thead><tr><th>${locale === 'fr' ? 'Fonctionnalité' : 'Feature'}</th><th>Stylab</th><th>${comp}</th></tr></thead><tbody>${rows}</tbody></table></div>
             <div class="two-col">
-                <div class="diff-card"><h3>${u.whenStylab}</h3><p>${data.chooseStylab}</p></div>
-                <div class="diff-card"><h3>${u.whenOther.replace('{name}', comp)}</h3><p>${data.chooseOther}</p></div>
+                <div class="diff-card"><h3>${u.whenStylab}</h3><p>${t(data.chooseStylab, locale)}</p></div>
+                <div class="diff-card"><h3>${u.whenOther.replace('{name}', comp)}</h3><p>${t(data.chooseOther, locale)}</p></div>
             </div>
             <p class="disclaimer">${u.disclaimer}</p>
-        </div></section>${cta(locale, depth)}`;
-  const title = locale === 'fr' ? `Stylab vs ${comp} | Comparaison Shopify` : `Stylab vs ${comp} | Shopify Virtual Try-On Comparison`;
-  return layout({ locale, depth, title, description: data.summary, body, activeNav: 'compare', section: 'compare' });
+        </div></section>${evalBlock}${pitfallsBlock}${cta(locale, depth)}`;
+  const title = locale === 'fr'
+    ? `Stylab vs ${comp} | ${isApi ? 'Comparaison API' : 'Comparaison Shopify'}`
+    : `Stylab vs ${comp} | ${isApi ? 'API vs Shopify App' : 'Shopify Virtual Try-On'} Comparison`;
+  return layout({ locale, depth, title, description: t(data.summary, locale), body, activeNav: 'compare', section: 'compare' });
 }
 
 function t(obj, locale) {
@@ -79,10 +97,10 @@ function t(obj, locale) {
 
 function cell(val) {
   const v = val;
-  if (/^Yes|^Oui|^Included|^Inclus|^Purpose|^Automatic|^Built|^Minutes|^Dashboard|^Merchant|^One click|^Predictable|^50|^Scale|^Free|^All plans|^Hoodies|^Native|^Live|^4,000|^Choose Stylab if you are a Shopify merchant, not a dev/i.test(v)) {
+  if (/^Yes|^Oui|^Included|^Inclus|^Purpose|^Automatic|^Built|^Minutes|^Hours|^Dashboard|^Merchant|^One click|^Predictable|^50|^Scale|^Free|^All plans|^Hoodies|^Native|^Live|^4,000|^Shopify apparel|^Apparel-focused|^Try-on-focused|^Verify workflow|^Included widget|^Plan tiers|^Broad generative|^No — try-on|^Not applicable|^Not the core|^Yes — verify|^Yes — App Store|^Yes — private|^Yes — no-code|^Verify in product|^Verify metrics|^Verify integration|^Verify current|^Verify on vendor|^Verify — may/i.test(v)) {
     return `<span class="yes">${v}</span>`;
   }
-  if (/^No|^Non|^Unlikely|^Rare|^Not |^Build yourself|^Custom build|^Manual|^Dev required|^Contact|^Unknown|^Check |^Varies|^SDK|^Platform|^Enterprise|^API credits|^Weeks|^Pay per API|^Creative/i.test(v)) {
+  if (/^No|^Non|^Unlikely|^Rare|^Not |^Build yourself|^Custom build|^Manual|^Dev required|^Contact|^Unknown|^Check |^Varies|^SDK|^Platform|^Enterprise|^API credits|^Weeks|^Pay per API|^Creative|^Typically sales|^Custom |^Unknown —|^Unlikely —|^Rare —|^Varies —|^Contact vendor|^Contact sales|^Verify —|^Verify on|^Verify in|^Verify current|^Not Shopify-native|^Not highlighted|^Not standard|^Not typical|^Not core|^Manual \/|^Enterprise \/|^Usage-based|^Product \/|^Shopify merchant|^Shopify plan|^Your engineering|^Your team|^Your compliance|^Stylab vendor|^API credits \+/i.test(v)) {
     return `<span class="partial">${v}</span>`;
   }
   return v;
@@ -241,11 +259,12 @@ function generateLocale(locale) {
     activeNav: 'compare',
     section: 'compare',
     body: `
-        <section class="page-hero"><div class="wrap reveal"><p class="pill">${u.compare}</p><h1>${locale === 'fr' ? 'Comment Stylab se compare' : 'How Stylab compares'}</h1><p class="lead">${locale === 'fr' ? 'Comparaisons factuelles pour marchands Shopify apparel.' : 'Factual comparisons for Shopify apparel merchants.'}</p></div></section>
-        <section class="section section-white"><div class="wrap"><div class="section-head reveal"><p class="section-label">Shopify</p><h2 class="section-title">${u.footerShopifyAlt}</h2></div>
-        <div class="hub-grid reveal">${SHOPIFY_COMPARE.map(c => `<a href="${c.slug}.html" class="hub-card"><h3>Stylab vs ${c.competitor}</h3><p>${c.summary.slice(0, 110)}…</p><span class="arrow">${u.readComparison}</span></a>`).join('')}</div></div></section>
-        <section class="section section-green"><div class="wrap"><div class="section-head reveal"><p class="section-label">API</p><h2 class="section-title">${u.footerApiAlt}</h2></div>
-        <div class="hub-grid reveal">${API_COMPARE.map(c => `<a href="api/${c.slug}.html" class="hub-card"><h3>Stylab vs ${c.competitor}</h3><p>${c.summary.slice(0, 110)}…</p><span class="arrow">${u.readComparison}</span></a>`).join('')}</div></div></section>${cta(locale, 1)}`,
+        <section class="page-hero"><div class="wrap reveal"><p class="pill">${u.compare}</p><h1>${locale === 'fr' ? 'Comment Stylab se compare' : 'How Stylab compares'}</h1><p class="lead">${locale === 'fr' ? 'Guides factuels pour shortlister, piloter et mesurer — pas du SEO générique.' : 'Factual guides to shortlist, pilot, and measure — not generic SEO filler.'}</p></div></section>
+        <section class="section section-green"><div class="wrap prose reveal">${t(COMPARE_HUB.intro, locale)}</div></section>
+        <section class="section section-white"><div class="wrap"><div class="section-head reveal"><p class="section-label">Shopify</p><h2 class="section-title">${u.footerShopifyAlt}</h2><p class="section-desc">${locale === 'fr' ? 'Apps App Store et essayage mode pour pages produit standard.' : 'App Store apps and fashion try-on for standard product pages.'}</p></div>
+        <div class="hub-grid reveal">${SHOPIFY_COMPARE.map(c => `<a href="${c.slug}.html" class="hub-card"><h3>Stylab vs ${c.competitor}</h3><p>${t(c.summary, locale).slice(0, 130)}…</p><span class="arrow">${u.readComparison}</span></a>`).join('')}</div></div></section>
+        <section class="section section-green"><div class="wrap"><div class="section-head reveal"><p class="section-label">API</p><h2 class="section-title">${u.footerApiAlt}</h2><p class="section-desc">${locale === 'fr' ? 'Routes build-your-own si vous avez une équipe technique.' : 'Build-your-own routes if you have an engineering team.'}</p></div>
+        <div class="hub-grid reveal">${API_COMPARE.map(c => `<a href="api/${c.slug}.html" class="hub-card"><h3>Stylab vs ${c.competitor}</h3><p>${t(c.summary, locale).slice(0, 130)}…</p><span class="arrow">${u.readComparison}</span></a>`).join('')}</div></div></section>${cta(locale, 1)}`,
   }));
 
   SHOPIFY_COMPARE.forEach(c => writeFile(`${base}compare/${c.slug}.html`, comparePage(locale, 1, c)));

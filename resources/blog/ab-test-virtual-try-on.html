@@ -4,7 +4,7 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>A/B testing virtual try-on on Shopify product pages | Stylab</title>
-    <meta name="description" content="Compare product page behavior with and without try-on. Why built-in A/B buckets beat guessing conversion impact.">
+    <meta name="description" content="A step-by-step protocol to compare try-on vs control on Shopify — pre-test checklist, metrics that matter, and how to decide after 30 days.">
     <meta name="robots" content="index, follow">
     <link rel="icon" type="image/png" href="../../assets/logo.png">
     <link rel="preconnect" href="https://fonts.googleapis.com">
@@ -43,25 +43,84 @@
         <a href="/fr/resources/blog/">Français</a>
         <a href="https://apps.shopify.com/try-on-stylelab" class="btn btn-primary" target="_blank" rel="noopener">Install on Shopify</a>
     </div>
-    <main class="page-main"><section class="page-hero"><div class="wrap reveal"><p class="breadcrumb"><a href="../index.html">Resources</a> / <a href="index.html">Blog</a></p><p class="pill">Analytics</p><h1>A/B testing virtual try-on on Shopify product pages</h1><p class="lead">Compare product page behavior with and without try-on. Why built-in A/B buckets beat guessing conversion impact.</p><p class="meta">May 10, 2026</p></div></section>
-            <section class="section section-white"><div class="wrap prose reveal"><p>Many merchants launch try-on and ask: did it work? Without a control group, you cannot know whether cart lifts came from try-on or from seasonality, ads, or pricing changes.</p>
-<h2>What Stylab A/B testing does</h2>
-<p>From the Widget admin page, enable A/B testing and choose what share of visitors see try-on (10% to 90%). Each visitor is bucketed consistently. The control group sees the normal product page; the test group sees the try-on button.</p>
-<p>After 30 days, compare for each bucket:</p>
+    <main class="page-main"><section class="page-hero"><div class="wrap reveal"><p class="breadcrumb"><a href="../index.html">Resources</a> / <a href="index.html">Blog</a></p><p class="pill">Analytics</p><h1>A/B testing virtual try-on on Shopify product pages</h1><p class="lead">A step-by-step protocol to compare try-on vs control on Shopify — pre-test checklist, metrics that matter, and how to decide after 30 days.</p><p class="meta">May 10, 2026</p></div></section>
+            <section class="section section-white"><div class="wrap prose reveal"><p>You installed virtual try-on. Sessions are climbing. But did try-on actually change shopping behavior — or did a sale, an ad campaign, or seasonality move the numbers? Without a control group, you cannot know.</p>
+<p>This guide walks through how to run a clean A/B test on Shopify product pages using Stylab's built-in traffic buckets. No external testing tool required.</p>
+
+<h2>Why guessing fails</h2>
+<p>Common traps merchants fall into:</p>
 <ul>
-<li>Page views</li>
-<li>Try-on sessions (test group)</li>
-<li>Add-to-cart count and rate</li>
+<li>Comparing this month to last month while running a promo</li>
+<li>Enabling try-on store-wide and attributing any cart lift to the widget</li>
+<li>Looking only at try-on session count (engagement ≠ purchase intent)</li>
+<li>Stopping after a week when traffic is too thin to learn anything</li>
 </ul>
-<h2>How to run a clean test</h2>
+<p>A/B testing splits visitors on the <em>same product pages</em> into two groups: one sees try-on, one does not. Same traffic source, same pricing, same photos — only the try-on button differs.</p>
+
+<h2>How Stylab A/B testing works</h2>
+<p>From <strong>Widget</strong> in your Shopify admin app:</p>
 <ol>
-<li>Pick 2–5 products with steady traffic (hoodies, jerseys, bestsellers)</li>
-<li>Start at 50/50 split for 30 days</li>
-<li>Do not change pricing or hero images mid-test</li>
-<li>Review results before enabling try-on store-wide</li>
+<li>Toggle A/B testing on</li>
+<li>Set the traffic slider (10%–90% of visitors see try-on)</li>
+<li>Each visitor is assigned to a bucket consistently for the test period</li>
 </ol>
-<h2>What A/B testing does not promise</h2>
-<p>A/B results vary by traffic, product type, photos, and store experience. Stylab helps you measure — it does not guarantee a specific conversion lift.</p></div></section><section class="section"><div class="wrap"><div class="cta-final reveal"><h2>Add AI try-on to your Shopify product pages</h2><p>Start with a few products, measure shopper engagement, and see whether try-on helps customers buy with more confidence.</p><div class="btns"><a href="https://apps.shopify.com/try-on-stylelab" class="btn btn-primary" target="_blank" rel="noopener">Install on Shopify</a><a href="../../index.html#try-it" class="btn btn-ghost">View live demo</a></div></div></div></section></main>
+<p>The control group sees the normal product page. The test group sees the <strong>Try it on</strong> button. After enough time, compare buckets in your dashboard:</p>
+<ul>
+<li>Page views per bucket</li>
+<li>Try-on sessions (test group only)</li>
+<li>Add-to-cart count and rate per bucket</li>
+</ul>
+
+<h2>Pre-test checklist (do this before you start)</h2>
+<ul>
+<li>Pick 2–5 products with <strong>steady weekly traffic</strong> — not new launches with zero history</li>
+<li>Confirm garment photos are acceptable (upgrade flat-lays on key SKUs if needed — see <a href="flat-lay-photos-better-tryon.html">flat-lay guide</a>)</li>
+<li>Freeze pricing, hero images, and major ad spend changes for 30 days</li>
+<li>Note your baseline add-to-cart rate from Shopify analytics for those URLs</li>
+<li>Estimate expected try-on volume with our <a href="../free-tools.html">usage calculator</a> so you stay within plan quota</li>
+</ul>
+
+<h2>30-day test protocol</h2>
+<ol>
+<li><strong>Week 0</strong> — Enable try-on on selected SKUs only. Run without A/B for 3–5 days to confirm the widget works and shoppers use it.</li>
+<li><strong>Day 1 of test</strong> — Set A/B to 50/50. Do not touch the slider mid-test.</li>
+<li><strong>Weeks 1–4</strong> — Monitor weekly: try-on adoption (% of test-group visitors who start try-on), add-to-cart rate per bucket, failed generations.</li>
+<li><strong>Day 30</strong> — Review results using the decision framework below.</li>
+</ol>
+<blockquote><strong>Low traffic?</strong> If a product gets fewer than ~500 PDP views in 30 days, extend the test or combine similar SKUs. Thin data produces noisy conclusions — not wrong answers, just unreliable ones.</blockquote>
+
+<h2>Metrics that matter vs vanity metrics</h2>
+<h3>Watch these</h3>
+<ul>
+<li><strong>Add-to-cart rate</strong> — test bucket vs control bucket on the same products</li>
+<li><strong>Try-on adoption</strong> — are shoppers actually clicking? Low adoption may mean button placement, mobile UX, or wrong SKUs</li>
+<li><strong>Try-on → cart path</strong> — sessions that led to add-to-cart (available in dashboard)</li>
+<li><strong>Failed generation rate</strong> — high failures may indicate photo quality issues, not product-market fit</li>
+</ul>
+<h3>Do not over-index on these alone</h3>
+<ul>
+<li>Raw try-on session count without a control comparison</li>
+<li>Store-wide revenue during a sale period</li>
+<li>Social media mentions or press</li>
+</ul>
+
+<h2>How to decide after 30 days</h2>
+<p>Use this framework — not gut feeling:</p>
+<ul>
+<li><strong>Expand</strong> — test bucket shows equal or higher add-to-cart rate <em>and</em> meaningful try-on adoption. Roll out to more SKUs; consider 70/30 or 100% try-on on winners.</li>
+<li><strong>Iterate</strong> — try-on adoption is strong but cart rate is flat. Improve flat-lay photos, button copy, or product selection before scaling.</li>
+<li><strong>Pause on SKU</strong> — near-zero try-on usage after 30 days. The product may not need visualization, or traffic is too low.</li>
+<li><strong>Extend test</strong> — inconclusive with thin traffic. Run 30 more days or add products.</li>
+</ul>
+<p>Results vary by niche, photography, price point, and shopper demographics. Stylab helps you measure — it does not guarantee a specific lift.</p>
+
+<h2>Related guides</h2>
+<ul>
+<li><a href="reduce-purchase-hesitation-shopify.html">5-SKU rollout for purchase hesitation</a></li>
+<li><a href="flat-lay-photos-better-tryon.html">Improve try-on output with flat-lay photos</a></li>
+<li><a href="../free-tools.html">Free usage &amp; revenue estimator</a></li>
+</ul>
+<p><a href="../../index.html#try-it">Try the live demo →</a></p></div></section><section class="section"><div class="wrap"><div class="cta-final reveal"><h2>Add AI try-on to your Shopify product pages</h2><p>Start with a few products, measure shopper engagement, and see whether try-on helps customers buy with more confidence.</p><div class="btns"><a href="https://apps.shopify.com/try-on-stylelab" class="btn btn-primary" target="_blank" rel="noopener">Install on Shopify</a><a href="../../index.html#try-it" class="btn btn-ghost">View live demo</a></div></div></div></section></main>
     <footer>
         <div class="wrap footer-top">
             <div class="footer-brand">

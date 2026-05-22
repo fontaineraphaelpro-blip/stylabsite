@@ -30,7 +30,7 @@
         {
           "@type": "SoftwareApplication",
           "name": "Stylab Virtual Try-On",
-          "alternateName": ["Stylab AI Try-On", "StyleLab Virtual Try-On"],
+          "alternateName": ["Stylab AI Try-On", "Stylab Virtual Try-On"],
           "applicationCategory": "BusinessApplication",
           "operatingSystem": "Shopify",
           "description": "AI virtual try-on for Shopify apparel brands. Let shoppers see themselves wearing your products before they buy. Sans code, built-in analytics, A/B testing, and per-product controls.",
@@ -38,7 +38,7 @@
             "Shopify App Store install",
             "Virtual fitting room on product pages",
             "Built-in A/B testing",
-            "Pay only for successful try-ons",
+            "Usage based on successful try-on generations",
             "Enable try-on by product",
             "Flat-lay product uploads",
             "Mobile and desktop widget",
@@ -78,7 +78,7 @@
           "mainEntity": [
             {"@type": "Question", "name": "Do I need to edit my Shopify theme?", "acceptedAnswer": {"@type": "Answer", "text": "No. Stylab Virtual Try-On is designed to install through Shopify and add a try-on experience to product pages without manual theme editing."}},
             {"@type": "Question", "name": "Which products work best?", "acceptedAnswer": {"@type": "Answer", "text": "Stylab is best suited for apparel products such as t-shirts, hoodies, jerseys, dresses, and other visual fashion items where shoppers want to see style and fit before buying."}},
-            {"@type": "Question", "name": "Do failed generations use credits?", "acceptedAnswer": {"@type": "Answer", "text": "Only successful try-ons should count toward your quota. Failed generations can be retried without consuming a successful try-on credit."}},
+            {"@type": "Question", "name": "Do failed generations use credits?", "acceptedAnswer": {"@type": "Answer", "text": "Usage is based on successful try-on generations. Failed generations can be retried without consuming a successful try-on credit."}},
             {"@type": "Question", "name": "Are shopper photos stored?", "acceptedAnswer": {"@type": "Answer", "text": "Stylab is designed to process photos for generation only. The widget tells shoppers their photo is not stored. See the privacy policy for full details."}},
             {"@type": "Question", "name": "Can I choose which products use try-on?", "acceptedAnswer": {"@type": "Answer", "text": "Yes. You can enable or disable try-on by product from your Shopify admin."}},
             {"@type": "Question", "name": "Can I measure performance?", "acceptedAnswer": {"@type": "Answer", "text": "Yes. Stylab includes analytics for try-on sessions, usage, add-to-cart activity, and A/B test buckets."}},
@@ -1505,11 +1505,12 @@
             </a>
             <nav class="nav-links" aria-label="Main">
                 <a href="#try-it">Démo live</a>
+                <a href="#privacy">Confidentialité</a>
                 <a href="solutions/">Solutions</a>
                 <a href="compare/">Comparer</a>
                 <a href="resources/">Ressources</a>
                 <a href="resources/blog/">Blog</a>
-                <a href="#inside">Visite produit</a>
+                <a href="#features">Features</a>
                 <a href="#pricing">Tarifs</a>
                 <a href="#faq">FAQ</a>
                 <a href="/" class="lang-switch">English</a>
@@ -1526,7 +1527,8 @@
         <a href="solutions/">Solutions</a>
         <a href="compare/">Comparer</a>
         <a href="resources/">Ressources</a>
-        <a href="#inside">Visite produit</a>
+        <a href="resources/blog/">Blog</a>
+        <a href="#features">Features</a>
         <a href="#privacy">Confidentialité</a>
         <a href="#pricing">Tarifs</a>
         <a href="#faq">FAQ</a>
@@ -1541,7 +1543,7 @@
             <div class="wrap">
                 <div class="hero-grid">
                     <div class="reveal">
-                        <div class="pill"><svg class="shopify-icon shopify-icon--green" aria-hidden="true"><use href="#icon-shopify"/></svg><span class="pill-dot"></span> Conçu pour marques apparel Shopify</div>
+                        <div class="pill"><svg class="shopify-icon shopify-icon--green" aria-hidden="true"><use href="#icon-shopify"/></svg><span class="pill-dot"></span> Designed for Shopify apparel brands</div>
                         <h1>Essayage IA pour marques apparel Shopify</h1>
                         <p class="hero-lead">
                             Let shoppers see themselves wearing your products before they buy.
@@ -1557,17 +1559,13 @@
                                 <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M5 12h14M13 6l6 6-6 6"/></svg>
                             </a>
                         </div>
-                        <p class="hero-microcopy">Plan gratuit · Installation sans code · Mobile et desktop</p>
+                        <p class="hero-microcopy">Designed for Shopify apparel brands · Preview generated in seconds</p>
                         <div class="shopify-trust-row" aria-label="Shopify trust signals">
                             <span class="shopify-chip"><svg class="shopify-icon shopify-icon--green" aria-hidden="true"><use href="#icon-shopify"/></svg>Shopify App Store</span>
                             <span class="shopify-chip">Plan gratuit · 50 essayages/mo</span>
                             <span class="shopify-chip">Sans code</span>
                             <span class="shopify-chip">Mobile</span>
-                        </div>
-                        <div class="hero-metrics">
-                            <div class="metric"><strong data-count="30" data-suffix="s">0</strong><span>Temps moyen</span></div>
-                            <div class="metric"><strong>50</strong><span>Essayages gratuits / mois</span></div>
-                            <div class="metric"><strong>5.0★</strong><span><svg class="shopify-icon shopify-icon--green" aria-hidden="true" style="width:14px;height:14px;display:inline-block;vertical-align:-2px;margin-right:2px"><use href="#icon-shopify"/></svg>Note App Store</span></div>
+                            <span class="shopify-chip">Shopify billing</span>
                         </div>
                     </div>
                     <div class="mockup-stage reveal reveal-delay-2">
@@ -1610,29 +1608,6 @@
             </div>
         </div>
 
-        <!-- PROBLEM -->
-        <section id="problem" aria-labelledby="problem-title">
-            <div class="wrap">
-                <div class="problem-grid reveal">
-                    <div>
-                        <p class="section-label">Le défi</p>
-                        <h2 class="section-title" id="problem-title">Les acheteurs hésitent quand ils ne se projettent pas</h2>
-                        <p class="section-desc" style="margin-bottom:0;">
-                            Product photos show the garment. Stylab helps shoppers imagine themselves wearing it.
-                            With a try-on button on your product pages, customers can upload a photo, generate a preview,
-                            and move to checkout with more confidence.
-                        </p>
-                    </div>
-                    <ul class="problem-bullets">
-                        <li>Réduire l'hésitation avant l'ajout au panier</li>
-                        <li>Aider les clients à visualiser vos produits sur eux</li>
-                        <li>Créer une page produit plus interactive</li>
-                        <li>Mesurer l'influence de l'essayage sur le panier</li>
-                    </ul>
-                </div>
-            </div>
-        </section>
-
         <!-- INTERACTIVE TRIAL — real widget -->
         <section id="try-it" aria-labelledby="try-it-title">
             <div class="wrap">
@@ -1640,6 +1615,7 @@
                     <p class="section-label">Démo live</p>
                     <h2 class="section-title" id="try-it-title">Essayez le même widget que vos clients</h2>
                     <p class="section-desc">Uploadez une photo ci-dessous pour prévisualiser l'essayage sur une page produit Shopify.</p>
+                    <p class="section-desc" style="margin-top:-0.5rem;font-size:0.92rem;color:var(--muted);">This live demo uses the same widget installed on Shopify product pages.</p>
                 </div>
                 <article class="trial-box reveal" itemscope itemtype="https://schema.org/Product">
                     <meta itemprop="name" content="Shadow Stripe Collared Soccer Jersey">
@@ -1704,6 +1680,7 @@
                                     Photo not stored
                                 </span>
                                 <span>·</span>
+                                <a href="#privacy">How we handle photos →</a>
                                 <a href="https://remadeicons.shop/products/shadow-stripe-collared-soccer-jersey-4" target="_blank" rel="noopener">Same product on live store →</a>
                                 <span>·</span>
                                 <a href="https://apps.shopify.com/try-on-stylelab" target="_blank" rel="noopener">Install on my store</a>
@@ -1729,549 +1706,13 @@
             </div>
         </section>
 
-        <!-- PILOT CASE STUDY -->
-        <section id="pilot">
-            <div class="wrap">
-                <div class="demo-block reveal">
-                    <div class="demo-inner">
-                        <div>
-                            <p class="section-label" style="color:var(--green-300);">Résultat pilote</p>
-                            <h2>Dans une boutique pilote, l'essayage a montré une forte intention d'ajout au panier</h2>
-                            <div class="pilot-box">
-                                <p class="pilot-metric">77.8%</p>
-                                <p style="font-size:0.95rem;color:var(--ink-soft);margin-top:0.35rem;">essayage → panier sur un pilote</p>
-                                <p class="pilot-disclaimer">
-                                    Based on one early store (REMADE ICONS). Results may vary depending on traffic, product type,
-                                    photos, pricing, and store experience. We&rsquo;re continuing to collect data across more stores.
-                                </p>
-                                <!-- TODO before publishing 77.8% as proof: Add number of try-on sessions · Add measurement period · Add comparison with non-try-on visitors · Add store owner permission/logo/testimonial -->
-                            </div>
-                            <p style="margin-top:1.25rem;">Open the live Shopify store, click <strong>Try it on</strong>, upload a photo, and see the shopper experience for yourself.</p>
-                            <a href="https://remadeicons.shop/products/shadow-stripe-collared-soccer-jersey-4" class="btn btn-white" target="_blank" rel="noopener" style="margin-top:1rem;">Voir la démo store →</a>
-                        </div>
-                        <div class="browser-frame">
-                            <div class="browser-chrome">
-                                <span class="browser-dot"></span><span class="browser-dot"></span><span class="browser-dot"></span>
-                                <span class="browser-url">remadeicons.shop/products/shadow-stripe-collared-soccer-jersey-4</span>
-                            </div>
-                            <img src="../assets/screenshots/storefront-product.png" alt="REMADE ICONS product page with Try it on button" loading="lazy" class="cap-1024">
-                        </div>
-                    </div>
-                </div>
-            </div>
-        </section>
-
-        <!-- INTERACTIVE SHOWCASE -->
-        <section id="showcase">
-            <div class="wrap">
-                <div class="section-head center reveal">
-                    <p class="section-label">Visite produit</p>
-                    <h2 class="section-title">Storefront and admin — what you get after install</h2>
-                    <p class="section-desc">The shopper widget, your Shopify admin dashboard, product controls, and session history — all in one app.</p>
-                </div>
-                <div class="showcase reveal">
-                    <div class="showcase-tabs" role="tablist">
-                        <button class="tab-btn active" data-tab="storefront" role="tab" aria-selected="true">Storefront</button>
-                        <button class="tab-btn" data-tab="result" role="tab">Result &amp; cart</button>
-                        <button class="tab-btn" data-tab="widget" role="tab">Widget &amp; A/B</button>
-                        <button class="tab-btn" data-tab="dashboard" role="tab">Dashboard</button>
-                        <button class="tab-btn" data-tab="products" role="tab">Products</button>
-                        <button class="tab-btn" data-tab="history" role="tab">History</button>
-                    </div>
-                    <div class="showcase-panel active" id="tab-storefront" role="tabpanel">
-                        <div class="app-frame" style="max-width:920px;margin:2.5rem auto;">
-                            <div class="app-frame-chrome"><span class="app-frame-dot"></span><span class="app-frame-dot"></span><span class="app-frame-dot"></span><span class="app-frame-title">remadeicons.shop · product page</span></div>
-                            <div class="app-frame-body"><img src="../assets/screenshots/storefront-product.png" alt="Try it on button on a Shopify product page" class="cap-1024"></div>
-                        </div>
-                    </div>
-                    <div class="showcase-panel" id="tab-result" role="tabpanel">
-                        <div class="device-frame" style="margin:2.5rem auto;">
-                            <div class="device-frame-body"><img src="../assets/screenshots/result-modal.png" alt="AI result with add-to-cart action"></div>
-                        </div>
-                    </div>
-                    <div class="showcase-panel" id="tab-widget" role="tabpanel">
-                        <div class="app-frame" style="max-width:920px;margin:2.5rem auto;">
-                            <div class="app-frame-chrome"><span class="app-frame-dot"></span><span class="app-frame-dot"></span><span class="app-frame-dot"></span><span class="app-frame-title">admin · widget &amp; A/B</span></div>
-                            <div class="app-frame-body"><img src="../assets/screenshots/widget-ab.png" alt="Widget settings and A/B test panel" class="cap-1024"></div>
-                        </div>
-                    </div>
-                    <div class="showcase-panel" id="tab-dashboard" role="tabpanel">
-                        <div class="app-frame" style="max-width:980px;margin:2.5rem auto;">
-                            <div class="app-frame-chrome"><span class="app-frame-dot"></span><span class="app-frame-dot"></span><span class="app-frame-dot"></span><span class="app-frame-title">admin · dashboard</span></div>
-                            <div class="app-frame-body"><img src="../assets/screenshots/dashboard.png" alt="Dashboard with KPIs" class="cap-1024"></div>
-                        </div>
-                    </div>
-                    <div class="showcase-panel" id="tab-products" role="tabpanel">
-                        <div class="app-frame" style="max-width:920px;margin:2.5rem auto;">
-                            <div class="app-frame-chrome"><span class="app-frame-dot"></span><span class="app-frame-dot"></span><span class="app-frame-dot"></span><span class="app-frame-title">admin · products</span></div>
-                            <div class="app-frame-body"><img src="../assets/screenshots/products.png" alt="Product manager with try-on toggle" class="cap-1024"></div>
-                        </div>
-                    </div>
-                    <div class="showcase-panel" id="tab-history" role="tabpanel">
-                        <div class="app-frame" style="max-width:920px;margin:2.5rem auto;">
-                            <div class="app-frame-chrome"><span class="app-frame-dot"></span><span class="app-frame-dot"></span><span class="app-frame-dot"></span><span class="app-frame-title">admin · history</span></div>
-                            <div class="app-frame-body"><img src="../assets/screenshots/history.png" alt="Session history" class="cap-1024"></div>
-                        </div>
-                    </div>
-                    <div class="showcase-caption">
-                        <div>
-                            <h3 id="tab-title">Storefront try-on button</h3>
-                            <p id="tab-desc">Try it on button on your product page — same experience shoppers see after install.</p>
-                        </div>
-                        <a href="https://apps.shopify.com/try-on-stylelab" class="btn btn-primary" target="_blank" rel="noopener"><svg class="shopify-icon shopify-icon--white" aria-hidden="true"><use href="#icon-shopify"/></svg>Installer sur Shopify</a>
-                    </div>
-                </div>
-            </div>
-        </section>
-
-        <!-- INSIDE THE APP — merchant-facing UI mockups built from the real app code -->
-        <section id="inside">
-            <div class="wrap">
-                <div class="section-head center reveal">
-                    <p class="section-label">Visite produit</p>
-                    <h2 class="section-title">What you&rsquo;ll manage in Shopify admin</h2>
-                    <p class="section-desc">Dashboard, product toggles, widget settings, and session logs — designed for apparel merchants who want clarity, not complexity.</p>
-                </div>
-
-                <!-- DASHBOARD MOCKUP -->
-                <div class="ui-row reveal">
-                    <div class="ui-row-text">
-                        <p class="ui-tag">Dashboard</p>
-                        <h3>Track try-on usage and cart actions from one dashboard.</h3>
-                        <p class="ui-desc">Generations left, try-ons this month, add-to-carts, and conversion metrics. Plus a 7-day chart, top products, and recent sessions — without setting up Google Analytics.</p>
-                        <ul class="ui-bullets">
-                            <li>4 live KPIs synced with your store</li>
-                            <li>Top 10 products by try-on volume</li>
-                            <li>Recent sessions with success / failure badges</li>
-                        </ul>
-                    </div>
-                    <div class="ui-mock reveal-delay-1">
-                        <div class="ui-window" aria-hidden="true">
-                            <div class="ui-window-bar"><span class="ui-dot ui-dot-red"></span><span class="ui-dot ui-dot-yellow"></span><span class="ui-dot ui-dot-green"></span><span class="ui-window-title">Shopify admin · Stylab Virtual Try-On</span></div>
-                            <div class="ui-window-body">
-                                <div class="ui-page-title">
-                                    <div>
-                                        <small>Storefront active</small>
-                                        <h4>Virtual Try-On on your product pages</h4>
-                                        <span>2,000 generations left &middot; 318 generations in the last 30 days</span>
-                                    </div>
-                                </div>
-                                <div class="ui-kpis">
-                                    <div class="ui-kpi"><span>Generations left</span><strong>2,000</strong></div>
-                                    <div class="ui-kpi"><span>Generations (30 days)</span><strong>318</strong></div>
-                                    <div class="ui-kpi"><span>Add to Cart</span><strong>247</strong></div>
-                                    <div class="ui-kpi ui-kpi-accent"><span>Conversion Rate</span><strong>—</strong></div>
-                                </div>
-                                <div class="ui-card">
-                                    <div class="ui-card-head">
-                                        <h5>Daily try-ons (last 7 days)</h5>
-                                        <a href="#" class="ui-link">View history</a>
-                                    </div>
-                                    <svg class="ui-chart" viewBox="0 0 320 80" preserveAspectRatio="none" aria-hidden="true">
-                                        <defs>
-                                            <linearGradient id="ui-fill" x1="0" y1="0" x2="0" y2="1">
-                                                <stop offset="0%" stop-color="#14532d" stop-opacity="0.35"/>
-                                                <stop offset="100%" stop-color="#14532d" stop-opacity="0"/>
-                                            </linearGradient>
-                                        </defs>
-                                        <path d="M0,55 L45,40 L90,48 L135,28 L180,32 L225,16 L270,22 L320,10 L320,80 L0,80 Z" fill="url(#ui-fill)"/>
-                                        <path d="M0,55 L45,40 L90,48 L135,28 L180,32 L225,16 L270,22 L320,10" fill="none" stroke="#14532d" stroke-width="2"/>
-                                        <circle cx="320" cy="10" r="3.5" fill="#14532d"/>
-                                    </svg>
-                                    <div class="ui-chart-labels"><span>Thu</span><span>Fri</span><span>Sat</span><span>Sun</span><span>Mon</span><span>Tue</span><span>Wed</span><span>Today</span></div>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-
-                <!-- WIDGET CUSTOMIZATION + A/B -->
-                <div class="ui-row ui-row-reverse reveal">
-                    <div class="ui-row-text">
-                        <p class="ui-tag">Widget &amp; A/B test</p>
-                        <h3>Match your brand. Measure impact with A/B testing.</h3>
-                        <p class="ui-desc">Six quick-style presets or any hex color. Live preview while you tweak. Split traffic to compare product page behavior with and without try-on — included on every plan.</p>
-                        <ul class="ui-bullets">
-                            <li>6 presets &middot; Classic, Ivory, Navy, Forest, Wine, Violet</li>
-                            <li>A/B traffic slider with 30-day stats per bucket</li>
-                            <li>Optional custom placement via the Shopify theme editor</li>
-                        </ul>
-                    </div>
-                    <div class="ui-mock reveal-delay-1">
-                        <div class="ui-window" aria-hidden="true">
-                            <div class="ui-window-bar"><span class="ui-dot ui-dot-red"></span><span class="ui-dot ui-dot-yellow"></span><span class="ui-dot ui-dot-green"></span><span class="ui-window-title">Stylab &middot; Widget</span></div>
-                            <div class="ui-window-body">
-                                <div class="ui-section-title"><h5>Button style</h5></div>
-                                <label class="ui-field">
-                                    <span>Button text</span>
-                                    <div class="ui-input">Try it on</div>
-                                </label>
-                                <div class="ui-presets">
-                                    <span>Quick styles</span>
-                                    <div class="ui-preset-grid">
-                                        <button type="button" class="ui-preset" style="background:#111827;color:#fff;">Classic</button>
-                                        <button type="button" class="ui-preset" style="background:#fef3c7;color:#78350f;">Ivory</button>
-                                        <button type="button" class="ui-preset" style="background:#1e3a8a;color:#fff;">Navy</button>
-                                        <button type="button" class="ui-preset ui-preset-active" style="background:#14532d;color:#ecfdf5;">Forest</button>
-                                        <button type="button" class="ui-preset" style="background:#7f1d1d;color:#fff;">Wine</button>
-                                        <button type="button" class="ui-preset" style="background:#5b21b6;color:#fff;">Violet</button>
-                                    </div>
-                                </div>
-                                <div class="ui-preview-line">
-                                    <span>Live preview</span>
-                                    <button type="button" class="ui-fake-btn" style="background:#14532d;color:#ecfdf5;">
-                                        <svg viewBox="0 0 24 24" width="14" height="14" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="8" r="4"/><path d="M4 21c0-4.4 3.6-8 8-8s8 3.6 8 8"/></svg>
-                                        Try it on
-                                    </button>
-                                </div>
-                                <div class="ui-divider"></div>
-                                <div class="ui-section-title">
-                                    <h5>A/B test: try-on vs no try-on</h5>
-                                    <span class="ui-badge">Included</span>
-                                </div>
-                                <div class="ui-toggle-row">
-                                    <span>Enable A/B test on the storefront</span>
-                                    <span class="ui-toggle ui-toggle-on"><span></span></span>
-                                </div>
-                                <div class="ui-slider-row">
-                                    <span>Show try-on to <strong>60%</strong> of visitors</span>
-                                    <div class="ui-slider"><div class="ui-slider-fill" style="width:60%"></div></div>
-                                </div>
-                                <div class="ui-ab-stats">
-                                    <div><span>With try-on (60%)</span><strong>ATC rate</strong></div>
-                                    <div><span>Without (40%)</span><strong>ATC rate</strong></div>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-
-                <!-- PRODUCTS MANAGER -->
-                <div class="ui-row reveal">
-                    <div class="ui-row-text">
-                        <p class="ui-tag">Products</p>
-                        <h3>Pick which products get try-on. Upload a flat-lay for crisper results.</h3>
-                        <p class="ui-desc">Enable or disable try-on per product in one click. Upload a clean flat-lay garment photo for the AI &mdash; it&rsquo;s stored privately and never shows up in your customer-facing gallery.</p>
-                        <ul class="ui-bullets">
-                            <li>Per-product toggle, on by default</li>
-                            <li>AI garment photo uploaded to Shopify Files</li>
-                            <li>Search and pagination across your full catalog</li>
-                        </ul>
-                    </div>
-                    <div class="ui-mock reveal-delay-1">
-                        <div class="ui-window" aria-hidden="true">
-                            <div class="ui-window-bar"><span class="ui-dot ui-dot-red"></span><span class="ui-dot ui-dot-yellow"></span><span class="ui-dot ui-dot-green"></span><span class="ui-window-title">Stylab &middot; Products</span></div>
-                            <div class="ui-window-body">
-                                <div class="ui-search">
-                                    <svg viewBox="0 0 24 24" width="14" height="14" fill="none" stroke="currentColor" stroke-width="2"><circle cx="11" cy="11" r="7"/><path d="M21 21l-4.3-4.3"/></svg>
-                                    <span>Search by title or handle</span>
-                                </div>
-                                <div class="ui-table">
-                                    <div class="ui-thead">
-                                        <span>Product</span><span>Status</span><span>Try-ons</span><span>Garment photo</span><span>Try-on</span>
-                                    </div>
-                                    <div class="ui-trow">
-                                        <span class="ui-product"><span class="ui-thumb" style="background:linear-gradient(135deg,#16a34a,#14532d);"></span>Shadow Stripe Soccer Jersey</span>
-                                        <span class="ui-status-active">Active</span>
-                                        <span>318</span>
-                                        <span class="ui-photo"><span class="ui-photo-dot ui-photo-dot-custom"></span>Custom flat-lay</span>
-                                        <span><span class="ui-toggle ui-toggle-on"><span></span></span></span>
-                                    </div>
-                                    <div class="ui-trow">
-                                        <span class="ui-product"><span class="ui-thumb" style="background:linear-gradient(135deg,#fef3c7,#fbbf24);"></span>Ivory Trench Coat</span>
-                                        <span class="ui-status-active">Active</span>
-                                        <span>104</span>
-                                        <span class="ui-photo"><span class="ui-photo-dot"></span>Default image</span>
-                                        <span><span class="ui-toggle ui-toggle-on"><span></span></span></span>
-                                    </div>
-                                    <div class="ui-trow">
-                                        <span class="ui-product"><span class="ui-thumb" style="background:linear-gradient(135deg,#1e3a8a,#0c1222);"></span>Navy Wool Polo</span>
-                                        <span class="ui-status-active">Active</span>
-                                        <span>52</span>
-                                        <span class="ui-photo"><span class="ui-photo-dot ui-photo-dot-custom"></span>Custom flat-lay</span>
-                                        <span><span class="ui-toggle ui-toggle-on"><span></span></span></span>
-                                    </div>
-                                    <div class="ui-trow">
-                                        <span class="ui-product"><span class="ui-thumb" style="background:linear-gradient(135deg,#7f1d1d,#fb7185);"></span>Wine Velvet Dress</span>
-                                        <span class="ui-status-active">Active</span>
-                                        <span>26</span>
-                                        <span class="ui-photo"><span class="ui-photo-dot"></span>Default image</span>
-                                        <span><span class="ui-toggle"><span></span></span></span>
-                                    </div>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-
-                <!-- HISTORY / TRY-ON LOG -->
-                <div class="ui-row ui-row-reverse reveal">
-                    <div class="ui-row-text">
-                        <p class="ui-tag">History</p>
-                        <h3>Every shopper session, with the data that matters.</h3>
-                        <p class="ui-desc">Total attempts, success rate, average latency &mdash; and a full session log to debug or report on. No CSV export needed; it&rsquo;s all in your Shopify admin.</p>
-                        <ul class="ui-bullets">
-                            <li>Success / Error badges per session</li>
-                            <li>Latency in seconds (red beyond 3s)</li>
-                            <li>Auto product-name enrichment</li>
-                        </ul>
-                    </div>
-                    <div class="ui-mock reveal-delay-1">
-                        <div class="ui-window" aria-hidden="true">
-                            <div class="ui-window-bar"><span class="ui-dot ui-dot-red"></span><span class="ui-dot ui-dot-yellow"></span><span class="ui-dot ui-dot-green"></span><span class="ui-window-title">Stylab &middot; History</span></div>
-                            <div class="ui-window-body">
-                                <div class="ui-kpis">
-                                    <div class="ui-kpi"><span>Total attempts</span><strong>1,284</strong></div>
-                                    <div class="ui-kpi"><span>Success rate</span><strong>97.1%</strong></div>
-                                    <div class="ui-kpi"><span>Avg latency</span><strong>29.4s</strong></div>
-                                </div>
-                                <div class="ui-table ui-table-log">
-                                    <div class="ui-thead">
-                                        <span>Date</span><span>Product</span><span>Status</span><span>Latency</span>
-                                    </div>
-                                    <div class="ui-trow">
-                                        <span>Today, 18:42</span>
-                                        <span class="ui-truncate">Shadow Stripe Soccer Jersey</span>
-                                        <span class="ui-pill ui-pill-success">Success</span>
-                                        <span>28.7s</span>
-                                    </div>
-                                    <div class="ui-trow">
-                                        <span>Today, 18:14</span>
-                                        <span class="ui-truncate">Ivory Trench Coat</span>
-                                        <span class="ui-pill ui-pill-success">Success</span>
-                                        <span>31.2s</span>
-                                    </div>
-                                    <div class="ui-trow">
-                                        <span>Today, 17:55</span>
-                                        <span class="ui-truncate">Navy Wool Polo</span>
-                                        <span class="ui-pill ui-pill-error">Error</span>
-                                        <span>&mdash;</span>
-                                    </div>
-                                    <div class="ui-trow">
-                                        <span>Today, 17:21</span>
-                                        <span class="ui-truncate">Shadow Stripe Soccer Jersey</span>
-                                        <span class="ui-pill ui-pill-success">Success</span>
-                                        <span>26.8s</span>
-                                    </div>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-            </div>
-        </section>
-
-        <!-- USE CASES -->
-        <section id="use-cases" style="background: var(--green-50);">
-            <div class="wrap">
-                <div class="section-head center reveal">
-                    <p class="section-label">Works best for</p>
-                    <h2 class="section-title">Best for visual apparel products</h2>
-                    <p class="section-desc">Stylab works best when shoppers need to visualize the style, color, and overall look of a garment before buying.</p>
-                </div>
-                <div class="use-grid reveal">
-                    <div class="use-card">Streetwear</div>
-                    <div class="use-card">Hoodies &amp; sweatshirts</div>
-                    <div class="use-card">Jerseys</div>
-                    <div class="use-card">T-shirts</div>
-                    <div class="use-card">Dresses</div>
-                    <div class="use-card">Capsule drops</div>
-                </div>
-            </div>
-        </section>
-
-        <!-- BENTO FEATURES -->
-        <section id="features">
-            <div class="wrap">
-                <div class="section-head reveal">
-                    <p class="section-label">Widget highlights</p>
-                    <h2 class="section-title">Designed for day-to-day merchant use</h2>
-                    <p class="section-desc">Branded button, per-product controls, usage limits, sharing, background renders, and transparent billing.</p>
-                </div>
-                <div class="bento">
-                    <div class="bento-item span-8 reveal bento-shot">
-                        <div class="bento-shot-wrap">
-                            <img src="../assets/screenshots/button-style.png" alt="Try it on button customization" loading="lazy" class="cap-1024">
-                        </div>
-                        <div class="bento-cap">
-                            <h3>100% on-brand widget</h3>
-                            <p>6 quick-style presets &middot; hex inputs &middot; live preview with contrast guidance</p>
-                        </div>
-                    </div>
-                    <div class="bento-item span-4 reveal reveal-delay-1">
-                        <div class="bento-text">
-                            <div class="bento-icon" aria-hidden="true">
-                                <svg viewBox="0 0 24 24" width="20" height="20" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><polygon points="13 2 3 14 12 14 11 22 21 10 12 10 13 2"/></svg>
-                            </div>
-                            <h3>One-click install</h3>
-                            <p>From the Shopify App Store to a live try-on button on every product page &mdash; in under 5 minutes, no theme editing.</p>
-                        </div>
-                    </div>
-                    <div class="bento-item span-4 reveal">
-                        <div class="bento-text">
-                            <div class="bento-icon" aria-hidden="true">
-                                <svg viewBox="0 0 24 24" width="20" height="20" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M9 2h6v4l4 6v8a2 2 0 0 1-2 2H7a2 2 0 0 1-2-2v-8l4-6V2z"/><line x1="9" y1="14" x2="15" y2="14"/></svg>
-                            </div>
-                            <h3>A/B test on every plan</h3>
-                            <p>10-90% traffic slider. 30-day stats per bucket. No add-on fees.</p>
-                        </div>
-                    </div>
-                    <div class="bento-item span-8 reveal reveal-delay-1 bento-shot">
-                        <div class="bento-shot-wrap">
-                            <img src="../assets/screenshots/widget-ab.png" alt="A/B test try-on vs control" loading="lazy" class="cap-1024">
-                        </div>
-                        <div class="bento-cap">
-                            <h3>Measure impact with native A/B testing</h3>
-                            <p>Comparer try-on vs control buckets &middot; impressions, try-ons, and add-to-cart per group</p>
-                        </div>
-                    </div>
-                    <div class="bento-item span-4 reveal">
-                        <div class="bento-text">
-                            <div class="bento-icon" aria-hidden="true">
-                                <svg viewBox="0 0 24 24" width="20" height="20" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="10"/><path d="M12 6v6l4 2"/></svg>
-                            </div>
-                            <h3>Background generation</h3>
-                            <p>Shoppers can close the modal &mdash; they get a "Ready" toast when their try-on is done.</p>
-                        </div>
-                    </div>
-                    <div class="bento-item span-4 reveal reveal-delay-1">
-                        <div class="bento-text">
-                            <div class="bento-icon" aria-hidden="true">
-                                <svg viewBox="0 0 24 24" width="20" height="20" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><polyline points="23 4 23 10 17 10"/><path d="M20.49 15a9 9 0 1 1-2.12-9.36L23 10"/></svg>
-                            </div>
-                            <h3>Free 24h retry</h3>
-                            <p>Any failed AI try-on can be retried free for 24 hours. <em>"You were not charged."</em></p>
-                        </div>
-                    </div>
-                    <div class="bento-item span-4 reveal reveal-delay-2">
-                        <div class="bento-text">
-                            <div class="bento-icon" aria-hidden="true">
-                                <svg viewBox="0 0 24 24" width="20" height="20" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="18" cy="5" r="3"/><circle cx="6" cy="12" r="3"/><circle cx="18" cy="19" r="3"/><line x1="8.59" y1="13.51" x2="15.42" y2="17.49"/><line x1="15.41" y1="6.51" x2="8.59" y2="10.49"/></svg>
-                            </div>
-                            <h3>Native sharing</h3>
-                            <p>Web Share API, WhatsApp deep link, copy result URL &mdash; built into the result modal.</p>
-                        </div>
-                    </div>
-                    <div class="bento-item span-6 reveal bento-shot">
-                        <div class="bento-shot-wrap"><img src="../assets/screenshots/products.png" alt="Products with try-on toggle" loading="lazy" class="cap-1024"></div>
-                        <div class="bento-cap"><h3>Per-product control</h3><p>Try-on toggle &middot; custom flat-lay AI photo uploaded to Shopify Files</p></div>
-                    </div>
-                    <div class="bento-item span-6 reveal reveal-delay-1 bento-shot">
-                        <div class="bento-shot-wrap"><img src="../assets/screenshots/store-settings.png" alt="Store settings and quotas" loading="lazy" class="cap-1024"></div>
-                        <div class="bento-cap"><h3>Smart quotas</h3><p>Daily store cap &middot; per-shopper-IP cap &middot; monthly quota &middot; all four enforced before AI runs</p></div>
-                    </div>
-                </div>
-            </div>
-        </section>
-
-        <!-- ANALYTICS -->
-        <section id="analytics">
-            <div class="wrap">
-                <div class="section-head center reveal">
-                    <p class="section-label">Analytics</p>
-                    <h2 class="section-title">Measure what happens after try-on</h2>
-                    <p class="section-desc">Stylab helps you understand whether try-on is influencing shopping behavior. Track usage and add-to-cart actions from your Shopify admin dashboard.</p>
-                </div>
-                <ul class="problem-bullets reveal" style="max-width:640px;margin:0 auto 2rem;">
-                    <li>Try-on sessions</li>
-                    <li>Successful generations</li>
-                    <li>Add-to-cart after try-on</li>
-                    <li>Usage by product</li>
-                    <li>Remaining monthly credits</li>
-                    <li>A/B test performance</li>
-                </ul>
-                <div class="metrics-dark reveal" style="margin-bottom: 2rem;">
-                    <div class="metrics-grid">
-                        <div><div class="m-val" data-count="2000">0</div><div class="m-label">Generations left</div></div>
-                        <div><div class="m-val" data-count="18">0</div><div class="m-label">Try-ons (30 days)</div></div>
-                        <div><div class="m-val" data-count="14">0</div><div class="m-label">Add to cart</div></div>
-                        <div><div class="m-val">—</div><div class="m-label">Conversion (your store)</div></div>
-                    </div>
-                </div>
-                <div class="reveal" style="display:grid;gap:1.5rem;">
-                    <div class="app-frame" style="max-width:1024px;margin:0 auto;width:100%;">
-                        <div class="app-frame-chrome"><span class="app-frame-dot"></span><span class="app-frame-dot"></span><span class="app-frame-dot"></span><span class="app-frame-title">admin · dashboard</span></div>
-                        <div class="app-frame-body"><img src="../assets/screenshots/dashboard.png" alt="Stylab Virtual Try-On dashboard with KPIs" class="cap-1024" loading="lazy"></div>
-                    </div>
-                    <div class="bento">
-                        <div class="bento-item span-6">
-                            <div class="app-frame" style="border-radius:14px;">
-                                <div class="app-frame-chrome"><span class="app-frame-dot"></span><span class="app-frame-dot"></span><span class="app-frame-dot"></span><span class="app-frame-title">daily try-ons</span></div>
-                                <div class="app-frame-body"><img src="../assets/screenshots/chart-daily.png" alt="7-day daily try-on chart" class="cap-1024" loading="lazy"></div>
-                            </div>
-                        </div>
-                        <div class="bento-item span-6">
-                            <div class="app-frame" style="border-radius:14px;">
-                                <div class="app-frame-chrome"><span class="app-frame-dot"></span><span class="app-frame-dot"></span><span class="app-frame-dot"></span><span class="app-frame-title">top products</span></div>
-                                <div class="app-frame-body"><img src="../assets/screenshots/top-products.png" alt="Top products and activity" class="cap-1024" loading="lazy"></div>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-            </div>
-        </section>
-
-        <!-- HOW IT WORKS -->
-        <section id="engineering" style="background: var(--green-50);">
-            <div class="wrap">
-                <div class="section-head center reveal">
-                    <p class="section-label">How it works</p>
-                    <h2 class="section-title">How Stylab works</h2>
-                    <p class="section-desc">From install to measurable shopper engagement — four straightforward steps for Shopify apparel brands.</p>
-                </div>
-                <div class="diff-grid reveal">
-                    <div class="diff-card">
-                        <h3>1. Add the try-on button</h3>
-                        <p>Install the Shopify app and enable Stylab on selected products.</p>
-                    </div>
-                    <div class="diff-card">
-                        <h3>2. Shopper uploads a photo</h3>
-                        <p>Customers click &ldquo;Try it on&rdquo; and upload a photo from mobile or desktop.</p>
-                    </div>
-                    <div class="diff-card">
-                        <h3>3. AI generates the preview</h3>
-                        <p>Stylab creates a virtual try-on image using your product photo.</p>
-                    </div>
-                    <div class="diff-card">
-                        <h3>4. Track the impact</h3>
-                        <p>See try-ons, add-to-cart actions, and usage from your dashboard.</p>
-                    </div>
-                </div>
-
-                <!-- Trust strip -->
-                <div class="hiw-trust reveal">
-                    <div class="hiw-trust-item">
-                        <svg class="shopify-icon shopify-icon--green" aria-hidden="true"><use href="#icon-shopify"/></svg>
-                        <div>
-                            <strong>Shopify-native setup</strong>
-                            <span>Install from Shopify and manage the experience without editing your theme manually.</span>
-                        </div>
-                    </div>
-                    <div class="hiw-trust-item">
-                        <svg class="shopify-icon shopify-icon--green" aria-hidden="true"><use href="#icon-shopify"/></svg>
-                        <div>
-                            <strong>Works on Shopify 2.0 themes</strong>
-                            <span>Dawn, PageFly, GemPages, Shogun — auto-detected placement on product pages.</span>
-                        </div>
-                    </div>
-                    <div class="hiw-trust-item">
-                        <svg class="shopify-icon shopify-icon--green" aria-hidden="true"><use href="#icon-shopify"/></svg>
-                        <div>
-                            <strong>Native Shopify billing</strong>
-                            <span>Charged through your Shopify account. Cancel any time.</span>
-                        </div>
-                    </div>
-                </div>
-            </div>
-        </section>
-
-        <!-- PRIVACY & TRUST — light, merchant-friendly -->
+        <!-- PRIVACY & TRUST — immediately after live demo (photo upload) -->
         <section id="privacy">
             <div class="wrap">
                 <div class="section-head center reveal">
                     <p class="section-label">Confidentialité</p>
                     <h2 class="section-title">Confidentialité matters when shoppers upload photos</h2>
-                    <p class="section-desc">Stylab is designed to process shopper photos only for generating the try-on preview. Make privacy clear to your customers and keep your store experience trustworthy.</p>
+                    <p class="section-desc">Stylab is designed to process shopper photos only for generating the try-on preview. Make the experience trustworthy by being clear about how images are handled.</p>
                 </div>
                 <div class="privacy-two reveal">
                     <div class="privacy-card">
@@ -2305,17 +1746,133 @@
                 <p class="reveal" style="text-align:center;margin-top:1.5rem;font-size:0.9rem;">
                     <a href="../confidentialite.html" style="color:var(--green-800);font-weight:600;">Read privacy policy →</a>
                 </p>
-                <!-- TODO — validate before production privacy claims:
-                     Confirm whether shopper photos are deleted immediately after generation.
-                     Confirm AI provider (Replicate) data retention policy.
-                     Confirm how long generated images are stored and for how long.
-                     Confirm GDPR webhook implementation is complete on deployed backend.
-                     TODO: Replace Google Docs privacy policy with a dedicated /privacy page on the Stylab domain if applicable. -->
+                <!-- TODO: Confirm original shopper photo deletion timing.
+                     TODO: Confirm generated image retention duration.
+                     TODO: Confirm AI provider (Replicate) retention policy.
+                     TODO: Confirm GDPR webhook implementation on deployed backend. -->
                 <div class="privacy-mini-strip reveal">
                     <span>GDPR webhooks supported</span>
                     <span>Data removed on uninstall</span>
                     <span><svg class="shopify-icon shopify-icon--green" aria-hidden="true" style="width:12px;height:12px;display:inline-block;vertical-align:-2px;margin-right:3px"><use href="#icon-shopify"/></svg>Native Shopify billing</span>
                     <span>Cancel any time</span>
+                </div>
+            </div>
+        </section>
+
+        <!-- EARLY PILOT RESULT -->
+        <section id="pilot">
+            <div class="wrap">
+                <div class="demo-block reveal">
+                    <div class="demo-inner">
+                        <div>
+                            <p class="section-label" style="color:var(--green-300);">Early pilot result</p>
+                            <h2>In one early apparel store, shoppers who used try-on showed strong add-to-cart intent</h2>
+                            <p style="font-size:1rem;color:rgba(255,255,255,0.85);margin-top:0.75rem;line-height:1.6;">We&rsquo;re continuing to collect data across more stores.</p>
+                            <div class="pilot-box">
+                                <p class="pilot-metric">77.8%</p>
+                                <p style="font-size:0.95rem;color:var(--ink-soft);margin-top:0.35rem;">try-on → cart in one early pilot</p>
+                                <p class="pilot-disclaimer">
+                                    Based on one early store. Results may vary depending on traffic, product type, photography, pricing, and store experience.
+                                </p>
+                                <p class="pilot-disclaimer" style="margin-top:0.75rem;font-style:italic;">
+                                    Full case study coming soon with session volume and measurement period.
+                                </p>
+                                <!-- TODO before publishing 77.8% as proof: Add number of try-on sessions · Add measurement period · Add comparison with non-try-on visitors · Add store owner permission/logo/testimonial -->
+                            </div>
+                            <p style="margin-top:1.25rem;">Open the live Shopify store, click <strong>Try it on</strong>, upload a photo, and see the shopper experience for yourself.</p>
+                            <a href="https://remadeicons.shop/products/shadow-stripe-collared-soccer-jersey-4" class="btn btn-white" target="_blank" rel="noopener" style="margin-top:1rem;">Voir la démo store →</a>
+                        </div>
+                        <div class="browser-frame">
+                            <div class="browser-chrome">
+                                <span class="browser-dot"></span><span class="browser-dot"></span><span class="browser-dot"></span>
+                                <span class="browser-url">remadeicons.shop/products/shadow-stripe-collared-soccer-jersey-4</span>
+                            </div>
+                            <img src="../assets/screenshots/storefront-product.png" alt="REMADE ICONS product page with Try it on button" loading="lazy" class="cap-1024">
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- PROBLEM -->
+        <section id="problem" aria-labelledby="problem-title">
+            <div class="wrap">
+                <div class="problem-grid reveal">
+                    <div>
+                        <p class="section-label">Le défi</p>
+                        <h2 class="section-title" id="problem-title">Les acheteurs hésitent quand ils ne se projettent pas</h2>
+                        <p class="section-desc" style="margin-bottom:0;">
+                            Product photos show the garment. Stylab helps shoppers imagine themselves wearing it.
+                            With a try-on button on your product pages, customers can upload a photo, generate a preview,
+                            and move to checkout with more confidence.
+                        </p>
+                    </div>
+                    <ul class="problem-bullets">
+                        <li>Help reduce purchase hesitation before add-to-cart</li>
+                        <li>Aider les clients à visualiser vos produits sur eux</li>
+                        <li>Créer une page produit plus interactive</li>
+                        <li>Measure try-on impact on cart actions</li>
+                    </ul>
+                </div>
+            </div>
+        </section>
+
+        <!-- FEATURES + PRODUCT VISUALS (single section — no duplicate tours) -->
+        <section id="features" style="background: var(--green-50);">
+            <div class="wrap">
+                <div class="section-head center reveal">
+                    <p class="section-label">Features</p>
+                    <h2 class="section-title">Everything you need to launch and measure try-on</h2>
+                    <p class="section-desc">One Shopify app: storefront widget, admin controls, and analytics — without repeating setup across five screens.</p>
+                </div>
+                <div class="diff-grid reveal" style="margin-bottom:2.5rem;">
+                    <div class="diff-card">
+                        <h3>No-code storefront widget</h3>
+                        <p>Install from Shopify. Shoppers upload a photo and preview on mobile or desktop — no theme edits.</p>
+                    </div>
+                    <div class="diff-card">
+                        <h3>Per-product controls</h3>
+                        <p>Enable try-on by SKU. Upload optional flat-lay photos for cleaner AI output on hero products.</p>
+                    </div>
+                    <div class="diff-card">
+                        <h3>Built-in A/B testing</h3>
+                        <p>Comparer product page behavior with and without try-on before rolling out store-wide.</p>
+                    </div>
+                    <div class="diff-card">
+                        <h3>Admin analytics</h3>
+                        <p>Sessions, add-to-cart after try-on, usage quotas, and remaining credits in one dashboard.</p>
+                    </div>
+                </div>
+                <div class="showcase reveal">
+                    <div class="showcase-tabs" role="tablist">
+                        <button class="tab-btn active" data-tab="storefront" role="tab" aria-selected="true">Storefront</button>
+                        <button class="tab-btn" data-tab="dashboard" role="tab">Dashboard</button>
+                        <button class="tab-btn" data-tab="widget" role="tab">Widget &amp; A/B</button>
+                    </div>
+                    <div class="showcase-panel active" id="tab-storefront" role="tabpanel">
+                        <div class="app-frame" style="max-width:920px;margin:2rem auto;">
+                            <div class="app-frame-chrome"><span class="app-frame-dot"></span><span class="app-frame-dot"></span><span class="app-frame-dot"></span><span class="app-frame-title">product page · try-on button</span></div>
+                            <div class="app-frame-body"><img src="../assets/screenshots/storefront-product.png" alt="Try it on button on a Shopify product page" class="cap-1024" loading="lazy"></div>
+                        </div>
+                    </div>
+                    <div class="showcase-panel" id="tab-dashboard" role="tabpanel">
+                        <div class="app-frame" style="max-width:980px;margin:2rem auto;">
+                            <div class="app-frame-chrome"><span class="app-frame-dot"></span><span class="app-frame-dot"></span><span class="app-frame-dot"></span><span class="app-frame-title">admin · analytics</span></div>
+                            <div class="app-frame-body"><img src="../assets/screenshots/dashboard.png" alt="Stylab dashboard with try-on analytics" class="cap-1024" loading="lazy"></div>
+                        </div>
+                    </div>
+                    <div class="showcase-panel" id="tab-widget" role="tabpanel">
+                        <div class="app-frame" style="max-width:920px;margin:2rem auto;">
+                            <div class="app-frame-chrome"><span class="app-frame-dot"></span><span class="app-frame-dot"></span><span class="app-frame-dot"></span><span class="app-frame-title">admin · widget &amp; A/B</span></div>
+                            <div class="app-frame-body"><img src="../assets/screenshots/widget-ab.png" alt="Widget customization and A/B testing" class="cap-1024" loading="lazy"></div>
+                        </div>
+                    </div>
+                    <div class="showcase-caption">
+                        <div>
+                            <h3 id="tab-title">Storefront try-on button</h3>
+                            <p id="tab-desc">What shoppers see on your product pages after install.</p>
+                        </div>
+                    </div>
                 </div>
             </div>
         </section>
@@ -2326,7 +1883,7 @@
                 <div class="section-head center reveal">
                     <p class="section-label">Tarifs</p>
                     <h2 class="section-title">Commencez gratuit, évoluez avec l'usage</h2>
-                    <p class="section-desc">Seuls les essayages réussis comptent dans votre quota mensuel.</p>
+                    <p class="section-desc">Usage is based on successful try-on generations. Failed generations can be retried. No seats, no install fees.</p>
                     <!-- TODO: Confirm failed generations do not consume credits -->
                     <p class="pricing-shopify-note"><svg class="shopify-icon shopify-icon--green" aria-hidden="true"><use href="#icon-shopify"/></svg>Plans billed through Shopify · cancel anytime from your admin</p>
                 </div>
@@ -2353,7 +1910,7 @@
                         <a href="https://apps.shopify.com/try-on-stylelab" class="btn btn-primary" target="_blank" rel="noopener">Choose</a>
                     </div>
                     <div class="price-card featured">
-                        <span class="price-tag">MOST POPULAR</span>
+                        <span class="price-tag">POPULAR</span>
                         <h3>Growth</h3>
                         <div class="price-amt">$49 <span>/mo</span></div>
                         <p class="price-sub">1,000 successful try-ons / month</p>
@@ -2375,57 +1932,8 @@
                         <a href="https://apps.shopify.com/try-on-stylelab" class="btn btn-primary" target="_blank" rel="noopener">Choose</a>
                     </div>
                 </div>
-                <div class="bento reveal" style="margin-top:2.5rem;">
-                    <div class="bento-item span-6">
-                        <div class="app-frame" style="border-radius:14px;">
-                            <div class="app-frame-chrome"><span class="app-frame-dot"></span><span class="app-frame-dot"></span><span class="app-frame-dot"></span><span class="app-frame-title">plans · usage</span></div>
-                            <div class="app-frame-body"><img src="../assets/screenshots/plans-usage.png" alt="Monthly usage and try-on analytics in Stylab admin" class="cap-1024" loading="lazy"></div>
-                        </div>
-                    </div>
-                    <div class="bento-item span-6">
-                        <div class="app-frame" style="border-radius:14px;">
-                            <div class="app-frame-chrome"><span class="app-frame-dot"></span><span class="app-frame-dot"></span><span class="app-frame-dot"></span><span class="app-frame-title">plans · pricing</span></div>
-                            <div class="app-frame-body"><img src="../assets/screenshots/pricing.png" alt="Free Starter Growth Scale pricing table" class="cap-1024" loading="lazy"></div>
-                        </div>
-                    </div>
-                </div>
-            </div>
-        </section>
-
-        <!-- DIFFERENTIATORS -->
-        <section id="differentiators">
-            <div class="wrap">
-                <div class="section-head center reveal">
-                    <p class="section-label">Why Stylab</p>
-                    <h2 class="section-title">Built for Shopify fashion stores, not just AI demos</h2>
-                    <p class="section-desc">Concrete tools to launch, measure, and manage try-on on your apparel catalog.</p>
-                </div>
-                <div class="diff-grid reveal">
-                    <div class="diff-card">
-                        <h3>Built-in A/B testing</h3>
-                        <p>Comparer product page behavior with and without try-on so you can measure impact instead of guessing.</p>
-                    </div>
-                    <div class="diff-card">
-                        <h3>Pay only for successful try-ons</h3>
-                        <p>Failed generations should not consume credits. Keep usage transparent and fair.</p>
-                    </div>
-                    <div class="diff-card">
-                        <h3>Enable by product</h3>
-                        <p>Activate try-on only where it makes sense: hoodies, t-shirts, jerseys, dresses, or selected collections.</p>
-                    </div>
-                    <div class="diff-card">
-                        <h3>Flat-lay product uploads</h3>
-                        <p>Upload clean garment photos to improve try-on quality on specific products.</p>
-                    </div>
-                    <div class="diff-card">
-                        <h3>Mobile-first widget</h3>
-                        <p>Give shoppers a smooth try-on experience from mobile and desktop product pages.</p>
-                    </div>
-                    <div class="diff-card">
-                        <h3>Shopify-native setup</h3>
-                        <p>Install from Shopify and manage the experience without editing your theme manually.</p>
-                    </div>
-                </div>
+                <p class="disclaimer reveal" style="text-align:center;margin-top:1.75rem;max-width:560px;margin-inline:auto;">Only successful try-ons count toward your monthly quota.</p>
+                <!-- TODO: Confirm billing logic — failed generations should not consume credits -->
             </div>
         </section>
 
@@ -2448,12 +1956,12 @@
                     <div class="faq-item">
                         <div class="faq-q" tabindex="0">Do failed generations use credits? <span class="icon">+</span></div>
                         <!-- TODO: Confirm failed generations do not consume credits before publishing -->
-                        <div class="faq-a">Only successful try-ons should count toward your quota. Failed generations can be retried without consuming a successful try-on credit.</div>
+                        <div class="faq-a">Usage is based on successful try-on generations. Failed generations can be retried without consuming a successful try-on credit.</div>
                     </div>
                     <div class="faq-item">
                         <div class="faq-q" tabindex="0">Are shopper photos stored? <span class="icon">+</span></div>
                         <!-- TODO: Confirm exact storage and deletion behavior before publishing -->
-                        <div class="faq-a">Stylab is designed to process photos for generation only. The widget tells shoppers their photo is not stored. See our <a href="../confidentialite.html">privacy policy</a> for full details.</div>
+                        <div class="faq-a">Stylab is designed to process photos for try-on generation only. The widget tells shoppers their photo is not stored after processing. See our <a href="../confidentialite.html">privacy policy</a> for details — retention policies may vary by configuration.</div>
                     </div>
                     <div class="faq-item">
                         <div class="faq-q" tabindex="0">Can I choose which products use try-on? <span class="icon">+</span></div>
@@ -2500,43 +2008,22 @@
                     <span class="brand-mark"><img src="../assets/logo.png" alt="" width="36" height="36"></span>
                     <span class="brand-name">Stylab <span>Virtual Try-On</span></span>
                 </a>
-                <p>Essayage virtuel IA pour marques apparel Shopify.<br>Aidez vos clients à visualiser vos produits avant d'acheter.</p>
+                <p>AI virtual try-on for Shopify apparel brands.<br>Help shoppers buy with more confidence before checkout.</p>
                 <p class="footer-shopify-badge"><svg class="shopify-icon shopify-icon--green" aria-hidden="true"><use href="#icon-shopify"/></svg>App Shopify officielle · listée sur l'App Store</p>
             </div>
             <div class="footer-col">
-                <h4>Solutions</h4>
-                <a href="solutions/fashion-brands.html">Marques mode</a>
-                <a href="solutions/streetwear.html">Streetwear</a>
-                <a href="solutions/enterprise.html">Enterprise</a>
-                <a href="solutions/prestashop.html">PrestaShop</a>
-                <a href="solutions/api.html">API</a>
+                <h4>Explore</h4>
+                <a href="resources/documentation.html">Shopify virtual try-on</a>
+                <a href="compare/">AI try-on app</a>
+                <a href="solutions/fashion-brands.html">Virtual fitting room</a>
+                <a href="compare/vs-genlook.html">Genlook alternative</a>
+                <a href="solutions/fashion-brands.html">Try-on for apparel brands</a>
             </div>
             <div class="footer-col">
-                <h4>Alternatives Shopify</h4>
-                <a href="compare/vs-genlook.html">vs Genlook</a>
-                <a href="compare/vs-antla.html">vs Antla</a>
-                <a href="compare/vs-banuba.html">vs Banuba</a>
-                <a href="compare/vs-mirrar.html">vs MirrAR</a>
-                <a href="compare/vs-camweara.html">vs Camweara</a>
-                <a href="compare/vs-looksy.html">vs Looksy</a>
-                <a href="compare/vs-trypoint.html">vs TryPoint</a>
-            </div>
-            <div class="footer-col">
-                <h4>Alternatives API</h4>
-                <a href="compare/api/vs-fashn-ai.html">vs FASHN AI</a>
-                <a href="compare/api/vs-aiuta.html">vs Aiuta</a>
-                <a href="compare/api/vs-pixelcut.html">vs Pixelcut</a>
-                <a href="compare/api/vs-replicate.html">vs Replicate</a>
-                <a href="compare/api/vs-fal-ai.html">vs Fal AI</a>
-            </div>
-            <div class="footer-col">
-                <h4>Ressources</h4>
-                <a href="resources/free-tools.html">Outils gratuits</a>
+                <h4>Company</h4>
                 <a href="resources/blog/">Blog</a>
-                <a href="resources/documentation.html">Documentation</a>
-                <a href="resources/changelog.html">Changelog</a>
                 <a href="../contact.html">Contact</a>
-                <a href="../confidentialite.html">Confidentialité</a>
+                <a href="../confidentialite.html">Confidentialité policy</a>
             </div>
         </div>
         <div class="wrap footer-copy">© 2026 Style Lab · Stylab Virtual Try-On</div>
@@ -2666,46 +2153,11 @@
             }, { threshold: 0.12, rootMargin: '0px 0px -40px 0px' });
             reveals.forEach(function(el) { io.observe(el); });
 
-            // Animated counters
-            function animateCount(el) {
-                var target = parseFloat(el.getAttribute('data-count'));
-                var suffix = el.getAttribute('data-suffix') || '';
-                var isFloat = target % 1 !== 0;
-                var start = 0, dur = 1400, t0 = null;
-                function step(ts) {
-                    if (!t0) t0 = ts;
-                    var p = Math.min((ts - t0) / dur, 1);
-                    var ease = 1 - Math.pow(1 - p, 3);
-                    var val = start + (target - start) * ease;
-                    el.textContent = (isFloat ? val.toFixed(1) : Math.round(val)) + suffix;
-                    if (p < 1) requestAnimationFrame(step);
-                }
-                requestAnimationFrame(step);
-            }
-            var counted = false;
-            var counterIo = new IntersectionObserver(function(entries) {
-                if (entries[0].isIntersecting && !counted) {
-                    counted = true;
-                    document.querySelectorAll('[data-count]').forEach(animateCount);
-                }
-            }, { threshold: 0.3 });
-            var metricsEl = document.querySelector('.hero-metrics') || document.querySelector('.metrics-dark');
-            if (metricsEl) counterIo.observe(metricsEl);
-            document.querySelectorAll('.metrics-dark [data-count]').forEach(function(el) {
-                var obs = new IntersectionObserver(function(entries) {
-                    if (entries[0].isIntersecting) { animateCount(el); obs.disconnect(); }
-                }, { threshold: 0.5 });
-                obs.observe(el);
-            });
-
             // Tabs
             var tabMeta = {
-                storefront: { title: 'Storefront try-on button', desc: 'Try it on button on your product page — same experience shoppers see after install.' },
-                result: { title: 'Try-on result and add to cart', desc: 'Shoppers view the preview, pick a variant, and add to cart from the result modal.' },
-                widget: { title: 'Widget settings and A/B test', desc: 'Customize button style and compare product page behavior with and without try-on.' },
-                dashboard: { title: 'Analytics dashboard', desc: 'Track try-on sessions, add-to-cart actions, usage, and remaining credits.' },
-                products: { title: 'Product controls', desc: 'Enable try-on by product and upload flat-lay garment photos for better results.' },
-                history: { title: 'Session history', desc: 'Review try-on sessions with success status, latency, and product details.' }
+                storefront: { title: 'Storefront try-on button', desc: 'What shoppers see on your product pages after install.' },
+                dashboard: { title: 'Analytics dashboard', desc: 'Try-on sessions, add-to-cart, usage, and remaining credits.' },
+                widget: { title: 'Widget & A/B testing', desc: 'Customize the button and compare try-on vs control traffic.' }
             };
             document.querySelectorAll('.tab-btn').forEach(function(btn) {
                 btn.addEventListener('click', function() {
