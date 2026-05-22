@@ -12,8 +12,7 @@ const ROOT = path.join(__dirname, '..');
 const src = fs.readFileSync(path.join(ROOT, 'index.html'), 'utf8');
 
 const replacements = [
-  ['lang="en"', 'lang="fr"'],
-  ['<html lang="fr">', '<html lang="fr">'],
+  ['<html lang="en">', '<html lang="fr">'],
   ['assets/', '../assets/'],
   ['href="vton-widget.js', 'href="../vton-widget.js'],
   ['href="solutions/"', 'href="solutions/"'],
@@ -255,6 +254,18 @@ let html = src;
 for (const [from, to] of replacements) {
   html = html.split(from).join(to);
 }
+
+// Ensure hreflang block is correct (must not corrupt hreflang="en" → hreflang="fr")
+html = html.replace(
+  /<link rel="alternate" hreflang="[^"]+" href="https:\/\/www\.stylabtryon\.site\/">\s*<link rel="alternate" hreflang="[^"]+" href="https:\/\/www\.stylabtryon\.site\/fr\/">/,
+  `<link rel="alternate" hreflang="en" href="https://www.stylabtryon.site/">
+    <link rel="alternate" hreflang="fr" href="https://www.stylabtryon.site/fr/">`
+);
+
+html = html.replace(
+  /<link rel="alternate" hreflang="x-default" href="[^"]+">/,
+  `<link rel="alternate" hreflang="x-default" href="https://www.stylabtryon.site/">`
+);
 
 // Lang switcher in nav
 html = html.replace(
