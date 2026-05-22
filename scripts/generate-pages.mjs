@@ -11,7 +11,7 @@ const SITE_URL = 'https://www.stylabtryon.site';
 const OG_IMAGE = `${SITE_URL}/assets/screenshots/result-modal.png`;
 
 function shopifyIcon(assetsPath) {
-  return `<img class="shopify-icon" src="${assetsPath}shopify-logo.png" alt="" width="20" height="20" aria-hidden="true">`;
+  return `<img class="shopify-icon" src="${assetsPath}shopify-icon-logo.svg" alt="" width="20" height="20" aria-hidden="true">`;
 }
 
 function installBtn(label, assetsPath, className = 'btn btn-primary') {
