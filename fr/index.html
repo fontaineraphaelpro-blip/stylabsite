@@ -26,6 +26,7 @@
     <meta name="twitter:image" content="https://www.stylabtryon.site/../assets/screenshots/result-modal.png">
     <link rel="icon" type="image/png" href="../assets/logo.png">
     <link rel="apple-touch-icon" href="../assets/logo.png">
+    <link rel="preload" as="image" href="../assets/screenshots/result-modal.png" fetchpriority="high">
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Inter+Tight:wght@400;500;600;700;800&family=Geist:wght@500;600;700;800;900&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet">
@@ -181,8 +182,14 @@
             background-image: url("data:image/svg+xml,%3Csvg viewBox='0 0 256 256' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.9' numOctaves='4' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)' opacity='0.04'/%3E%3C/svg%3E");
         }
 
-        /* Reveal */
-        .reveal { opacity: 0; transform: translateY(28px); transition: opacity 0.8s var(--ease), transform 0.8s var(--ease); }
+        /* Reveal — visible by default; animate only when JS runs */
+        .reveal { opacity: 1; transform: none; }
+        @media (prefers-reduced-motion: no-preference) {
+            .js-reveal .reveal:not(.visible) {
+                opacity: 0; transform: translateY(28px);
+                transition: opacity 0.8s var(--ease), transform 0.8s var(--ease);
+            }
+        }
         .reveal.visible { opacity: 1; transform: none; }
         .reveal-delay-1 { transition-delay: 0.1s; }
         .reveal-delay-2 { transition-delay: 0.2s; }
@@ -217,17 +224,6 @@
         .shopify-icon--sm {
             width: 12px; height: 12px; display: inline-block; vertical-align: -2px;
         }
-        .shopify-chip {
-            display: inline-flex; align-items: center; gap: 0.4rem;
-            padding: 0.38rem 0.75rem; border-radius: 999px;
-            background: #fff; border: 1px solid var(--line);
-            font-size: 0.72rem; font-weight: 600; color: var(--ink-soft);
-            box-shadow: 0 1px 4px rgba(0,0,0,0.03);
-        }
-        .shopify-trust-row {
-            display: flex; flex-wrap: wrap; gap: 0.5rem;
-            margin-bottom: 2rem;
-        }
         .pill .shopify-icon { width: 17px; height: 17px; }
         .trial-badge { display: inline-flex; align-items: center; gap: 0.4rem; }
         .trial-btn-atc {
@@ -252,10 +248,6 @@
         }
         .pricing-shopify-note .shopify-icon { width: 16px; height: 16px; }
 
-        .hero-microcopy {
-            font-size: 0.82rem; color: var(--muted); margin-top: 0.85rem; line-height: 1.5;
-            max-width: 100%; overflow-wrap: anywhere;
-        }
         .hero-metrics { margin-bottom: 0; }
 
         /* Problem section */
@@ -1367,8 +1359,6 @@
             .cta-final .btns .btn { width: 100%; white-space: normal; justify-content: center; }
             .footer-top { grid-template-columns: 1fr; gap: 1.5rem; }
             .brand-name span { display: none; }
-            .shopify-trust-row { gap: 0.4rem; }
-            .shopify-chip { font-size: 0.72rem; padding: 0.35rem 0.65rem; max-width: 100%; }
             .review-quote { overflow-wrap: anywhere; }
             .proof-strip span { max-width: 100%; white-space: normal; text-align: center; justify-content: center; }
         }
@@ -1589,7 +1579,7 @@
         }
     </style>
 </head>
-<body>
+<body class="js-reveal">
     <div class="ambient" aria-hidden="true"></div>
     <div class="grain" aria-hidden="true"></div>
 
@@ -1654,34 +1644,26 @@
                                 <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M5 12h14M13 6l6 6-6 6"/></svg>
                             </a>
                         </div>
-                        <p class="hero-microcopy">Conçu pour marques apparel Shopify · aperçu en ~30 secondes</p>
-                        <div class="shopify-trust-row" aria-label="Shopify trust signals">
-                            <span class="shopify-chip"><img class="shopify-icon" src="../assets/shopify-icon-logo.svg" alt="" width="20" height="20" aria-hidden="true">Shopify App Store</span>
-                            <span class="shopify-chip">Plan gratuit · 50 essayages/mo</span>
-                            <span class="shopify-chip">Sans code</span>
-                            <span class="shopify-chip">Mobile</span>
-                            <span class="shopify-chip">Shopify billing</span>
-                        </div>
                     </div>
                     <div class="mockup-stage reveal reveal-delay-2">
                         <div class="mockup-card back-left">
                             <div class="device-frame" style="max-width:230px;">
                                 <div class="device-frame-body">
-                                    <img src="../assets/screenshots/upload-modal.png" alt="Virtual try-on photo upload modal" loading="eager">
+                                    <img src="../assets/screenshots/upload-modal.png" alt="Virtual try-on photo upload modal" width="230" height="498" loading="lazy" decoding="async">
                                 </div>
                             </div>
                         </div>
                         <div class="mockup-card back-right">
                             <div class="device-frame" style="max-width:200px;">
                                 <div class="device-frame-body">
-                                    <img src="../assets/screenshots/storefront-product.png" alt="Try it on button on Shopify product page" loading="eager">
+                                    <img src="../assets/screenshots/storefront-product.png" alt="Try it on button on Shopify product page" width="200" height="433" loading="lazy" decoding="async">
                                 </div>
                             </div>
                         </div>
                         <div class="mockup-card main">
                             <div class="device-frame" style="max-width:280px;">
                                 <div class="device-frame-body">
-                                    <img src="../assets/screenshots/result-modal.png" alt="AI try-on result — soccer jersey worn virtually" loading="eager">
+                                    <img src="../assets/screenshots/result-modal.png" alt="AI try-on result — soccer jersey worn virtually" width="280" height="606" loading="eager" decoding="async" fetchpriority="high">
                                 </div>
                             </div>
                         </div>
@@ -1714,7 +1696,7 @@
                 </div>
                 <article class="trial-box reveal" itemscope itemtype="https://schema.org/Product">
                     <meta itemprop="name" content="Shadow Stripe Collared Soccer Jersey">
-                    <link itemprop="image" href="https://cdn.shopify.com/s/files/1/1024/3558/6388/files/2261c8aad94d4247a2336c80f5ea202a.png">
+                    <link itemprop="image" href="../assets/demo-jersey-main.png">
                     <div class="trial-header">
                         <h2>Essai interactif · page produit démo</h2>
                         <span class="trial-badge"><img class="shopify-icon" src="../assets/shopify-icon-logo.svg" alt="" width="20" height="20" aria-hidden="true">Live · même widget Shopify</span>
@@ -1725,17 +1707,17 @@
                             <img
                                 id="mainImage"
                                 class="product-featured-image"
-                                src="https://cdn.shopify.com/s/files/1/1024/3558/6388/files/2261c8aad94d4247a2336c80f5ea202a.png?v=1779276174"
+                                src="../assets/demo-jersey-main.png"
                                 data-product-image
                                 alt="Shadow Stripe Collared Soccer Jersey — green Brazil jersey for virtual try-on"
-                                width="700" height="700" loading="eager"
+                                width="480" height="480" loading="eager" decoding="async"
                                 itemprop="image">
                             <div class="trial-thumbs" role="group" aria-label="Product views">
-                                <button type="button" class="active" data-src="https://cdn.shopify.com/s/files/1/1024/3558/6388/files/2261c8aad94d4247a2336c80f5ea202a.png?v=1779276174" aria-label="View 1">
-                                    <img src="https://cdn.shopify.com/s/files/1/1024/3558/6388/files/2261c8aad94d4247a2336c80f5ea202a.png?v=1779276174" alt="">
+                                <button type="button" class="active" data-src="../assets/demo-jersey-main.png" aria-label="View 1">
+                                    <img src="../assets/demo-jersey-main.png" alt="" width="72" height="72" loading="lazy" decoding="async">
                                 </button>
-                                <button type="button" data-src="https://cdn.shopify.com/s/files/1/1024/3558/6388/files/0ce1c0dca89c4f0d9915fed8a17b8204.png?v=1779276174" aria-label="View 2">
-                                    <img src="https://cdn.shopify.com/s/files/1/1024/3558/6388/files/0ce1c0dca89c4f0d9915fed8a17b8204.png?v=1779276174" alt="">
+                                <button type="button" data-src="../assets/demo-jersey-alt.png" aria-label="View 2">
+                                    <img src="../assets/demo-jersey-alt.png" alt="" width="72" height="72" loading="lazy" decoding="async">
                                 </button>
                             </div>
                         </div>
@@ -2290,14 +2272,27 @@
                 });
             });
 
-            // Reveal on scroll
+            // Reveal on scroll — above-the-fold blocks show immediately
             var reveals = document.querySelectorAll('.reveal');
+            function revealInViewport() {
+                reveals.forEach(function(el) {
+                    if (el.classList.contains('visible')) return;
+                    var rect = el.getBoundingClientRect();
+                    if (rect.top < window.innerHeight * 0.92 && rect.bottom > 0) {
+                        el.classList.add('visible');
+                    }
+                });
+            }
+            revealInViewport();
             var io = new IntersectionObserver(function(entries) {
                 entries.forEach(function(e) {
                     if (e.isIntersecting) { e.target.classList.add('visible'); io.unobserve(e.target); }
                 });
-            }, { threshold: 0.12, rootMargin: '0px 0px -40px 0px' });
-            reveals.forEach(function(el) { io.observe(el); });
+            }, { threshold: 0.05, rootMargin: '0px 0px 5% 0px' });
+            reveals.forEach(function(el) {
+                if (!el.classList.contains('visible')) io.observe(el);
+            });
+            window.addEventListener('load', revealInViewport, { once: true });
 
             // FAQ
             document.querySelectorAll('.faq-q').forEach(function(q) {
