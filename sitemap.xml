@@ -1,9 +1,38 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
   <url><loc>/</loc><changefreq>weekly</changefreq><priority>1.0</priority></url>
+  <url><loc>/fr/</loc><changefreq>weekly</changefreq><priority>0.95</priority></url>
+  <url><loc>/compare/</loc><changefreq>monthly</changefreq><priority>0.85</priority></url>
+  <url><loc>/compare/vs-genlook.html</loc><changefreq>monthly</changefreq><priority>0.8</priority></url>
+  <url><loc>/compare/vs-antla.html</loc><changefreq>monthly</changefreq><priority>0.7</priority></url>
+  <url><loc>/compare/vs-banuba.html</loc><changefreq>monthly</changefreq><priority>0.7</priority></url>
+  <url><loc>/compare/vs-mirrar.html</loc><changefreq>monthly</changefreq><priority>0.7</priority></url>
+  <url><loc>/compare/vs-camweara.html</loc><changefreq>monthly</changefreq><priority>0.7</priority></url>
+  <url><loc>/compare/vs-looksy.html</loc><changefreq>monthly</changefreq><priority>0.7</priority></url>
+  <url><loc>/compare/vs-trypoint.html</loc><changefreq>monthly</changefreq><priority>0.7</priority></url>
+  <url><loc>/compare/api/vs-fashn-ai.html</loc><changefreq>monthly</changefreq><priority>0.7</priority></url>
+  <url><loc>/compare/api/vs-aiuta.html</loc><changefreq>monthly</changefreq><priority>0.7</priority></url>
+  <url><loc>/compare/api/vs-pixelcut.html</loc><changefreq>monthly</changefreq><priority>0.7</priority></url>
+  <url><loc>/compare/api/vs-replicate.html</loc><changefreq>monthly</changefreq><priority>0.7</priority></url>
+  <url><loc>/compare/api/vs-fal-ai.html</loc><changefreq>monthly</changefreq><priority>0.7</priority></url>
+  <url><loc>/fr/compare/</loc><changefreq>monthly</changefreq><priority>0.8</priority></url>
+  <url><loc>/fr/compare/vs-genlook.html</loc><changefreq>monthly</changefreq><priority>0.75</priority></url>
+  <url><loc>/solutions/</loc><changefreq>monthly</changefreq><priority>0.8</priority></url>
+  <url><loc>/solutions/fashion-brands.html</loc><changefreq>monthly</changefreq><priority>0.7</priority></url>
+  <url><loc>/solutions/streetwear.html</loc><changefreq>monthly</changefreq><priority>0.7</priority></url>
+  <url><loc>/solutions/enterprise.html</loc><changefreq>monthly</changefreq><priority>0.7</priority></url>
+  <url><loc>/fr/solutions/</loc><changefreq>monthly</changefreq><priority>0.75</priority></url>
+  <url><loc>/resources/</loc><changefreq>weekly</changefreq><priority>0.8</priority></url>
+  <url><loc>/resources/free-tools.html</loc><changefreq>monthly</changefreq><priority>0.75</priority></url>
+  <url><loc>/resources/documentation.html</loc><changefreq>monthly</changefreq><priority>0.7</priority></url>
+  <url><loc>/resources/changelog.html</loc><changefreq>weekly</changefreq><priority>0.6</priority></url>
+  <url><loc>/resources/blog/</loc><changefreq>weekly</changefreq><priority>0.7</priority></url>
+  <url><loc>/resources/blog/reduce-purchase-hesitation-shopify.html</loc><changefreq>monthly</changefreq><priority>0.6</priority></url>
+  <url><loc>/resources/blog/ab-test-virtual-try-on.html</loc><changefreq>monthly</changefreq><priority>0.6</priority></url>
+  <url><loc>/resources/blog/flat-lay-photos-better-tryon.html</loc><changefreq>monthly</changefreq><priority>0.6</priority></url>
+  <url><loc>/fr/resources/free-tools.html</loc><changefreq>monthly</changefreq><priority>0.7</priority></url>
   <url><loc>/contact.html</loc><changefreq>monthly</changefreq><priority>0.6</priority></url>
   <url><loc>/support.html</loc><changefreq>monthly</changefreq><priority>0.6</priority></url>
   <url><loc>/confidentialite.html</loc><changefreq>yearly</changefreq><priority>0.4</priority></url>
-  <url><loc>/conditions.html</loc><changefreq>yearly</changefreq><priority>0.4</priority></url>
   <url><loc>/llms.txt</loc><changefreq>monthly</changefreq><priority>0.8</priority></url>
 </urlset>
