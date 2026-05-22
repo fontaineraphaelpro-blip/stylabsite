@@ -565,13 +565,96 @@ export const COMPARE_HUB = {
   },
 };
 
+export const SOLUTIONS_HUB = {
+  heroLead: {
+    en: 'Virtual try-on paths for Shopify apparel merchants — from indie labels to high-volume catalogs.',
+    fr: 'Parcours d\'essayage virtuel pour marchands apparel Shopify — de la marque indie au catalogue à fort volume.',
+  },
+  intro: {
+    en: `<p>Stylab is built for brands that sell visual fashion on Shopify — where shoppers want to see style, color, and look before they buy. Pick the path that matches your catalog, traffic, and team. Every route starts the same way: install from the App Store, enable try-on on a few hero SKUs, measure, then expand.</p>
+<h3>How to choose</h3>
+<ul>
+<li><strong>Fashion brands</strong> — seasonal collections, dresses, tops, and multi-SKU catalogs where visualization drives conversion</li>
+<li><strong>Streetwear &amp; urban apparel</strong> — hoodies, jerseys, graphic tees; mobile-first shoppers who buy on vibe</li>
+<li><strong>Enterprise</strong> — high-volume stores that need Scale plan quotas, onboarding, and catalog-wide controls</li>
+<li><strong>Other platforms &amp; API</strong> — honest guidance when Shopify is not your stack, or when you need a custom build</li>
+</ul>
+<p>New to try-on? Read our <a href="../resources/blog/reduce-purchase-hesitation-shopify.html">5-SKU rollout guide</a>, try the <a href="../index.html#try-it">live demo</a>, or estimate volume in the <a href="../resources/free-tools.html">usage calculator</a>.</p>`,
+    fr: `<p>Stylab est conçu pour les marques qui vendent de la mode visuelle sur Shopify — où le client veut voir le style, la couleur et le look avant d'acheter. Choisissez le parcours adapté à votre catalogue, trafic et équipe. Chaque route commence pareil : installer depuis l'App Store, activer l'essayage sur quelques SKU phares, mesurer, puis élargir.</p>
+<h3>Comment choisir</h3>
+<ul>
+<li><strong>Marques mode</strong> — collections saisonnières, robes, tops et catalogues multi-SKU où la visualisation compte</li>
+<li><strong>Streetwear</strong> — hoodies, maillots, tees graphiques ; clients mobile-first qui achètent sur l'identité visuelle</li>
+<li><strong>Enterprise</strong> — boutiques à fort volume, plan Scale, onboarding et contrôles catalogue</li>
+<li><strong>Autres plateformes &amp; API</strong> — guidance honnête hors Shopify ou pour un build sur mesure</li>
+</ul>
+<p>Nouveau sur l'essayage ? Lisez le <a href="../resources/blog/reduce-purchase-hesitation-shopify.html">guide 5 SKU</a>, essayez la <a href="../index.html#try-it">démo live</a> ou estimez votre volume avec le <a href="../resources/free-tools.html">calculateur</a>.</p>`,
+  },
+};
+
 export const SOLUTIONS = [
   {
     slug: 'fashion-brands',
     title: { en: 'Virtual Try-On for Fashion Brands on Shopify', fr: 'Essayage virtuel pour marques mode sur Shopify' },
     lead: {
-      en: 'Help shoppers see your collection on themselves before checkout. Stylab adds a virtual fitting room to Shopify product pages.',
-      fr: 'Aidez vos clients à se voir dans votre collection avant l\'achat. Stylab ajoute une cabine d\'essayage virtuelle à vos pages produit Shopify.',
+      en: 'Help shoppers see your collection on themselves before checkout. Stylab adds a virtual fitting room to Shopify product pages — no theme edits required.',
+      fr: 'Aidez vos clients à se voir dans votre collection avant l\'achat. Stylab ajoute une cabine d\'essayage virtuelle à vos pages produit Shopify — sans modifier le thème.',
+    },
+    overview: {
+      en: `<p>Fashion shoppers buy with their eyes — but a flat product photo rarely shows how a piece looks <em>on them</em>. When shoppers hesitate at add-to-cart, it is often because they cannot imagine fit, drape, color, and overall style on their own body.</p>
+<p>Stylab gives Shopify apparel brands a try-on button on product pages. Shoppers upload a photo, generate a preview in seconds, and move toward checkout with more confidence. You control which SKUs get try-on, upload optional flat-lay garment photos for cleaner AI output, and measure sessions and add-to-cart activity from one admin.</p>
+<h3>Who this is for</h3>
+<ul>
+<li>DTC and ready-to-wear labels with visual collections</li>
+<li>Brands where color and silhouette matter more than precise sizing charts</li>
+<li>Merchants who want data before enabling try-on store-wide</li>
+</ul>`,
+      fr: `<p>En mode, on achète avec les yeux — mais une photo à plat montre rarement comment la pièce tombe <em>sur soi</em>. L'hésitation à l'ajout panier vient souvent de l'impossibilité de se projeter : coupe, tombé, couleur et style global.</p>
+<p>Stylab ajoute un bouton d'essayage sur vos pages produit Shopify. Le client uploade une photo, génère un aperçu en quelques secondes et avance vers le checkout avec plus de confiance. Vous choisissez les SKU, uploadez des flat-lays optionnels pour un meilleur rendu IA, et mesurez sessions et ajouts panier depuis un seul admin.</p>
+<h3>Pour qui</h3>
+<ul>
+<li>Marques DTC et prêt-à-porter à collections visuelles</li>
+<li>Catalogues où couleur et silhouette comptent plus qu'un tableau de mesures</li>
+<li>Marchands qui veulent des data avant un déploiement global</li>
+</ul>`,
+    },
+    featuresTitle: { en: 'Built for fashion merchandising', fr: 'Pensé pour le merchandising mode' },
+    features: [
+      {
+        title: { en: 'Per-product activation', fr: 'Activation par produit' },
+        body: { en: 'Start with hero SKUs, new drops, or color variants — expand when results justify it.', fr: 'Commencez par vos SKU phares, nouveautés ou variantes couleur — élargissez quand les résultats le justifient.' },
+      },
+      {
+        title: { en: 'Flat-lay garment uploads', fr: 'Uploads flat-lay' },
+        body: { en: 'Optional reference photos per product for cleaner try-on output on structured pieces.', fr: 'Photos de référence optionnelles par produit pour un rendu plus propre sur les pièces structurées.' },
+      },
+      {
+        title: { en: 'Add-to-cart analytics', fr: 'Analytics ajout panier' },
+        body: { en: 'See try-on sessions, usage by product, and cart actions after try-on — not vanity metrics.', fr: 'Sessions d\'essayage, usage par produit et actions panier après essayage — pas des métriques vanity.' },
+      },
+      {
+        title: { en: 'Built-in A/B testing', fr: 'Tests A/B intégrés' },
+        body: { en: 'Compare product page behavior with and without try-on before a full rollout.', fr: 'Comparez le comportement avec et sans essayage avant un déploiement complet.' },
+      },
+    ],
+    rolloutTitle: { en: 'Launch try-on on your fashion catalog', fr: 'Lancer l\'essayage sur votre catalogue mode' },
+    rollout: {
+      en: `<ol>
+<li><strong>Install from the Shopify App Store</strong> — no manual theme editing. The try-on widget appears on enabled product pages.</li>
+<li><strong>Pick 3–5 hero SKUs</strong> — best sellers, new season pieces, or items with high PDP views and return-prone fit questions.</li>
+<li><strong>Upload flat-lays where helpful</strong> — structured tops, dresses, and jackets often benefit from a clean garment reference photo.</li>
+<li><strong>Run a 30-day A/B test</strong> — compare try-on vs control buckets. See our <a href="../resources/blog/ab-test-virtual-try-on.html">A/B guide</a>.</li>
+<li><strong>Scale what works</strong> — enable more SKUs, upgrade plan when usage grows. Only successful try-ons count toward your quota.</li>
+</ol>
+<p>Plans start free (50 successful try-ons/month). <a href="../index.html#pricing">View pricing</a> or <a href="../index.html#try-it">try the live demo</a>.</p>`,
+      fr: `<ol>
+<li><strong>Installer depuis l'App Store Shopify</strong> — sans modifier le thème. Le widget apparaît sur les produits activés.</li>
+<li><strong>Choisir 3–5 SKU phares</strong> — best-sellers, nouveautés saison ou produits à fort trafic PDP et questions de fit.</li>
+<li><strong>Uploader des flat-lays si utile</strong> — tops structurés, robes et vestes bénéficient souvent d'une photo garment propre.</li>
+<li><strong>Lancer un A/B 30 jours</strong> — essayage vs contrôle. Voir le <a href="../resources/blog/ab-test-virtual-try-on.html">guide A/B</a>.</li>
+<li><strong>Scaler ce qui fonctionne</strong> — activer plus de SKU, upgrader le plan avec l'usage. Seuls les essayages réussis comptent.</li>
+</ol>
+<p>Plans gratuits (50 essayages réussis/mois). <a href="../index.html#pricing">Voir les tarifs</a> ou <a href="../index.html#try-it">essayer la démo live</a>.</p>`,
     },
     bullets: {
       en: ['Enable try-on on hero SKUs and new drops', 'Upload flat-lay photos for cleaner AI results', 'Measure add-to-cart after try-on', 'A/B test try-on vs control'],
@@ -580,22 +663,130 @@ export const SOLUTIONS = [
   },
   {
     slug: 'streetwear',
-    title: { en: 'AI Try-On for Streetwear & Urban Apparel', fr: 'Essayage IA pour streetwear' },
+    title: { en: 'AI Try-On for Streetwear & Urban Apparel', fr: 'Essayage IA pour streetwear & urban apparel' },
     lead: {
-      en: 'Streetwear shoppers buy on vibe. Stylab lets them preview hoodies, jerseys, and tees on themselves.',
-      fr: 'Le streetwear se vend sur l\'identité visuelle. Stylab permet de prévisualiser hoodies, jerseys et tees.',
+      en: 'Streetwear shoppers buy on vibe. Let them preview hoodies, jerseys, and graphic tees on themselves before they commit.',
+      fr: 'Le streetwear se vend sur l\'identité visuelle. Permettez de prévisualiser hoodies, maillots et tees graphiques avant l\'achat.',
+    },
+    overview: {
+      en: `<p>Streetwear and urban apparel is rarely about precise measurements — it is about identity, graphics, color, and how a piece looks on <em>you</em>. Your shoppers scroll on mobile, compare drops, and hesitate when they cannot picture the hoodie or jersey on themselves.</p>
+<p>Stylab adds a mobile-first try-on widget to Shopify product pages. Upload a photo, see the graphic tee or jersey rendered on your body, then add to cart with more confidence. Built for the categories streetwear brands sell most: hoodies, jerseys, collared tops, and statement tees.</p>
+<h3>Why streetwear brands use try-on</h3>
+<ul>
+<li>Graphics and color read differently on each person — preview reduces guesswork</li>
+<li>Mobile PDP traffic is high; the widget is designed for phone upload flows</li>
+<li>Drop culture rewards fast launches — enable try-on per SKU without dev tickets</li>
+</ul>`,
+      fr: `<p>Le streetwear ne se résume pas aux mesures — c'est l'identité, le graphisme, la couleur et le rendu sur <em>soi</em>. Vos clients scrollent sur mobile, comparent les drops et hésitent quand ils ne se voient pas dans le hoodie ou le maillot.</p>
+<p>Stylab ajoute un widget d'essayage mobile-first sur vos pages produit Shopify. Photo, aperçu du tee graphique ou du maillot sur le corps, puis ajout panier avec plus de confiance. Conçu pour les catégories streetwear : hoodies, maillots, cols et tees statement.</p>
+<h3>Pourquoi le streetwear utilise l'essayage</h3>
+<ul>
+<li>Graphismes et couleurs se lisent différemment sur chaque personne</li>
+<li>Trafic mobile élevé sur les PDP ; widget pensé pour l'upload phone</li>
+<li>Drops rapides — activation par SKU sans ticket dev</li>
+</ul>`,
+    },
+    featuresTitle: { en: 'Made for hype drops and mobile shoppers', fr: 'Pensé pour les drops et le mobile' },
+    features: [
+      {
+        title: { en: 'Hoodies, jerseys, graphic tees', fr: 'Hoodies, maillots, tees graphiques' },
+        body: { en: 'Optimized for the visual categories streetwear catalogs run on every season.', fr: 'Optimisé pour les catégories visuelles de chaque saison streetwear.' },
+      },
+      {
+        title: { en: 'Mobile-first widget', fr: 'Widget mobile-first' },
+        body: { en: 'Shoppers upload from phone on standard Shopify product pages — where most streetwear traffic lives.', fr: 'Upload depuis le téléphone sur les PDP Shopify standard — là où vit le trafic streetwear.' },
+      },
+      {
+        title: { en: 'Per-SKU toggles', fr: 'Toggles par SKU' },
+        body: { en: 'Enable try-on on new drops only; leave accessories and non-apparel off.', fr: 'Activez l\'essayage sur les nouveautés uniquement ; laissez accessoires et non-apparel désactivés.' },
+      },
+      {
+        title: { en: 'Free plan to validate', fr: 'Plan gratuit pour valider' },
+        body: { en: 'Start with 50 successful try-ons/month — enough to test a drop before upgrading.', fr: 'Commencez avec 50 essayages réussis/mois — suffisant pour tester un drop avant d\'upgrader.' },
+      },
+    ],
+    rolloutTitle: { en: 'Roll out try-on on your next drop', fr: 'Déployer l\'essayage sur votre prochain drop' },
+    rollout: {
+      en: `<ol>
+<li><strong>Enable try-on on 2–3 drop SKUs</strong> — the pieces with the strongest visual identity (graphic tee, jersey, hoodie).</li>
+<li><strong>Test on mobile yourself</strong> — use the same photo you expect shoppers to upload. Quality varies by lighting and garment photo.</li>
+<li><strong>Promote try-on in PDP copy</strong> — a short line above the fold (“See it on you”) nudges usage without overpromising results.</li>
+<li><strong>Track add-to-cart after try-on</strong> — compare against your baseline PDP conversion for those SKUs.</li>
+</ol>
+<p>See try-on live on our demo store <a href="https://remadeicons.shop/products/shadow-stripe-collared-soccer-jersey-4" target="_blank" rel="noopener">REMADE ICONS</a> or on the <a href="../index.html#try-it">marketing site demo</a>.</p>`,
+      fr: `<ol>
+<li><strong>Activer l'essayage sur 2–3 SKU du drop</strong> — pièces à forte identité visuelle (tee graphique, maillot, hoodie).</li>
+<li><strong>Tester sur mobile vous-même</strong> — même type de photo que vos clients. Le rendu varie selon lumière et photo produit.</li>
+<li><strong>Promouvoir l'essayage dans le copy PDP</strong> — une ligne courte (“Voyez-le sur vous”) sans sur-promettre.</li>
+<li><strong>Suivre l'ajout panier après essayage</strong> — comparez à votre conversion PDP baseline sur ces SKU.</li>
+</ol>
+<p>Voyez l'essayage live sur <a href="https://remadeicons.shop/products/shadow-stripe-collared-soccer-jersey-4" target="_blank" rel="noopener">REMADE ICONS</a> ou sur la <a href="../index.html#try-it">démo du site</a>.</p>`,
     },
     bullets: {
       en: ['Hoodies, jerseys, graphic tees', 'Mobile-first widget', 'Enable try-on per SKU', 'Free: 50 successful try-ons/mo'],
-      fr: ['Hoodies, jerseys, tees graphiques', 'Widget mobile-first', 'Activation par SKU', 'Gratuit : 50 essayages réussis/mo'],
+      fr: ['Hoodies, maillots, tees graphiques', 'Widget mobile-first', 'Activation par SKU', 'Gratuit : 50 essayages réussis/mo'],
     },
   },
   {
     slug: 'enterprise',
-    title: { en: 'Enterprise Virtual Try-On for High-Volume Stores', fr: 'Essayage virtuel enterprise' },
+    title: { en: 'Enterprise Virtual Try-On for High-Volume Stores', fr: 'Essayage virtuel enterprise pour gros volumes' },
     lead: {
-      en: 'Scale try-on with dedicated onboarding, priority processing, and the Scale plan (4,000 try-ons/mo).',
-      fr: 'Scalez l\'essayage avec onboarding dédié, traitement prioritaire et le plan Scale (4 000 essayages/mo).',
+      en: 'Scale try-on across a large catalog with dedicated onboarding, priority processing, and the Scale plan (4,000 try-ons/mo).',
+      fr: 'Scalez l\'essayage sur un large catalogue avec onboarding dédié, traitement prioritaire et plan Scale (4 000 essayages/mo).',
+    },
+    overview: {
+      en: `<p>High-volume Shopify apparel stores face a different problem than indie labels: not whether try-on works, but how to roll it out across hundreds of SKUs without blowing the quota, slowing PDPs, or losing analytics in spreadsheets.</p>
+<p>Stylab's Scale plan supports 4,000 successful try-ons per month with priority processing and dedicated onboarding. Per-product controls let merchandising teams enable try-on by collection, season, or SKU list. Store-wide analytics and A/B buckets help you justify expansion to leadership with data — not hype.</p>
+<h3>Enterprise fit signals</h3>
+<ul>
+<li>1,000+ apparel SKUs with meaningful PDP traffic</li>
+<li>Merchandising team that needs per-product toggles at catalog scale</li>
+<li>Leadership asking for measurable try-on ROI before budget approval</li>
+</ul>`,
+      fr: `<p>Les boutiques Shopify à fort volume ont un problème différent des labels indie : pas savoir si l'essayage marche, mais comment le déployer sur des centaines de SKU sans exploser le quota, ralentir les PDP ou perdre les analytics dans des tableurs.</p>
+<p>Le plan Scale Stylab supporte 4 000 essayages réussis par mois avec traitement prioritaire et onboarding dédié. Les contrôles par produit permettent d'activer l'essayage par collection, saison ou liste de SKU. Analytics store-wide et buckets A/B aident à justifier l'expansion avec des data — pas du hype.</p>
+<h3>Signaux enterprise</h3>
+<ul>
+<li>1 000+ SKU apparel avec trafic PDP significatif</li>
+<li>Équipe merchandising qui a besoin de toggles à l'échelle catalogue</li>
+<li>Direction qui demande un ROI mesurable avant budget</li>
+</ul>`,
+    },
+    featuresTitle: { en: 'Scale without rebuilding your stack', fr: 'Scaler sans reconstruire votre stack' },
+    features: [
+      {
+        title: { en: 'Scale plan: 4,000 try-ons/mo', fr: 'Plan Scale : 4 000 essayages/mo' },
+        body: { en: 'Predictable Shopify billing at high volume. Only successful generations count.', fr: 'Facturation Shopify prévisible à fort volume. Seules les générations réussies comptent.' },
+      },
+      {
+        title: { en: 'Dedicated onboarding', fr: 'Onboarding dédié' },
+        body: { en: 'Phased rollout plan: which collections first, quota allocation, and success metrics.', fr: 'Plan de déploiement par phases : collections, allocation quota et métriques de succès.' },
+      },
+      {
+        title: { en: 'Catalog-scale controls', fr: 'Contrôles à l\'échelle catalogue' },
+        body: { en: 'Enable or disable try-on per product from admin — no theme deploy for each SKU.', fr: 'Activer ou désactiver par produit depuis l\'admin — pas de deploy thème par SKU.' },
+      },
+      {
+        title: { en: 'Priority support & processing', fr: 'Support et traitement prioritaires' },
+        body: { en: 'Faster generation queue and direct support channel for high-traffic stores.', fr: 'File de génération accélérée et canal support direct pour boutiques à fort trafic.' },
+      },
+    ],
+    rolloutTitle: { en: 'Phased enterprise rollout', fr: 'Déploiement enterprise par phases' },
+    rollout: {
+      en: `<ol>
+<li><strong>Audit top PDPs by traffic</strong> — start with the 20% of SKUs that drive most views and cart hesitation.</li>
+<li><strong>Define success metrics upfront</strong> — try-on rate, add-to-cart after try-on, and comparison vs control PDPs.</li>
+<li><strong>Pilot one collection</strong> — 30-day A/B on a single line before enabling adjacent categories.</li>
+<li><strong>Align quota to traffic</strong> — use the <a href="../resources/free-tools.html">usage calculator</a> to pick Free, Growth, or Scale before launch.</li>
+<li><strong>Contact Style Lab for onboarding</strong> — <a href="../contact.html">reach out</a> for Scale plan setup and rollout planning.</li>
+</ol>`,
+      fr: `<ol>
+<li><strong>Auditer les PDP les plus visitées</strong> — commencer par les 20 % de SKU qui concentrent vues et hésitation panier.</li>
+<li><strong>Définir les métriques de succès</strong> — taux d'essayage, ajout panier après essayage, comparaison vs PDP contrôle.</li>
+<li><strong>Piloter une collection</strong> — A/B 30 jours sur une ligne avant d'activer les catégories adjacentes.</li>
+<li><strong>Aligner le quota au trafic</strong> — <a href="../resources/free-tools.html">calculateur</a> pour choisir Free, Growth ou Scale.</li>
+<li><strong>Contacter Style Lab pour l'onboarding</strong> — <a href="../contact.html">nous écrire</a> pour le plan Scale et le plan de déploiement.</li>
+</ol>`,
     },
     bullets: {
       en: ['Scale plan: 4,000 try-ons/mo', 'Dedicated onboarding', 'Per-product controls at catalog scale', 'Store-wide analytics and A/B'],
@@ -606,21 +797,95 @@ export const SOLUTIONS = [
     slug: 'prestashop',
     title: { en: 'PrestaShop & Other Platforms', fr: 'PrestaShop et autres plateformes' },
     lead: {
-      en: 'Stylab is built for Shopify today. For PrestaShop or other platforms, contact Style Lab.',
-      fr: 'Stylab est conçu pour Shopify aujourd\'hui. Pour PrestaShop ou autres plateformes, contactez Style Lab.',
+      en: 'Stylab is built for Shopify today. For PrestaShop, WooCommerce, or custom stacks, contact Style Lab — we will be honest about what is available.',
+      fr: 'Stylab est conçu pour Shopify aujourd\'hui. Pour PrestaShop, WooCommerce ou stacks custom, contactez Style Lab — nous serons transparents sur ce qui est disponible.',
+    },
+    overview: {
+      en: `<p>Stylab Virtual Try-On ships as a native Shopify app: install from the App Store, manage products and analytics inside Shopify admin, and bill through Shopify subscriptions. That is the supported, production-ready path today.</p>
+<p>We do <strong>not</strong> ship a PrestaShop module or WooCommerce plugin yet. If you are on another platform, contact Style Lab to discuss your stack, timeline, and whether a custom integration or future platform support makes sense.</p>
+<h3>What works today</h3>
+<ul>
+<li><strong>Shopify</strong> — full widget, admin, analytics, A/B, and billing</li>
+<li><strong>Other platforms</strong> — no self-serve plugin; contact us for roadmap and custom work</li>
+</ul>`,
+      fr: `<p>Stylab Virtual Try-On est une app Shopify native : installation App Store, gestion produits et analytics dans l'admin Shopify, facturation via abonnements Shopify. C'est le parcours supporté et production-ready aujourd'hui.</p>
+<p>Nous ne proposons <strong>pas</strong> encore de module PrestaShop ou plugin WooCommerce. Sur une autre plateforme, contactez Style Lab pour discuter stack, timeline et intégration sur mesure ou support futur.</p>
+<h3>Ce qui fonctionne aujourd'hui</h3>
+<ul>
+<li><strong>Shopify</strong> — widget complet, admin, analytics, A/B et facturation</li>
+<li><strong>Autres plateformes</strong> — pas de plugin self-serve ; contactez-nous pour roadmap et travail custom</li>
+</ul>`,
+    },
+    featuresTitle: { en: 'Shopify-native today', fr: 'Shopify-native aujourd\'hui' },
+    features: [
+      {
+        title: { en: 'Shopify App Store install', fr: 'Installation App Store Shopify' },
+        body: { en: 'Live in minutes on standard Shopify themes — no manual code edits.', fr: 'Live en minutes sur thèmes Shopify standard — sans modifier le code.' },
+      },
+      {
+        title: { en: 'Admin inside Shopify', fr: 'Admin dans Shopify' },
+        body: { en: 'Product toggles, widget settings, analytics, and billing in one merchant workflow.', fr: 'Toggles produit, réglages widget, analytics et facturation dans un seul workflow.' },
+      },
+      {
+        title: { en: 'Other platforms: contact us', fr: 'Autres plateformes : contactez-nous' },
+        body: { en: 'Tell us your platform, catalog size, and timeline. We will reply with honest options.', fr: 'Indiquez plateforme, taille catalogue et timeline. Réponse honnête sur les options.' },
+      },
+    ],
+    rollout: {
+      en: `<p>On Shopify? <a href="https://apps.shopify.com/try-on-stylelab">Install Stylab</a>, enable a few products, and measure. Not on Shopify? <a href="../contact.html">Contact Style Lab</a> with your platform and use case — no sales fluff, just a straight answer on fit and timeline.</p>`,
+      fr: `<p>Sur Shopify ? <a href="https://apps.shopify.com/try-on-stylelab">Installez Stylab</a>, activez quelques produits et mesurez. Pas sur Shopify ? <a href="../contact.html">Contactez Style Lab</a> avec votre plateforme et cas d'usage — réponse directe sur faisabilité et délais.</p>`,
     },
     bullets: {
       en: ['Shopify App Store — live in minutes', 'Full admin inside Shopify', 'Other platforms: contact us'],
       fr: ['App Store Shopify — live en minutes', 'Admin complet dans Shopify', 'Autres plateformes : contactez-nous'],
     },
-    note: { en: 'No PrestaShop plugin shipped yet.', fr: 'Pas de plugin PrestaShop disponible pour l\'instant.' },
+    note: { en: 'No PrestaShop or WooCommerce plugin shipped yet.', fr: 'Pas de plugin PrestaShop ou WooCommerce disponible pour l\'instant.' },
   },
   {
     slug: 'api',
     title: { en: 'API & Custom Integrations', fr: 'API et intégrations sur mesure' },
     lead: {
-      en: 'Stylab is a managed Shopify app. For custom API or headless setups, contact Style Lab.',
-      fr: 'Stylab est une app Shopify managée. Pour API custom ou headless, contactez Style Lab.',
+      en: 'Stylab is a managed Shopify app by default. For headless storefronts, mobile apps, or custom ML pipelines, contact Style Lab to discuss scope.',
+      fr: 'Stylab est une app Shopify managée par défaut. Pour storefront headless, apps mobile ou pipelines ML custom, contactez Style Lab pour discuter du scope.',
+    },
+    overview: {
+      en: `<p>Most apparel merchants on Shopify do not need an API — they need a try-on button on product pages, an admin to toggle SKUs, and analytics that tie try-on to cart actions. That is what the Stylab Shopify app delivers out of the box.</p>
+<p>Teams evaluating a <strong>build-your-own</strong> route — headless Shopify, custom mobile app, in-store kiosk, or internal ML stack — should compare total cost: API credits, engineering time, widget maintenance, privacy compliance, and analytics instrumentation. See our <a href="../compare/">API comparison pages</a> for an honest build-vs-buy view.</p>
+<h3>When to contact us for custom work</h3>
+<ul>
+<li>Non-standard storefront (headless, native app) that cannot use the Shopify theme widget</li>
+<li>Enterprise volume with specific SLA, branding, or data residency requirements</li>
+<li>Partners building multi-tenant try-on for agency clients</li>
+</ul>`,
+      fr: `<p>La plupart des marchands apparel Shopify n'ont pas besoin d'une API — ils veulent un bouton d'essayage sur les PDP, un admin pour toggler les SKU et des analytics liées au panier. C'est ce que l'app Stylab livre clé en main.</p>
+<p>Les équipes qui évaluent un parcours <strong>build-your-own</strong> — Shopify headless, app mobile, kiosk magasin ou stack ML interne — doivent comparer le coût total : crédits API, temps dev, maintenance widget, conformité privacy et instrumentation analytics. Voir nos <a href="../compare/">pages comparaison API</a> pour un avis build-vs-buy honnête.</p>
+<h3>Quand nous contacter pour du sur mesure</h3>
+<ul>
+<li>Storefront non standard (headless, app native) sans widget thème Shopify</li>
+<li>Volume enterprise avec SLA, branding ou exigences de résidence data</li>
+<li>Partenaires multi-tenant pour clients agence</li>
+</ul>`,
+    },
+    featuresTitle: { en: 'Managed app vs custom build', fr: 'App managée vs build custom' },
+    features: [
+      {
+        title: { en: 'Standard: Shopify widget + admin', fr: 'Standard : widget + admin Shopify' },
+        body: { en: 'Fastest path to measurable try-on on product pages. Install, pilot, scale.', fr: 'Parcours le plus rapide vers un essayage mesurable sur PDP. Installer, piloter, scaler.' },
+      },
+      {
+        title: { en: 'No public self-serve API', fr: 'Pas d\'API self-serve publique' },
+        body: { en: 'There is no open API key signup today. Custom routes require a scoped conversation with Style Lab.', fr: 'Pas d\'inscription API ouverte aujourd\'hui. Routes custom = conversation scoped avec Style Lab.' },
+      },
+      {
+        title: { en: 'Compare build vs buy', fr: 'Comparer build vs buy' },
+        body: { en: 'Read Stylab vs FASHN AI, Replicate, Fal AI, and others before committing engineering weeks.', fr: 'Lisez Stylab vs FASHN AI, Replicate, Fal AI et autres avant d\'engager des semaines de dev.' },
+      },
+    ],
+    rollout: {
+      en: `<p><strong>Shopify merchant?</strong> Start with the <a href="https://apps.shopify.com/try-on-stylelab">App Store app</a> — validate quality and ROI before considering custom builds.</p>
+<p><strong>Custom integration?</strong> Email <a href="../contact.html">Style Lab</a> with your architecture diagram, monthly try-on volume estimate, and launch timeline. We will tell you if Stylab can support it or if another path is a better fit.</p>`,
+      fr: `<p><strong>Marchand Shopify ?</strong> Commencez par l'<a href="https://apps.shopify.com/try-on-stylelab">app App Store</a> — validez qualité et ROI avant un build custom.</p>
+<p><strong>Intégration sur mesure ?</strong> Écrivez à <a href="../contact.html">Style Lab</a> avec schéma d'architecture, volume mensuel estimé et timeline. Nous dirons si Stylab peut supporter ou si une autre voie convient mieux.</p>`,
     },
     bullets: {
       en: ['Standard: Shopify widget + admin', 'No public self-serve API today', 'Enterprise: contact Style Lab'],

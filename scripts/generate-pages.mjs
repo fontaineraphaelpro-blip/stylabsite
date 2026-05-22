@@ -3,7 +3,7 @@ import fs from 'fs';
 import path from 'path';
 import { fileURLToPath } from 'url';
 import { APP_URL, UI, BLOG_POSTS } from './page-data.mjs';
-import { SHOPIFY_COMPARE, API_COMPARE, SOLUTIONS, COMPARE_HUB } from './compare-data.mjs';
+import { SHOPIFY_COMPARE, API_COMPARE, SOLUTIONS, SOLUTIONS_HUB, COMPARE_HUB } from './compare-data.mjs';
 
 const __dirname = path.dirname(fileURLToPath(import.meta.url));
 const ROOT = path.join(__dirname, '..');
@@ -273,6 +273,47 @@ function comparePage(locale, depth, data) {
   return layout({ locale, depth, title, description: t(data.summary, locale), body, activeNav: 'compare', section: 'compare', pagePath });
 }
 
+function solutionFeatures(features, locale) {
+  return features.map(f => `<div class="diff-card"><h3>${t(f.title, locale)}</h3><p>${t(f.body, locale)}</p></div>`).join('');
+}
+
+function solutionPage(locale, depth, data) {
+  const u = UI[locale];
+  const px = paths(locale, depth);
+  const overviewBlock = data.overview ? `
+        <section class="section section-green"><div class="wrap prose reveal">${t(data.overview, locale)}</div></section>` : '';
+  const featuresBlock = data.features ? `
+        <section class="section section-white"><div class="wrap">
+            <div class="section-head center reveal"><p class="section-label">${locale === 'fr' ? 'Capacités' : 'Capabilities'}</p>
+            <h2 class="section-title">${t(data.featuresTitle || { en: 'What you get with Stylab', fr: 'Ce que Stylab apporte' }, locale)}</h2></div>
+            <div class="diff-grid reveal">${solutionFeatures(data.features, locale)}</div>
+        </div></section>` : '';
+  const rolloutLabel = locale === 'fr' ? 'Déploiement' : 'Rollout';
+  const rolloutBlock = data.rollout ? `
+        <section class="section" style="background:var(--green-50);"><div class="wrap">
+            <div class="section-head reveal"><p class="section-label">${rolloutLabel}</p>
+            <h2 class="section-title">${t(data.rolloutTitle || { en: 'How to get started', fr: 'Comment commencer' }, locale)}</h2></div>
+            <div class="prose reveal">${t(data.rollout, locale)}</div>
+        </div></section>` : '';
+  const noteBlock = data.note ? `
+        <section class="section section-white"><div class="wrap"><p class="disclaimer reveal" style="max-width:640px;margin:0 auto;text-align:center;">${t(data.note, locale)}</p></div></section>` : '';
+  const body = `
+        <section class="page-hero"><div class="wrap reveal">
+            <p class="breadcrumb"><a href="index.html">${u.solutions}</a></p>
+            <h1>${t(data.title, locale)}</h1>
+            <p class="lead">${t(data.lead, locale)}</p>
+            <div class="btns">${installBtn(u.install, px.assets)}<a href="${px.home}#try-it" class="btn btn-ghost">${u.viewDemo}</a></div>
+        </div></section>${overviewBlock}${featuresBlock}${rolloutBlock}${noteBlock}${cta(locale, depth)}`;
+  return layout({
+    locale, depth,
+    title: `${t(data.title, locale)} | Stylab`,
+    description: t(data.lead, locale),
+    section: 'solutions',
+    pagePath: `${locale === 'fr' ? '/fr' : ''}/solutions/${data.slug}.html`,
+    body,
+  });
+}
+
 function t(obj, locale) {
   if (typeof obj === 'string') return obj;
   return obj[locale] || obj.en;
@@ -472,21 +513,12 @@ function generateLocale(locale) {
       : 'Stylab solutions for Shopify apparel merchants: fashion brands, streetwear, enterprise volume, and API options.',
     section: 'solutions',
     pagePath: `${locale === 'fr' ? '/fr' : ''}/solutions/`,
-    body: `<section class="page-hero"><div class="wrap reveal"><p class="pill">${u.solutions}</p><h1>${locale === 'fr' ? 'Pour marchands apparel Shopify' : 'Built for Shopify apparel merchants'}</h1></div></section>
-        <section class="section section-white"><div class="wrap hub-grid reveal">${SOLUTIONS.map(s => `<a href="${s.slug}.html" class="hub-card"><h3>${t(s.title, locale)}</h3><p>${t(s.lead, locale).slice(0, 90)}…</p><span class="arrow">${u.learnMore}</span></a>`).join('')}</div></section>${cta(locale, 1)}`,
+    body: `<section class="page-hero"><div class="wrap reveal"><p class="pill">${u.solutions}</p><h1>${locale === 'fr' ? 'Pour marchands apparel Shopify' : 'Built for Shopify apparel merchants'}</h1><p class="lead">${t(SOLUTIONS_HUB.heroLead, locale)}</p></div></section>
+        <section class="section section-green"><div class="wrap prose reveal">${t(SOLUTIONS_HUB.intro, locale)}</div></section>
+        <section class="section section-white"><div class="wrap hub-grid reveal">${SOLUTIONS.map(s => `<a href="${s.slug}.html" class="hub-card"><h3>${t(s.title, locale)}</h3><p>${t(s.lead, locale).slice(0, 120)}…</p><span class="arrow">${u.learnMore}</span></a>`).join('')}</div></section>${cta(locale, 1)}`,
   }));
 
-  SOLUTIONS.forEach(s => {
-    writeFile(`${base}solutions/${s.slug}.html`, layout({
-      locale, depth: 1,
-      title: `${t(s.title, locale)} | Stylab`,
-      description: t(s.lead, locale),
-      section: 'solutions',
-      pagePath: `${locale === 'fr' ? '/fr' : ''}/solutions/${s.slug}.html`,
-      body: `<section class="page-hero"><div class="wrap reveal"><p class="breadcrumb"><a href="index.html">${u.solutions}</a></p><h1>${t(s.title, locale)}</h1><p class="lead">${t(s.lead, locale)}</p><div class="btns">${installBtn(u.install, paths(locale, 1).assets)}<a href="${paths(locale, 1).home}#try-it" class="btn btn-ghost">${u.viewDemo}</a></div></div></section>
-            <section class="section section-white"><div class="wrap"><ul class="problem-bullets reveal" style="max-width:560px;margin:0 auto">${t(s.bullets, locale).map(b => `<li>${b}</li>`).join('')}</ul>${s.note ? `<p class="disclaimer" style="max-width:560px;margin:2rem auto 0">${t(s.note, locale)}</p>` : ''}</div></section>${cta(locale, 1)}`,
-    }));
-  });
+  SOLUTIONS.forEach(s => writeFile(`${base}solutions/${s.slug}.html`, solutionPage(locale, 1, s)));
 
   const docBody = locale === 'fr' ? `
         <section class="page-hero"><div class="wrap reveal"><h1>Documentation</h1><p class="lead">Installez Stylab en quelques minutes.</p></div></section>
