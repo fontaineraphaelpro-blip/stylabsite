@@ -140,8 +140,9 @@
             --ease: cubic-bezier(0.22, 1, 0.36, 1);
         }
         *, *::before, *::after { margin: 0; padding: 0; box-sizing: border-box; }
-        html { scroll-behavior: smooth; overflow-x: clip; }
+        html { scroll-behavior: auto; overflow-x: clip; }
         body {
+            overflow-anchor: none;
             font-family: var(--font);
             color: var(--ink);
             background: #f8f8ff;
@@ -544,6 +545,7 @@
 
         /* Section common */
         section { padding: 4.5rem 0; }
+        section[id] { scroll-margin-top: 5.5rem; }
         .section-label {
             font-size: 0.72rem; font-weight: 700; letter-spacing: 0.14em;
             text-transform: uppercase; color: var(--green-800); margin-bottom: 0.75rem;
@@ -1246,7 +1248,7 @@
             .bento-item { grid-column: span 12 !important; }
             .mockup-stage {
                 height: auto;
-                min-height: 0;
+                min-height: 420px;
                 max-width: min(420px, 100%);
                 margin-inline: auto;
                 overflow: visible;
@@ -1613,6 +1615,13 @@
     </style>
 </head>
 <body class="js-reveal">
+    <script>
+      (function () {
+        if (window.location.hash) return;
+        if ('scrollRestoration' in history) history.scrollRestoration = 'manual';
+        window.scrollTo(0, 0);
+      })();
+    </script>
     <div class="ambient" aria-hidden="true"></div>
     <div class="grain" aria-hidden="true"></div>
 
@@ -2323,6 +2332,28 @@
             }
             window.addEventListener('load', revealInViewport, { once: true });
             window.addEventListener('resize', revealInViewport, { passive: true });
+
+            // Smooth in-page anchors only on click — not on load/restore
+            document.querySelectorAll('a[href^="#"]').forEach(function(a) {
+                a.addEventListener('click', function(e) {
+                    var id = a.getAttribute('href').slice(1);
+                    if (!id) return;
+                    var el = document.getElementById(id);
+                    if (!el) return;
+                    e.preventDefault();
+                    el.scrollIntoView({ behavior: 'smooth', block: 'start' });
+                    history.pushState(null, '', '#' + id);
+                });
+            });
+
+            // Stay at top on fresh load (layout shift / scroll restoration)
+            if (!window.location.hash) {
+                function pinTop() { window.scrollTo(0, 0); }
+                window.addEventListener('load', function() {
+                    pinTop();
+                    requestAnimationFrame(pinTop);
+                }, { once: true });
+            }
 
             // FAQ
             document.querySelectorAll('.faq-q').forEach(function(q) {
