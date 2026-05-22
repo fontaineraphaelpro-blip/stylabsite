@@ -77,7 +77,7 @@ function comparePage(locale, depth, data) {
         </div></section>${overviewBlock}
         <section class="section section-white"><div class="wrap reveal">
             <div class="section-head center"><p class="section-label">${u.sideBySide}</p><h2 class="section-title">${u.featureComparison}</h2><p class="section-desc">${t(data.competitorDesc, locale)}</p></div>
-            <div class="compare-table-wrap"><table class="compare-table"><thead><tr><th>${locale === 'fr' ? 'Fonctionnalité' : 'Feature'}</th><th>Stylab</th><th>${comp}</th></tr></thead><tbody>${rows}</tbody></table></div>
+            <div class="compare-table-wrap"><table class="compare-table"><thead><tr><th>${locale === 'fr' ? 'Fonctionnalité' : 'Feature'}</th><th>Stylab</th><th>${comp}</th></tr></thead><tbody>${rows}</tbody></table><p class="compare-scroll-hint">${u.compareScrollHint}</p></div>
             <div class="two-col">
                 <div class="diff-card"><h3>${u.whenStylab}</h3><p>${t(data.chooseStylab, locale)}</p></div>
                 <div class="diff-card"><h3>${u.whenOther.replace('{name}', comp)}</h3><p>${t(data.chooseOther, locale)}</p></div>

@@ -1121,6 +1121,17 @@
         }
         .cta-final p { opacity: 0.85; max-width: 32rem; margin: 0 auto 2rem; position: relative; }
         .cta-final .btns { display: flex; gap: 1rem; justify-content: center; flex-wrap: wrap; position: relative; }
+        .cta-final .btn-ghost {
+            background: transparent;
+            color: #fff;
+            border: 1px solid rgba(255,255,255,0.45);
+            backdrop-filter: none;
+        }
+        .cta-final .btn-ghost:hover {
+            background: rgba(255,255,255,0.12);
+            border-color: rgba(255,255,255,0.65);
+            color: #fff;
+        }
 
         /* Footer */
         footer {
@@ -1160,6 +1171,7 @@
             .nav-links { display: none; }
             .brand-name span { display: none; }
             .menu-btn { display: flex; }
+            .nav-actions .btn-primary { display: none; }
             .price-card.featured { transform: none; }
             .sticky-mobile-cta { display: flex; }
             body { padding-bottom: 76px; }
@@ -1178,7 +1190,9 @@
             .mockup-stage { height: 280px; }
             .metrics-dark { padding: 1.75rem 1.25rem; }
             .tldr { padding: 1.5rem 1.25rem; border-radius: 18px; }
-            .trial-header { padding: 1rem 1.25rem; }
+            .trial-header { padding: 1rem 1.25rem; flex-direction: column; align-items: flex-start; }
+            .trial-header h2 { font-size: 1rem; line-height: 1.35; }
+            .trial-badge { font-size: 0.65rem; }
             .trial-product { padding: 1.5rem !important; }
             .trial-gallery { padding: 1rem !important; }
             .trial-foot { font-size: 0.78rem; gap: 0.55rem 0.65rem; }
@@ -1247,8 +1261,10 @@
             .privacy-list li { font-size: 0.88rem; }
             .privacy-mini-strip span { font-size: 0.7rem; padding: 0.35rem 0.7rem; }
             .cta-final { padding: 2.5rem 1.5rem; }
-            .footer-top { grid-template-columns: 1fr 1fr; gap: 1.5rem; }
+            .footer-top { grid-template-columns: 1fr; gap: 1.5rem; }
             .brand-name span { display: none; }
+            .shopify-trust-row { gap: 0.4rem; }
+            .shopify-chip { font-size: 0.72rem; padding: 0.35rem 0.65rem; }
         }
 
         /* ----- Small phone ----- */
@@ -1904,7 +1920,7 @@
                     <p>Start with a few products, measure shopper engagement, and see whether try-on helps customers buy with more confidence.</p>
                     <div class="btns">
                         <a href="https://apps.shopify.com/try-on-stylelab" class="btn btn-white" target="_blank" rel="noopener"><svg class="shopify-icon shopify-icon--green" aria-hidden="true"><use href="#icon-shopify"/></svg>Install on Shopify</a>
-                        <a href="#try-it" class="btn btn-ghost" style="color:#fff;border-color:rgba(255,255,255,0.3);">View live demo</a>
+                        <a href="#try-it" class="btn btn-ghost">View live demo</a>
                     </div>
                 </div>
             </div>
