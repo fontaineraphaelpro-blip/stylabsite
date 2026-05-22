@@ -142,7 +142,7 @@ export const BLOG_POSTS = [
 </ul>
 <h2>Measure impact instead of guessing</h2>
 <p>Built-in A/B testing lets you compare product page behavior with and without try-on. Run a 30-day test on a few hero SKUs before rolling out store-wide.</p>
-<p><a href="../index.html#try-it">Try the live demo →</a></p>`,
+<p><a href="{{DEMO_LINK}}">Try the live demo →</a></p>`,
       fr: `<p>Les acheteurs de vêtements en ligne ont un problème simple : ils voient le produit, mais pas sur eux. Cette distance crée de l'hésitation — surtout en streetwear, tees graphiques et pièces statement où le style compte autant que la taille.</p>
 <h2>À quoi ressemble l'hésitation sur une page produit</h2>
 <p>Le client scroll les photos, consulte le guide des tailles, lit les avis, puis quitte sans ajouter au panier. Il ne rejette pas toujours le produit — il n'arrive souvent pas à se projeter.</p>
@@ -156,7 +156,7 @@ export const BLOG_POSTS = [
 </ul>
 <h2>Mesurez l'impact au lieu de deviner</h2>
 <p>L'A/B testing intégré compare le comportement avec et sans essayage. Lancez un test de 30 jours sur quelques SKU phares avant un déploiement global.</p>
-<p><a href="../../index.html#try-it">Essayer la démo live →</a></p>`,
+<p><a href="{{DEMO_LINK}}">Essayer la démo live →</a></p>`,
     },
   },
   {

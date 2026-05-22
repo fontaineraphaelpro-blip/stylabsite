@@ -8,9 +8,68 @@ import { SHOPIFY_COMPARE, API_COMPARE, SOLUTIONS } from './compare-data.mjs';
 const __dirname = path.dirname(fileURLToPath(import.meta.url));
 const ROOT = path.join(__dirname, '..');
 
-function prefix(locale, depth) {
-  const levels = locale === 'fr' ? depth + 1 : depth;
-  return levels === 0 ? '' : '../'.repeat(levels);
+function paths(locale, depth) {
+  const toSiteRoot = depth + (locale === 'fr' ? 1 : 0);
+  const upSite = toSiteRoot === 0 ? '' : '../'.repeat(toSiteRoot);
+  const upLocale = depth === 0 ? '' : '../'.repeat(depth);
+  return {
+    site: upSite,
+    locale: upLocale,
+    home: `${upLocale}index.html`,
+    assets: `${upSite}assets/`,
+    solutions: `${upLocale}solutions/`,
+    compare: `${upLocale}compare/`,
+    resources: `${upLocale}resources/`,
+    contact: `${upSite}contact.html`,
+    privacy: `${upSite}confidentialite.html`,
+  };
+}
+
+function langHref(locale, section) {
+  if (locale === 'en') {
+    if (section === 'blog') return '/fr/resources/blog/';
+    if (section === 'compare') return '/fr/compare/';
+    if (section === 'resources') return '/fr/resources/';
+    if (section === 'solutions') return '/fr/solutions/';
+    return '/fr/';
+  }
+  if (section === 'blog') return '/resources/blog/';
+  if (section === 'compare') return '/compare/';
+  if (section === 'resources') return '/resources/';
+  if (section === 'solutions') return '/solutions/';
+  return '/';
+}
+
+function cta(locale, depth) {
+  const u = UI[locale];
+  const px = paths(locale, depth);
+  return `<section class="section"><div class="wrap"><div class="cta-final reveal"><h2>${u.ctaTitle}</h2><p>${u.ctaBody}</p><div class="btns"><a href="${APP_URL}" class="btn btn-primary" target="_blank" rel="noopener">${u.install}</a><a href="${px.home}#try-it" class="btn btn-ghost">${u.viewDemo}</a></div></div></div></section>`;
+}
+
+function comparePage(locale, depth, data) {
+  const u = UI[locale];
+  const px = paths(locale, depth);
+  const comp = data.competitor;
+  const rows = data.rows.map(r => `<tr><td>${r.feature}</td><td>${cell(r.stylab)}</td><td>${cell(r.other)}</td></tr>`).join('');
+  const body = `
+        <section class="page-hero"><div class="wrap reveal">
+            <p class="breadcrumb"><a href="${px.compare}">${u.compare}</a> / Stylab vs ${comp}</p>
+            <p class="pill">${u.comparison}</p>
+            <h1>Stylab vs ${comp}</h1>
+            <p class="lead">${data.summary}</p>
+            <div class="btns"><a href="${APP_URL}" class="btn btn-primary" target="_blank" rel="noopener">${u.installStylab}</a><a href="${px.home}#try-it" class="btn btn-ghost">${u.viewDemo}</a></div>
+        </div></section>
+        <section class="section section-white"><div class="wrap reveal">
+            <div class="section-head center"><p class="section-label">${u.sideBySide}</p><h2 class="section-title">${u.featureComparison}</h2><p class="section-desc">${data.competitorDesc}</p></div>
+            <div class="compare-table-wrap"><table class="compare-table"><thead><tr><th>Feature</th><th>Stylab</th><th>${comp}</th></tr></thead><tbody>${rows}</tbody></table></div>
+            <div class="two-col">
+                <div class="diff-card"><h3>${u.whenStylab}</h3><p>${data.chooseStylab}</p></div>
+                <div class="diff-card"><h3>${u.whenOther.replace('{name}', comp)}</h3><p>${data.chooseOther}</p></div>
+            </div>
+            <p class="disclaimer">${u.disclaimer}</p>
+        </div></section>${cta(locale, depth)}`;
+  const title = locale === 'fr' ? `Stylab vs ${comp} | Comparaison Shopify` : `Stylab vs ${comp} | Shopify Virtual Try-On Comparison`;
+  return layout({ locale, depth, title, description: data.summary, body, activeNav: 'compare', section: 'compare' });
 }
 
 function t(obj, locale) {
@@ -36,57 +95,62 @@ function writeFile(relPath, content) {
   console.log('Wrote', relPath);
 }
 
-function footer(locale, p, u, home) {
+function footer(locale, px, u, home) {
   return `<footer>
         <div class="wrap footer-top">
             <div class="footer-brand">
                 <a href="${home}" class="brand">
-                    <span class="brand-mark"><img src="${p}assets/logo.png" alt="" width="36" height="36"></span>
+                    <span class="brand-mark"><img src="${px.assets}logo.png" alt="" width="36" height="36"></span>
                     <span class="brand-name">Stylab <span>Virtual Try-On</span></span>
                 </a>
                 <p>${u.footerTagline}</p>
             </div>
             <div class="footer-col"><h4>${u.footerSolutions}</h4>
-                <a href="${p}solutions/fashion-brands.html">${u.fashionBrands}</a>
-                <a href="${p}solutions/streetwear.html">${u.streetwear}</a>
-                <a href="${p}solutions/enterprise.html">${u.enterprise}</a>
-                <a href="${p}solutions/prestashop.html">${u.prestashop}</a>
-                <a href="${p}solutions/api.html">${u.api}</a>
+                <a href="${px.locale}solutions/fashion-brands.html">${u.fashionBrands}</a>
+                <a href="${px.locale}solutions/streetwear.html">${u.streetwear}</a>
+                <a href="${px.locale}solutions/enterprise.html">${u.enterprise}</a>
+                <a href="${px.locale}solutions/prestashop.html">${u.prestashop}</a>
+                <a href="${px.locale}solutions/api.html">${u.api}</a>
             </div>
             <div class="footer-col"><h4>${u.footerShopifyAlt}</h4>
-                <a href="${p}compare/vs-genlook.html">vs Genlook</a>
-                <a href="${p}compare/vs-antla.html">vs Antla</a>
-                <a href="${p}compare/vs-banuba.html">vs Banuba</a>
-                <a href="${p}compare/vs-mirrar.html">vs MirrAR</a>
-                <a href="${p}compare/vs-camweara.html">vs Camweara</a>
-                <a href="${p}compare/vs-looksy.html">vs Looksy</a>
-                <a href="${p}compare/vs-trypoint.html">vs TryPoint</a>
+                <a href="${px.locale}compare/vs-genlook.html">vs Genlook</a>
+                <a href="${px.locale}compare/vs-antla.html">vs Antla</a>
+                <a href="${px.locale}compare/vs-banuba.html">vs Banuba</a>
+                <a href="${px.locale}compare/vs-mirrar.html">vs MirrAR</a>
+                <a href="${px.locale}compare/vs-camweara.html">vs Camweara</a>
+                <a href="${px.locale}compare/vs-looksy.html">vs Looksy</a>
+                <a href="${px.locale}compare/vs-trypoint.html">vs TryPoint</a>
             </div>
             <div class="footer-col"><h4>${u.footerApiAlt}</h4>
-                <a href="${p}compare/api/vs-fashn-ai.html">vs FASHN AI</a>
-                <a href="${p}compare/api/vs-aiuta.html">vs Aiuta</a>
-                <a href="${p}compare/api/vs-pixelcut.html">vs Pixelcut</a>
-                <a href="${p}compare/api/vs-replicate.html">vs Replicate</a>
-                <a href="${p}compare/api/vs-fal-ai.html">vs Fal AI</a>
+                <a href="${px.locale}compare/api/vs-fashn-ai.html">vs FASHN AI</a>
+                <a href="${px.locale}compare/api/vs-aiuta.html">vs Aiuta</a>
+                <a href="${px.locale}compare/api/vs-pixelcut.html">vs Pixelcut</a>
+                <a href="${px.locale}compare/api/vs-replicate.html">vs Replicate</a>
+                <a href="${px.locale}compare/api/vs-fal-ai.html">vs Fal AI</a>
             </div>
             <div class="footer-col"><h4>${u.footerResources}</h4>
-                <a href="${p}resources/free-tools.html">${u.freeTools}</a>
-                <a href="${p}resources/blog/">${u.blog}</a>
-                <a href="${p}resources/documentation.html">${u.documentation}</a>
-                <a href="${p}resources/changelog.html">${u.changelog}</a>
-                <a href="${p}contact.html">${u.contact}</a>
-                <a href="${p}confidentialite.html">${u.privacy}</a>
+                <a href="${px.locale}resources/free-tools.html">${u.freeTools}</a>
+                <a href="${px.locale}resources/blog/">${u.blog}</a>
+                <a href="${px.locale}resources/documentation.html">${u.documentation}</a>
+                <a href="${px.locale}resources/changelog.html">${u.changelog}</a>
+                <a href="${px.contact}">${u.contact}</a>
+                <a href="${px.privacy}">${u.privacy}</a>
             </div>
         </div>
         <div class="wrap footer-copy">© 2026 Style Lab · Stylab Virtual Try-On</div>
     </footer>`;
 }
 
-function layout({ locale, depth, title, description, body, activeNav, extraScripts = '' }) {
-  const p = prefix(locale, depth);
+function injectBlogContent(html, demoHref) {
+  return html.replace(/\{\{DEMO_LINK\}\}/g, demoHref);
+}
+
+function layout({ locale, depth, title, description, body, activeNav, extraScripts = '', section = '' }) {
+  const px = paths(locale, depth);
   const u = UI[locale];
-  const home = `${p}index.html`;
+  const home = px.home;
   const pricingHref = `${home}#pricing`;
+  const langSwitch = langHref(locale, section);
 
   return `<!DOCTYPE html>
 <html lang="${u.lang}">
@@ -96,24 +160,25 @@ function layout({ locale, depth, title, description, body, activeNav, extraScrip
     <title>${title}</title>
     <meta name="description" content="${description}">
     <meta name="robots" content="index, follow">
-    <link rel="icon" type="image/png" href="${p}assets/logo.png">
+    <link rel="icon" type="image/png" href="${px.assets}logo.png">
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Inter+Tight:wght@400;500;600;700;800&family=Geist:wght@500;600;700;800;900&display=swap" rel="stylesheet">
-    <link rel="stylesheet" href="${p}assets/marketing.css">
+    <link rel="stylesheet" href="${px.assets}marketing.css">
 </head>
 <body>
     <div class="ambient" aria-hidden="true"></div>
     <header class="header" id="header">
         <div class="wrap nav">
-            <a href="${home}" class="brand"><span class="brand-mark"><img src="${p}assets/logo.png" alt="" width="36" height="36"></span><span class="brand-name">Stylab <span>Virtual Try-On</span></span></a>
+            <a href="${home}" class="brand"><span class="brand-mark"><img src="${px.assets}logo.png" alt="" width="36" height="36"></span><span class="brand-name">Stylab <span>Virtual Try-On</span></span></a>
             <nav class="nav-links">
                 <a href="${home}#try-it">${u.liveDemo}</a>
-                <a href="${p}solutions/">${u.solutions}</a>
-                <a href="${p}compare/"${activeNav === 'compare' ? ' class="active"' : ''}>${u.compare}</a>
-                <a href="${p}resources/">${u.resources}</a>
+                <a href="${px.solutions}">${u.solutions}</a>
+                <a href="${px.compare}"${activeNav === 'compare' ? ' class="active"' : ''}>${u.compare}</a>
+                <a href="${px.resources}">${u.resources}</a>
+                <a href="${px.resources}blog/">${u.blog}</a>
                 <a href="${pricingHref}">${u.pricing}</a>
-                <a href="${u.otherLangHref}" class="lang-switch">${u.otherLang}</a>
+                <a href="${langSwitch}" class="lang-switch">${u.otherLang}</a>
             </nav>
             <div class="nav-actions">
                 <a href="${home}#try-it" class="btn btn-ghost">${u.viewDemo}</a>
@@ -124,50 +189,19 @@ function layout({ locale, depth, title, description, body, activeNav, extraScrip
     </header>
     <div class="mobile-drawer" id="mobileDrawer">
         <a href="${home}#try-it">${u.liveDemo}</a>
-        <a href="${p}solutions/">${u.solutions}</a>
-        <a href="${p}compare/">${u.compare}</a>
-        <a href="${p}resources/">${u.resources}</a>
+        <a href="${px.solutions}">${u.solutions}</a>
+        <a href="${px.compare}">${u.compare}</a>
+        <a href="${px.resources}">${u.resources}</a>
+        <a href="${px.resources}blog/">${u.blog}</a>
         <a href="${pricingHref}">${u.pricing}</a>
-        <a href="${u.otherLangHref}">${u.otherLang}</a>
+        <a href="${langSwitch}">${u.otherLang}</a>
         <a href="${APP_URL}" class="btn btn-primary" target="_blank" rel="noopener">${u.install}</a>
     </div>
     <main class="page-main">${body}</main>
-    ${footer(locale, p, u, home)}
-    <script src="${p}assets/marketing.js"></script>${extraScripts}
+    ${footer(locale, px, u, home)}
+    <script src="${px.assets}marketing.js"></script>${extraScripts}
 </body>
 </html>`;
-}
-
-function cta(locale, depth) {
-  const u = UI[locale];
-  const p = prefix(locale, depth);
-  return `<section class="section"><div class="wrap"><div class="cta-final reveal"><h2>${u.ctaTitle}</h2><p>${u.ctaBody}</p><div class="btns"><a href="${APP_URL}" class="btn btn-primary" target="_blank" rel="noopener">${u.install}</a><a href="${p}index.html#try-it" class="btn btn-ghost">${u.viewDemo}</a></div></div></div></section>`;
-}
-
-function comparePage(locale, depth, data) {
-  const u = UI[locale];
-  const p = prefix(locale, depth);
-  const comp = data.competitor;
-  const rows = data.rows.map(r => `<tr><td>${r.feature}</td><td>${cell(r.stylab)}</td><td>${cell(r.other)}</td></tr>`).join('');
-  const body = `
-        <section class="page-hero"><div class="wrap reveal">
-            <p class="breadcrumb"><a href="${p}compare/">${u.compare}</a> / Stylab vs ${comp}</p>
-            <p class="pill">${u.comparison}</p>
-            <h1>Stylab vs ${comp}</h1>
-            <p class="lead">${data.summary}</p>
-            <div class="btns"><a href="${APP_URL}" class="btn btn-primary" target="_blank" rel="noopener">${u.installStylab}</a><a href="${p}index.html#try-it" class="btn btn-ghost">${u.viewDemo}</a></div>
-        </div></section>
-        <section class="section section-white"><div class="wrap reveal">
-            <div class="section-head center"><p class="section-label">${u.sideBySide}</p><h2 class="section-title">${u.featureComparison}</h2><p class="section-desc">${data.competitorDesc}</p></div>
-            <div class="compare-table-wrap"><table class="compare-table"><thead><tr><th>Feature</th><th>Stylab</th><th>${comp}</th></tr></thead><tbody>${rows}</tbody></table></div>
-            <div class="two-col">
-                <div class="diff-card"><h3>${u.whenStylab}</h3><p>${data.chooseStylab}</p></div>
-                <div class="diff-card"><h3>${u.whenOther.replace('{name}', comp)}</h3><p>${data.chooseOther}</p></div>
-            </div>
-            <p class="disclaimer">${u.disclaimer}</p>
-        </div></section>${cta(locale, depth)}`;
-  const title = locale === 'fr' ? `Stylab vs ${comp} | Comparaison Shopify` : `Stylab vs ${comp} | Shopify Virtual Try-On Comparison`;
-  return layout({ locale, depth, title, description: data.summary, body, activeNav: 'compare' });
 }
 
 function roiBlock(locale) {
@@ -205,6 +239,7 @@ function generateLocale(locale) {
     title: locale === 'fr' ? 'Comparaisons Stylab' : 'Stylab Comparisons | Shopify & API Alternatives',
     description: locale === 'fr' ? 'Comparez Stylab avec Genlook, Antla, Banuba et plus.' : 'Compare Stylab with Genlook, Antla, Banuba, and API platforms.',
     activeNav: 'compare',
+    section: 'compare',
     body: `
         <section class="page-hero"><div class="wrap reveal"><p class="pill">${u.compare}</p><h1>${locale === 'fr' ? 'Comment Stylab se compare' : 'How Stylab compares'}</h1><p class="lead">${locale === 'fr' ? 'Comparaisons factuelles pour marchands Shopify apparel.' : 'Factual comparisons for Shopify apparel merchants.'}</p></div></section>
         <section class="section section-white"><div class="wrap"><div class="section-head reveal"><p class="section-label">Shopify</p><h2 class="section-title">${u.footerShopifyAlt}</h2></div>
@@ -220,6 +255,7 @@ function generateLocale(locale) {
     locale, depth: 1,
     title: locale === 'fr' ? 'Solutions Stylab' : 'Stylab Solutions',
     description: t(SOLUTIONS[0].lead, locale),
+    section: 'solutions',
     body: `<section class="page-hero"><div class="wrap reveal"><p class="pill">${u.solutions}</p><h1>${locale === 'fr' ? 'Pour marchands apparel Shopify' : 'Built for Shopify apparel merchants'}</h1></div></section>
         <section class="section section-white"><div class="wrap hub-grid reveal">${SOLUTIONS.map(s => `<a href="${s.slug}.html" class="hub-card"><h3>${t(s.title, locale)}</h3><p>${t(s.lead, locale).slice(0, 90)}…</p><span class="arrow">${u.learnMore}</span></a>`).join('')}</div></section>${cta(locale, 1)}`,
   }));
@@ -229,7 +265,8 @@ function generateLocale(locale) {
       locale, depth: 1,
       title: `${t(s.title, locale)} | Stylab`,
       description: t(s.lead, locale),
-      body: `<section class="page-hero"><div class="wrap reveal"><p class="breadcrumb"><a href="index.html">${u.solutions}</a></p><h1>${t(s.title, locale)}</h1><p class="lead">${t(s.lead, locale)}</p><div class="btns"><a href="${APP_URL}" class="btn btn-primary" target="_blank" rel="noopener">${u.install}</a><a href="${prefix(locale, 1)}index.html#try-it" class="btn btn-ghost">${u.viewDemo}</a></div></div></section>
+      section: 'solutions',
+      body: `<section class="page-hero"><div class="wrap reveal"><p class="breadcrumb"><a href="index.html">${u.solutions}</a></p><h1>${t(s.title, locale)}</h1><p class="lead">${t(s.lead, locale)}</p><div class="btns"><a href="${APP_URL}" class="btn btn-primary" target="_blank" rel="noopener">${u.install}</a><a href="${paths(locale, 1).home}#try-it" class="btn btn-ghost">${u.viewDemo}</a></div></div></section>
             <section class="section section-white"><div class="wrap"><ul class="problem-bullets reveal" style="max-width:560px;margin:0 auto">${t(s.bullets, locale).map(b => `<li>${b}</li>`).join('')}</ul>${s.note ? `<p class="disclaimer" style="max-width:560px;margin:2rem auto 0">${t(s.note, locale)}</p>` : ''}</div></section>${cta(locale, 1)}`,
     }));
   });
@@ -251,7 +288,7 @@ function generateLocale(locale) {
         </div></section>${cta(locale, 1)}`;
 
   writeFile(`${base}resources/index.html`, layout({
-    locale, depth: 1, title: locale === 'fr' ? 'Ressources Stylab' : 'Stylab Resources', description: 'Docs, blog, tools',
+    locale, depth: 1, title: locale === 'fr' ? 'Ressources Stylab' : 'Stylab Resources', description: 'Docs, blog, tools', section: 'resources',
     body: `<section class="page-hero"><div class="wrap reveal"><p class="pill">${u.footerResources}</p><h1>${locale === 'fr' ? 'Apprendre et lancer' : 'Learn and launch'}</h1></div></section>
         <section class="section section-white"><div class="wrap hub-grid reveal">
             <a href="free-tools.html" class="hub-card"><h3>${u.freeTools}</h3><p>${locale === 'fr' ? 'Calculateur usage & checklist' : 'Usage calculator & checklists'}</p><span class="arrow">→</span></a>
@@ -265,7 +302,8 @@ function generateLocale(locale) {
     locale, depth: 1,
     title: locale === 'fr' ? 'Outils gratuits' : 'Free Tools | Stylab',
     description: 'ROI calculator',
-    extraScripts: `<script src="${prefix(locale, 1)}assets/roi-calculator.js"></script>`,
+    section: 'resources',
+    extraScripts: `<script src="${paths(locale, 1).assets}roi-calculator.js"></script>`,
     body: `<section class="page-hero"><div class="wrap reveal"><h1>${u.freeTools}</h1><p class="lead">${locale === 'fr' ? 'Planifiez votre déploiement essayage.' : 'Plan your try-on rollout.'}</p></div></section>
         <section class="section section-white"><div class="wrap"><div class="diff-grid reveal">
             <div class="diff-card"><h3>${locale === 'fr' ? 'Checklist readiness' : 'Readiness checklist'}</h3><p>${locale === 'fr' ? 'Photos claires, SKU phares, PDP mobile.' : 'Clear photos, hero SKUs, mobile PDPs.'}</p></div>
@@ -274,26 +312,29 @@ function generateLocale(locale) {
         </div></div></section>${roiBlock(locale)}${cta(locale, 1)}`,
   }));
 
-  writeFile(`${base}resources/documentation.html`, layout({ locale, depth: 1, title: 'Documentation | Stylab', description: 'Docs', body: docBody }));
+  writeFile(`${base}resources/documentation.html`, layout({ locale, depth: 1, title: 'Documentation | Stylab', description: 'Docs', section: 'resources', body: docBody }));
   writeFile(`${base}resources/changelog.html`, layout({
-    locale, depth: 1, title: 'Changelog | Stylab', description: 'Updates',
+    locale, depth: 1, title: 'Changelog | Stylab', description: 'Updates', section: 'resources',
     body: `<section class="page-hero"><div class="wrap reveal"><h1>${u.changelog}</h1></div></section>
         <section class="section section-white"><div class="wrap prose reveal"><h2>May 2026</h2><ul><li>${locale === 'fr' ? 'Site FR + comparaisons + simulateur ROI' : 'FR site + comparisons + ROI simulator'}</li><li>Stylab vs Genlook page</li><li>Full blog articles</li></ul></div></section>${cta(locale, 1)}`,
   }));
 
   writeFile(`${base}resources/blog/index.html`, layout({
-    locale, depth: 2, title: 'Blog | Stylab', description: 'Blog',
-    body: `<section class="page-hero"><div class="wrap reveal"><h1>${u.blog}</h1></div></section>
+    locale, depth: 2, title: 'Blog | Stylab', description: 'Blog', section: 'blog',
+    body: `<section class="page-hero"><div class="wrap reveal"><p class="breadcrumb"><a href="../index.html">${u.footerResources}</a> / ${u.blog}</p><h1>${u.blog}</h1><p class="lead">${locale === 'fr' ? 'Guides pratiques pour marchands apparel Shopify.' : 'Practical guides for Shopify apparel merchants.'}</p></div></section>
         <section class="section section-white"><div class="wrap blog-grid reveal">${BLOG_POSTS.map(p => `<a href="${p.slug}.html" class="blog-card"><div class="blog-card-body"><span class="tag">${t(p.tag, locale)}</span><h3>${t(p.title, locale)}</h3><p>${t(p.excerpt, locale)}</p><p class="meta">${p.date}</p></div></a>`).join('')}</div></section>${cta(locale, 2)}`,
   }));
 
   BLOG_POSTS.forEach(p => {
+    const px = paths(locale, 2);
+    const demoHref = `${px.home}#try-it`;
     writeFile(`${base}resources/blog/${p.slug}.html`, layout({
       locale, depth: 2,
       title: `${t(p.title, locale)} | Stylab`,
       description: t(p.excerpt, locale),
-      body: `<section class="page-hero"><div class="wrap reveal"><p class="pill">${t(p.tag, locale)}</p><h1>${t(p.title, locale)}</h1><p class="lead">${t(p.excerpt, locale)}</p><p class="meta">${p.date}</p></div></section>
-            <section class="section section-white"><div class="wrap prose reveal">${t(p.content, locale)}</div></section>${cta(locale, 2)}`,
+      section: 'blog',
+      body: `<section class="page-hero"><div class="wrap reveal"><p class="breadcrumb"><a href="../index.html">${u.footerResources}</a> / <a href="index.html">${u.blog}</a></p><p class="pill">${t(p.tag, locale)}</p><h1>${t(p.title, locale)}</h1><p class="lead">${t(p.excerpt, locale)}</p><p class="meta">${p.date}</p></div></section>
+            <section class="section section-white"><div class="wrap prose reveal">${injectBlogContent(t(p.content, locale), demoHref)}</div></section>${cta(locale, 2)}`,
     }));
   });
 }
