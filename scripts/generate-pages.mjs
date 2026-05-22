@@ -196,7 +196,15 @@ function paths(locale, depth) {
     resources: `${upLocale}resources/`,
     contact: `${upSite}contact.html`,
     privacy: `${upSite}confidentialite.html`,
+    support: `${upSite}support.html`,
+    terms: `${upSite}conditions.html`,
   };
+}
+
+function langHrefFromPath(locale, pagePath) {
+  if (!pagePath) return locale === 'en' ? '/fr/' : '/';
+  const { enPath, frPath } = pagePathPair(pagePath);
+  return locale === 'en' ? frPath : enPath;
 }
 
 function langHref(locale, section) {
@@ -327,7 +335,9 @@ function footer(locale, px, u, home) {
                 <a href="${px.locale}resources/documentation.html">${u.documentation}</a>
                 <a href="${px.locale}resources/changelog.html">${u.changelog}</a>
                 <a href="${px.contact}">${u.contact}</a>
+                <a href="${px.support}">${u.support}</a>
                 <a href="${px.privacy}">${u.privacy}</a>
+                <a href="${px.terms}">${u.terms}</a>
             </div>
         </div>
         <div class="wrap footer-copy">© 2026 Style Lab · Stylab Virtual Try-On</div>
@@ -344,7 +354,7 @@ function layout({ locale, depth, title, description, body, activeNav, extraScrip
   const home = px.home;
   const pricingHref = `${home}#pricing`;
   const featuresHref = `${home}#features`;
-  const langSwitch = langHref(locale, section);
+  const langSwitch = pagePath ? langHrefFromPath(locale, pagePath) : langHref(locale, section);
   const seoHead = headExtra || (pagePath ? pageHeadMeta({ locale, pagePath, title, description }) : '');
 
   return `<!DOCTYPE html>
@@ -457,7 +467,9 @@ function generateLocale(locale) {
   writeFile(`${base}solutions/index.html`, layout({
     locale, depth: 1,
     title: locale === 'fr' ? 'Solutions Stylab' : 'Stylab Solutions',
-    description: t(SOLUTIONS[0].lead, locale),
+    description: locale === 'fr'
+      ? 'Solutions Stylab pour marques apparel Shopify : mode, streetwear, enterprise et intégrations API.'
+      : 'Stylab solutions for Shopify apparel merchants: fashion brands, streetwear, enterprise volume, and API options.',
     section: 'solutions',
     pagePath: `${locale === 'fr' ? '/fr' : ''}/solutions/`,
     body: `<section class="page-hero"><div class="wrap reveal"><p class="pill">${u.solutions}</p><h1>${locale === 'fr' ? 'Pour marchands apparel Shopify' : 'Built for Shopify apparel merchants'}</h1></div></section>
@@ -555,6 +567,7 @@ function generateLocale(locale) {
       ? 'Guides pratiques pour marchands apparel Shopify : déploiement essayage, A/B test, photos flat-lay, mobile et privacy.'
       : 'Practical Shopify virtual try-on guides for apparel merchants: rollout, A/B testing, flat-lay photos, mobile, and privacy.',
     section: 'blog',
+    pagePath: `${locale === 'fr' ? '/fr' : ''}/resources/blog/`,
     headExtra: blogIndexHeadMeta(locale),
     body: `<section class="page-hero"><div class="wrap reveal"><p class="breadcrumb"><a href="../index.html">${u.footerResources}</a> / ${u.blog}</p><h1>${u.blog}</h1><p class="lead">${locale === 'fr' ? 'Guides pratiques pour marchands apparel Shopify.' : 'Practical guides for Shopify apparel merchants.'}</p></div></section>
         <section class="section section-white"><div class="wrap blog-grid reveal">${BLOG_POSTS.map(p => `<a href="${p.slug}.html" class="blog-card"><div class="blog-card-body"><span class="tag">${t(p.tag, locale)}</span><h2>${t(p.title, locale)}</h2><p>${t(p.excerpt, locale)}</p><p class="meta"><time datetime="${p.dateISO}">${p.date}</time></p></div></a>`).join('')}</div></section>${cta(locale, 2)}`,
@@ -568,6 +581,7 @@ function generateLocale(locale) {
       title: `${t(p.title, locale)} | Stylab`,
       description: t(p.excerpt, locale),
       section: 'blog',
+      pagePath: `${locale === 'fr' ? '/fr' : ''}/resources/blog/${p.slug}.html`,
       headExtra: blogHeadMeta({ locale, post: p }),
       body: blogArticleBody(p, locale, u, px, demoHref),
     }));

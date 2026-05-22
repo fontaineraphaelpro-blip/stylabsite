@@ -79,15 +79,10 @@ One early pilot store (REMADE ICONS) reported **77.8% try-on → add-to-cart** i
 - Homepage EN: `/` · Homepage FR: `/fr/`
 - Hero + problem: top of page, `#problem`
 - Live demo widget: `#try-it`
-- Pilot result: `#pilot`
-- Product tour (screenshots): `#showcase`, `#inside`
-- Use cases: `#use-cases`
-- Widget highlights: `#features`
-- Analytics: `#analytics`
-- How it works: `#engineering`
+- Use cases & features: `#features`
 - Privacy: `#privacy`
 - Pricing: `#pricing`
-- Differentiators: `#differentiators`
+- Social proof: `#social-proof`
 - FAQ: `#faq`
 
 ## Compare pages (`/compare/`)
