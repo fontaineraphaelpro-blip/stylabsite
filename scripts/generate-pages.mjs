@@ -10,6 +10,17 @@ const ROOT = path.join(__dirname, '..');
 const SITE_URL = 'https://www.stylabtryon.site';
 const OG_IMAGE = `${SITE_URL}/assets/screenshots/result-modal.png`;
 
+const SHOPIFY_ICON_SVG = `<svg class="shopify-icon shopify-icon--white" aria-hidden="true"><use href="#icon-shopify"/></svg>`;
+const SHOPIFY_ICON_SPRITE = `<svg xmlns="http://www.w3.org/2000/svg" style="display:none" aria-hidden="true">
+        <symbol id="icon-shopify" viewBox="0 0 24 24">
+            <path fill="currentColor" d="M15.34 5.66c0-1.19-.97-2.16-2.16-2.16s-2.16.97-2.16 2.16c0 .15.02.3.05.44H8.93c.03-.14.05-.29.05-.44C8.98 4.47 8.01 3.5 6.82 3.5S4.66 4.47 4.66 5.66c0 .15.02.3.05.44H2.49c-.83 0-1.5.67-1.5 1.5v.98l.74 13.86c.05.94.84 1.69 1.78 1.69h15.98c.94 0 1.73-.75 1.78-1.69l.74-13.86V7.16c0-.83-.67-1.5-1.5-1.5h-2.22c.03-.14.05-.29.05-.44 0-1.19-.97-2.16-2.16-2.16s-2.16.97-2.16 2.16c0 .15.02.3.05.44h-1.1c-.03-.14-.05-.29-.05-.44zm-2.16-.98c.54 0 .98.44.98.98s-.44.98-.98.98-.98-.44-.98-.98.44-.98.98-.98zM6.82 4.68c.54 0 .98.44.98.98s-.44.98-.98.98-.98-.44-.98-.98.44-.98.98-.98zM3.49 8.14h17.02l-.7 13.12H4.19L3.49 8.14z"/>
+        </symbol>
+    </svg>`;
+
+function installBtn(label, className = 'btn btn-primary') {
+  return `<a href="${APP_URL}" class="${className}" target="_blank" rel="noopener">${SHOPIFY_ICON_SVG}${label}</a>`;
+}
+
 function escapeAttr(s) {
   return String(s)
     .replace(/&/g, '&amp;')
@@ -209,7 +220,7 @@ function langHref(locale, section) {
 function cta(locale, depth) {
   const u = UI[locale];
   const px = paths(locale, depth);
-  return `<section class="section"><div class="wrap"><div class="cta-final reveal"><h2>${u.ctaTitle}</h2><p>${u.ctaBody}</p><div class="btns"><a href="${APP_URL}" class="btn btn-primary" target="_blank" rel="noopener">${u.install}</a><a href="${px.home}#try-it" class="btn btn-ghost">${u.viewDemo}</a></div></div></div></section>`;
+  return `<section class="section"><div class="wrap"><div class="cta-final reveal"><h2>${u.ctaTitle}</h2><p>${u.ctaBody}</p><div class="btns">${installBtn(u.install)}<a href="${px.home}#try-it" class="btn btn-ghost">${u.viewDemo}</a></div></div></div></section>`;
 }
 
 function comparePage(locale, depth, data) {
@@ -239,7 +250,7 @@ function comparePage(locale, depth, data) {
             <p class="pill">${u.comparison}</p>
             <h1>Stylab vs ${comp}</h1>
             <p class="lead">${t(data.summary, locale)}</p>
-            <div class="btns"><a href="${APP_URL}" class="btn btn-primary" target="_blank" rel="noopener">${u.installStylab}</a><a href="${px.home}#try-it" class="btn btn-ghost">${u.viewDemo}</a></div>
+            <div class="btns">${installBtn(u.installStylab)}<a href="${px.home}#try-it" class="btn btn-ghost">${u.viewDemo}</a></div>
         </div></section>${overviewBlock}
         <section class="section section-white"><div class="wrap reveal">
             <div class="section-head center"><p class="section-label">${u.sideBySide}</p><h2 class="section-title">${u.featureComparison}</h2><p class="section-desc">${t(data.competitorDesc, locale)}</p></div>
@@ -354,6 +365,7 @@ function layout({ locale, depth, title, description, body, activeNav, extraScrip
     <link rel="stylesheet" href="${px.assets}marketing.css">
 </head>
 <body>
+    ${SHOPIFY_ICON_SPRITE}
     <div class="ambient" aria-hidden="true"></div>
     <header class="header" id="header">
         <div class="wrap nav">
@@ -373,7 +385,7 @@ function layout({ locale, depth, title, description, body, activeNav, extraScrip
                 <a href="${langSwitch}" class="lang-switch">${u.otherLang}</a>
             </nav>
             <div class="nav-actions">
-                <a href="${APP_URL}" class="btn btn-primary" target="_blank" rel="noopener">${u.install}</a>
+                ${installBtn(u.install)}
                 <button class="menu-btn" id="menuBtn" type="button" aria-label="Menu"><span></span><span></span><span></span></button>
             </div>
         </div>
@@ -388,7 +400,7 @@ function layout({ locale, depth, title, description, body, activeNav, extraScrip
         <a href="${px.resources}blog/" class="drawer-sub">${u.blog}</a>
         <a href="${home}#try-it">${u.liveDemo}</a>
         <a href="${langSwitch}" class="lang-switch">${u.otherLang}</a>
-        <a href="${APP_URL}" class="btn btn-primary" target="_blank" rel="noopener">${u.install}</a>
+        ${installBtn(u.install)}
     </div>
     <main class="page-main">${body}</main>
     ${footer(locale, px, u, home)}
@@ -463,7 +475,7 @@ function generateLocale(locale) {
       description: t(s.lead, locale),
       section: 'solutions',
       pagePath: `${locale === 'fr' ? '/fr' : ''}/solutions/${s.slug}.html`,
-      body: `<section class="page-hero"><div class="wrap reveal"><p class="breadcrumb"><a href="index.html">${u.solutions}</a></p><h1>${t(s.title, locale)}</h1><p class="lead">${t(s.lead, locale)}</p><div class="btns"><a href="${APP_URL}" class="btn btn-primary" target="_blank" rel="noopener">${u.install}</a><a href="${paths(locale, 1).home}#try-it" class="btn btn-ghost">${u.viewDemo}</a></div></div></section>
+      body: `<section class="page-hero"><div class="wrap reveal"><p class="breadcrumb"><a href="index.html">${u.solutions}</a></p><h1>${t(s.title, locale)}</h1><p class="lead">${t(s.lead, locale)}</p><div class="btns">${installBtn(u.install)}<a href="${paths(locale, 1).home}#try-it" class="btn btn-ghost">${u.viewDemo}</a></div></div></section>
             <section class="section section-white"><div class="wrap"><ul class="problem-bullets reveal" style="max-width:560px;margin:0 auto">${t(s.bullets, locale).map(b => `<li>${b}</li>`).join('')}</ul>${s.note ? `<p class="disclaimer" style="max-width:560px;margin:2rem auto 0">${t(s.note, locale)}</p>` : ''}</div></section>${cta(locale, 1)}`,
     }));
   });
