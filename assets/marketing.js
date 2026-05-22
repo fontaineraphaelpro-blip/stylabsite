@@ -9,10 +9,22 @@
         }, { passive: true });
     }
 
+    function setDrawerOpen(open) {
+        if (!drawer) return;
+        drawer.classList.toggle('open', open);
+        document.body.classList.toggle('drawer-open', open);
+        if (menuBtn) menuBtn.setAttribute('aria-expanded', open ? 'true' : 'false');
+    }
+
     if (menuBtn && drawer) {
-        menuBtn.addEventListener('click', function () { drawer.classList.toggle('open'); });
+        menuBtn.addEventListener('click', function () {
+            setDrawerOpen(!drawer.classList.contains('open'));
+        });
         drawer.querySelectorAll('a').forEach(function (a) {
-            a.addEventListener('click', function () { drawer.classList.remove('open'); });
+            a.addEventListener('click', function () { setDrawerOpen(false); });
+        });
+        document.addEventListener('keydown', function (e) {
+            if (e.key === 'Escape') setDrawerOpen(false);
         });
     }
 
