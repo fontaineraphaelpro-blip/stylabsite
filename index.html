@@ -283,26 +283,6 @@
             color: var(--ink-soft);
         }
 
-        /* Pilot case study */
-        .pilot-box {
-            background: var(--green-50); border: 1px solid rgba(20,83,45,0.12);
-            border-radius: var(--radius); padding: 2rem; margin-top: 1rem;
-        }
-        .pilot-metric {
-            font-family: var(--display); font-size: 2.5rem; font-weight: 800;
-            color: var(--green-900); letter-spacing: -0.03em; line-height: 1;
-        }
-        .pilot-disclaimer {
-            font-size: 0.78rem; color: var(--muted); margin-top: 1rem; line-height: 1.55;
-            max-width: 42rem;
-        }
-        .pilot-todos {
-            margin-top: 1rem; padding: 1rem 1.15rem; background: #fff;
-            border-radius: 12px; border: 1px dashed var(--line);
-            font-size: 0.75rem; color: var(--muted); line-height: 1.6;
-        }
-        .pilot-todos strong { color: var(--ink-soft); display: block; margin-bottom: 0.35rem; font-size: 0.78rem; }
-
         @media (max-width: 900px) {
             .problem-grid, .diff-grid, .use-grid { grid-template-columns: 1fr; }
         }
@@ -510,53 +490,6 @@
         .section-head { margin-bottom: 2.5rem; }
         .section-head.center { text-align: center; }
         .section-head.center .section-desc { margin-inline: auto; }
-
-        /* Demo cinematic */
-        .demo-block {
-            border-radius: calc(var(--radius) + 8px); overflow: hidden;
-            background: linear-gradient(160deg, var(--green-950) 0%, var(--green-900) 50%, #0f3d24 100%);
-            position: relative; padding: 3.5rem;
-        }
-        .demo-block::before {
-            content: ""; position: absolute; inset: 0;
-            background: radial-gradient(circle at 80% 20%, rgba(74,222,128,0.2), transparent 40%);
-        }
-        .demo-inner {
-            position: relative; z-index: 1;
-            display: grid; grid-template-columns: 1fr 1.1fr; gap: 3rem; align-items: center;
-        }
-        .demo-block h2 {
-            font-family: var(--display); font-size: 1.9rem; color: #fff;
-            font-weight: 700; margin-bottom: 1rem; line-height: 1.2;
-            letter-spacing: -0.025em;
-        }
-        .demo-block p { color: rgba(255,255,255,0.8); margin-bottom: 1.75rem; font-size: 1.05rem; }
-        .demo-url {
-            display: inline-flex; align-items: center; gap: 0.5rem;
-            font-size: 0.8rem; color: rgba(255,255,255,0.6); margin-bottom: 1.5rem;
-            padding: 0.5rem 1rem; background: rgba(0,0,0,0.25); border-radius: 8px;
-            font-family: ui-monospace, monospace;
-        }
-        .browser-frame {
-            border-radius: var(--radius); overflow: hidden;
-            border: 1px solid rgba(255,255,255,0.15);
-            box-shadow: 0 40px 80px rgba(0,0,0,0.4);
-            background: #fff;
-        }
-        .browser-chrome {
-            display: flex; align-items: center; gap: 0.5rem; padding: 0.75rem 1rem;
-            background: #f1f5f9; border-bottom: 1px solid var(--line);
-        }
-        .browser-dot { width: 10px; height: 10px; border-radius: 50%; }
-        .browser-dot:nth-child(1) { background: #ff5f57; }
-        .browser-dot:nth-child(2) { background: #febc2e; }
-        .browser-dot:nth-child(3) { background: #28c840; }
-        .browser-url {
-            margin-left: 0.75rem; padding: 0.3rem 0.75rem; border-radius: 6px;
-            background: rgba(255,255,255,0.85); font-family: var(--mono); font-size: 0.72rem;
-            color: var(--muted); flex: 1; max-width: 380px;
-            white-space: nowrap; overflow: hidden; text-overflow: ellipsis;
-        }
 
         /* Universal app-frame for HD screenshots */
         .app-frame {
@@ -1221,7 +1154,7 @@
 
         /* ----- Tablet & below ----- */
         @media (max-width: 1024px) {
-            .hero-grid, .demo-inner, .journey, .bento-item.span-8, .bento-item.span-4, .bento-item.span-6, .metrics-grid, .compare-grid { grid-template-columns: 1fr; }
+            .hero-grid, .journey, .bento-item.span-8, .bento-item.span-4, .bento-item.span-6, .metrics-grid, .compare-grid { grid-template-columns: 1fr; }
             .bento-item { grid-column: span 12 !important; }
             .mockup-stage { height: 400px; }
             .nav-links { display: none; }
@@ -1231,7 +1164,6 @@
             .sticky-mobile-cta { display: flex; }
             body { padding-bottom: 76px; }
             .pricing { grid-template-columns: repeat(2, 1fr); }
-            .demo-inner { gap: 2rem; }
         }
 
         /* ----- Small tablet & large phone ----- */
@@ -1244,8 +1176,6 @@
             .hero-btns { gap: 0.5rem; }
             .hero-btns .btn { flex: 1 1 calc(50% - 0.25rem); justify-content: center; }
             .mockup-stage { height: 280px; }
-            .demo-block { padding: 1.75rem 1.25rem; }
-            .demo-block h2 { font-size: 1.5rem; }
             .metrics-dark { padding: 1.75rem 1.25rem; }
             .tldr { padding: 1.5rem 1.25rem; border-radius: 18px; }
             .trial-header { padding: 1rem 1.25rem; }
@@ -1793,41 +1723,6 @@
                     <span>Data removed on uninstall</span>
                     <span><svg class="shopify-icon shopify-icon--green" aria-hidden="true" style="width:12px;height:12px;display:inline-block;vertical-align:-2px;margin-right:3px"><use href="#icon-shopify"/></svg>Native Shopify billing</span>
                     <span>Cancel any time</span>
-                </div>
-            </div>
-        </section>
-
-        <!-- EARLY PILOT RESULT -->
-        <section id="pilot">
-            <div class="wrap">
-                <div class="demo-block reveal">
-                    <div class="demo-inner">
-                        <div>
-                            <p class="section-label" style="color:var(--green-300);">Early pilot result</p>
-                            <h2>In one early apparel store, shoppers who used try-on showed strong add-to-cart intent</h2>
-                            <p style="font-size:1rem;color:rgba(255,255,255,0.85);margin-top:0.75rem;line-height:1.6;">We&rsquo;re continuing to collect data across more stores.</p>
-                            <div class="pilot-box">
-                                <p class="pilot-metric">77.8%</p>
-                                <p style="font-size:0.95rem;color:var(--ink-soft);margin-top:0.35rem;">try-on → cart in one early pilot</p>
-                                <p class="pilot-disclaimer">
-                                    Based on one early store. Results may vary depending on traffic, product type, photography, pricing, and store experience.
-                                </p>
-                                <p class="pilot-disclaimer" style="margin-top:0.75rem;font-style:italic;">
-                                    Full case study coming soon with session volume and measurement period.
-                                </p>
-                                <!-- TODO before publishing 77.8% as proof: Add number of try-on sessions · Add measurement period · Add comparison with non-try-on visitors · Add store owner permission/logo/testimonial -->
-                            </div>
-                            <p style="margin-top:1.25rem;">Open the live Shopify store, click <strong>Try it on</strong>, upload a photo, and see the shopper experience for yourself.</p>
-                            <a href="https://remadeicons.shop/products/shadow-stripe-collared-soccer-jersey-4" class="btn btn-white" target="_blank" rel="noopener" style="margin-top:1rem;">View live demo store →</a>
-                        </div>
-                        <div class="browser-frame">
-                            <div class="browser-chrome">
-                                <span class="browser-dot"></span><span class="browser-dot"></span><span class="browser-dot"></span>
-                                <span class="browser-url">remadeicons.shop/products/shadow-stripe-collared-soccer-jersey-4</span>
-                            </div>
-                            <img src="assets/screenshots/storefront-product.png" alt="REMADE ICONS product page with Try it on button" loading="lazy" class="cap-1024">
-                        </div>
-                    </div>
                 </div>
             </div>
         </section>
