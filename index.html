@@ -1154,9 +1154,13 @@
             border-bottom: 1px solid var(--line);
         }
         .faq-q {
+            width: 100%;
             padding: 1.35rem 0; font-weight: 600; font-size: 1.02rem; cursor: pointer;
             display: flex; justify-content: space-between; align-items: center; gap: 1rem;
+            border: none; background: none; font-family: inherit; color: inherit;
+            text-align: left; touch-action: manipulation; -webkit-tap-highlight-color: transparent;
         }
+        .faq-q-text { flex: 1; min-width: 0; line-height: 1.45; overflow-wrap: anywhere; }
         .faq-q .icon {
             width: 28px; height: 28px; border-radius: 50%; background: var(--green-50);
             display: grid; place-items: center; font-size: 1.1rem; color: var(--green-800);
@@ -1164,10 +1168,11 @@
         }
         .faq-item.open .faq-q .icon { transform: rotate(45deg); background: var(--green-900); color: #fff; }
         .faq-a {
-            max-height: 0; overflow: hidden; transition: max-height 0.4s var(--ease), padding 0.4s;
+            max-height: 0; overflow: hidden; transition: max-height 0.4s var(--ease), padding-bottom 0.4s;
             color: var(--muted); font-size: 0.95rem; line-height: 1.7;
+            padding: 0;
         }
-        .faq-item.open .faq-a { max-height: 1200px; padding-bottom: 1.35rem; }
+        .faq-item.open .faq-a { max-height: 32rem; padding-bottom: 1.35rem; }
         .faq-a a { color: var(--green-800); font-weight: 600; }
 
         /* AI block */
@@ -1324,7 +1329,9 @@
             .compare-card { padding: 1.5rem; }
             .compare-card ul li { font-size: 0.92rem; }
             .faq-q { font-size: 0.96rem; padding: 1.1rem 0; }
-            .faq-a { font-size: 0.92rem; padding-bottom: 1.1rem; }
+            .faq-a { font-size: 0.92rem; }
+            .faq-item.open .faq-a { padding-bottom: 1.1rem; }
+            #faq { padding-bottom: 4rem; }
             .seo-guide { padding: 3rem 0; }
             .ui-window-body { padding: 1.1rem; gap: 0.85rem; }
             .ui-kpis { gap: 0.5rem; }
@@ -2065,39 +2072,39 @@
                 </div>
                 <div class="faq-list reveal">
                     <div class="faq-item open">
-                        <div class="faq-q" tabindex="0">Do I need to edit my Shopify theme? <span class="icon">+</span></div>
+                        <button type="button" class="faq-q" aria-expanded="true"><span class="faq-q-text">Do I need to edit my Shopify theme?</span><span class="icon" aria-hidden="true">+</span></button>
                         <div class="faq-a">No. Stylab Virtual Try-On is designed to install through Shopify and add a try-on experience to product pages without manual theme editing.</div>
                     </div>
                     <div class="faq-item">
-                        <div class="faq-q" tabindex="0">Which products work best? <span class="icon">+</span></div>
+                        <button type="button" class="faq-q" aria-expanded="false"><span class="faq-q-text">Which products work best?</span><span class="icon" aria-hidden="true">+</span></button>
                         <div class="faq-a">Stylab is best suited for apparel products such as t-shirts, hoodies, jerseys, dresses, and other visual fashion items where shoppers want to see style and fit before buying.</div>
                     </div>
                     <div class="faq-item">
-                        <div class="faq-q" tabindex="0">Do failed generations use credits? <span class="icon">+</span></div>
+                        <button type="button" class="faq-q" aria-expanded="false"><span class="faq-q-text">Do failed generations use credits?</span><span class="icon" aria-hidden="true">+</span></button>
                         <div class="faq-a">Usage is based on successful try-on generations. Failed generations can be retried without consuming a successful try-on credit.</div>
                     </div>
                     <div class="faq-item">
-                        <div class="faq-q" tabindex="0">Are shopper photos stored? <span class="icon">+</span></div>
+                        <button type="button" class="faq-q" aria-expanded="false"><span class="faq-q-text">Are shopper photos stored?</span><span class="icon" aria-hidden="true">+</span></button>
                         <div class="faq-a">Stylab is designed to process photos for try-on generation only. The widget tells shoppers their photo is not stored after processing. See our <a href="confidentialite.html">privacy policy</a> for details — retention policies may vary by configuration.</div>
                     </div>
                     <div class="faq-item">
-                        <div class="faq-q" tabindex="0">Can I choose which products use try-on? <span class="icon">+</span></div>
+                        <button type="button" class="faq-q" aria-expanded="false"><span class="faq-q-text">Can I choose which products use try-on?</span><span class="icon" aria-hidden="true">+</span></button>
                         <div class="faq-a">Yes. You can enable or disable try-on by product from your Shopify admin — useful for catalogs with mixed product types.</div>
                     </div>
                     <div class="faq-item">
-                        <div class="faq-q" tabindex="0">Can I measure performance? <span class="icon">+</span></div>
+                        <button type="button" class="faq-q" aria-expanded="false"><span class="faq-q-text">Can I measure performance?</span><span class="icon" aria-hidden="true">+</span></button>
                         <div class="faq-a">Yes. Stylab includes analytics for try-on sessions, usage, add-to-cart activity, and A/B test buckets so you can see what happens after shoppers try on.</div>
                     </div>
                     <div class="faq-item">
-                        <div class="faq-q" tabindex="0">Does it work on mobile? <span class="icon">+</span></div>
+                        <button type="button" class="faq-q" aria-expanded="false"><span class="faq-q-text">Does it work on mobile?</span><span class="icon" aria-hidden="true">+</span></button>
                         <div class="faq-a">Yes. The try-on experience is designed for mobile and desktop shoppers on standard Shopify product pages.</div>
                     </div>
                     <div class="faq-item">
-                        <div class="faq-q" tabindex="0">Can I try it before installing? <span class="icon">+</span></div>
+                        <button type="button" class="faq-q" aria-expanded="false"><span class="faq-q-text">Can I try it before installing?</span><span class="icon" aria-hidden="true">+</span></button>
                         <div class="faq-a">Yes. Use the <a href="#try-it">live demo on this page</a> or visit our demo store <a href="https://remadeicons.shop/products/shadow-stripe-collared-soccer-jersey-4">REMADE ICONS</a> to see the same widget in a real Shopify storefront.</div>
                     </div>
                     <div class="faq-item">
-                        <div class="faq-q" tabindex="0">How much does it cost? <span class="icon">+</span></div>
+                        <button type="button" class="faq-q" aria-expanded="false"><span class="faq-q-text">How much does it cost?</span><span class="icon" aria-hidden="true">+</span></button>
                         <div class="faq-a">Plans start free (50 successful try-ons/month). Paid plans: Starter $19, Growth $49, Scale $149. All billing runs through Shopify. See <a href="#pricing">pricing</a> for details.</div>
                     </div>
                 </div>
@@ -2355,18 +2362,19 @@
                 }, { once: true });
             }
 
-            // FAQ
+            // FAQ — each item toggles independently (better on mobile)
             document.querySelectorAll('.faq-q').forEach(function(q) {
-                function toggle() {
-                    var item = q.parentElement;
-                    var open = item.classList.contains('open');
-                    document.querySelectorAll('.faq-item').forEach(function(i) { i.classList.remove('open'); });
-                    if (!open) item.classList.add('open');
+                function setExpanded(on) {
+                    q.setAttribute('aria-expanded', on ? 'true' : 'false');
                 }
+                function toggle() {
+                    var item = q.closest('.faq-item');
+                    if (!item) return;
+                    var open = item.classList.toggle('open');
+                    setExpanded(open);
+                }
+                setExpanded(q.closest('.faq-item') && q.closest('.faq-item').classList.contains('open'));
                 q.addEventListener('click', toggle);
-                q.addEventListener('keydown', function(e) {
-                    if (e.key === 'Enter' || e.key === ' ') { e.preventDefault(); toggle(); }
-                });
             });
 
             // Stylab widget — demo config (brand colors)

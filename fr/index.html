@@ -1154,9 +1154,13 @@
             border-bottom: 1px solid var(--line);
         }
         .faq-q {
+            width: 100%;
             padding: 1.35rem 0; font-weight: 600; font-size: 1.02rem; cursor: pointer;
             display: flex; justify-content: space-between; align-items: center; gap: 1rem;
+            border: none; background: none; font-family: inherit; color: inherit;
+            text-align: left; touch-action: manipulation; -webkit-tap-highlight-color: transparent;
         }
+        .faq-q-text { flex: 1; min-width: 0; line-height: 1.45; overflow-wrap: anywhere; }
         .faq-q .icon {
             width: 28px; height: 28px; border-radius: 50%; background: var(--green-50);
             display: grid; place-items: center; font-size: 1.1rem; color: var(--green-800);
@@ -1164,10 +1168,11 @@
         }
         .faq-item.open .faq-q .icon { transform: rotate(45deg); background: var(--green-900); color: #fff; }
         .faq-a {
-            max-height: 0; overflow: hidden; transition: max-height 0.4s var(--ease), padding 0.4s;
+            max-height: 0; overflow: hidden; transition: max-height 0.4s var(--ease), padding-bottom 0.4s;
             color: var(--muted); font-size: 0.95rem; line-height: 1.7;
+            padding: 0;
         }
-        .faq-item.open .faq-a { max-height: 1200px; padding-bottom: 1.35rem; }
+        .faq-item.open .faq-a { max-height: 32rem; padding-bottom: 1.35rem; }
         .faq-a a { color: var(--green-800); font-weight: 600; }
 
         /* AI block */
@@ -1324,7 +1329,9 @@
             .compare-card { padding: 1.5rem; }
             .compare-card ul li { font-size: 0.92rem; }
             .faq-q { font-size: 0.96rem; padding: 1.1rem 0; }
-            .faq-a { font-size: 0.92rem; padding-bottom: 1.1rem; }
+            .faq-a { font-size: 0.92rem; }
+            .faq-item.open .faq-a { padding-bottom: 1.1rem; }
+            #faq { padding-bottom: 4rem; }
             .seo-guide { padding: 3rem 0; }
             .ui-window-body { padding: 1.1rem; gap: 0.85rem; }
             .ui-kpis { gap: 0.5rem; }
@@ -2065,39 +2072,39 @@
                 </div>
                 <div class="faq-list reveal">
                     <div class="faq-item open">
-                        <div class="faq-q" tabindex="0">Dois-je modifier mon thème Shopify ? <span class="icon">+</span></div>
+                        <button type="button" class="faq-q" aria-expanded="true"><span class="faq-q-text">Dois-je modifier mon thème Shopify ?</span><span class="icon" aria-hidden="true">+</span></button>
                         <div class="faq-a">Non. Stylab s'installe via Shopify et ajoute l'essayage aux pages produit sans modification manuelle du thème.</div>
                     </div>
                     <div class="faq-item">
-                        <div class="faq-q" tabindex="0">Quels produits fonctionnent le mieux ? <span class="icon">+</span></div>
+                        <button type="button" class="faq-q" aria-expanded="false"><span class="faq-q-text">Quels produits fonctionnent le mieux ?</span><span class="icon" aria-hidden="true">+</span></button>
                         <div class="faq-a">Stylab convient aux vêtements : t-shirts, hoodies, maillots, robes et autres articles où le client veut voir le style avant d'acheter.</div>
                     </div>
                     <div class="faq-item">
-                        <div class="faq-q" tabindex="0">Les générations échouées consomment-elles des crédits ? <span class="icon">+</span></div>
+                        <button type="button" class="faq-q" aria-expanded="false"><span class="faq-q-text">Les générations échouées consomment-elles des crédits ?</span><span class="icon" aria-hidden="true">+</span></button>
                         <div class="faq-a">L'usage est basé sur les essayages réussis. Les échecs peuvent être retentés sans consommer de crédit.</div>
                     </div>
                     <div class="faq-item">
-                        <div class="faq-q" tabindex="0">Les photos clients sont-elles stockées ? <span class="icon">+</span></div>
+                        <button type="button" class="faq-q" aria-expanded="false"><span class="faq-q-text">Les photos clients sont-elles stockées ?</span><span class="icon" aria-hidden="true">+</span></button>
                         <div class="faq-a">Stylab is designed to process photos for try-on generation only. The widget tells shoppers their photo is not stored after processing. See our <a href="../confidentialite.html">privacy policy</a> for details — retention policies may vary by configuration.</div>
                     </div>
                     <div class="faq-item">
-                        <div class="faq-q" tabindex="0">Puis-je choisir quels produits ont l'essayage ? <span class="icon">+</span></div>
+                        <button type="button" class="faq-q" aria-expanded="false"><span class="faq-q-text">Puis-je choisir quels produits ont l'essayage ?</span><span class="icon" aria-hidden="true">+</span></button>
                         <div class="faq-a">Oui. Activez ou désactivez l'essayage par produit depuis l'admin Shopify — utile pour les catalogues mixtes.</div>
                     </div>
                     <div class="faq-item">
-                        <div class="faq-q" tabindex="0">Puis-je mesurer les performances ? <span class="icon">+</span></div>
+                        <button type="button" class="faq-q" aria-expanded="false"><span class="faq-q-text">Puis-je mesurer les performances ?</span><span class="icon" aria-hidden="true">+</span></button>
                         <div class="faq-a">Oui. Stylab inclut analytics : sessions d'essayage, usage, ajouts panier et buckets A/B pour voir ce qui se passe après l'essayage.</div>
                     </div>
                     <div class="faq-item">
-                        <div class="faq-q" tabindex="0">Fonctionne-t-il sur mobile ? <span class="icon">+</span></div>
+                        <button type="button" class="faq-q" aria-expanded="false"><span class="faq-q-text">Fonctionne-t-il sur mobile ?</span><span class="icon" aria-hidden="true">+</span></button>
                         <div class="faq-a">Oui. L'expérience est conçue pour mobile et desktop sur les pages produit Shopify.</div>
                     </div>
                     <div class="faq-item">
-                        <div class="faq-q" tabindex="0">Puis-je essayer avant d'installer ? <span class="icon">+</span></div>
+                        <button type="button" class="faq-q" aria-expanded="false"><span class="faq-q-text">Puis-je essayer avant d'installer ?</span><span class="icon" aria-hidden="true">+</span></button>
                         <div class="faq-a">Oui. Utilisez la <a href="#try-it">démo live sur cette page</a> ou visitez notre boutique démo <a href="https://remadeicons.shop/products/shadow-stripe-collared-soccer-jersey-4">REMADE ICONS</a> pour voir le même widget en conditions réelles.</div>
                     </div>
                     <div class="faq-item">
-                        <div class="faq-q" tabindex="0">Combien ça coûte ? <span class="icon">+</span></div>
+                        <button type="button" class="faq-q" aria-expanded="false"><span class="faq-q-text">Combien ça coûte ?</span><span class="icon" aria-hidden="true">+</span></button>
                         <div class="faq-a">Plans gratuits (50 essayages/mois). Payants : Starter 19 $, Growth 49 $, Scale 149 $. Facturation via Shopify. Voir les <a href="#pricing">tarifs</a>.</div>
                     </div>
                 </div>
@@ -2355,18 +2362,19 @@
                 }, { once: true });
             }
 
-            // FAQ
+            // FAQ — each item toggles independently (better on mobile)
             document.querySelectorAll('.faq-q').forEach(function(q) {
-                function toggle() {
-                    var item = q.parentElement;
-                    var open = item.classList.contains('open');
-                    document.querySelectorAll('.faq-item').forEach(function(i) { i.classList.remove('open'); });
-                    if (!open) item.classList.add('open');
+                function setExpanded(on) {
+                    q.setAttribute('aria-expanded', on ? 'true' : 'false');
                 }
+                function toggle() {
+                    var item = q.closest('.faq-item');
+                    if (!item) return;
+                    var open = item.classList.toggle('open');
+                    setExpanded(open);
+                }
+                setExpanded(q.closest('.faq-item') && q.closest('.faq-item').classList.contains('open'));
                 q.addEventListener('click', toggle);
-                q.addEventListener('keydown', function(e) {
-                    if (e.key === 'Enter' || e.key === ' ') { e.preventDefault(); toggle(); }
-                });
             });
 
             // Stylab widget — demo config (brand colors)
