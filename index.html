@@ -182,13 +182,16 @@
             background-image: url("data:image/svg+xml,%3Csvg viewBox='0 0 256 256' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.9' numOctaves='4' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)' opacity='0.04'/%3E%3C/svg%3E");
         }
 
-        /* Reveal — visible by default; animate only when JS runs */
+        /* Reveal — content stays visible; optional slide-in when JS runs */
         .reveal { opacity: 1; transform: none; }
         @media (prefers-reduced-motion: no-preference) {
             .js-reveal .reveal:not(.visible) {
-                opacity: 0; transform: translateY(28px);
-                transition: opacity 0.8s var(--ease), transform 0.8s var(--ease);
+                transform: translateY(20px);
+                transition: transform 0.7s var(--ease);
             }
+        }
+        @media (max-width: 768px) {
+            .js-reveal .reveal:not(.visible) { transform: none; }
         }
         .reveal.visible { opacity: 1; transform: none; }
         .reveal-delay-1 { transition-delay: 0.1s; }
@@ -1633,7 +1636,7 @@
         <section class="hero">
             <div class="wrap">
                 <div class="hero-grid">
-                    <div class="reveal">
+                    <div class="reveal visible">
                         <div class="pill"><img class="shopify-icon" src="assets/shopify-icon-logo.svg" alt="" width="20" height="20" aria-hidden="true"><span class="pill-dot"></span> Designed for Shopify apparel brands</div>
                         <h1>AI try-on for Shopify apparel brands</h1>
                         <p class="hero-lead">
@@ -1651,7 +1654,7 @@
                             </a>
                         </div>
                     </div>
-                    <div class="mockup-stage reveal reveal-delay-2">
+                    <div class="mockup-stage reveal reveal-delay-2 visible">
                         <div class="mockup-card back-left">
                             <div class="device-frame" style="max-width:230px;">
                                 <div class="device-frame-body">
@@ -1699,7 +1702,7 @@
                     <h2 class="section-title" id="try-it-title">Try the same widget your shoppers will see</h2>
                     <p class="section-desc">Upload a photo below to preview the same try-on widget shoppers see on Shopify product pages — no install required on this site.</p>
                 </div>
-                <article class="trial-box reveal" itemscope itemtype="https://schema.org/Product">
+                <article class="trial-box reveal visible" itemscope itemtype="https://schema.org/Product">
                     <meta itemprop="name" content="Shadow Stripe Collared Soccer Jersey">
                     <link itemprop="image" href="assets/demo-jersey-main.png">
                     <div class="trial-header">
@@ -2270,27 +2273,32 @@
                 });
             });
 
-            // Reveal on scroll — above-the-fold blocks show immediately
+            // Reveal on scroll — never hide content, only animate transform
             var reveals = document.querySelectorAll('.reveal');
             function revealInViewport() {
+                var vh = window.innerHeight || document.documentElement.clientHeight || 800;
                 reveals.forEach(function(el) {
                     if (el.classList.contains('visible')) return;
                     var rect = el.getBoundingClientRect();
-                    if (rect.top < window.innerHeight * 0.92 && rect.bottom > 0) {
+                    if (rect.top < vh * 1.05 && rect.bottom > -48) {
                         el.classList.add('visible');
                     }
                 });
             }
             revealInViewport();
-            var io = new IntersectionObserver(function(entries) {
+            requestAnimationFrame(revealInViewport);
+            var io = typeof IntersectionObserver !== 'undefined' ? new IntersectionObserver(function(entries) {
                 entries.forEach(function(e) {
                     if (e.isIntersecting) { e.target.classList.add('visible'); io.unobserve(e.target); }
                 });
-            }, { threshold: 0.05, rootMargin: '0px 0px 5% 0px' });
-            reveals.forEach(function(el) {
-                if (!el.classList.contains('visible')) io.observe(el);
-            });
+            }, { threshold: 0.01, rootMargin: '80px 0px 80px 0px' }) : null;
+            if (io) {
+                reveals.forEach(function(el) {
+                    if (!el.classList.contains('visible')) io.observe(el);
+                });
+            }
             window.addEventListener('load', revealInViewport, { once: true });
+            window.addEventListener('resize', revealInViewport, { passive: true });
 
             // FAQ
             document.querySelectorAll('.faq-q').forEach(function(q) {
