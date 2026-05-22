@@ -5,6 +5,8 @@ export const UI = {
   en: {
     lang: 'en',
     liveDemo: 'Live demo',
+    features: 'Features',
+    explore: 'Explore',
     solutions: 'Solutions',
     compare: 'Compare',
     resources: 'Resources',
@@ -38,12 +40,14 @@ export const UI = {
     disclaimer: 'Comparison based on publicly available product information as of May 2026. Features, pricing, and policies may change. Verify details on each vendor\'s website before making a decision.',
     readComparison: 'Read comparison →',
     learnMore: 'Learn more →',
-    otherLang: 'Français',
+    otherLang: 'FR',
     otherLangHref: '/fr/',
   },
   fr: {
     lang: 'fr',
     liveDemo: 'Démo live',
+    features: 'Fonctionnalités',
+    explore: 'Explorer',
     solutions: 'Solutions',
     compare: 'Comparer',
     resources: 'Ressources',
@@ -77,7 +81,7 @@ export const UI = {
     disclaimer: 'Comparaison basée sur les informations publiques disponibles en mai 2026. Fonctionnalités, tarifs et politiques peuvent changer. Vérifiez sur le site de chaque éditeur avant de décider.',
     readComparison: 'Lire la comparaison →',
     learnMore: 'En savoir plus →',
-    otherLang: 'English',
+    otherLang: 'EN',
     otherLangHref: '/',
   },
 };

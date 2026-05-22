@@ -16,6 +16,23 @@
         });
     }
 
+    document.querySelectorAll('.nav-dropdown').forEach(function (drop) {
+        var btn = drop.querySelector('.nav-dropdown-btn');
+        if (!btn) return;
+        btn.addEventListener('click', function (e) {
+            e.stopPropagation();
+            var open = drop.classList.toggle('open');
+            btn.setAttribute('aria-expanded', open ? 'true' : 'false');
+        });
+    });
+    document.addEventListener('click', function () {
+        document.querySelectorAll('.nav-dropdown.open').forEach(function (drop) {
+            drop.classList.remove('open');
+            var btn = drop.querySelector('.nav-dropdown-btn');
+            if (btn) btn.setAttribute('aria-expanded', 'false');
+        });
+    });
+
     var reveals = document.querySelectorAll('.reveal');
     if (reveals.length) {
         var io = new IntersectionObserver(function (entries) {

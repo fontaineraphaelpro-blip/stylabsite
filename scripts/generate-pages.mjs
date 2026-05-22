@@ -168,6 +168,7 @@ function layout({ locale, depth, title, description, body, activeNav, extraScrip
   const u = UI[locale];
   const home = px.home;
   const pricingHref = `${home}#pricing`;
+  const featuresHref = `${home}#features`;
   const langSwitch = langHref(locale, section);
 
   return `<!DOCTYPE html>
@@ -189,30 +190,36 @@ function layout({ locale, depth, title, description, body, activeNav, extraScrip
     <header class="header" id="header">
         <div class="wrap nav">
             <a href="${home}" class="brand"><span class="brand-mark"><img src="${px.assets}logo.png" alt="" width="36" height="36"></span><span class="brand-name">Stylab <span>Virtual Try-On</span></span></a>
-            <nav class="nav-links">
-                <a href="${home}#try-it">${u.liveDemo}</a>
-                <a href="${px.solutions}">${u.solutions}</a>
-                <a href="${px.compare}"${activeNav === 'compare' ? ' class="active"' : ''}>${u.compare}</a>
-                <a href="${px.resources}">${u.resources}</a>
-                <a href="${px.resources}blog/">${u.blog}</a>
+            <nav class="nav-links" aria-label="Main">
+                <a href="${featuresHref}">${u.features}</a>
                 <a href="${pricingHref}">${u.pricing}</a>
+                <div class="nav-dropdown">
+                    <button type="button" class="nav-dropdown-btn" aria-haspopup="true" aria-expanded="false">${u.explore}<span class="nav-chevron" aria-hidden="true"></span></button>
+                    <div class="nav-dropdown-menu">
+                        <a href="${px.solutions}">${u.solutions}</a>
+                        <a href="${px.compare}"${activeNav === 'compare' ? ' class="active"' : ''}>${u.compare}</a>
+                        <a href="${px.resources}">${u.resources}</a>
+                        <a href="${px.resources}blog/">${u.blog}</a>
+                    </div>
+                </div>
                 <a href="${langSwitch}" class="lang-switch">${u.otherLang}</a>
             </nav>
             <div class="nav-actions">
-                <a href="${home}#try-it" class="btn btn-ghost">${u.viewDemo}</a>
                 <a href="${APP_URL}" class="btn btn-primary" target="_blank" rel="noopener">${u.install}</a>
                 <button class="menu-btn" id="menuBtn" type="button" aria-label="Menu"><span></span><span></span><span></span></button>
             </div>
         </div>
     </header>
     <div class="mobile-drawer" id="mobileDrawer">
-        <a href="${home}#try-it">${u.liveDemo}</a>
-        <a href="${px.solutions}">${u.solutions}</a>
-        <a href="${px.compare}">${u.compare}</a>
-        <a href="${px.resources}">${u.resources}</a>
-        <a href="${px.resources}blog/">${u.blog}</a>
+        <a href="${featuresHref}">${u.features}</a>
         <a href="${pricingHref}">${u.pricing}</a>
-        <a href="${langSwitch}">${u.otherLang}</a>
+        <span class="drawer-label">${u.explore}</span>
+        <a href="${px.solutions}" class="drawer-sub">${u.solutions}</a>
+        <a href="${px.compare}" class="drawer-sub">${u.compare}</a>
+        <a href="${px.resources}" class="drawer-sub">${u.resources}</a>
+        <a href="${px.resources}blog/" class="drawer-sub">${u.blog}</a>
+        <a href="${home}#try-it">${u.liveDemo}</a>
+        <a href="${langSwitch}" class="lang-switch">${u.otherLang}</a>
         <a href="${APP_URL}" class="btn btn-primary" target="_blank" rel="noopener">${u.install}</a>
     </div>
     <main class="page-main">${body}</main>

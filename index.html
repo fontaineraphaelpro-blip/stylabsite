@@ -341,19 +341,51 @@
         .brand-name { font-weight: 700; }
         .brand-name span { color: var(--green-800); font-weight: 600; }
         .nav-links {
-            display: flex; align-items: center; gap: 2rem;
+            display: flex; align-items: center; gap: 1.35rem;
             position: absolute; left: 50%; transform: translateX(-50%);
         }
         .nav-links a {
             font-size: 0.88rem; font-weight: 500; color: var(--muted);
-            transition: color 0.2s;
+            transition: color 0.2s; white-space: nowrap;
         }
         .nav-links a:hover { color: var(--green-900); }
         .nav-links a.lang-switch {
-            padding: 0.25rem 0.6rem; border-radius: 999px;
-            border: 1px solid var(--line); font-size: 0.78rem;
+            padding: 0.2rem 0.55rem; border-radius: 999px;
+            border: 1px solid var(--line); font-size: 0.72rem; font-weight: 600;
         }
-        .nav-actions { display: flex; gap: 0.6rem; align-items: center; }
+        .nav-dropdown { position: relative; }
+        .nav-dropdown-btn {
+            display: inline-flex; align-items: center; gap: 0.35rem;
+            font-size: 0.88rem; font-weight: 500; color: var(--muted);
+            background: none; border: none; cursor: pointer; padding: 0;
+            font-family: inherit; white-space: nowrap;
+        }
+        .nav-dropdown-btn:hover, .nav-dropdown.open .nav-dropdown-btn { color: var(--green-900); }
+        .nav-chevron {
+            width: 0.4rem; height: 0.4rem;
+            border-right: 1.5px solid currentColor; border-bottom: 1.5px solid currentColor;
+            transform: rotate(45deg) translateY(-1px); transition: transform 0.2s;
+        }
+        .nav-dropdown.open .nav-chevron { transform: rotate(-135deg) translateY(1px); }
+        .nav-dropdown-menu {
+            position: absolute; top: calc(100% + 0.65rem); left: 50%;
+            transform: translateX(-50%) translateY(4px);
+            min-width: 10.5rem; background: #fff; border: 1px solid var(--line);
+            border-radius: 12px; box-shadow: 0 12px 40px rgba(15,23,42,0.12);
+            padding: 0.35rem; opacity: 0; visibility: hidden;
+            transition: opacity 0.2s, transform 0.2s, visibility 0.2s; z-index: 210;
+        }
+        .nav-dropdown-menu a {
+            display: block; padding: 0.5rem 0.7rem; border-radius: 8px;
+            font-size: 0.86rem; font-weight: 500; color: var(--ink-soft);
+        }
+        .nav-dropdown-menu a:hover { background: var(--green-50); color: var(--green-900); }
+        .nav-dropdown:hover .nav-dropdown-menu,
+        .nav-dropdown:focus-within .nav-dropdown-menu,
+        .nav-dropdown.open .nav-dropdown-menu {
+            opacity: 1; visibility: visible; transform: translateX(-50%) translateY(0);
+        }
+        .nav-actions { display: flex; gap: 0.6rem; align-items: center; flex-shrink: 0; }
         .menu-btn {
             display: none; width: 44px; height: 44px; border-radius: 12px;
             border: 1px solid var(--line); background: #fff; cursor: pointer;
@@ -366,7 +398,13 @@
             padding: 2rem; flex-direction: column; gap: 1rem;
         }
         .mobile-drawer.open { display: flex; }
-        .mobile-drawer a { font-size: 1.1rem; font-weight: 600; padding: 0.5rem 0; border-bottom: 1px solid var(--line); }
+        .mobile-drawer a { font-size: 1.05rem; font-weight: 600; padding: 0.5rem 0; border-bottom: 1px solid var(--line); }
+        .drawer-label {
+            font-size: 0.7rem; font-weight: 700; text-transform: uppercase;
+            letter-spacing: 0.08em; color: var(--muted); margin-top: 0.35rem;
+            padding-top: 0.75rem;
+        }
+        .drawer-sub { font-size: 0.98rem !important; font-weight: 500 !important; padding-left: 0.5rem !important; }
 
         /* Hero */
         .hero { padding: 8.5rem 0 5rem; position: relative; }
@@ -1187,6 +1225,7 @@
             .bento-item { grid-column: span 12 !important; }
             .mockup-stage { height: 400px; }
             .nav-links { display: none; }
+            .brand-name span { display: none; }
             .menu-btn { display: flex; }
             .price-card.featured { transform: none; }
             .sticky-mobile-cta { display: flex; }
@@ -1504,36 +1543,35 @@
                 <span class="brand-name">Stylab <span>Virtual Try-On</span></span>
             </a>
             <nav class="nav-links" aria-label="Main">
-                <a href="#try-it">Live demo</a>
-                <a href="#privacy">Privacy</a>
-                <a href="solutions/">Solutions</a>
-                <a href="compare/">Compare</a>
-                <a href="resources/">Resources</a>
-                <a href="resources/blog/">Blog</a>
                 <a href="#features">Features</a>
                 <a href="#pricing">Pricing</a>
-                <a href="#faq">FAQ</a>
-                <a href="/fr/" class="lang-switch">Français</a>
+                <div class="nav-dropdown">
+                    <button type="button" class="nav-dropdown-btn" aria-haspopup="true" aria-expanded="false">Explore<span class="nav-chevron" aria-hidden="true"></span></button>
+                    <div class="nav-dropdown-menu">
+                        <a href="solutions/">Solutions</a>
+                        <a href="compare/">Compare</a>
+                        <a href="resources/">Resources</a>
+                        <a href="resources/blog/">Blog</a>
+                    </div>
+                </div>
+                <a href="/fr/" class="lang-switch" hreflang="fr" lang="fr">FR</a>
             </nav>
             <div class="nav-actions">
-                <a href="#try-it" class="btn btn-ghost">View live demo</a>
                 <a href="https://apps.shopify.com/try-on-stylelab" class="btn btn-primary" target="_blank" rel="noopener"><svg class="shopify-icon shopify-icon--white" aria-hidden="true"><use href="#icon-shopify"/></svg>Install on Shopify</a>
                 <button class="menu-btn" id="menuBtn" aria-label="Menu" type="button"><span></span><span></span><span></span></button>
             </div>
         </div>
     </header>
     <div class="mobile-drawer" id="mobileDrawer">
-        <a href="#try-it">Live demo</a>
-        <a href="solutions/">Solutions</a>
-        <a href="compare/">Compare</a>
-        <a href="resources/">Resources</a>
-        <a href="resources/blog/">Blog</a>
         <a href="#features">Features</a>
-        <a href="#privacy">Privacy</a>
         <a href="#pricing">Pricing</a>
-        <a href="#faq">FAQ</a>
+        <span class="drawer-label">Explore</span>
+        <a href="solutions/" class="drawer-sub">Solutions</a>
+        <a href="compare/" class="drawer-sub">Compare</a>
+        <a href="resources/" class="drawer-sub">Resources</a>
+        <a href="resources/blog/" class="drawer-sub">Blog</a>
+        <a href="#try-it">Live demo</a>
         <a href="/fr/" class="lang-switch">Français</a>
-        <a href="https://remadeicons.shop/products/shadow-stripe-collared-soccer-jersey-4" target="_blank" rel="noopener">REMADE ICONS demo</a>
         <a href="https://apps.shopify.com/try-on-stylelab" class="btn btn-primary" target="_blank" rel="noopener"><svg class="shopify-icon shopify-icon--white" aria-hidden="true"><use href="#icon-shopify"/></svg>Install on Shopify</a>
     </div>
 
@@ -1559,7 +1597,7 @@
                                 <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M5 12h14M13 6l6 6-6 6"/></svg>
                             </a>
                         </div>
-                        <p class="hero-microcopy">Designed for Shopify apparel brands · Preview generated in seconds</p>
+                        <p class="hero-microcopy">Designed for Shopify apparel brands · ~30 sec average preview</p>
                         <div class="shopify-trust-row" aria-label="Shopify trust signals">
                             <span class="shopify-chip"><svg class="shopify-icon shopify-icon--green" aria-hidden="true"><use href="#icon-shopify"/></svg>Shopify App Store</span>
                             <span class="shopify-chip">Free plan · 50 try-ons/mo</span>
@@ -1817,61 +1855,38 @@
             </div>
         </section>
 
-        <!-- FEATURES + PRODUCT VISUALS (single section — no duplicate tours) -->
+        <!-- FEATURES (single section — widget, admin, analytics) -->
         <section id="features" style="background: var(--green-50);">
             <div class="wrap">
                 <div class="section-head center reveal">
                     <p class="section-label">Features</p>
                     <h2 class="section-title">Everything you need to launch and measure try-on</h2>
-                    <p class="section-desc">One Shopify app: storefront widget, admin controls, and analytics — without repeating setup across five screens.</p>
+                    <p class="section-desc">Install once from Shopify. Control which products get try-on, measure add-to-cart impact, and manage usage from one admin.</p>
                 </div>
-                <div class="diff-grid reveal" style="margin-bottom:2.5rem;">
+                <div class="diff-grid reveal">
                     <div class="diff-card">
-                        <h3>No-code storefront widget</h3>
-                        <p>Install from Shopify. Shoppers upload a photo and preview on mobile or desktop — no theme edits.</p>
+                        <h3>No-code product page widget</h3>
+                        <p>Install from the Shopify App Store. Shoppers upload a photo and preview on mobile or desktop — no theme edits.</p>
                     </div>
                     <div class="diff-card">
-                        <h3>Per-product controls</h3>
-                        <p>Enable try-on by SKU. Upload optional flat-lay photos for cleaner AI output on hero products.</p>
+                        <h3>Product-level activation</h3>
+                        <p>Enable or disable try-on per SKU from your admin — start with hero products, expand when you are ready.</p>
+                    </div>
+                    <div class="diff-card">
+                        <h3>Flat-lay uploads</h3>
+                        <p>Upload optional flat-lay garment photos for cleaner AI output on key products.</p>
                     </div>
                     <div class="diff-card">
                         <h3>Built-in A/B testing</h3>
                         <p>Compare product page behavior with and without try-on before rolling out store-wide.</p>
                     </div>
                     <div class="diff-card">
-                        <h3>Admin analytics</h3>
-                        <p>Sessions, add-to-cart after try-on, usage quotas, and remaining credits in one dashboard.</p>
+                        <h3>Add-to-cart analytics</h3>
+                        <p>Track try-on sessions and add-to-cart after try-on — see what happens once shoppers visualize fit.</p>
                     </div>
-                </div>
-                <div class="showcase reveal">
-                    <div class="showcase-tabs" role="tablist">
-                        <button class="tab-btn active" data-tab="storefront" role="tab" aria-selected="true">Storefront</button>
-                        <button class="tab-btn" data-tab="dashboard" role="tab">Dashboard</button>
-                        <button class="tab-btn" data-tab="widget" role="tab">Widget &amp; A/B</button>
-                    </div>
-                    <div class="showcase-panel active" id="tab-storefront" role="tabpanel">
-                        <div class="app-frame" style="max-width:920px;margin:2rem auto;">
-                            <div class="app-frame-chrome"><span class="app-frame-dot"></span><span class="app-frame-dot"></span><span class="app-frame-dot"></span><span class="app-frame-title">product page · try-on button</span></div>
-                            <div class="app-frame-body"><img src="assets/screenshots/storefront-product.png" alt="Try it on button on a Shopify product page" class="cap-1024" loading="lazy"></div>
-                        </div>
-                    </div>
-                    <div class="showcase-panel" id="tab-dashboard" role="tabpanel">
-                        <div class="app-frame" style="max-width:980px;margin:2rem auto;">
-                            <div class="app-frame-chrome"><span class="app-frame-dot"></span><span class="app-frame-dot"></span><span class="app-frame-dot"></span><span class="app-frame-title">admin · analytics</span></div>
-                            <div class="app-frame-body"><img src="assets/screenshots/dashboard.png" alt="Stylab dashboard with try-on analytics" class="cap-1024" loading="lazy"></div>
-                        </div>
-                    </div>
-                    <div class="showcase-panel" id="tab-widget" role="tabpanel">
-                        <div class="app-frame" style="max-width:920px;margin:2rem auto;">
-                            <div class="app-frame-chrome"><span class="app-frame-dot"></span><span class="app-frame-dot"></span><span class="app-frame-dot"></span><span class="app-frame-title">admin · widget &amp; A/B</span></div>
-                            <div class="app-frame-body"><img src="assets/screenshots/widget-ab.png" alt="Widget customization and A/B testing" class="cap-1024" loading="lazy"></div>
-                        </div>
-                    </div>
-                    <div class="showcase-caption">
-                        <div>
-                            <h3 id="tab-title">Storefront try-on button</h3>
-                            <p id="tab-desc">What shoppers see on your product pages after install.</p>
-                        </div>
+                    <div class="diff-card">
+                        <h3>Smart quotas</h3>
+                        <p>Pay per successful generation. View remaining credits and usage by product in one dashboard.</p>
                     </div>
                 </div>
             </div>
@@ -2144,6 +2159,23 @@
                 a.addEventListener('click', function() { drawer.classList.remove('open'); });
             });
 
+            document.querySelectorAll('.nav-dropdown').forEach(function(drop) {
+                var btn = drop.querySelector('.nav-dropdown-btn');
+                if (!btn) return;
+                btn.addEventListener('click', function(e) {
+                    e.stopPropagation();
+                    var open = drop.classList.toggle('open');
+                    btn.setAttribute('aria-expanded', open ? 'true' : 'false');
+                });
+            });
+            document.addEventListener('click', function() {
+                document.querySelectorAll('.nav-dropdown.open').forEach(function(drop) {
+                    drop.classList.remove('open');
+                    var btn = drop.querySelector('.nav-dropdown-btn');
+                    if (btn) btn.setAttribute('aria-expanded', 'false');
+                });
+            });
+
             // Reveal on scroll
             var reveals = document.querySelectorAll('.reveal');
             var io = new IntersectionObserver(function(entries) {
@@ -2152,30 +2184,6 @@
                 });
             }, { threshold: 0.12, rootMargin: '0px 0px -40px 0px' });
             reveals.forEach(function(el) { io.observe(el); });
-
-            // Tabs
-            var tabMeta = {
-                storefront: { title: 'Storefront try-on button', desc: 'What shoppers see on your product pages after install.' },
-                dashboard: { title: 'Analytics dashboard', desc: 'Try-on sessions, add-to-cart, usage, and remaining credits.' },
-                widget: { title: 'Widget & A/B testing', desc: 'Customize the button and compare try-on vs control traffic.' }
-            };
-            document.querySelectorAll('.tab-btn').forEach(function(btn) {
-                btn.addEventListener('click', function() {
-                    var id = btn.getAttribute('data-tab');
-                    document.querySelectorAll('.tab-btn').forEach(function(b) {
-                        b.classList.toggle('active', b === btn);
-                        b.setAttribute('aria-selected', b === btn);
-                    });
-                    document.querySelectorAll('.showcase-panel').forEach(function(p) {
-                        p.classList.toggle('active', p.id === 'tab-' + id);
-                    });
-                    var m = tabMeta[id];
-                    if (m) {
-                        document.getElementById('tab-title').textContent = m.title;
-                        document.getElementById('tab-desc').textContent = m.desc;
-                    }
-                });
-            });
 
             // FAQ
             document.querySelectorAll('.faq-q').forEach(function(q) {
