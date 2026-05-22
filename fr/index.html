@@ -1536,8 +1536,10 @@
         .trial-btn-buy {
             background: #fff; color: #0f172a; border: 1px solid #0f172a;
         }
-        #vton-mount { width: 100%; min-height: 0; margin: 0; padding: 0; }
-        #vton-mount:empty { display: none; height: 0; }
+        #vton-mount {
+            width: 100%; min-height: 3rem; margin: 0; padding: 0;
+            display: block;
+        }
         .trial-product #vton-widget-container {
             margin: 0 !important; max-width: 100% !important;
         }
@@ -2170,6 +2172,22 @@
           templateName: 'product',
           shop: DEMO_SHOP
         };
+
+        var statusQuery =
+          'shop=' + encodeURIComponent(DEMO_SHOP) +
+          '&product_id=' + encodeURIComponent(PRODUCT_ID) +
+          '&product_handle=' + encodeURIComponent(window.VTON_LIQUID.productHandle || '') +
+          '&_vton_ts=' + Date.now();
+        window.VTON_LIQUID.prefetchedStatus = fetch(APP_URL + '/apps/tryon/status?' + statusQuery, {
+          method: 'GET',
+          mode: 'cors',
+          credentials: 'omit',
+          headers: { Accept: 'application/json' },
+          cache: 'no-store'
+        }).then(function (response) {
+          if (!response.ok) throw new Error('Status ' + response.status);
+          return response.json();
+        }).catch(function () { return null; });
         window.Shopify = window.Shopify || {};
         if (!window.Shopify.shop) window.Shopify.shop = DEMO_SHOP;
         if (!window.Shopify.product) {
@@ -2184,8 +2202,9 @@
         window.fetch = function (input, init) {
           try {
             var url = typeof input === 'string' ? input : (input && input.url) || '';
-            if (url && url.indexOf('/apps/tryon/') !== -1) {
+            if (url && (url.indexOf('/apps/tryon/') !== -1 || url.charAt(0) === '/apps/tryon/')) {
               var path = url.replace(/^https?:\/\/[^/]+/, '');
+              if (path.charAt(0) !== '/') path = '/' + path;
               var rewritten = APP_URL + path;
               init = init || {};
               init.mode = 'cors';
@@ -2226,12 +2245,12 @@
                 '<a href="https://remadeicons.shop/products/shadow-stripe-collared-soccer-jersey-4" target="_blank" rel="noopener">Open the live demo store →</a>'
               );
             }
-          }, 12000);
+          }, 25000);
         }
         window.__vtonHidePlaceholder = hideVtonPlaceholder;
       })();
     </script>
-    <script src="vton-widget.js?v=3" defer></script>
+    <script src="vton-widget.js?v=4" defer></script>
     <script>
         (function() {
             var header = document.getElementById('header');

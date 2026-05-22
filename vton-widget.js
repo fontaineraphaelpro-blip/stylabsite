@@ -24,6 +24,29 @@
       var _vtonEnabledStatusMemo = {};
       var _vtonDedupeObserver = null;
 
+      if (!Promise.any) {
+        Promise.any = function (promises) {
+          return new Promise(function (resolve, reject) {
+            var list = Array.from(promises || []);
+            if (!list.length) {
+              reject(new AggregateError([], 'All promises were rejected'));
+              return;
+            }
+            var errors = [];
+            var remaining = list.length;
+            list.forEach(function (promise, index) {
+              Promise.resolve(promise).then(resolve, function (err) {
+                errors[index] = err;
+                remaining -= 1;
+                if (remaining === 0) {
+                  reject(new AggregateError(errors, 'All promises were rejected'));
+                }
+              });
+            });
+          });
+        };
+      }
+
       function runWhenIdle(fn, timeoutMs) {
         timeoutMs = timeoutMs || 2000;
         if (typeof requestIdleCallback === 'function') {
@@ -1313,7 +1336,8 @@
           method: 'GET',
           headers: { Accept: 'application/json' },
           signal: controller.signal,
-          credentials: 'same-origin',
+          credentials: 'omit',
+          mode: 'cors',
           cache: 'no-store'
         })
           .then(function(response) {
@@ -1330,16 +1354,39 @@
       }
 
       function checkStatus(shop, productId, productHandle) {
+        var liquid = window.VTON_LIQUID || {};
+        if (liquid.prefetchedStatus && !liquid._prefetchedStatusUsed) {
+          liquid._prefetchedStatusUsed = true;
+          return Promise.resolve(liquid.prefetchedStatus)
+            .then(function (status) {
+              if (status && isTryonEnabledStatus(status)) {
+                rememberEnabledStatusMemo(shop, productId, status);
+              }
+              return status;
+            })
+            .catch(function () {
+              return null;
+            })
+            .then(function (prefetched) {
+              if (prefetched) return prefetched;
+              return checkStatusRemote(shop, productId, productHandle);
+            });
+        }
+        return checkStatusRemote(shop, productId, productHandle);
+      }
+
+      function checkStatusRemote(shop, productId, productHandle) {
         var query = buildStatusQuery(shop, productId, productHandle);
         var proxyUrl = window.location.origin + '/apps/tryon/status?' + query;
         var liquid = window.VTON_LIQUID || {};
         var appBase = (liquid.appUrl || '').replace(/\/$/, '');
         var directUrl = appBase ? appBase + '/apps/tryon/status?' + query : null;
 
-        var attempts = [fetchStatusUrl(proxyUrl)];
+        var attempts = [];
         if (directUrl) {
           attempts.push(fetchStatusUrl(directUrl));
         }
+        attempts.push(fetchStatusUrl(proxyUrl));
 
         return Promise.any(attempts)
           .then(function(status) {
@@ -1465,6 +1512,7 @@
         if (!el || el.nodeType !== 1 || !el.isConnected) return false;
         if (vtonIsExcluded(el)) return false;
         if (el.id === 'vton-widget-container' || el.id === 'vton-embed-slot') return false;
+        if (el.id === 'vton-mount' || el.hasAttribute('data-vton-mount')) return true;
         var style = window.getComputedStyle(el);
         if (style.display === 'none' || style.visibility === 'hidden') return false;
         return true;
@@ -1565,7 +1613,8 @@
           try {
             var customCandidates = document.querySelectorAll(customSelector);
             for (var c = 0; c < customCandidates.length; c++) {
-              var customHit = accept(customCandidates[c], 'after', 'custom_selector');
+              var customMethod = customCandidates[c].id === 'vton-mount' ? 'append' : 'after';
+              var customHit = accept(customCandidates[c], customMethod, 'custom_selector');
               if (customHit) return customHit;
             }
           } catch (e) {
@@ -1902,6 +1951,9 @@
               vtonDedupeWidgetContainers();
               _vtonWidgetMountInProgress = false;
               log('[VTON] Widget rendered', { source: injectionTarget.source, productId: productId });
+              if (typeof window.__vtonHidePlaceholder === 'function') {
+                window.__vtonHidePlaceholder();
+              }
 
               window.vtonWidgetInstance = {
                 openModal: function() { openModal(state); },
