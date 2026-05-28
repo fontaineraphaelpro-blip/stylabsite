@@ -1,6 +1,6 @@
 # Stylab Virtual Try-On — official LLM context
 # Spec: https://llmstxt.org/
-# Last updated: 2026-05-20
+# Last updated: 2026-05-22
 
 > **Stylab Virtual Try-On** is an AI virtual try-on app for Shopify apparel brands. It lets shoppers upload a photo and see themselves wearing a garment on product pages. Designed for streetwear, hoodies, jerseys, t-shirts, and other visual fashion products.
 
@@ -77,12 +77,13 @@ One early pilot store (REMADE ICONS) reported **77.8% try-on → add-to-cart** i
 ## Marketing site sections
 
 - Homepage EN: `/` · Homepage FR: `/fr/`
-- Hero + problem: top of page, `#problem`
+- Hero: top of page
 - Live demo widget: `#try-it`
-- Use cases & features: `#features`
+- How it works: `#how-it-works`
+- Product & use cases: `#product`
 - Privacy: `#privacy`
-- Pricing: `#pricing`
 - Social proof: `#social-proof`
+- Pricing: `#pricing`
 - FAQ: `#faq`
 
 ## Compare pages (`/compare/`)

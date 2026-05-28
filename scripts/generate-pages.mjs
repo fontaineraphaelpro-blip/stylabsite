@@ -394,7 +394,7 @@ function layout({ locale, depth, title, description, body, activeNav, extraScrip
   const u = UI[locale];
   const home = px.home;
   const pricingHref = `${home}#pricing`;
-  const featuresHref = `${home}#features`;
+  const productHref = `${home}#product`;
   const langSwitch = pagePath ? langHrefFromPath(locale, pagePath) : langHref(locale, section);
   const seoHead = headExtra || (pagePath ? pageHeadMeta({ locale, pagePath, title, description }) : '');
 
@@ -418,7 +418,7 @@ function layout({ locale, depth, title, description, body, activeNav, extraScrip
         <div class="wrap nav">
             <a href="${home}" class="brand"><span class="brand-mark"><img src="${px.assets}logo.png" alt="" width="36" height="36"></span><span class="brand-name">Stylab <span>Virtual Try-On</span></span></a>
             <nav class="nav-links" aria-label="Main">
-                <a href="${featuresHref}">${u.features}</a>
+                <a href="${productHref}">${u.features}</a>
                 <a href="${pricingHref}">${u.pricing}</a>
                 <div class="nav-dropdown">
                     <button type="button" class="nav-dropdown-btn" aria-haspopup="true" aria-expanded="false">${u.explore}<span class="nav-chevron" aria-hidden="true"></span></button>
@@ -438,7 +438,7 @@ function layout({ locale, depth, title, description, body, activeNav, extraScrip
         </div>
     </header>
     <div class="mobile-drawer" id="mobileDrawer">
-        <a href="${featuresHref}">${u.features}</a>
+        <a href="${productHref}">${u.features}</a>
         <a href="${pricingHref}">${u.pricing}</a>
         <span class="drawer-label">${u.explore}</span>
         <a href="${px.solutions}" class="drawer-sub">${u.solutions}</a>
@@ -572,7 +572,7 @@ function generateLocale(locale) {
 
   writeFile(`${base}resources/documentation.html`, layout({
     locale, depth: 1,
-    title: locale === 'fr' ? 'Documentation | Stylab' : 'Documentation | Stylab',
+    title: locale === 'fr' ? 'Documentation | Stylab — Essayage virtuel Shopify' : 'Documentation | Stylab',
     description: locale === 'fr'
       ? 'Installez et configurez Stylab sur Shopify : activation par produit, widget, tests A/B et analytics.'
       : 'Install and configure Stylab on Shopify: per-product activation, widget setup, A/B testing, and analytics.',
@@ -582,7 +582,7 @@ function generateLocale(locale) {
   }));
   writeFile(`${base}resources/changelog.html`, layout({
     locale, depth: 1,
-    title: locale === 'fr' ? 'Changelog | Stylab' : 'Changelog | Stylab',
+    title: locale === 'fr' ? 'Journal des modifications | Stylab' : 'Changelog | Stylab',
     description: locale === 'fr'
       ? 'Mises à jour du site marketing Stylab, comparaisons, blog et outils pour l\'essayage virtuel Shopify.'
       : 'Stylab marketing site updates: comparisons, blog, tools, and Shopify virtual try-on resources.',

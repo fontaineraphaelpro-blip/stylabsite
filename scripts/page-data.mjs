@@ -71,7 +71,7 @@ export const UI = {
     freeTools: 'Outils gratuits',
     blog: 'Blog',
     documentation: 'Documentation',
-    changelog: 'Changelog',
+    changelog: 'Journal des modifications',
     contact: 'Contact',
     privacy: 'Confidentialité',
     support: 'Support',
