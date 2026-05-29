@@ -773,6 +773,7 @@ export const BLOG_POSTS = [
     },
     content: {
       en: `<p>Stylab bills through Shopify by successful try-on — not installs, not page views. Picking the wrong plan either wastes budget on unused credits or throttles a widget that was starting to work. This guide helps apparel merchants estimate volume before committing.</p>
+<p>If you are still choosing between apps, read our <a href="../../compare/">comparison hub</a> — especially <a href="../../compare/vs-genlook.html">Stylab vs Genlook</a> for two native Shopify options with different measurement and marketing features.</p>
 
 <h2>Plans at a glance</h2>
 <ul>
@@ -824,6 +825,7 @@ export const BLOG_POSTS = [
 <li><a href="../free-tools.html">Free tools & ROI calculator</a></li>
 </ul>`,
       fr: `<p>Stylab facture via Shopify par essayage réussi — pas par install ni par page vue. Le mauvais plan gaspille du budget ou bride un widget qui commençait à performer. Ce guide aide les marchands apparel à estimer le volume avant de s'engager.</p>
+<p>Si vous hésitez encore entre apps, consultez notre <a href="../../compare/">hub comparaisons</a> — notamment <a href="../../compare/vs-genlook.html">Stylab vs Genlook</a> pour deux options Shopify natives avec des approches mesure et marketing différentes.</p>
 
 <h2>Plans en un coup d'œil</h2>
 <ul>

@@ -228,6 +228,87 @@ function cta(locale, depth) {
   return `<section class="section"><div class="wrap"><div class="cta-final reveal"><h2>${u.ctaTitle}</h2><p>${u.ctaBody}</p><div class="btns">${installBtn(u.install, px.assets)}<a href="${px.home}#try-it" class="btn btn-ghost">${u.viewDemo}</a></div></div></div></section>`;
 }
 
+function compareItemUrl(locale, slug, isApi) {
+  const base = locale === 'fr' ? '/fr/compare/' : '/compare/';
+  return `${SITE_URL}${base}${isApi ? 'api/' : ''}${slug}.html`;
+}
+
+function relatedComparisons(locale, depth, data, isApi) {
+  const u = UI[locale];
+  const px = paths(locale, depth);
+  const list = isApi ? API_COMPARE : SHOPIFY_COMPARE;
+  const prefix = isApi ? 'api/' : '';
+  const others = list.filter((c) => c.slug !== data.slug).slice(0, 4);
+  if (!others.length) return '';
+  const label = locale === 'fr' ? 'Autres comparaisons' : 'Related comparisons';
+  const title = locale === 'fr' ? 'Comparer d\'autres alternatives' : 'Compare other alternatives';
+  const cards = others.map((c) => `<a href="${prefix}${c.slug}.html" class="hub-card"><h3>Stylab vs ${c.competitor}</h3><p>${t(c.summary, locale).slice(0, 100)}…</p><span class="arrow">${u.readComparison}</span></a>`).join('');
+  const allLabel = locale === 'fr' ? 'Voir toutes les comparaisons' : 'View all comparisons';
+  return `
+        <section class="section section-white"><div class="wrap">
+            <div class="section-head reveal"><p class="section-label">${label}</p><h2 class="section-title">${title}</h2></div>
+            <div class="hub-grid reveal">${cards}</div>
+            <p class="reveal" style="text-align:center;margin-top:1.5rem;"><a href="${px.compare}">${allLabel} →</a></p>
+        </div></section>`;
+}
+
+function relatedSolutions(locale, depth, currentSlug) {
+  const u = UI[locale];
+  const px = paths(locale, depth);
+  const others = SOLUTIONS.filter((s) => s.slug !== currentSlug);
+  if (!others.length) return '';
+  const cards = others.map((s) => `<a href="${s.slug}.html" class="hub-card"><h3>${t(s.title, locale)}</h3><p>${t(s.lead, locale).slice(0, 100)}…</p><span class="arrow">${u.learnMore}</span></a>`).join('');
+  const label = locale === 'fr' ? 'Autres solutions' : 'Related solutions';
+  const title = locale === 'fr' ? 'Solutions pour marchands apparel' : 'Solutions for apparel merchants';
+  const allLabel = locale === 'fr' ? 'Voir toutes les solutions' : 'View all solutions';
+  return `
+        <section class="section section-white"><div class="wrap">
+            <div class="section-head reveal"><p class="section-label">${label}</p><h2 class="section-title">${title}</h2></div>
+            <div class="hub-grid reveal">${cards}</div>
+            <p class="reveal" style="text-align:center;margin-top:1.5rem;"><a href="${px.solutions}">${allLabel} →</a></p>
+        </div></section>`;
+}
+
+function compareHubHeadMeta(locale) {
+  const pagePath = `${locale === 'fr' ? '/fr' : ''}/compare/`;
+  const title = locale === 'fr' ? 'Comparaisons Stylab' : 'Stylab Comparisons | Shopify & API Alternatives';
+  const description = locale === 'fr' ? 'Comparez Stylab avec Genlook, Antla, Banuba et plus.' : 'Compare Stylab with Genlook, Antla, Banuba, and API platforms.';
+  const baseMeta = pageHeadMeta({ locale, pagePath, title, description });
+  const items = [
+    ...SHOPIFY_COMPARE.map((c, i) => ({ c, i: i + 1, isApi: false })),
+    ...API_COMPARE.map((c, i) => ({ c, i: SHOPIFY_COMPARE.length + i + 1, isApi: true })),
+  ];
+  const jsonLd = {
+    '@context': 'https://schema.org',
+    '@type': 'ItemList',
+    name: locale === 'fr' ? 'Comparaisons essayage virtuel Stylab' : 'Stylab virtual try-on comparisons',
+    itemListElement: items.map(({ c, i, isApi }) => ({
+      '@type': 'ListItem',
+      position: i,
+      name: `Stylab vs ${c.competitor}`,
+      url: compareItemUrl(locale, c.slug, isApi),
+    })),
+  };
+  return `${baseMeta}
+    <script type="application/ld+json">${JSON.stringify(jsonLd)}</script>`;
+}
+
+function breadcrumbHeadExtra(locale, pagePath, crumbs) {
+  const baseMeta = pageHeadMeta({ locale, pagePath, title: crumbs.title, description: crumbs.description });
+  const jsonLd = {
+    '@context': 'https://schema.org',
+    '@type': 'BreadcrumbList',
+    itemListElement: crumbs.items.map((item, i) => ({
+      '@type': 'ListItem',
+      position: i + 1,
+      name: item.name,
+      item: `${SITE_URL}${item.path}`,
+    })),
+  };
+  return `${baseMeta}
+    <script type="application/ld+json">${JSON.stringify(jsonLd)}</script>`;
+}
+
 function comparePage(locale, depth, data) {
   const u = UI[locale];
   const px = paths(locale, depth);
@@ -249,6 +330,7 @@ function comparePage(locale, depth, data) {
             <div class="section-head reveal"><p class="section-label">${pitfallsLabel}</p><h2 class="section-title">${locale === 'fr' ? 'À éviter lors de la comparaison' : 'Avoid when comparing'}</h2></div>
             <div class="prose reveal">${t(data.pitfalls, locale)}</div>
         </div></section>` : '';
+  const relatedBlock = relatedComparisons(locale, depth, data, isApi);
   const body = `
         <section class="page-hero"><div class="wrap reveal">
             <p class="breadcrumb"><a href="${px.compare}">${u.compare}</a> / Stylab vs ${comp}</p>
@@ -265,12 +347,20 @@ function comparePage(locale, depth, data) {
                 <div class="diff-card"><h3>${u.whenOther.replace('{name}', comp)}</h3><p>${t(data.chooseOther, locale)}</p></div>
             </div>
             <p class="disclaimer">${u.disclaimer}</p>
-        </div></section>${evalBlock}${pitfallsBlock}${cta(locale, depth)}`;
+        </div></section>${evalBlock}${pitfallsBlock}${relatedBlock}${cta(locale, depth)}`;
   const title = locale === 'fr'
     ? `Stylab vs ${comp} | ${isApi ? 'Comparaison API' : 'Comparaison Shopify'}`
     : `Stylab vs ${comp} | ${isApi ? 'API vs Shopify App' : 'Shopify Virtual Try-On'} Comparison`;
   const pagePath = `${locale === 'fr' ? '/fr' : ''}/compare/${isApi ? 'api/' : ''}${data.slug}.html`;
-  return layout({ locale, depth, title, description: t(data.summary, locale), body, activeNav: 'compare', section: 'compare', pagePath });
+  const headExtra = breadcrumbHeadExtra(locale, pagePath, {
+    title,
+    description: t(data.summary, locale),
+    items: [
+      { name: u.compare, path: `${locale === 'fr' ? '/fr' : ''}/compare/` },
+      { name: `Stylab vs ${comp}`, path: pagePath },
+    ],
+  });
+  return layout({ locale, depth, title, description: t(data.summary, locale), body, activeNav: 'compare', section: 'compare', pagePath, headExtra });
 }
 
 function solutionFeatures(features, locale) {
@@ -296,14 +386,15 @@ function solutionPage(locale, depth, data) {
             <div class="prose reveal">${t(data.rollout, locale)}</div>
         </div></section>` : '';
   const noteBlock = data.note ? `
-        <section class="section section-white"><div class="wrap"><p class="disclaimer reveal" style="max-width:640px;margin:0 auto;text-align:center;">${t(data.note, locale)}</p></div></section>` : '';
+        <section class="section section-white"><div class="wrap"><p class="disclaimer reveal" style="max-width:640px;margin:0 auto;text-align:center;">${t(data.note, locale)}</p>        </div></section>` : '';
+  const relatedBlock = relatedSolutions(locale, depth, data.slug);
   const body = `
         <section class="page-hero"><div class="wrap reveal">
             <p class="breadcrumb"><a href="index.html">${u.solutions}</a></p>
             <h1>${t(data.title, locale)}</h1>
             <p class="lead">${t(data.lead, locale)}</p>
             <div class="btns">${installBtn(u.install, px.assets)}<a href="${px.home}#try-it" class="btn btn-ghost">${u.viewDemo}</a></div>
-        </div></section>${overviewBlock}${featuresBlock}${rolloutBlock}${noteBlock}${cta(locale, depth)}`;
+        </div></section>${overviewBlock}${featuresBlock}${rolloutBlock}${noteBlock}${relatedBlock}${cta(locale, depth)}`;
   return layout({
     locale, depth,
     title: `${t(data.title, locale)} | Stylab`,
@@ -493,6 +584,7 @@ function generateLocale(locale) {
     activeNav: 'compare',
     section: 'compare',
     pagePath: `${locale === 'fr' ? '/fr' : ''}/compare/`,
+    headExtra: compareHubHeadMeta(locale),
     body: `
         <section class="page-hero"><div class="wrap reveal"><p class="pill">${u.compare}</p><h1>${locale === 'fr' ? 'Comment Stylab se compare' : 'How Stylab compares'}</h1><p class="lead">${locale === 'fr' ? 'Guides factuels pour shortlister, piloter et mesurer — pas du SEO générique.' : 'Factual guides to shortlist, pilot, and measure — not generic SEO filler.'}</p></div></section>
         <section class="section section-green"><div class="wrap prose reveal">${t(COMPARE_HUB.intro, locale)}</div></section>
@@ -550,6 +642,8 @@ function generateLocale(locale) {
             <a href="blog/" class="hub-card"><h3>${u.blog}</h3><p>Guides</p><span class="arrow">→</span></a>
             <a href="documentation.html" class="hub-card"><h3>${u.documentation}</h3><p>Install & config</p><span class="arrow">→</span></a>
             <a href="changelog.html" class="hub-card"><h3>${u.changelog}</h3><p>Updates</p><span class="arrow">→</span></a>
+            <a href="${paths(locale, 1).compare}" class="hub-card"><h3>${u.compare}</h3><p>${locale === 'fr' ? 'Stylab vs Genlook, Antla, Banuba et API' : 'Stylab vs Genlook, Antla, Banuba, and APIs'}</p><span class="arrow">→</span></a>
+            <a href="${paths(locale, 1).solutions}" class="hub-card"><h3>${u.solutions}</h3><p>${locale === 'fr' ? 'Mode, streetwear, enterprise' : 'Fashion, streetwear, enterprise'}</p><span class="arrow">→</span></a>
         </div></section>${cta(locale, 1)}`,
   }));
 

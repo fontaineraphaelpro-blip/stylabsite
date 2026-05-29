@@ -155,6 +155,21 @@ const replacements = [
   ['Only successful try-ons count toward your monthly quota. Failed generations can be retried. No seats, no install fees.', 'Seuls les essayages réussis comptent dans votre quota mensuel.'],
   // FAQ title
   ['Common questions from Shopify merchants', 'Questions fréquentes des marchands Shopify'],
+  // Discover section
+  ['Compare Stylab and explore resources', 'Comparez Stylab et explorez les ressources'],
+  ['Factual comparisons, rollout guides, and tools for Shopify apparel merchants evaluating virtual try-on.', 'Comparaisons factuelles, guides de déploiement et outils pour marchands apparel Shopify qui évaluent l\'essayage virtuel.'],
+  ['Compare alternatives', 'Comparer les alternatives'],
+  ['Stylab vs Genlook, Antla, Banuba, MirrAR, and API platforms — side-by-side for Shopify merchants.', 'Stylab vs Genlook, Antla, Banuba, MirrAR et plateformes API — comparatif pour marchands Shopify.'],
+  ['Two Shopify try-on apps compared on A/B testing, billing, flat-lays, and measurement.', 'Deux apps Shopify comparées sur A/B testing, facturation, flat-lays et mesure.'],
+  ['Blog &amp; rollout guides', 'Blog &amp; guides de déploiement'],
+  ['A/B testing, mobile-first setup, flat-lay photos, privacy, and plan selection for apparel stores.', 'A/B testing, mobile-first, photos flat-lay, confidentialité et choix de plan pour boutiques apparel.'],
+  ['ROI calculator, readiness checklist, and A/B planner before you scale try-on across your catalog.', 'Calculateur ROI, checklist readiness et planificateur A/B avant de scaler l\'essayage.'],
+  // Footer
+  ['All comparisons', 'Toutes les comparaisons'],
+  ['>Compare</h4>', '>Comparer</h4>'],
+  ['Fashion brands', 'Marques mode'],
+  ['Free tools', 'Outils gratuits'],
+  ['>Company</h4>', '>Entreprise</h4>'],
   // Final CTA
   ['Add AI try-on to your Shopify product pages', 'Ajoutez l\'essayage IA à vos pages produit Shopify'],
   ['Start with a few products, measure shopper engagement, and see whether try-on helps customers buy with more confidence.', 'Commencez sur quelques produits, mesurez l\'engagement et voyez si l\'essayage aide vos clients à acheter avec confiance.'],

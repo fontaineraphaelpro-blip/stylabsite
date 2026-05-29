@@ -43,7 +43,6 @@ const urls = [
   entry('/support.html', { priority: '0.6' }),
   entry('/confidentialite.html', { changefreq: 'yearly', priority: '0.4' }),
   entry('/conditions.html', { changefreq: 'yearly', priority: '0.4' }),
-  entry('/llms.txt', { priority: '0.8' }),
 ];
 
 const xml = `<?xml version="1.0" encoding="UTF-8"?>
