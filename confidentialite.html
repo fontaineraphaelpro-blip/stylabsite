@@ -3,369 +3,215 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Privacy Policy — Style Lab Virtual Try-On</title>
-    <meta name="description" content="Stylab Virtual Try-On privacy policy — how shopper photos, try-on data, and subprocessors (Shopify, Replicate, Railway) are handled.">
+    <title>Privacy Policy — Stylab Virtual Try-On</title>
+    <meta name="description" content="Stylab Virtual Try-On privacy policy — how we collect, use, and protect data for Shopify merchants and shoppers.">
     <meta name="robots" content="index, follow, max-image-preview:large">
     <link rel="canonical" href="https://www.stylabtryon.site/confidentialite.html">
     <link rel="alternate" hreflang="en" href="https://www.stylabtryon.site/confidentialite.html">
     <link rel="alternate" hreflang="x-default" href="https://www.stylabtryon.site/confidentialite.html">
     <meta property="og:type" content="website">
     <meta property="og:title" content="Privacy Policy — Stylab Virtual Try-On">
-    <meta property="og:description" content="How Stylab processes shopper photos, subprocessors, and data retention on Shopify stores.">
     <meta property="og:url" content="https://www.stylabtryon.site/confidentialite.html">
     <meta property="og:locale" content="en_US">
     <meta property="og:image" content="https://www.stylabtryon.site/assets/screenshots/result-modal.png">
-    <meta name="twitter:card" content="summary_large_image">
-    <meta name="twitter:title" content="Privacy Policy — Stylab Virtual Try-On">
-    <meta name="twitter:description" content="How Stylab processes shopper photos, subprocessors, and data retention on Shopify stores.">
-    <meta name="twitter:image" content="https://www.stylabtryon.site/assets/screenshots/result-modal.png">
-    <script type="application/ld+json">{"@context":"https://schema.org","@type":"WebPage","name":"Privacy Policy — Stylab Virtual Try-On","description":"Stylab Virtual Try-On privacy policy — shopper photos, subprocessors, and data retention.","url":"https://www.stylabtryon.site/confidentialite.html","inLanguage":"en-US","isPartOf":{"@type":"WebSite","name":"Stylab Virtual Try-On","url":"https://www.stylabtryon.site/"}}</script>
+    <script type="application/ld+json">{"@context":"https://schema.org","@type":"WebPage","name":"Privacy Policy — Stylab Virtual Try-On","url":"https://www.stylabtryon.site/confidentialite.html","inLanguage":"en-US","isPartOf":{"@type":"WebSite","name":"Stylab Virtual Try-On","url":"https://www.stylabtryon.site/"}}</script>
     <link rel="icon" type="image/png" href="assets/logo.png">
-    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800;900&display=swap" rel="stylesheet">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter+Tight:wght@400;500;600;700;800&family=Geist:wght@500;600;700;800;900&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="assets/ai-theme.css">
+    <link rel="stylesheet" href="assets/marketing.css">
     <style>
-        * {
-            margin: 0;
-            padding: 0;
-            box-sizing: border-box;
-        }
-
-        :root {
-            --navy-900: #0a1628;
-            --navy-800: #0f1f3d;
-            --white: #ffffff;
-            --gray-300: #d1d5db;
-            --gray-400: #9ca3af;
-            --accent: #67e8f9;
-        }
-
-        body {
-            font-family: 'Inter', -apple-system, BlinkMacSystemFont, sans-serif;
-            background: var(--navy-900);
-            color: var(--white);
-            line-height: 1.7;
-            -webkit-font-smoothing: antialiased;
-        }
-
-        .container {
-            max-width: 900px;
-            margin: 0 auto;
-            padding: 2rem;
-        }
-
-        header {
-            padding: 2rem 0;
-            border-bottom: 1px solid rgba(255, 255, 255, 0.1);
-            margin-bottom: 3rem;
-        }
-
-        .logo {
-            font-size: 1.5rem;
-            font-weight: 800;
-            letter-spacing: -0.02em;
-            background: linear-gradient(135deg, var(--white) 0%, var(--accent) 100%);
-            -webkit-background-clip: text;
-            -webkit-text-fill-color: transparent;
-            background-clip: text;
-            text-decoration: none;
-        }
-
-        h1 {
-            font-size: clamp(2rem, 5vw, 3rem);
-            font-weight: 900;
-            margin-bottom: 1rem;
-            letter-spacing: -0.03em;
-        }
-
-        .last-updated {
-            color: var(--gray-400);
-            font-size: 0.875rem;
-            margin-bottom: 3rem;
-        }
-
-        h2 {
-            font-size: 1.75rem;
-            font-weight: 800;
-            margin-top: 3rem;
-            margin-bottom: 1rem;
-            letter-spacing: -0.02em;
-        }
-
-        h3 {
-            font-size: 1.25rem;
-            font-weight: 700;
-            margin-top: 2rem;
-            margin-bottom: 0.75rem;
-        }
-
-        p {
-            margin-bottom: 1.5rem;
-            color: var(--gray-300);
-        }
-
-        ul, ol {
-            margin-left: 2rem;
-            margin-bottom: 1.5rem;
-            color: var(--gray-300);
-        }
-
-        li {
-            margin-bottom: 0.75rem;
-        }
-
-        a {
-            color: var(--accent);
-        }
-
-        .sub-table {
-            width: 100%;
-            border-collapse: collapse;
-            margin-bottom: 1.5rem;
-            font-size: 0.92rem;
-        }
-
-        .sub-table th,
-        .sub-table td {
-            text-align: left;
-            padding: 0.75rem 1rem;
-            border-bottom: 1px solid rgba(255, 255, 255, 0.1);
-            color: var(--gray-300);
-            vertical-align: top;
-        }
-
-        .sub-table th {
-            color: var(--white);
-            font-weight: 600;
-            background: rgba(255, 255, 255, 0.04);
-        }
-
-        .note {
-            font-size: 0.9rem;
-            color: var(--gray-400);
-            border-left: 3px solid rgba(103, 232, 249, 0.5);
-            padding-left: 1rem;
-            margin-bottom: 1.5rem;
-        }
-
-        .back-link {
-            display: inline-block;
-            margin-top: 3rem;
-            padding: 0.875rem 2rem;
-            background: rgba(255, 255, 255, 0.05);
-            color: var(--white);
-            text-decoration: none;
-            border-radius: 8px;
-            border: 1px solid rgba(255, 255, 255, 0.2);
-            transition: all 0.3s;
-        }
-
-        .back-link:hover {
-            background: rgba(255, 255, 255, 0.1);
-        }
-
-        @media (max-width: 768px) {
-            .container {
-                padding: 1.5rem;
-            }
-
-            .sub-table {
-                display: block;
-                overflow-x: auto;
-            }
-        }
+        .prose table { width: 100%; border-collapse: collapse; margin: 1.25rem 0; font-size: 0.9rem; }
+        .prose th { background: rgba(255,255,255,0.08); padding: 0.65rem 0.85rem; text-align: left; font-weight: 700; border: 1px solid rgba(255,255,255,0.12); }
+        .prose td { padding: 0.65rem 0.85rem; border: 1px solid rgba(255,255,255,0.10); color: rgba(255,255,255,0.82); vertical-align: top; }
+        .prose code { background: rgba(255,255,255,0.08); border-radius: 4px; padding: 0.1em 0.4em; font-size: 0.88em; }
+        @media (max-width: 768px) { .prose table { display: block; overflow-x: auto; } }
     </style>
 </head>
-<body>
-    <div class="container">
-        <header>
-            <a href="index.html" class="logo">Style Lab</a>
-        </header>
-
-        <h1>Privacy Policy</h1>
-        <p class="last-updated">Last updated: May 20, 2026</p>
-
-        <p>
-            Style Lab Virtual Try-On ("Stylab", "we", "our", "us") provides an AI virtual try-on app for Shopify stores.
-            This Privacy Policy explains how we collect, use, retain, and share personal data when merchants install the app
-            and when their customers use the try-on widget.
-        </p>
-
-        <p>
-            <strong>Data controller:</strong> Style Lab<br>
-            <strong>Contact:</strong> <a href="mailto:privacy@stylelab.com">privacy@stylelab.com</a>
-        </p>
-
-        <h2>1. Who this policy applies to</h2>
-        <ul>
-            <li><strong>Merchants</strong> who install Stylab on a Shopify store (shop owner and staff account data).</li>
-            <li><strong>End customers ("shoppers")</strong> who upload a photo to generate a try-on preview on a merchant's product page.</li>
-        </ul>
-        <p>
-            Merchants are responsible for their own storefront privacy notices and for informing shoppers that try-on involves photo processing.
-        </p>
-
-        <h2>2. Data we collect</h2>
-
-        <h3>Merchant / shop data</h3>
-        <ul>
-            <li>Shop domain, app installation status, and Shopify session data required to operate the app</li>
-            <li>Billing and subscription information processed through Shopify</li>
-            <li>Product IDs, handles, and optional flat-lay garment images you upload for try-on</li>
-            <li>Widget settings (colors, copy, enabled products)</li>
-        </ul>
-
-        <h3>Shopper try-on data</h3>
-        <ul>
-            <li><strong>Photos uploaded for try-on</strong> — processed to generate a preview; not stored in Stylab's database after processing (see section 4)</li>
-            <li><strong>Product context</strong> — product ID, handle, and public product image URL used for generation</li>
-            <li><strong>Technical metadata</strong> — IP address (for rate limiting and abuse prevention), generation success/failure, latency, timestamps</li>
-            <li><strong>Generated preview URL</strong> — a link to the AI output may be stored in server logs for analytics and support (the hosted file itself expires quickly; see section 5)</li>
-        </ul>
-
-        <h3>Usage and analytics</h3>
-        <ul>
-            <li>Try-on session counts, add-to-cart events after try-on, A/B test buckets, and credit usage</li>
-        </ul>
-
-        <h2>3. How we use data</h2>
-        <ul>
-            <li>Provide, operate, and improve the virtual try-on service</li>
-            <li>Bill merchants through Shopify based on successful try-on generations</li>
-            <li>Enforce quotas, rate limits, and fraud prevention</li>
-            <li>Provide merchant analytics in the Shopify admin</li>
-            <li>Respond to support requests and legal obligations</li>
-            <li>Handle GDPR-related requests from Shopify (data export and deletion webhooks)</li>
-        </ul>
-        <p>We do not sell personal data.</p>
-
-        <h2>4. Shopper photos — processing and storage</h2>
-        <p>When a shopper uploads a photo:</p>
-        <ol>
-            <li>The photo is sent over HTTPS from the shopper's browser to our application backend.</li>
-            <li>Our backend forwards the image to <strong>Replicate</strong> (our AI inference provider) to generate the try-on preview.</li>
-            <li>The preview URL is returned to the shopper's browser and displayed in the widget.</li>
-        </ol>
-        <p><strong>What we do not store:</strong> original shopper photos are not saved in Stylab's PostgreSQL database after processing completes.</p>
-        <p><strong>What Replicate temporarily holds:</strong> during inference, Replicate receives the shopper photo and product image. Per Replicate's documentation for API predictions:</p>
-        <ul>
-            <li>Files uploaded via Replicate's file API typically expire after <strong>24 hours</strong>.</li>
-            <li>Output files served at <code>replicate.delivery</code> typically expire after about <strong>1 hour</strong> for API-created predictions.</li>
-        </ul>
-        <p class="note">
-            The widget displays a "photo not stored" notice to shoppers. Merchants should link to this policy from their storefront privacy notice where required.
-        </p>
-
-        <h2>5. Data retention</h2>
-        <table class="sub-table">
-            <thead>
-                <tr>
-                    <th>Data type</th>
-                    <th>Retention</th>
-                </tr>
-            </thead>
-            <tbody>
-                <tr>
-                    <td>Original shopper photos</td>
-                    <td>Not retained in Stylab's database after processing. Temporary copies at Replicate per their retention policy (see section 4).</td>
-                </tr>
-                <tr>
-                    <td>Generated preview URLs in try-on logs</td>
-                    <td>Stored in our database while the app is installed, for analytics and support. The underlying Replicate-hosted file link usually expires within ~1 hour; the stored URL may no longer be accessible after that.</td>
-                </tr>
-                <tr>
-                    <td>Try-on usage logs (IP, product, success, latency)</td>
-                    <td>Retained while the app is installed on the merchant's shop.</td>
-                </tr>
-                <tr>
-                    <td>Merchant shop settings and product configuration</td>
-                    <td>Retained while the app is installed.</td>
-                </tr>
-                <tr>
-                    <td>All merchant data after app uninstall</td>
-                    <td>Deleted when the app is uninstalled, via our uninstall and GDPR webhooks. Residual backups, if any, are purged within <strong>30 days</strong>.</td>
-                </tr>
-            </tbody>
-        </table>
-
-        <h2>6. Subprocessors</h2>
-        <p>We use the following service providers to operate Stylab. They process data only as needed to provide the service:</p>
-        <table class="sub-table">
-            <thead>
-                <tr>
-                    <th>Provider</th>
-                    <th>Purpose</th>
-                    <th>Location / notes</th>
-                </tr>
-            </thead>
-            <tbody>
-                <tr>
-                    <td><strong>Shopify</strong></td>
-                    <td>App platform, storefront integration, product images (CDN), subscription billing, GDPR compliance webhooks</td>
-                    <td>Global — see <a href="https://www.shopify.com/legal/privacy" target="_blank" rel="noopener">Shopify Privacy Policy</a></td>
-                </tr>
-                <tr>
-                    <td><strong>Replicate</strong></td>
-                    <td>AI virtual try-on inference; temporary hosting of input/output image files during generation</td>
-                    <td>United States — see <a href="https://replicate.com/privacy" target="_blank" rel="noopener">Replicate Privacy Policy</a> and <a href="https://replicate.com/docs/topics/predictions/data-retention" target="_blank" rel="noopener">data retention docs</a></td>
-                </tr>
-                <tr>
-                    <td><strong>Railway</strong></td>
-                    <td>Application hosting for the Stylab backend API</td>
-                    <td>United States — see <a href="https://railway.com/legal/privacy" target="_blank" rel="noopener">Railway Privacy Policy</a></td>
-                </tr>
-                <tr>
-                    <td><strong>PostgreSQL</strong> (managed via Railway)</td>
-                    <td>Database for shop settings, try-on logs, rate limits, and analytics metadata</td>
-                    <td>Hosted in the same region as our Railway deployment</td>
-                </tr>
-            </tbody>
-        </table>
-        <p class="note">
-            We do not use Imgur or AWS S3 in the current production pipeline. Product images are loaded from Shopify's CDN unless you upload optional flat-lay photos to Shopify Files.
-        </p>
-        <p>
-            Where personal data is transferred outside the European Economic Area (for example to Replicate or Railway in the US),
-            we rely on appropriate safeguards such as Standard Contractual Clauses or equivalent mechanisms where required by law.
-            Contact us if you need more information about transfers relevant to your store.
-        </p>
-
-        <h2>7. GDPR and your rights</h2>
-        <p>Stylab supports Shopify's mandatory GDPR webhooks:</p>
-        <ul>
-            <li><strong>customers/data_request</strong> — export of customer-related try-on log data tied to a Shopify customer ID</li>
-            <li><strong>customers/redact</strong> — deletion of try-on logs associated with a customer</li>
-            <li><strong>shop/redact</strong> — deletion of all shop data after uninstall</li>
-        </ul>
-        <p>Under the GDPR, you may have the right to access, rectify, erase, restrict, or object to processing, and to data portability where applicable.</p>
-        <p>
-            Merchants can contact us at <a href="mailto:privacy@stylelab.com">privacy@stylelab.com</a>.
-            Shoppers should contact the merchant whose store they used; merchants may forward requests to us.
-        </p>
-
-        <h2>8. Security</h2>
-        <p>
-            We use HTTPS for data in transit, access controls on our infrastructure, and industry-standard practices to protect data
-            against unauthorized access, loss, or alteration. No method of transmission over the Internet is 100% secure.
-        </p>
-
-        <h2>9. Cookies</h2>
-        <p>
-            The try-on widget and Shopify admin may use essential cookies or local storage required for the service to function
-            (for example session or status caching). We do not use advertising or cross-site tracking cookies in the Stylab widget.
-        </p>
-
-        <h2>10. Updates</h2>
-        <p>
-            We may update this Privacy Policy from time to time. Material changes will be published on this page with an updated
-            "Last updated" date. Continued use of the app after changes constitutes acceptance of the revised policy where permitted by law.
-        </p>
-
-        <h2>11. Contact</h2>
-        <p>
-            For privacy questions or requests:<br>
-            <a href="mailto:privacy@stylelab.com">privacy@stylelab.com</a>
-        </p>
-
-        <a href="index.html" class="back-link">← Back to homepage</a>
+<body class="js-reveal">
+    <div class="grid-bg" aria-hidden="true"></div>
+    <div class="ambient" aria-hidden="true"></div>
+    <div class="orb-field" aria-hidden="true">
+        <div class="orb orb-1"></div>
+        <div class="orb orb-2"></div>
+        <div class="orb orb-3"></div>
     </div>
+    <header class="header" id="header">
+        <div class="wrap nav">
+            <a href="index.html" class="brand"><span class="brand-mark"><img src="assets/logo.png" alt="" width="36" height="36"></span><span class="brand-name">Stylab <span>Virtual Try-On</span></span></a>
+            <nav class="nav-links" aria-label="Main">
+                <a href="index.html#product">Features</a>
+                <a href="index.html#pricing">Pricing</a>
+                <div class="nav-dropdown">
+                    <button type="button" class="nav-dropdown-btn" aria-haspopup="true" aria-expanded="false">Explore<span class="nav-chevron" aria-hidden="true"></span></button>
+                    <div class="nav-dropdown-menu">
+                        <a href="solutions/">Solutions</a>
+                        <a href="compare/">Compare</a>
+                        <a href="resources/">Resources</a>
+                        <a href="resources/blog/">Blog</a>
+                    </div>
+                </div>
+            </nav>
+            <div class="nav-actions">
+                <a href="https://apps.shopify.com/try-on-stylelab" class="btn btn-primary" target="_blank" rel="noopener"><img class="shopify-icon" src="assets/shopify-icon-logo.svg" alt="" width="20" height="20" aria-hidden="true">Install on Shopify</a>
+                <button class="menu-btn" id="menuBtn" type="button" aria-label="Menu"><span></span><span></span><span></span></button>
+            </div>
+        </div>
+    </header>
+    <div class="mobile-drawer" id="mobileDrawer">
+        <a href="index.html#product">Features</a>
+        <a href="index.html#pricing">Pricing</a>
+        <span class="drawer-label">Explore</span>
+        <a href="solutions/" class="drawer-sub">Solutions</a>
+        <a href="compare/" class="drawer-sub">Compare</a>
+        <a href="resources/" class="drawer-sub">Resources</a>
+        <a href="resources/blog/" class="drawer-sub">Blog</a>
+        <a href="index.html#try-it">Live demo</a>
+        <a href="https://apps.shopify.com/try-on-stylelab" class="btn btn-primary" target="_blank" rel="noopener"><img class="shopify-icon" src="assets/shopify-icon-logo.svg" alt="" width="20" height="20" aria-hidden="true">Install on Shopify</a>
+    </div>
+    <main class="page-main">
+        <section class="page-hero"><div class="wrap reveal"><h1>Privacy Policy</h1><p class="lead">Last updated: May 20, 2026</p></div></section>
+        <section class="section section-white"><div class="wrap prose reveal">
+            <p>Style Lab Virtual Try-On ("Stylab", "we", "our", "us") provides an AI virtual try-on app for Shopify stores. This Privacy Policy explains how we collect, use, retain, and share personal data when merchants install the app and when their customers use the try-on widget.</p>
+            <p><strong>Data controller:</strong> Style Lab<br><strong>Contact:</strong> <a href="mailto:privacy@stylelab.com">privacy@stylelab.com</a></p>
+
+            <h2>1. Who this policy applies to</h2>
+            <ul>
+                <li><strong>Merchants</strong> who install Stylab on a Shopify store (shop owner and staff account data).</li>
+                <li><strong>End customers ("shoppers")</strong> who upload a photo to generate a try-on preview on a merchant's product page.</li>
+            </ul>
+            <p>Merchants are responsible for their own storefront privacy notices and for informing shoppers that try-on involves photo processing.</p>
+
+            <h2>2. Data we collect</h2>
+            <h3>Merchant / shop data</h3>
+            <ul>
+                <li>Shop domain, app installation status, and Shopify session data required to operate the app</li>
+                <li>Billing and subscription information processed through Shopify</li>
+                <li>Product IDs, handles, and optional flat-lay garment images you upload for try-on</li>
+                <li>Widget settings (colors, copy, enabled products)</li>
+            </ul>
+            <h3>Shopper try-on data</h3>
+            <ul>
+                <li><strong>Photos uploaded for try-on</strong> — processed to generate a preview; not stored in Stylab's database after processing (see section 4)</li>
+                <li><strong>Product context</strong> — product ID, handle, and public product image URL used for generation</li>
+                <li><strong>Technical metadata</strong> — IP address (for rate limiting and abuse prevention), generation success/failure, latency, timestamps</li>
+                <li><strong>Generated preview URL</strong> — a link to the AI output may be stored in server logs for analytics and support</li>
+            </ul>
+            <h3>Usage and analytics</h3>
+            <ul>
+                <li>Try-on session counts, add-to-cart events after try-on, A/B test buckets, and credit usage</li>
+            </ul>
+
+            <h2>3. How we use data</h2>
+            <ul>
+                <li>Provide, operate, and improve the virtual try-on service</li>
+                <li>Bill merchants through Shopify based on successful try-on generations</li>
+                <li>Enforce quotas, rate limits, and fraud prevention</li>
+                <li>Provide merchant analytics in the Shopify admin</li>
+                <li>Respond to support requests and legal obligations</li>
+                <li>Handle GDPR-related requests from Shopify (data export and deletion webhooks)</li>
+            </ul>
+            <p>We do not sell personal data.</p>
+
+            <h2>4. Shopper photos — processing and storage</h2>
+            <p>When a shopper uploads a photo:</p>
+            <ol>
+                <li>The photo is sent over HTTPS from the shopper's browser to our application backend.</li>
+                <li>Our backend forwards the image to <strong>Replicate</strong> (our AI inference provider) to generate the try-on preview.</li>
+                <li>The preview URL is returned to the shopper's browser and displayed in the widget.</li>
+            </ol>
+            <p><strong>What we do not store:</strong> original shopper photos are not saved in Stylab's PostgreSQL database after processing completes.</p>
+            <p><strong>What Replicate temporarily holds:</strong> during inference, Replicate receives the shopper photo and product image. Per Replicate's documentation for API predictions:</p>
+            <ul>
+                <li>Files uploaded via Replicate's file API typically expire after <strong>24 hours</strong>.</li>
+                <li>Output files served at <code>replicate.delivery</code> typically expire after about <strong>1 hour</strong> for API-created predictions.</li>
+            </ul>
+            <p>The widget displays a "photo not stored" notice to shoppers. Merchants should link to this policy from their storefront privacy notice where required.</p>
+
+            <h2>5. Data retention</h2>
+            <table>
+                <thead><tr><th>Data type</th><th>Retention</th></tr></thead>
+                <tbody>
+                    <tr><td>Original shopper photos</td><td>Not retained in Stylab's database after processing. Temporary copies at Replicate per their retention policy (see section 4).</td></tr>
+                    <tr><td>Generated preview URLs in try-on logs</td><td>Stored while the app is installed, for analytics and support. The underlying Replicate-hosted file usually expires within ~1 hour.</td></tr>
+                    <tr><td>Try-on usage logs (IP, product, success, latency)</td><td>Retained while the app is installed on the merchant's shop.</td></tr>
+                    <tr><td>Merchant shop settings and product configuration</td><td>Retained while the app is installed.</td></tr>
+                    <tr><td>All merchant data after app uninstall</td><td>Deleted when the app is uninstalled, via our uninstall and GDPR webhooks. Residual backups purged within <strong>30 days</strong>.</td></tr>
+                </tbody>
+            </table>
+
+            <h2>6. Subprocessors</h2>
+            <p>We use the following service providers to operate Stylab. They process data only as needed to provide the service:</p>
+            <table>
+                <thead><tr><th>Provider</th><th>Purpose</th><th>Location</th></tr></thead>
+                <tbody>
+                    <tr><td><strong>Shopify</strong></td><td>App platform, storefront integration, billing, GDPR compliance webhooks</td><td>Global — <a href="https://www.shopify.com/legal/privacy" target="_blank" rel="noopener">Privacy Policy</a></td></tr>
+                    <tr><td><strong>Replicate</strong></td><td>AI virtual try-on inference; temporary hosting of input/output image files</td><td>United States — <a href="https://replicate.com/privacy" target="_blank" rel="noopener">Privacy Policy</a></td></tr>
+                    <tr><td><strong>Railway</strong></td><td>Application hosting for the Stylab backend API</td><td>United States — <a href="https://railway.com/legal/privacy" target="_blank" rel="noopener">Privacy Policy</a></td></tr>
+                    <tr><td><strong>PostgreSQL</strong> (via Railway)</td><td>Database for shop settings, try-on logs, rate limits, and analytics metadata</td><td>Hosted in the same region as our Railway deployment</td></tr>
+                </tbody>
+            </table>
+            <p>Where personal data is transferred outside the European Economic Area, we rely on appropriate safeguards such as Standard Contractual Clauses where required by law.</p>
+
+            <h2>7. GDPR and your rights</h2>
+            <p>Stylab supports Shopify's mandatory GDPR webhooks:</p>
+            <ul>
+                <li><strong>customers/data_request</strong> — export of customer-related try-on log data tied to a Shopify customer ID</li>
+                <li><strong>customers/redact</strong> — deletion of try-on logs associated with a customer</li>
+                <li><strong>shop/redact</strong> — deletion of all shop data after uninstall</li>
+            </ul>
+            <p>Under the GDPR, you may have the right to access, rectify, erase, restrict, or object to processing, and to data portability where applicable.</p>
+            <p>Merchants can contact us at <a href="mailto:privacy@stylelab.com">privacy@stylelab.com</a>. Shoppers should contact the merchant whose store they used; merchants may forward requests to us.</p>
+
+            <h2>8. Security</h2>
+            <p>We use HTTPS for data in transit, access controls on our infrastructure, and industry-standard practices to protect data against unauthorized access, loss, or alteration.</p>
+
+            <h2>9. Cookies</h2>
+            <p>The try-on widget and Shopify admin may use essential cookies or local storage required for the service to function. We do not use advertising or cross-site tracking cookies in the Stylab widget.</p>
+
+            <h2>10. Updates</h2>
+            <p>We may update this Privacy Policy from time to time. Material changes will be published on this page with an updated "Last updated" date.</p>
+
+            <h2>11. Contact</h2>
+            <p>For privacy questions or requests:<br><a href="mailto:privacy@stylelab.com">privacy@stylelab.com</a></p>
+        </div></section>
+    </main>
+    <footer>
+        <div class="wrap footer-top">
+            <div class="footer-brand">
+                <a href="index.html" class="brand"><span class="brand-mark"><img src="assets/logo.png" alt="" width="36" height="36"></span><span class="brand-name">Stylab <span>Virtual Try-On</span></span></a>
+                <p>AI virtual try-on for Shopify apparel brands. Help shoppers visualize your products before they buy.</p>
+            </div>
+            <div class="footer-col"><h4>Solutions</h4>
+                <a href="solutions/fashion-brands.html">Fashion Brands</a>
+                <a href="solutions/streetwear.html">Streetwear</a>
+                <a href="solutions/enterprise.html">Enterprise</a>
+                <a href="solutions/prestashop.html">PrestaShop</a>
+                <a href="solutions/api.html">API</a>
+            </div>
+            <div class="footer-col"><h4>Shopify alternatives</h4>
+                <a href="compare/vs-genlook.html">vs Genlook</a>
+                <a href="compare/vs-antla.html">vs Antla</a>
+                <a href="compare/vs-banuba.html">vs Banuba</a>
+                <a href="compare/vs-mirrar.html">vs MirrAR</a>
+                <a href="compare/vs-camweara.html">vs Camweara</a>
+                <a href="compare/vs-looksy.html">vs Looksy</a>
+                <a href="compare/vs-trypoint.html">vs TryPoint</a>
+            </div>
+            <div class="footer-col"><h4>Resources</h4>
+                <a href="resources/free-tools.html">Free Tools</a>
+                <a href="resources/blog/">Blog</a>
+                <a href="resources/documentation.html">Documentation</a>
+                <a href="resources/changelog.html">Changelog</a>
+                <a href="contact.html">Contact</a>
+                <a href="support.html">Support</a>
+                <a href="confidentialite.html">Privacy</a>
+                <a href="conditions.html">Terms of service</a>
+            </div>
+        </div>
+        <div class="wrap footer-copy">© 2026 Style Lab · Stylab Virtual Try-On</div>
+    </footer>
+    <script src="assets/marketing.js"></script>
 </body>
 </html>
