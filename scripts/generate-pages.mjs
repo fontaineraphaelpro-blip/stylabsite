@@ -501,10 +501,17 @@ function layout({ locale, depth, title, description, body, activeNav, extraScrip
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Inter+Tight:wght@400;500;600;700;800&family=Geist:wght@500;600;700;800;900&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="${px.assets}ai-theme.css">
     <link rel="stylesheet" href="${px.assets}marketing.css">
 </head>
-<body>
+<body class="js-reveal">
+    <div class="grid-bg" aria-hidden="true"></div>
     <div class="ambient" aria-hidden="true"></div>
+    <div class="orb-field" aria-hidden="true">
+        <div class="orb orb-1"></div>
+        <div class="orb orb-2"></div>
+        <div class="orb orb-3"></div>
+    </div>
     <header class="header" id="header">
         <div class="wrap nav">
             <a href="${home}" class="brand"><span class="brand-mark"><img src="${px.assets}logo.png" alt="" width="36" height="36"></span><span class="brand-name">Stylab <span>Virtual Try-On</span></span></a>
@@ -542,7 +549,8 @@ function layout({ locale, depth, title, description, body, activeNav, extraScrip
     </div>
     <main class="page-main">${body}</main>
     ${footer(locale, px, u, home)}
-    <script src="${px.assets}marketing.js"></script>${extraScripts}
+    <script src="${px.assets}marketing.js"></script>
+    <script src="${px.assets}motion.js" defer></script>${extraScripts}
 </body>
 </html>`;
 }
