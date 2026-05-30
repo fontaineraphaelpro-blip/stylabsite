@@ -222,17 +222,16 @@ body {
 @media (prefers-reduced-motion: no-preference) {
     .js-reveal .reveal:not(.visible) {
         opacity: 0;
-        transform: translateY(28px) scale(0.98);
-        filter: blur(8px);
+        transform: translate3d(0, 20px, 0);
+        filter: none;
         transition:
-            opacity 0.8s var(--ease),
-            transform 0.8s var(--ease),
-            filter 0.8s var(--ease);
+            opacity 0.65s var(--ease),
+            transform 0.65s var(--ease);
     }
     .js-reveal .reveal.visible {
         opacity: 1;
         transform: none;
-        filter: blur(0);
+        filter: none;
     }
 }
 
@@ -368,6 +367,16 @@ body {
 
 .price-amt { color: var(--surface-text) !important; }
 
+.price-amt span { color: var(--surface-muted) !important; }
+
+.price-card li {
+    color: var(--surface-muted) !important;
+}
+
+.price-card li::before {
+    background: var(--violet-400) !important;
+}
+
 /* Trial highlight glow */
 .trial-box.demo-highlight {
     animation: demo-glow-ai 3s ease infinite !important;
@@ -426,7 +435,17 @@ body {
 
 .faq-q { color: #ffffff !important; }
 .faq-a { color: var(--muted) !important; }
-.faq-a a { color: #ffffff !important; text-decoration: underline; }
+.faq-q .icon {
+    background: rgba(255, 255, 255, 0.1) !important;
+    color: #ffffff !important;
+}
+
+.faq-item.open .faq-q .icon {
+    background: #ffffff !important;
+    color: var(--violet-700) !important;
+}
+
+.faq-a a { color: var(--violet-300) !important; text-decoration: underline; }
 
 /* Footer */
 footer {
@@ -507,7 +526,12 @@ section[style*="background"] {
     border: 1px solid rgba(255, 255, 255, 0.12) !important;
 }
 
-.disclaimer { color: var(--muted) !important; }
+.disclaimer {
+    color: var(--muted) !important;
+    background: transparent !important;
+    border: none !important;
+    padding: 0 !important;
+}
 
 /* Nav dropdown — dark glass */
 .nav-dropdown-menu {

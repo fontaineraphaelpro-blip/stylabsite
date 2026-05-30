@@ -1,0 +1,422 @@
+/* Pro polish — smooth motion, zero texture glitches, conversion UX */
+
+html {
+    scroll-padding-top: calc(2.35rem + 4.25rem);
+    -webkit-text-size-adjust: 100%;
+}
+
+@media (max-width: 768px) {
+    html { scroll-padding-top: calc(2.6rem + 3.75rem); }
+}
+
+body.pp-layout {
+    overflow-x: clip;
+    padding-bottom: calc(4.75rem + env(safe-area-inset-bottom, 0px));
+}
+
+/* Remove grain noise — common source of “buggy texture” on OLED / zoom */
+.pp-layout .grain { display: none !important; }
+
+/* GPU-stable background layers */
+.pp-layout .ambient,
+.pp-layout .grid-bg,
+.pp-layout .orb-field {
+    transform: translateZ(0);
+    backface-visibility: hidden;
+    will-change: auto;
+}
+
+.pp-layout .orb-field { opacity: 0.22; }
+.pp-layout .grid-bg { opacity: 0.28; }
+
+.pp-layout .orb {
+    filter: blur(100px);
+    opacity: 0.28;
+}
+
+/* Smoother scroll reveals — no blur (causes jank on mobile) */
+@media (prefers-reduced-motion: no-preference) {
+    .pp-layout.js-reveal .reveal:not(.visible) {
+        opacity: 0;
+        transform: translate3d(0, 18px, 0);
+        filter: none !important;
+    }
+
+    .pp-layout.js-reveal .reveal.visible {
+        transition:
+            opacity 0.6s var(--ease),
+            transform 0.6s var(--ease);
+    }
+
+    .pp-layout .pp-hero-inner.visible {
+        animation: pro-hero-in 0.75s var(--ease) both;
+    }
+
+    @keyframes pro-hero-in {
+        from { opacity: 0; transform: translate3d(0, 22px, 0); }
+        to { opacity: 1; transform: none; }
+    }
+
+    .pp-step-panel.active {
+        animation: pro-panel-in 0.42s var(--ease) both;
+    }
+
+    @keyframes pro-panel-in {
+        from { opacity: 0; transform: translate3d(0, 10px, 0); }
+        to { opacity: 1; transform: none; }
+    }
+
+    .post-demo-cta:not([hidden]) {
+        animation: pro-panel-in 0.5s var(--ease) both;
+    }
+}
+
+/* Journey card — clean pro surface */
+.pp-journey-card {
+    transition: box-shadow 0.45s var(--ease);
+    isolation: isolate;
+}
+
+.pp-journey-card:hover {
+    box-shadow:
+        0 40px 100px -36px rgba(0, 0, 0, 0.55),
+        0 0 0 1px rgba(255, 255, 255, 0.12);
+}
+
+.pp-journey-card .trial-box.demo-highlight {
+    animation: none !important;
+    box-shadow: none !important;
+}
+
+.pp-journey-card .post-demo-cta {
+    background: linear-gradient(135deg, var(--violet-700), var(--violet-600)) !important;
+    border: 1px solid rgba(255, 255, 255, 0.12);
+}
+
+/* Header — buttery scroll state */
+.pp-layout .header {
+    transition:
+        padding 0.35s var(--ease),
+        background 0.35s var(--ease),
+        box-shadow 0.35s var(--ease),
+        border-color 0.35s var(--ease);
+}
+
+/* Buttons — tactile, no layout shift */
+.pp-layout .btn {
+    -webkit-tap-highlight-color: transparent;
+    transition:
+        transform 0.22s var(--ease),
+        box-shadow 0.3s var(--ease),
+        background 0.22s,
+        border-color 0.22s !important;
+}
+
+.pp-layout .btn:active {
+    transform: scale(0.97) !important;
+}
+
+.pp-layout .btn-primary .shopify-icon {
+    transition: transform 0.22s var(--ease);
+}
+
+.pp-layout .btn-primary:hover .shopify-icon {
+    transform: scale(1.08);
+}
+
+/* Cards — transitions only; hover transforms defined below */
+.pp-layout .price-card,
+.pp-layout .review-card,
+.pp-layout .pp-ba-card {
+    transition: transform 0.32s var(--ease), box-shadow 0.32s var(--ease);
+}
+
+/* Proof + testimonial contrast */
+.proof-compact .review-card--solo .review-quote {
+    color: var(--surface-text) !important;
+    font-size: 1rem;
+    line-height: 1.55;
+}
+
+/* Images — crisp, no weird scaling */
+.pp-ba-img img,
+.trial-gallery img {
+    display: block;
+    width: 100%;
+    height: auto;
+}
+
+/* Sticky install CTA — always works (funnel-active was never toggled) */
+.pp-layout .sticky-mobile-cta {
+    display: flex !important;
+    align-items: center;
+    justify-content: center;
+    background: rgba(18, 8, 40, 0.94) !important;
+    backdrop-filter: blur(20px) saturate(1.3);
+    -webkit-backdrop-filter: blur(20px) saturate(1.3);
+    border-top: 1px solid rgba(255, 255, 255, 0.12) !important;
+    box-shadow: 0 -8px 32px rgba(0, 0, 0, 0.35);
+    transform: translate3d(0, 110%, 0);
+    opacity: 0;
+    pointer-events: none;
+    transition: transform 0.45s var(--ease), opacity 0.45s var(--ease);
+}
+
+.pp-layout .sticky-mobile-cta.is-visible {
+    transform: translate3d(0, 0, 0);
+    opacity: 1;
+    pointer-events: auto;
+}
+
+.pp-layout .sticky-mobile-cta .btn {
+    width: 100%;
+    max-width: 28rem;
+    justify-content: center;
+    font-weight: 700;
+}
+
+@media (min-width: 769px) {
+    body.pp-layout { padding-bottom: 5.5rem; }
+
+    .pp-layout .sticky-mobile-cta {
+        left: 50%;
+        right: auto;
+        width: min(420px, calc(100% - 2rem));
+        bottom: 1.25rem;
+        border-radius: 999px;
+        border: 1px solid rgba(255, 255, 255, 0.15) !important;
+        padding: 0.65rem 0.85rem;
+        box-shadow: 0 24px 60px -20px rgba(0, 0, 0, 0.6) !important;
+        transform: translate3d(-50%, 120%, 0);
+    }
+
+    .pp-layout .sticky-mobile-cta.is-visible {
+        transform: translate3d(-50%, 0, 0);
+    }
+}
+
+/* FAQ accordion feel */
+.pp-layout .faq-item {
+    transition: border-color 0.25s, background 0.25s;
+}
+
+.pp-layout .faq-item.open {
+    border-color: rgba(255, 255, 255, 0.2) !important;
+    background: rgba(255, 255, 255, 0.08) !important;
+}
+
+/* Final CTA subtle shine */
+.pp-final-box {
+    position: relative;
+    overflow: hidden;
+}
+
+.pp-final-box::before {
+    content: "";
+    position: absolute;
+    inset: 0;
+    background: linear-gradient(105deg, transparent 42%, rgba(255, 255, 255, 0.06) 50%, transparent 58%);
+    pointer-events: none;
+}
+
+@media (prefers-reduced-motion: no-preference) {
+    .pp-final-box::before {
+        animation: pro-shine 6s ease-in-out infinite;
+    }
+
+    @keyframes pro-shine {
+        0%, 80%, 100% { transform: translateX(-120%); }
+        90% { transform: translateX(120%); }
+    }
+}
+
+/* Text gradient Safari fix */
+.text-gradient {
+    -webkit-box-decoration-break: clone;
+    box-decoration-break: clone;
+    padding-bottom: 0.02em;
+}
+
+/* Ticker — no layout jump */
+.pp-ticker {
+    min-height: 2.35rem;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+/* ── Color fixes: legacy home.css uses --ink/--muted meant for violet bg on white surfaces ── */
+
+.pp-layout .pp-journey-card .trial-gallery,
+.pp-layout .pp-journey-card .trial-widget-wrap {
+    background: rgba(26, 5, 51, 0.04) !important;
+    border-color: var(--surface-line) !important;
+}
+
+.pp-layout .pp-journey-card .trial-header {
+    background: rgba(26, 5, 51, 0.03) !important;
+    border-color: var(--surface-line) !important;
+}
+
+.pp-layout .pp-journey-card .trial-gallery {
+    border-right-color: var(--surface-line) !important;
+}
+
+.pp-layout .trial-thumbs button.active {
+    border-color: var(--violet-600) !important;
+}
+
+.pp-layout .trial-sizes span.on {
+    background: var(--violet-600) !important;
+    color: #ffffff !important;
+    border-color: var(--violet-600) !important;
+}
+
+.pp-layout .trial-foot a {
+    color: var(--violet-600) !important;
+}
+
+/* Hover transforms — single source (avoid home.css + ai-theme fighting) */
+@media (hover: hover) and (pointer: fine) {
+    .pp-layout .price-card:hover {
+        transform: translateY(-4px);
+        box-shadow: 0 24px 56px -28px rgba(0, 0, 0, 0.45);
+    }
+
+    .pp-layout .price-card.featured:hover {
+        transform: translateY(-4px);
+    }
+
+    .pp-layout .review-card--solo:hover {
+        transform: translateY(-4px) !important;
+    }
+
+    .pp-layout .pp-ba-card.after:hover {
+        transform: translateY(-2px);
+        box-shadow: 0 20px 56px -28px rgba(0, 0, 0, 0.45);
+    }
+}
+
+/* btn: hover lift vs active press — active wins */
+.pp-layout .btn-primary:hover {
+    transform: translateY(-2px) scale(1.01) !important;
+}
+
+.pp-layout .btn-primary:active {
+    transform: scale(0.97) !important;
+    box-shadow: 0 8px 24px -8px rgba(0, 0, 0, 0.35) !important;
+}
+
+/* ═══════════════════════════════════════════════════════════
+   SECTION COHERENCE — one surface system on the violet layout
+   Glass cards + white text on violet. White cards only for the
+   demo product card + pricing. Kills home.css light-theme leftovers.
+   ═══════════════════════════════════════════════════════════ */
+
+/* "How it works" — was white card + white text = invisible. Now glass. */
+.pp-layout .hiw-step {
+    background: rgba(255, 255, 255, 0.05) !important;
+    border: 1px solid rgba(255, 255, 255, 0.12) !important;
+    border-radius: 18px;
+    box-shadow: none !important;
+    backdrop-filter: blur(12px);
+}
+
+.pp-layout .hiw-step:hover {
+    background: rgba(255, 255, 255, 0.08) !important;
+    box-shadow: 0 24px 56px -28px rgba(0, 0, 0, 0.5) !important;
+}
+
+.pp-layout .hiw-num {
+    background: none !important;
+    background-image: var(--gradient-text) !important;
+    -webkit-background-clip: text !important;
+    background-clip: text !important;
+    color: transparent !important;
+    font-family: var(--display);
+    font-size: 1.6rem;
+    font-weight: 800;
+}
+
+.pp-layout .hiw-step h3 { color: #ffffff !important; }
+.pp-layout .hiw-step p { color: rgba(255, 255, 255, 0.62) !important; }
+
+.pp-layout .hiw-time {
+    color: var(--violet-200) !important;
+    background: rgba(255, 255, 255, 0.08) !important;
+    border: 1px solid rgba(255, 255, 255, 0.12);
+    padding: 0.3rem 0.7rem;
+    border-radius: 999px;
+}
+
+.pp-layout .hiw-arrow { color: rgba(255, 255, 255, 0.28) !important; }
+
+/* Before / After — equal, aligned media so no empty void */
+.pp-layout .pp-ba-grid { align-items: stretch; }
+
+.pp-layout .pp-ba-card {
+    display: flex;
+    flex-direction: column;
+}
+
+.pp-layout .pp-ba-img {
+    margin-top: auto;
+    aspect-ratio: 4 / 5;
+    background: rgba(0, 0, 0, 0.2);
+}
+
+.pp-layout .pp-ba-img img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    object-position: top center;
+}
+
+/* Testimonial — glass card to match the metrics strip above it */
+.pp-layout .proof-compact .review-card--solo {
+    background: rgba(255, 255, 255, 0.05) !important;
+    border: 1px solid rgba(255, 255, 255, 0.12) !important;
+    box-shadow: none !important;
+    border-radius: 18px;
+    backdrop-filter: blur(12px);
+}
+
+.pp-layout .proof-compact .review-quote {
+    color: rgba(255, 255, 255, 0.92) !important;
+}
+
+.pp-layout .proof-compact .review-author strong { color: #ffffff !important; }
+.pp-layout .proof-compact .review-author span { color: rgba(255, 255, 255, 0.55) !important; }
+
+/* Demo product card: keep the "Add to cart" as a clean dark Shopify-style
+   button, but align it to the violet system instead of slate navy. */
+.pp-layout .trial-btn-atc {
+    background: var(--violet-800) !important;
+    color: #ffffff !important;
+}
+
+.pp-layout .trial-btn-buy {
+    background: #ffffff !important;
+    color: var(--violet-800) !important;
+    border: 1px solid var(--violet-800) !important;
+}
+
+/* Mobile polish */
+@media (max-width: 768px) {
+    .pp-hero h1 { font-size: clamp(1.85rem, 7vw, 2.35rem); }
+    .pp-hero-cta { flex-direction: column; align-items: stretch; }
+    .pp-hero-cta .btn { width: 100%; justify-content: center; }
+    .pp-journey-card { border-radius: 18px; }
+    .proof-metrics { gap: 1.25rem 1.75rem; }
+}
+
+@media (prefers-reduced-motion: reduce) {
+    .pp-layout .sticky-mobile-cta {
+        transform: none !important;
+        opacity: 1 !important;
+        pointer-events: auto !important;
+    }
+
+    .pp-final-box::before { animation: none !important; }
+    .btn-primary::after { animation: none !important; }
+}
