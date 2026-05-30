@@ -1,23 +1,27 @@
-/** Stylab — pro motion (smooth reveals, sticky CTA, no transform conflicts) */
+/** Stylab — pro motion (reveals, sticky CTA, stagger) */
 (function () {
   var reduced = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
 
-  /* Sticky install bar — visible after hero scroll */
+  /* ── Sticky install bar ─────────────────────────────────── */
   var sticky = document.getElementById('stickyCta');
   if (sticky) {
     function updateSticky() {
-      var show = window.scrollY > 240;
-      sticky.classList.toggle('is-visible', show);
-      document.body.classList.toggle('sticky-visible', show);
+      sticky.classList.toggle('is-visible', window.scrollY > 240);
     }
     updateSticky();
     window.addEventListener('scroll', updateSticky, { passive: true });
     if (reduced) sticky.classList.add('is-visible');
   }
 
-  if (reduced) return;
+  /* ── Reduced motion: reveal everything immediately ──────── */
+  if (reduced) {
+    document.querySelectorAll('.reveal').forEach(function (el) {
+      el.classList.add('visible');
+    });
+    return;
+  }
 
-  /* Subtle ambient parallax — does not fight orb CSS animations */
+  /* ── Ambient parallax ───────────────────────────────────── */
   var ambient = document.querySelector('.ambient');
   if (ambient) {
     var ticking = false;
@@ -31,32 +35,58 @@
     }, { passive: true });
   }
 
-  /* Stagger reveals for key conversion blocks */
-  var staggerSelectors = [
-    '.proof-metrics div',
+  /* ── Stagger child elements ─────────────────────────────── */
+  var staggerGroups = [
     '.pp-ba-card',
     '.hiw-step',
     '.price-card',
     '.faq-item',
-    '.pp-final-box'
+    '.proof-metrics div'
   ];
 
-  staggerSelectors.forEach(function (sel) {
+  staggerGroups.forEach(function (sel) {
     document.querySelectorAll(sel).forEach(function (el, i) {
       if (!el.classList.contains('reveal')) el.classList.add('reveal');
-      if (i % 3 === 1) el.classList.add('stagger-1');
-      if (i % 3 === 2) el.classList.add('stagger-2');
+      /* inline delay so CSS transition is staggered */
+      el.style.transitionDelay = (i % 4) * 0.10 + 's';
     });
   });
 
-  /* Featured pricing card — gentle attention (no tilt on trial widget) */
+  /* ── IntersectionObserver — add .visible on scroll ──────── */
+  if (!('IntersectionObserver' in window)) {
+    /* Fallback: show everything instantly */
+    document.querySelectorAll('.reveal').forEach(function (el) {
+      el.classList.add('visible');
+    });
+    return;
+  }
+
+  var io = new IntersectionObserver(function (entries) {
+    entries.forEach(function (entry) {
+      if (entry.isIntersecting) {
+        entry.target.classList.add('visible');
+        io.unobserve(entry.target);
+      }
+    });
+  }, {
+    threshold: 0.06,
+    rootMargin: '0px 0px -30px 0px'
+  });
+
+  document.querySelectorAll('.reveal:not(.visible)').forEach(function (el) {
+    io.observe(el);
+  });
+
+  /* ── Featured pricing card tilt (pointer: fine only) ────── */
   if (window.matchMedia('(pointer: fine)').matches) {
     document.querySelectorAll('.price-card.featured').forEach(function (el) {
       el.addEventListener('mousemove', function (e) {
         var r = el.getBoundingClientRect();
         var x = (e.clientX - r.left) / r.width - 0.5;
         var y = (e.clientY - r.top) / r.height - 0.5;
-        el.style.transform = 'perspective(900px) rotateY(' + (x * 4) + 'deg) rotateX(' + (-y * 4) + 'deg) translateY(-2px)';
+        el.style.transform =
+          'perspective(900px) rotateY(' + (x * 4) + 'deg) ' +
+          'rotateX(' + (-y * 4) + 'deg) translateY(-2px)';
       });
       el.addEventListener('mouseleave', function () {
         el.style.transform = '';
