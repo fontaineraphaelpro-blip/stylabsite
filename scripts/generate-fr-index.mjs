@@ -15,6 +15,67 @@ const replacements = [
   ['<html lang="en">', '<html lang="fr">'],
   ['assets/', '../assets/'],
   ['href="vton-widget.js', 'href="../vton-widget.js'],
+  // PromptPilot-style landing (EN → FR)
+  ['try-ons on demo stores today', 'essayages sur les boutiques démo aujourd\'hui'],
+  ['Free plan: <strong>50 try-ons/mo</strong>', 'Plan gratuit : <strong>50 essayages/mo</strong>'],
+  ['Install in <strong>~5 min</strong> — no credit card', 'Installation en <strong>~5 min</strong> — sans carte'],
+  ['Virtual try-on <span class="text-gradient">powered by AI</span>', 'Essayage virtuel <span class="text-gradient">propulsé par l\'IA</span>'],
+  ['Turn your Shopify product pages into a <span class="text-gradient">virtual fitting room</span>', 'Transformez vos pages produit Shopify en <span class="text-gradient">cabine d\'essayage virtuelle</span>'],
+  ['Let shoppers see themselves wearing your apparel. Install from the App Store — live in minutes, free to start.', 'Permettez à vos clients de se voir porter vos vêtements. Installez depuis l\'App Store — en ligne en quelques minutes, gratuit pour commencer.'],
+  ['Start guided demo — free', 'Lancer la démo guidée — gratuit'],
+  ['See before / after', 'Voir avant / après'],
+  ['↓ 3-step guided path — no credit card', '↓ Parcours guidé en 3 étapes — sans carte bancaire'],
+  ['<strong>50</strong><span>Free try-ons/mo</span>', '<strong>50</strong><span>Essayages gratuits/mo</span>'],
+  ['<strong>~30s</strong><span>Avg. preview time</span>', '<strong>~30s</strong><span>Temps moyen d\'aperçu</span>'],
+  ['<strong>77.8%</strong><span>Try-on → cart (pilot)</span>', '<strong>77,8&nbsp;%</strong><span>Essayage → panier (pilote)</span>'],
+  ['Try it on yourself — right now', 'Essayez sur vous — maintenant'],
+  ['Same widget your shoppers will see on Shopify product pages.', 'Le même widget que vos clients verront sur vos pages produit Shopify.'],
+  ['<span class="tab-label">Your store</span>', '<span class="tab-label">Votre boutique</span>'],
+  ['<span class="tab-label">Live demo</span>', '<span class="tab-label">Démo live</span>'],
+  ['<span class="tab-label">Install</span>', '<span class="tab-label">Installer</span>'],
+  ['What kind of apparel do you sell?', 'Quel type de vêtements vendez-vous ?'],
+  ['Pick a use case — then try the live demo with the same AI try-on widget.', 'Choisissez un cas — puis testez la démo live avec le même widget d\'essayage IA.'],
+  ['T-shirts &amp; hoodies', 'T-shirts &amp; hoodies'],
+  ['Dresses &amp; fashion', 'Robes &amp; mode'],
+  ['Sportswear &amp; activewear', 'Sportswear &amp; activewear'],
+  ['Continue — try live demo', 'Continuer — essayer la démo live'],
+  ['Ready to add try-on to your store?', 'Prêt à ajouter l\'essayage à votre boutique ?'],
+  ['Install Stylab from the Shopify App Store — no theme edits, no credit card. Enable on hero SKUs first, then scale when you see results.', 'Installez Stylab depuis l\'App Store Shopify — sans modifier le thème, sans carte bancaire. Activez d\'abord sur vos SKU phares, puis scalez quand vous voyez les résultats.'],
+  ['✓ 50 free try-ons/mo', '✓ 50 essayages gratuits/mo'],
+  ['✓ ~5 min setup', '✓ ~5 min d\'installation'],
+  ['✓ Cancel anytime', '✓ Annulation à tout moment'],
+  ['They installed the app', 'Ils ont installé l\'app'],
+  ['Merchants who stopped losing shoppers at the PDP', 'Des marchands qui ne perdent plus leurs clients sur la fiche produit'],
+  ['Pilot data from REMADE ICONS and feedback from early Shopify merchants.', 'Données pilote REMADE ICONS et retours de premiers marchands Shopify.'],
+  ['Use cases', 'Cas d\'usage'],
+  ['For every type of apparel store', 'Pour chaque type de boutique apparel'],
+  ['DTC apparel', 'Apparel DTC'],
+  ['Compare alternatives', 'Comparer les alternatives'],
+  ['Built for Shopify apparel merchants', 'Conçu pour les marchands apparel Shopify'],
+  ['No theme edits', 'Sans modifier le thème'],
+  ['Before / After', 'Avant / Après'],
+  ['A static product page vs. the same page with Stylab try-on.', 'Une fiche produit statique vs. la même page avec l\'essayage Stylab.'],
+  ['Before', 'Avant'],
+  ['After — with Stylab', 'Après — avec Stylab'],
+  ['Try with your photo', 'Essayer avec votre photo'],
+  ['⚡ 50 free try-ons/mo — install today', '⚡ 50 essayages gratuits/mo — installez aujourd\'hui'],
+  ['Don&rsquo;t leave shoppers guessing on your product pages', 'Ne laissez pas vos clients deviner sur vos fiches produit'],
+  ['Try the demo above, then install from the Shopify App Store. Live in ~5 minutes — no credit card required.', 'Testez la démo ci-dessus, puis installez depuis l\'App Store Shopify. En ligne en ~5 minutes — sans carte bancaire.'],
+  ['Try live demo first', 'Essayer la démo d\'abord'],
+  ['Shopify App Store · Free plan · No credit card', 'App Store Shopify · Plan gratuit · Sans carte'],
+  ['Stop losing shoppers who can&rsquo;t <span class="text-gradient">picture themselves</span> in your clothes', 'Ne perdez plus les clients qui ne se <span class="text-gradient">voient pas</span> dans vos vêtements'],
+  ['Add AI virtual try-on to your product pages. Shoppers upload a photo, see the fit, add to cart — you install in ~5 minutes.', 'Ajoutez l\'essayage virtuel IA à vos pages produit. Le client uploade une photo, voit le fit, ajoute au panier — installation en ~5 minutes.'],
+  ['Install free on Shopify', 'Installer gratuitement sur Shopify'],
+  ['Try on yourself — 30 sec', 'Essayer sur vous — 30 sec'],
+  ['Pilot store: <strong>77.8% try-on → add-to-cart</strong> · 50 free try-ons/mo', 'Boutique pilote : <strong>77,8&nbsp;% essayage → panier</strong> · 50 essayages gratuits/mo'],
+  ['See it on yourself — then install on your store', 'Essayez sur vous — puis installez sur votre boutique'],
+  ['Same widget your shoppers get. Click <strong>Try it on</strong> below.', 'Le même widget que vos clients. Cliquez <strong>Try it on</strong> ci-dessous.'],
+  ['<span class="tab-label">Install free</span>', '<span class="tab-label">Installer</span>'],
+  ['Your shoppers are ready for this', 'Vos clients sont prêts pour ça'],
+  ['Without try-on', 'Sans essayage'],
+  ['With Stylab', 'Avec Stylab'],
+  ['Ready to turn browsers into buyers?', 'Prêt à convertir vos visiteurs en acheteurs ?'],
+  ['Install → enable on products → shoppers try on. No theme edits.', 'Installer → activer sur les produits → les clients essaient. Sans modifier le thème.'],
   ['href="solutions/"', 'href="solutions/"'],
   ['href="compare/"', 'href="compare/"'],
   ['href="resources/"', 'href="resources/"'],
@@ -374,11 +435,11 @@ html = html.replace(/<a href="\/" class="brand"/g, '<a href="index.html" class="
 // Remove empty paragraphs left by optional replacements
 html = html.replace(/<p class="section-desc">\s*<\/p>\s*/g, '');
 
-// French marquee (apply after partial replacements so the block stays consistent)
-const frMarquee = '<span>Installation App Store Shopify</span><span>Plan gratuit · 50/mo</span><span>Aperçu ~30 sec</span><span>Paiement à l\'essayage réussi</span><span>Webhooks RGPD</span>';
+// French pp-logos strip
+const frLogos = '<span><img class="shopify-icon" src="../assets/shopify-icon-logo.svg" alt="" width="18" height="18">App Store Shopify</span><span>Plan gratuit · 50/mo</span><span>Aperçu ~30 sec</span><span>Paiement à l\'essayage réussi</span><span>Webhooks RGPD</span><span>Sans modifier le thème</span>';
 html = html.replace(
-  /<div class="marquee">[\s\S]*?<\/div>(\s*<\/div>\s*\n\s*<!-- INTERACTIVE TRIAL)/,
-  `<div class="marquee">\n                ${frMarquee}\n                ${frMarquee}\n            </div>$1`
+  /<div class="pp-logos-track">[\s\S]*?<\/div>/,
+  `<div class="pp-logos-track">\n                    ${frLogos}\n                    ${frLogos}\n                </div>`
 );
 
 // Fix footer privacy link if partial replacement slipped through

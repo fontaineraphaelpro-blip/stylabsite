@@ -1,0 +1,619 @@
+/* PromptPilot-style landing — violet + white AI startup */
+
+.visually-hidden {
+    position: absolute;
+    width: 1px;
+    height: 1px;
+    padding: 0;
+    margin: -1px;
+    overflow: hidden;
+    clip: rect(0, 0, 0, 0);
+    white-space: nowrap;
+    border: 0;
+}
+
+.pp-layout .funnel-bar { display: none !important; }
+
+.pp-ticker {
+    position: fixed;
+    top: 0;
+    left: 0;
+    right: 0;
+    z-index: 210;
+    background: rgba(18, 8, 40, 0.92);
+    border-bottom: 1px solid rgba(255, 255, 255, 0.12);
+    font-size: 0.78rem;
+    font-weight: 600;
+    color: rgba(255, 255, 255, 0.75);
+    padding: 0.45rem 0;
+    text-align: center;
+    backdrop-filter: blur(16px);
+}
+
+.pp-ticker-inner {
+    display: flex;
+    flex-wrap: wrap;
+    align-items: center;
+    justify-content: center;
+    gap: 0.5rem 0.85rem;
+    max-width: 100%;
+    padding: 0 1rem;
+}
+
+.pp-ticker-inner strong { color: #ffffff; font-weight: 800; }
+.pp-ticker-sep { opacity: 0.35; user-select: none; color: rgba(255, 255, 255, 0.4); }
+
+body.pp-layout { padding-top: 2.35rem; }
+body.pp-layout .header { top: 2.35rem; }
+body.pp-layout .page-main { padding-top: 0; }
+
+/* Centered hero */
+.pp-hero {
+    padding: 4rem 0 2.5rem;
+    text-align: center;
+}
+
+.pp-hero-inner { max-width: 720px; margin-inline: auto; }
+
+.pp-hero-tag {
+    display: inline-flex;
+    align-items: center;
+    gap: 0.35rem;
+    font-size: 0.82rem;
+    font-weight: 700;
+    text-transform: uppercase;
+    letter-spacing: 0.12em;
+    color: rgba(255, 255, 255, 0.65);
+    margin-bottom: 1.25rem;
+}
+
+.pp-hero h1 {
+    font-family: var(--display);
+    font-size: clamp(2.2rem, 5.5vw, 3.5rem);
+    font-weight: 800;
+    line-height: 1.06;
+    letter-spacing: -0.045em;
+    margin-bottom: 1.25rem;
+    color: #ffffff;
+}
+
+.pp-hero-lead {
+    font-size: 1.12rem;
+    color: rgba(255, 255, 255, 0.65);
+    line-height: 1.65;
+    max-width: 34rem;
+    margin: 0 auto 1.75rem;
+}
+
+.pp-hero-cta {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 0.75rem;
+    justify-content: center;
+    margin-bottom: 1.25rem;
+}
+
+.pp-scroll-hint {
+    font-size: 0.82rem;
+    color: rgba(255, 255, 255, 0.5);
+    margin-bottom: 2rem;
+    animation: pp-bounce 2s ease infinite;
+}
+
+@keyframes pp-bounce {
+    0%, 100% { transform: translateY(0); opacity: 0.7; }
+    50% { transform: translateY(4px); opacity: 1; }
+}
+
+.pp-stats {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+    gap: 2rem 3rem;
+    padding-top: 1.5rem;
+    border-top: 1px solid rgba(255, 255, 255, 0.12);
+}
+
+.pp-stats div { text-align: center; }
+.pp-stats strong {
+    display: block;
+    font-family: var(--display);
+    font-size: 1.75rem;
+    font-weight: 800;
+    letter-spacing: -0.03em;
+    color: #ffffff;
+}
+.pp-stats span {
+    font-size: 0.75rem;
+    color: rgba(255, 255, 255, 0.55);
+    font-weight: 600;
+    text-transform: uppercase;
+    letter-spacing: 0.06em;
+}
+
+/* Guided journey card */
+.pp-journey {
+    padding: 2rem 0 4rem;
+}
+
+.pp-journey-head {
+    text-align: center;
+    margin-bottom: 1.75rem;
+}
+
+.pp-journey-head h2 {
+    font-family: var(--display);
+    font-size: clamp(1.5rem, 3vw, 2rem);
+    font-weight: 800;
+    letter-spacing: -0.03em;
+    margin-bottom: 0.5rem;
+    color: #ffffff;
+}
+
+.pp-journey-head p { color: rgba(255, 255, 255, 0.6); font-size: 0.95rem; }
+
+.pp-journey-card {
+    background: #ffffff;
+    border: 1px solid rgba(255, 255, 255, 0.3);
+    border-radius: 24px;
+    box-shadow: 0 32px 96px -32px rgba(0, 0, 0, 0.55);
+    overflow: hidden;
+    max-width: 920px;
+    margin-inline: auto;
+}
+
+.pp-steps-tabs {
+    display: flex;
+    border-bottom: 1px solid var(--surface-line);
+    background: rgba(26, 5, 51, 0.03);
+}
+
+.pp-step-tab {
+    flex: 1;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 0.5rem;
+    padding: 1rem 0.75rem;
+    border: none;
+    background: transparent;
+    font-family: inherit;
+    font-size: 0.82rem;
+    font-weight: 700;
+    color: var(--surface-muted);
+    cursor: pointer;
+    transition: color 0.2s, background 0.2s;
+    border-bottom: 2px solid transparent;
+    margin-bottom: -1px;
+}
+
+.pp-step-tab .tab-num {
+    width: 1.5rem;
+    height: 1.5rem;
+    border-radius: 50%;
+    display: grid;
+    place-items: center;
+    font-size: 0.7rem;
+    background: rgba(26, 5, 51, 0.08);
+    color: var(--surface-muted);
+    transition: background 0.2s, color 0.2s;
+}
+
+.pp-step-tab.active {
+    color: var(--surface-text);
+    background: rgba(109, 40, 217, 0.06);
+    border-bottom-color: var(--violet-600);
+}
+
+.pp-step-tab.active .tab-num {
+    background: var(--violet-600);
+    color: #fff;
+}
+
+.pp-step-tab.done .tab-num {
+    background: rgba(109, 40, 217, 0.15);
+    color: var(--violet-600);
+}
+
+.pp-step-panel {
+    display: none;
+    padding: 2rem;
+    animation: pp-fade 0.4s var(--ease);
+    color: var(--surface-text);
+}
+
+.pp-step-panel.active { display: block; }
+
+@keyframes pp-fade {
+    from { opacity: 0; transform: translateY(8px); }
+    to { opacity: 1; transform: none; }
+}
+
+.pp-step-intro h3 {
+    font-size: 1.05rem;
+    font-weight: 700;
+    margin-bottom: 0.35rem;
+    color: var(--surface-text);
+}
+
+.pp-step-intro p { color: var(--surface-muted); font-size: 0.92rem; margin-bottom: 1.25rem; }
+
+.pp-chips {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 0.5rem;
+    margin-bottom: 1.5rem;
+}
+
+.pp-chip {
+    padding: 0.5rem 0.9rem;
+    border-radius: 999px;
+    border: 1px solid var(--surface-line);
+    background: #ffffff;
+    font-size: 0.82rem;
+    font-weight: 600;
+    color: var(--surface-text);
+    cursor: pointer;
+    transition: border-color 0.2s, box-shadow 0.2s;
+}
+
+.pp-chip:hover {
+    border-color: var(--violet-500);
+    box-shadow: 0 4px 16px -8px rgba(109, 40, 217, 0.25);
+}
+
+.pp-journey-card .trial-box,
+.pp-journey-card .trial-box.demo-highlight {
+    border: none !important;
+    box-shadow: none !important;
+    animation: none !important;
+    border-radius: 16px;
+    background: rgba(26, 5, 51, 0.03) !important;
+}
+
+.pp-journey-card #try-it .section-head,
+.pp-journey-card .demo-fomo-strip,
+.pp-journey-card .demo-guide { display: none; }
+
+.pp-step-install {
+    text-align: center;
+    padding: 2rem 1rem;
+}
+
+.pp-step-install h3 {
+    font-size: 1.35rem;
+    font-weight: 800;
+    margin-bottom: 0.65rem;
+    letter-spacing: -0.02em;
+    color: var(--surface-text);
+}
+
+.pp-step-install p {
+    color: var(--surface-muted);
+    max-width: 28rem;
+    margin: 0 auto 1.5rem;
+    line-height: 1.6;
+}
+
+.pp-install-perks {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+    gap: 1rem 2rem;
+    margin-top: 1.5rem;
+    font-size: 0.85rem;
+    font-weight: 600;
+    color: var(--violet-600);
+}
+
+/* Before / After */
+.pp-ba {
+    padding: 4rem 0;
+    background: transparent;
+}
+
+.pp-ba-grid {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 1.25rem;
+    max-width: 880px;
+    margin-inline: auto;
+}
+
+.pp-ba-card {
+    border-radius: 20px;
+    padding: 1.75rem;
+    border: 1px solid rgba(255, 255, 255, 0.15);
+    background: rgba(255, 255, 255, 0.06);
+    backdrop-filter: blur(12px);
+}
+
+.pp-ba-card.before {
+    border-style: dashed;
+    border-color: rgba(255, 255, 255, 0.2);
+}
+
+.pp-ba-card.after {
+    border-color: rgba(255, 255, 255, 0.3);
+    background: rgba(255, 255, 255, 0.1);
+    box-shadow: 0 16px 48px -24px rgba(0, 0, 0, 0.4);
+}
+
+.pp-ba-label {
+    font-size: 0.72rem;
+    font-weight: 800;
+    text-transform: uppercase;
+    letter-spacing: 0.1em;
+    margin-bottom: 0.75rem;
+    color: rgba(255, 255, 255, 0.55);
+}
+
+.pp-ba-card.after .pp-ba-label { color: #ffffff; }
+
+.pp-ba-quote {
+    font-size: 1rem;
+    line-height: 1.6;
+    color: rgba(255, 255, 255, 0.85);
+    margin-bottom: 1rem;
+}
+
+.pp-ba-card.after .pp-ba-quote {
+    font-size: 0.92rem;
+    color: #ffffff;
+}
+
+.pp-ba-img {
+    border-radius: 12px;
+    overflow: hidden;
+    border: 1px solid rgba(255, 255, 255, 0.15);
+    margin-top: 0.75rem;
+}
+
+.pp-ba-img img { width: 100%; height: auto; }
+
+/* Use cases pills */
+.pp-usecases {
+    padding: 3.5rem 0;
+    text-align: center;
+}
+
+.pp-pills {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+    gap: 0.65rem;
+    margin-top: 1.5rem;
+}
+
+.pp-pill-link {
+    padding: 0.55rem 1.1rem;
+    border-radius: 999px;
+    border: 1px solid rgba(255, 255, 255, 0.25);
+    background: rgba(255, 255, 255, 0.08);
+    font-size: 0.88rem;
+    font-weight: 600;
+    color: #ffffff;
+    transition: transform 0.2s, background 0.2s, border-color 0.2s;
+}
+
+.pp-pill-link:hover {
+    transform: translateY(-2px);
+    background: rgba(255, 255, 255, 0.15);
+    border-color: rgba(255, 255, 255, 0.45);
+    color: #ffffff;
+}
+
+/* Logo strip */
+.pp-logos {
+    padding: 2rem 0 3rem;
+    overflow: hidden;
+    border-block: 1px solid rgba(255, 255, 255, 0.1);
+    background: rgba(255, 255, 255, 0.04);
+}
+
+.pp-logos-label {
+    text-align: center;
+    font-size: 0.78rem;
+    font-weight: 700;
+    text-transform: uppercase;
+    letter-spacing: 0.1em;
+    color: rgba(255, 255, 255, 0.5);
+    margin-bottom: 1.25rem;
+}
+
+.pp-logos-track {
+    display: flex;
+    gap: 2.5rem;
+    animation: pp-marquee 25s linear infinite;
+    width: max-content;
+}
+
+.pp-logos-track span {
+    display: inline-flex;
+    align-items: center;
+    gap: 0.4rem;
+    font-size: 0.88rem;
+    font-weight: 700;
+    color: rgba(255, 255, 255, 0.75);
+    white-space: nowrap;
+}
+
+@keyframes pp-marquee {
+    0% { transform: translateX(0); }
+    100% { transform: translateX(-50%); }
+}
+
+/* Social proof header */
+.pp-proof-label {
+    font-size: 0.78rem;
+    font-weight: 800;
+    text-transform: uppercase;
+    letter-spacing: 0.12em;
+    color: rgba(255, 255, 255, 0.7);
+    text-align: center;
+    margin-bottom: 0.5rem;
+}
+
+/* Final CTA */
+.pp-final-cta {
+    padding: 4rem 0;
+    text-align: center;
+}
+
+.pp-final-box {
+    background: rgba(255, 255, 255, 0.08);
+    border-radius: 28px;
+    padding: 3rem 2rem;
+    border: 1px solid rgba(255, 255, 255, 0.2);
+    box-shadow: 0 32px 80px -24px rgba(0, 0, 0, 0.45);
+    max-width: 640px;
+    margin-inline: auto;
+    color: #fff;
+    backdrop-filter: blur(16px);
+}
+
+.pp-final-urgency {
+    display: inline-flex;
+    align-items: center;
+    gap: 0.4rem;
+    font-size: 0.82rem;
+    font-weight: 700;
+    color: #ffffff;
+    margin-bottom: 1rem;
+    opacity: 0.85;
+}
+
+.pp-final-box h2 {
+    font-size: clamp(1.5rem, 3vw, 2rem);
+    font-weight: 800;
+    letter-spacing: -0.03em;
+    margin-bottom: 0.75rem;
+    color: #fff;
+}
+
+.pp-final-box p {
+    opacity: 0.75;
+    margin-bottom: 1.5rem;
+    line-height: 1.6;
+    color: rgba(255, 255, 255, 0.85);
+}
+
+.pp-final-box .btns {
+    display: flex;
+    flex-direction: column;
+    gap: 0.65rem;
+    max-width: 320px;
+    margin-inline: auto;
+}
+
+.pp-final-box .btns .btn { width: 100%; justify-content: center; }
+
+.pp-final-box .btn-ghost {
+    border-color: rgba(255, 255, 255, 0.35) !important;
+    color: #ffffff !important;
+}
+
+/* Hide legacy hero mockup layout */
+.pp-layout .hero-grid .mockup-stage { display: none; }
+.pp-layout .hero { display: none; }
+.pp-layout .marquee-wrap { display: none; }
+.pp-layout .fomo-after-demo { display: none; }
+.pp-layout #discover { display: none; }
+
+/* Nav simplification */
+.pp-layout .nav-links a[href="#product"] { display: none; }
+.pp-layout .nav-dropdown { display: none; }
+
+.pp-layout .orb-field { opacity: 0.5; }
+.pp-layout .grid-bg { opacity: 0.6; }
+
+.pp-hero { padding: 2.75rem 0 1.25rem; }
+.pp-hero-trust {
+    font-size: 0.85rem;
+    color: rgba(255, 255, 255, 0.55);
+    margin-top: 0.25rem;
+}
+.pp-hero-trust strong { color: #ffffff; font-weight: 700; }
+
+.pp-journey { padding: 0.5rem 0 2rem; }
+.pp-journey-head { margin-bottom: 1.25rem; }
+.pp-journey-head h2 { font-size: clamp(1.25rem, 2.5vw, 1.65rem); }
+
+.pp-ba--compact { padding: 1.25rem 0 1.75rem; }
+.pp-ba--compact .pp-ba-card { padding: 1.15rem; }
+.pp-ba--compact .pp-ba-quote { font-size: 0.88rem; margin-bottom: 0.65rem; }
+
+.proof-compact { padding: 1.5rem 0 2.5rem; }
+.proof-compact #social-proof { padding: 0; }
+
+.proof-metrics {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+    gap: 2rem 2.5rem;
+    margin-bottom: 1.25rem;
+    padding: 1rem 1.25rem;
+    border-radius: 16px;
+    border: 1px solid rgba(255, 255, 255, 0.12);
+    background: rgba(255, 255, 255, 0.05);
+}
+.proof-metrics div { text-align: center; }
+.proof-metrics strong {
+    display: block;
+    font-family: var(--display);
+    font-size: 1.5rem;
+    font-weight: 800;
+    color: #ffffff;
+}
+.proof-metrics span {
+    font-size: 0.72rem;
+    text-transform: uppercase;
+    letter-spacing: 0.06em;
+    color: rgba(255, 255, 255, 0.5);
+    font-weight: 600;
+}
+
+.review-card--solo {
+    max-width: 36rem;
+    margin-inline: auto;
+    text-align: center;
+    padding: 1.35rem 1.5rem !important;
+}
+
+.trial-header--compact {
+    display: flex;
+    justify-content: center;
+    margin-bottom: 0.75rem;
+    padding-bottom: 0;
+    border: none;
+}
+.trial-header--compact h2 { display: none; }
+
+.trial-foot--compact {
+    justify-content: center;
+    gap: 1rem !important;
+}
+
+#how-it-works { padding: 2.5rem 0; }
+#how-it-works .section-head { margin-bottom: 1.5rem; }
+#how-it-works .section-desc { display: none; }
+#pricing { padding: 2.5rem 0; }
+#faq { padding: 2rem 0 2.5rem; }
+.pp-final-cta { padding: 2.5rem 0 3.5rem; }
+
+.post-demo-cta {
+    margin-top: 1.25rem;
+    padding: 1.25rem !important;
+    border-radius: 16px;
+    text-align: center;
+}
+.post-demo-cta h3 { font-size: 1.05rem; margin-bottom: 0.35rem; }
+.post-demo-cta p { font-size: 0.88rem; margin-bottom: 1rem !important; }
+
+@media (max-width: 768px) {
+    .pp-ba-grid { grid-template-columns: 1fr; }
+    .pp-step-tab .tab-label { display: none; }
+    .pp-ticker-inner { font-size: 0.72rem; gap: 0.35rem 0.5rem; }
+    body.pp-layout { padding-top: 2.6rem; }
+    .pp-step-panel { padding: 1.25rem; }
+}

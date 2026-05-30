@@ -124,7 +124,7 @@
         .diff-card p { font-size: 0.9rem; color: var(--muted); line-height: 1.6; }
 
         /* Social proof / reviews */
-        #social-proof { padding: 4.5rem 0; background: #fff; }
+        #social-proof { padding: 4.5rem 0; background: transparent; }
         .reviews-grid {
             display: grid; grid-template-columns: repeat(3, 1fr); gap: 1.25rem;
             margin-bottom: 2rem;
@@ -187,10 +187,10 @@
         }
         .header.scrolled {
             padding: 0.65rem 0;
-            background: var(--glass);
+            background: rgba(18, 8, 40, 0.88);
             backdrop-filter: blur(20px) saturate(1.2);
-            border-bottom: 1px solid var(--line);
-            box-shadow: 0 4px 30px rgba(0,0,0,0.04);
+            border-bottom: 1px solid rgba(255, 255, 255, 0.1);
+            box-shadow: 0 4px 30px rgba(0,0,0,0.25);
         }
         .nav { display: flex; align-items: center; justify-content: space-between; gap: 1rem; min-width: 0; }
         .brand {
@@ -207,29 +207,29 @@
             width: 100%; height: 100%; object-fit: contain;
             image-rendering: auto;
         }
-        .brand-name { font-weight: 700; }
-        .brand-name span { color: var(--green-800); font-weight: 600; }
+        .brand-name { font-weight: 700; color: #ffffff; }
+        .brand-name span { color: var(--green-700); font-weight: 600; }
         .nav-links {
             display: flex; align-items: center; gap: 1.35rem;
             position: absolute; left: 50%; transform: translateX(-50%);
         }
         .nav-links a {
-            font-size: 0.88rem; font-weight: 500; color: var(--muted);
+            font-size: 0.88rem; font-weight: 500; color: rgba(255, 255, 255, 0.6);
             transition: color 0.2s; white-space: nowrap;
         }
-        .nav-links a:hover { color: var(--green-900); }
+        .nav-links a:hover { color: #ffffff; }
         .nav-links a.lang-switch {
             padding: 0.2rem 0.55rem; border-radius: 999px;
-            border: 1px solid var(--line); font-size: 0.72rem; font-weight: 600;
+            border: 1px solid rgba(255, 255, 255, 0.2); font-size: 0.72rem; font-weight: 600;
         }
         .nav-dropdown { position: relative; }
         .nav-dropdown-btn {
             display: inline-flex; align-items: center; gap: 0.35rem;
-            font-size: 0.88rem; font-weight: 500; color: var(--muted);
+            font-size: 0.88rem; font-weight: 500; color: rgba(255, 255, 255, 0.6);
             background: none; border: none; cursor: pointer; padding: 0;
             font-family: inherit; white-space: nowrap;
         }
-        .nav-dropdown-btn:hover, .nav-dropdown.open .nav-dropdown-btn { color: var(--green-900); }
+        .nav-dropdown-btn:hover, .nav-dropdown.open .nav-dropdown-btn { color: #ffffff; }
         .nav-chevron {
             width: 0.4rem; height: 0.4rem;
             border-right: 1.5px solid currentColor; border-bottom: 1.5px solid currentColor;
@@ -239,7 +239,7 @@
         .nav-dropdown-menu {
             position: absolute; top: calc(100% + 0.65rem); left: 50%;
             transform: translateX(-50%) translateY(4px);
-            min-width: 10.5rem; background: #fff; border: 1px solid var(--line);
+            min-width: 10.5rem; background: rgba(18, 8, 40, 0.95); border: 1px solid rgba(255, 255, 255, 0.12);
             border-radius: 12px; box-shadow: 0 12px 40px rgba(15,23,42,0.12);
             padding: 0.35rem; opacity: 0; visibility: hidden;
             transition: opacity 0.2s, transform 0.2s, visibility 0.2s; z-index: 210;
@@ -248,7 +248,7 @@
             display: block; padding: 0.5rem 0.7rem; border-radius: 8px;
             font-size: 0.86rem; font-weight: 500; color: var(--ink-soft);
         }
-        .nav-dropdown-menu a:hover { background: var(--green-50); color: var(--green-900); }
+        .nav-dropdown-menu a:hover { background: rgba(255, 255, 255, 0.08); color: #ffffff; }
         .nav-dropdown:hover .nav-dropdown-menu,
         .nav-dropdown:focus-within .nav-dropdown-menu,
         .nav-dropdown.open .nav-dropdown-menu {
@@ -844,7 +844,7 @@
         }
 
         /* Privacy section — light & merchant-friendly */
-        #privacy { padding: 5rem 0; background: #fff; }
+        #privacy { padding: 5rem 0; background: transparent; }
         .privacy-two {
             display: grid; grid-template-columns: 1fr 1fr; gap: 1.25rem;
             margin-top: 3rem;
@@ -1045,8 +1045,8 @@
 
         /* Footer */
         footer {
-            padding: 3rem 0 2rem; border-top: 1px solid var(--line);
-            background: #fff;
+            padding: 3rem 0 2rem; border-top: 1px solid rgba(255, 255, 255, 0.1);
+            background: transparent;
         }
         .footer-top {
             display: grid; grid-template-columns: 1.4fr repeat(4, 1fr); gap: 2rem;
@@ -1055,7 +1055,7 @@
         .footer-brand p { color: var(--muted); font-size: 0.9rem; margin-top: 0.5rem; max-width: 20rem; }
         .footer-col h4 {
             font-size: 0.78rem; font-weight: 700; text-transform: uppercase;
-            letter-spacing: 0.06em; color: var(--ink-soft); margin-bottom: 0.85rem;
+            letter-spacing: 0.06em; color: #ffffff; margin-bottom: 0.85rem;
         }
         .footer-col a {
             display: block; font-size: 0.85rem; color: var(--muted);
