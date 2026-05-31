@@ -582,6 +582,10 @@ section[style*="background"] {
 .blog-card h2,
 .blog-card h3 { color: var(--surface-text) !important; }
 
+.hub-card h3 { color: var(--surface-text) !important; }
+.hub-card p { color: var(--surface-muted) !important; }
+.hub-card .arrow { color: var(--violet-600) !important; }
+
 .breadcrumb a { color: rgba(255, 255, 255, 0.85) !important; }
 
 @media (prefers-reduced-motion: reduce) {
