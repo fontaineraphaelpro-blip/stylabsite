@@ -18,15 +18,14 @@
     <meta property="og:locale:alternate" content="en_US">
     <meta property="og:title" content="Stylab Virtual Try-On â€” Essayage IA pour Shopify Apparel">
     <meta property="og:description" content="Permettez Ã  vos clients de se voir porter vos produits avant d'acheter. Sans code, built-in analytics, and a free plan to get started.">
-    <meta property="og:image" content="https://www.stylabtryon.site/assets/screenshots/result-modal.png">
+    <meta property="og:image" content="https://www.stylabtryon.site/assets/logo.png">
     <meta property="og:url" content="https://www.stylabtryon.site/fr/">
     <meta name="twitter:card" content="summary_large_image">
     <meta name="twitter:title" content="Stylab Virtual Try-On â€” Essayage IA pour Shopify Apparel">
     <meta name="twitter:description" content="Permettez Ã  vos clients de se voir porter vos produits avant d'acheter. Sans code, built-in analytics, and a free plan to get started.">
-    <meta name="twitter:image" content="https://www.stylabtryon.site/assets/screenshots/result-modal.png">
+    <meta name="twitter:image" content="https://www.stylabtryon.site/assets/logo.png">
     <link rel="icon" type="image/png" href="../assets/logo.png">
     <link rel="apple-touch-icon" href="../assets/logo.png">
-    <link rel="preload" as="image" href="../assets/screenshots/result-modal.png" fetchpriority="high">
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Geist:wght@400;500;600;700;800&family=Geist+Mono:wght@400;500&display=swap" rel="stylesheet">
@@ -60,7 +59,7 @@
           ],
           "url": "https://apps.shopify.com/try-on-stylelab",
           "downloadUrl": "https://apps.shopify.com/try-on-stylelab",
-          "screenshot": "https://www.stylabtryon.site/assets/screenshots/result-modal.png"
+          "screenshot": "https://www.stylabtryon.site/assets/logo.png"
         },
         {
           "@type": "Product",
@@ -109,704 +108,244 @@
       ]
     }
     </script>
-    <link rel="stylesheet" href="../assets/stylab.css">
-    <link rel="stylesheet" href="../assets/landing.css">
-    <link rel="stylesheet" href="../assets/vton-reel.css">
-    <link rel="preload" as="image" href="../assets/screenshots/storefront-product.png" fetchpriority="high">
-    <link rel="preload" as="image" href="../assets/screenshots/result-modal.png">
-    <link rel="preload" as="image" href="../assets/screenshots/upload-modal.png">
+    <link rel="stylesheet" href="../assets/home.css">
 </head>
-<body class="js-reveal pp-layout">
+<body class="home">
     <script>
       (function () {
         if (window.location.hash) return;
-        if ('scrollRestoration' in history) history.scrollRestoration = 'manual';
+        if ("scrollRestoration" in history) history.scrollRestoration = "manual";
         window.scrollTo(0, 0);
       })();
     </script>
-    <div class="grid-bg" aria-hidden="true"></div>
-    <div class="ambient" aria-hidden="true"></div>
-    <div class="orb-field" aria-hidden="true">
-        <div class="orb orb-1"></div>
-        <div class="orb orb-2"></div>
-        <div class="orb orb-3"></div>
-    </div>
-    <div class="grain" aria-hidden="true"></div>
 
-    <header class="header" id="header">
-        <div class="wrap nav">
-            <a href="index.html" class="brand" aria-label="Stylab Virtual Try-On">
-                <span class="brand-mark"><img src="../assets/logo.png" alt="" width="36" height="36"></span>
-                <span class="brand-name">Stylab <span>Virtual Try-On</span></span>
+    <div class="page-bg" aria-hidden="true">
+        <div class="page-bg__base"></div>
+        <div class="page-bg__grid"></div>
+        <div class="page-bg__radial"></div>
+        <div class="orb orb--wide orb--wide-1"></div>
+        <div class="orb orb--wide orb--wide-2"></div>
+    </div>
+
+    <div class="page-shell">
+    <header class="site-header" id="siteHeader">
+        <div class="container site-header__inner">
+            <a href="index.html" class="site-logo" aria-label="Stylab Virtual Try-On">
+                <span class="site-logo__mark"><img src="../assets/logo.png" alt="" width="32" height="32"></span>
+                Stylab <span>Virtual Try-On</span>
             </a>
-            <nav class="nav-links" aria-label="Main">
-                <a href="#versus">Pourquoi ça convertit</a>
-                <a href="#journey">Démo live</a>
-                <a href="#showcase">Installation</a>
-                <a href="#faq">FAQ</a>
-                <a href="/" class="lang-switch" hreflang="en" lang="en">EN</a>
-            </nav>
-            <div class="nav-actions">
-                <a href="https://apps.shopify.com/try-on-stylelab" class="btn btn-primary" target="_blank" rel="noopener"><img class="shopify-icon" src="../assets/shopify-icon-logo.svg" alt="" width="20" height="20" aria-hidden="true">Installer gratuit</a>
-                <button class="menu-btn" id="menuBtn" aria-label="Menu" type="button"><span></span><span></span><span></span></button>
-            </div>
-        </div>
-        <div class="funnel-bar wrap" id="funnelBar" aria-label="Votre parcours jusqu'à l'installation">
-            <div class="funnel-bar-inner">
-                <div class="funnel-steps">
-                    <div class="funnel-step active" data-funnel-step="1"><span class="num">1</span><span class="funnel-step-label">Voir le parcours</span></div>
-                    <span class="funnel-step-sep" aria-hidden="true">→</span>
-                    <div class="funnel-step" data-funnel-step="2"><span class="num">2</span><span class="funnel-step-label">Essayer sur vous</span></div>
-                    <span class="funnel-step-sep" aria-hidden="true">→</span>
-                    <div class="funnel-step" data-funnel-step="3"><span class="num">3</span><span class="funnel-step-label">Votre résultat</span></div>
-                    <span class="funnel-step-sep" aria-hidden="true">→</span>
-                    <div class="funnel-step" data-funnel-step="4"><span class="num">4</span><span class="funnel-step-label">Installer gratuit</span></div>
-                </div>
-                <div class="funnel-bar-cta">
-                    <a href="#versus" class="btn btn-primary funnel-cta-dynamic" id="funnelBarCta"><span class="long">Voir le parcours</span><span class="short">Parcours</span></a>
+            <div class="site-header__cluster">
+                <nav class="site-nav" aria-label="Main">
+                    <a href="#journey">Demo</a>
+                    <a href="#faq">FAQ</a>
+                    <a href="/" hreflang="en" lang="en">EN</a>
+                </nav>
+                <div class="site-header__actions">
+                    <a href="https://apps.shopify.com/try-on-stylelab" class="btn btn--primary" target="_blank" rel="noopener">
+                        <img src="../assets/shopify-icon-logo.svg" alt="" width="18" height="18">Installer gratuit
+                    </a>
                 </div>
             </div>
+            <button type="button" class="menu-toggle" id="menuBtn" aria-label="Ouvrir le menu" aria-expanded="false"><span></span></button>
         </div>
     </header>
-    <div class="mobile-drawer" id="mobileDrawer">
-        <a href="#versus">Pourquoi ça convertit</a>
-        <a href="#journey">Démo live</a>
-        <a href="#showcase">Installation</a>
+    <nav class="mobile-nav" id="mobileNav" aria-label="Menu mobile">
+        <a href="#journey">Demo</a>
         <a href="#faq">FAQ</a>
-        <a href="/" class="lang-switch">EN</a>
-        <a href="https://apps.shopify.com/try-on-stylelab" class="btn btn-primary" target="_blank" rel="noopener"><img class="shopify-icon" src="../assets/shopify-icon-logo.svg" alt="" width="20" height="20" aria-hidden="true">Installer gratuit</a>
-    </div>
+        <a href="/">English</a>
+        <a href="https://apps.shopify.com/try-on-stylelab" class="btn btn--primary" target="_blank" rel="noopener">Installer gratuit</a>
+    </nav>
 
     <main>
-        <!-- HERO -->
-        <section class="pp-hero pp-hero-split">
-            <div class="wrap pp-hero-grid">
-                <div class="pp-hero-copy">
-                    <p class="pp-hero-eyebrow"><span class="eyebrow-pill">Shopify App Store · 50 essayages gratuits/mois · sans carte</span></p>
-                    <h1>Fini les ventes perdues sur &laquo;&nbsp;ça me va ?&nbsp;&raquo; — vos clients <span class="text-gradient">se voient dans le vêtement</span></h1>
-                    <p class="pp-hero-lead">Stylab ajoute l&rsquo;essayage virtuel IA sur vos fiches produit : une photo, un aperçu réaliste en ~30&nbsp;s, puis ajout au panier. Installation Shopify en ~5&nbsp;min — sans code thème, sans développeur.</p>
-                    <div class="pp-hero-cta">
-                        <a href="#journey" class="btn btn-primary btn-shine">Essayer sur moi (30&nbsp;s) →</a>
-                        <a href="https://apps.shopify.com/try-on-stylelab" class="btn btn-ghost" target="_blank" rel="noopener"><img class="shopify-icon" src="../assets/shopify-icon-logo.svg" alt="" width="20" height="20" aria-hidden="true">Installer gratuit — passer la démo</a>
+        <section class="hero">
+            <div class="hero__ambient" aria-hidden="true">
+                <div class="orb orb--hero-1"></div>
+                <div class="orb orb--hero-2"></div>
+            </div>
+            <div class="scan-line" aria-hidden="true"></div>
+            <div class="container hero__inner">
+                <div class="hero__content">
+                    <div class="hero__badge" data-reveal="up"><span class="hero__badge-dot-wrap" aria-hidden="true"><span class="hero__badge-dot"></span></span> <span>Shopify</span> · <strong>essayage virtuel IA</strong></div>
+                    <h1 data-reveal="up">Transformez l&rsquo;hésitation en <span class="gradient-text">ajout au panier</span></h1>
+                    <p class="hero__lead" data-reveal="up">Une photo sur votre fiche produit. L&rsquo;IA affiche le vêtement sur le client en ~30&nbsp;s — sur notre boutique pilote, la majorité des essayages se terminent par un achat.</p>
+                    <div class="hero__actions" data-reveal="up">
+                        <a href="https://apps.shopify.com/try-on-stylelab" class="btn btn--primary btn--lg" target="_blank" rel="noopener">
+                            <img src="../assets/shopify-icon-logo.svg" alt="" width="18" height="18">Installer sur Shopify — gratuit
+                        </a>
+                        <a href="#journey" class="btn btn--ghost btn--lg">Essayer la démo</a>
                     </div>
-                    <p class="pp-hero-note">Les marchands qui terminent la démo installent le jour même · résiliation en un clic dans Shopify</p>
-                    <div class="hero-metrics" aria-label="Chiffres clés">
-                        <div><strong>77,8&nbsp;%</strong><span>Essayage → panier (boutique pilote)</span></div>
-                        <div><strong>~30s</strong><span>Temps d&rsquo;aperçu client</span></div>
-                        <div><strong>~5 min</strong><span>Mise en ligne marchand</span></div>
-                    </div>
-                </div>
-                <div class="pp-hero-visual pp-hero-visual--duo reveal" aria-hidden="true">
-                    <div class="vton-reel vton-reel--hero vton-reel--shopper" id="heroReel" style="--reel-dur:7.5s">
-                        <div class="vton-reel__glow" aria-hidden="true"></div>
-                        <div class="vton-device">
-                            <div class="vton-device__island" aria-hidden="true"></div>
-                            <div class="vton-device__screen">
-                                <div class="vton-reel__frames">
-                                    <img class="vton-reel__frame" src="../assets/screenshots/storefront-product.png" alt="Fiche produit Shopify avec bouton essayage Stylab" width="390" height="844" loading="eager" decoding="async" fetchpriority="high">
-                                    <img class="vton-reel__frame" src="../assets/screenshots/upload-modal.png" alt="Le client envoie sa photo dans le widget" width="390" height="844" loading="lazy" decoding="async">
-                                    <img class="vton-reel__frame" src="../assets/screenshots/result-modal.png" alt="Résultat essayage virtuel IA" width="390" height="844" loading="eager" decoding="async">
-                                </div>
-                                <div class="vton-reel__process" aria-hidden="true">
-                                    <div class="vton-reel__ring"></div>
-                                    <span>Rendu IA ~28s</span>
-                                    <div class="vton-reel__bar"><i></i></div>
-                                </div>
-                                <div class="vton-reel__success" aria-hidden="true">✓ Ajouté au panier</div>
-                                <div class="vton-reel__glare" aria-hidden="true"></div>
-                            </div>
-                        </div>
-                        <ul class="vton-reel__captions">
-                            <li class="is-live">Fiche produit</li>
-                            <li>Envoi photo</li>
-                            <li>Aperçu IA</li>
-                            <li>Panier</li>
-                        </ul>
-                        <span class="vton-reel__badge-live">Vraie app sur boutique live · <strong>démo auto</strong></span>
-                    </div>
-                    <div class="vton-hero-admin" aria-hidden="true">
-                        <div class="vton-browser">
-                            <div class="vton-browser__chrome">
-                                <div class="vton-browser__dots" aria-hidden="true"><i></i><i></i><i></i></div>
-                                <span class="vton-browser__url">admin · Stylab · Analytics</span>
-                            </div>
-                            <div class="vton-browser__viewport">
-                                <img src="../assets/screenshots/dashboard.png" alt="Tableau de bord Stylab — essayage vers panier" width="1200" height="700" loading="lazy" decoding="async">
-                            </div>
-                        </div>
-                        <p class="vton-reel__badge-live" style="margin-top:0.5rem"><strong>77,8&nbsp;%</strong> essayage → panier (boutique pilote)</p>
+                    <p class="hero__note" data-reveal="up">50 essayages gratuits/mois · sans carte · en ligne en ~5&nbsp;min</p>
+                    <div class="hero__stats" data-reveal="up">
+                        <div><strong>77,8&nbsp;%</strong><span>essayage → panier</span></div>
+                        <div><strong>~30&nbsp;s</strong><span>aperçu sur PDP</span></div>
+                        <div><strong>50</strong><span>essayages gratuits / mois</span></div>
                     </div>
                 </div>
+                <figure class="hero__visual" data-reveal="scale">
+                    <div class="hero__frame">
+                        <img src="../assets/screenshots/result-modal.png" alt="Essayage virtuel IA : le vêtement sur la photo du client" width="560" height="620" loading="eager" decoding="async">
+                    </div>
+                </figure>
             </div>
         </section>
 
-        <div class="trust-marquee" aria-hidden="true">
-            <div class="trust-marquee-inner">
-                <span>77,8&nbsp;% essayage → panier</span><span>En ligne en ~5 min</span><span>50 essayages gratuits/mo</span><span>Sans carte bancaire</span><span>Sans modifier le thème</span><span>Par produit</span><span>Photos non stockées</span><span>Facturation Shopify</span>
-                <span>77,8&nbsp;% essayage → panier</span><span>En ligne en ~5 min</span><span>50 essayages gratuits/mo</span><span>Sans carte bancaire</span><span>Sans modifier le thème</span><span>Par produit</span><span>Photos non stockées</span><span>Facturation Shopify</span>
-            </div>
-        </div>
+        <p class="trust-strip container" data-reveal="up">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true"><path d="M11.017 2.814a1 1 0 0 1 1.966 0l1.051 5.558a2 2 0 0 0 1.594 1.594l5.558 1.051a1 1 0 0 1 0 1.966l-5.558 1.051a2 2 0 0 0-1.594 1.594l-1.051 5.558a1 1 0 0 1-1.966 0l-1.051-5.558a2 2 0 0 0-1.594-1.594l-5.558-1.051a1 1 0 0 1 0-1.966l5.558-1.051a2 2 0 0 0 1.594-1.594z"/><path d="M20 2v4"/><path d="M22 4h-4"/><circle cx="4" cy="20" r="2"/></svg>
+            Déjà adopté par des marques mode sur Shopify
+        </p>
 
-        <section class="pp-proof-band reveal" id="proof" aria-label="Chiffres clés">
-            <div class="wrap">
-                <div class="pp-proof-grid">
-                    <div class="pp-proof-card"><strong>77,8&nbsp;%</strong><span>Des sessions essayage qui ajoutent au panier (boutique pilote)</span></div>
-                    <div class="pp-proof-card"><strong>~30s</strong><span>De l&rsquo;upload photo à l&rsquo;aperçu IA sur le corps</span></div>
-                    <div class="pp-proof-card"><strong>~5 min</strong><span>Entre l&rsquo;install App Store et le widget en ligne sur votre PDP</span></div>
-                    <div class="pp-proof-card"><strong>0&nbsp;€</strong><span>Pour démarrer — 50 essayages réussis/mois, sans carte</span></div>
-                </div>
-            </div>
-        </section>
-
-        <section id="versus" class="pp-versus reveal">
-            <div class="wrap">
-                <div class="section-head center">
-                    <p class="section-label">Le fossé conversion</p>
-                    <h2 class="section-title">Votre trafic est bon — la confiance sur la fiche produit, non</h2>
-                    <p class="section-desc">Même SKU, même budget pub. Sans essayage ils imaginent la coupe. Avec Stylab ils la voient — et 77,8&nbsp;% des essayages mènent au panier sur notre boutique pilote.</p>
-                </div>
-                <div class="versus-tabs" role="tablist" aria-label="Comparer les scénarios">
-                    <button type="button" class="versus-tab active" data-versus="jersey" role="tab" aria-selected="true">Maillot</button>
-                    <button type="button" class="versus-tab" data-versus="hoodie" role="tab" aria-selected="false">Hoodie</button>
-                    <button type="button" class="versus-tab" data-versus="mobile" role="tab" aria-selected="false">Mobile</button>
-                </div>
-                <div class="versus-panels">
-                    <div class="versus-panel active" data-versus="jersey" role="tabpanel">
-                        <div class="versus-grid" data-versus-product="jersey">
-                            <div class="versus-col before">
-                                <div class="versus-col-head"><h3>Sans essayage</h3><div class="versus-score bad"><span data-score="before">28</span> <small>/100 confiance</small></div></div>
-                                <p class="versus-quote" data-versus-quote="before">« Beau maillot » — il part sans savoir comment ça lui va.</p>
-                                <ul class="versus-bullets"><li>Pas de contexte corps</li><li>Abandon guide des tailles</li><li>Plus de retours</li></ul>
-                                <div class="versus-stage" aria-hidden="true">
-                                    <div class="vton-reel vton-reel--compact vton-reel--static">
-                                        <div class="vton-device">
-                                            <div class="vton-device__screen">
-                                                <div class="vton-reel__frames">
-                                                    <img class="vton-reel__frame" src="../assets/screenshots/storefront-product.png" alt="" width="390" height="844" loading="lazy" decoding="async">
-                                                </div>
-                                                <span class="versus-warn">Sans essayage</span>
-                                                <span class="versus-bounce" aria-hidden="true">↗</span>
-                                                <div class="vton-reel__glare" aria-hidden="true"></div>
-                                            </div>
-                                        </div>
-                                    </div>
-                                </div>
-                            </div>
-                            <div class="versus-mid" aria-hidden="true">VS</div>
-                            <div class="versus-col after">
-                                <div class="versus-col-head"><h3>Avec Stylab</h3><div class="versus-score good"><span data-score="after">92</span> <small>/100 confiance</small></div></div>
-                                <span class="versus-delta" data-versus-delta>↑ +64 pts</span>
-                                <p class="versus-quote" data-versus-quote="after">Il voit le maillot sur lui en ~30s — puis ajoute au panier.</p>
-                                <ul class="versus-bullets"><li>77,8&nbsp;% essayage → panier</li><li>Widget sur votre PDP</li><li>Suivi dans l&rsquo;admin</li></ul>
-                                <div class="versus-stage" aria-hidden="true">
-                                    <div class="vton-reel vton-reel--compact vton-reel--shopper" style="--reel-dur:5.5s">
-                                        <div class="vton-device">
-                                            <div class="vton-device__screen">
-                                                <div class="vton-reel__frames">
-                                                    <img class="vton-reel__frame" src="../assets/screenshots/storefront-product.png" alt="" width="390" height="844" loading="lazy">
-                                                    <img class="vton-reel__frame" src="../assets/screenshots/upload-modal.png" alt="" width="390" height="844" loading="lazy">
-                                                    <img class="vton-reel__frame" src="../assets/screenshots/result-modal.png" alt="" width="390" height="844" loading="lazy">
-                                                </div>
-                                                <div class="vton-reel__process" aria-hidden="true"><div class="vton-reel__ring"></div><span>~28s</span></div>
-                                                <div class="vton-reel__success" aria-hidden="true">✓ Panier</div>
-                                                <div class="vton-reel__glare" aria-hidden="true"></div>
-                                            </div>
-                                        </div>
-                                    </div>
-                                </div>
-                            </div>
+        <section class="features" aria-labelledby="features-title">
+            <div class="container">
+                <header class="features__header" data-reveal="up">
+                    <p class="section-eyebrow">Pourquoi les marchands installent</p>
+                    <h2 id="features-title">Conçu pour convertir, <span class="muted">pas pour faire joli</span></h2>
+                    <p>Une app sur votre boutique Shopify. Sans toucher au thème. Mesurez essayage → panier dès le jour 1.</p>
+                </header>
+                <div class="features__grid" data-reveal-stagger>
+                    <article class="feature" data-reveal="left">
+                        <div class="feature__icon" aria-hidden="true">
+                            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M3 17l6-6 4 4 7-7"/><path d="M17 7h4v4"/></svg>
                         </div>
-                    </div>
-                </div>
-                <div class="versus-cta">
-                    <a href="#journey" class="btn btn-primary">Essayer sur vous</a>
-                    <a href="https://apps.shopify.com/try-on-stylelab" class="btn btn-ghost" target="_blank" rel="noopener">Installer gratuit</a>
-                </div>
-            </div>
-        </section>
-
-        <section class="demo-showcase reveal" aria-label="Parcours essayage">
-            <div class="wrap">
-                <div class="section-head center">
-                    <p class="section-label">Côté client</p>
-                    <h2 class="section-title">Essayer → envoyer la photo → aperçu → acheter</h2>
-                    <p class="section-desc">Le flux exact sur vos fiches produit Shopify après installation. Descendez pour l&rsquo;essayer sur <em>votre</em> photo en moins d&rsquo;une minute.</p>
-                </div>
-                <div class="demo-stage-wrap">
-                    <div class="demo-flow-card">
-                        <div class="demo-flow-steps">
-                            <div class="demo-flow-step active">
-                                <div class="step-icon">1</div>
-                                <h4>Essayer</h4>
-                                <p>Sur votre fiche produit</p>
-                            </div>
-                            <div class="demo-flow-step">
-                                <div class="step-icon">2</div>
-                                <h4>Rendu IA</h4>
-                                <p>~30s sur le corps</p>
-                            </div>
-                            <div class="demo-flow-step">
-                                <div class="step-icon">3</div>
-                                <h4>Panier</h4>
-                                <p>77,8&nbsp;% essayage → panier</p>
-                            </div>
-                        </div>
-                        <div class="demo-progress" aria-hidden="true"><div class="demo-progress-bar"></div></div>
-                        <p class="demo-stage-cta"><a href="#journey" class="btn btn-primary btn-shine">Essayer sur vous →</a></p>
-                    </div>
-                    <div class="demo-stage-visual" id="shopperReel">
-                        <div class="vton-reel vton-reel--stage vton-reel--shopper" style="--reel-dur:6.5s">
-                            <div class="vton-reel__glow" aria-hidden="true"></div>
-                            <div class="vton-device">
-                                <div class="vton-device__island" aria-hidden="true"></div>
-                                <div class="vton-device__screen">
-                                    <div class="vton-reel__frames">
-                                        <img class="vton-reel__frame" src="../assets/screenshots/storefront-product.png" alt="" width="390" height="844" loading="lazy">
-                                        <img class="vton-reel__frame" src="../assets/screenshots/upload-modal.png" alt="" width="390" height="844" loading="lazy">
-                                        <img class="vton-reel__frame" src="../assets/screenshots/result-modal.png" alt="" width="390" height="844" loading="lazy">
-                                    </div>
-                                    <div class="vton-reel__process" aria-hidden="true"><div class="vton-reel__ring"></div><span>IA ~28s</span><div class="vton-reel__bar"><i></i></div></div>
-                                    <div class="vton-reel__success" aria-hidden="true">✓ Ajouté au panier</div>
-                                    <div class="vton-reel__glare" aria-hidden="true"></div>
-                                </div>
-                            </div>
-                            <ul class="vton-reel__captions">
-                                <li class="is-live">Essayage</li><li>Photo</li><li>Résultat</li><li>Panier</li>
-                            </ul>
-                        </div>
-                    </div>
-                </div>
-            </div>
-        </section>
-
-        <section class="pp-guided-path reveal">
-            <div class="wrap">
-                <div class="guided-path-card">
-                    <div class="guided-path-visual" aria-label="Votre parcours en 3 étapes">
-                        <div class="guide-step-row active" data-guide="1"><span class="g-num">1</span><div><strong>Essayer la démo live</strong><span>Uploadez votre photo ci-dessous — même widget qu'en boutique</span></div></div>
-                        <div class="guide-step-row" data-guide="2"><span class="g-num">2</span><div><strong>Voir votre résultat IA</strong><span>Aperçu du maillot sur vous en ~30 secondes</span></div></div>
-                        <div class="guide-step-row" data-guide="3"><span class="g-num">3</span><div><strong>Installer sur Shopify</strong><span>Offre gratuite · 50 essayages/mois · sans modifier le thème</span></div></div>
-                    </div>
-                    <div class="guided-path-copy">
-                        <h3>Votre chemin : démo d&rsquo;abord, Shopify ensuite</h3>
-                        <p>L&rsquo;étape 1 vous convainc. L&rsquo;étape 2 convainc vos clients. La plupart des marchands qui finissent la démo live installent avant la fin de journée.</p>
-                        <a href="#journey" class="btn btn-primary btn-lg btn-shine">Lancer la démo live →</a>
-                        <p class="guarantee">Offre gratuite · 50 essayages/mois · sans carte · désinstallation en un clic</p>
-                    </div>
-                </div>
-            </div>
-        </section>
-
-        <section class="pp-ideal-for reveal" id="fit" aria-labelledby="ideal-title">
-            <div class="wrap">
-                <div class="section-head center">
-                    <p class="section-label">Pensé pour la mode</p>
-                    <h2 id="ideal-title" class="section-title">Si la coupe et le style font vendre, l&rsquo;essayage a sa place sur votre PDP</h2>
-                    <p class="section-desc">Mode, streetwear et sportswear : là où le client doit <em>voir</em> le vêtement — pas deviner sur une photo à plat.</p>
-                </div>
-                <div class="pp-ideal-grid">
-                    <article class="pp-ideal-card reveal">
-                        <div class="pp-ideal-icon" aria-hidden="true">👕</div>
-                        <h3>Mode &amp; DTC</h3>
-                        <p>Moins de DM &laquo;&nbsp;comment ça me va ?&nbsp;&raquo; — plus d&rsquo;ajouts panier sur vos SKU phares.</p>
+                        <h3>Plus d&rsquo;intention sur la PDP</h3>
+                        <p>Fini les doutes sur la taille. Le produit se voit sur eux avant le paiement.</p>
                     </article>
-                    <article class="pp-ideal-card reveal">
-                        <div class="pp-ideal-icon" aria-hidden="true">🧥</div>
-                        <h3>Streetwear</h3>
-                        <p>Montrez tombé et silhouette avant le checkout — surtout sur mobile.</p>
+                    <article class="feature" data-reveal="up">
+                        <div class="feature__icon" aria-hidden="true">
+                            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M13 2L3 14h7l-1 8 10-12h-7z"/></svg>
+                        </div>
+                        <h3>En ligne en ~5 minutes</h3>
+                        <p>Installation App Store, activez vos best-sellers. Le widget apparaît tout seul.</p>
                     </article>
-                    <article class="pp-ideal-card reveal">
-                        <div class="pp-ideal-icon" aria-hidden="true">⚽</div>
-                        <h3>Sport &amp; maillots</h3>
-                        <p>Le fan se voit dans le maillot — moins de doutes taille, commande plus sereine.</p>
-                    </article>
-                    <article class="pp-ideal-card reveal">
-                        <div class="pp-ideal-icon" aria-hidden="true">📈</div>
-                        <h3>Marques Shopify en croissance</h3>
-                        <p>3 best-sellers pour commencer, suivez essayage → panier dans l&rsquo;admin, scalez ce qui marche.</p>
+                    <article class="feature" data-reveal="right">
+                        <div class="feature__icon" aria-hidden="true">
+                            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"/></svg>
+                        </div>
+                        <h3>Zéro risque pour tester</h3>
+                        <p>50 essayages gratuits/mois. Sans carte. Photos traitées pour l&rsquo;aperçu — non stockées.</p>
                     </article>
                 </div>
             </div>
         </section>
 
-        <section id="journey" class="pp-journey" aria-labelledby="journey-title">
-            <div class="wrap">
-                <div class="pp-journey-head reveal">
-                    <p class="section-label">Étape 2 — Preuve live</p>
-                    <h2 id="journey-title">Testez le vrai widget — sur un vrai produit</h2>
-                    <p>Envoyez votre photo ci-dessous. Même bouton, même IA, même ~30&nbsp;s que vos clients après installation. Le résultat vous plaît ? L&rsquo;install prend ~5&nbsp;minutes.</p>
-                </div>
-                <div class="pp-journey-card reveal visible">
-                    <div class="pp-steps-tabs" role="tablist" aria-label="Guided path">
-                        <button type="button" class="pp-step-tab active" role="tab" data-step="1" aria-selected="true"><span class="tab-num">1</span><span class="tab-label">DÃ©mo live</span></button>
-                        <button type="button" class="pp-step-tab" role="tab" data-step="2" aria-selected="false"><span class="tab-num">2</span><span class="tab-label">Installer</span></button>
-                    </div>
-                    <div class="pp-step-panel active" data-step="1" role="tabpanel" id="try-it" aria-labelledby="try-it-title">
-                        <h2 class="visually-hidden" id="try-it-title">DÃ©mo live widget</h2>
-                <article class="trial-box reveal visible demo-highlight" id="trialBox" itemscope itemtype="https://schema.org/Product">
+        <section id="journey" class="demo" aria-labelledby="demo-title">
+            <div class="container">
+                <header class="demo__header" data-reveal="up">
+                    <p class="section-eyebrow">Démo interactive</p>
+                    <h2 id="demo-title">Testez le widget sur un <span class="gradient-text">vrai produit</span></h2>
+                    <p>Le même parcours que vos clients après install. Uploadez votre photo — aperçu en ~30&nbsp;s.</p>
+                </header>
+                <div class="demo-card" id="trialBox" data-reveal="scale" itemscope itemtype="https://schema.org/Produit">
                     <meta itemprop="name" content="Shadow Stripe Collared Soccer Jersey">
                     <link itemprop="image" href="../assets/demo-jersey-main.png">
-                    <div class="trial-header trial-header--compact">
-                        <span class="trial-badge"><img class="shopify-icon" src="../assets/shopify-icon-logo.svg" alt="" width="20" height="20" aria-hidden="true">DÃ©mo live Â· same Shopify widget</span>
+                    <div class="demo-card__tag">
+                        <img src="../assets/shopify-icon-logo.svg" alt="" width="16" height="16">Démo live
                     </div>
-                    <!-- .product__media wrapper required so vton-widget.js auto-detects the product image -->
-                    <div class="trial-layout product product__info-wrapper" data-product-id="gid://shopify/Product/15436964036948" data-product-handle="shadow-stripe-collared-soccer-jersey-4">
+                    <div class="trial-layout product product__info-wrapper" data-product-id="gid://shopify/Produit/15436964036948" data-product-handle="shadow-stripe-collared-soccer-jersey-4">
                         <div class="trial-gallery product__media">
-                            <img
-                                id="mainImage"
-                                class="product-featured-image"
-                                src="../assets/demo-jersey-main.png"
-                                data-product-image
-                                alt="Shadow Stripe Collared Soccer Jersey â€” green Brazil jersey for virtual try-on"
-                                width="480" height="480" loading="eager" decoding="async"
-                                itemprop="image">
+                            <img id="mainImage" class="product-featured-image" src="../assets/demo-jersey-main.png" data-product-image alt="Shadow Stripe Collared Soccer Jersey" width="480" height="480" loading="eager" itemprop="image">
                             <div class="trial-thumbs" role="group" aria-label="Vues produit">
-                                <button type="button" class="active" data-src="../assets/demo-jersey-main.png" aria-label="View 1">
-                                    <img src="../assets/demo-jersey-main.png" alt="" width="72" height="72" loading="lazy" decoding="async">
-                                </button>
-                                <button type="button" data-src="../assets/demo-jersey-alt.png" aria-label="View 2">
-                                    <img src="../assets/demo-jersey-alt.png" alt="" width="72" height="72" loading="lazy" decoding="async">
-                                </button>
+                                <button type="button" class="active" data-src="../assets/demo-jersey-main.png" aria-label="Vue 1"><img src="../assets/demo-jersey-main.png" alt="" width="56" height="56"></button>
+                                <button type="button" data-src="../assets/demo-jersey-alt.png" aria-label="Vue 2"><img src="../assets/demo-jersey-alt.png" alt="" width="56" height="56"></button>
                             </div>
                         </div>
                         <div class="trial-product product__info">
-                            <p class="trial-vendor" itemprop="brand">REMADE ICONS Â· DÃ©mo officielle</p>
+                            <p class="trial-vendor" itemprop="brand">REMADE ICONS</p>
                             <h3 itemprop="name">Shadow Stripe Collared Soccer Jersey</h3>
-                            <p class="trial-price"><span itemprop="offers" itemscope itemtype="https://schema.org/Offer"><meta itemprop="priceCurrency" content="EUR"><span itemprop="price">18.12</span> â‚¬</span></p>
-                            <p class="trial-desc" itemprop="description">
-                                Upload your photo â€” preview in ~30 seconds. Photo non stockÃ©e.
-                            </p>
-                            <!-- product-form required so vton-widget.js detects product context -->
+                            <p class="trial-price"><span itemprop="offers" itemscope itemtype="https://schema.org/Offer"><meta itemprop="priceCurrency" content="EUR"><span itemprop="price">18.12</span> €</span></p>
+                            <p class="trial-desc" itemprop="description">Cliquez <strong>Essayer sur moi</strong>, uploadez une photo, aperçu en ~30&nbsp;s.</p>
                             <form action="#" class="product-form" onsubmit="return false;">
                                 <div class="trial-buy">
-                                    <button type="button" class="trial-btn-shopify trial-btn-atc" aria-label="Ajouter au panier (demo)"><img class="shopify-icon" src="../assets/shopify-icon-logo.svg" alt="" width="20" height="20" aria-hidden="true">Ajouter au panier</button>
+                                    <button type="button" class="trial-btn-shopify trial-btn-atc" aria-label="Ajouter au panier (démo)"><img src="../assets/shopify-icon-logo.svg" alt="" width="18" height="18">Ajouter au panier</button>
                                     <div id="vton-mount-placeholder" class="vton-placeholder">
-                                        <button type="button" class="vton-placeholder-btn" aria-label="Try it on (loading widget)">
-                                            <svg viewBox="0 0 24 24" width="18" height="18" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
-                                                <circle cx="12" cy="8" r="4"/><path d="M4 21c0-4.4 3.6-8 8-8s8 3.6 8 8"/>
-                                            </svg>
-                                            <span>Chargement du widget d'essayageâ€¦</span>
+                                        <button type="button" class="vton-placeholder-btn" aria-label="Loading try-on">
+                                            <svg viewBox="0 0 24 24" width="18" height="18" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="8" r="4"/><path d="M4 21c0-4.4 3.6-8 8-8s8 3.6 8 8"/></svg>
+                                            <span>Chargement…</span>
                                         </button>
-                                        <small>Si rien n'apparaÃ®t en 5 secondes, <a href="https://remadeicons.shop/products/shadow-stripe-collared-soccer-jersey-4" target="_blank" rel="noopener">ouvrir la boutique dÃ©mo â†’</a></small>
+                                        <small>Si rien ne charge en 5&nbsp;s, <a href="https://remadeicons.shop/products/shadow-stripe-collared-soccer-jersey-4" target="_blank" rel="noopener">boutique démo →</a></small>
                                     </div>
                                     <div id="vton-mount" data-vton-mount></div>
                                 </div>
                             </form>
-                            <div class="trial-foot trial-foot--compact">
-                                <span class="trial-privacy">
-                                    <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="3" y="11" width="18" height="11" rx="2"/><path d="M7 11V7a5 5 0 0110 0v4"/></svg>
-                                    Photo non stockÃ©e
-                                </span>
-                                <a href="https://apps.shopify.com/try-on-stylelab" target="_blank" rel="noopener">Installer sur ma boutique â†’</a>
+                            <div class="trial-foot">
+                                <span class="trial-privacy"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="3" y="11" width="18" height="11" rx="2"/><path d="M7 11V7a5 5 0 0110 0v4"/></svg>Photo non stockée</span>
+                                <a href="https://apps.shopify.com/try-on-stylelab" target="_blank" rel="noopener">Installer sur ma boutique →</a>
                             </div>
                         </div>
                     </div>
-
-                    <!-- VTON embed slot â€” meme contrat que le block Shopify (extensions/vton-widget/blocks/vton-widget.liquid) -->
-                    <div
-                        id="vton-embed-slot"
-                        data-vton-embed-slot
-                        data-vton-embed-primary="1"
-                        data-vton-page-type="product"
-                        data-vton-template="product"
-                        data-vton-custom-anchor="#vton-mount"
-                        data-vton-app-url="https://vton-production-890a.up.railway.app"
-                        data-vton-product-id="gid://shopify/Product/15436964036948"
-                        data-vton-product-handle="shadow-stripe-collared-soccer-jersey-4"
-                        style="display:none;"
-                        aria-hidden="true"
-                    ></div>
-                </article>
-                <div class="post-demo-cta reveal" id="postDemoCta" hidden>
-                    <h3>C&rsquo;est ce qui convertit — installez aujourd&rsquo;hui</h3>
-                    <p>77,8&nbsp;% essayage → panier sur notre boutique pilote. Même widget sur vos SKU phares en ~5 min.</p>
-                    <div class="btns">
-                        <a href="https://apps.shopify.com/try-on-stylelab" class="btn btn-primary btn-shine" target="_blank" rel="noopener"><img class="shopify-icon" src="../assets/shopify-icon-logo.svg" alt="" width="20" height="20" aria-hidden="true">Installer gratuit sur Shopify →</a>
-            </div>
-                </div>
-                        </div>
-                    <div class="pp-step-panel" data-step="2" role="tabpanel">
-                        <div class="pp-step-install">
-                            <h3>Activez l&rsquo;essayage sur votre boutique</h3>
-                            <p>Une installation App Store. Activez d&rsquo;abord vos 3 best-sellers — résultats visibles dans l&rsquo;admin sous 24h.</p>
-                            <a href="https://apps.shopify.com/try-on-stylelab" class="btn btn-primary btn-shine" target="_blank" rel="noopener"><img class="shopify-icon" src="../assets/shopify-icon-logo.svg" alt="" width="20" height="20" aria-hidden="true">Installer gratuit sur Shopify →</a>
-                            <div class="pp-install-perks">
-                                <span>✓ 50 essayages gratuits/mo</span>
-                                <span>✓ Sans carte bancaire</span>
-                                <span>✓ En ligne en ~5 min</span>
-                    </div>
-                        </div>
+                    <div id="vton-embed-slot" data-vton-embed-slot data-vton-embed-primary="1" data-vton-page-type="product" data-vton-template="product" data-vton-custom-anchor="#vton-mount" data-vton-app-url="https://vton-production-890a.up.railway.app" data-vton-product-id="gid://shopify/Produit/15436964036948" data-vton-product-handle="shadow-stripe-collared-soccer-jersey-4" hidden aria-hidden="true"></div>
+                    <div class="post-demo" id="postDemo">
+                        <h3>Ça vous convainc ?</h3>
+                        <p>Installez le même widget sur Shopify en ~5&nbsp;minutes.</p>
+                        <a href="https://apps.shopify.com/try-on-stylelab" class="btn btn--primary" target="_blank" rel="noopener">Installer gratuit →</a>
                     </div>
                 </div>
             </div>
         </section>
 
-        <div class="install-strip reveal">
-            <div class="wrap install-strip-inner">
-                <p><strong>Vous avez vu le résultat.</strong> Installez le même widget — en ligne en ~5 minutes.</p>
-                <a href="https://apps.shopify.com/try-on-stylelab" class="btn btn-primary btn-shine" target="_blank" rel="noopener"><img class="shopify-icon" src="../assets/shopify-icon-logo.svg" alt="" width="20" height="20" aria-hidden="true">Installer maintenant →</a>
-            </div>
-        </div>
-
-        <section id="showcase" class="install-theater vton-film reveal">
-            <div class="wrap">
-                <div class="section-head center">
-                    <p class="section-label">Parcours marchand</p>
-                    <h2 class="section-title">De l'App Store au premier panier — vrais écrans</h2>
-                    <p class="section-desc">Installation, activation des produits, mise en ligne sur la boutique, conversion client — puis suivi essayage → panier.</p>
-                </div>
-                <div class="vton-film__grid" id="vtonFilm">
-                    <article class="vton-film__card is-active">
-                        <div class="vton-film__step"><span class="vton-film__step-num">1</span> Installer l'app</div>
-                        <span class="vton-film__time">~2 min</span>
-                        <div class="vton-browser">
-                            <div class="vton-browser__chrome"><div class="vton-browser__dots" aria-hidden="true"><i></i><i></i><i></i></div><span class="vton-browser__url">apps.shopify.com</span></div>
-                            <div class="vton-browser__viewport"><img src="../assets/screenshots/store-settings.png" alt="Installation Stylab dans Shopify" width="800" height="500" loading="lazy"></div>
-                        </div>
-                    </article>
-                    <article class="vton-film__card">
-                        <div class="vton-film__step"><span class="vton-film__step-num">2</span> Activer les SKU</div>
-                        <span class="vton-film__time">1 clic / produit</span>
-                        <div class="vton-browser">
-                            <div class="vton-browser__chrome"><div class="vton-browser__dots" aria-hidden="true"><i></i><i></i><i></i></div><span class="vton-browser__url">Stylab · Produits</span></div>
-                            <div class="vton-browser__viewport"><img src="../assets/screenshots/products.png" alt="Activer l'essayage par produit" width="800" height="500" loading="lazy"></div>
-                        </div>
-                    </article>
-                    <article class="vton-film__card">
-                        <div class="vton-film__step"><span class="vton-film__step-num">3</span> En ligne sur la boutique</div>
-                        <span class="vton-film__time">Instantané</span>
-                        <div class="vton-browser">
-                            <div class="vton-browser__chrome"><div class="vton-browser__dots" aria-hidden="true"><i></i><i></i><i></i></div><span class="vton-browser__url">votreboutique.com</span></div>
-                            <div class="vton-browser__viewport"><img src="../assets/screenshots/storefront-product.png" alt="Bouton essayage sur la fiche produit" width="800" height="500" loading="lazy"></div>
-                        </div>
-                    </article>
-                    <article class="vton-film__card">
-                        <div class="vton-film__step"><span class="vton-film__step-num">4</span> Le client convertit</div>
-                        <span class="vton-film__time">~30s</span>
-                        <div class="vton-browser">
-                            <div class="vton-browser__chrome"><div class="vton-browser__dots" aria-hidden="true"><i></i><i></i><i></i></div><span class="vton-browser__url">Résultat essayage</span></div>
-                            <div class="vton-browser__viewport"><img src="../assets/screenshots/result-modal.png" alt="Résultat essayage virtuel" width="800" height="500" loading="lazy"></div>
-                        </div>
-                    </article>
-                    <article class="vton-film__card">
-                        <div class="vton-film__step"><span class="vton-film__step-num">5</span> Suivre le ROI</div>
-                        <span class="vton-film__time">Le jour même</span>
-                        <div class="vton-browser">
-                            <div class="vton-browser__chrome"><div class="vton-browser__dots" aria-hidden="true"><i></i><i></i><i></i></div><span class="vton-browser__url">Stylab · Analytics</span></div>
-                            <div class="vton-browser__viewport"><img src="../assets/screenshots/dashboard.png" alt="Tableau de bord analytics" width="1200" height="700" loading="lazy"></div>
-                        </div>
-                    </article>
-                </div>
-                <div class="section-cta reveal" style="margin-top:2.5rem">
-                    <a href="https://apps.shopify.com/try-on-stylelab" class="btn btn-primary btn-lg btn-shine" target="_blank" rel="noopener"><img class="shopify-icon" src="../assets/shopify-icon-logo.svg" alt="" width="20" height="20" aria-hidden="true">Installer gratuit →</a>
-                </div>
+        <section class="steps" aria-labelledby="steps-title">
+            <div class="container steps__inner">
+                <p class="section-eyebrow" data-reveal="up">Comment ça marche</p>
+                <h2 id="steps-title" data-reveal="up">En ligne en trois étapes</h2>
+                <ol class="steps__list" data-reveal-stagger>
+                    <li data-reveal="left" data-step="01"><strong>Installer depuis Shopify</strong><span>Un clic App Store. Plan gratuit, sans carte.</span></li>
+                    <li data-reveal="left" data-step="02"><strong>Activer vos produits phares</strong><span>Toggle par produit dans l&rsquo;admin — widget sur ces fiches.</span></li>
+                    <li data-reveal="left" data-step="03"><strong>Suivre essayage → panier</strong><span>Analytics dans l&rsquo;admin Stylab. Scalez ce qui convertit.</span></li>
+                </ol>
+                <a href="https://apps.shopify.com/try-on-stylelab" class="btn btn--dark" target="_blank" rel="noopener">Installer gratuit sur Shopify</a>
             </div>
         </section>
 
-        <section class="pp-testimonials reveal" aria-labelledby="testimonials-title">
-            <div class="wrap">
-                <div class="section-head center">
-                    <p class="section-label">Marchands</p>
-                    <h2 id="testimonials-title" class="section-title">Conçu pour les marques qui vendent sur la coupe &amp; le style</h2>
-                    <p class="section-desc">Mode et streetwear utilisent Stylab pour transformer les visiteurs en acheteurs.</p>
-                </div>
-                <div class="testimonial-grid">
-                    <article class="testimonial-card">
-                        <blockquote>« On a activé l'essayage sur trois maillots phares. Fini les DM « comment ça me va ? ». »</blockquote>
-                        <footer><strong>Marchand apparel</strong><span>Shopify · sportswear</span></footer>
-                    </article>
-                    <article class="testimonial-card">
-                        <blockquote>« Installation pendant une pause café. Pas de dev, pas de chirurgie sur le thème — le widget est apparu sur la PDP. »</blockquote>
-                        <footer><strong>Fondateur DTC</strong><span>Shopify · streetwear</span></footer>
-                    </article>
-                    <article class="testimonial-card">
-                        <blockquote>« La démo sur leur site m'a convaincu. J'ai installé le jour même et activé nos best-sellers. »</blockquote>
-                        <footer><strong>Responsable e-commerce</strong><span>Shopify · mode</span></footer>
-                    </article>
-                </div>
-            </div>
-        </section>
-
-        <section id="why" class="pp-why reveal">
-            <div class="wrap">
-                <div class="section-head center">
-                    <p class="section-label">Pourquoi Stylab</p>
-                    <h2 class="section-title">Tout pour vendre de la mode avec confiance</h2>
-                    <p class="section-desc">Pas un filtre AR générique — un essayage natif Shopify pensé pour mesurer la conversion.</p>
-                </div>
-                <div class="why-grid">
-                    <article class="why-card featured">
-                        <p class="why-tag">Conversion</p>
-                        <h3>Essayage → panier traçable</h3>
-                        <p>Analytics, buckets A/B et activation par produit. Boutique pilote : 77,8&nbsp;% des sessions essayage mènent à l'ajout panier.</p>
-                    </article>
-                    <article class="why-card">
-                        <p class="why-tag">Setup</p>
-                        <h3>En ligne en ~5 minutes</h3>
-                        <p>Installation App Store. Activez vos SKU phares. Photos flat-lay optionnelles pour un rendu IA plus propre.</p>
-                    </article>
-                    <article class="why-card">
-                        <p class="why-tag">Confidentialité</p>
-                        <h3>Photos traitées, non stockées</h3>
-                        <p>Message clair pour l'acheteur : upload pour l'aperçu uniquement. Vous choisissez quels produits ont l'essayage.</p>
-                    </article>
-                    <article class="why-card">
-                        <p class="why-tag">Facturation</p>
-                        <h3>Payez les essayages réussis</h3>
-                        <p>Les échecs ne consomment pas de crédit. Démarrez gratuit avec 50/mois — scalez quand vos clients adorent.</p>
-                    </article>
-                    <article class="why-card">
-                        <p class="why-tag">Mobile</p>
-                        <h3>Là où est votre trafic</h3>
-                        <p>Widget responsive sur les fiches produit Shopify standard — desktop et mobile.</p>
-                    </article>
-                </div>
-                <p class="roi-banner reveal"><strong>77,8&nbsp;% essayage → panier</strong> sur notre boutique pilote — testez la démo, puis installez gratuit.</p>
-            </div>
-        </section>
-
-        <!-- HOW IT WORKS -->
-        <section id="how-it-works">
-            <div class="wrap">
-                <div class="section-head center reveal">
-                    <p class="section-label">Comment ça marche</p>
-                    <h2 class="section-title">En ligne sur votre boutique en trois Ã©tapes</h2>
-                    <p class="section-desc">Install â†’ enable on products â†’ shoppers try on. Sans modifier le thÃ¨me.</p>
-                        </div>
-                <div class="hiw-flow">
-                    <div class="hiw-step">
-                        <span class="hiw-num">01</span>
-                        <h3>Installez l'app Shopify</h3>
-                        <p>Ajoutez Stylab depuis l'App Store Shopify. Le widget d'essayage apparaÃ®t automatiquement sur les pages produit.</p>
-                        <span class="hiw-time">~5 min d'installation</span>
-                </div>
-                    <div class="hiw-arrow" aria-hidden="true">
-                        <svg viewBox="0 0 40 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M0 12h32M26 6l6 6-6 6"/></svg>
-                </div>
-                    <div class="hiw-step">
-                        <span class="hiw-num">02</span>
-                        <h3>SÃ©lectionnez les produits Ã©ligibles</h3>
-                        <p>Activez l'essayage sur vos SKU phares depuis l'admin. Uploadez optionnellement des photos flat-lay pour un rendu IA plus propre.</p>
-                        <span class="hiw-time">ContrÃ´le par produit</span>
+        <section id="faq" class="faq" aria-labelledby="faq-title">
+            <div class="container">
+                <p class="section-eyebrow" data-reveal="up" style="text-align:center">FAQ</p>
+                <h2 id="faq-title" data-reveal="up">Questions</h2>
+                <div class="faq__list" data-reveal="up">
+                    <div class="faq__item is-open">
+                        <button type="button" class="faq__q" aria-expanded="true">L&rsquo;installation est-elle gratuite ?<span class="faq__icon" aria-hidden="true">+</span></button>
+                        <div class="faq__a"><div class="faq__a-inner">Oui — <strong>50 essayages réussis par mois</strong> en gratuit. Sans carte. Upgrade via Shopify si besoin.</div></div>
                     </div>
-                    <div class="hiw-arrow" aria-hidden="true">
-                        <svg viewBox="0 0 40 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M0 12h32M26 6l6 6-6 6"/></svg>
+                    <div class="faq__item">
+                        <button type="button" class="faq__q" aria-expanded="false">Faut-il un développeur ?<span class="faq__icon" aria-hidden="true">+</span></button>
+                        <div class="faq__a"><div class="faq__a-inner">Pas de code thème. Comme toute app Shopify, activation depuis l&rsquo;admin.</div></div>
                     </div>
-                    <div class="hiw-step">
-                        <span class="hiw-num">03</span>
-                        <h3>Laissez les clients essayer avec l'IA</h3>
-                        <p>Le client uploade une photo, obtient un aperÃ§u en ~30 secondes et passe commande avec plus de confiance.</p>
-                        <span class="hiw-time">Mobile &amp; desktop</span>
+                    <div class="faq__item">
+                        <button type="button" class="faq__q" aria-expanded="false">Les photos clients sont-elles stockées ?<span class="faq__icon" aria-hidden="true">+</span></button>
+                        <div class="faq__a"><div class="faq__a-inner">Non — traitement pour l&rsquo;aperçu uniquement. <a href="../confidentialite.html">Confidentialité</a>.</div></div>
                     </div>
-                </div>
-                <div class="section-cta reveal">
-                    <a href="https://apps.shopify.com/try-on-stylelab" class="btn btn-primary" target="_blank" rel="noopener"><img class="shopify-icon" src="../assets/shopify-icon-logo.svg" alt="" width="20" height="20" aria-hidden="true">Installer gratuitement sur Shopify</a>
-                </div>
-            </div>
-        </section>
-
-        <div class="install-strip install-strip--violet reveal">
-            <div class="wrap install-strip-inner">
-                <p><strong>50 essayages gratuits/mo</strong> — activez 3 produits phares aujourd&rsquo;hui, lisez essayage → panier vendredi.</p>
-                <a href="https://apps.shopify.com/try-on-stylelab" class="btn btn-primary btn-shine" target="_blank" rel="noopener"><img class="shopify-icon" src="../assets/shopify-icon-logo.svg" alt="" width="20" height="20" aria-hidden="true">Installer gratuit →</a>
-            </div>
-        </div>
-
-        <section class="pp-objections reveal" aria-labelledby="objections-title">
-            <div class="wrap">
-                <div class="section-head center">
-                    <p class="section-label">Encore hésitant ?</p>
-                    <h2 id="objections-title" class="section-title">Les questions qu&rsquo;on nous pose le plus</h2>
-                </div>
-                <div class="pp-objection-grid">
-                    <article class="pp-objection-card reveal">
-                        <h3>&laquo;&nbsp;On n&rsquo;a pas de dev.&nbsp;&raquo;</h3>
-                        <p>Install App Store comme toute app Shopify — <strong>aucun fichier thème</strong>, activation par produit dans l&rsquo;admin.</p>
-                    </article>
-                    <article class="pp-objection-card reveal">
-                        <h3>&laquo;&nbsp;Et si personne n&rsquo;essaie ?&nbsp;&raquo;</h3>
-                        <p>Commencez sur 3 best-sellers. Boutique pilote : <strong>77,8&nbsp;% essayage → panier</strong> — tout est dans le dashboard.</p>
-                    </article>
-                    <article class="pp-objection-card reveal">
-                        <h3>&laquo;&nbsp;Les photos clients ?&nbsp;&raquo;</h3>
-                        <p>Traitées pour l&rsquo;aperçu uniquement, <strong>non stockées</strong>. Message clair dans le widget avant upload.</p>
-                    </article>
-                    <article class="pp-objection-card reveal">
-                        <h3>&laquo;&nbsp;Combien pour tester ?&nbsp;&raquo;</h3>
-                        <p><strong>0&nbsp;€</strong> — 50 essayages réussis/mois, sans carte. Les échecs ne consomment pas de crédit.</p>
-                    </article>
-                </div>
-            </div>
-        </section>
-
-        <section class="pp-decision reveal" aria-labelledby="decision-title">
-            <div class="wrap">
-                <div class="pp-decision-box">
-                    <div>
-                        <h2 id="decision-title">Deux chemins — tous les deux gratuits</h2>
-                        <p>La démo live si vous voulez <em>sentir</em> le widget. L&rsquo;installation si vous voulez tester sur votre trafic cette semaine.</p>
-                    </div>
-                    <div class="pp-decision-actions">
-                        <a href="#journey" class="btn btn-primary btn-shine">Essayer sur ma photo →</a>
-                        <a href="https://apps.shopify.com/try-on-stylelab" class="btn btn-ghost" target="_blank" rel="noopener"><img class="shopify-icon" src="../assets/shopify-icon-logo.svg" alt="" width="20" height="20" aria-hidden="true">Installer sur Shopify</a>
+                    <div class="faq__item">
+                        <button type="button" class="faq__q" aria-expanded="false">Quels résultats attendre ?<span class="faq__icon" aria-hidden="true">+</span></button>
+                        <div class="faq__a"><div class="faq__a-inner">Notre pilote affiche <strong>77,8&nbsp;% essayage → panier</strong>. Commencez sur 2–3 best-sellers.</div></div>
                     </div>
                 </div>
             </div>
         </section>
 
-        <!-- FAQ -->
-        <section id="faq">
-            <div class="wrap">
-                <div class="section-head center reveal">
-                    <p class="section-label">FAQ</p>
-                    <h2 class="section-title">Questions frÃ©quentes des marchands Shopify</h2>
-                </div>
-                <div class="faq-list">
-                    <div class="faq-item open">
-                        <button type="button" class="faq-q" aria-expanded="true"><span class="faq-q-text">Dois-je modifier mon thÃ¨me Shopify ?</span><span class="icon" aria-hidden="true">+</span></button>
-                        <div class="faq-a">No. Install from the App Store â€” the try-on widget appears on product pages automatically.</div>
-                    </div>
-                    <div class="faq-item">
-                        <button type="button" class="faq-q" aria-expanded="false"><span class="faq-q-text">Is it really free to start?</span><span class="icon" aria-hidden="true">+</span></button>
-                        <div class="faq-a">Yes. 50 successful try-ons per month on the free plan. No credit card required.</div>
-                    </div>
-                    <div class="faq-item">
-                        <button type="button" class="faq-q" aria-expanded="false"><span class="faq-q-text">Les photos clients sont-elles stockÃ©es ?</span><span class="icon" aria-hidden="true">+</span></button>
-                        <div class="faq-a">No. Photos are processed for the preview only, then discarded. See our <a href="../confidentialite.html">privacy policy</a>.</div>
-                    </div>
-                    <div class="faq-item">
-                        <button type="button" class="faq-q" aria-expanded="false"><span class="faq-q-text">Can I try before installing?</span><span class="icon" aria-hidden="true">+</span></button>
-                        <div class="faq-a">Yes â€” use the <a href="#journey">live demo above</a> with your own photo.</div>
-                    </div>
-                </div>
-            </div>
-        </section>
-
-        <section id="install" class="pp-final-cta">
-            <div class="wrap">
-                <div class="pp-final-box reveal">
-                    <h2>Installez maintenant — vos clients sont prêts</h2>
-                    <p>Gratuit · 50 essayages/mois · en ligne en ~5 min · 77,8&nbsp;% essayage → panier (boutique pilote)</p>
-                    <div class="btns">
-                        <a href="https://apps.shopify.com/try-on-stylelab" class="btn btn-primary btn-shine" target="_blank" rel="noopener"><img class="shopify-icon" src="../assets/shopify-icon-logo.svg" alt="" width="20" height="20" aria-hidden="true">Installer gratuit sur Shopify →</a>
-                        <a href="#journey" class="btn btn-ghost">Pas convaincu ? Relancer la démo</a>
+        <section class="cta" aria-labelledby="cta-title">
+            <div class="container container--wide">
+                <div class="cta__box" data-reveal="scale">
+                    <h2 id="cta-title">Prêt à vendre avec <span class="gradient-text">confiance</span> ?</h2>
+                    <p>Install gratuit · 50 essayages/mois · ~5 min</p>
+                    <div class="cta__actions">
+                        <a href="https://apps.shopify.com/try-on-stylelab" class="btn btn--primary btn--lg" target="_blank" rel="noopener">
+                            <img src="../assets/shopify-icon-logo.svg" alt="" width="18" height="18">Installer sur Shopify
+                        </a>
+                        <a href="#journey" class="btn btn--ghost btn--lg">Revoir la démo</a>
                     </div>
                 </div>
             </div>
         </section>
     </main>
 
-    <footer>
-        <div class="wrap footer-top">
-            <div class="footer-brand">
-                <a href="index.html" class="brand">
-                    <span class="brand-mark"><img src="../assets/logo.png" alt="" width="36" height="36"></span>
-                    <span class="brand-name">Stylab <span>Virtual Try-On</span></span>
+    <footer class="site-footer">
+        <div class="container container--wide site-footer__grid" data-reveal-stagger>
+            <div class="site-footer__brand" data-reveal="up">
+                <a href="index.html" class="site-logo">
+                    <span class="site-logo__mark"><img src="../assets/logo.png" alt="" width="32" height="32"></span>
+                    Stylab <span>Virtual Try-On</span>
                 </a>
-                <p>Essayage virtuel IA pour marques apparel Shopify.<br>Aidez vos clients Ã  acheter avec plus de confiance.</p>
-                <p class="footer-shopify-badge"><img class="shopify-icon" src="../assets/shopify-icon-logo.svg" alt="" width="20" height="20" aria-hidden="true">App Shopify officielle Â· listÃ©e sur l'App Store</p>
+                <p>Essayage virtuel IA pour marques apparel Shopify. Aidez vos clients à visualiser vos produits avant d&rsquo;acheter.</p>
             </div>
-            <div class="footer-col">
+            <div class="site-footer__col" data-reveal="up">
                 <h4>Solutions</h4>
                 <a href="solutions/fashion-brands.html">Marques mode</a>
                 <a href="solutions/streetwear.html">Streetwear</a>
@@ -814,49 +353,39 @@
                 <a href="solutions/prestashop.html">PrestaShop</a>
                 <a href="solutions/api.html">API</a>
             </div>
-            <div class="footer-col">
-                <h4>Comparer</h4>
-                <a href="compare/">Toutes les comparaisons</a>
+            <div class="site-footer__col" data-reveal="up">
+                <h4>Alternatives Shopify</h4>
                 <a href="compare/vs-genlook.html">vs Genlook</a>
                 <a href="compare/vs-antla.html">vs Antla</a>
                 <a href="compare/vs-banuba.html">vs Banuba</a>
+                <a href="compare/vs-mirrar.html">vs MirrAR</a>
+                <a href="compare/vs-camweara.html">vs Camweara</a>
+                <a href="compare/vs-looksy.html">vs Looksy</a>
+                <a href="compare/vs-trypoint.html">vs TryPoint</a>
+            </div>
+            <div class="site-footer__col" data-reveal="up">
+                <h4>Alternatives API</h4>
+                <a href="compare/api/vs-fashn-ai.html">vs FASHN AI</a>
+                <a href="compare/api/vs-aiuta.html">vs Aiuta</a>
+                <a href="compare/api/vs-pixelcut.html">vs Pixelcut</a>
                 <a href="compare/api/vs-replicate.html">vs Replicate</a>
+                <a href="compare/api/vs-fal-ai.html">vs Fal AI</a>
             </div>
-            <div class="footer-col">
+            <div class="site-footer__col" data-reveal="up">
                 <h4>Ressources</h4>
-                <a href="resources/blog/">Blog</a>
                 <a href="resources/free-tools.html">Outils gratuits</a>
+                <a href="resources/blog/">Blog</a>
                 <a href="resources/documentation.html">Documentation</a>
-                <a href="resources/changelog.html">Changelog</a>
-            </div>
-            <div class="footer-col">
-                <h4>Entreprise</h4>
-                <a href="../support.html">Support</a>
+                <a href="resources/changelog.html">Journal des modifications</a>
                 <a href="../contact.html">Contact</a>
-                <a href="../confidentialite.html">Politique de confidentialitÃ©</a>
-                <a href="../conditions.html">Conditions gÃ©nÃ©rales</a>
+                <a href="../support.html">Support</a>
+                <a href="../confidentialite.html">Confidentialité</a>
+                <a href="../conditions.html">Conditions générales</a>
             </div>
         </div>
-        <div class="wrap footer-copy">Â© 2026 Style Lab Â· Stylab Virtual Try-On</div>
+        <div class="container container--wide site-footer__copy">© 2026 Style Lab · Stylab Virtual Try-On</div>
     </footer>
-
-    <div class="sticky-mobile-cta" id="stickyCta">
-        
-        <a href="https://apps.shopify.com/try-on-stylelab" class="btn btn-primary" target="_blank" rel="noopener" id="stickyCtaPrimary"><img class="shopify-icon" src="../assets/shopify-icon-logo.svg" alt="" width="20" height="20" aria-hidden="true"><span id="stickyCtaLabel">Installer gratuit</span></a>
-    </div>
-
-    <div class="exit-modal-backdrop" id="exitModal" role="dialog" aria-modal="true" aria-labelledby="exitModalTitle" aria-hidden="true">
-        <div class="exit-modal">
-            <button type="button" class="exit-modal-close" id="exitModalClose" aria-label="Fermer">×</button>
-            <p class="pill"><span class="pill-dot"></span> Avant de partir</p>
-            <h2 id="exitModalTitle">Attendez — 5 minutes pour installer</h2>
-            <p><strong>50 essayages gratuits/mois</strong> · sans carte bancaire · <strong>77,8&nbsp;% essayage → panier</strong> sur notre boutique pilote.</p>
-            <div class="btns">
-                <a href="https://apps.shopify.com/try-on-stylelab" class="btn btn-primary btn-shine" target="_blank" rel="noopener">Installer gratuit sur Shopify →</a>
-                <a href="#journey" class="btn btn-ghost" id="exitModalDemo">Démo d&rsquo;abord (30 s)</a>
-            </div>
-        </div>
-    </div>
+    </div><!-- .page-shell -->
 
     <!-- VTON widget boot â€” same contract as the Shopify theme app embed -->
     <script>
@@ -970,9 +499,6 @@
     <script src="vton-widget.js?v=4" defer></script>
     <script src="../assets/motion.js" defer></script>
     <script src="../assets/journey.js" defer></script>
-    <script src="../assets/landing.js" defer></script>
-    <script src="../assets/funnel.js" defer></script>
-    <script src="../assets/vton-reel.js" defer></script>
     <script>
         (function() {
             var header = document.getElementById('header');
@@ -1084,7 +610,7 @@
             try {
                 localStorage.setItem('vton-widget-config', JSON.stringify({
                     widgetText: 'Essayer',
-                    widgetBg: '#7c3aed',
+                    widgetBg: '#574fe6',
                     widgetColor: '#fff'
                 }));
             } catch (e) {}

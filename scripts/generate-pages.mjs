@@ -14,7 +14,7 @@ function shopifyIcon(assetsPath) {
   return `<img class="shopify-icon" src="${assetsPath}shopify-icon-logo.svg" alt="" width="20" height="20" aria-hidden="true">`;
 }
 
-function installBtn(label, assetsPath, className = 'btn btn-primary') {
+function installBtn(label, assetsPath, className = 'btn btn--primary') {
   return `<a href="${APP_URL}" class="${className}" target="_blank" rel="noopener">${shopifyIcon(assetsPath)}${label}</a>`;
 }
 
@@ -225,7 +225,7 @@ function langHref(locale, section) {
 function cta(locale, depth) {
   const u = UI[locale];
   const px = paths(locale, depth);
-  return `<section class="section"><div class="wrap"><div class="cta-final reveal"><h2>${u.ctaTitle}</h2><p>${u.ctaBody}</p><div class="btns">${installBtn(u.install, px.assets)}<a href="${px.home}#try-it" class="btn btn-ghost">${u.viewDemo}</a></div></div></div></section>`;
+  return `<section class="section"><div class="wrap"><div class="cta-final reveal"><h2>${u.ctaTitle}</h2><p>${u.ctaBody}</p><div class="btns">${installBtn(u.install, px.assets)}<a href="${px.home}#journey" class="btn btn--ghost">${u.viewDemo}</a></div></div></div></section>`;
 }
 
 function compareItemUrl(locale, slug, isApi) {
@@ -337,7 +337,7 @@ function comparePage(locale, depth, data) {
             <p class="pill">${u.comparison}</p>
             <h1>Stylab vs ${comp}</h1>
             <p class="lead">${t(data.summary, locale)}</p>
-            <div class="btns">${installBtn(u.installStylab, px.assets)}<a href="${px.home}#try-it" class="btn btn-ghost">${u.viewDemo}</a></div>
+            <div class="btns">${installBtn(u.installStylab, px.assets)}<a href="${px.home}#journey" class="btn btn--ghost">${u.viewDemo}</a></div>
         </div></section>${overviewBlock}
         <section class="section section-white"><div class="wrap reveal">
             <div class="section-head center"><p class="section-label">${u.sideBySide}</p><h2 class="section-title">${u.featureComparison}</h2><p class="section-desc">${t(data.competitorDesc, locale)}</p></div>
@@ -393,7 +393,7 @@ function solutionPage(locale, depth, data) {
             <p class="breadcrumb"><a href="index.html">${u.solutions}</a></p>
             <h1>${t(data.title, locale)}</h1>
             <p class="lead">${t(data.lead, locale)}</p>
-            <div class="btns">${installBtn(u.install, px.assets)}<a href="${px.home}#try-it" class="btn btn-ghost">${u.viewDemo}</a></div>
+            <div class="btns">${installBtn(u.install, px.assets)}<a href="${px.home}#journey" class="btn btn--ghost">${u.viewDemo}</a></div>
         </div></section>${overviewBlock}${featuresBlock}${rolloutBlock}${noteBlock}${relatedBlock}${cta(locale, depth)}`;
   return layout({
     locale, depth,
@@ -429,23 +429,23 @@ function writeFile(relPath, content) {
 }
 
 function footer(locale, px, u, home) {
-  return `<footer>
-        <div class="wrap footer-top">
-            <div class="footer-brand">
-                <a href="${home}" class="brand">
-                    <span class="brand-mark"><img src="${px.assets}logo.png" alt="" width="36" height="36"></span>
-                    <span class="brand-name">Stylab <span>Virtual Try-On</span></span>
+  return `<footer class="site-footer">
+        <div class="container container--wide site-footer__grid" data-reveal-stagger>
+            <div class="site-footer__brand" data-reveal="up">
+                <a href="${home}" class="site-logo">
+                    <span class="site-logo__mark"><img src="${px.assets}logo.png" alt="" width="32" height="32"></span>
+                    Stylab <span>Virtual Try-On</span>
                 </a>
                 <p>${u.footerTagline}</p>
             </div>
-            <div class="footer-col"><h4>${u.footerSolutions}</h4>
+            <div class="site-footer__col" data-reveal="up"><h4>${u.footerSolutions}</h4>
                 <a href="${px.locale}solutions/fashion-brands.html">${u.fashionBrands}</a>
                 <a href="${px.locale}solutions/streetwear.html">${u.streetwear}</a>
                 <a href="${px.locale}solutions/enterprise.html">${u.enterprise}</a>
                 <a href="${px.locale}solutions/prestashop.html">${u.prestashop}</a>
                 <a href="${px.locale}solutions/api.html">${u.api}</a>
             </div>
-            <div class="footer-col"><h4>${u.footerShopifyAlt}</h4>
+            <div class="site-footer__col" data-reveal="up"><h4>${u.footerShopifyAlt}</h4>
                 <a href="${px.locale}compare/vs-genlook.html">vs Genlook</a>
                 <a href="${px.locale}compare/vs-antla.html">vs Antla</a>
                 <a href="${px.locale}compare/vs-banuba.html">vs Banuba</a>
@@ -454,14 +454,14 @@ function footer(locale, px, u, home) {
                 <a href="${px.locale}compare/vs-looksy.html">vs Looksy</a>
                 <a href="${px.locale}compare/vs-trypoint.html">vs TryPoint</a>
             </div>
-            <div class="footer-col"><h4>${u.footerApiAlt}</h4>
+            <div class="site-footer__col" data-reveal="up"><h4>${u.footerApiAlt}</h4>
                 <a href="${px.locale}compare/api/vs-fashn-ai.html">vs FASHN AI</a>
                 <a href="${px.locale}compare/api/vs-aiuta.html">vs Aiuta</a>
                 <a href="${px.locale}compare/api/vs-pixelcut.html">vs Pixelcut</a>
                 <a href="${px.locale}compare/api/vs-replicate.html">vs Replicate</a>
                 <a href="${px.locale}compare/api/vs-fal-ai.html">vs Fal AI</a>
             </div>
-            <div class="footer-col"><h4>${u.footerResources}</h4>
+            <div class="site-footer__col" data-reveal="up"><h4>${u.footerResources}</h4>
                 <a href="${px.locale}resources/free-tools.html">${u.freeTools}</a>
                 <a href="${px.locale}resources/blog/">${u.blog}</a>
                 <a href="${px.locale}resources/documentation.html">${u.documentation}</a>
@@ -472,7 +472,7 @@ function footer(locale, px, u, home) {
                 <a href="${px.terms}">${u.terms}</a>
             </div>
         </div>
-        <div class="wrap footer-copy">© 2026 Style Lab · Stylab Virtual Try-On</div>
+        <div class="container container--wide site-footer__copy">© 2026 Style Lab · Stylab Virtual Try-On</div>
     </footer>`;
 }
 
@@ -484,10 +484,11 @@ function layout({ locale, depth, title, description, body, activeNav, extraScrip
   const px = paths(locale, depth);
   const u = UI[locale];
   const home = px.home;
-  const pricingHref = `${home}#pricing`;
-  const productHref = `${home}#product`;
+  const demoHref = `${home}#journey`;
+  const faqHref = `${home}#faq`;
   const langSwitch = pagePath ? langHrefFromPath(locale, pagePath) : langHref(locale, section);
   const seoHead = headExtra || (pagePath ? pageHeadMeta({ locale, pagePath, title, description }) : '');
+  const menuLabel = locale === 'fr' ? 'Ouvrir le menu' : 'Open menu';
 
   return `<!DOCTYPE html>
 <html lang="${u.lang}">
@@ -500,57 +501,57 @@ function layout({ locale, depth, title, description, body, activeNav, extraScrip
     <link rel="icon" type="image/png" href="${px.assets}logo.png">${seoHead}
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=Inter+Tight:wght@400;500;600;700;800&family=Geist:wght@500;600;700;800;900&display=swap" rel="stylesheet">
-    <link rel="stylesheet" href="${px.assets}ai-theme.css">
-    <link rel="stylesheet" href="${px.assets}marketing.css">
+    <link href="https://fonts.googleapis.com/css2?family=Geist:wght@400;500;600;700;800&family=Geist+Mono:wght@400;500&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="${px.assets}home.css">
+    <link rel="stylesheet" href="${px.assets}pages.css">
 </head>
-<body class="js-reveal">
-    <div class="grid-bg" aria-hidden="true"></div>
-    <div class="ambient" aria-hidden="true"></div>
-    <div class="orb-field" aria-hidden="true">
-        <div class="orb orb-1"></div>
-        <div class="orb orb-2"></div>
-        <div class="orb orb-3"></div>
+<body class="home page-sub">
+    <div class="page-bg" aria-hidden="true">
+        <div class="page-bg__base"></div>
+        <div class="page-bg__grid"></div>
+        <div class="page-bg__radial"></div>
+        <div class="orb orb--wide orb--wide-1"></div>
+        <div class="orb orb--wide orb--wide-2"></div>
     </div>
-    <header class="header" id="header">
-        <div class="wrap nav">
-            <a href="${home}" class="brand"><span class="brand-mark"><img src="${px.assets}logo.png" alt="" width="36" height="36"></span><span class="brand-name">Stylab <span>Virtual Try-On</span></span></a>
-            <nav class="nav-links" aria-label="Main">
-                <a href="${productHref}">${u.features}</a>
-                <a href="${pricingHref}">${u.pricing}</a>
-                <div class="nav-dropdown">
-                    <button type="button" class="nav-dropdown-btn" aria-haspopup="true" aria-expanded="false">${u.explore}<span class="nav-chevron" aria-hidden="true"></span></button>
-                    <div class="nav-dropdown-menu">
-                        <a href="${px.solutions}">${u.solutions}</a>
-                        <a href="${px.compare}"${activeNav === 'compare' ? ' class="active"' : ''}>${u.compare}</a>
-                        <a href="${px.resources}">${u.resources}</a>
-                        <a href="${px.resources}blog/">${u.blog}</a>
-                    </div>
+    <div class="page-shell">
+    <header class="site-header" id="siteHeader">
+        <div class="container site-header__inner">
+            <a href="${home}" class="site-logo" aria-label="Stylab Virtual Try-On">
+                <span class="site-logo__mark"><img src="${px.assets}logo.png" alt="" width="32" height="32"></span>
+                Stylab <span>Virtual Try-On</span>
+            </a>
+            <div class="site-header__cluster">
+                <nav class="site-nav" aria-label="Main">
+                    <a href="${demoHref}">${u.liveDemo}</a>
+                    <a href="${px.compare}"${activeNav === 'compare' ? ' aria-current="page"' : ''}>${u.compare}</a>
+                    <a href="${px.solutions}">${u.solutions}</a>
+                    <a href="${px.resources}">${u.resources}</a>
+                    <a href="${langSwitch}" hreflang="${locale === 'en' ? 'fr' : 'en'}" lang="${locale === 'en' ? 'fr' : 'en'}">${u.otherLang}</a>
+                </nav>
+                <div class="site-header__actions">
+                    ${installBtn(u.install, px.assets)}
                 </div>
-                <a href="${langSwitch}" class="lang-switch">${u.otherLang}</a>
-            </nav>
-            <div class="nav-actions">
-                ${installBtn(u.install, px.assets)}
-                <button class="menu-btn" id="menuBtn" type="button" aria-label="Menu"><span></span><span></span><span></span></button>
             </div>
+            <button type="button" class="menu-toggle" id="menuBtn" aria-label="${menuLabel}" aria-expanded="false"><span></span></button>
         </div>
     </header>
-    <div class="mobile-drawer" id="mobileDrawer">
-        <a href="${productHref}">${u.features}</a>
-        <a href="${pricingHref}">${u.pricing}</a>
-        <span class="drawer-label">${u.explore}</span>
-        <a href="${px.solutions}" class="drawer-sub">${u.solutions}</a>
-        <a href="${px.compare}" class="drawer-sub">${u.compare}</a>
-        <a href="${px.resources}" class="drawer-sub">${u.resources}</a>
-        <a href="${px.resources}blog/" class="drawer-sub">${u.blog}</a>
-        <a href="${home}#try-it">${u.liveDemo}</a>
-        <a href="${langSwitch}" class="lang-switch">${u.otherLang}</a>
+    <nav class="mobile-nav" id="mobileNav" aria-label="Mobile">
+        <a href="${demoHref}">${u.liveDemo}</a>
+        <a href="${faqHref}">FAQ</a>
+        <a href="${px.compare}">${u.compare}</a>
+        <a href="${px.solutions}">${u.solutions}</a>
+        <a href="${px.resources}">${u.resources}</a>
+        <a href="${px.resources}blog/">${u.blog}</a>
+        <a href="${langSwitch}">${u.otherLang}</a>
         ${installBtn(u.install, px.assets)}
-    </div>
+    </nav>
     <main class="page-main">${body}</main>
     ${footer(locale, px, u, home)}
-    <script src="${px.assets}marketing.js"></script>
-    <script src="${px.assets}motion.js" defer></script>${extraScripts}
+    </div>
+    <div class="sticky-cta">
+        ${installBtn(u.install, px.assets)}
+    </div>
+    <script src="${px.assets}home.js" defer></script>${extraScripts}
 </body>
 </html>`;
 }
@@ -709,7 +710,7 @@ function generateLocale(locale) {
 
   BLOG_POSTS.forEach(p => {
     const px = paths(locale, 2);
-    const demoHref = `${px.home}#try-it`;
+    const demoHref = `${px.home}#journey`;
     writeFile(`${base}resources/blog/${p.slug}.html`, layout({
       locale, depth: 2,
       title: `${t(p.title, locale)} | Stylab`,
@@ -722,6 +723,113 @@ function generateLocale(locale) {
   });
 }
 
+function extractMainContent(html) {
+  const m = html.match(/<main class="page-main">([\s\S]*?)<\/main>/);
+  return m ? m[1].trim() : '';
+}
+
+function normalizeStaticMain(html) {
+  return html
+    .replace(/index\.html#try-it/g, 'index.html#journey')
+    .replace(/index\.html#pricing/g, 'index.html#faq');
+}
+
+function staticPageHeadMeta({ pagePath, title, description, schemaType = 'WebPage' }) {
+  const url = `${SITE_URL}${pagePath}`;
+  const plainTitle = title.replace(/ \| Stylab$/, '');
+  const jsonLd = {
+    '@context': 'https://schema.org',
+    '@type': schemaType,
+    name: plainTitle,
+    description,
+    url,
+    inLanguage: 'en-US',
+    isPartOf: { '@type': 'WebSite', name: 'Stylab Virtual Try-On', url: `${SITE_URL}/` },
+  };
+  return `
+    <link rel="canonical" href="${url}">
+    <link rel="alternate" hreflang="en" href="${url}">
+    <link rel="alternate" hreflang="x-default" href="${url}">
+    <meta property="og:type" content="website">
+    <meta property="og:title" content="${escapeAttr(title)}">
+    <meta property="og:description" content="${escapeAttr(description)}">
+    <meta property="og:url" content="${url}">
+    <meta property="og:locale" content="en_US">
+    <meta property="og:image" content="${OG_IMAGE}">
+    <meta name="twitter:card" content="summary_large_image">
+    <meta name="twitter:title" content="${escapeAttr(plainTitle)}">
+    <meta name="twitter:description" content="${escapeAttr(description)}">
+    <meta name="twitter:image" content="${OG_IMAGE}">
+    <script type="application/ld+json">${JSON.stringify(jsonLd)}</script>`;
+}
+
+const CONTACT_FORM_SCRIPT = `
+    <script>
+        function handleSubmit(e) {
+            e.preventDefault();
+            var d = new FormData(e.target);
+            var subj = encodeURIComponent(d.get('subject'));
+            var body = encodeURIComponent('Name: ' + d.get('name') + '\\nEmail: ' + d.get('email') + '\\n\\nMessage:\\n' + d.get('message'));
+            window.location.href = 'mailto:contact@stylelab.com?subject=' + subj + '&body=' + body;
+        }
+    </script>`;
+
+function generateStaticPages() {
+  const staticDefs = [
+    {
+      file: 'contact.html',
+      title: 'Contact — Stylab Virtual Try-On',
+      description: 'Contact Stylab Virtual Try-On — Shopify app support, partnerships, and enterprise inquiries.',
+      pagePath: '/contact.html',
+      schemaType: 'ContactPage',
+      extraScripts: CONTACT_FORM_SCRIPT,
+    },
+    {
+      file: 'support.html',
+      title: 'Support — Stylab Virtual Try-On',
+      description: 'Get help with Stylab Virtual Try-On on Shopify — installation, widget setup, billing, and troubleshooting.',
+      pagePath: '/support.html',
+    },
+    {
+      file: 'confidentialite.html',
+      title: 'Privacy Policy — Stylab Virtual Try-On',
+      description: 'Stylab Virtual Try-On privacy policy — how we collect, use, and protect data for Shopify merchants and shoppers.',
+      pagePath: '/confidentialite.html',
+    },
+    {
+      file: 'conditions.html',
+      title: 'Terms of Service — Stylab Virtual Try-On',
+      description: 'Terms of service for Stylab Virtual Try-On — a Shopify virtual try-on app by Style Lab.',
+      pagePath: '/conditions.html',
+    },
+  ];
+
+  staticDefs.forEach((def) => {
+    const filePath = path.join(ROOT, def.file);
+    const raw = fs.readFileSync(filePath, 'utf8');
+    let body = extractMainContent(raw);
+    if (!body) throw new Error(`Missing <main> in ${def.file}`);
+    body = normalizeStaticMain(body);
+    const html = layout({
+      locale: 'en',
+      depth: 0,
+      title: def.title,
+      description: def.description,
+      body,
+      pagePath: def.pagePath,
+      headExtra: staticPageHeadMeta({
+        pagePath: def.pagePath,
+        title: def.title,
+        description: def.description,
+        schemaType: def.schemaType,
+      }),
+      extraScripts: def.extraScripts || '',
+    });
+    writeFile(def.file, html);
+  });
+}
+
 generateLocale('en');
 generateLocale('fr');
-console.log('Done. Generated EN + FR marketing pages.');
+generateStaticPages();
+console.log('Done. Generated EN + FR marketing pages + static pages.');

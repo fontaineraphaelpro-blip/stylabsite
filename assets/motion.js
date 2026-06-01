@@ -52,7 +52,7 @@
     '.versus-col',
     '.demo-flow-step',
     '.guide-step-row',
-    '.showcase-card',
+    '.install-step',
     '.testimonial-card',
     '.why-card',
     '.pp-proof-card',

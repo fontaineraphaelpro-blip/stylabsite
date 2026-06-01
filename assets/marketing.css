@@ -1,14 +1,8 @@
-/* Stylab marketing subpages — load AFTER stylab.css */
+/* Stylab marketing subpages — load AFTER stylab.css (no global .wrap / section overrides) */
 
 .page-main {
   padding-top: 5.25rem;
   overflow-x: clip;
-}
-
-.wrap {
-  width: min(1140px, 100% - 2.5rem);
-  margin-inline: auto;
-  padding-inline: clamp(1rem, 4vw, 2.5rem);
 }
 
 /* ── Page hero (matches homepage tone) ───────────────────── */
@@ -70,40 +64,14 @@
   justify-content: center;
 }
 
-/* ── Sections ─────────────────────────────────────────────── */
-.section { padding: clamp(2.5rem, 5vw, 4rem) 0; }
-.section-head { margin-bottom: 2rem; }
-.section-head.center { text-align: center; }
-.section-head.center .section-desc { margin-inline: auto; }
-
-.section-label {
-  display: inline-block;
-  font-family: var(--mono);
-  font-size: 0.68rem;
-  letter-spacing: 0.14em;
-  text-transform: uppercase;
-  color: var(--text-soft);
-  background: var(--green-50);
-  border: 1px solid var(--border);
-  padding: 0.3rem 0.75rem;
-  border-radius: 999px;
-  margin-bottom: 0.85rem;
-}
-
-.section-title {
-  font-family: var(--display);
+/* ── Sections (scoped — does not override homepage) ─────────── */
+.page-main .section { padding: clamp(2.5rem, 5vw, 4rem) 0; }
+.page-main .section-head { margin-bottom: 2rem; }
+.page-main .section-title {
   font-size: clamp(1.45rem, 2.8vw, 2rem);
-  font-weight: 800;
-  letter-spacing: -0.03em;
-  line-height: 1.12;
-  color: var(--text);
 }
-
-.section-desc {
-  color: var(--text-soft);
-  margin-top: 0.65rem;
+.page-main .section-desc {
   max-width: 40rem;
-  line-height: 1.65;
 }
 
 /* ── Glass cards (dark — not white) ───────────────────────── */
@@ -283,7 +251,7 @@
   margin: 1.25rem 0;
   padding: 1rem 1.15rem;
   border-left: 3px solid var(--violet);
-  background: rgba(124,58,237,0.08);
+  background: rgba(87,79,230,0.08);
   border-radius: 0 var(--radius-sm) var(--radius-sm) 0;
   font-size: 0.92rem;
   color: var(--text-soft);
@@ -302,8 +270,8 @@
   margin: 0 auto 2rem;
   padding: 1.15rem 1.25rem;
   border-radius: var(--radius-md);
-  background: rgba(124,58,237,0.1);
-  border: 1px solid rgba(124,58,237,0.22);
+  background: rgba(87,79,230,0.1);
+  border: 1px solid rgba(87,79,230,0.22);
 }
 
 .article-tldr-label {
@@ -392,7 +360,7 @@
 
 .compare-table tr:last-child td { border-bottom: none; }
 
-.compare-table .yes { color: #86efac; font-weight: 600; }
+.compare-table .yes { color: var(--violet-dk); font-weight: 600; }
 .compare-table .no { color: var(--text-dim); }
 .compare-table .partial { color: var(--text-soft); }
 
@@ -427,7 +395,7 @@
 .roi-grid input[type="number"]:focus {
   outline: none;
   border-color: var(--violet);
-  box-shadow: 0 0 0 3px rgba(124,58,237,0.2);
+  box-shadow: 0 0 0 3px rgba(87,79,230,0.2);
 }
 
 .roi-grid input[type="range"] {
@@ -465,7 +433,7 @@
   font-family: var(--display);
 }
 
-.disclaimer {
+.page-main .roi-form .disclaimer {
   font-size: 0.78rem;
   color: var(--text-dim);
   line-height: 1.55;
@@ -475,32 +443,40 @@
   border-radius: var(--radius-sm);
 }
 
-/* ── Bottom CTA (matches homepage final) ──────────────────── */
-.cta-final {
-  max-width: 580px;
+/* ── Bottom CTA (matches homepage dark final box) ─────────── */
+.page-main .cta-final {
+  max-width: 620px;
   margin-inline: auto;
   padding: clamp(2.5rem, 5vw, 3rem) 2rem;
   text-align: center;
-  background: var(--green-50);
-  border: 1px solid var(--border-md);
+  background:
+    radial-gradient(ellipse 80% 90% at 50% -10%, rgba(87,79,230,0.45), transparent 60%),
+    linear-gradient(160deg, var(--ink-800), var(--ink-900));
+  border: 1px solid rgba(255,255,255,0.08);
   border-radius: var(--radius-lg);
-  box-shadow: 0 24px 64px -32px rgba(0,0,0,0.5);
+  box-shadow: 0 40px 90px -30px rgba(16,14,40,0.55);
 }
 
-.cta-final h2 {
+.page-main .cta-final h2 {
   font-family: var(--display);
   font-size: clamp(1.4rem, 2.8vw, 1.85rem);
   font-weight: 800;
   letter-spacing: -0.03em;
   margin-bottom: 0.65rem;
-  color: var(--text);
+  color: #fff;
 }
 
-.cta-final p {
-  color: var(--text-soft);
+.page-main .cta-final p {
+  color: rgba(255,255,255,0.72);
   max-width: 28rem;
   margin: 0 auto 1.5rem;
   line-height: 1.6;
+}
+
+.page-main .cta-final .btn-ghost {
+  color: #fff;
+  border-color: rgba(255,255,255,0.22);
+  background: rgba(255,255,255,0.06);
 }
 
 .cta-final .btns {
@@ -521,7 +497,7 @@
   background: rgba(255,255,255,0.94);
   backdrop-filter: blur(16px);
   border-top: 1px solid var(--border-md);
-  box-shadow: 0 -8px 32px rgba(91,33,182,0.10);
+  box-shadow: 0 -8px 32px rgba(55,47,174,0.10);
   transform: translateY(110%);
   opacity: 0;
   pointer-events: none;

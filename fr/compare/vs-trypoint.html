@@ -27,60 +27,57 @@
     <script type="application/ld+json">{"@context":"https://schema.org","@type":"BreadcrumbList","itemListElement":[{"@type":"ListItem","position":1,"name":"Comparer","item":"https://www.stylabtryon.site/fr/compare/"},{"@type":"ListItem","position":2,"name":"Stylab vs TryPoint","item":"https://www.stylabtryon.site/fr/compare/vs-trypoint.html"}]}</script>
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=Inter+Tight:wght@400;500;600;700;800&family=Geist:wght@500;600;700;800;900&display=swap" rel="stylesheet">
-    <link rel="stylesheet" href="../../assets/stylab.css">
-    <link rel="stylesheet" href="../../assets/marketing.css">
+    <link href="https://fonts.googleapis.com/css2?family=Geist:wght@400;500;600;700;800&family=Geist+Mono:wght@400;500&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="../../assets/home.css">
+    <link rel="stylesheet" href="../../assets/pages.css">
 </head>
-<body class="js-reveal">
-    <div class="grid-bg" aria-hidden="true"></div>
-    <div class="ambient" aria-hidden="true"></div>
-    <div class="orb-field" aria-hidden="true">
-        <div class="orb orb-1"></div>
-        <div class="orb orb-2"></div>
-        <div class="orb orb-3"></div>
+<body class="home page-sub">
+    <div class="page-bg" aria-hidden="true">
+        <div class="page-bg__base"></div>
+        <div class="page-bg__grid"></div>
+        <div class="page-bg__radial"></div>
+        <div class="orb orb--wide orb--wide-1"></div>
+        <div class="orb orb--wide orb--wide-2"></div>
     </div>
-    <header class="header" id="header">
-        <div class="wrap nav">
-            <a href="../index.html" class="brand"><span class="brand-mark"><img src="../../assets/logo.png" alt="" width="36" height="36"></span><span class="brand-name">Stylab <span>Virtual Try-On</span></span></a>
-            <nav class="nav-links" aria-label="Main">
-                <a href="../index.html#product">Fonctionnalités</a>
-                <a href="../index.html#pricing">Tarifs</a>
-                <div class="nav-dropdown">
-                    <button type="button" class="nav-dropdown-btn" aria-haspopup="true" aria-expanded="false">Explorer<span class="nav-chevron" aria-hidden="true"></span></button>
-                    <div class="nav-dropdown-menu">
-                        <a href="../solutions/">Solutions</a>
-                        <a href="../compare/" class="active">Comparer</a>
-                        <a href="../resources/">Ressources</a>
-                        <a href="../resources/blog/">Blog</a>
-                    </div>
+    <div class="page-shell">
+    <header class="site-header" id="siteHeader">
+        <div class="container site-header__inner">
+            <a href="../index.html" class="site-logo" aria-label="Stylab Virtual Try-On">
+                <span class="site-logo__mark"><img src="../../assets/logo.png" alt="" width="32" height="32"></span>
+                Stylab <span>Virtual Try-On</span>
+            </a>
+            <div class="site-header__cluster">
+                <nav class="site-nav" aria-label="Main">
+                    <a href="../index.html#journey">Démo live</a>
+                    <a href="../compare/" aria-current="page">Comparer</a>
+                    <a href="../solutions/">Solutions</a>
+                    <a href="../resources/">Ressources</a>
+                    <a href="/compare/vs-trypoint.html" hreflang="en" lang="en">EN</a>
+                </nav>
+                <div class="site-header__actions">
+                    <a href="https://apps.shopify.com/try-on-stylelab" class="btn btn--primary" target="_blank" rel="noopener"><img class="shopify-icon" src="../../assets/shopify-icon-logo.svg" alt="" width="20" height="20" aria-hidden="true">Installer sur Shopify</a>
                 </div>
-                <a href="/compare/vs-trypoint.html" class="lang-switch">EN</a>
-            </nav>
-            <div class="nav-actions">
-                <a href="https://apps.shopify.com/try-on-stylelab" class="btn btn-primary" target="_blank" rel="noopener"><img class="shopify-icon" src="../../assets/shopify-icon-logo.svg" alt="" width="20" height="20" aria-hidden="true">Installer sur Shopify</a>
-                <button class="menu-btn" id="menuBtn" type="button" aria-label="Menu"><span></span><span></span><span></span></button>
             </div>
+            <button type="button" class="menu-toggle" id="menuBtn" aria-label="Ouvrir le menu" aria-expanded="false"><span></span></button>
         </div>
     </header>
-    <div class="mobile-drawer" id="mobileDrawer">
-        <a href="../index.html#product">Fonctionnalités</a>
-        <a href="../index.html#pricing">Tarifs</a>
-        <span class="drawer-label">Explorer</span>
-        <a href="../solutions/" class="drawer-sub">Solutions</a>
-        <a href="../compare/" class="drawer-sub">Comparer</a>
-        <a href="../resources/" class="drawer-sub">Ressources</a>
-        <a href="../resources/blog/" class="drawer-sub">Blog</a>
-        <a href="../index.html#try-it">Démo live</a>
-        <a href="/compare/vs-trypoint.html" class="lang-switch">EN</a>
-        <a href="https://apps.shopify.com/try-on-stylelab" class="btn btn-primary" target="_blank" rel="noopener"><img class="shopify-icon" src="../../assets/shopify-icon-logo.svg" alt="" width="20" height="20" aria-hidden="true">Installer sur Shopify</a>
-    </div>
+    <nav class="mobile-nav" id="mobileNav" aria-label="Mobile">
+        <a href="../index.html#journey">Démo live</a>
+        <a href="../index.html#faq">FAQ</a>
+        <a href="../compare/">Comparer</a>
+        <a href="../solutions/">Solutions</a>
+        <a href="../resources/">Ressources</a>
+        <a href="../resources/blog/">Blog</a>
+        <a href="/compare/vs-trypoint.html">EN</a>
+        <a href="https://apps.shopify.com/try-on-stylelab" class="btn btn--primary" target="_blank" rel="noopener"><img class="shopify-icon" src="../../assets/shopify-icon-logo.svg" alt="" width="20" height="20" aria-hidden="true">Installer sur Shopify</a>
+    </nav>
     <main class="page-main">
         <section class="page-hero"><div class="wrap reveal">
             <p class="breadcrumb"><a href="../compare/">Comparer</a> / Stylab vs TryPoint</p>
             <p class="pill">Comparaison</p>
             <h1>Stylab vs TryPoint</h1>
             <p class="lead">TryPoint vs Stylab — essayage orienté enterprise vs app Shopify self-serve avec quotas, toggles et A/B intégré.</p>
-            <div class="btns"><a href="https://apps.shopify.com/try-on-stylelab" class="btn btn-primary" target="_blank" rel="noopener"><img class="shopify-icon" src="../../assets/shopify-icon-logo.svg" alt="" width="20" height="20" aria-hidden="true">Installer Stylab sur Shopify</a><a href="../index.html#try-it" class="btn btn-ghost">Voir la démo</a></div>
+            <div class="btns"><a href="https://apps.shopify.com/try-on-stylelab" class="btn btn--primary" target="_blank" rel="noopener"><img class="shopify-icon" src="../../assets/shopify-icon-logo.svg" alt="" width="20" height="20" aria-hidden="true">Installer Stylab sur Shopify</a><a href="../index.html#journey" class="btn btn--ghost">Voir la démo</a></div>
         </div></section>
         <section class="section section-green"><div class="wrap prose reveal"><p>TryPoint et Stylab peuvent figurer sur la même longlist. TryPoint = souvent commercial et scope custom. Stylab = install Shopify, toggles autonomes, analytics admin.</p>
 <p>Comparez le délai de pilote : cinq SKU en deux semaines avec signaux panier ?</p></div></section>
@@ -114,24 +111,24 @@
             <div class="section-head reveal"><p class="section-label">Autres comparaisons</p><h2 class="section-title">Comparer d'autres alternatives</h2></div>
             <div class="hub-grid reveal"><a href="vs-genlook.html" class="hub-card"><h3>Stylab vs Genlook</h3><p>Deux apps Shopify d'essayage — comparez A/B testing, facturation, flat-lays, et le besoin de capture…</p><span class="arrow">Lire la comparaison →</span></a><a href="vs-antla.html" class="hub-card"><h3>Stylab vs Antla</h3><p>Comparez deux apps Shopify d'essayage sur installation, mesure, flat-lays et facturation à votre vol…</p><span class="arrow">Lire la comparaison →</span></a><a href="vs-banuba.html" class="hub-card"><h3>Stylab vs Banuba</h3><p>Banuba vise SDK et AR enterprise. Stylab est une app Shopify sans code — comparez effort, délai PDP …</p><span class="arrow">Lire la comparaison →</span></a><a href="vs-mirrar.html" class="hub-card"><h3>Stylab vs MirrAR</h3><p>MirrAR couvre retail mode omnicanal. Stylab se concentre sur les PDP apparel Shopify avec widget mes…</p><span class="arrow">Lire la comparaison →</span></a></div>
             <p class="reveal" style="text-align:center;margin-top:1.5rem;"><a href="../compare/">Voir toutes les comparaisons →</a></p>
-        </div></section><section class="section"><div class="wrap"><div class="cta-final reveal"><h2>Ajoutez l'essayage IA à vos pages produit Shopify</h2><p>Commencez sur quelques produits, mesurez l'engagement, et voyez si l'essayage aide vos clients à acheter avec plus de confiance.</p><div class="btns"><a href="https://apps.shopify.com/try-on-stylelab" class="btn btn-primary" target="_blank" rel="noopener"><img class="shopify-icon" src="../../assets/shopify-icon-logo.svg" alt="" width="20" height="20" aria-hidden="true">Installer sur Shopify</a><a href="../index.html#try-it" class="btn btn-ghost">Voir la démo</a></div></div></div></section></main>
-    <footer>
-        <div class="wrap footer-top">
-            <div class="footer-brand">
-                <a href="../index.html" class="brand">
-                    <span class="brand-mark"><img src="../../assets/logo.png" alt="" width="36" height="36"></span>
-                    <span class="brand-name">Stylab <span>Virtual Try-On</span></span>
+        </div></section><section class="section"><div class="wrap"><div class="cta-final reveal"><h2>Ajoutez l'essayage IA à vos pages produit Shopify</h2><p>Commencez sur quelques produits, mesurez l'engagement, et voyez si l'essayage aide vos clients à acheter avec plus de confiance.</p><div class="btns"><a href="https://apps.shopify.com/try-on-stylelab" class="btn btn--primary" target="_blank" rel="noopener"><img class="shopify-icon" src="../../assets/shopify-icon-logo.svg" alt="" width="20" height="20" aria-hidden="true">Installer sur Shopify</a><a href="../index.html#journey" class="btn btn--ghost">Voir la démo</a></div></div></div></section></main>
+    <footer class="site-footer">
+        <div class="container container--wide site-footer__grid" data-reveal-stagger>
+            <div class="site-footer__brand" data-reveal="up">
+                <a href="../index.html" class="site-logo">
+                    <span class="site-logo__mark"><img src="../../assets/logo.png" alt="" width="32" height="32"></span>
+                    Stylab <span>Virtual Try-On</span>
                 </a>
                 <p>Essayage virtuel IA pour marques apparel Shopify. Aidez vos clients à visualiser vos produits avant d'acheter.</p>
             </div>
-            <div class="footer-col"><h4>Solutions</h4>
+            <div class="site-footer__col" data-reveal="up"><h4>Solutions</h4>
                 <a href="../solutions/fashion-brands.html">Marques mode</a>
                 <a href="../solutions/streetwear.html">Streetwear</a>
                 <a href="../solutions/enterprise.html">Enterprise</a>
                 <a href="../solutions/prestashop.html">PrestaShop</a>
                 <a href="../solutions/api.html">API</a>
             </div>
-            <div class="footer-col"><h4>Alternatives Shopify</h4>
+            <div class="site-footer__col" data-reveal="up"><h4>Alternatives Shopify</h4>
                 <a href="../compare/vs-genlook.html">vs Genlook</a>
                 <a href="../compare/vs-antla.html">vs Antla</a>
                 <a href="../compare/vs-banuba.html">vs Banuba</a>
@@ -140,14 +137,14 @@
                 <a href="../compare/vs-looksy.html">vs Looksy</a>
                 <a href="../compare/vs-trypoint.html">vs TryPoint</a>
             </div>
-            <div class="footer-col"><h4>Alternatives API</h4>
+            <div class="site-footer__col" data-reveal="up"><h4>Alternatives API</h4>
                 <a href="../compare/api/vs-fashn-ai.html">vs FASHN AI</a>
                 <a href="../compare/api/vs-aiuta.html">vs Aiuta</a>
                 <a href="../compare/api/vs-pixelcut.html">vs Pixelcut</a>
                 <a href="../compare/api/vs-replicate.html">vs Replicate</a>
                 <a href="../compare/api/vs-fal-ai.html">vs Fal AI</a>
             </div>
-            <div class="footer-col"><h4>Ressources</h4>
+            <div class="site-footer__col" data-reveal="up"><h4>Ressources</h4>
                 <a href="../resources/free-tools.html">Outils gratuits</a>
                 <a href="../resources/blog/">Blog</a>
                 <a href="../resources/documentation.html">Documentation</a>
@@ -158,9 +155,12 @@
                 <a href="../../conditions.html">Conditions générales</a>
             </div>
         </div>
-        <div class="wrap footer-copy">© 2026 Style Lab · Stylab Virtual Try-On</div>
+        <div class="container container--wide site-footer__copy">© 2026 Style Lab · Stylab Virtual Try-On</div>
     </footer>
-    <script src="../../assets/marketing.js"></script>
-    <script src="../../assets/motion.js" defer></script>
+    </div>
+    <div class="sticky-cta">
+        <a href="https://apps.shopify.com/try-on-stylelab" class="btn btn--primary" target="_blank" rel="noopener"><img class="shopify-icon" src="../../assets/shopify-icon-logo.svg" alt="" width="20" height="20" aria-hidden="true">Installer sur Shopify</a>
+    </div>
+    <script src="../../assets/home.js" defer></script>
 </body>
 </html>
