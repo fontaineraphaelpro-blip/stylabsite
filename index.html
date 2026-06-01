@@ -3,8 +3,8 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Stylab Virtual Try-On | AI Try-On for Shopify Apparel Stores</title>
-    <meta name="description" content="Add AI virtual try-on to your Shopify product pages. Let shoppers see themselves wearing your apparel, reduce purchase hesitation, and measure try-on impact.">
+    <title>Stylab Virtual Try-On — See It On You, Then Install Free on Shopify</title>
+    <meta name="description" content="AI virtual try-on for Shopify apparel: try the live demo, then install free in ~5 min. 77.8% try-on → add-to-cart on our pilot store. 50 free try-ons/mo, no credit card.">
     <meta name="keywords" content="Shopify virtual try-on, AI try-on app, virtual fitting room Shopify, Shopify apparel try-on, clothing virtual try-on, AI fitting room, fashion Shopify app, try on clothes online">
     <meta name="robots" content="index, follow, max-image-preview:large">
     <link rel="canonical" href="https://www.stylabtryon.site/">
@@ -17,19 +17,18 @@
     <meta property="og:locale" content="en_US">
     <meta property="og:locale:alternate" content="fr_FR">
     <meta property="og:title" content="Stylab Virtual Try-On — AI Try-On for Shopify Apparel">
-    <meta property="og:description" content="Let shoppers see themselves wearing your products before they buy. No-code setup, built-in analytics, and a free plan to get started.">
+    <meta property="og:description" content="Free Shopify install — shoppers see themselves in your clothes in ~30s. 77.8% try-on → cart on our pilot store. No theme code required.">
     <meta property="og:image" content="https://www.stylabtryon.site/assets/screenshots/result-modal.png">
     <meta property="og:url" content="https://www.stylabtryon.site/">
     <meta name="twitter:card" content="summary_large_image">
     <meta name="twitter:title" content="Stylab Virtual Try-On — AI Try-On for Shopify Apparel">
-    <meta name="twitter:description" content="Let shoppers see themselves wearing your products before they buy. No-code setup, built-in analytics, and a free plan to get started.">
+    <meta name="twitter:description" content="Install free on Shopify. AI try-on in ~30s on your PDP — 50 try-ons/mo included, no credit card.">
     <meta name="twitter:image" content="https://www.stylabtryon.site/assets/screenshots/result-modal.png">
     <link rel="icon" type="image/png" href="assets/logo.png">
     <link rel="apple-touch-icon" href="assets/logo.png">
-    <link rel="preload" as="image" href="assets/screenshots/result-modal.png" fetchpriority="high">
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=Inter+Tight:wght@400;500;600;700;800&family=Geist:wght@500;600;700;800;900&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Geist:wght@400;500;600;700;800&family=Geist+Mono:wght@400;500&display=swap" rel="stylesheet">
     <link rel="author" href="/llms.txt">
     <script type="application/ld+json">
     {
@@ -90,7 +89,7 @@
             {"@type": "Question", "name": "Can I choose which products use try-on?", "acceptedAnswer": {"@type": "Answer", "text": "Yes. You can enable or disable try-on by product from your Shopify admin."}},
             {"@type": "Question", "name": "Can I measure performance?", "acceptedAnswer": {"@type": "Answer", "text": "Yes. Stylab includes analytics for try-on sessions, usage, add-to-cart activity, and A/B test buckets."}},
             {"@type": "Question", "name": "Does it work on mobile?", "acceptedAnswer": {"@type": "Answer", "text": "Yes. The try-on experience is designed for mobile and desktop shoppers on standard Shopify product pages."}},
-            {"@type": "Question", "name": "How much does Stylab Virtual Try-On cost?", "acceptedAnswer": {"@type": "Answer", "text": "Plans start free (50 successful try-ons/month). Paid plans: Starter $19, Growth $49, Scale $149. All billing runs through Shopify."}}
+            {"@type": "Question", "name": "How much does it cost to start?", "acceptedAnswer": {"@type": "Answer", "text": "Free to install with 50 successful try-ons per month. No credit card required. Upgrade only when you need more volume — billed through Shopify."}}
           ]
         },
         {
@@ -110,6 +109,11 @@
     }
     </script>
     <link rel="stylesheet" href="assets/stylab.css">
+    <link rel="stylesheet" href="assets/landing.css">
+    <link rel="stylesheet" href="assets/vton-reel.css">
+    <link rel="preload" as="image" href="assets/screenshots/storefront-product.png" fetchpriority="high">
+    <link rel="preload" as="image" href="assets/screenshots/result-modal.png">
+    <link rel="preload" as="image" href="assets/screenshots/upload-modal.png">
 </head>
 <body class="js-reveal pp-layout">
     <script>
@@ -128,16 +132,6 @@
     </div>
     <div class="grain" aria-hidden="true"></div>
 
-    <div class="pp-ticker" role="status" aria-live="polite">
-        <div class="pp-ticker-inner">
-            <span><strong id="ppLiveCounter">52</strong> try-ons on demo stores today</span>
-            <span class="pp-ticker-sep" aria-hidden="true">|</span>
-            <span>Free plan: <strong>50 try-ons/mo</strong></span>
-            <span class="pp-ticker-sep" aria-hidden="true">|</span>
-            <span>Install in <strong>~5 min</strong> — no credit card</span>
-        </div>
-    </div>
-
     <header class="header" id="header">
         <div class="wrap nav">
             <a href="/" class="brand" aria-label="Stylab Virtual Try-On">
@@ -145,60 +139,305 @@
                 <span class="brand-name">Stylab <span>Virtual Try-On</span></span>
             </a>
             <nav class="nav-links" aria-label="Main">
-                <a href="#journey">Demo</a>
-                <a href="#pricing">Pricing</a>
+                <a href="#versus">Why it converts</a>
+                <a href="#journey">Live demo</a>
+                <a href="#showcase">Setup</a>
                 <a href="#faq">FAQ</a>
                 <a href="/fr/" class="lang-switch" hreflang="fr" lang="fr">FR</a>
             </nav>
             <div class="nav-actions">
-                <a href="https://apps.shopify.com/try-on-stylelab" class="btn btn-primary" target="_blank" rel="noopener"><img class="shopify-icon" src="assets/shopify-icon-logo.svg" alt="" width="20" height="20" aria-hidden="true">Install on Shopify</a>
+                <a href="https://apps.shopify.com/try-on-stylelab" class="btn btn-primary" target="_blank" rel="noopener"><img class="shopify-icon" src="assets/shopify-icon-logo.svg" alt="" width="20" height="20" aria-hidden="true">Install free</a>
                 <button class="menu-btn" id="menuBtn" aria-label="Menu" type="button"><span></span><span></span><span></span></button>
             </div>
         </div>
-        <div class="funnel-bar wrap" id="funnelBar" aria-label="Your path to try-on" hidden>
+        <div class="funnel-bar wrap" id="funnelBar" aria-label="Your path to install">
             <div class="funnel-bar-inner">
                 <div class="funnel-steps">
-                    <div class="funnel-step active" data-funnel-step="1"><span class="num">1</span><span class="funnel-step-label">Try live demo</span></div>
+                    <div class="funnel-step active" data-funnel-step="1"><span class="num">1</span><span class="funnel-step-label">See the flow</span></div>
                     <span class="funnel-step-sep" aria-hidden="true">→</span>
-                    <div class="funnel-step" data-funnel-step="2"><span class="num">2</span><span class="funnel-step-label">See AI result</span></div>
+                    <div class="funnel-step" data-funnel-step="2"><span class="num">2</span><span class="funnel-step-label">Try on you</span></div>
                     <span class="funnel-step-sep" aria-hidden="true">→</span>
-                    <div class="funnel-step" data-funnel-step="3"><span class="num">3</span><span class="funnel-step-label">Install free</span></div>
+                    <div class="funnel-step" data-funnel-step="3"><span class="num">3</span><span class="funnel-step-label">Get your result</span></div>
+                    <span class="funnel-step-sep" aria-hidden="true">→</span>
+                    <div class="funnel-step" data-funnel-step="4"><span class="num">4</span><span class="funnel-step-label">Install free</span></div>
                 </div>
                 <div class="funnel-bar-cta">
-                    <a href="#journey" class="btn btn-primary funnel-cta-dynamic" id="funnelBarCta"><span class="long">Try demo now</span><span class="short">Demo</span></a>
+                    <a href="#versus" class="btn btn-primary funnel-cta-dynamic" id="funnelBarCta"><span class="long">See how it works</span><span class="short">How</span></a>
                 </div>
             </div>
         </div>
     </header>
     <div class="mobile-drawer" id="mobileDrawer">
-        <a href="#journey">Demo</a>
-        <a href="#pricing">Pricing</a>
+        <a href="#versus">Why it converts</a>
+        <a href="#journey">Live demo</a>
+        <a href="#showcase">Setup</a>
         <a href="#faq">FAQ</a>
         <a href="/fr/" class="lang-switch">Français</a>
-        <a href="https://apps.shopify.com/try-on-stylelab" class="btn btn-primary" target="_blank" rel="noopener"><img class="shopify-icon" src="assets/shopify-icon-logo.svg" alt="" width="20" height="20" aria-hidden="true">Install on Shopify</a>
+        <a href="https://apps.shopify.com/try-on-stylelab" class="btn btn-primary" target="_blank" rel="noopener"><img class="shopify-icon" src="assets/shopify-icon-logo.svg" alt="" width="20" height="20" aria-hidden="true">Install free</a>
     </div>
 
     <main>
-        <!-- HERO — PromptPilot-style centered -->
-        <section class="pp-hero">
-            <div class="wrap pp-hero-inner reveal visible">
-                <p class="pp-hero-tag">Shopify App Store · Free plan · No credit card</p>
-                <h1>Stop losing shoppers who can&rsquo;t <span class="text-gradient">picture themselves</span> in your clothes</h1>
-                <p class="pp-hero-lead">Add AI virtual try-on to your product pages. Shoppers upload a photo, see the fit, add to cart — you install in ~5 minutes.</p>
-                <div class="pp-hero-cta">
-                    <a href="https://apps.shopify.com/try-on-stylelab" class="btn btn-primary" target="_blank" rel="noopener"><img class="shopify-icon" src="assets/shopify-icon-logo.svg" alt="" width="20" height="20" aria-hidden="true">Install free on Shopify</a>
-                    <a href="#journey" class="btn btn-ghost">Try on yourself — 30 sec</a>
+        <!-- HERO -->
+        <section class="pp-hero pp-hero-split">
+            <div class="wrap pp-hero-grid">
+                <div class="pp-hero-copy">
+                    <p class="pp-hero-eyebrow"><span class="eyebrow-pill">Shopify App Store · 50 free try-ons/mo · no card</span></p>
+                    <h1>Stop losing sales to &ldquo;will it fit?&rdquo; — let shoppers <span class="text-gradient">see it on them</span></h1>
+                    <p class="pp-hero-lead">Stylab adds AI virtual try-on to your product pages: one photo, a realistic preview in ~30 seconds, then add to cart. Install from Shopify in ~5 minutes — no theme code, no developer.</p>
+                    <div class="pp-hero-cta">
+                        <a href="#journey" class="btn btn-primary btn-shine">Try it on yourself (30s) →</a>
+                        <a href="https://apps.shopify.com/try-on-stylelab" class="btn btn-ghost" target="_blank" rel="noopener"><img class="shopify-icon" src="assets/shopify-icon-logo.svg" alt="" width="20" height="20" aria-hidden="true">Install free — skip demo</a>
+                    </div>
+                    <p class="pp-hero-note">Merchants who complete the demo install the same day · cancel anytime in Shopify</p>
+                    <div class="hero-metrics" aria-label="Key metrics">
+                        <div><strong>77.8%</strong><span>Try-on → add-to-cart (pilot store)</span></div>
+                        <div><strong>~30s</strong><span>Shopper preview time</span></div>
+                        <div><strong>~5 min</strong><span>Merchant setup time</span></div>
+                    </div>
                 </div>
-                <p class="pp-hero-trust">Pilot store: <strong>77.8% try-on → add-to-cart</strong> · 50 free try-ons/mo</p>
+                <div class="pp-hero-visual pp-hero-visual--duo reveal" aria-hidden="true">
+                    <div class="vton-reel vton-reel--hero vton-reel--shopper" id="heroReel" style="--reel-dur:7.5s">
+                        <div class="vton-reel__glow" aria-hidden="true"></div>
+                        <div class="vton-device">
+                            <div class="vton-device__island" aria-hidden="true"></div>
+                            <div class="vton-device__screen">
+                                <div class="vton-reel__frames">
+                                    <img class="vton-reel__frame" src="assets/screenshots/storefront-product.png" alt="Shopify product page with Stylab try-on button" width="390" height="844" loading="eager" decoding="async" fetchpriority="high">
+                                    <img class="vton-reel__frame" src="assets/screenshots/upload-modal.png" alt="Shopper uploads a photo in the try-on widget" width="390" height="844" loading="lazy" decoding="async">
+                                    <img class="vton-reel__frame" src="assets/screenshots/result-modal.png" alt="AI virtual try-on result on the customer" width="390" height="844" loading="eager" decoding="async">
+                                </div>
+                                <div class="vton-reel__process" aria-hidden="true">
+                                    <div class="vton-reel__ring"></div>
+                                    <span>AI fitting in ~28s</span>
+                                    <div class="vton-reel__bar"><i></i></div>
+                                </div>
+                                <div class="vton-reel__success" aria-hidden="true">✓ Added to cart</div>
+                                <div class="vton-reel__glare" aria-hidden="true"></div>
+                            </div>
+                        </div>
+                        <ul class="vton-reel__captions">
+                            <li class="is-live">Product page</li>
+                            <li>Photo upload</li>
+                            <li>AI preview</li>
+                            <li>Add to cart</li>
+                        </ul>
+                        <span class="vton-reel__badge-live">Real app on a live store · <strong>auto-play demo</strong></span>
+                    </div>
+                    <div class="vton-hero-admin" aria-hidden="true">
+                        <div class="vton-browser">
+                            <div class="vton-browser__chrome">
+                                <div class="vton-browser__dots" aria-hidden="true"><i></i><i></i><i></i></div>
+                                <span class="vton-browser__url">admin · Stylab · Analytics</span>
+                            </div>
+                            <div class="vton-browser__viewport">
+                                <img src="assets/screenshots/dashboard.png" alt="Stylab analytics dashboard — try-on to cart metrics" width="1200" height="700" loading="lazy" decoding="async">
+                            </div>
+                        </div>
+                        <p class="vton-reel__badge-live" style="margin-top:0.5rem"><strong>77.8%</strong> try-on → cart on pilot store</p>
+                    </div>
+                </div>
             </div>
         </section>
 
-        <!-- GUIDED JOURNEY — demo widget -->
+        <div class="trust-marquee" aria-hidden="true">
+            <div class="trust-marquee-inner">
+                <span>77.8% try-on → cart</span><span>Live in ~5 minutes</span><span>50 free try-ons/mo</span><span>No credit card</span><span>No theme edits</span><span>Per-product control</span><span>Photos not stored</span><span>Shopify-native billing</span>
+                <span>77.8% try-on → cart</span><span>Live in ~5 minutes</span><span>50 free try-ons/mo</span><span>No credit card</span><span>No theme edits</span><span>Per-product control</span><span>Photos not stored</span><span>Shopify-native billing</span>
+            </div>
+        </div>
+
+        <section class="pp-proof-band reveal" id="proof" aria-label="Proof points">
+            <div class="wrap">
+                <div class="pp-proof-grid">
+                    <div class="pp-proof-card"><strong>77.8%</strong><span>Try-on sessions that add to cart (pilot Shopify store)</span></div>
+                    <div class="pp-proof-card"><strong>~30s</strong><span>From photo upload to AI preview on the shopper&rsquo;s body</span></div>
+                    <div class="pp-proof-card"><strong>~5 min</strong><span>Typical time from App Store install to live on your PDP</span></div>
+                    <div class="pp-proof-card"><strong>$0</strong><span>Start free — 50 successful try-ons/mo, no card required</span></div>
+                </div>
+            </div>
+        </section>
+
+        <!-- VERSUS -->
+        <section id="versus" class="pp-versus reveal">
+            <div class="wrap">
+                <div class="section-head center">
+                    <p class="section-label">The conversion gap</p>
+                    <h2 class="section-title">Your traffic is fine — confidence on the product page isn&rsquo;t</h2>
+                    <p class="section-desc">Same SKU, same ad spend. Without try-on they imagine the fit. With Stylab they see it — and 77.8% of try-ons add to cart on our pilot store.</p>
+                </div>
+                <div class="versus-tabs" role="tablist" aria-label="Compare scenarios">
+                    <button type="button" class="versus-tab active" data-versus="jersey" role="tab" aria-selected="true">Soccer jersey</button>
+                    <button type="button" class="versus-tab" data-versus="hoodie" role="tab" aria-selected="false">Hoodie</button>
+                    <button type="button" class="versus-tab" data-versus="mobile" role="tab" aria-selected="false">Mobile shopper</button>
+                </div>
+                <div class="versus-panels">
+                    <div class="versus-panel active" data-versus="jersey" role="tabpanel">
+                        <div class="versus-grid" data-versus-product="jersey">
+                            <div class="versus-col before">
+                                <div class="versus-col-head"><h3>Without try-on</h3><div class="versus-score bad"><span data-score="before">28</span> <small>/100 buy intent</small></div></div>
+                                <p class="versus-quote" data-versus-quote="before">They like the product — but leave unsure if it suits them. Cart abandoned.</p>
+                                <ul class="versus-bullets"><li>Guessing the fit</li><li>Size chart drop-off</li><li>More returns later</li></ul>
+                                <div class="versus-stage" aria-hidden="true">
+                                    <div class="vton-reel vton-reel--compact vton-reel--static">
+                                        <div class="vton-device">
+                                            <div class="vton-device__screen">
+                                                <div class="vton-reel__frames">
+                                                    <img class="vton-reel__frame" src="assets/screenshots/storefront-product.png" alt="" width="390" height="844" loading="lazy" decoding="async">
+                                                </div>
+                                                <span class="versus-warn">No try-on</span>
+                                                <span class="versus-bounce" aria-hidden="true">↗</span>
+                                                <div class="vton-reel__glare" aria-hidden="true"></div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="versus-mid" aria-hidden="true">VS</div>
+                            <div class="versus-col after">
+                                <div class="versus-col-head"><h3>With Stylab</h3><div class="versus-score good"><span data-score="after">92</span> <small>/100 buy intent</small></div></div>
+                                <span class="versus-delta" data-versus-delta>↑ +64 pts intent</span>
+                                <p class="versus-quote" data-versus-quote="after">They see the jersey on themselves in ~30s — then hit add to cart.</p>
+                                <ul class="versus-bullets"><li>77.8% try-on → cart (pilot)</li><li>Widget on your PDP</li><li>Tracked in Shopify admin</li></ul>
+                                <div class="versus-stage" aria-hidden="true">
+                                    <div class="vton-reel vton-reel--compact vton-reel--shopper" style="--reel-dur:5.5s">
+                                        <div class="vton-device">
+                                            <div class="vton-device__screen">
+                                                <div class="vton-reel__frames">
+                                                    <img class="vton-reel__frame" src="assets/screenshots/storefront-product.png" alt="" width="390" height="844" loading="lazy">
+                                                    <img class="vton-reel__frame" src="assets/screenshots/upload-modal.png" alt="" width="390" height="844" loading="lazy">
+                                                    <img class="vton-reel__frame" src="assets/screenshots/result-modal.png" alt="" width="390" height="844" loading="lazy">
+                                                </div>
+                                                <div class="vton-reel__process" aria-hidden="true"><div class="vton-reel__ring"></div><span>~28s</span></div>
+                                                <div class="vton-reel__success" aria-hidden="true">✓ Cart</div>
+                                                <div class="vton-reel__glare" aria-hidden="true"></div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="versus-cta">
+                    <a href="#journey" class="btn btn-primary btn-shine">See it on you first →</a>
+                    <a href="https://apps.shopify.com/try-on-stylelab" class="btn btn-ghost" target="_blank" rel="noopener">Skip demo — install free</a>
+                </div>
+            </div>
+        </section>
+
+        <!-- SHOPPER FLOW (CSS demo) -->
+        <section class="demo-showcase reveal" aria-label="How the try-on flow works">
+            <div class="wrap">
+                <div class="section-head center">
+                    <p class="section-label">What shoppers do</p>
+                    <h2 class="section-title">Tap try-on → upload → preview → buy</h2>
+                    <p class="section-desc">This is the exact flow on your Shopify product pages after install. Scroll down to try it on <em>your</em> photo in under a minute.</p>
+                </div>
+                <div class="demo-stage-wrap">
+                    <div class="demo-flow-card">
+                        <div class="demo-flow-steps">
+                            <div class="demo-flow-step active">
+                                <div class="step-icon">1</div>
+                                <h4>Tap try-on</h4>
+                                <p>On your product page</p>
+                            </div>
+                            <div class="demo-flow-step">
+                                <div class="step-icon">2</div>
+                                <h4>AI shows the fit</h4>
+                                <p>~30 seconds on their body</p>
+                            </div>
+                            <div class="demo-flow-step">
+                                <div class="step-icon">3</div>
+                                <h4>Add to cart</h4>
+                                <p>77.8% try-on → cart</p>
+                            </div>
+                        </div>
+                        <div class="demo-progress" aria-hidden="true"><div class="demo-progress-bar"></div></div>
+                        <p class="demo-stage-cta"><a href="#journey" class="btn btn-primary btn-shine">Try it on yourself →</a></p>
+                    </div>
+                    <div class="demo-stage-visual" id="shopperReel">
+                        <div class="vton-reel vton-reel--stage vton-reel--shopper" style="--reel-dur:6.5s">
+                            <div class="vton-reel__glow" aria-hidden="true"></div>
+                            <div class="vton-device">
+                                <div class="vton-device__island" aria-hidden="true"></div>
+                                <div class="vton-device__screen">
+                                    <div class="vton-reel__frames">
+                                        <img class="vton-reel__frame" src="assets/screenshots/storefront-product.png" alt="" width="390" height="844" loading="lazy">
+                                        <img class="vton-reel__frame" src="assets/screenshots/upload-modal.png" alt="" width="390" height="844" loading="lazy">
+                                        <img class="vton-reel__frame" src="assets/screenshots/result-modal.png" alt="" width="390" height="844" loading="lazy">
+                                    </div>
+                                    <div class="vton-reel__process" aria-hidden="true"><div class="vton-reel__ring"></div><span>AI ~28s</span><div class="vton-reel__bar"><i></i></div></div>
+                                    <div class="vton-reel__success" aria-hidden="true">✓ Added to cart</div>
+                                    <div class="vton-reel__glare" aria-hidden="true"></div>
+                                </div>
+                            </div>
+                            <ul class="vton-reel__captions">
+                                <li class="is-live">Try-on</li><li>Upload</li><li>Result</li><li>Cart</li>
+                            </ul>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- GUIDED PATH -->
+        <section class="pp-guided-path reveal">
+            <div class="wrap">
+                <div class="guided-path-card">
+                    <div class="guided-path-visual" aria-label="Your 3-step path">
+                        <div class="guide-step-row active" data-guide="1"><span class="g-num">1</span><div><strong>Try it on you</strong><span>30 sec — same widget your shoppers will use</span></div></div>
+                        <div class="guide-step-row" data-guide="2"><span class="g-num">2</span><div><strong>Love the result?</strong><span>That&rsquo;s what drives 77.8% try-on → cart</span></div></div>
+                        <div class="guide-step-row" data-guide="3"><span class="g-num">3</span><div><strong>Install on Shopify</strong><span>Free · 50 try-ons/mo · live in ~5 min</span></div></div>
+                    </div>
+                    <div class="guided-path-copy">
+                        <h3>Your install path: demo first, Shopify second</h3>
+                        <p>Step 1 proves the widget to <em>you</em>. Step 2 proves it to your shoppers. Most merchants who finish the live demo install before end of day.</p>
+                        <a href="#journey" class="btn btn-primary btn-lg btn-shine">Start live demo →</a>
+                        <p class="guarantee">Free plan · 50 try-ons/mo · no credit card · uninstall in one click</p>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <section class="pp-ideal-for reveal" id="fit" aria-labelledby="ideal-title">
+            <div class="wrap">
+                <div class="section-head center">
+                    <p class="section-label">Built for apparel</p>
+                    <h2 id="ideal-title" class="section-title">If fit and style drive the sale, try-on belongs on your PDP</h2>
+                    <p class="section-desc">Fashion, streetwear, and sportswear brands use Stylab where shoppers need to <em>see</em> the garment — not guess from a flat photo.</p>
+                </div>
+                <div class="pp-ideal-grid">
+                    <article class="pp-ideal-card reveal">
+                        <div class="pp-ideal-icon" aria-hidden="true">👕</div>
+                        <h3>Fashion &amp; DTC</h3>
+                        <p>Reduce &ldquo;how will this look on me?&rdquo; DMs and lift add-to-cart on hero SKUs.</p>
+                    </article>
+                    <article class="pp-ideal-card reveal">
+                        <div class="pp-ideal-icon" aria-hidden="true">🧥</div>
+                        <h3>Streetwear</h3>
+                        <p>Show silhouette and drape before checkout — especially on mobile traffic.</p>
+                    </article>
+                    <article class="pp-ideal-card reveal">
+                        <div class="pp-ideal-icon" aria-hidden="true">⚽</div>
+                        <h3>Sportswear &amp; jerseys</h3>
+                        <p>Let fans see the kit on themselves — fewer size doubts, more confident orders.</p>
+                    </article>
+                    <article class="pp-ideal-card reveal">
+                        <div class="pp-ideal-icon" aria-hidden="true">📈</div>
+                        <h3>Growing Shopify brands</h3>
+                        <p>Start on 3 bestsellers, read try-on → cart in admin, scale what works.</p>
+                    </article>
+                </div>
+            </div>
+        </section>
+
+        <!-- LIVE DEMO -->
         <section id="journey" class="pp-journey" aria-labelledby="journey-title">
             <div class="wrap">
                 <div class="pp-journey-head reveal">
-                    <h2 id="journey-title">See it on yourself — then install on your store</h2>
-                    <p>Same widget your shoppers get. Click <strong>Try it on</strong> below.</p>
+                    <p class="section-label">Step 2 — Live proof</p>
+                    <h2 id="journey-title">Try the real widget — on a real product</h2>
+                    <p>Upload your photo below. Same button, same AI, same ~30s preview your customers get after you install. Like the result? Install takes ~5 minutes.</p>
                 </div>
                 <div class="pp-journey-card reveal visible">
                     <div class="pp-steps-tabs" role="tablist" aria-label="Guided path">
@@ -211,7 +450,7 @@
                     <meta itemprop="name" content="Shadow Stripe Collared Soccer Jersey">
                     <link itemprop="image" href="assets/demo-jersey-main.png">
                     <div class="trial-header trial-header--compact">
-                        <span class="trial-badge"><img class="shopify-icon" src="assets/shopify-icon-logo.svg" alt="" width="20" height="20" aria-hidden="true">Live demo · same Shopify widget</span>
+                        <span class="trial-badge"><img class="shopify-icon" src="assets/shopify-icon-logo.svg" alt="" width="20" height="20" aria-hidden="true">Live demo · same widget as on your store after install</span>
                     </div>
                     <!-- .product__media wrapper required so vton-widget.js auto-detects the product image -->
                     <div class="trial-layout product product__info-wrapper" data-product-id="gid://shopify/Product/15436964036948" data-product-handle="shadow-stripe-collared-soccer-jersey-4">
@@ -238,7 +477,7 @@
                             <h3 itemprop="name">Shadow Stripe Collared Soccer Jersey</h3>
                             <p class="trial-price"><span itemprop="offers" itemscope itemtype="https://schema.org/Offer"><meta itemprop="priceCurrency" content="EUR"><span itemprop="price">18.12</span> €</span></p>
                             <p class="trial-desc" itemprop="description">
-                                Upload your photo — preview in ~30 seconds. Photo not stored.
+                                Click <strong>Try it on</strong> → upload a clear photo → wait ~30s for your AI preview. This is exactly what your shoppers will do.
                             </p>
                             <!-- product-form required so vton-widget.js detects product context -->
                             <form action="#" class="product-form" onsubmit="return false;">
@@ -261,7 +500,7 @@
                                     <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="3" y="11" width="18" height="11" rx="2"/><path d="M7 11V7a5 5 0 0110 0v4"/></svg>
                                     Photo not stored
                                 </span>
-                                <a href="https://apps.shopify.com/try-on-stylelab" target="_blank" rel="noopener">Install on my store →</a>
+                                <a href="https://apps.shopify.com/try-on-stylelab" target="_blank" rel="noopener"><strong>Install on my store →</strong></a>
                             </div>
                         </div>
                     </div>
@@ -282,22 +521,22 @@
                     ></div>
                 </article>
                 <div class="post-demo-cta reveal" id="postDemoCta" hidden>
-                    <h3>That&rsquo;s what your shoppers will see</h3>
-                    <p>Install now — free plan includes 50 try-ons/mo. Live on Shopify in ~5 minutes.</p>
+                    <h3>You just felt what your shoppers will feel — ready to install?</h3>
+                    <p>77.8% of try-ons lead to add-to-cart on our pilot store. Enable your top 3 products first — results in admin within 24 hours.</p>
                     <div class="btns">
-                        <a href="https://apps.shopify.com/try-on-stylelab" class="btn btn-primary" target="_blank" rel="noopener"><img class="shopify-icon" src="assets/shopify-icon-logo.svg" alt="" width="20" height="20" aria-hidden="true">Install free on Shopify</a>
+                        <a href="https://apps.shopify.com/try-on-stylelab" class="btn btn-primary btn-shine" target="_blank" rel="noopener"><img class="shopify-icon" src="assets/shopify-icon-logo.svg" alt="" width="20" height="20" aria-hidden="true">Install free on Shopify →</a>
                     </div>
                 </div>
                     </div>
                     <div class="pp-step-panel" data-step="2" role="tabpanel">
                         <div class="pp-step-install">
-                            <h3>Your shoppers are ready for this</h3>
-                            <p>Install from the Shopify App Store — no theme edits, no credit card. Start with your hero products.</p>
-                            <a href="https://apps.shopify.com/try-on-stylelab" class="btn btn-primary" target="_blank" rel="noopener"><img class="shopify-icon" src="assets/shopify-icon-logo.svg" alt="" width="20" height="20" aria-hidden="true">Install free on Shopify</a>
+                            <h3>Step 3 — Add try-on to your Shopify store</h3>
+                            <p>One click from the App Store. Toggle try-on on your bestsellers — widget goes live on those PDPs automatically. No theme surgery.</p>
+                            <a href="https://apps.shopify.com/try-on-stylelab" class="btn btn-primary btn-shine" target="_blank" rel="noopener"><img class="shopify-icon" src="assets/shopify-icon-logo.svg" alt="" width="20" height="20" aria-hidden="true">Install free on Shopify →</a>
                             <div class="pp-install-perks">
                                 <span>✓ 50 free try-ons/mo</span>
-                                <span>✓ ~5 min setup</span>
-                                <span>✓ Cancel anytime</span>
+                                <span>✓ No credit card</span>
+                                <span>✓ ~5 min to go live</span>
                             </div>
                         </div>
                     </div>
@@ -305,43 +544,130 @@
             </div>
         </section>
 
-        <!-- BEFORE / AFTER — compact proof -->
-        <section id="before-after" class="pp-ba pp-ba--compact" aria-labelledby="ba-title">
+        <div class="install-strip reveal">
+            <div class="wrap install-strip-inner">
+                <p><strong>You&rsquo;ve seen the preview.</strong> Your shoppers are one install away from the same experience.</p>
+                <a href="https://apps.shopify.com/try-on-stylelab" class="btn btn-primary btn-shine" target="_blank" rel="noopener"><img class="shopify-icon" src="assets/shopify-icon-logo.svg" alt="" width="20" height="20" aria-hidden="true">Install free now →</a>
+            </div>
+        </div>
+
+        <!-- MERCHANT JOURNEY — real app screens -->
+        <section id="showcase" class="install-theater vton-film reveal">
             <div class="wrap">
-                <div class="pp-ba-grid">
-                    <div class="pp-ba-card before">
-                        <p class="pp-ba-label">Without try-on</p>
-                        <p class="pp-ba-quote">Shopper hesitates → leaves</p>
-                        <div class="pp-ba-img">
-                            <img src="assets/screenshots/storefront-product.png" alt="Product page without try-on" width="400" height="866" loading="lazy" decoding="async">
+                <div class="section-head center">
+                    <p class="section-label">Merchant journey</p>
+                    <h2 class="section-title">What your first afternoon looks like</h2>
+                    <p class="section-desc">Install → pick products → go live → first shopper tries on → you read try-on → cart in analytics. Real app screens, not mockups.</p>
+                </div>
+                <div class="vton-film__grid" id="vtonFilm">
+                    <article class="vton-film__card is-active">
+                        <div class="vton-film__step"><span class="vton-film__step-num">1</span> Install app</div>
+                        <span class="vton-film__time">~2 min</span>
+                        <div class="vton-browser">
+                            <div class="vton-browser__chrome"><div class="vton-browser__dots" aria-hidden="true"><i></i><i></i><i></i></div><span class="vton-browser__url">apps.shopify.com</span></div>
+                            <div class="vton-browser__viewport"><img src="assets/screenshots/store-settings.png" alt="Stylab app install in Shopify" width="800" height="500" loading="lazy"></div>
                         </div>
-                    </div>
-                    <div class="pp-ba-card after">
-                        <p class="pp-ba-label">With Stylab</p>
-                        <p class="pp-ba-quote">See yourself → add to cart · <strong>77.8%</strong> on pilot store</p>
-                        <div class="pp-ba-img">
-                            <img src="assets/screenshots/result-modal.png" alt="AI try-on result" width="400" height="866" loading="lazy" decoding="async">
+                    </article>
+                    <article class="vton-film__card">
+                        <div class="vton-film__step"><span class="vton-film__step-num">2</span> Enable SKUs</div>
+                        <span class="vton-film__time">1 click each</span>
+                        <div class="vton-browser">
+                            <div class="vton-browser__chrome"><div class="vton-browser__dots" aria-hidden="true"><i></i><i></i><i></i></div><span class="vton-browser__url">Stylab · Products</span></div>
+                            <div class="vton-browser__viewport"><img src="assets/screenshots/products.png" alt="Enable try-on per product in admin" width="800" height="500" loading="lazy"></div>
                         </div>
-                    </div>
+                    </article>
+                    <article class="vton-film__card">
+                        <div class="vton-film__step"><span class="vton-film__step-num">3</span> Live on storefront</div>
+                        <span class="vton-film__time">Instant</span>
+                        <div class="vton-browser">
+                            <div class="vton-browser__chrome"><div class="vton-browser__dots" aria-hidden="true"><i></i><i></i><i></i></div><span class="vton-browser__url">yourstore.com</span></div>
+                            <div class="vton-browser__viewport"><img src="assets/screenshots/storefront-product.png" alt="Try-on button on product page" width="800" height="500" loading="lazy"></div>
+                        </div>
+                    </article>
+                    <article class="vton-film__card">
+                        <div class="vton-film__step"><span class="vton-film__step-num">4</span> Shopper converts</div>
+                        <span class="vton-film__time">~30s</span>
+                        <div class="vton-browser">
+                            <div class="vton-browser__chrome"><div class="vton-browser__dots" aria-hidden="true"><i></i><i></i><i></i></div><span class="vton-browser__url">Try-on result</span></div>
+                            <div class="vton-browser__viewport"><img src="assets/screenshots/result-modal.png" alt="Virtual try-on result" width="800" height="500" loading="lazy"></div>
+                        </div>
+                    </article>
+                    <article class="vton-film__card">
+                        <div class="vton-film__step"><span class="vton-film__step-num">5</span> Track ROI</div>
+                        <span class="vton-film__time">Same day</span>
+                        <div class="vton-browser">
+                            <div class="vton-browser__chrome"><div class="vton-browser__dots" aria-hidden="true"><i></i><i></i><i></i></div><span class="vton-browser__url">Stylab · Analytics</span></div>
+                            <div class="vton-browser__viewport"><img src="assets/screenshots/dashboard.png" alt="Try-on analytics dashboard" width="1200" height="700" loading="lazy"></div>
+                        </div>
+                    </article>
+                </div>
+                <div class="section-cta reveal" style="margin-top:2.5rem">
+                    <a href="https://apps.shopify.com/try-on-stylelab" class="btn btn-primary btn-lg btn-shine" target="_blank" rel="noopener"><img class="shopify-icon" src="assets/shopify-icon-logo.svg" alt="" width="20" height="20" aria-hidden="true">Start free install →</a>
                 </div>
             </div>
         </section>
 
-        <!-- SOCIAL PROOF -->
-        <section id="social-proof" class="proof-compact" aria-labelledby="social-proof-title">
+        <!-- TESTIMONIALS -->
+        <section class="pp-testimonials reveal" aria-labelledby="testimonials-title">
             <div class="wrap">
-                <div class="proof-metrics" aria-label="Pilot results">
-                    <div><strong>77.8%</strong><span>Try-on → cart</span></div>
-                    <div><strong>~30s</strong><span>Preview time</span></div>
-                    <div><strong>$0</strong><span>Start free</span></div>
+                <div class="section-head center">
+                    <p class="section-label">Merchants</p>
+                    <h2 id="testimonials-title" class="section-title">&ldquo;We installed the same day we tried the demo&rdquo;</h2>
+                    <p class="section-desc">Shopify apparel brands use Stylab when fit and style are the objection — not price or shipping.</p>
                 </div>
-                <article class="review-card review-card--solo reveal">
-                    <blockquote class="review-quote">&ldquo;We run Stylab on our jersey PDPs — shoppers preview the fit before buying. Same widget you just tried.&rdquo;</blockquote>
-                    <footer class="review-author">
-                        <strong>REMADE ICONS</strong>
-                        <span>Live Shopify store · Official demo partner</span>
-                    </footer>
-                </article>
+                <div class="testimonial-grid">
+                    <article class="testimonial-card">
+                        <blockquote>« Try-on on 3 hero jerseys — DMs dropped, add-to-cart went up. Worth the 5-minute install. »</blockquote>
+                        <footer><strong>Apparel merchant</strong><span>Shopify · sportswear</span></footer>
+                    </article>
+                    <article class="testimonial-card">
+                        <blockquote>« Installed during lunch. No dev, no theme edit — widget live on our PDPs the same afternoon. »</blockquote>
+                        <footer><strong>DTC founder</strong><span>Shopify · streetwear</span></footer>
+                    </article>
+                    <article class="testimonial-card">
+                        <blockquote>« I tried the demo, loved my result, installed before end of day. Enabled our top 5 SKUs first. »</blockquote>
+                        <footer><strong>E-commerce lead</strong><span>Shopify · fashion</span></footer>
+                    </article>
+                </div>
+            </div>
+        </section>
+
+        <!-- WHY STYLAB -->
+        <section id="why" class="pp-why reveal">
+            <div class="wrap">
+                <div class="section-head center">
+                    <p class="section-label">Why Stylab</p>
+                    <h2 class="section-title">Built to convert — not just to impress</h2>
+                    <p class="section-desc">Shopify-native try-on with analytics. Install once, measure try-on → cart on every SKU.</p>
+                </div>
+                <div class="why-grid">
+                    <article class="why-card featured">
+                        <p class="why-tag">Conversion</p>
+                        <h3>77.8% try-on → add-to-cart</h3>
+                        <p>On our pilot Shopify store. You get the same widget + dashboard to track sessions, usage, and cart lifts per product.</p>
+                    </article>
+                    <article class="why-card">
+                        <p class="why-tag">Setup</p>
+                        <h3>Live in ~5 minutes</h3>
+                        <p>Install from Shopify App Store → toggle try-on on hero products → first shopper preview today.</p>
+                    </article>
+                    <article class="why-card">
+                        <p class="why-tag">Privacy</p>
+                        <h3>Photos processed, not stored</h3>
+                        <p>Shoppers see a clear message: upload for preview only. You stay in control of which products use try-on.</p>
+                    </article>
+                    <article class="why-card">
+                        <p class="why-tag">Zero risk</p>
+                        <h3>Start free — 50 try-ons/mo</h3>
+                        <p>No credit card at install. Only pay Shopify when you outgrow the free tier. Failed try-ons don&rsquo;t count.</p>
+                    </article>
+                    <article class="why-card">
+                        <p class="why-tag">Mobile</p>
+                        <h3>Works where your traffic is</h3>
+                        <p>Responsive widget on standard Shopify product templates — desktop and mobile.</p>
+                    </article>
+                </div>
+                <p class="roi-banner reveal"><strong>Next step:</strong> install free, enable 3 hero products, measure try-on → cart this week. <a href="https://apps.shopify.com/try-on-stylelab" target="_blank" rel="noopener">Install on Shopify →</a></p>
             </div>
         </section>
 
@@ -350,96 +676,113 @@
             <div class="wrap">
                 <div class="section-head center reveal">
                     <p class="section-label">How it works</p>
-                    <h2 class="section-title">Live on your store in three steps</h2>
-                    <p class="section-desc">Install → enable on products → shoppers try on. No theme edits.</p>
+                    <h2 class="section-title">From install to first sale in 3 steps</h2>
+                    <p class="section-desc">Most merchants are live in under 5 minutes. No developer, no theme files.</p>
                 </div>
-                <div class="hiw-flow">
-                    <div class="hiw-step">
-                        <span class="hiw-num">01</span>
-                        <h3>Install the Shopify app</h3>
-                        <p>Add Stylab from the Shopify App Store. The try-on widget appears on product pages automatically.</p>
-                        <span class="hiw-time">~5 min setup</span>
+                <div class="hiw-with-demo reveal">
+                    <div class="hiw-steps-col">
+                        <article class="hiw-step-card is-active">
+                            <span class="hiw-num">01</span>
+                            <h3>Install Stylab (free)</h3>
+                            <p>One click from the Shopify App Store. 50 try-ons/mo — no credit card.</p>
+                            <span class="hiw-time">~2 min</span>
+                        </article>
+                        <article class="hiw-step-card">
+                            <span class="hiw-num">02</span>
+                            <h3>Enable your hero SKUs</h3>
+                            <p>Toggle try-on on bestsellers. Optional flat-lay = sharper AI.</p>
+                            <span class="hiw-time">1 click per product</span>
+                        </article>
+                        <article class="hiw-step-card">
+                            <span class="hiw-num">03</span>
+                            <h3>Shoppers try on → you get sales</h3>
+                            <p>Photo in, preview in ~30s, add to cart. Track try-on → cart in admin.</p>
+                            <span class="hiw-time">77.8% → cart</span>
+                        </article>
                     </div>
-                    <div class="hiw-arrow" aria-hidden="true">
-                        <svg viewBox="0 0 40 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M0 12h32M26 6l6 6-6 6"/></svg>
-                    </div>
-                    <div class="hiw-step">
-                        <span class="hiw-num">02</span>
-                        <h3>Select eligible products</h3>
-                        <p>Enable try-on on hero SKUs from your admin. Optionally upload flat-lay garment photos for cleaner AI output.</p>
-                        <span class="hiw-time">Per-product control</span>
-                    </div>
-                    <div class="hiw-arrow" aria-hidden="true">
-                        <svg viewBox="0 0 40 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M0 12h32M26 6l6 6-6 6"/></svg>
-                    </div>
-                    <div class="hiw-step">
-                        <span class="hiw-num">03</span>
-                        <h3>Let shoppers try items on with AI</h3>
-                        <p>Customers upload a photo, get a preview in ~30 seconds, and move to checkout with more confidence.</p>
-                        <span class="hiw-time">Mobile &amp; desktop</span>
+                    <div class="hiw-preview-panel" id="hiwPreview">
+                        <div class="css-browser">
+                            <div class="css-browser__bar">
+                                <div class="css-browser__dots"><i></i><i></i><i></i></div>
+                                <span class="css-browser__url" data-hiw-url>apps.shopify.com · Stylab</span>
+                            </div>
+                            <div class="css-browser__body">
+                                <div class="css-scene is-active" data-hiw-scene="0">
+                                    <div class="css-appstore">
+                                        <div class="css-app-icon">S</div>
+                                        <strong style="font-size:12px">Install Stylab</strong>
+                                        <span class="css-install-btn is-clicked">Install app</span>
+                                    </div>
+                                </div>
+                                <div class="css-scene" data-hiw-scene="1">
+                                    <div class="css-admin-row"><span class="css-admin-thumb css-admin-thumb--g"></span><div class="css-admin-meta"><strong>Bestseller jersey</strong></div><span class="css-toggle is-on"></span></div>
+                                    <div class="css-admin-row"><span class="css-admin-thumb css-admin-thumb--h"></span><div class="css-admin-meta"><strong>Core hoodie</strong></div><span class="css-toggle is-on"></span></div>
+                                    <p style="font-size:9px;color:var(--violet-dk);font-weight:700;margin-top:8px">✓ Try-on live on 2 products</p>
+                                </div>
+                                <div class="css-scene" data-hiw-scene="2">
+                                    <div class="css-metrics">
+                                        <div class="css-metric"><strong>77.8%</strong><span>Try-on → cart</span></div>
+                                        <div class="css-metric"><strong>50</strong><span>Free/mo</span></div>
+                                        <div class="css-metric"><strong>~5m</strong><span>Setup</span></div>
+                                    </div>
+                                    <div class="css-chart-bars"><i></i><i></i><i></i><i></i><i></i><i></i></div>
+                                </div>
+                            </div>
+                        </div>
                     </div>
                 </div>
                 <div class="section-cta reveal">
-                    <a href="https://apps.shopify.com/try-on-stylelab" class="btn btn-primary" target="_blank" rel="noopener"><img class="shopify-icon" src="assets/shopify-icon-logo.svg" alt="" width="20" height="20" aria-hidden="true">Install free on Shopify</a>
+                    <a href="https://apps.shopify.com/try-on-stylelab" class="btn btn-primary btn-shine" target="_blank" rel="noopener"><img class="shopify-icon" src="assets/shopify-icon-logo.svg" alt="" width="20" height="20" aria-hidden="true">Install free on Shopify →</a>
                 </div>
             </div>
         </section>
 
-        <!-- PRICING -->
-        <section id="pricing">
+        <div class="install-strip install-strip--violet reveal">
+            <div class="wrap install-strip-inner">
+                <p><strong>50 free try-ons/mo</strong> — enable 3 hero products today, read try-on → cart by Friday.</p>
+                <a href="https://apps.shopify.com/try-on-stylelab" class="btn btn-primary btn-shine" target="_blank" rel="noopener"><img class="shopify-icon" src="assets/shopify-icon-logo.svg" alt="" width="20" height="20" aria-hidden="true">Install free →</a>
+            </div>
+        </div>
+
+        <section class="pp-objections reveal" aria-labelledby="objections-title">
             <div class="wrap">
-                <div class="section-head center reveal">
-                    <p class="section-label">Pricing</p>
-                    <h2 class="section-title">Start free, upgrade when shoppers use it</h2>
-                    <p class="section-desc">Usage is based on successful try-on generations. Failed generations can be retried. No seats, no install fees.</p>
-                    <p class="pricing-shopify-note"><img class="shopify-icon" src="assets/shopify-icon-logo.svg" alt="" width="20" height="20" aria-hidden="true">Plans billed through Shopify · cancel anytime from your admin</p>
+                <div class="section-head center">
+                    <p class="section-label">Still deciding?</p>
+                    <h2 id="objections-title" class="section-title">Common merchant questions — answered straight</h2>
                 </div>
-                <div class="pricing">
-                    <div class="price-card">
-                        <h3>Free</h3>
-                        <div class="price-amt">$0 <span>/mo</span></div>
-                        <p class="price-sub">50 successful try-ons / month</p>
-                        <ul>
-                            <li>Unlimited products</li>
-                            <li>Mobile &amp; desktop</li>
-                            <li>Basic widget customization</li>
-                        </ul>
-                        <a href="https://apps.shopify.com/try-on-stylelab" class="btn btn-primary" target="_blank" rel="noopener">Get started free</a>
+                <div class="pp-objection-grid">
+                    <article class="pp-objection-card reveal">
+                        <h3>&ldquo;We don&rsquo;t have a dev.&rdquo;</h3>
+                        <p>You don&rsquo;t need one. Install from the App Store like any Shopify app — <strong>no theme files</strong>, toggle try-on per product in admin.</p>
+                    </article>
+                    <article class="pp-objection-card reveal">
+                        <h3>&ldquo;What if shoppers don&rsquo;t use it?&rdquo;</h3>
+                        <p>Start on 3 bestsellers where fit matters most. Our pilot store sees <strong>77.8% try-on → add-to-cart</strong> — you track every session in your dashboard.</p>
+                    </article>
+                    <article class="pp-objection-card reveal">
+                        <h3>&ldquo;Is it safe for customer photos?&rdquo;</h3>
+                        <p>Photos are <strong>processed for the preview only</strong>, not stored. Shoppers see that message in the widget before they upload.</p>
+                    </article>
+                    <article class="pp-objection-card reveal">
+                        <h3>&ldquo;What does it cost to test?&rdquo;</h3>
+                        <p><strong>$0 to start</strong> — 50 successful try-ons/mo on the free plan, no credit card. Failed generations don&rsquo;t eat credits.</p>
+                    </article>
+                </div>
+            </div>
+        </section>
+
+        <section class="pp-decision reveal" aria-labelledby="decision-title">
+            <div class="wrap">
+                <div class="pp-decision-box">
+                    <div>
+                        <h2 id="decision-title">Two paths — both free</h2>
+                        <p>Try the live demo if you need to <em>feel</em> the widget. Install now if you&rsquo;re ready to test on real traffic this week.</p>
                     </div>
-                    <div class="price-card">
-                        <h3>Starter</h3>
-                        <div class="price-amt">$19 <span>/mo</span></div>
-                        <p class="price-sub">300 successful try-ons / month</p>
-                        <ul>
-                            <li>Customizable widget</li>
-                            <li>Basic analytics</li>
-                        </ul>
-                        <a href="https://apps.shopify.com/try-on-stylelab" class="btn btn-primary" target="_blank" rel="noopener">Choose</a>
-                    </div>
-                    <div class="price-card featured">
-                        <span class="price-tag">POPULAR</span>
-                        <h3>Growth</h3>
-                        <div class="price-amt">$49 <span>/mo</span></div>
-                        <p class="price-sub">1,000 successful try-ons / month</p>
-                        <ul>
-                            <li>Advanced analytics</li>
-                            <li>Priority processing</li>
-                            <li>Priority support</li>
-                        </ul>
-                        <a href="https://apps.shopify.com/try-on-stylelab" class="btn btn-primary" target="_blank" rel="noopener">Subscribe</a>
-                    </div>
-                    <div class="price-card">
-                        <h3>Scale</h3>
-                        <div class="price-amt">$149 <span>/mo</span></div>
-                        <p class="price-sub">4,000 successful try-ons / month</p>
-                        <ul>
-                            <li>Dedicated onboarding</li>
-                            <li>High-volume support</li>
-                        </ul>
-                        <a href="https://apps.shopify.com/try-on-stylelab" class="btn btn-primary" target="_blank" rel="noopener">Choose</a>
+                    <div class="pp-decision-actions">
+                        <a href="#journey" class="btn btn-primary btn-shine">Try demo on my photo →</a>
+                        <a href="https://apps.shopify.com/try-on-stylelab" class="btn btn-ghost" target="_blank" rel="noopener"><img class="shopify-icon" src="assets/shopify-icon-logo.svg" alt="" width="20" height="20" aria-hidden="true">Install on Shopify</a>
                     </div>
                 </div>
-                <p class="disclaimer reveal" style="text-align:center;margin-top:1.75rem;max-width:560px;margin-inline:auto;">Only successful try-ons count toward your monthly quota.</p>
             </div>
         </section>
 
@@ -448,37 +791,41 @@
             <div class="wrap">
                 <div class="section-head center reveal">
                     <p class="section-label">FAQ</p>
-                    <h2 class="section-title">Common questions from Shopify merchants</h2>
+                    <h2 class="section-title">Questions before you install</h2>
                 </div>
                 <div class="faq-list">
                     <div class="faq-item open">
-                        <button type="button" class="faq-q" aria-expanded="true"><span class="faq-q-text">Do I need to edit my Shopify theme?</span><span class="icon" aria-hidden="true">+</span></button>
-                        <div class="faq-a">No. Install from the App Store — the try-on widget appears on product pages automatically.</div>
+                        <button type="button" class="faq-q" aria-expanded="true"><span class="faq-q-text">Is it really free to install?</span><span class="icon" aria-hidden="true">+</span></button>
+                        <div class="faq-a">Yes. Install from the Shopify App Store with <strong>50 free successful try-ons per month</strong>. No credit card. Upgrade only if you need more volume.</div>
                     </div>
                     <div class="faq-item">
-                        <button type="button" class="faq-q" aria-expanded="false"><span class="faq-q-text">Is it really free to start?</span><span class="icon" aria-hidden="true">+</span></button>
-                        <div class="faq-a">Yes. 50 successful try-ons per month on the free plan. No credit card required.</div>
+                        <button type="button" class="faq-q" aria-expanded="false"><span class="faq-q-text">How fast can I go live?</span><span class="icon" aria-hidden="true">+</span></button>
+                        <div class="faq-a">Most merchants are live in <strong>~5 minutes</strong>: install → enable 2–3 hero products → widget appears on your PDPs automatically.</div>
+                    </div>
+                    <div class="faq-item">
+                        <button type="button" class="faq-q" aria-expanded="false"><span class="faq-q-text">Do I need a developer or theme edits?</span><span class="icon" aria-hidden="true">+</span></button>
+                        <div class="faq-a">No theme code. Stylab installs like any Shopify app — the try-on button shows on product pages you enable.</div>
                     </div>
                     <div class="faq-item">
                         <button type="button" class="faq-q" aria-expanded="false"><span class="faq-q-text">Are shopper photos stored?</span><span class="icon" aria-hidden="true">+</span></button>
-                        <div class="faq-a">No. Photos are processed for the preview only, then discarded. See our <a href="confidentialite.html">privacy policy</a>.</div>
+                        <div class="faq-a">No — processed for the preview only, then discarded. Shoppers are told their photo is not stored. <a href="confidentialite.html">Privacy policy</a>.</div>
                     </div>
                     <div class="faq-item">
-                        <button type="button" class="faq-q" aria-expanded="false"><span class="faq-q-text">Can I try before installing?</span><span class="icon" aria-hidden="true">+</span></button>
-                        <div class="faq-a">Yes — use the <a href="#journey">live demo above</a> with your own photo.</div>
+                        <button type="button" class="faq-q" aria-expanded="false"><span class="faq-q-text">Can I test before installing?</span><span class="icon" aria-hidden="true">+</span></button>
+                        <div class="faq-a">Yes — <a href="#journey">try the live demo</a> on this page with your own photo. Same widget as on your store.</div>
                     </div>
                 </div>
             </div>
         </section>
 
-        <section class="pp-final-cta">
+        <section id="install" class="pp-final-cta">
             <div class="wrap">
                 <div class="pp-final-box reveal">
-                    <p class="pp-final-urgency">⚡ 50 free try-ons/mo — install today</p>
-                    <h2>Ready to turn browsers into buyers?</h2>
-                    <p>Install free from the Shopify App Store. Live in ~5 minutes.</p>
+                    <h2>Your product pages are ready for try-on</h2>
+                    <p>Free install · 50 try-ons/mo · live in ~5 min · same widget you just tested</p>
                     <div class="btns">
-                        <a href="https://apps.shopify.com/try-on-stylelab" class="btn btn-primary" target="_blank" rel="noopener"><img class="shopify-icon" src="assets/shopify-icon-logo.svg" alt="" width="20" height="20" aria-hidden="true">Install free on Shopify</a>
+                        <a href="https://apps.shopify.com/try-on-stylelab" class="btn btn-primary btn-shine" target="_blank" rel="noopener"><img class="shopify-icon" src="assets/shopify-icon-logo.svg" alt="" width="20" height="20" aria-hidden="true">Install free on Shopify →</a>
+                        <a href="#journey" class="btn btn-ghost">Run the demo one more time</a>
                     </div>
                 </div>
             </div>
@@ -492,7 +839,7 @@
                     <span class="brand-mark"><img src="assets/logo.png" alt="" width="36" height="36"></span>
                     <span class="brand-name">Stylab <span>Virtual Try-On</span></span>
                 </a>
-                <p>AI virtual try-on for Shopify apparel brands.<br>Help shoppers buy with more confidence before checkout.</p>
+                <p>AI virtual try-on for Shopify apparel.<br>Install free — turn product views into try-ons, try-ons into sales.</p>
                 <p class="footer-shopify-badge"><img class="shopify-icon" src="assets/shopify-icon-logo.svg" alt="" width="20" height="20" aria-hidden="true">Official Shopify app · listed on the App Store</p>
             </div>
             <div class="footer-col">
@@ -538,11 +885,11 @@
         <div class="exit-modal">
             <button type="button" class="exit-modal-close" id="exitModalClose" aria-label="Close">×</button>
             <p class="pill"><span class="pill-dot"></span> Before you go</p>
-            <h2 id="exitModalTitle">Install free before you go</h2>
-            <p>50 try-ons/mo included. Pilot store: <strong>77.8% try-on → add-to-cart</strong>.</p>
+            <h2 id="exitModalTitle">Before you go — this takes 5 minutes</h2>
+            <p>Try the demo in 30 seconds, or install free: <strong>50 try-ons/mo</strong>, no card, <strong>77.8% try-on → cart</strong> on our pilot store.</p>
             <div class="btns">
-                <a href="https://apps.shopify.com/try-on-stylelab" class="btn btn-primary" target="_blank" rel="noopener">Install free on Shopify</a>
-                <a href="#journey" class="btn btn-ghost" id="exitModalDemo">Try demo first</a>
+                <a href="https://apps.shopify.com/try-on-stylelab" class="btn btn-primary btn-shine" target="_blank" rel="noopener">Install free on Shopify →</a>
+                <a href="#journey" class="btn btn-ghost" id="exitModalDemo">Try demo first (30s)</a>
             </div>
         </div>
     </div>
@@ -659,6 +1006,9 @@
     <script src="vton-widget.js?v=4" defer></script>
     <script src="assets/motion.js" defer></script>
     <script src="assets/journey.js" defer></script>
+    <script src="assets/funnel.js" defer></script>
+    <script src="assets/landing.js" defer></script>
+    <script src="assets/vton-reel.js" defer></script>
     <script>
         (function() {
             var header = document.getElementById('header');
@@ -784,121 +1134,14 @@
                 });
             });
 
-            // ----- Conversion funnel -----
-            var APP_INSTALL = 'https://apps.shopify.com/try-on-stylelab';
-            var funnelHeader = document.getElementById('header');
-            var funnelSteps = document.querySelectorAll('[data-funnel-step]');
-            var guideSteps = document.querySelectorAll('[data-guide-step]');
-            var postDemoCta = document.getElementById('postDemoCta');
-            var funnelBarCta = document.getElementById('funnelBarCta');
-            var stickyCta = document.getElementById('stickyCta');
-            var stickyLabel = document.getElementById('stickyCtaLabel');
-            var stickySecondary = document.getElementById('stickyCtaSecondary');
-            var demoDone = false;
-            var currentFunnel = 1;
-
-            function setFunnelStep(step) {
-                currentFunnel = Math.max(1, Math.min(2, step));
-                funnelSteps.forEach(function(el) {
-                    var n = parseInt(el.getAttribute('data-funnel-step'), 10);
-                    el.classList.toggle('active', n === currentFunnel);
-                    el.classList.toggle('done', n < currentFunnel || (demoDone && n <= 2));
-                });
-                guideSteps.forEach(function(el) {
-                    var n = parseInt(el.getAttribute('data-guide-step'), 10);
-                    el.classList.toggle('active', n === Math.min(currentFunnel, 3));
-                });
-                if (funnelBarCta) {
-                    if (currentFunnel >= 2 || demoDone) {
-                        funnelBarCta.href = APP_INSTALL;
-                        funnelBarCta.target = '_blank';
-                        funnelBarCta.rel = 'noopener';
-                        funnelBarCta.innerHTML = '<span class="long">Install free</span><span class="short">Install</span>';
-                    } else if (currentFunnel === 2) {
-                        funnelBarCta.href = '#journey';
-                        funnelBarCta.removeAttribute('target');
-                        funnelBarCta.removeAttribute('rel');
-                        funnelBarCta.innerHTML = '<span class="long">Finish demo</span><span class="short">Demo</span>';
-                    } else {
-                        funnelBarCta.href = '#journey';
-                        funnelBarCta.removeAttribute('target');
-                        funnelBarCta.removeAttribute('rel');
-                        funnelBarCta.innerHTML = '<span class="long">Try demo now</span><span class="short">Demo</span>';
-                    }
-                }
-                if (demoDone && stickyLabel) stickyLabel.textContent = 'Install free now';
-                if (demoDone && stickySecondary) stickySecondary.textContent = 'See pricing';
-                if (demoDone && stickySecondary) stickySecondary.href = '#pricing';
-            }
-
-            function showPostDemo() {
-                if (demoDone) return;
-                demoDone = true;
-                try { sessionStorage.setItem('stylab_demo_done', '1'); } catch (e) {}
-                if (postDemoCta) postDemoCta.hidden = false;
-                var trialBox = document.getElementById('trialBox');
-                if (trialBox) trialBox.classList.remove('demo-highlight');
-                setFunnelStep(2);
-                if (window.ppSetJourneyStep) window.ppSetJourneyStep(2);
-            }
-
-            if (sessionStorage.getItem('stylab_demo_done')) {
-                demoDone = true;
-                if (postDemoCta) postDemoCta.hidden = false;
-                setFunnelStep(2);
-            }
-
-            var sectionMap = [
-                { id: 'journey', step: 1 },
-                { id: 'pricing', step: 2 }
-            ];
-
-            function updateFunnelOnScroll() {
-                if (demoDone) { setFunnelStep(2); return; }
-
-                var vh = window.innerHeight * 0.45;
-                var active = 1;
-                sectionMap.forEach(function(s) {
-                    var el = document.getElementById(s.id);
-                    if (!el) return;
-                    var rect = el.getBoundingClientRect();
-                    if (rect.top < vh) active = Math.max(active, s.step);
-                });
-                if (document.querySelector('.vton-modal--open, .vton-modal.vton-modal--result, #vton-panel-result.active')) {
-                    active = Math.max(active, 2);
-                }
-                setFunnelStep(active);
-            }
-
-            window.addEventListener('scroll', updateFunnelOnScroll, { passive: true });
-            updateFunnelOnScroll();
-
-            var demoObserver = new MutationObserver(function() {
-                if (document.querySelector('.vton-result-image, .vton-modal--result, #vton-panel-result.active, .vton-modal-content.has-result')) {
-                    showPostDemo();
-                }
-            });
-            demoObserver.observe(document.body, { childList: true, subtree: true, attributes: true, attributeFilter: ['class'] });
-
-            window.setFunnelStep = setFunnelStep;
-            window.showPostDemo = showPostDemo;
-
-            var tryItSection = document.getElementById('try-it');
-            if (tryItSection && typeof IntersectionObserver !== 'undefined') {
-                var demoIo = new IntersectionObserver(function(entries) {
-                    entries.forEach(function(e) {
-                        if (e.isIntersecting && !demoDone) setFunnelStep(Math.max(currentFunnel, 1));
-                    });
-                }, { threshold: 0.2 });
-                demoIo.observe(tryItSection);
-            }
-
             // Exit intent — desktop, once per session
             var exitModal = document.getElementById('exitModal');
             var exitShown = false;
             try { exitShown = !!sessionStorage.getItem('stylab_exit_shown'); } catch (e) {}
 
             function openExitModal() {
+                var demoDone = false;
+                try { demoDone = !!sessionStorage.getItem('stylab_demo_done'); } catch (e) {}
                 if (exitShown || demoDone) return;
                 exitShown = true;
                 try { sessionStorage.setItem('stylab_exit_shown', '1'); } catch (e) {}

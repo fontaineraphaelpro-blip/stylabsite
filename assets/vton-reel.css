@@ -1,0 +1,599 @@
+/* ============================================================
+   VTON Reel — real screenshots + cinematic CSS (video-like)
+   ============================================================ */
+
+.vton-reel {
+  --reel-dur: 7.5s;
+  --reel-ease: cubic-bezier(0.22, 1, 0.36, 1);
+  position: relative;
+  width: 100%;
+  max-width: 340px;
+  margin-inline: auto;
+}
+
+.vton-reel--hero { max-width: min(400px, 42vw); }
+.vton-reel--stage { max-width: 320px; }
+.vton-reel--compact { max-width: 100%; }
+
+.vton-reel__glow {
+  position: absolute;
+  inset: -15% -20%;
+  background:
+    radial-gradient(ellipse 70% 55% at 50% 45%, rgba(124,58,237,0.35), transparent 70%),
+    radial-gradient(ellipse 50% 40% at 80% 80%, rgba(34,197,94,0.15), transparent 65%);
+  pointer-events: none;
+  z-index: 0;
+  animation: reelGlow 4s ease-in-out infinite alternate;
+}
+
+@keyframes reelGlow {
+  from { opacity: 0.75; transform: scale(0.98); }
+  to { opacity: 1; transform: scale(1.03); }
+}
+
+/* ── Device ─────────────────────────────────────────────────── */
+.vton-device {
+  position: relative;
+  z-index: 1;
+  border-radius: 40px;
+  padding: 12px;
+  background: linear-gradient(165deg, #4a4060 0%, #1e1830 45%, #0a0810 100%);
+  box-shadow:
+    0 0 0 1px rgba(255,255,255,0.12),
+    0 1px 0 rgba(255,255,255,0.08) inset,
+    0 60px 120px -30px rgba(124,58,237,0.5),
+    0 20px 40px rgba(28,21,40,0.4);
+}
+
+.vton-device__island {
+  position: absolute;
+  top: 14px;
+  left: 50%;
+  transform: translateX(-50%);
+  width: 84px;
+  height: 26px;
+  border-radius: 20px;
+  background: #050408;
+  z-index: 30;
+  box-shadow: 0 0 0 1px rgba(255,255,255,0.05);
+}
+
+.vton-device__screen {
+  position: relative;
+  border-radius: 32px;
+  overflow: hidden;
+  aspect-ratio: 9 / 19.2;
+  background: #0f0d14;
+  isolation: isolate;
+}
+
+/* Real screenshot frames */
+.vton-reel__frames {
+  position: absolute;
+  inset: 0;
+}
+
+.vton-reel__frame {
+  position: absolute;
+  inset: 0;
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  object-position: top center;
+  opacity: 0;
+  transform: scale(1.06);
+  will-change: opacity, transform;
+}
+
+/* 3 real screens + processing overlay + cart flash */
+.vton-reel--shopper .vton-reel__frame:nth-child(1) {
+  animation: reelShop1 var(--reel-dur) var(--reel-ease) infinite;
+}
+.vton-reel--shopper .vton-reel__frame:nth-child(2) {
+  animation: reelShop2 var(--reel-dur) var(--reel-ease) infinite;
+}
+.vton-reel--shopper .vton-reel__frame:nth-child(3) {
+  animation: reelShop3 var(--reel-dur) var(--reel-ease) infinite;
+}
+
+@keyframes reelShop1 {
+  0%, 4% { opacity: 0; transform: scale(1.08); }
+  8%, 26% { opacity: 1; transform: scale(1); }
+  30%, 100% { opacity: 0; transform: scale(1.03); }
+}
+@keyframes reelShop2 {
+  0%, 26% { opacity: 0; transform: scale(1.06); }
+  30%, 44% { opacity: 1; transform: scale(1); }
+  48%, 100% { opacity: 0; }
+}
+@keyframes reelShop3 {
+  0%, 48% { opacity: 0; transform: scale(1.05); }
+  54%, 90% { opacity: 1; transform: scale(1); }
+  94%, 100% { opacity: 0; }
+}
+
+/* AI processing overlay (between upload & result) */
+.vton-reel__process {
+  position: absolute;
+  inset: 0;
+  z-index: 5;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  gap: 12px;
+  background: rgba(15,13,20,0.55);
+  backdrop-filter: blur(12px) saturate(1.2);
+  opacity: 0;
+  pointer-events: none;
+}
+
+.vton-reel--shopper .vton-reel__process {
+  animation: reelProcess var(--reel-dur) ease infinite;
+}
+
+@keyframes reelProcess {
+  0%, 44% { opacity: 0; }
+  46%, 52% { opacity: 1; }
+  54%, 100% { opacity: 0; }
+}
+
+.vton-reel__ring {
+  width: 52px;
+  height: 52px;
+  border-radius: 50%;
+  border: 3px solid rgba(255,255,255,0.15);
+  border-top-color: #fff;
+  border-right-color: #c4b5fd;
+  animation: reelSpin 0.7s linear infinite;
+}
+
+@keyframes reelSpin { to { transform: rotate(360deg); } }
+
+.vton-reel__process span {
+  font-size: 11px;
+  font-weight: 800;
+  color: #fff;
+  letter-spacing: -0.02em;
+  text-shadow: 0 2px 12px rgba(0,0,0,0.4);
+}
+
+.vton-reel__process .vton-reel__bar {
+  width: 70%;
+  height: 4px;
+  border-radius: 999px;
+  background: rgba(255,255,255,0.15);
+  overflow: hidden;
+}
+
+.vton-reel__process .vton-reel__bar i {
+  display: block;
+  height: 100%;
+  background: linear-gradient(90deg, #7c3aed, #a78bfa, #22c55e);
+  animation: reelBarFill 1.1s var(--reel-ease) infinite;
+}
+
+@keyframes reelBarFill {
+  0% { width: 8%; }
+  100% { width: 100%; }
+}
+
+/* Cart success flash on result */
+.vton-reel__success {
+  position: absolute;
+  bottom: 12%;
+  left: 50%;
+  transform: translateX(-50%) translateY(20px);
+  z-index: 8;
+  padding: 10px 16px;
+  border-radius: 12px;
+  background: rgba(22,163,74,0.95);
+  color: #fff;
+  font-size: 10px;
+  font-weight: 800;
+  white-space: nowrap;
+  box-shadow: 0 12px 32px rgba(22,163,74,0.45);
+  opacity: 0;
+  pointer-events: none;
+}
+
+.vton-reel--shopper .vton-reel__success {
+  animation: reelSuccess var(--reel-dur) var(--reel-ease) infinite;
+}
+
+@keyframes reelSuccess {
+  0%, 74% { opacity: 0; transform: translateX(-50%) translateY(16px) scale(0.9); }
+  78%, 90% { opacity: 1; transform: translateX(-50%) translateY(0) scale(1); }
+  94%, 100% { opacity: 0; }
+}
+
+.vton-reel__glare {
+  position: absolute;
+  inset: 0;
+  z-index: 20;
+  pointer-events: none;
+  background: linear-gradient(
+    125deg,
+    rgba(255,255,255,0.22) 0%,
+    transparent 28%,
+    transparent 72%,
+    rgba(255,255,255,0.06) 100%
+  );
+  mix-blend-mode: soft-light;
+  animation: reelGlareSweep 7s ease-in-out infinite;
+}
+
+@keyframes reelGlareSweep {
+  0%, 100% { opacity: 0.85; }
+  50% { opacity: 1; }
+}
+
+/* Subtle “live” scan on shopper reels */
+.vton-reel--shopper .vton-device__screen::after {
+  content: '';
+  position: absolute;
+  left: 0;
+  right: 0;
+  height: 28%;
+  top: -30%;
+  z-index: 22;
+  pointer-events: none;
+  background: linear-gradient(180deg, transparent, rgba(255,255,255,0.06), transparent);
+  animation: reelScan 4.5s ease-in-out infinite;
+}
+
+@keyframes reelScan {
+  0% { top: -35%; opacity: 0; }
+  15% { opacity: 0.6; }
+  85% { opacity: 0.4; }
+  100% { top: 110%; opacity: 0; }
+}
+
+/* Caption pills */
+.vton-reel__captions {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  gap: 0.4rem;
+  margin-top: 1rem;
+  list-style: none;
+  padding: 0;
+}
+
+.vton-reel__captions li {
+  font-size: 0.68rem;
+  font-weight: 700;
+  padding: 0.35rem 0.65rem;
+  border-radius: 999px;
+  border: 1px solid var(--border);
+  background: var(--bg-elevated);
+  color: var(--text-dim);
+  transition: background 0.2s, color 0.2s, border-color 0.2s, transform 0.2s;
+}
+
+.vton-reel__captions li.is-live {
+  color: var(--violet-dk);
+  border-color: rgba(124,58,237,0.35);
+  background: rgba(124,58,237,0.1);
+  transform: scale(1.04);
+}
+
+.vton-reel__badge-live {
+  display: block;
+  margin-top: 0.65rem;
+  text-align: center;
+  font-size: 0.72rem;
+  font-weight: 700;
+  color: var(--text-soft);
+}
+
+.vton-reel__badge-live strong {
+  color: var(--violet-dk);
+}
+
+/* Static single shot */
+.vton-reel--static .vton-reel__frame {
+  opacity: 1 !important;
+  animation: none !important;
+  transform: none !important;
+}
+.vton-reel--static .vton-reel__process,
+.vton-reel--static .vton-reel__success { display: none; }
+
+/* ── Desktop browser showcase ─────────────────────────────── */
+.vton-browser {
+  border-radius: 14px;
+  overflow: hidden;
+  background: #fff;
+  border: 1px solid var(--border-md);
+  box-shadow: 0 28px 70px -24px rgba(91,33,182,0.28);
+  display: flex;
+  flex-direction: column;
+  height: 100%;
+  min-height: 200px;
+}
+
+.vton-browser__chrome {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  padding: 10px 14px;
+  background: linear-gradient(180deg, #f8f6ff, #ebe6fc);
+  border-bottom: 1px solid var(--border);
+  flex-shrink: 0;
+}
+
+.vton-browser__dots {
+  display: flex;
+  gap: 6px;
+}
+.vton-browser__dots i {
+  width: 9px;
+  height: 9px;
+  border-radius: 50%;
+}
+.vton-browser__dots i:nth-child(1) { background: #f87171; }
+.vton-browser__dots i:nth-child(2) { background: #fbbf24; }
+.vton-browser__dots i:nth-child(3) { background: #4ade80; }
+
+.vton-browser__url {
+  flex: 1;
+  font-size: 0.72rem;
+  font-weight: 600;
+  color: var(--text-soft);
+  padding: 5px 12px;
+  border-radius: 8px;
+  background: #fff;
+  border: 1px solid var(--border);
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+}
+
+.vton-browser__viewport {
+  flex: 1;
+  position: relative;
+  overflow: hidden;
+  background: #f4f0ff;
+  min-height: 180px;
+}
+
+.vton-browser__viewport img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  object-position: top left;
+  display: block;
+  transform: scale(1);
+}
+
+.vton-film__card.is-active .vton-browser__viewport img {
+  animation: browserKen 5s ease-in-out infinite alternate;
+}
+
+@keyframes browserKen {
+  from { transform: scale(1); }
+  to { transform: scale(1.04); }
+}
+
+/* Install filmstrip */
+.vton-film {
+  margin-top: 2.5rem;
+}
+
+.vton-film__grid {
+  display: grid;
+  grid-template-columns: repeat(5, 1fr);
+  gap: clamp(0.75rem, 1.5vw, 1.25rem);
+  align-items: stretch;
+}
+
+.vton-film__card {
+  display: flex;
+  flex-direction: column;
+  gap: 0.65rem;
+  opacity: 0.55;
+  transform: translateY(4px);
+  transition: opacity 0.4s var(--reel-ease), transform 0.4s var(--reel-ease);
+}
+
+.vton-film__card.is-active {
+  opacity: 1;
+  transform: translateY(-6px);
+}
+
+.vton-film__step {
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+  font-size: 0.78rem;
+  font-weight: 800;
+  color: var(--text);
+  letter-spacing: -0.02em;
+}
+
+.vton-film__step-num {
+  width: 1.5rem;
+  height: 1.5rem;
+  border-radius: 50%;
+  display: grid;
+  place-items: center;
+  font-size: 0.65rem;
+  background: var(--violet);
+  color: #fff;
+  flex-shrink: 0;
+}
+
+.vton-film__time {
+  font-size: 0.65rem;
+  font-weight: 600;
+  color: var(--violet-dk);
+  margin-top: -0.35rem;
+}
+
+.vton-film .vton-browser {
+  flex: 1;
+  min-height: 200px;
+}
+
+/* Hero desktop split */
+.pp-hero-split .pp-hero-visual {
+  overflow: visible;
+}
+
+@media (min-width: 1100px) {
+  .pp-hero-visual--duo {
+    display: grid;
+    grid-template-columns: 1fr 1.15fr;
+    gap: 1.25rem;
+    align-items: center;
+    max-width: 720px;
+    margin-left: auto;
+  }
+
+  .pp-hero-visual--duo .vton-reel--hero {
+    max-width: none;
+  }
+
+  .vton-hero-admin {
+    display: block;
+    opacity: 0;
+    animation: heroAdminIn 0.8s var(--reel-ease) 0.3s forwards;
+  }
+
+  @keyframes heroAdminIn {
+    from { opacity: 0; transform: translateX(12px); }
+    to { opacity: 1; transform: none; }
+  }
+
+  .vton-hero-admin .vton-browser {
+    min-height: 280px;
+  }
+}
+
+.vton-hero-admin {
+  display: none;
+}
+
+/* Demo stage layout */
+.demo-stage-wrap {
+  max-width: 1000px;
+  margin: 2rem auto 0;
+  display: grid;
+  grid-template-columns: 1fr 1.1fr;
+  gap: 2rem;
+  align-items: center;
+}
+
+.demo-stage-visual {
+  display: flex;
+  justify-content: center;
+}
+
+.demo-stage-cta {
+  margin-top: 1.25rem;
+  text-align: center;
+}
+
+.demo-stage-cta .btn {
+  width: 100%;
+  justify-content: center;
+}
+
+@media (max-width: 900px) {
+  .demo-stage-wrap { grid-template-columns: 1fr; }
+}
+
+/* Versus */
+.versus-stage {
+  border-radius: var(--radius-md);
+  overflow: hidden;
+  border: 1px solid var(--border);
+  aspect-ratio: 9 / 14;
+  background: #0f0d14;
+  position: relative;
+  min-height: 200px;
+}
+
+.versus-stage .vton-reel {
+  max-width: 100%;
+  height: 100%;
+}
+
+.versus-stage .vton-device {
+  height: 100%;
+  padding: 8px;
+  border-radius: 28px;
+  box-shadow: none;
+}
+
+.versus-stage .vton-device__screen {
+  border-radius: 22px;
+  aspect-ratio: 9 / 16;
+  height: 100%;
+}
+
+.versus-bounce {
+  position: absolute;
+  bottom: 15%;
+  right: 8%;
+  z-index: 25;
+  font-size: 1.5rem;
+  animation: versusBounce 1s ease-in-out infinite;
+  pointer-events: none;
+}
+
+@keyframes versusBounce {
+  0%, 100% { transform: translate(0, 0); opacity: 0.9; }
+  50% { transform: translate(8px, -12px); opacity: 0.25; }
+}
+
+.versus-warn {
+  position: absolute;
+  bottom: 8px;
+  left: 8px;
+  right: 8px;
+  z-index: 25;
+  padding: 6px 8px;
+  border-radius: 8px;
+  background: rgba(220,38,38,0.92);
+  color: #fff;
+  font-size: 8px;
+  font-weight: 800;
+  text-align: center;
+}
+
+/* Demo stage */
+.demo-stage-visual .vton-reel {
+  margin-inline: auto;
+}
+
+@media (max-width: 1099px) {
+  .vton-film__grid {
+    grid-template-columns: 1fr;
+    max-width: 400px;
+    margin-inline: auto;
+  }
+}
+
+@media (max-width: 768px) {
+  .vton-reel--hero { max-width: min(300px, 88vw); }
+  .vton-film__grid { gap: 1.25rem; }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .vton-reel__frame,
+  .vton-reel__process,
+  .vton-reel__success,
+  .vton-reel__glow,
+  .vton-film__card.is-active .vton-browser__viewport img {
+    animation: none !important;
+  }
+  .vton-reel--shopper .vton-reel__frame:nth-child(3),
+  .vton-reel--static .vton-reel__frame {
+    opacity: 1 !important;
+  }
+  .vton-reel--shopper .vton-reel__frame:not(:nth-child(3)) {
+    opacity: 0 !important;
+  }
+}

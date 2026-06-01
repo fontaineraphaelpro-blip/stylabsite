@@ -146,9 +146,9 @@ body.pp-layout {
     height: auto;
 }
 
-/* Sticky install CTA — always works (funnel-active was never toggled) */
+/* Sticky install CTA — mobile only */
 .pp-layout .sticky-mobile-cta {
-    display: flex !important;
+    display: none !important;
     align-items: center;
     justify-content: center;
     background: rgba(18, 8, 40, 0.94) !important;
@@ -175,23 +175,21 @@ body.pp-layout {
     font-weight: 700;
 }
 
-@media (min-width: 769px) {
-    body.pp-layout { padding-bottom: 5.5rem; }
+@media (max-width: 768px) {
+    body.pp-layout { padding-bottom: calc(4.5rem + env(safe-area-inset-bottom, 0px)); }
 
     .pp-layout .sticky-mobile-cta {
-        left: 50%;
-        right: auto;
-        width: min(420px, calc(100% - 2rem));
-        bottom: 1.25rem;
-        border-radius: 999px;
-        border: 1px solid rgba(255, 255, 255, 0.15) !important;
-        padding: 0.65rem 0.85rem;
-        box-shadow: 0 24px 60px -20px rgba(0, 0, 0, 0.6) !important;
-        transform: translate3d(-50%, 120%, 0);
+        display: flex !important;
     }
+}
 
+@media (min-width: 769px) {
+    body.pp-layout { padding-bottom: 0; }
+
+    .pp-layout .sticky-mobile-cta,
     .pp-layout .sticky-mobile-cta.is-visible {
-        transform: translate3d(-50%, 0, 0);
+        display: none !important;
+        pointer-events: none !important;
     }
 }
 
@@ -411,12 +409,15 @@ body.pp-layout {
 }
 
 @media (prefers-reduced-motion: reduce) {
+    .pp-final-box::before { animation: none !important; }
+    .btn-primary::after { animation: none !important; }
+}
+
+@media (prefers-reduced-motion: reduce) and (max-width: 768px) {
     .pp-layout .sticky-mobile-cta {
+        display: flex !important;
         transform: none !important;
         opacity: 1 !important;
         pointer-events: auto !important;
     }
-
-    .pp-final-box::before { animation: none !important; }
-    .btn-primary::after { animation: none !important; }
 }

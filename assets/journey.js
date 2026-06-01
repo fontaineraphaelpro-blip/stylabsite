@@ -12,7 +12,7 @@
     document.querySelectorAll('.pp-step-panel').forEach(function (panel) {
       panel.classList.toggle('active', parseInt(panel.getAttribute('data-step'), 10) === currentStep);
     });
-    if (window.setFunnelStep) window.setFunnelStep(currentStep);
+    if (window.setFunnelStep) window.setFunnelStep(currentStep >= 2 ? 4 : 2);
   }
 
   document.querySelectorAll('.pp-step-tab').forEach(function (tab) {
