@@ -43,6 +43,7 @@ function PersonIcon() {
 export function HeroPhoneDemo({ locale }: { locale: Locale }) {
   const fr = locale === "fr";
   const [scene, setScene] = useState<Scene>("pdp");
+  const [cycle, setCycle] = useState(0);
   const [flash, setFlash] = useState(false);
   const isFirstScene = useRef(true);
 
@@ -57,6 +58,7 @@ export function HeroPhoneDemo({ locale }: { locale: Locale }) {
       setScene(current);
       timer = setTimeout(() => {
         idx = (idx + 1) % SCENES.length;
+        if (idx === 0) setCycle((c) => c + 1);
         schedule();
       }, SCENE_MS[current]);
     };
@@ -73,15 +75,28 @@ export function HeroPhoneDemo({ locale }: { locale: Locale }) {
       isFirstScene.current = false;
       return;
     }
+    // Flash only on meaningful step changes — not when looping back to PDP
+    if (scene === "pdp") return;
     setFlash(true);
-    const timer = setTimeout(() => setFlash(false), 280);
+    const timer = setTimeout(() => setFlash(false), 260);
     return () => clearTimeout(timer);
   }, [scene]);
 
-  const sceneClass = (name: Scene) =>
-    `hero-phone__scene hero-phone__scene--${name}${scene === name ? " is-active" : ""}`;
-
   const modalOpen = scene === "upload" || scene === "loading" || scene === "result";
+  const pdpVisible = scene === "pdp" || modalOpen;
+
+  const sceneClass = (name: Scene) => {
+    if (name === "pdp") {
+      return [
+        "hero-phone__scene hero-phone__scene--pdp",
+        pdpVisible ? "is-active" : "",
+        modalOpen ? "is-under-modal" : "",
+      ]
+        .filter(Boolean)
+        .join(" ");
+    }
+    return `hero-phone__scene hero-phone__scene--${name}${scene === name ? " is-active" : ""}`;
+  };
   const widgetStep: 1 | 2 | 3 =
     scene === "upload" ? 1 : scene === "loading" ? 2 : 3;
 
@@ -99,7 +114,12 @@ export function HeroPhoneDemo({ locale }: { locale: Locale }) {
           : "Your try-on result";
 
   return (
-    <div className="hero-phone hero-phone--playing" data-scene={scene} aria-hidden="true">
+    <div
+      className="hero-phone hero-phone--playing"
+      data-scene={scene}
+      style={{ "--hp-scene-ms": `${SCENE_MS[scene]}ms` } as CSSProperties}
+      aria-hidden="true"
+    >
       <div className="hero-phone__ambient" />
       <div className="hero-phone__ring" />
       <div className="hero-phone__float hero-phone__float--live">● LIVE</div>
@@ -175,6 +195,7 @@ export function HeroPhoneDemo({ locale }: { locale: Locale }) {
 
               <div className="hero-phone__widget-body">
                 <div
+                  key={`upload-${cycle}`}
                   className={`hero-phone__widget-panel hero-phone__widget-panel--upload${scene === "upload" ? " is-active" : ""}`}
                 >
                   <div className="hero-phone__vton-upload">
@@ -211,6 +232,7 @@ export function HeroPhoneDemo({ locale }: { locale: Locale }) {
                 </div>
 
                 <div
+                  key={`loading-${cycle}`}
                   className={`hero-phone__widget-panel hero-phone__widget-panel--loading${scene === "loading" ? " is-active" : ""}`}
                 >
                   <div className="hero-phone__vton-loading">
@@ -225,7 +247,7 @@ export function HeroPhoneDemo({ locale }: { locale: Locale }) {
                       <div className="hero-phone__vton-progress-bar" />
                     </div>
                     <div className="hero-phone__vton-progress-meta">
-                      <span className="hero-phone__vton-progress-pct">0%</span>
+                      <span className="hero-phone__vton-progress-pct" aria-hidden="true" />
                       <span className="hero-phone__vton-progress-time">~30s</span>
                     </div>
                     <p className="hero-phone__vton-loading-sub">
@@ -235,6 +257,7 @@ export function HeroPhoneDemo({ locale }: { locale: Locale }) {
                 </div>
 
                 <div
+                  key={`result-${cycle}`}
                   className={`hero-phone__widget-panel hero-phone__widget-panel--result${scene === "result" ? " is-active" : ""}`}
                 >
                   <div className="hero-phone__vton-result">

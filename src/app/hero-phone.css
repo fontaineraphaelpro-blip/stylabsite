@@ -1,6 +1,7 @@
 /* Hero phone demo — full animation system */
 .hero-phone {
   --hp-dur: var(--hero-phone-duration, 10s);
+  --hp-scene-ms: 2.4s;
   --hp-ease: cubic-bezier(0.21, 0.47, 0.32, 0.98);
   --hp-snap: cubic-bezier(0.34, 1.4, 0.64, 1);
   --hp-green: #1a5c42;
@@ -216,6 +217,16 @@
   z-index: 4;
 }
 
+.hero-phone__scene--pdp.is-under-modal {
+  z-index: 1;
+  filter: brightness(0.94);
+  transform: scale(1) translateY(0);
+}
+
+.hero-phone__scene--multiply.is-active {
+  z-index: 14;
+}
+
 .hero-phone__scene--pdp,
 .hero-phone__scene--upload,
 .hero-phone__scene--loading,
@@ -407,7 +418,7 @@
 }
 
 .hero-phone[data-scene="pdp"] .hero-phone__try-beacon {
-  animation: hero-phone-beacon-loop 2s var(--hp-ease) infinite;
+  animation: hero-phone-beacon-loop var(--hp-scene-ms) var(--hp-ease) infinite;
 }
 
 @keyframes hero-phone-beacon-loop {
@@ -454,7 +465,7 @@
 }
 
 .hero-phone[data-scene="pdp"] .hero-phone__btn--try {
-  animation: hero-phone-try-pulse-loop 2s var(--hp-ease) infinite;
+  animation: hero-phone-try-pulse-loop var(--hp-scene-ms) var(--hp-ease) infinite;
 }
 
 @keyframes hero-phone-try-pulse-loop {
@@ -1059,12 +1070,6 @@
   background: hsl(calc(var(--i) * 36), 80%, 55%);
 }
 
-.hero-phone[data-scene="success"] .hero-phone__confetti span,
-.hero-phone[data-scene="multiply"] .hero-phone__confetti span {
-  animation: hero-phone-confetti-pop 2.4s var(--hp-ease) infinite;
-  animation-delay: calc(var(--i) * 0.06s);
-}
-
 @keyframes hero-phone-confetti-pop {
   0%, 8% { opacity: 0; transform: translate(-50%, 0) rotate(0deg); }
   12% { opacity: 1; }
@@ -1092,10 +1097,8 @@
   pointer-events: none;
 }
 
-.hero-phone[data-scene="result"] .hero-phone__revenue,
-.hero-phone[data-scene="success"] .hero-phone__revenue,
-.hero-phone[data-scene="multiply"] .hero-phone__revenue {
-  animation: hero-phone-revenue-pop 2.4s var(--hp-snap) infinite;
+.hero-phone[data-scene="result"] .hero-phone__revenue {
+  animation: hero-phone-revenue-pop var(--hp-scene-ms) var(--hp-snap) 1 forwards;
 }
 
 @keyframes hero-phone-revenue-pop {
@@ -1113,10 +1116,14 @@
   animation: none;
 }
 
-.hero-phone[data-scene="result"] .hero-phone__revenue-burst,
-.hero-phone[data-scene="success"] .hero-phone__revenue-burst,
+.hero-phone[data-scene="result"] .hero-phone__revenue-burst {
+  animation: hero-phone-revenue-burst-pop var(--hp-scene-ms) var(--hp-ease) 1 forwards;
+}
+
+.hero-phone[data-scene="multiply"] .hero-phone__revenue,
 .hero-phone[data-scene="multiply"] .hero-phone__revenue-burst {
-  animation: hero-phone-revenue-burst-pop 2.4s var(--hp-ease) infinite;
+  opacity: 0 !important;
+  animation: none !important;
 }
 
 @keyframes hero-phone-revenue-burst-pop {
@@ -1165,36 +1172,28 @@
 }
 
 .hero-phone[data-scene="pdp"] .hero-phone__finger {
-  animation: hero-phone-finger-pdp 2s var(--hp-ease) infinite;
+  animation: hero-phone-finger-pdp var(--hp-scene-ms) var(--hp-ease) 1 forwards;
 }
 
 .hero-phone[data-scene="upload"] .hero-phone__finger {
-  animation: hero-phone-finger-upload 1.5s var(--hp-ease) infinite;
-}
-
-.hero-phone[data-scene="result"] .hero-phone__finger {
-  animation: hero-phone-finger-result 2s var(--hp-ease) infinite;
+  animation: hero-phone-finger-upload var(--hp-scene-ms) var(--hp-ease) 1 forwards;
 }
 
 @keyframes hero-phone-finger-pdp {
-  0%, 65% { opacity: 0; left: 50%; top: 76%; transform: scale(1); }
+  0%, 62% { opacity: 0; left: 50%; top: 72%; transform: scale(1); }
   68% { opacity: 1; }
   72% { opacity: 1; transform: scale(0.86); }
-  78%, 100% { opacity: 0; }
+  80%, 100% { opacity: 0; }
 }
 
 @keyframes hero-phone-finger-upload {
-  0%, 55% { opacity: 0; left: 50%; top: 86%; transform: scale(1); }
-  60% { opacity: 1; }
-  64% { opacity: 1; transform: scale(0.86); }
-  70%, 100% { opacity: 0; }
-}
-
-@keyframes hero-phone-finger-result {
-  0%, 60% { opacity: 0; left: 50%; top: 72%; transform: scale(1); }
-  65% { opacity: 1; }
-  69% { opacity: 1; transform: scale(0.86); }
-  75%, 100% { opacity: 0; }
+  0%, 18% { opacity: 0; left: 50%; top: 58%; transform: scale(1); }
+  24% { opacity: 1; top: 58%; }
+  28% { opacity: 1; transform: scale(0.86); }
+  34%, 46% { opacity: 0; }
+  52% { opacity: 1; top: 86%; transform: scale(1); }
+  56% { opacity: 1; transform: scale(0.86); }
+  64%, 100% { opacity: 0; }
 }
 
 .hero-phone__finger::after {
@@ -1222,23 +1221,26 @@
 }
 
 .hero-phone[data-scene="pdp"] .hero-phone__finger-ring {
-  animation: hero-phone-finger-ring-pdp 2s var(--hp-ease) infinite;
+  animation: hero-phone-finger-ring-pdp var(--hp-scene-ms) var(--hp-ease) 1 forwards;
 }
 
 .hero-phone[data-scene="upload"] .hero-phone__finger-ring {
-  animation: hero-phone-finger-ring-upload 1.5s var(--hp-ease) infinite;
+  animation: hero-phone-finger-ring-upload var(--hp-scene-ms) var(--hp-ease) 1 forwards;
 }
 
 @keyframes hero-phone-finger-ring-pdp {
-  0%, 66% { opacity: 0; left: calc(50% - 1.125rem); top: calc(76% - 1.125rem); transform: scale(0.35); }
+  0%, 64% { opacity: 0; left: calc(50% - 1.125rem); top: calc(72% - 1.125rem); transform: scale(0.35); }
   70% { opacity: 0.9; transform: scale(1); }
-  78%, 100% { opacity: 0; transform: scale(1.55); }
+  80%, 100% { opacity: 0; transform: scale(1.55); }
 }
 
 @keyframes hero-phone-finger-ring-upload {
-  0%, 56% { opacity: 0; left: calc(50% - 1.125rem); top: calc(86% - 1.125rem); transform: scale(0.35); }
-  62% { opacity: 0.9; transform: scale(1); }
-  70%, 100% { opacity: 0; transform: scale(1.55); }
+  0%, 20% { opacity: 0; left: calc(50% - 1.125rem); top: calc(58% - 1.125rem); transform: scale(0.35); }
+  26% { opacity: 0.9; transform: scale(1); }
+  34%, 48% { opacity: 0; transform: scale(1.55); }
+  54% { opacity: 0; left: calc(50% - 1.125rem); top: calc(86% - 1.125rem); transform: scale(0.35); }
+  58% { opacity: 0.9; transform: scale(1); }
+  66%, 100% { opacity: 0; transform: scale(1.55); }
 }
 
 @keyframes hero-phone-finger {
@@ -1290,18 +1292,26 @@
   backdrop-filter: blur(0);
   -webkit-backdrop-filter: blur(0);
   opacity: 0;
+  visibility: hidden;
   pointer-events: none;
   transition:
-    opacity 0.5s var(--hp-ease),
-    background 0.5s var(--hp-ease),
-    backdrop-filter 0.5s var(--hp-ease);
+    opacity 0.45s var(--hp-ease),
+    background 0.45s var(--hp-ease),
+    backdrop-filter 0.45s var(--hp-ease),
+    visibility 0s linear 0.45s;
 }
 
 .hero-phone__widget-overlay.is-open {
   opacity: 1;
+  visibility: visible;
   background: rgba(15, 23, 42, 0.72);
   backdrop-filter: blur(10px) saturate(1.12);
   -webkit-backdrop-filter: blur(10px) saturate(1.12);
+  transition:
+    opacity 0.45s var(--hp-ease),
+    background 0.45s var(--hp-ease),
+    backdrop-filter 0.45s var(--hp-ease),
+    visibility 0s;
 }
 
 .hero-phone__widget-modal {
@@ -1393,17 +1403,25 @@
   display: flex;
   flex-direction: column;
   opacity: 0;
-  transform: translateY(10px);
+  visibility: hidden;
+  transform: translateY(8px);
   pointer-events: none;
   transition:
-    opacity 0.45s var(--hp-ease),
-    transform 0.45s var(--hp-ease);
+    opacity 0.38s var(--hp-ease),
+    transform 0.38s var(--hp-ease),
+    visibility 0s linear 0.38s;
 }
 
 .hero-phone__widget-panel.is-active {
   opacity: 1;
+  visibility: visible;
   transform: translateY(0);
   pointer-events: none;
+  z-index: 1;
+  transition:
+    opacity 0.38s var(--hp-ease),
+    transform 0.38s var(--hp-ease),
+    visibility 0s;
 }
 
 /* Upload panel */
@@ -1466,13 +1484,22 @@
 }
 
 .hero-phone[data-scene="upload"] .hero-phone__vton-upload-thumb {
-  animation: hero-phone-vton-thumb 2s var(--hp-snap) infinite;
+  animation: hero-phone-vton-thumb var(--hp-scene-ms) var(--hp-snap) 1 forwards;
+}
+
+.hero-phone[data-scene="upload"] .hero-phone__vton-upload-btn {
+  animation: hero-phone-vton-choose-fade var(--hp-scene-ms) var(--hp-ease) 1 forwards;
+}
+
+@keyframes hero-phone-vton-choose-fade {
+  0%, 22% { opacity: 1; }
+  30%, 100% { opacity: 0; pointer-events: none; }
 }
 
 @keyframes hero-phone-vton-thumb {
-  0%, 18% { opacity: 0; transform: scale(0.88); }
-  28%, 72% { opacity: 1; transform: scale(1); }
-  100% { opacity: 0; transform: scale(1.02); }
+  0%, 20% { opacity: 0; transform: scale(0.88); }
+  28%, 78% { opacity: 1; transform: scale(1); }
+  100% { opacity: 1; transform: scale(1); }
 }
 
 .hero-phone__vton-upload-scan {
@@ -1485,7 +1512,7 @@
 }
 
 .hero-phone[data-scene="upload"] .hero-phone__vton-upload-scan {
-  animation: hero-phone-vton-scan 2s linear infinite;
+  animation: hero-phone-vton-scan var(--hp-scene-ms) linear 1 forwards;
 }
 
 @keyframes hero-phone-vton-scan {
@@ -1524,13 +1551,14 @@
 }
 
 .hero-phone[data-scene="upload"] .hero-phone__vton-generate {
-  animation: hero-phone-vton-generate 2s var(--hp-ease) infinite;
+  animation: hero-phone-vton-generate var(--hp-scene-ms) var(--hp-ease) 1 forwards;
 }
 
 @keyframes hero-phone-vton-generate {
-  0%, 55% { box-shadow: none; transform: scale(1); }
-  62% { box-shadow: 0 0 0 5px rgba(17, 24, 39, 0.15); transform: scale(0.98); }
-  70%, 100% { box-shadow: none; transform: scale(1); }
+  0%, 48% { box-shadow: none; transform: scale(1); opacity: 0.45; }
+  52% { opacity: 1; }
+  58% { box-shadow: 0 0 0 5px rgba(17, 24, 39, 0.15); transform: scale(0.98); }
+  66%, 100% { box-shadow: none; transform: scale(1); opacity: 1; }
 }
 
 /* Loading panel */
@@ -1611,7 +1639,7 @@
 }
 
 .hero-phone[data-scene="loading"] .hero-phone__vton-progress-bar {
-  animation: hero-phone-vton-progress 2.8s var(--hp-ease) forwards infinite;
+  animation: hero-phone-vton-progress var(--hp-scene-ms) var(--hp-ease) 1 forwards;
 }
 
 @keyframes hero-phone-vton-progress {
@@ -1634,19 +1662,19 @@
 }
 
 .hero-phone__vton-progress-pct::after {
-  content: "0";
+  content: "0%";
 }
 
 .hero-phone[data-scene="loading"] .hero-phone__vton-progress-pct::after {
-  animation: hero-phone-vton-pct 2.8s steps(1) forwards infinite;
+  animation: hero-phone-vton-pct var(--hp-scene-ms) steps(1) 1 forwards;
 }
 
 @keyframes hero-phone-vton-pct {
-  0% { content: "8"; }
-  20% { content: "24"; }
-  45% { content: "51"; }
-  70% { content: "79"; }
-  100% { content: "100"; }
+  0% { content: "6%"; }
+  18% { content: "22%"; }
+  40% { content: "48%"; }
+  62% { content: "74%"; }
+  82%, 100% { content: "100%"; }
 }
 
 .hero-phone__vton-loading-sub {
@@ -1657,6 +1685,7 @@
 
 /* Result panel — live composite, no screenshot */
 .hero-phone__vton-result {
+  position: relative;
   display: flex;
   flex-direction: column;
   gap: 0.45rem;
@@ -1706,7 +1735,7 @@
 }
 
 .hero-phone[data-scene="result"] .hero-phone__tryon-garment {
-  animation: hero-phone-garment-reveal 2.6s var(--hp-ease) infinite;
+  animation: hero-phone-garment-reveal var(--hp-scene-ms) var(--hp-ease) 1 forwards;
 }
 
 @keyframes hero-phone-garment-reveal {
@@ -1724,7 +1753,7 @@
 }
 
 .hero-phone[data-scene="result"] .hero-phone__tryon-shine {
-  animation: hero-phone-tryon-shine 2.6s var(--hp-ease) infinite;
+  animation: hero-phone-tryon-shine var(--hp-scene-ms) var(--hp-ease) 1 forwards;
 }
 
 @keyframes hero-phone-tryon-shine {
@@ -1745,7 +1774,7 @@
 }
 
 .hero-phone[data-scene="result"] .hero-phone__tryon-scan {
-  animation: hero-phone-tryon-scan 2.6s linear infinite;
+  animation: hero-phone-tryon-scan var(--hp-scene-ms) linear 1 forwards;
 }
 
 @keyframes hero-phone-tryon-scan {
@@ -1782,7 +1811,7 @@
 }
 
 .hero-phone[data-scene="result"] .hero-phone__vton-atc {
-  animation: hero-phone-vton-atc 2.6s var(--hp-ease) infinite;
+  animation: hero-phone-vton-atc var(--hp-scene-ms) var(--hp-ease) 1 forwards;
 }
 
 @keyframes hero-phone-vton-atc {
@@ -1815,7 +1844,7 @@
 }
 
 .hero-phone[data-scene="result"] .hero-phone__vton-cart-toast {
-  animation: hero-phone-vton-toast 2.6s var(--hp-snap) infinite;
+  animation: hero-phone-vton-toast var(--hp-scene-ms) var(--hp-snap) 1 forwards;
 }
 
 @keyframes hero-phone-vton-toast {
@@ -1894,7 +1923,7 @@
 }
 
 .hero-phone[data-scene="multiply"] .hero-phone__multiply-num {
-  animation: hero-phone-multiply-num 3.8s var(--hp-ease) infinite;
+  animation: hero-phone-multiply-num var(--hp-scene-ms) var(--hp-ease) 1 forwards;
 }
 
 @keyframes hero-phone-multiply-num {
@@ -1932,8 +1961,8 @@
 }
 
 .hero-phone[data-scene="multiply"] .hero-phone__multiply-chip {
-  animation: hero-phone-multiply-chip 3.8s var(--hp-ease) infinite;
-  animation-delay: calc(var(--i) * 0.35s + 0.2s);
+  animation: hero-phone-multiply-chip var(--hp-scene-ms) var(--hp-ease) 1 forwards;
+  animation-delay: calc(var(--i) * 0.28s + 0.15s);
 }
 
 @keyframes hero-phone-multiply-chip {
@@ -1972,7 +2001,7 @@
 }
 
 .hero-phone[data-scene="multiply"] .hero-phone__multiply-total-value {
-  animation: hero-phone-multiply-total 3.8s var(--hp-ease) infinite;
+  animation: hero-phone-multiply-total var(--hp-scene-ms) var(--hp-ease) 1 forwards;
 }
 
 @keyframes hero-phone-multiply-total {
@@ -1988,21 +2017,26 @@
   max-width: 12rem;
 }
 
-.hero-phone[data-scene="multiply"] .hero-phone__revenue {
-  animation: hero-phone-revenue-pop 3.8s var(--hp-snap) infinite;
+.hero-phone[data-scene="multiply"] .hero-phone__confetti span {
+  animation: hero-phone-confetti-pop var(--hp-scene-ms) var(--hp-ease) 1 forwards;
+  animation-delay: calc(var(--i) * 0.05s);
 }
 
-.hero-phone[data-scene="multiply"] .hero-phone__revenue-amount {
-  font-size: 1.25rem;
+.hero-phone[data-scene="multiply"] .hero-phone__finger,
+.hero-phone[data-scene="multiply"] .hero-phone__finger-ring,
+.hero-phone[data-scene="multiply"] .hero-phone__revenue,
+.hero-phone[data-scene="multiply"] .hero-phone__revenue-burst {
+  opacity: 0 !important;
+  animation: none !important;
 }
 
-/* Finger targets — widget-accurate */
+/* Finger — add to cart on result */
 .hero-phone[data-scene="result"] .hero-phone__finger {
-  animation: hero-phone-finger-atc 2.6s var(--hp-ease) infinite;
+  animation: hero-phone-finger-atc var(--hp-scene-ms) var(--hp-ease) 1 forwards;
 }
 
 @keyframes hero-phone-finger-atc {
-  0%, 58% { opacity: 0; left: 50%; top: 78%; transform: scale(1); }
+  0%, 58% { opacity: 0; left: 50%; top: 88%; transform: scale(1); }
   64% { opacity: 1; }
   68% { opacity: 1; transform: scale(0.86); }
   74%, 100% { opacity: 0; }
