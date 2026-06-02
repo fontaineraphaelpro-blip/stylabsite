@@ -38,15 +38,34 @@ export function VtonDemo({ locale }: { locale: Locale }) {
     let t1: ReturnType<typeof setTimeout> | undefined;
     let t2: ReturnType<typeof setTimeout> | undefined;
     let t3: ReturnType<typeof setTimeout> | undefined;
+    let raf = 0;
+
+    const getScrollTarget = (): HTMLElement | null =>
+      document.getElementById("vton-widget-container") ??
+      document.getElementById("vton-mount") ??
+      document.getElementById("try-on");
 
     const scrollToTryOn = () => {
-      const el = document.getElementById("try-on");
-      if (!el) return;
-      el.scrollIntoView({ behavior: "smooth", block: "center" });
+      const target = getScrollTarget();
+      if (!target) return;
+
+      const rect = target.getBoundingClientRect();
+      if (rect.height === 0 && rect.width === 0) return;
+
+      const absoluteTop = window.scrollY + rect.top;
+      const targetMid = absoluteTop + rect.height / 2;
+      const eyeLine = window.innerHeight * 0.44;
+      const nextTop = Math.max(0, Math.round(targetMid - eyeLine));
+
+      window.scrollTo({ top: nextTop, behavior: "smooth" });
     };
 
     const armScroll = () => {
-      scrollToTryOn();
+      cancelAnimationFrame(raf);
+      raf = requestAnimationFrame(() => {
+        scrollToTryOn();
+        requestAnimationFrame(scrollToTryOn);
+      });
       t1 = setTimeout(scrollToTryOn, 400);
       t2 = setTimeout(scrollToTryOn, 1200);
       t3 = setTimeout(scrollToTryOn, 2500);
@@ -63,12 +82,41 @@ export function VtonDemo({ locale }: { locale: Locale }) {
       armScroll();
     };
 
+    const normalizePath = (path: string) => {
+      const trimmed = path.replace(/\/$/, "");
+      return trimmed || "/";
+    };
+
+    const onTryOnLinkClick = (event: MouseEvent) => {
+      const link = (event.target as Element | null)?.closest?.('a[href*="#try-on"]');
+      if (!link) return;
+
+      let url: URL;
+      try {
+        url = new URL(link.getAttribute("href") || "", window.location.origin);
+      } catch {
+        return;
+      }
+
+      if (normalizePath(url.pathname) !== normalizePath(window.location.pathname)) return;
+
+      event.preventDefault();
+      const nextUrl = `${url.pathname}${url.search}#try-on`;
+      if (`${window.location.pathname}${window.location.search}#try-on` !== nextUrl) {
+        window.history.pushState(null, "", nextUrl);
+      }
+      armScroll();
+    };
+
     onHash();
     window.addEventListener("hashchange", onHash);
+    document.addEventListener("click", onTryOnLinkClick, true);
 
     return () => {
       window.removeEventListener("hashchange", onHash);
+      document.removeEventListener("click", onTryOnLinkClick, true);
       mo?.disconnect();
+      cancelAnimationFrame(raf);
       clearTimeout(t1);
       clearTimeout(t2);
       clearTimeout(t3);

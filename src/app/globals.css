@@ -1072,8 +1072,8 @@ body {
 }
 
 #try-on {
-  scroll-margin-top: 5.5rem;
-  scroll-margin-bottom: 6rem;
+  scroll-margin-top: 0;
+  scroll-margin-bottom: 0;
 }
 
 .demo-tryon-zone {
