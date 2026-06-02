@@ -2,7 +2,7 @@
 
 import { useEffect, useState } from "react";
 import Image from "next/image";
-import { motion } from "framer-motion";
+import { motion, AnimatePresence } from "framer-motion";
 import { APP_URL } from "@/lib/data";
 import { initVtonDemo } from "@/lib/vton-demo-boot";
 import type { Locale } from "@/lib/i18n";
@@ -17,10 +17,21 @@ const THUMBS = [
 export function VtonDemo({ locale }: { locale: Locale }) {
   const [mainSrc, setMainSrc] = useState(THUMBS[0].src);
   const [activeThumb, setActiveThumb] = useState(0);
+  const [showHint, setShowHint] = useState(true);
   const fr = locale === "fr";
 
   useEffect(() => {
     initVtonDemo();
+  }, []);
+
+  useEffect(() => {
+    const mount = document.getElementById("vton-mount");
+    if (!mount) return;
+
+    const dismiss = () => setShowHint(false);
+    mount.addEventListener("click", dismiss, { once: true, capture: true });
+
+    return () => mount.removeEventListener("click", dismiss, { capture: true });
   }, []);
 
   return (
@@ -47,7 +58,7 @@ export function VtonDemo({ locale }: { locale: Locale }) {
               data-product-id={PRODUCT_GID}
               data-product-handle="shadow-stripe-collared-soccer-jersey-4"
             >
-              <div className="trial-gallery product__media min-w-0">
+              <div className="trial-gallery product__media min-w-0 order-2 md:order-1">
                 {/* eslint-disable-next-line @next/next/no-img-element */}
                 <img
                   id="mainImage"
@@ -75,23 +86,12 @@ export function VtonDemo({ locale }: { locale: Locale }) {
                 </div>
               </div>
 
-              <div className="trial-product product__info flex flex-col min-w-0">
+              <div className="trial-product product__info flex flex-col min-w-0 order-1 md:order-2">
                 <p className="text-xs text-zinc-500 uppercase tracking-wide mb-1">REMADE ICONS</p>
                 <h3 className="text-base sm:text-lg font-semibold mb-2 line-clamp-2">
                   Shadow Stripe Collared Soccer Jersey
                 </h3>
                 <p className="text-xl sm:text-2xl font-bold mb-3">18.12 €</p>
-                <p className="text-sm text-zinc-400 mb-3 sm:mb-4">
-                  {fr ? (
-                    <>
-                      Tapez <strong className="text-white">Essayer</strong> ci-dessous.
-                    </>
-                  ) : (
-                    <>
-                      Tap <strong className="text-white">Try it on</strong> below.
-                    </>
-                  )}
-                </p>
 
                 <form action="#" className="product-form mt-auto min-w-0" onSubmit={(e) => e.preventDefault()}>
                   <div className="trial-buy space-y-3 min-w-0">
@@ -104,7 +104,38 @@ export function VtonDemo({ locale }: { locale: Locale }) {
                       {fr ? "Ajouter au panier" : "Add to cart"}
                     </button>
 
-                    <div className="demo-tryon-zone min-w-0">
+                    <AnimatePresence>
+                      {showHint && (
+                        <motion.div
+                          initial={{ opacity: 0, y: -6 }}
+                          animate={{ opacity: 1, y: 0 }}
+                          exit={{ opacity: 0, y: -6 }}
+                          className="demo-tryon-callout"
+                          role="note"
+                        >
+                          <span className="demo-tryon-callout__arrow" aria-hidden="true">
+                            ↓
+                          </span>
+                          <span>
+                            {fr ? (
+                              <>
+                                Cliquez sur <strong>Essayer</strong> ci-dessous
+                              </>
+                            ) : (
+                              <>
+                                Click <strong>Try it on</strong> below
+                              </>
+                            )}
+                          </span>
+                        </motion.div>
+                      )}
+                    </AnimatePresence>
+
+                    <div className="demo-tryon-zone demo-tryon-zone--spotlight min-w-0">
+                      <span className="demo-tryon-zone__pulse" aria-hidden="true" />
+                      <span className="demo-tryon-zone__finger" aria-hidden="true">
+                        👆
+                      </span>
                       <div id="vton-mount-placeholder" className="vton-placeholder">
                         <button type="button" className="vton-placeholder-btn" aria-label="Loading try-on">
                           <svg viewBox="0 0 24 24" width="18" height="18" fill="none" stroke="currentColor" strokeWidth="2">

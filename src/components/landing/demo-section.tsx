@@ -40,7 +40,6 @@ export function DemoSection({ locale }: { locale: Locale }) {
         <div className="demo-showcase__grid" />
         <div className="demo-showcase__orb demo-showcase__orb--1" />
         <div className="demo-showcase__orb demo-showcase__orb--2" />
-        <div className="demo-showcase__beam" />
       </motion.div>
 
       <div className="container relative z-10 min-w-0">
@@ -56,7 +55,17 @@ export function DemoSection({ locale }: { locale: Locale }) {
                 {t.demoTitle}{" "}
                 <span className="gradient-text">{t.demoTitleAccent}</span>
               </h2>
-              <p className="text-sm sm:text-base text-zinc-400 leading-relaxed">{t.demoDesc}</p>
+              <p className="text-sm sm:text-base text-zinc-400 leading-relaxed">
+                {locale === "fr" ? (
+                  <>
+                    Uploadez votre photo — cliquez sur <strong className="text-white">Essayer</strong> dans le widget.
+                  </>
+                ) : (
+                  <>
+                    Upload your photo — click <strong className="text-white">Try it on</strong> in the widget.
+                  </>
+                )}
+              </p>
             </div>
 
             <ol className="demo-steps hidden lg:flex">

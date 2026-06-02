@@ -56,14 +56,27 @@ export function HeroSection({ locale }: { locale: Locale }) {
           </FadeInHero>
 
           <FadeInHero delay={0.5}>
-            <p className="text-sm text-zinc-500">{t.heroNote}</p>
-            <div className="flex flex-wrap gap-6 pt-2">
-              {t.stats.map((s) => (
-                <div key={s.label}>
-                  <strong className="block text-2xl font-bold">{s.value}</strong>
-                  <span className="text-xs text-zinc-500">{s.label}</span>
-                </div>
-              ))}
+            <div className="hero-proof">
+              <ul className="hero-proof__chips" aria-label={locale === "fr" ? "Avantages" : "Highlights"}>
+                {(locale === "fr"
+                  ? ["50 essayages gratuits/mois", "Sans carte", "En ligne en ~5 min"]
+                  : ["50 free try-ons/mo", "No credit card", "Live in ~5 min"]
+                ).map((chip) => (
+                  <li key={chip}>{chip}</li>
+                ))}
+              </ul>
+
+              <div className="hero-proof__stats">
+                {t.stats.map((s, i) => (
+                  <div
+                    key={s.label}
+                    className={`hero-stat hero-stat--${i === 0 ? "violet" : i === 1 ? "cyan" : "emerald"}`}
+                  >
+                    <strong className="hero-stat__value">{s.value}</strong>
+                    <span className="hero-stat__label">{s.label}</span>
+                  </div>
+                ))}
+              </div>
             </div>
           </FadeInHero>
         </div>
