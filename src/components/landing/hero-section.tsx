@@ -1,10 +1,10 @@
 "use client";
 
-import Image from "next/image";
 import Link from "next/link";
 import { motion } from "framer-motion";
 import { FadeInHero } from "@/components/motion/fade-in";
 import { GridBackground } from "@/components/landing/grid-background";
+import { HeroPhoneDemo } from "@/components/landing/hero-phone-demo";
 import { APP_URL, type Locale, UI, localePath } from "@/lib/content";
 
 export function HeroSection({ locale }: { locale: Locale }) {
@@ -80,20 +80,18 @@ export function HeroSection({ locale }: { locale: Locale }) {
           </FadeInHero>
         </div>
 
-        <FadeInHero delay={0.32} className="relative">
+        <FadeInHero delay={0.32} className="relative flex justify-center lg:justify-end overflow-hidden">
           <motion.div
             whileHover={{ scale: 1.02 }}
             transition={{ type: "spring", stiffness: 300, damping: 20 }}
-            className="glass-card gradient-border p-2 hover-lift"
+            className="w-full max-w-[320px]"
           >
-            <Image
-              src="/assets/screenshots/result-modal.png"
-              alt="AI virtual try-on preview"
-              width={560}
-              height={620}
-              className="rounded-xl w-full h-auto"
-              priority
-            />
+            <HeroPhoneDemo locale={locale} />
+            <p className="sr-only">
+              {locale === "fr"
+                ? "Animation : page produit, essayage IA, résultat, ajout au panier et revenu généré."
+                : "Animation: product page, AI try-on, result, add to cart, and revenue earned."}
+            </p>
           </motion.div>
         </FadeInHero>
       </div>
