@@ -748,46 +748,64 @@
         document.documentElement.classList.remove('vton-zoom-active');
       }
 
+      function vtonIsDemoInstallMode() {
+        var liquid = window.VTON_LIQUID || {};
+        return !!(liquid.installCta && liquid.installCta.url);
+      }
+
       function vtonOpenResultZoom(imageUrl) {
-        if (!imageUrl) {
+        if (!imageUrl || typeof imageUrl !== 'string') {
           return;
         }
-        vtonInjectZoomCss();
-        vtonCloseResultZoom();
-        var lang = (document.documentElement.lang || '').toLowerCase();
-        var isFr = lang.indexOf('fr') === 0;
-        var overlay = document.createElement('div');
-        overlay.id = 'vton-zoom-overlay';
-        overlay.className = 'vton-zoom-overlay';
-        overlay.setAttribute('role', 'dialog');
-        overlay.setAttribute('aria-modal', 'true');
-        overlay.setAttribute('aria-label', isFr ? 'Aperçu essayage' : 'Try-on preview');
-        overlay.innerHTML =
-          '<button type="button" class="vton-zoom-overlay__close" aria-label="' +
-          (isFr ? 'Fermer' : 'Close') +
-          '">&times;</button>' +
-          '<img class="vton-zoom-overlay__img" src="' +
-          vtonEscapeHtml(imageUrl) +
-          '" alt="' +
-          (isFr ? 'Résultat essayage virtuel' : 'Virtual try-on result') +
-          '" />';
-        document.body.appendChild(overlay);
-        document.documentElement.classList.add('vton-zoom-active');
-        overlay.addEventListener('click', function() {
+        try {
+          vtonInjectZoomCss();
           vtonCloseResultZoom();
-        });
-        var closeBtn = overlay.querySelector('.vton-zoom-overlay__close');
-        if (closeBtn) {
+          var lang = (document.documentElement.lang || '').toLowerCase();
+          var isFr = lang.indexOf('fr') === 0;
+          var overlay = document.createElement('div');
+          overlay.id = 'vton-zoom-overlay';
+          overlay.className = 'vton-zoom-overlay';
+          overlay.setAttribute('role', 'dialog');
+          overlay.setAttribute('aria-modal', 'true');
+          overlay.setAttribute(
+            'aria-label',
+            isFr ? 'Aperçu essayage' : 'Try-on preview'
+          );
+
+          var closeBtn = document.createElement('button');
+          closeBtn.type = 'button';
+          closeBtn.className = 'vton-zoom-overlay__close';
+          closeBtn.setAttribute('aria-label', isFr ? 'Fermer' : 'Close');
+          closeBtn.textContent = '\u00d7';
+
+          var img = document.createElement('img');
+          img.className = 'vton-zoom-overlay__img';
+          img.alt = isFr ? 'Résultat essayage virtuel' : 'Virtual try-on result';
+          img.draggable = false;
+          img.decoding = 'async';
+          img.src = imageUrl;
+          img.onerror = function() {
+            vtonCloseResultZoom();
+          };
+
+          overlay.appendChild(closeBtn);
+          overlay.appendChild(img);
+          document.body.appendChild(overlay);
+          document.documentElement.classList.add('vton-zoom-active');
+
+          overlay.addEventListener('click', function() {
+            vtonCloseResultZoom();
+          });
           closeBtn.addEventListener('click', function(ev) {
             ev.stopPropagation();
             vtonCloseResultZoom();
           });
-        }
-        var img = overlay.querySelector('.vton-zoom-overlay__img');
-        if (img) {
           img.addEventListener('click', function(ev) {
             ev.stopPropagation();
           });
+        } catch (zoomErr) {
+          error('[VTON] Result zoom failed:', zoomErr);
+          vtonCloseResultZoom();
         }
       }
 
@@ -797,7 +815,14 @@
           return;
         }
         img.dataset.vtonZoomBound = '1';
-        img.style.cursor = 'pointer';
+        img.style.cursor = 'zoom-in';
+        img.setAttribute('role', 'button');
+        img.setAttribute(
+          'aria-label',
+          (document.documentElement.lang || '').toLowerCase().indexOf('fr') === 0
+            ? 'Agrandir le résultat'
+            : 'Zoom try-on result'
+        );
         img.addEventListener('click', function(ev) {
           ev.preventDefault();
           ev.stopPropagation();
@@ -1015,6 +1040,11 @@
             e.preventDefault();
             e.stopPropagation();
             inst.generate();
+            return;
+          }
+          if (e.target.closest && e.target.closest('.vton-add-to-cart-btn--demo')) {
+            e.preventDefault();
+            e.stopPropagation();
             return;
           }
           if (e.target.closest && e.target.closest('.vton-add-to-cart-btn')) {
@@ -2485,6 +2515,37 @@
               box-shadow: 0 8px 24px rgba(15, 23, 42, 0.1);
               border: 1px solid rgba(15, 23, 42, 0.06);
               flex-shrink: 1;
+              touch-action: manipulation;
+              -webkit-user-select: none;
+              user-select: none;
+            }
+            .vton-atc-preview {
+              position: relative;
+              width: 100%;
+              flex-shrink: 0;
+            }
+            .vton-atc-preview__veil {
+              position: absolute;
+              inset: 0;
+              border-radius: 14px;
+              background: linear-gradient(
+                180deg,
+                rgba(255, 255, 255, 0.22),
+                rgba(255, 255, 255, 0.45)
+              );
+              pointer-events: auto;
+              cursor: not-allowed;
+              z-index: 2;
+            }
+            .vton-add-to-cart-btn--demo {
+              pointer-events: none;
+              width: 100%;
+            }
+            .vton-add-to-cart-btn--demo:hover,
+            .vton-add-to-cart-btn--demo:active {
+              transform: none;
+              filter: none;
+              box-shadow: 0 4px 16px rgba(15, 23, 42, 0.16);
             }
             .vton-add-to-cart-btn {
               width: 100%;
@@ -2719,11 +2780,13 @@
               flex-shrink: 0;
               margin: 0;
             }
-            .vton-result-content--demo .vton-add-to-cart-btn,
             .vton-result-content--demo .vton-atc-error,
             .vton-result-content--demo .vton-variant-picker,
             .vton-result-content--demo .vton-urgency {
               display: none !important;
+            }
+            .vton-result-content--demo .vton-atc-preview {
+              flex-shrink: 0;
             }
             .vton-result-content--demo .vton-install-cta {
               flex-shrink: 0;
@@ -3227,6 +3290,7 @@
               .vton-env-desktop .vton-urgency,
               .vton-env-desktop .vton-atc-error,
               .vton-env-desktop .vton-add-to-cart-btn,
+              .vton-env-desktop .vton-atc-preview,
               .vton-env-desktop .vton-install-cta,
               .vton-env-desktop .vton-share-block,
               .vton-env-desktop .vton-retry-link {
@@ -4785,8 +4849,20 @@
         var commerceHtml = '';
         if (isDemoInstall) {
           leadHtml = demoFr
-            ? 'Voici votre <strong>essayage virtuel</strong>. Installez Stylab sur Shopify pour l\u2019offrir sur vos fiches produit.'
-            : 'Here is your <strong>virtual try-on</strong>. Install Stylab on Shopify to offer this on your product pages.';
+            ? 'Voici votre <strong>essayage virtuel</strong>. Sur votre boutique, le bouton panier apparaît ainsi.'
+            : 'Here is your <strong>virtual try-on</strong>. On your store, the add to cart button looks like this.';
+          var atcLabel = demoFr ? 'Ajouter au panier' : 'Add to cart';
+          commerceHtml =
+            '<div class="vton-atc-preview">' +
+            '<button type="button" class="vton-add-to-cart-btn vton-add-to-cart-btn--demo" data-vton-demo-atc="1" tabindex="-1" aria-disabled="true" style="background:' +
+            buttonBg +
+            ';color:' +
+            buttonColor +
+            ';">' +
+            atcLabel +
+            '</button>' +
+            '<span class="vton-atc-preview__veil" aria-hidden="true"></span>' +
+            '</div>';
         } else {
           leadHtml = variantHtml
             ? 'Select your option, then add <strong>' +
@@ -4975,6 +5051,7 @@
         vtonSetResultLayoutMode(state, true);
         vtonShowFunnelPanel(state, 'result');
         bindResultPanelEvents(state);
+        vtonBindResultZoomTrigger(state);
         vtonRefreshOptionSelectAvailability(state);
         if (state.selectedVariantId) {
           vtonSyncThemeVariant(state.selectedVariantId);
@@ -4983,6 +5060,10 @@
 
       function handleAddToCart(state) {
         log('[VTON] handleAddToCart called');
+
+        if (vtonIsDemoInstallMode()) {
+          return;
+        }
 
         var atcButton = vtonMq(state, '.vton-add-to-cart-btn');
         var atcError = vtonMq(state, '.vton-atc-error');
