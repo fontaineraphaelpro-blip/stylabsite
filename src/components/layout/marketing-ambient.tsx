@@ -3,8 +3,6 @@ export function MarketingAmbient() {
     <div
       className="pointer-events-none fixed inset-0 -z-10 bg-black"
       aria-hidden="true"
-    >
-      <div className="ambient-glow" />
-    </div>
+    />
   );
 }

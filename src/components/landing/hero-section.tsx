@@ -56,12 +56,6 @@ export function HeroSection({ locale }: { locale: Locale }) {
 
           <FadeInHero delay={0.5}>
             <div className="hero-proof">
-              <ul className="hero-proof__chips" aria-label={locale === "fr" ? "Avantages" : "Highlights"}>
-                {t.heroChips.map((chip) => (
-                  <li key={chip}>{chip}</li>
-                ))}
-              </ul>
-
               <div className="hero-proof__stats">
                 {t.stats.map((s, i) => (
                   <div

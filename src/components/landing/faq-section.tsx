@@ -27,7 +27,7 @@ export function FaqSection({ locale }: { locale: Locale }) {
 
   return (
     <section id="faq" className="py-20" aria-labelledby="faq-title">
-      <div className="container max-w-2xl">
+      <div className="container max-w-3xl">
         <FadeIn className="text-center mb-10">
           <p className="section-eyebrow">{t.faqEyebrow}</p>
           <h2 id="faq-title" className="text-3xl sm:text-4xl font-bold">

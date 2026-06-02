@@ -21,8 +21,6 @@ export const UI = {
     heroTitle: "Turn hesitation into",
     heroTitleAccent: "add to cart",
     heroLead: "One photo on your product page. Shoppers see the fit — then add to cart.",
-    heroNote: "No credit card · live in ~5 min · Shopify App Store",
-    heroChips: ["Shopify App Store", "No credit card", "Live in ~5 min"],
     stats: [
       { value: "77.8%", label: "try-on → cart (pilot)" },
       { value: "~30s", label: "preview on PDP" },
@@ -160,8 +158,6 @@ export const UI = {
     heroTitle: "Transformez l'hésitation en",
     heroTitleAccent: "ajout au panier",
     heroLead: "Une photo sur votre fiche produit. Vos clients voient le rendu — puis ajoutent au panier.",
-    heroNote: "Sans carte · en ligne en ~5 min · App Store Shopify",
-    heroChips: ["App Store Shopify", "Sans carte", "En ligne en ~5 min"],
     stats: [
       { value: "77,8 %", label: "essayage → panier (pilote)" },
       { value: "~30 s", label: "aperçu sur PDP" },

@@ -39,15 +39,20 @@ body {
     linear-gradient(rgba(255, 255, 255, 0.03) 1px, transparent 1px),
     linear-gradient(90deg, rgba(255, 255, 255, 0.03) 1px, transparent 1px);
   background-size: 72px 72px;
-  mask-image: radial-gradient(ellipse 70% 55% at 50% 15%, black 25%, transparent 72%);
+  mask-image: linear-gradient(180deg, black 0%, black 50%, transparent 100%);
 }
 
 .bg-gradient-radial-wide {
-  background: radial-gradient(ellipse 70% 45% at 50% 0%, rgba(255, 255, 255, 0.05), transparent 65%);
+  background: linear-gradient(180deg, rgba(255, 255, 255, 0.05) 0%, transparent 42%);
 }
 
 .bg-gradient-radial-top {
-  background: radial-gradient(ellipse 55% 45% at 50% -10%, rgba(255, 255, 255, 0.06), transparent 62%);
+  background: linear-gradient(180deg, rgba(255, 255, 255, 0.06) 0%, transparent 38%);
+}
+
+/* Fade section decor top/bottom only — never on left/right (avoids desktop side bands) */
+.mask-section-fade {
+  mask-image: linear-gradient(180deg, transparent 0%, black 7%, black 90%, transparent 100%);
 }
 
 /* ── Gradient text + shimmer ─────────────────────────────── */
@@ -115,16 +120,12 @@ body {
   animation-delay: -6s;
 }
 
-/* Subtle top-center glow only — no side bands on desktop */
-.ambient-glow {
-  position: absolute;
-  inset: 0;
-  background:
-    radial-gradient(ellipse 50% 38% at 50% -5%, rgba(141, 84, 255, 0.08), transparent 68%),
-    radial-gradient(ellipse 45% 32% at 50% 0%, rgba(255, 255, 255, 0.03), transparent 65%);
-}
-
 @media (min-width: 1024px) {
+  .features-showcase__orb,
+  .demo-showcase__orb {
+    display: none;
+  }
+
   .orb-1 {
     margin-left: -320px;
   }
@@ -478,7 +479,6 @@ body {
   position: absolute;
   inset: 0;
   pointer-events: none;
-  mask-image: radial-gradient(ellipse 92% 88% at 50% 48%, black 42%, transparent 100%);
 }
 
 .features-showcase__grid {
@@ -488,7 +488,7 @@ body {
     linear-gradient(rgba(255, 255, 255, 0.03) 1px, transparent 1px),
     linear-gradient(90deg, rgba(255, 255, 255, 0.03) 1px, transparent 1px);
   background-size: 48px 48px;
-  mask-image: radial-gradient(ellipse 90% 75% at 50% 50%, black, transparent);
+  mask-image: linear-gradient(180deg, transparent 0%, black 7%, black 90%, transparent 100%);
 }
 
 .features-showcase__orb {
@@ -825,7 +825,6 @@ body {
   position: absolute;
   inset: 0;
   pointer-events: none;
-  mask-image: radial-gradient(ellipse 92% 88% at 50% 48%, black 42%, transparent 100%);
 }
 
 .demo-showcase__grid {
@@ -835,7 +834,7 @@ body {
     linear-gradient(rgba(255, 255, 255, 0.025) 1px, transparent 1px),
     linear-gradient(90deg, rgba(255, 255, 255, 0.025) 1px, transparent 1px);
   background-size: 56px 56px;
-  mask-image: radial-gradient(ellipse 90% 75% at 50% 50%, black, transparent);
+  mask-image: linear-gradient(180deg, transparent 0%, black 7%, black 90%, transparent 100%);
 }
 
 .demo-showcase__orb {
@@ -1058,55 +1057,65 @@ body {
   box-shadow: 0 0 0 1px rgba(141, 84, 255, 0.2), 0 0 32px rgba(141, 84, 255, 0.15);
 }
 
-.demo-tryon-callout {
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  gap: 0.5rem;
-  padding: 0.625rem 0.875rem;
-  border-radius: 10px;
-  font-size: 0.8125rem;
-  font-weight: 500;
-  color: #fafafa;
-  text-align: center;
-  background: linear-gradient(135deg, rgba(141, 84, 255, 0.25), rgba(109, 40, 217, 0.15));
-  border: 1px solid rgba(167, 139, 250, 0.45);
-  box-shadow: 0 4px 24px rgba(141, 84, 255, 0.2);
+.demo-tryon-zone--attention {
+  animation: demo-tryon-attention 2.2s ease-in-out infinite;
 }
 
-.demo-tryon-callout strong {
-  color: #e9d5ff;
-  font-weight: 700;
+@keyframes demo-tryon-attention {
+  0%, 100% {
+    border-color: rgba(141, 84, 255, 0.4);
+    box-shadow:
+      0 0 0 0 rgba(141, 84, 255, 0.2),
+      0 0 24px rgba(141, 84, 255, 0.12);
+  }
+
+  50% {
+    border-color: rgba(196, 181, 253, 0.75);
+    box-shadow:
+      0 0 0 4px rgba(141, 84, 255, 0.18),
+      0 0 44px rgba(141, 84, 255, 0.32);
+  }
 }
 
-.demo-tryon-callout__arrow {
-  display: inline-flex;
-  font-size: 1.125rem;
-  font-weight: 700;
-  color: #c084fc;
-  animation: demo-tryon-bounce 1.2s ease-in-out infinite;
+.demo-tryon-zone--attention .demo-tryon-zone__pulse {
+  animation: demo-tryon-ring-strong 2.2s ease-in-out infinite;
 }
 
-@keyframes demo-tryon-bounce {
-  0%, 100% { transform: translateY(0); }
-  50% { transform: translateY(4px); }
+@keyframes demo-tryon-ring-strong {
+  0%, 100% {
+    opacity: 0.35;
+    transform: scale(1);
+  }
+
+  50% {
+    opacity: 1;
+    transform: scale(1.03);
+  }
 }
 
-.demo-tryon-zone__finger {
-  position: absolute;
-  top: -0.35rem;
-  right: 0.5rem;
-  font-size: 1.125rem;
-  line-height: 1;
-  pointer-events: none;
-  z-index: 2;
-  animation: demo-tryon-bounce 1.2s ease-in-out infinite;
-  filter: drop-shadow(0 2px 4px rgba(0, 0, 0, 0.4));
+.demo-tryon-zone--attention #vton-mount:not(:empty),
+.demo-tryon-zone--attention .vton-placeholder-btn {
+  animation: demo-tryon-btn-pulse 2.2s ease-in-out infinite;
 }
 
-@media (min-width: 640px) {
-  .demo-tryon-zone__finger {
-    display: none;
+@keyframes demo-tryon-btn-pulse {
+  0%, 100% {
+    filter: brightness(1);
+    transform: scale(1);
+  }
+
+  50% {
+    filter: brightness(1.08);
+    transform: scale(1.015);
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .demo-tryon-zone--attention,
+  .demo-tryon-zone--attention .demo-tryon-zone__pulse,
+  .demo-tryon-zone--attention #vton-mount:not(:empty),
+  .demo-tryon-zone--attention .vton-placeholder-btn {
+    animation: none;
   }
 }
 
@@ -1119,6 +1128,8 @@ body {
 #trialBox,
 .trial-layout,
 .trial-product,
+.trial-product__meta,
+.trial-product__actions,
 .trial-gallery,
 .product-form,
 .trial-buy {
@@ -1156,7 +1167,6 @@ body {
   position: absolute;
   inset: 0;
   pointer-events: none;
-  mask-image: radial-gradient(ellipse 92% 88% at 50% 48%, black 42%, transparent 100%);
 }
 
 .proof-showcase__grid {
@@ -1166,7 +1176,7 @@ body {
     linear-gradient(rgba(255, 255, 255, 0.02) 1px, transparent 1px),
     linear-gradient(90deg, rgba(255, 255, 255, 0.02) 1px, transparent 1px);
   background-size: 48px 48px;
-  mask-image: radial-gradient(ellipse 90% 75% at 50% 50%, black, transparent);
+  mask-image: linear-gradient(180deg, transparent 0%, black 7%, black 90%, transparent 100%);
 }
 
 .proof-card {
@@ -1279,9 +1289,8 @@ body {
 .install-push__glow {
   position: absolute;
   inset: 0;
-  background: radial-gradient(ellipse 50% 45% at 50% 50%, rgba(141, 84, 255, 0.1), transparent 72%);
+  background: linear-gradient(180deg, rgba(141, 84, 255, 0.06) 0%, transparent 55%);
   pointer-events: none;
-  mask-image: radial-gradient(ellipse 92% 88% at 50% 48%, black 42%, transparent 100%);
 }
 
 .install-checks {
