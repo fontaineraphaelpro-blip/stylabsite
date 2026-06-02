@@ -339,7 +339,16 @@ body {
 /* ── VTON demo widget ────────────────────────────────────── */
 #vton-mount {
   width: 100%;
+  min-width: 0;
+  max-width: 100%;
   min-height: 48px;
+  overflow: hidden;
+}
+
+#vton-mount > *,
+#vton-mount .vton-widget-container {
+  max-width: 100% !important;
+  box-sizing: border-box !important;
 }
 
 #vton-mount-placeholder {
@@ -378,15 +387,11 @@ body {
 }
 
 /* ── Features showcase ───────────────────────────────────── */
-.features-showcase {
-  border-top: 1px solid rgba(255, 255, 255, 0.06);
-  border-bottom: 1px solid rgba(255, 255, 255, 0.06);
-}
-
 .features-showcase__bg {
   position: absolute;
   inset: 0;
   pointer-events: none;
+  mask-image: linear-gradient(180deg, transparent 0%, black 14%, black 86%, transparent 100%);
 }
 
 .features-showcase__grid {
@@ -589,10 +594,6 @@ body {
 }
 
 /* ── Steps showcase ──────────────────────────────────────── */
-.steps-showcase {
-  background: linear-gradient(180deg, transparent, rgba(141, 84, 255, 0.04) 40%, transparent);
-}
-
 .steps-track__line-wrap {
   position: absolute;
   top: 52px;
@@ -737,15 +738,11 @@ body {
 }
 
 /* ── Demo showcase ─────────────────────────────────────────── */
-.demo-showcase {
-  border-top: 1px solid rgba(255, 255, 255, 0.06);
-  border-bottom: 1px solid rgba(255, 255, 255, 0.06);
-}
-
 .demo-showcase__bg {
   position: absolute;
   inset: 0;
   pointer-events: none;
+  mask-image: linear-gradient(180deg, transparent 0%, black 14%, black 86%, transparent 100%);
 }
 
 .demo-showcase__grid {
@@ -869,6 +866,10 @@ body {
 
 .demo-frame {
   position: relative;
+  width: 100%;
+  min-width: 0;
+  max-width: 100%;
+  overflow: hidden;
 }
 
 .demo-frame__glow {
@@ -882,15 +883,22 @@ body {
 .demo-frame__card {
   position: relative;
   z-index: 1;
+  width: 100%;
+  min-width: 0;
+  max-width: 100%;
   border-radius: 16px;
   border: 1px solid rgba(255, 255, 255, 0.12);
   background: rgba(8, 8, 12, 0.85);
   backdrop-filter: blur(12px);
   box-shadow:
     0 0 0 1px rgba(141, 84, 255, 0.15),
-    0 24px 80px rgba(0, 0, 0, 0.55),
-    0 0 120px rgba(141, 84, 255, 0.12);
+    0 16px 48px rgba(0, 0, 0, 0.45);
   overflow: hidden;
+}
+
+.demo-browser {
+  min-width: 0;
+  max-width: 100%;
 }
 
 .demo-browser__bar {
@@ -942,21 +950,49 @@ body {
 }
 
 .demo-browser__body {
-  padding: 1rem;
+  padding: 0.75rem;
+  min-width: 0;
+  overflow: hidden;
 }
 
 @media (min-width: 640px) {
   .demo-browser__body {
     padding: 1.25rem 1.5rem 1.5rem;
   }
+
+  .demo-frame__card {
+    box-shadow:
+      0 0 0 1px rgba(141, 84, 255, 0.15),
+      0 24px 80px rgba(0, 0, 0, 0.55),
+      0 0 120px rgba(141, 84, 255, 0.12);
+  }
 }
 
 .demo-tryon-zone {
   position: relative;
-  padding: 0.75rem;
+  padding: 0.5rem;
   border-radius: 12px;
   background: rgba(141, 84, 255, 0.06);
   border: 1px solid rgba(141, 84, 255, 0.22);
+  min-width: 0;
+  max-width: 100%;
+  overflow: hidden;
+}
+
+@media (min-width: 640px) {
+  .demo-tryon-zone {
+    padding: 0.75rem;
+  }
+}
+
+#trialBox,
+.trial-layout,
+.trial-product,
+.trial-gallery,
+.product-form,
+.trial-buy {
+  min-width: 0;
+  max-width: 100%;
 }
 
 .demo-tryon-zone__pulse {
@@ -985,14 +1021,11 @@ body {
 }
 
 /* ── Proof showcase (without vs with) ─────────────────────── */
-.proof-showcase {
-  border-top: 1px solid rgba(255, 255, 255, 0.06);
-}
-
 .proof-showcase__bg {
   position: absolute;
   inset: 0;
   pointer-events: none;
+  mask-image: linear-gradient(180deg, transparent 0%, black 14%, black 86%, transparent 100%);
 }
 
 .proof-showcase__grid {
@@ -1112,16 +1145,12 @@ body {
 }
 
 /* ── Install push ──────────────────────────────────────────── */
-.install-push {
-  border-top: 1px solid rgba(255, 255, 255, 0.06);
-  border-bottom: 1px solid rgba(255, 255, 255, 0.06);
-}
-
 .install-push__glow {
   position: absolute;
   inset: 0;
   background: radial-gradient(ellipse 60% 50% at 30% 50%, rgba(141, 84, 255, 0.12), transparent 70%);
   pointer-events: none;
+  mask-image: linear-gradient(180deg, transparent 0%, black 14%, black 86%, transparent 100%);
 }
 
 .install-checks {
@@ -1242,6 +1271,94 @@ body {
   text-transform: uppercase;
   color: #a78bfa;
   margin-top: 0.375rem;
+}
+
+/* ── Compare tables (mobile cards + desktop table) ─────────── */
+.compare-mobile-card {
+  border-radius: 14px;
+  border: 1px solid rgba(255, 255, 255, 0.08);
+  background: rgba(255, 255, 255, 0.03);
+  overflow: hidden;
+}
+
+.compare-mobile-card__feature {
+  margin: 0;
+  padding: 0.875rem 1rem;
+  font-size: 0.875rem;
+  font-weight: 600;
+  line-height: 1.4;
+  color: #fafafa;
+  background: rgba(255, 255, 255, 0.04);
+  border-bottom: 1px solid rgba(255, 255, 255, 0.06);
+}
+
+.compare-mobile-card__cols {
+  display: flex;
+  flex-direction: column;
+  gap: 0;
+}
+
+.compare-mobile-card__col {
+  padding: 0.875rem 1rem;
+  min-width: 0;
+}
+
+.compare-mobile-card__col + .compare-mobile-card__col {
+  border-top: 1px solid rgba(255, 255, 255, 0.06);
+}
+
+.compare-mobile-card__col--stylab {
+  background: rgba(141, 84, 255, 0.06);
+}
+
+.compare-mobile-card__col--other {
+  background: transparent;
+}
+
+.compare-mobile-card__brand {
+  display: block;
+  font-size: 0.6875rem;
+  font-weight: 700;
+  letter-spacing: 0.06em;
+  text-transform: uppercase;
+  margin-bottom: 0.375rem;
+}
+
+.compare-mobile-card__col--stylab .compare-mobile-card__brand {
+  color: #c084fc;
+}
+
+.compare-mobile-card__col--other .compare-mobile-card__brand {
+  color: #71717a;
+}
+
+.compare-mobile-card__col p {
+  margin: 0;
+  font-size: 0.8125rem;
+  line-height: 1.45;
+  color: #d4d4d8;
+  word-break: break-word;
+}
+
+.compare-mobile-card__col--stylab p {
+  color: #fafafa;
+  font-weight: 500;
+}
+
+@media (min-width: 420px) {
+  .compare-mobile-card__cols {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+  }
+
+  .compare-mobile-card__col + .compare-mobile-card__col {
+    border-top: none;
+    border-left: 1px solid rgba(255, 255, 255, 0.06);
+  }
+}
+
+.compare-table {
+  min-width: 640px;
 }
 
 /* ── Reduced motion ──────────────────────────────────────── */

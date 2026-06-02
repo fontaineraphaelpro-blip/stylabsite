@@ -4,7 +4,7 @@ export function AiMarquee({ locale }: { locale: Locale }) {
   const items = [...UI[locale].marqueeItems, ...UI[locale].marqueeItems];
 
   return (
-    <div className="overflow-hidden border-y border-white/8 py-4 my-8">
+    <div className="overflow-hidden py-4 my-4">
       <div className="marquee-track gap-8 px-4">
         {items.map((item, i) => (
           <span

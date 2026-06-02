@@ -9,7 +9,7 @@ export function Footer({ locale }: { locale: Locale }) {
   const p = (path: string) => localePath(locale, path);
 
   return (
-    <footer className="border-t border-white/10 py-16 mt-20">
+    <footer className="py-16 mt-8">
       <div className="container container--wide grid gap-10 sm:grid-cols-2 lg:grid-cols-5">
         <FadeIn className="lg:col-span-1">
           <Link href={localePath(locale)} className="flex items-center gap-2 font-semibold mb-4">

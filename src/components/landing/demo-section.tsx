@@ -21,26 +21,19 @@ const DEMO_STEPS = {
   ],
 } as const;
 
-const DEMO_CHIPS = {
-  en: ["Real Shopify PDP", "77.8% try-on → cart", "~30s preview"],
-  fr: ["PDP Shopify réelle", "77,8 % essayage → panier", "~30 s"],
-} as const;
-
 export function DemoSection({ locale }: { locale: Locale }) {
   const t = UI[locale];
-  const fr = locale === "fr";
   const ref = useRef<HTMLElement>(null);
   const { scrollYProgress } = useScroll({ target: ref, offset: ["start end", "end start"] });
   const bgY = useTransform(scrollYProgress, [0, 1], ["0%", "14%"]);
 
   const steps = DEMO_STEPS[locale];
-  const chips = DEMO_CHIPS[locale];
 
   return (
     <section
       ref={ref}
       id="journey"
-      className="demo-showcase py-24 md:py-32 relative overflow-hidden"
+      className="demo-showcase py-16 md:py-32 relative overflow-hidden"
       aria-labelledby="demo-title"
     >
       <motion.div className="demo-showcase__bg" style={{ y: bgY }} aria-hidden="true">
@@ -50,47 +43,36 @@ export function DemoSection({ locale }: { locale: Locale }) {
         <div className="demo-showcase__beam" />
       </motion.div>
 
-      <div className="container relative z-10">
-        <div className="grid lg:grid-cols-[minmax(0,22rem)_1fr] xl:grid-cols-[minmax(0,26rem)_1fr] gap-10 lg:gap-12 xl:gap-16 items-start">
-          <FadeIn className="lg:sticky lg:top-28 space-y-6">
+      <div className="container relative z-10 min-w-0">
+        <div className="grid lg:grid-cols-[minmax(0,22rem)_1fr] xl:grid-cols-[minmax(0,26rem)_1fr] gap-8 lg:gap-12 xl:gap-16 items-start">
+          <FadeIn className="lg:sticky lg:top-28 space-y-5 order-2 lg:order-1 min-w-0">
             <div className="demo-live-badge">
               <span className="demo-live-badge__dot" aria-hidden="true" />
               {t.demoEyebrow}
             </div>
 
             <div>
-              <p className="section-eyebrow mb-3">{fr ? "Essayez maintenant" : "Try it now"}</p>
-              <h2 id="demo-title" className="text-4xl sm:text-5xl font-bold tracking-tight leading-[1.05] mb-4">
-                {t.demoTitle}
-                <br />
+              <h2 id="demo-title" className="text-3xl sm:text-4xl lg:text-5xl font-bold tracking-tight leading-[1.05] mb-3">
+                {t.demoTitle}{" "}
                 <span className="gradient-text">{t.demoTitleAccent}</span>
               </h2>
-              <p className="text-zinc-400 leading-relaxed">{t.demoDesc}</p>
+              <p className="text-sm sm:text-base text-zinc-400 leading-relaxed">{t.demoDesc}</p>
             </div>
 
-            <ol className="demo-steps">
-              {steps.map((step, i) => (
+            <ol className="demo-steps hidden lg:flex">
+              {steps.map((step) => (
                 <li key={step.n} className="demo-steps__item">
                   <span className="demo-steps__num">{step.n}</span>
                   <div>
                     <strong className="block text-sm font-semibold">{step.title}</strong>
                     <span className="text-xs text-zinc-500">{step.desc}</span>
                   </div>
-                  {i < steps.length - 1 && <span className="demo-steps__arrow" aria-hidden="true" />}
                 </li>
               ))}
             </ol>
-
-            <div className="flex flex-wrap gap-2">
-              {chips.map((chip) => (
-                <span key={chip} className="demo-chip">
-                  {chip}
-                </span>
-              ))}
-            </div>
           </FadeIn>
 
-          <FadeIn delay={0.1} y={32}>
+          <FadeIn delay={0.1} y={24} className="order-1 lg:order-2 min-w-0 w-full">
             <VtonDemo locale={locale} />
           </FadeIn>
         </div>

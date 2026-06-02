@@ -7,6 +7,7 @@ import {
   ProseSection,
   SectionBlock,
 } from "@/components/pages/marketing-blocks";
+import { CompareTable } from "@/components/pages/compare-table";
 import { MarketingShell } from "@/components/layout/marketing-shell";
 import {
   API_COMPARE,
@@ -17,43 +18,6 @@ import {
 } from "@/lib/data";
 import { localePath, rewriteContentHtml, t, type Locale } from "@/lib/i18n";
 import { FadeIn } from "@/components/motion/fade-in";
-
-function CompareTable({
-  rows,
-  competitor,
-  locale,
-}: {
-  rows: CompareItem["rows"];
-  competitor: string;
-  locale: Locale;
-}) {
-  const u = UI[locale];
-  return (
-    <FadeIn delay={0.1}>
-      <div className="overflow-x-auto rounded-xl border border-white/10 mb-8">
-        <table className="w-full text-sm min-w-[640px]">
-          <thead>
-            <tr className="border-b border-white/10 text-left bg-white/5">
-              <th className="p-3 font-semibold">{locale === "fr" ? "Fonctionnalité" : "Feature"}</th>
-              <th className="p-3 font-semibold">Stylab</th>
-              <th className="p-3 font-semibold">{competitor}</th>
-            </tr>
-          </thead>
-          <tbody>
-            {rows.map((row, i) => (
-              <tr key={i} className="border-b border-white/5 hover:bg-white/[0.02] transition-colors">
-                <td className="p-3 text-zinc-300">{t(row.feature, locale)}</td>
-                <td className="p-3 text-white">{t(row.stylab, locale)}</td>
-                <td className="p-3 text-zinc-400">{t(row.other, locale)}</td>
-              </tr>
-            ))}
-          </tbody>
-        </table>
-        <p className="text-xs text-zinc-500 p-3 border-t border-white/5">{u.compareScrollHint}</p>
-      </div>
-    </FadeIn>
-  );
-}
 
 export function ComparePageView({
   locale,
