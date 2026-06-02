@@ -20,6 +20,11 @@ function pickPlan(tryons: number) {
   return PLANS[PLANS.length - 1];
 }
 
+function parseNumber(value: string, fallback: number) {
+  const n = Number(value);
+  return Number.isFinite(n) ? n : fallback;
+}
+
 export function RoiCalculator({ locale }: { locale: Locale }) {
   const fr = locale === "fr";
   const [views, setViews] = useState(50000);
@@ -56,7 +61,7 @@ export function RoiCalculator({ locale }: { locale: Locale }) {
               type="number"
               value={views}
               min={0}
-              onChange={(e) => setViews(Number(e.target.value))}
+              onChange={(e) => setViews(parseNumber(e.target.value, 0))}
               className="w-full rounded-lg bg-white/5 border border-white/10 px-3 py-2"
             />
           </label>
@@ -67,7 +72,7 @@ export function RoiCalculator({ locale }: { locale: Locale }) {
               min={1}
               max={30}
               value={adoption}
-              onChange={(e) => setAdoption(Number(e.target.value))}
+              onChange={(e) => setAdoption(parseNumber(e.target.value, 1))}
               className="w-full"
             />
           </label>
@@ -78,7 +83,7 @@ export function RoiCalculator({ locale }: { locale: Locale }) {
               value={conv}
               min={0}
               step={0.1}
-              onChange={(e) => setConv(Number(e.target.value))}
+              onChange={(e) => setConv(parseNumber(e.target.value, 0))}
               className="w-full rounded-lg bg-white/5 border border-white/10 px-3 py-2"
             />
           </label>
@@ -89,7 +94,7 @@ export function RoiCalculator({ locale }: { locale: Locale }) {
               min={0}
               max={50}
               value={lift}
-              onChange={(e) => setLift(Number(e.target.value))}
+              onChange={(e) => setLift(parseNumber(e.target.value, 0))}
               className="w-full"
             />
           </label>
@@ -99,7 +104,7 @@ export function RoiCalculator({ locale }: { locale: Locale }) {
               type="number"
               value={aov}
               min={0}
-              onChange={(e) => setAov(Number(e.target.value))}
+              onChange={(e) => setAov(parseNumber(e.target.value, 0))}
               className="w-full rounded-lg bg-white/5 border border-white/10 px-3 py-2"
             />
           </label>

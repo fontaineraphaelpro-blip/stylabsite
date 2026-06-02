@@ -178,7 +178,7 @@ export function loadVtonWidgetScript(): Promise<void> {
 
   return new Promise((resolve, reject) => {
     const script = document.createElement("script");
-    script.src = "/vton-widget.js?v=9";
+    script.src = "/vton-widget.js?v=10";
     script.defer = true;
     script.dataset.vtonWidget = "1";
     script.onload = () => resolve();
@@ -188,12 +188,20 @@ export function loadVtonWidgetScript(): Promise<void> {
 }
 
 export function initVtonDemo(): void {
-  if (!bootVtonDemo()) return;
-  loadVtonWidgetScript().catch(() => {
+  try {
+    if (!bootVtonDemo()) return;
+    loadVtonWidgetScript().catch(() => {
+      const placeholder = document.getElementById("vton-mount-placeholder");
+      const msg = placeholder?.querySelector("small");
+      if (msg) {
+        msg.innerHTML = `Script failed to load. <a href="${DEMO_STORE_URL}" target="_blank" rel="noopener">Open demo store →</a>`;
+      }
+    });
+  } catch {
     const placeholder = document.getElementById("vton-mount-placeholder");
     const msg = placeholder?.querySelector("small");
     if (msg) {
-      msg.innerHTML = `Script failed to load. <a href="${DEMO_STORE_URL}" target="_blank" rel="noopener">Open demo store →</a>`;
+      msg.innerHTML = `Demo could not start. <a href="${DEMO_STORE_URL}" target="_blank" rel="noopener">Open demo store →</a>`;
     }
-  });
+  }
 }

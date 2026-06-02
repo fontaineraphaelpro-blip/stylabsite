@@ -2655,9 +2655,11 @@
               box-shadow: inset 0 1px 0 rgba(255, 255, 255, 0.22);
             }
             .vton-install-cta__icon svg {
-              width: 20px;
-              height: 20px;
+              width: 22px;
+              height: 22px;
               display: block;
+              flex-shrink: 0;
+              overflow: visible;
             }
             .vton-install-cta__label {
               flex: 1;
@@ -2698,17 +2700,37 @@
               display: block;
             }
             .vton-result-content--demo {
-              gap: 8px;
+              gap: 10px;
+              flex: 1;
+              min-height: 0;
+              width: 100%;
             }
             .vton-result-content--demo .vton-result-image,
             .vton-result-content--demo .vton-result img {
-              max-height: min(34dvh, 240px);
+              width: 100%;
+              max-height: min(52vh, 440px);
+              min-height: min(36vh, 280px);
+              height: auto;
+              flex: 1 1 auto;
+              object-fit: contain;
             }
             .vton-result-content--demo .vton-result-lead {
               font-size: 14px;
+              flex-shrink: 0;
+              margin: 0;
             }
-            .vton-result-content--demo .vton-add-to-cart-btn {
-              padding: 14px 18px;
+            .vton-result-content--demo .vton-add-to-cart-btn,
+            .vton-result-content--demo .vton-atc-error,
+            .vton-result-content--demo .vton-variant-picker,
+            .vton-result-content--demo .vton-urgency {
+              display: none !important;
+            }
+            .vton-result-content--demo .vton-install-cta {
+              flex-shrink: 0;
+              margin-top: 0;
+            }
+            .vton-result-content--demo .vton-retry-link {
+              flex-shrink: 0;
             }
             .vton-share-block {
               width: 100%;
@@ -3074,19 +3096,13 @@
                 border-radius: 10px;
               }
               .vton-install-cta__icon svg {
-                width: 18px;
-                height: 18px;
-              }
-              .vton-install-cta__title {
-                font-size: 13px;
-              }
-              .vton-install-cta__arrow {
-                width: 28px;
-                height: 28px;
+                width: 20px;
+                height: 20px;
               }
               .vton-result-content--demo .vton-result-image,
               .vton-result-content--demo .vton-result img {
-                max-height: min(32dvh, 190px);
+                max-height: min(48vh, 380px) !important;
+                min-height: min(32vh, 220px);
               }
               .vton-funnel-head {
                 margin-bottom: 12px;
@@ -3097,7 +3113,15 @@
               .vton-share-btn--native {
                 grid-column: 1 / -1;
               }
-              .vton-result img {
+              .vton-install-cta__title {
+                font-size: 13px;
+              }
+              .vton-install-cta__arrow {
+                width: 28px;
+                height: 28px;
+              }
+              .vton-result-content:not(.vton-result-content--demo) .vton-result-image,
+              .vton-result-content:not(.vton-result-content--demo) img {
                 max-height: min(28dvh, 200px);
               }
               .vton-result-lead {
@@ -3118,7 +3142,7 @@
               .vton-loading {
                 padding: 28px 16px;
               }
-              .vton-result img {
+              .vton-result-content:not(.vton-result-content--demo) img {
                 max-height: min(26dvh, 180px);
               }
               .vton-result-title {
@@ -3149,6 +3173,11 @@
               min-height: auto;
               overflow: visible;
             }
+            .vton-env-desktop .vton-result-content--demo .vton-result-image,
+            .vton-env-desktop .vton-result-content--demo .vton-result img {
+              max-height: min(58vh, 480px);
+              min-height: 260px;
+            }
             .vton-env-desktop .vton-result-image,
             .vton-env-desktop .vton-result img {
               max-height: min(36vh, 260px);
@@ -3178,6 +3207,14 @@
                 gap: 12px 28px;
                 align-items: start;
               }
+              .vton-env-desktop .vton-result-content--demo .vton-result-image,
+              .vton-env-desktop .vton-result-content--demo .vton-result img {
+                grid-column: 1;
+                grid-row: 1 / span 12;
+                max-height: min(64vh, 520px);
+                min-height: 300px;
+                align-self: start;
+              }
               .vton-env-desktop .vton-result-image,
               .vton-env-desktop .vton-result img {
                 grid-column: 1;
@@ -3190,6 +3227,7 @@
               .vton-env-desktop .vton-urgency,
               .vton-env-desktop .vton-atc-error,
               .vton-env-desktop .vton-add-to-cart-btn,
+              .vton-env-desktop .vton-install-cta,
               .vton-env-desktop .vton-share-block,
               .vton-env-desktop .vton-retry-link {
                 grid-column: 2;
@@ -3437,8 +3475,7 @@
       function vtonShopifyIconSvg() {
         return (
           '<svg viewBox="0 0 24 24" aria-hidden="true" xmlns="http://www.w3.org/2000/svg">' +
-          '<path fill="#fff" d="M15.34 3.04c-.05-.01-1.04-.24-1.04-.24S13.5 1.9 12.78 1.74c-.73-.17-1.82-.1-2.26-.05-.05-.52-.18-1.03-.4-1.51C9.56-.3 8.52-.05 7.9.46 7.1-.18 6-.06 5.35.58 4.2 1.73 3.99 3.64 4.04 4.52c-1.36.42-2.32.72-2.38.75-.7.22-.72.24-.81.89C1.01 6.53.18 11.92.18 11.92l14.58 2.54V3.04h.58zm-.98 1.09v3.24l-2.98-.52c.03-.93.11-2.18.11-2.18s.55.09 1.08.18c0 0 .96-1.04 1.92-1.63zm-3.02-.52c.01-.76.06-1.49.18-2.16.46-.08.99-.13 1.36-.01.18.56.29 1.2.33 1.89l-1.87-.72zM9.37 2.4c.28-.07.61-.1.94-.06.25.65.42 1.39.47 2.19L9.37 2.4zM7.54 3.17c.15-.22.39-.4.72-.52.14.52.23 1.09.26 1.7l-1.42-.55c.14-.22.29-.43.44-.63z"/>' +
-          '<path fill="#fff" d="M.18 11.92l14.58 2.54s-.13 2.6-.26 3.58c-.1.78-.65 1.47-1.39 1.7-.5.15-3.01.94-3.01.94S7.5 21.98 5.77 22.3c-1.72.32-2.14-.11-2.39-.82-.24-.71-1.65-9.94-1.65-9.94s3.55.82 3.71.86c.16.04.3-.04.38-.18.08-.14 2.56-5.3 2.56-5.3z"/>' +
+          '<path fill="#fff" d="M8.2 7.5V7a3.8 3.8 0 117.6 0v.5h.9c.8 0 1.4.6 1.5 1.4l.9 10.8c.1 1-.7 1.8-1.7 1.8H7.5c-1 0-1.8-.8-1.9-1.8L4.7 9.4c-.1-.8.5-1.4 1.3-1.4h.9V7zm1.4-.5h4.8V7a2.4 2.4 0 00-4.8 0v.5zM5.5 9.5l.9 10.7c0 .5.4.8.9.8h9.4c.5 0 .9-.3.9-.8l.9-10.7H5.5z"/>' +
           '</svg>'
         );
       }
@@ -4725,6 +4762,7 @@
 
         var liquid = window.VTON_LIQUID || {};
         var isDemoInstall = !!(liquid.installCta && liquid.installCta.url);
+        var demoFr = isDemoInstall && liquid.installCta.locale === 'fr';
         var resultContentClass =
           'vton-result-content' + (isDemoInstall ? ' vton-result-content--demo' : '');
         var shareBlockHtml = isDemoInstall
@@ -4743,6 +4781,31 @@
             '<span class="vton-share-btn__label">Copy link</span></button>' +
             '</div></div>';
 
+        var leadHtml;
+        var commerceHtml = '';
+        if (isDemoInstall) {
+          leadHtml = demoFr
+            ? 'Voici votre <strong>essayage virtuel</strong>. Installez Stylab sur Shopify pour l\u2019offrir sur vos fiches produit.'
+            : 'Here is your <strong>virtual try-on</strong>. Install Stylab on Shopify to offer this on your product pages.';
+        } else {
+          leadHtml = variantHtml
+            ? 'Select your option, then add <strong>' +
+              vtonEscapeHtml(productTitle) +
+              '</strong> to your cart.'
+            : 'Add <strong>' +
+              vtonEscapeHtml(productTitle) +
+              '</strong> to your cart.';
+          commerceHtml =
+            variantHtml +
+            urgencyHtml +
+            '<p class="vton-atc-error" role="alert"></p>' +
+            '<button type="button" class="vton-add-to-cart-btn" style="background:' +
+            buttonBg +
+            ';color:' +
+            buttonColor +
+            ';">Add to cart</button>';
+        }
+
         return (
           '<div class="' +
           resultContentClass +
@@ -4751,22 +4814,9 @@
           vtonEscapeHtml(state.resultImageUrl) +
           '" alt="Try-on result" />' +
           '<p class="vton-result-lead">' +
-          (variantHtml
-            ? 'Select your option, then add <strong>' +
-              vtonEscapeHtml(productTitle) +
-              '</strong> to your cart.'
-            : 'Add <strong>' +
-              vtonEscapeHtml(productTitle) +
-              '</strong> to your cart.') +
+          leadHtml +
           '</p>' +
-          variantHtml +
-          urgencyHtml +
-          '<p class="vton-atc-error" role="alert"></p>' +
-          '<button type="button" class="vton-add-to-cart-btn" style="background:' +
-          buttonBg +
-          ';color:' +
-          buttonColor +
-          ';">Add to cart</button>' +
+          commerceHtml +
           vtonGetInstallCtaHtml() +
           shareBlockHtml +
           '<button type="button" class="vton-retry-link" data-vton-action="retry">Try another photo</button>' +
@@ -5609,8 +5659,22 @@
             }
             vtonSetWidgetButtonBadge(state, null);
           } else {
-            vtonSetWidgetButtonBadge(state, 'ready');
-            vtonShowReadyNotification(state, 'success');
+            var isDemoSite = !!(
+              window.VTON_LIQUID &&
+              window.VTON_LIQUID.installCta &&
+              window.VTON_LIQUID.installCta.url
+            );
+            if (
+              isDemoSite &&
+              window.vtonWidgetInstance &&
+              window.vtonWidgetInstance.openModal
+            ) {
+              window.vtonWidgetInstance.openModal();
+              vtonSetWidgetButtonBadge(state, null);
+            } else {
+              vtonSetWidgetButtonBadge(state, 'ready');
+              vtonShowReadyNotification(state, 'success');
+            }
           }
         } else {
           error('[VTON] Cannot display result:', {

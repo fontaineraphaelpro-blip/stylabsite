@@ -73,7 +73,7 @@ export function FeaturesSection({ locale }: { locale: Locale }) {
 
         <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-4 lg:gap-5 auto-rows-fr">
           {t.features.map((f, i) => {
-            const accent = accents[i];
+            const accent = accents[i] ?? accents[accents.length - 1];
             const isHero = i === 0;
             return (
               <FadeIn key={f.title} delay={i * 0.1} y={isHero ? 40 : 28}>
@@ -84,7 +84,7 @@ export function FeaturesSection({ locale }: { locale: Locale }) {
                 >
                   <div className="features-card__shine" aria-hidden="true" />
                   <div className="features-card__top">
-                    <div className="features-card__icon">{icons[f.icon]}</div>
+                    <div className="features-card__icon">{icons[f.icon] ?? icons.chart}</div>
                     <div className="features-card__stat">
                       <strong>{accent.stat}</strong>
                       <span>{fr ? accent.labelFr : accent.labelEn}</span>

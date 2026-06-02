@@ -4,6 +4,7 @@ import Link from "next/link";
 import { useRef } from "react";
 import { motion, useScroll, useTransform } from "framer-motion";
 import { FadeIn } from "@/components/motion/fade-in";
+import { ClientErrorBoundary } from "@/components/client-error-boundary";
 import { VtonDemo } from "@/components/landing/vton-demo";
 import { APP_URL, type Locale, UI, localePath } from "@/lib/content";
 
@@ -81,7 +82,26 @@ export function DemoSection({ locale }: { locale: Locale }) {
           </FadeIn>
 
           <FadeIn delay={0.1} y={24} className="order-1 lg:order-2 min-w-0 w-full">
-            <VtonDemo locale={locale} />
+            <ClientErrorBoundary
+              label="vton-demo"
+              fallback={
+                <div className="demo-frame__card p-8 text-center text-sm text-zinc-400">
+                  {locale === "fr"
+                    ? "La démo live est temporairement indisponible. "
+                    : "Live demo temporarily unavailable. "}
+                  <a
+                    href="https://remadeicons.shop/products/shadow-stripe-collared-soccer-jersey-4"
+                    target="_blank"
+                    rel="noopener"
+                    className="text-purple-400 hover:underline"
+                  >
+                    {locale === "fr" ? "Boutique démo →" : "Demo store →"}
+                  </a>
+                </div>
+              }
+            >
+              <VtonDemo locale={locale} />
+            </ClientErrorBoundary>
           </FadeIn>
         </div>
       </div>

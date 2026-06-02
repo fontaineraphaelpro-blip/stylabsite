@@ -10,6 +10,8 @@ export function FunnelWizard({ steps }: { steps: Step[] }) {
   const [step, setStep] = useState(0);
   const current = steps[step];
 
+  if (!steps.length || !current) return null;
+
   return (
     <div className="glass-card gradient-border p-6 max-w-lg mx-auto">
       <AnimatePresence mode="wait">

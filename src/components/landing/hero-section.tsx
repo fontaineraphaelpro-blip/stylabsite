@@ -4,6 +4,7 @@ import Link from "next/link";
 import { motion } from "framer-motion";
 import { FadeInHero } from "@/components/motion/fade-in";
 import { GridBackground } from "@/components/landing/grid-background";
+import { ClientErrorBoundary } from "@/components/client-error-boundary";
 import { HeroPhoneDemo } from "@/components/landing/hero-phone-demo";
 import { APP_URL, type Locale, UI, localePath } from "@/lib/content";
 
@@ -82,7 +83,9 @@ export function HeroSection({ locale }: { locale: Locale }) {
             transition={{ type: "spring", stiffness: 300, damping: 20 }}
             className="w-full max-w-[340px]"
           >
-            <HeroPhoneDemo locale={locale} />
+            <ClientErrorBoundary label="hero-phone">
+              <HeroPhoneDemo locale={locale} />
+            </ClientErrorBoundary>
             <p className="sr-only">
               {locale === "fr"
                 ? "Animation : page produit, modal widget Stylab, essayage IA, ajout au panier, revenus multipliés."

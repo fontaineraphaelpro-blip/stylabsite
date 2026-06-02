@@ -57,6 +57,7 @@ export function HeroPhoneDemo({ locale }: { locale: Locale }) {
       const current = SCENES[idx];
       setScene(current);
       timer = setTimeout(() => {
+        if (cancelled) return;
         idx = (idx + 1) % SCENES.length;
         if (idx === 0) setCycle((c) => c + 1);
         schedule();
@@ -262,15 +263,16 @@ export function HeroPhoneDemo({ locale }: { locale: Locale }) {
                 >
                   <div className="hero-phone__vton-result">
                     <div className="hero-phone__tryon-frame">
-                      <div className="hero-phone__tryon-user" />
-                      <div className="hero-phone__tryon-shoulders" />
-                      <Image
-                        src="/assets/demo-jersey-main.png"
-                        alt=""
-                        width={220}
-                        height={220}
-                        className="hero-phone__tryon-garment"
-                      />
+                      <div className="hero-phone__tryon-figure" aria-hidden="true">
+                        <div className="hero-phone__tryon-head" />
+                        <div className="hero-phone__tryon-neck" />
+                        <div className="hero-phone__tryon-jersey">
+                          <span className="hero-phone__tryon-jersey-collar" />
+                          <span className="hero-phone__tryon-jersey-stripe" />
+                          <span className="hero-phone__tryon-jersey-sleeve hero-phone__tryon-jersey-sleeve--left" />
+                          <span className="hero-phone__tryon-jersey-sleeve hero-phone__tryon-jersey-sleeve--right" />
+                        </div>
+                      </div>
                       <div className="hero-phone__tryon-shine" />
                       <div className="hero-phone__tryon-scan" />
                     </div>
