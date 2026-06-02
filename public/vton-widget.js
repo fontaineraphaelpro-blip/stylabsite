@@ -1993,6 +1993,21 @@
         });
       }
 
+      function vtonDemoHighlightStyles() {
+        var liquid = window.VTON_LIQUID || {};
+        if (!liquid.demoHighlight && !liquid.installCta) {
+          return '';
+        }
+        return (
+          '.vton-button{animation:vtonDemoBtnPulse 1.5s ease-in-out infinite!important;}' +
+          '@keyframes vtonDemoBtnPulse{' +
+          '0%,100%{transform:scale(1);box-shadow:0 0 0 0 rgba(141,84,255,.55),0 8px 28px rgba(109,40,217,.35);}' +
+          '50%{transform:scale(1.045);box-shadow:0 0 0 10px rgba(141,84,255,.2),0 14px 36px rgba(109,40,217,.52);}' +
+          '}' +
+          '.vton-button:hover{animation:none!important;}'
+        );
+      }
+
       function vtonWidgetStyles(buttonBg, buttonColor) {
         return (
           ':host{display:block;width:100%;font-family:-apple-system,BlinkMacSystemFont,"Segoe UI",Roboto,Helvetica,Arial,sans-serif;-webkit-font-smoothing:antialiased;}' +
@@ -2004,6 +2019,7 @@
           '.vton-button:active{transform:translateY(0);box-shadow:0 2px 6px rgba(15,23,42,.08);}' +
           '.vton-button__icon{display:inline-flex;align-items:center;justify-content:center;width:22px;height:22px;border-radius:8px;background:rgba(255,255,255,.18);flex-shrink:0;}' +
           '.vton-button__icon svg{width:14px;height:14px;stroke:currentColor;fill:none;stroke-width:2;stroke-linecap:round;stroke-linejoin:round;}' +
+          vtonDemoHighlightStyles() +
           '.vton-modal-overlay{position:fixed;inset:0;width:100%;height:100dvh;background:rgba(15,23,42,.72);backdrop-filter:blur(12px) saturate(1.15);-webkit-backdrop-filter:blur(12px) saturate(1.15);display:none;align-items:center;justify-content:center;z-index:2147483646;padding:max(16px,env(safe-area-inset-top)) max(16px,env(safe-area-inset-right)) max(16px,env(safe-area-inset-bottom)) max(16px,env(safe-area-inset-left));animation:vtonFadeIn .3s ease;overflow:hidden;overscroll-behavior:contain;box-sizing:border-box;}' +
           '@keyframes vtonFadeIn{from{opacity:0}to{opacity:1}}' +
           '.vton-modal-overlay.active{display:flex;}' +

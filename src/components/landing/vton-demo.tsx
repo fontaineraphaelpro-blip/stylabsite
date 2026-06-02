@@ -105,10 +105,28 @@ export function VtonDemo({ locale }: { locale: Locale }) {
                       {fr ? "Ajouter au panier" : "Add to cart"}
                     </button>
 
+                    {showHint && (
+                      <div className="demo-tryon-hint" role="note">
+                        <span className="demo-tryon-hint__dot" aria-hidden="true" />
+                        {fr ? (
+                          <>
+                            Appuyez sur <strong>Essayer</strong> pour lancer la démo
+                          </>
+                        ) : (
+                          <>
+                            Press <strong>Try it on</strong> to start the demo
+                          </>
+                        )}
+                      </div>
+                    )}
+
                     <div
                       className={`demo-tryon-zone demo-tryon-zone--spotlight min-w-0${showHint ? " demo-tryon-zone--attention" : ""}`}
                     >
                       <span className="demo-tryon-zone__pulse" aria-hidden="true" />
+                      {showHint && (
+                        <span className="demo-tryon-zone__pulse demo-tryon-zone__pulse--outer" aria-hidden="true" />
+                      )}
                       <div id="vton-mount-placeholder" className="vton-placeholder">
                         <button type="button" className="vton-placeholder-btn" aria-label="Loading try-on">
                           <svg viewBox="0 0 24 24" width="18" height="18" fill="none" stroke="currentColor" strokeWidth="2">

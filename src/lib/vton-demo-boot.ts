@@ -58,6 +58,7 @@ export function bootVtonDemo(): boolean {
             logoUrl: "/assets/shopify-icon-logo.svg",
           }
         : null,
+    demoHighlight: slot.getAttribute("data-vton-install-cta") === "1",
   };
 
   const statusQuery =
@@ -178,7 +179,7 @@ export function loadVtonWidgetScript(): Promise<void> {
 
   return new Promise((resolve, reject) => {
     const script = document.createElement("script");
-    script.src = "/vton-widget.js?v=7";
+    script.src = "/vton-widget.js?v=8";
     script.defer = true;
     script.dataset.vtonWidget = "1";
     script.onload = () => resolve();

@@ -1083,50 +1083,125 @@ body {
 }
 
 .demo-tryon-zone--spotlight {
-  background: rgba(141, 84, 255, 0.1);
-  border-color: rgba(141, 84, 255, 0.45);
-  box-shadow: 0 0 0 1px rgba(141, 84, 255, 0.2), 0 0 32px rgba(141, 84, 255, 0.15);
+  background: rgba(141, 84, 255, 0.14);
+  border-color: rgba(167, 139, 250, 0.55);
+  box-shadow:
+    0 0 0 1px rgba(141, 84, 255, 0.25),
+    0 0 40px rgba(141, 84, 255, 0.22);
+}
+
+.demo-tryon-hint {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 0.5rem;
+  margin-bottom: 0.625rem;
+  padding: 0.625rem 0.875rem;
+  border-radius: 10px;
+  font-size: 0.8125rem;
+  font-weight: 600;
+  line-height: 1.35;
+  text-align: center;
+  color: #fafafa;
+  background: linear-gradient(135deg, rgba(141, 84, 255, 0.38), rgba(109, 40, 217, 0.28));
+  border: 1px solid rgba(196, 181, 253, 0.55);
+  box-shadow: 0 4px 24px rgba(141, 84, 255, 0.25);
+  animation: demo-tryon-hint-glow 1.5s ease-in-out infinite;
+}
+
+.demo-tryon-hint__dot {
+  width: 8px;
+  height: 8px;
+  border-radius: 50%;
+  flex-shrink: 0;
+  background: #4ade80;
+  box-shadow: 0 0 10px rgba(74, 222, 128, 0.85);
+  animation: pulse-dot 1.2s ease-in-out infinite;
+}
+
+.demo-tryon-hint strong {
+  color: #f3e8ff;
+  font-weight: 800;
+}
+
+@keyframes demo-tryon-hint-glow {
+  0%, 100% {
+    box-shadow: 0 4px 20px rgba(141, 84, 255, 0.2);
+    transform: translateY(0);
+  }
+
+  50% {
+    box-shadow: 0 6px 28px rgba(141, 84, 255, 0.38);
+    transform: translateY(-1px);
+  }
 }
 
 .demo-tryon-zone--attention {
-  animation: demo-tryon-attention 2.2s ease-in-out infinite;
+  animation: demo-tryon-attention 1.5s ease-in-out infinite;
 }
 
 @keyframes demo-tryon-attention {
   0%, 100% {
-    border-color: rgba(141, 84, 255, 0.4);
+    border-color: rgba(167, 139, 250, 0.55);
     box-shadow:
-      0 0 0 0 rgba(141, 84, 255, 0.2),
-      0 0 24px rgba(141, 84, 255, 0.12);
+      0 0 0 0 rgba(141, 84, 255, 0.35),
+      0 0 32px rgba(141, 84, 255, 0.18);
   }
 
   50% {
-    border-color: rgba(196, 181, 253, 0.75);
+    border-color: rgba(233, 213, 255, 0.9);
     box-shadow:
-      0 0 0 4px rgba(141, 84, 255, 0.18),
-      0 0 44px rgba(141, 84, 255, 0.32);
+      0 0 0 6px rgba(141, 84, 255, 0.22),
+      0 0 56px rgba(141, 84, 255, 0.4);
   }
 }
 
 .demo-tryon-zone--attention .demo-tryon-zone__pulse {
-  animation: demo-tryon-ring-strong 2.2s ease-in-out infinite;
+  animation: demo-tryon-ring-strong 1.5s ease-in-out infinite;
 }
 
 @keyframes demo-tryon-ring-strong {
   0%, 100% {
-    opacity: 0.35;
+    opacity: 0.45;
     transform: scale(1);
   }
 
   50% {
     opacity: 1;
-    transform: scale(1.03);
+    transform: scale(1.04);
+  }
+}
+
+.demo-tryon-zone__pulse--outer {
+  inset: -8px;
+  border-width: 2px;
+  border-color: rgba(141, 84, 255, 0.65);
+  animation: demo-tryon-ring-outer 1.5s ease-out infinite;
+}
+
+@keyframes demo-tryon-ring-outer {
+  0% {
+    opacity: 0.85;
+    transform: scale(0.98);
+  }
+
+  100% {
+    opacity: 0;
+    transform: scale(1.1);
   }
 }
 
 .demo-tryon-zone--attention #vton-mount:not(:empty),
 .demo-tryon-zone--attention .vton-placeholder-btn {
-  animation: demo-tryon-btn-pulse 2.2s ease-in-out infinite;
+  animation: demo-tryon-btn-pulse 1.5s ease-in-out infinite;
+  border-radius: 12px;
+  outline: 2px solid rgba(167, 139, 250, 0.65);
+  outline-offset: 3px;
+}
+
+.demo-tryon-zone--attention #vton-mount:not(:empty) > * {
+  animation: demo-tryon-btn-pulse 1.5s ease-in-out infinite;
+  transform-origin: center;
 }
 
 @keyframes demo-tryon-btn-pulse {
@@ -1136,17 +1211,20 @@ body {
   }
 
   50% {
-    filter: brightness(1.08);
-    transform: scale(1.015);
+    filter: brightness(1.12);
+    transform: scale(1.03);
   }
 }
 
 @media (prefers-reduced-motion: reduce) {
+  .demo-tryon-hint,
   .demo-tryon-zone--attention,
   .demo-tryon-zone--attention .demo-tryon-zone__pulse,
+  .demo-tryon-zone--attention .demo-tryon-zone__pulse--outer,
   .demo-tryon-zone--attention #vton-mount:not(:empty),
+  .demo-tryon-zone--attention #vton-mount:not(:empty) > *,
   .demo-tryon-zone--attention .vton-placeholder-btn {
-    animation: none;
+    animation: none !important;
   }
 }
 
