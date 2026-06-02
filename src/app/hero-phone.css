@@ -1683,7 +1683,7 @@
   color: #64748b;
 }
 
-/* Result panel — illustrated figure + green jersey (no product screenshot) */
+/* Result panel — SVG bust with green jersey (no product screenshot) */
 .hero-phone__vton-result {
   position: relative;
   display: flex;
@@ -1698,120 +1698,40 @@
   aspect-ratio: 3 / 3.6;
   border-radius: 0.85rem;
   overflow: hidden;
-  background: linear-gradient(180deg, #e8eef4 0%, #cbd5e1 100%);
   box-shadow: 0 8px 24px rgba(15, 23, 42, 0.12);
   border: 1px solid rgba(15, 23, 42, 0.06);
 }
 
-.hero-phone__tryon-figure {
-  position: absolute;
-  inset: 0;
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  justify-content: flex-start;
-  padding-top: 14%;
+.hero-phone__tryon-svg {
+  display: block;
+  width: 100%;
+  height: 100%;
 }
 
-.hero-phone__tryon-head {
-  width: 21%;
-  aspect-ratio: 1;
-  border-radius: 50%;
-  background: linear-gradient(155deg, #f0d0b4 0%, #d4a574 55%, #b8895a 100%);
-  box-shadow:
-    0 3px 10px rgba(15, 23, 42, 0.12),
-    inset 0 -2px 4px rgba(0, 0, 0, 0.06);
-  z-index: 3;
-  flex-shrink: 0;
+.hero-phone__tryon-svg-person {
+  transform-origin: 120px 80px;
 }
 
-.hero-phone__tryon-neck {
-  width: 9%;
-  height: 3.5%;
-  margin-top: -1%;
-  border-radius: 0 0 40% 40%;
-  background: linear-gradient(180deg, #c9956a, #b8895a);
-  z-index: 2;
-  flex-shrink: 0;
+.hero-phone__tryon-svg-jersey {
+  transform-origin: 120px 150px;
 }
 
-.hero-phone__tryon-jersey {
-  position: relative;
-  width: 70%;
-  margin-top: -0.5%;
-  padding-bottom: 48%;
-  flex-shrink: 0;
-  background: linear-gradient(168deg, #34d399 0%, #16a34a 38%, #15803d 72%, #14532d 100%);
-  border-radius: 22% 22% 10% 10% / 26% 26% 14% 14%;
-  box-shadow:
-    0 10px 22px rgba(21, 128, 61, 0.32),
-    inset 0 2px 0 rgba(255, 255, 255, 0.18),
-    inset 0 -4px 8px rgba(0, 0, 0, 0.12);
-  z-index: 4;
-}
-
-.hero-phone__tryon-jersey-collar {
-  position: absolute;
-  top: 0;
-  left: 50%;
-  transform: translateX(-50%);
-  width: 36%;
-  height: 16%;
-  border-radius: 0 0 55% 55%;
-  background: linear-gradient(180deg, #14532d 0%, #166534 100%);
-  border: 1.5px solid rgba(255, 255, 255, 0.22);
-  box-shadow: inset 0 1px 0 rgba(255, 255, 255, 0.12);
-}
-
-.hero-phone__tryon-jersey-stripe {
-  position: absolute;
-  top: 22%;
-  left: 50%;
-  transform: translateX(-50%);
-  width: 8%;
-  height: 58%;
-  border-radius: 999px;
-  background: linear-gradient(180deg, rgba(255, 255, 255, 0.55), rgba(255, 255, 255, 0.15));
-  opacity: 0.7;
-}
-
-.hero-phone__tryon-jersey-sleeve {
-  position: absolute;
-  top: 10%;
-  width: 22%;
-  height: 38%;
-  background: linear-gradient(165deg, #22c55e 0%, #15803d 100%);
-  border-radius: 45% 45% 55% 55%;
-  box-shadow: 0 4px 10px rgba(21, 128, 61, 0.25);
-}
-
-.hero-phone__tryon-jersey-sleeve--left {
-  left: -14%;
-  transform: rotate(14deg);
-}
-
-.hero-phone__tryon-jersey-sleeve--right {
-  right: -14%;
-  transform: rotate(-14deg);
-}
-
-.hero-phone[data-scene="result"] .hero-phone__tryon-jersey {
+.hero-phone[data-scene="result"] .hero-phone__tryon-svg-jersey {
   animation: hero-phone-garment-reveal var(--hp-scene-ms) var(--hp-ease) 1 forwards;
 }
 
-.hero-phone[data-scene="result"] .hero-phone__tryon-head,
-.hero-phone[data-scene="result"] .hero-phone__tryon-neck {
+.hero-phone[data-scene="result"] .hero-phone__tryon-svg-person {
   animation: hero-phone-figure-reveal var(--hp-scene-ms) var(--hp-ease) 1 forwards;
 }
 
 @keyframes hero-phone-figure-reveal {
-  0%, 6% { opacity: 0.35; }
+  0%, 6% { opacity: 0.5; }
   16%, 100% { opacity: 1; }
 }
 
 @keyframes hero-phone-garment-reveal {
-  0%, 10% { opacity: 0; transform: scale(0.9) translateY(8px); }
-  22%, 100% { opacity: 1; transform: scale(1) translateY(0); }
+  0%, 12% { opacity: 0; transform: scale(0.94) translateY(6px); }
+  24%, 100% { opacity: 1; transform: scale(1) translateY(0); }
 }
 
 .hero-phone__tryon-shine {

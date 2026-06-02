@@ -33,6 +33,48 @@ export function VtonDemo({ locale }: { locale: Locale }) {
     return () => mount.removeEventListener("click", dismiss, { capture: true });
   }, []);
 
+  useEffect(() => {
+    let mo: MutationObserver | null = null;
+    let t1: ReturnType<typeof setTimeout> | undefined;
+    let t2: ReturnType<typeof setTimeout> | undefined;
+    let t3: ReturnType<typeof setTimeout> | undefined;
+
+    const scrollToTryOn = () => {
+      const el = document.getElementById("try-on");
+      if (!el) return;
+      el.scrollIntoView({ behavior: "smooth", block: "center" });
+    };
+
+    const armScroll = () => {
+      scrollToTryOn();
+      t1 = setTimeout(scrollToTryOn, 400);
+      t2 = setTimeout(scrollToTryOn, 1200);
+      t3 = setTimeout(scrollToTryOn, 2500);
+
+      const mount = document.getElementById("vton-mount");
+      if (mount && !mo) {
+        mo = new MutationObserver(scrollToTryOn);
+        mo.observe(mount, { childList: true, subtree: true });
+      }
+    };
+
+    const onHash = () => {
+      if (window.location.hash !== "#try-on") return;
+      armScroll();
+    };
+
+    onHash();
+    window.addEventListener("hashchange", onHash);
+
+    return () => {
+      window.removeEventListener("hashchange", onHash);
+      mo?.disconnect();
+      clearTimeout(t1);
+      clearTimeout(t2);
+      clearTimeout(t3);
+    };
+  }, []);
+
   return (
     <div className="demo-frame w-full min-w-0 max-w-full">
       <motion.div
@@ -121,6 +163,7 @@ export function VtonDemo({ locale }: { locale: Locale }) {
                     )}
 
                     <div
+                      id="try-on"
                       className={`demo-tryon-zone demo-tryon-zone--spotlight min-w-0${showHint ? " demo-tryon-zone--attention" : ""}`}
                     >
                       <span className="demo-tryon-zone__pulse" aria-hidden="true" />

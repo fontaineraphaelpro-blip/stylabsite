@@ -5,7 +5,7 @@ import Link from "next/link";
 import Image from "next/image";
 import { motion, AnimatePresence } from "framer-motion";
 import { APP_URL, UI } from "@/lib/data";
-import { type Locale, localePath } from "@/lib/i18n";
+import { type Locale, liveDemoHref, localePath } from "@/lib/i18n";
 import { EASE_PREMIUM } from "@/lib/motion";
 
 type NavbarProps = {
@@ -22,11 +22,11 @@ export function Navbar({ locale, variant = "marketing" }: NavbarProps) {
   const links =
     variant === "home"
       ? [
-          { href: `${home}#journey`, label: t.liveDemo },
+          { href: liveDemoHref(locale), label: t.liveDemo },
           { href: `${home}#faq`, label: "FAQ" },
         ]
       : [
-          { href: `${home}#journey`, label: t.liveDemo },
+          { href: liveDemoHref(locale), label: t.liveDemo },
           { href: localePath(locale, "/compare"), label: t.compare },
           { href: localePath(locale, "/solutions"), label: t.solutions },
           { href: localePath(locale, "/resources"), label: t.resources },

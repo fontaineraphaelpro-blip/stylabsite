@@ -4,7 +4,7 @@ import Image from "next/image";
 import Link from "next/link";
 import { motion } from "framer-motion";
 import { FadeIn } from "@/components/motion/fade-in";
-import { APP_URL, type Locale, UI, localePath } from "@/lib/content";
+import { APP_URL, type Locale, UI, liveDemoHref, localePath } from "@/lib/content";
 
 export function InstallPushSection({ locale }: { locale: Locale }) {
   const t = UI[locale];
@@ -42,7 +42,7 @@ export function InstallPushSection({ locale }: { locale: Locale }) {
                 <Image src="/assets/shopify-icon-logo.svg" alt="" width={18} height={18} />
                 {t.installLong}
               </a>
-              <Link href={`${localePath(locale)}#journey`} className="btn btn--ghost btn--lg">
+              <Link href={liveDemoHref(locale)} className="btn btn--ghost btn--lg">
                 {t.liveDemo}
               </Link>
             </div>

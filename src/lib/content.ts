@@ -284,5 +284,9 @@ export const UI = {
 
 export function localePath(locale: Locale, path = ""): string {
   const base = locale === "fr" ? "/fr" : "";
-  return `${base}${path}`;
+  if (!path) return base || "/";
+  const normalized = path.startsWith("/") ? path : `/${path}`;
+  return `${base}${normalized}`;
 }
+
+export { liveDemoHref, LIVE_DEMO_ID } from "./i18n";

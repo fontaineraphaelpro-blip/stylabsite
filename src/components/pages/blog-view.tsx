@@ -9,7 +9,7 @@ import {
 } from "@/components/pages/marketing-blocks";
 import { MarketingShell } from "@/components/layout/marketing-shell";
 import { BLOG_POSTS, type BlogPost, UI } from "@/lib/data";
-import { localePath, rewriteContentHtml, t, type Locale } from "@/lib/i18n";
+import { localePath, liveDemoHref, rewriteContentHtml, t, type Locale } from "@/lib/i18n";
 
 export function BlogIndexView({ locale }: { locale: Locale }) {
   const u = UI[locale];
@@ -84,7 +84,7 @@ export function BlogPostView({ locale, post }: { locale: Locale; post: BlogPost 
             <p className="text-zinc-400 mb-4">
               {locale === "fr" ? "Essayez le widget sur un produit réel." : "Try the widget on a real product."}
             </p>
-            <Link href={`${localePath(locale)}#journey`} className="btn btn--primary">
+            <Link href={liveDemoHref(locale)} className="btn btn--primary">
               {u.viewDemo}
             </Link>
           </div>

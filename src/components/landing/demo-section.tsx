@@ -6,7 +6,7 @@ import { motion, useScroll, useTransform } from "framer-motion";
 import { FadeIn } from "@/components/motion/fade-in";
 import { ClientErrorBoundary } from "@/components/client-error-boundary";
 import { VtonDemo } from "@/components/landing/vton-demo";
-import { APP_URL, type Locale, UI, localePath } from "@/lib/content";
+import { APP_URL, type Locale, UI, liveDemoHref, localePath } from "@/lib/content";
 
 const DEMO_STEPS = {
   en: [
@@ -122,7 +122,7 @@ export function CtaSection({ locale }: { locale: Locale }) {
             </h2>
             <p className="text-zinc-400 mb-8">{t.ctaDesc}</p>
             <div className="flex flex-wrap justify-center gap-3">
-              <Link href={`${localePath(locale)}#journey`} className="btn btn--primary btn--lg">
+              <Link href={liveDemoHref(locale)} className="btn btn--primary btn--lg">
                 {t.ctaDemo}
               </Link>
             </div>

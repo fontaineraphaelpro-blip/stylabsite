@@ -14,6 +14,12 @@ export function localePath(locale: Locale, path = ""): string {
   return `${base}${normalized}`;
 }
 
+export const LIVE_DEMO_ID = "try-on";
+
+export function liveDemoHref(locale: Locale): string {
+  return `${localePath(locale)}#${LIVE_DEMO_ID}`;
+}
+
 export function rewriteContentHtml(html: string, locale: Locale): string {
   const base = locale === "fr" ? "/fr" : "";
 
@@ -32,6 +38,6 @@ export function rewriteContentHtml(html: string, locale: Locale): string {
       if (segment === "index") return `href="${base || "/"}"`;
       return `href="${base}/${segment.replace(/\/$/, "")}"`;
     })
-    .replace(/#try-it/g, "#journey")
+    .replace(/#try-it/g, "#try-on")
     .replace(/#pricing/g, "#faq");
 }

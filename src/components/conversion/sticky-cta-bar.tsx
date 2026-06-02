@@ -3,7 +3,7 @@
 import { AnimatePresence, motion } from "framer-motion";
 import { useEffect, useState } from "react";
 import Link from "next/link";
-import { type Locale, localePath } from "@/lib/i18n";
+import { type Locale, liveDemoHref } from "@/lib/i18n";
 import { UI } from "@/lib/data";
 import { EASE_PREMIUM } from "@/lib/motion";
 
@@ -28,7 +28,7 @@ export function StickyCtaBar({ locale }: { locale: Locale }) {
           className="fixed bottom-0 left-0 right-0 z-40 glass-nav border-t border-white/10 p-3 md:hidden"
         >
           <div className="container flex justify-center">
-            <Link href={`${localePath(locale)}#journey`} className="btn btn--primary w-full max-w-sm text-sm">
+            <Link href={liveDemoHref(locale)} className="btn btn--primary w-full max-w-sm text-sm">
               {t.liveDemo}
             </Link>
           </div>

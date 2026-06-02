@@ -6,7 +6,7 @@ import { FadeInHero } from "@/components/motion/fade-in";
 import { GridBackground } from "@/components/landing/grid-background";
 import { ClientErrorBoundary } from "@/components/client-error-boundary";
 import { HeroPhoneDemo } from "@/components/landing/hero-phone-demo";
-import { APP_URL, type Locale, UI, localePath } from "@/lib/content";
+import { APP_URL, type Locale, UI, liveDemoHref } from "@/lib/content";
 
 export function HeroSection({ locale }: { locale: Locale }) {
   const t = UI[locale];
@@ -46,7 +46,7 @@ export function HeroSection({ locale }: { locale: Locale }) {
 
           <FadeInHero delay={0.35}>
             <div className="flex flex-wrap gap-3">
-              <Link href={`${localePath(locale)}#journey`} className="btn btn--primary btn--lg">
+              <Link href={liveDemoHref(locale)} className="btn btn--primary btn--lg">
                 {locale === "fr" ? "Essayer en live" : "Try it live"}
               </Link>
               <a href={APP_URL} className="btn btn--ghost btn--lg" target="_blank" rel="noopener">

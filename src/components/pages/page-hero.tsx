@@ -4,7 +4,7 @@ import { FadeInHero } from "@/components/motion/fade-in";
 import Link from "next/link";
 import Image from "next/image";
 import { APP_URL, UI } from "@/lib/data";
-import { type Locale, localePath } from "@/lib/i18n";
+import { type Locale, liveDemoHref, localePath } from "@/lib/i18n";
 
 export function PageHero({
   locale,
@@ -51,7 +51,7 @@ export function PageHero({
                 <Image src="/assets/shopify-icon-logo.svg" alt="" width={18} height={18} />
                 {u.installStylab}
               </a>
-              <Link href={`${localePath(locale)}#journey`} className="btn btn--ghost">
+              <Link href={liveDemoHref(locale)} className="btn btn--ghost">
                 {u.viewDemo}
               </Link>
             </div>

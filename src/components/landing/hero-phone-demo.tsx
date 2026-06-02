@@ -40,6 +40,74 @@ function PersonIcon() {
   );
 }
 
+function TryOnFigureSvg() {
+  return (
+    <svg
+      className="hero-phone__tryon-svg"
+      viewBox="0 0 240 280"
+      fill="none"
+      xmlns="http://www.w3.org/2000/svg"
+      aria-hidden="true"
+    >
+      <defs>
+        <linearGradient id="hp-tryon-bg" x1="120" y1="0" x2="120" y2="280" gradientUnits="userSpaceOnUse">
+          <stop stopColor="#eef2f7" />
+          <stop offset="1" stopColor="#cbd5e1" />
+        </linearGradient>
+        <linearGradient id="hp-tryon-skin" x1="120" y1="36" x2="120" y2="110" gradientUnits="userSpaceOnUse">
+          <stop stopColor="#f5dcc4" />
+          <stop offset="1" stopColor="#c9956a" />
+        </linearGradient>
+        <linearGradient id="hp-tryon-jersey" x1="60" y1="100" x2="180" y2="220" gradientUnits="userSpaceOnUse">
+          <stop stopColor="#4ade80" />
+          <stop offset="0.5" stopColor="#22c55e" />
+          <stop offset="1" stopColor="#15803d" />
+        </linearGradient>
+      </defs>
+
+      <rect width="240" height="280" fill="url(#hp-tryon-bg)" />
+
+      {/* Upper arms — skin below short sleeves */}
+      <ellipse cx="54" cy="156" rx="12" ry="24" fill="url(#hp-tryon-skin)" />
+      <ellipse cx="186" cy="156" rx="12" ry="24" fill="url(#hp-tryon-skin)" />
+
+      <g className="hero-phone__tryon-svg-jersey">
+        {/* T-shirt body + short sleeves */}
+        <path
+          fill="url(#hp-tryon-jersey)"
+          d="M120 102
+             C103 102 92 108 86 114
+             L58 128 L44 172 L58 176 L74 138
+             C80 128 88 122 98 120
+             L98 210 C98 216 106 220 120 220
+             C134 220 142 216 142 210
+             L142 120 C152 122 160 128 166 138
+             L182 176 L196 172 L182 128
+             C176 108 137 102 120 102 Z"
+        />
+        {/* Polo collar */}
+        <path
+          fill="#166534"
+          stroke="rgba(255,255,255,0.4)"
+          strokeWidth="1"
+          d="M106 102c0-5 5-9 14-9s14 4 14 9v6l-14 8-14-8v-6z"
+        />
+        <path fill="rgba(255,255,255,0.5)" d="M110 100h20v4l-10 5-10-5v-4z" />
+        {/* Center stripe — soccer jersey detail */}
+        <rect x="116" y="124" width="8" height="76" rx="3" fill="rgba(255,255,255,0.55)" />
+        {/* Side shading */}
+        <path fill="#14532d" fillOpacity="0.18" d="M98 124v86c0 4 8 8 22 8V124H98z" />
+        <path fill="#14532d" fillOpacity="0.12" d="M142 124v94c-14 0-22-4-22-8V124h22z" />
+      </g>
+
+      <g className="hero-phone__tryon-svg-person">
+        <rect x="108" y="92" width="24" height="14" rx="5" fill="url(#hp-tryon-skin)" />
+        <circle cx="120" cy="62" r="28" fill="url(#hp-tryon-skin)" />
+      </g>
+    </svg>
+  );
+}
+
 export function HeroPhoneDemo({ locale }: { locale: Locale }) {
   const fr = locale === "fr";
   const [scene, setScene] = useState<Scene>("pdp");
@@ -263,16 +331,7 @@ export function HeroPhoneDemo({ locale }: { locale: Locale }) {
                 >
                   <div className="hero-phone__vton-result">
                     <div className="hero-phone__tryon-frame">
-                      <div className="hero-phone__tryon-figure" aria-hidden="true">
-                        <div className="hero-phone__tryon-head" />
-                        <div className="hero-phone__tryon-neck" />
-                        <div className="hero-phone__tryon-jersey">
-                          <span className="hero-phone__tryon-jersey-collar" />
-                          <span className="hero-phone__tryon-jersey-stripe" />
-                          <span className="hero-phone__tryon-jersey-sleeve hero-phone__tryon-jersey-sleeve--left" />
-                          <span className="hero-phone__tryon-jersey-sleeve hero-phone__tryon-jersey-sleeve--right" />
-                        </div>
-                      </div>
+                      <TryOnFigureSvg />
                       <div className="hero-phone__tryon-shine" />
                       <div className="hero-phone__tryon-scan" />
                     </div>

@@ -1071,6 +1071,11 @@ body {
   }
 }
 
+#try-on {
+  scroll-margin-top: 5.5rem;
+  scroll-margin-bottom: 6rem;
+}
+
 .demo-tryon-zone {
   position: relative;
   padding: 0.5rem;
