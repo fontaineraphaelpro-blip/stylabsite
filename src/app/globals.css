@@ -291,6 +291,47 @@ body {
   font-size: 0.9375rem;
 }
 
+/* ── VTON demo widget ────────────────────────────────────── */
+#vton-mount {
+  width: 100%;
+  min-height: 48px;
+}
+
+#vton-mount-placeholder {
+  display: flex;
+  flex-direction: column;
+  gap: 0.5rem;
+}
+
+.vton-placeholder-btn {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 0.5rem;
+  width: 100%;
+  padding: 0.875rem 1rem;
+  font-size: 0.9375rem;
+  font-weight: 600;
+  border-radius: 10px;
+  background: linear-gradient(135deg, #8d54ff, #6d28d9);
+  color: #fff;
+  cursor: wait;
+  border: none;
+}
+
+#vton-mount-placeholder small {
+  font-size: 0.8125rem;
+  color: #71717a;
+  text-align: center;
+}
+
+#vton-mount-placeholder a {
+  color: #c084fc;
+  font-weight: 600;
+  text-decoration: underline;
+  text-underline-offset: 2px;
+}
+
 /* ── Reduced motion ──────────────────────────────────────── */
 /* ── Prose (subpages) ────────────────────────────────────── */
 .prose {
