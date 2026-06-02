@@ -96,6 +96,43 @@ export const UI = {
     footerTagline:
       "AI virtual try-on for Shopify apparel brands. Help shoppers visualize your products before they buy.",
     marqueeItems: ["Shopify App Store", "A/B Testing", "Flat-lay upload", "Mobile widget", "Analytics", "No theme code"],
+    proofEyebrow: "The cost of hesitation",
+    proofTitle: "Every bounce is",
+    proofTitleMuted: "a lost sale",
+    proofDesc:
+      "Apparel shoppers leave when they can't picture the fit. Stylab fixes that on the product page — before checkout.",
+    proofWithoutTitle: "Without try-on",
+    proofWithoutItems: [
+      "Shoppers bounce to compare elsewhere",
+      "Size doubt kills add-to-cart",
+      "Returns from wrong expectations",
+      "Zero data on PDP drop-off",
+    ],
+    proofWithTitle: "With Stylab",
+    proofWithItems: [
+      "77.8% try-on → cart on our pilot",
+      "~30s preview locks purchase intent",
+      "Fewer fit surprises at delivery",
+      "Analytics on every session",
+    ],
+    proofCta: "Install free — start on 2 SKUs",
+    installEyebrow: "Zero risk to start",
+    installTitle: "Go live in",
+    installTitleMuted: "~5 minutes",
+    installDesc:
+      "No developer. No theme edits. Install from the App Store and enable try-on on your bestsellers today.",
+    installTimeline: [
+      { time: "0 min", title: "Install", desc: "One click from Shopify App Store" },
+      { time: "2 min", title: "Enable SKUs", desc: "Toggle try-on on hero products" },
+      { time: "5 min", title: "First try-on", desc: "Widget live — shoppers can preview" },
+    ],
+    installChecks: [
+      "50 free try-ons / month",
+      "No credit card required",
+      "Photos not stored",
+      "Cancel anytime from Shopify",
+    ],
+    installNote: "Most merchants start with 2–3 bestsellers and measure try-on → cart before scaling.",
   },
   fr: {
     lang: "fr" as const,
@@ -187,6 +224,43 @@ export const UI = {
     footerTagline:
       "Essayage virtuel IA pour marques apparel Shopify. Aidez vos clients à visualiser vos produits avant d'acheter.",
     marqueeItems: ["App Store Shopify", "A/B Testing", "Flat-lay", "Widget mobile", "Analytics", "Sans code thème"],
+    proofEyebrow: "Le coût de l'hésitation",
+    proofTitle: "Chaque rebond est",
+    proofTitleMuted: "une vente perdue",
+    proofDesc:
+      "Les acheteurs mode partent quand ils n'arrivent pas à se projeter. Stylab règle ça sur la fiche produit — avant le checkout.",
+    proofWithoutTitle: "Sans essayage",
+    proofWithoutItems: [
+      "Comparaison ailleurs, panier abandonné",
+      "Doute taille → pas d'ajout au panier",
+      "Retours liés aux mauvaises attentes",
+      "Aucune donnée sur les abandons PDP",
+    ],
+    proofWithTitle: "Avec Stylab",
+    proofWithItems: [
+      "77,8 % essayage → panier (pilote)",
+      "~30 s pour verrouiller l'intention",
+      "Moins de mauvaises surprises à la livraison",
+      "Analytics sur chaque session",
+    ],
+    proofCta: "Installer gratuit — 2 SKU pour commencer",
+    installEyebrow: "Zéro risque pour démarrer",
+    installTitle: "En ligne en",
+    installTitleMuted: "~5 minutes",
+    installDesc:
+      "Sans développeur. Sans toucher au thème. Installez depuis l'App Store et activez l'essayage sur vos best-sellers.",
+    installTimeline: [
+      { time: "0 min", title: "Installer", desc: "Un clic depuis l'App Store Shopify" },
+      { time: "2 min", title: "Activer SKU", desc: "Toggle essayage sur vos produits phares" },
+      { time: "5 min", title: "1er essayage", desc: "Widget live — vos clients preview" },
+    ],
+    installChecks: [
+      "50 essayages gratuits / mois",
+      "Sans carte bancaire",
+      "Photos non stockées",
+      "Résiliable depuis Shopify",
+    ],
+    installNote: "La plupart des marchands démarrent sur 2–3 best-sellers et mesurent essayage → panier avant de scaler.",
   },
 } as const;
 

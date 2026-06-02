@@ -6,8 +6,10 @@ import { HeroSection } from "@/components/landing/hero-section";
 import { TrustStrip } from "@/components/landing/demo-section";
 import { AiMarquee } from "@/components/landing/ai-marquee";
 import { FeaturesSection } from "@/components/landing/features-section";
+import { ProofSection } from "@/components/landing/proof-section";
 import { DemoSection, CtaSection } from "@/components/landing/demo-section";
 import { HowItWorksSection } from "@/components/landing/how-it-works";
+import { InstallPushSection } from "@/components/landing/install-push-section";
 import { FaqSection } from "@/components/landing/faq-section";
 
 export default function FrHomePage() {
@@ -20,8 +22,10 @@ export default function FrHomePage() {
         <TrustStrip locale="fr" />
         <AiMarquee locale="fr" />
         <FeaturesSection locale="fr" />
+        <ProofSection locale="fr" />
         <DemoSection locale="fr" />
         <HowItWorksSection locale="fr" />
+        <InstallPushSection locale="fr" />
         <FaqSection locale="fr" />
         <CtaSection locale="fr" />
       </main>
