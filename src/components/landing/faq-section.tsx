@@ -1,13 +1,29 @@
 "use client";
 
 import { useState } from "react";
-import { AnimatePresence, motion } from "framer-motion";
+import { motion } from "framer-motion";
 import { FadeIn } from "@/components/motion/fade-in";
 import { EASE_PREMIUM, type Locale, UI } from "@/lib/content";
 
+const listVariants = {
+  hidden: {},
+  visible: {
+    transition: { staggerChildren: 0.06, delayChildren: 0.05 },
+  },
+};
+
+const itemVariants = {
+  hidden: { opacity: 0, y: 16 },
+  visible: {
+    opacity: 1,
+    y: 0,
+    transition: { duration: 0.5, ease: EASE_PREMIUM },
+  },
+};
+
 export function FaqSection({ locale }: { locale: Locale }) {
   const t = UI[locale];
-  const [open, setOpen] = useState(0);
+  const [open, setOpen] = useState<number | null>(0);
 
   return (
     <section id="faq" className="py-20" aria-labelledby="faq-title">
@@ -19,47 +35,63 @@ export function FaqSection({ locale }: { locale: Locale }) {
           </h2>
         </FadeIn>
 
-        <dl className="space-y-3">
+        <motion.div
+          className="space-y-3"
+          role="list"
+          initial="hidden"
+          whileInView="visible"
+          viewport={{ once: true, margin: "-60px" }}
+          variants={listVariants}
+        >
           {t.faqs.map((item, i) => {
             const isOpen = open === i;
+            const panelId = `faq-panel-${i}`;
+            const triggerId = `faq-trigger-${i}`;
+
             return (
-              <FadeIn key={item.q} delay={i * 0.08}>
-                <div className="glass-card gradient-border overflow-hidden">
-                  <dt>
-                    <button
-                      type="button"
-                      className="w-full flex items-center justify-between gap-4 p-4 text-left font-medium"
-                      aria-expanded={isOpen}
-                      onClick={() => setOpen(isOpen ? -1 : i)}
+              <motion.div
+                key={item.q}
+                role="listitem"
+                variants={itemVariants}
+                className="glass-card gradient-border overflow-hidden"
+              >
+                <h3 className="m-0">
+                  <button
+                    type="button"
+                    id={triggerId}
+                    className="w-full flex items-center justify-between gap-4 p-4 text-left font-medium"
+                    aria-expanded={isOpen}
+                    aria-controls={panelId}
+                    onClick={() => setOpen(isOpen ? null : i)}
+                  >
+                    {item.q}
+                    <span
+                      className={`text-xl text-zinc-500 shrink-0 transition-transform duration-300 ${isOpen ? "rotate-45" : ""}`}
+                      aria-hidden="true"
                     >
-                      {item.q}
-                      <span
-                        className="text-xl text-zinc-500 transition-transform duration-300"
-                        style={{ transform: isOpen ? "rotate(45deg)" : "none" }}
-                        aria-hidden="true"
-                      >
-                        +
-                      </span>
-                    </button>
-                  </dt>
-                  <AnimatePresence initial={false}>
-                    {isOpen && (
-                      <motion.dd
-                        initial={{ height: 0, opacity: 0 }}
-                        animate={{ height: "auto", opacity: 1 }}
-                        exit={{ height: 0, opacity: 0 }}
-                        transition={{ duration: 0.3, ease: EASE_PREMIUM }}
-                        className="overflow-hidden"
-                      >
-                        <div className="px-4 pb-4 text-sm text-zinc-400 leading-relaxed">{item.a}</div>
-                      </motion.dd>
-                    )}
-                  </AnimatePresence>
+                      +
+                    </span>
+                  </button>
+                </h3>
+                <div
+                  id={panelId}
+                  role="region"
+                  aria-labelledby={triggerId}
+                  aria-hidden={!isOpen}
+                  className="faq-panel grid transition-[grid-template-rows] duration-300 motion-reduce:transition-none"
+                  style={{
+                    gridTemplateRows: isOpen ? "1fr" : "0fr",
+                    transitionTimingFunction: "cubic-bezier(0.21, 0.47, 0.32, 0.98)",
+                  }}
+                >
+                  <div className="overflow-hidden">
+                    <p className="px-4 pb-4 text-sm text-zinc-400 leading-relaxed m-0">{item.a}</p>
+                  </div>
                 </div>
-              </FadeIn>
+              </motion.div>
             );
           })}
-        </dl>
+        </motion.div>
       </div>
     </section>
   );

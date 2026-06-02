@@ -15,7 +15,7 @@ export default function HomePage() {
     <div className="relative min-h-screen overflow-x-hidden">
       <MarketingAmbient />
       <Navbar locale="en" variant="home" />
-      <main className="pt-16">
+      <main className="pt-16 pb-24 md:pb-0">
         <HeroSection locale="en" />
         <TrustStrip locale="en" />
         <AiMarquee locale="en" />

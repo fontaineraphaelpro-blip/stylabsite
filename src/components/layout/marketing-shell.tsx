@@ -15,7 +15,7 @@ export function MarketingShell({
     <div className="relative min-h-screen overflow-x-hidden">
       <MarketingAmbient />
       <Navbar locale={locale} variant="marketing" />
-      <main className="pt-24 pb-16">{children}</main>
+      <main className="pt-24 pb-24 md:pb-16">{children}</main>
       <Footer locale={locale} />
       <StickyCtaBar locale={locale} />
     </div>

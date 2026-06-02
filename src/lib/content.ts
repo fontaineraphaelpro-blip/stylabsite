@@ -20,8 +20,7 @@ export const UI = {
     heroBadge: "Shopify · AI virtual try-on",
     heroTitle: "Turn hesitation into",
     heroTitleAccent: "add to cart",
-    heroLead:
-      "Shoppers upload one photo on your product page. AI shows the garment on them in ~30 seconds — on our pilot store, most try-ons end in a purchase.",
+    heroLead: "One photo on your product page. ~30 seconds to see the fit — then add to cart.",
     heroNote: "50 free try-ons/mo · no credit card · live in ~5 min",
     stats: [
       { value: "77.8%", label: "try-on → cart (pilot)" },
@@ -51,9 +50,9 @@ export const UI = {
       },
     ],
     demoEyebrow: "Live demo",
-    demoTitle: "Test the widget on a",
-    demoTitleAccent: "real product",
-    demoDesc: "Same flow your customers get after install. Upload your photo — ~30s to preview.",
+    demoTitle: "Try it live on a",
+    demoTitleAccent: "real product page",
+    demoDesc: "Upload your photo below — the exact widget your shoppers get after install.",
     stepsEyebrow: "How it works",
     stepsTitle: "Go live in three steps",
     steps: [
@@ -112,8 +111,7 @@ export const UI = {
     heroBadge: "Shopify · essayage virtuel IA",
     heroTitle: "Transformez l'hésitation en",
     heroTitleAccent: "ajout au panier",
-    heroLead:
-      "Une photo sur votre fiche produit. L'IA affiche le vêtement sur le client en ~30 s — sur notre boutique pilote, la majorité des essayages se terminent par un achat.",
+    heroLead: "Une photo sur votre fiche produit. ~30 secondes pour voir le rendu — puis ajout au panier.",
     heroNote: "50 essayages gratuits/mois · sans carte · en ligne en ~5 min",
     stats: [
       { value: "77,8 %", label: "essayage → panier (pilote)" },
@@ -143,9 +141,9 @@ export const UI = {
       },
     ],
     demoEyebrow: "Démo live",
-    demoTitle: "Testez le widget sur un",
-    demoTitleAccent: "vrai produit",
-    demoDesc: "Le même parcours que vos clients après installation. Uploadez une photo — ~30 s.",
+    demoTitle: "Testez en live sur une",
+    demoTitleAccent: "vraie fiche produit",
+    demoDesc: "Uploadez votre photo ci-dessous — le même widget que vos clients après installation.",
     stepsEyebrow: "Comment ça marche",
     stepsTitle: "En ligne en trois étapes",
     steps: [

@@ -2,27 +2,98 @@
 
 import Link from "next/link";
 import Image from "next/image";
+import { useRef } from "react";
+import { motion, useScroll, useTransform } from "framer-motion";
 import { FadeIn } from "@/components/motion/fade-in";
-import { APP_URL, type Locale, UI, localePath } from "@/lib/content";
 import { VtonDemo } from "@/components/landing/vton-demo";
+import { APP_URL, type Locale, UI, localePath } from "@/lib/content";
+
+const DEMO_STEPS = {
+  en: [
+    { n: "01", title: "Upload", desc: "One photo from your phone" },
+    { n: "02", title: "AI preview", desc: "Garment on you in ~30s" },
+    { n: "03", title: "Add to cart", desc: "Same PDP flow as shoppers" },
+  ],
+  fr: [
+    { n: "01", title: "Uploadez", desc: "Une photo depuis votre téléphone" },
+    { n: "02", title: "Aperçu IA", desc: "Le vêtement sur vous en ~30 s" },
+    { n: "03", title: "Ajoutez", desc: "Même parcours que vos clients" },
+  ],
+} as const;
+
+const DEMO_CHIPS = {
+  en: ["Real Shopify PDP", "77.8% try-on → cart", "~30s preview"],
+  fr: ["PDP Shopify réelle", "77,8 % essayage → panier", "~30 s"],
+} as const;
 
 export function DemoSection({ locale }: { locale: Locale }) {
   const t = UI[locale];
+  const fr = locale === "fr";
+  const ref = useRef<HTMLElement>(null);
+  const { scrollYProgress } = useScroll({ target: ref, offset: ["start end", "end start"] });
+  const bgY = useTransform(scrollYProgress, [0, 1], ["0%", "14%"]);
+
+  const steps = DEMO_STEPS[locale];
+  const chips = DEMO_CHIPS[locale];
 
   return (
-    <section id="journey" className="py-20" aria-labelledby="demo-title">
-      <div className="container">
-        <FadeIn className="text-center mb-10">
-          <p className="section-eyebrow">{t.demoEyebrow}</p>
-          <h2 id="demo-title" className="text-3xl sm:text-4xl font-bold mb-3">
-            {t.demoTitle} <span className="gradient-text">{t.demoTitleAccent}</span>
-          </h2>
-          <p className="text-zinc-400 max-w-xl mx-auto">{t.demoDesc}</p>
-        </FadeIn>
+    <section
+      ref={ref}
+      id="journey"
+      className="demo-showcase py-24 md:py-32 relative overflow-hidden"
+      aria-labelledby="demo-title"
+    >
+      <motion.div className="demo-showcase__bg" style={{ y: bgY }} aria-hidden="true">
+        <div className="demo-showcase__grid" />
+        <div className="demo-showcase__orb demo-showcase__orb--1" />
+        <div className="demo-showcase__orb demo-showcase__orb--2" />
+        <div className="demo-showcase__beam" />
+      </motion.div>
 
-        <FadeIn delay={0.15}>
-          <VtonDemo locale={locale} />
-        </FadeIn>
+      <div className="container relative z-10">
+        <div className="grid lg:grid-cols-[minmax(0,22rem)_1fr] xl:grid-cols-[minmax(0,26rem)_1fr] gap-10 lg:gap-12 xl:gap-16 items-start">
+          <FadeIn className="lg:sticky lg:top-28 space-y-6">
+            <div className="demo-live-badge">
+              <span className="demo-live-badge__dot" aria-hidden="true" />
+              {t.demoEyebrow}
+            </div>
+
+            <div>
+              <p className="section-eyebrow mb-3">{fr ? "Essayez maintenant" : "Try it now"}</p>
+              <h2 id="demo-title" className="text-4xl sm:text-5xl font-bold tracking-tight leading-[1.05] mb-4">
+                {t.demoTitle}
+                <br />
+                <span className="gradient-text">{t.demoTitleAccent}</span>
+              </h2>
+              <p className="text-zinc-400 leading-relaxed">{t.demoDesc}</p>
+            </div>
+
+            <ol className="demo-steps">
+              {steps.map((step, i) => (
+                <li key={step.n} className="demo-steps__item">
+                  <span className="demo-steps__num">{step.n}</span>
+                  <div>
+                    <strong className="block text-sm font-semibold">{step.title}</strong>
+                    <span className="text-xs text-zinc-500">{step.desc}</span>
+                  </div>
+                  {i < steps.length - 1 && <span className="demo-steps__arrow" aria-hidden="true" />}
+                </li>
+              ))}
+            </ol>
+
+            <div className="flex flex-wrap gap-2">
+              {chips.map((chip) => (
+                <span key={chip} className="demo-chip">
+                  {chip}
+                </span>
+              ))}
+            </div>
+          </FadeIn>
+
+          <FadeIn delay={0.1} y={32}>
+            <VtonDemo locale={locale} />
+          </FadeIn>
+        </div>
       </div>
     </section>
   );
