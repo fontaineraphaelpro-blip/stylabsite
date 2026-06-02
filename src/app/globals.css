@@ -1748,4 +1748,14 @@ body {
     animation-iteration-count: 1 !important;
     transition-duration: 0.01ms !important;
   }
+
+  /* Hero phone demo is decorative (aria-hidden) — keep the marketing loop running */
+  .hero-phone,
+  .hero-phone *,
+  .hero-phone *::before,
+  .hero-phone *::after {
+    animation-duration: unset !important;
+    animation-iteration-count: unset !important;
+    transition-duration: unset !important;
+  }
 }

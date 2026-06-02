@@ -1,26 +1,64 @@
 "use client";
 
-import { useRef } from "react";
+import { useEffect, useRef, useState } from "react";
 import Image from "next/image";
-import { useInView } from "framer-motion";
 import type { CSSProperties } from "react";
 import type { Locale } from "@/lib/i18n";
 
-const DURATION = 10;
+const SCENES = ["pdp", "upload", "loading", "result", "success"] as const;
+type Scene = (typeof SCENES)[number];
+
+const SCENE_MS: Record<Scene, number> = {
+  pdp: 2000,
+  upload: 1500,
+  loading: 2200,
+  result: 2000,
+  success: 2400,
+};
 
 export function HeroPhoneDemo({ locale }: { locale: Locale }) {
   const fr = locale === "fr";
-  const rootRef = useRef<HTMLDivElement>(null);
-  const isInView = useInView(rootRef, { once: true, amount: 0.05, margin: "80px 0px 80px 0px" });
+  const [scene, setScene] = useState<Scene>("pdp");
+  const [flash, setFlash] = useState(false);
+  const isFirstScene = useRef(true);
+
+  useEffect(() => {
+    let idx = 0;
+    let timer: ReturnType<typeof setTimeout>;
+    let cancelled = false;
+
+    const schedule = () => {
+      if (cancelled) return;
+      const current = SCENES[idx];
+      setScene(current);
+      timer = setTimeout(() => {
+        idx = (idx + 1) % SCENES.length;
+        schedule();
+      }, SCENE_MS[current]);
+    };
+
+    schedule();
+    return () => {
+      cancelled = true;
+      clearTimeout(timer);
+    };
+  }, []);
+
+  useEffect(() => {
+    if (isFirstScene.current) {
+      isFirstScene.current = false;
+      return;
+    }
+    setFlash(true);
+    const timer = setTimeout(() => setFlash(false), 320);
+    return () => clearTimeout(timer);
+  }, [scene]);
+
+  const sceneClass = (name: Scene) =>
+    `hero-phone__scene hero-phone__scene--${name}${scene === name ? " is-active" : ""}`;
 
   return (
-    <div
-      ref={rootRef}
-      key={isInView ? "playing" : "idle"}
-      className={`hero-phone${isInView ? " hero-phone--playing" : " hero-phone--idle"}`}
-      style={{ "--hero-phone-duration": `${DURATION}s` } as CSSProperties}
-      aria-hidden="true"
-    >
+    <div className="hero-phone hero-phone--playing" data-scene={scene} aria-hidden="true">
       <div className="hero-phone__ambient" />
       <div className="hero-phone__ring" />
       <div className="hero-phone__float hero-phone__float--live">● LIVE</div>
@@ -30,7 +68,7 @@ export function HeroPhoneDemo({ locale }: { locale: Locale }) {
         <div className="hero-phone__island" />
         <div className="hero-phone__screen">
           {/* ── 1 · Product page ── */}
-          <div className="hero-phone__scene hero-phone__scene--pdp">
+          <div className={sceneClass("pdp")}>
             <div className="hero-phone__store-bar">
               <span>←</span>
               <em>remadeicons.shop</em>
@@ -84,7 +122,7 @@ export function HeroPhoneDemo({ locale }: { locale: Locale }) {
           </div>
 
           {/* ── 2 · Upload photo ── */}
-          <div className="hero-phone__scene hero-phone__scene--upload">
+          <div className={sceneClass("upload")}>
             <div className="hero-phone__upload-dim" />
             <div className="hero-phone__upload-sheet">
               <div className="hero-phone__upload-handle" />
@@ -106,7 +144,7 @@ export function HeroPhoneDemo({ locale }: { locale: Locale }) {
           </div>
 
           {/* ── 3 · AI processing ── */}
-          <div className="hero-phone__scene hero-phone__scene--loading">
+          <div className={sceneClass("loading")}>
             <div className="hero-phone__loading-card">
               <div className="hero-phone__ai-chip">
                 <span className="hero-phone__ai-chip-dot" />
@@ -152,7 +190,7 @@ export function HeroPhoneDemo({ locale }: { locale: Locale }) {
           </div>
 
           {/* ── 4 · Result ── */}
-          <div className="hero-phone__scene hero-phone__scene--result">
+          <div className={sceneClass("result")}>
             <div className="hero-phone__result-shimmer" />
             <Image
               src="/assets/screenshots/result-modal.png"
@@ -168,7 +206,7 @@ export function HeroPhoneDemo({ locale }: { locale: Locale }) {
           </div>
 
           {/* ── 5 · Success ── */}
-          <div className="hero-phone__scene hero-phone__scene--success">
+          <div className={sceneClass("success")}>
             <div className="hero-phone__success-card">
               <div className="hero-phone__success-burst" />
               <div className="hero-phone__success-check">
@@ -190,7 +228,7 @@ export function HeroPhoneDemo({ locale }: { locale: Locale }) {
           </div>
 
           {/* Overlays */}
-          <div className="hero-phone__flash" />
+          <div className={`hero-phone__flash${flash ? " is-on" : ""}`} />
           <div className="hero-phone__confetti">
             {Array.from({ length: 10 }).map((_, i) => (
               <span key={i} style={{ "--i": i } as CSSProperties} />

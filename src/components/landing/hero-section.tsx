@@ -72,10 +72,10 @@ export function HeroSection({ locale }: { locale: Locale }) {
         </div>
 
         <motion.div
-          initial={{ opacity: 0, y: 20, scale: 0.96 }}
+          initial={{ opacity: 0, y: 16, scale: 0.97 }}
           animate={{ opacity: 1, y: 0, scale: 1 }}
-          transition={{ duration: 0.55, delay: 0.05, ease: [0.21, 0.47, 0.32, 0.98] }}
-          className="relative flex justify-center lg:justify-end overflow-hidden order-1 lg:order-2"
+          transition={{ duration: 0.4, delay: 0, ease: [0.21, 0.47, 0.32, 0.98] }}
+          className="relative flex justify-center lg:justify-end order-1 lg:order-2"
         >
           <motion.div
             whileHover={{ scale: 1.02 }}

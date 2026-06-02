@@ -149,6 +149,7 @@
     0 0 48px -12px rgba(141, 84, 255, 0.45),
     0 36px 72px -28px rgba(0, 0, 0, 0.75),
     inset 0 1px 0 rgba(255, 255, 255, 0.1);
+  animation: hero-phone-float 3.5s ease-in-out infinite, hero-phone-device-in 0.65s var(--hp-ease) both;
 }
 
 .hero-phone--playing .hero-phone__device {
@@ -198,14 +199,30 @@
   position: absolute;
   inset: 0;
   opacity: 0;
+  transform: scale(0.97) translateY(4px);
+  filter: blur(2px);
   pointer-events: none;
+  z-index: 0;
+  transition:
+    opacity 0.42s var(--hp-ease),
+    transform 0.42s var(--hp-ease),
+    filter 0.42s var(--hp-ease);
 }
 
-.hero-phone__scene--pdp { animation: hero-phone-pdp var(--hp-dur) var(--hp-ease) infinite; }
-.hero-phone__scene--upload { animation: hero-phone-upload var(--hp-dur) var(--hp-ease) infinite; }
-.hero-phone__scene--loading { animation: hero-phone-loading-scene var(--hp-dur) var(--hp-ease) infinite; }
-.hero-phone__scene--result { animation: hero-phone-result-scene var(--hp-dur) var(--hp-ease) infinite; }
-.hero-phone__scene--success { animation: hero-phone-success-scene var(--hp-dur) var(--hp-ease) infinite; }
+.hero-phone__scene.is-active {
+  opacity: 1;
+  transform: scale(1) translateY(0);
+  filter: none;
+  z-index: 4;
+}
+
+.hero-phone__scene--pdp,
+.hero-phone__scene--upload,
+.hero-phone__scene--loading,
+.hero-phone__scene--result,
+.hero-phone__scene--success {
+  animation: none !important;
+}
 
 @keyframes hero-phone-pdp {
   0%, 17% { opacity: 1; transform: scale(1); }
@@ -292,13 +309,16 @@
   border-radius: 0.65rem;
   background: #fff;
   object-fit: contain;
-  animation: hero-phone-img-zoom var(--hp-dur) var(--hp-ease) infinite;
+  animation: none;
 }
 
-@keyframes hero-phone-img-zoom {
-  0%, 3% { transform: scale(1) translateY(0); }
-  8%, 16% { transform: scale(1.06) translateY(-2px); }
-  18%, 100% { transform: scale(1) translateY(0); }
+.hero-phone[data-scene="pdp"] .hero-phone__pdp-img {
+  animation: hero-phone-img-zoom-loop 2s var(--hp-ease) infinite;
+}
+
+@keyframes hero-phone-img-zoom-loop {
+  0%, 100% { transform: scale(1) translateY(0); }
+  50% { transform: scale(1.05) translateY(-2px); }
 }
 
 .hero-phone__pdp-badge {
@@ -381,15 +401,19 @@
   inset: -4px;
   border-radius: 0.6rem;
   border: 2px solid rgba(26, 92, 66, 0.55);
-  animation: hero-phone-beacon var(--hp-dur) var(--hp-ease) infinite;
+  opacity: 0;
   pointer-events: none;
+  animation: none;
 }
 
-@keyframes hero-phone-beacon {
-  0%, 2% { opacity: 0.85; transform: scale(0.95); }
-  4%, 10% { opacity: 1; transform: scale(1); }
-  6% { opacity: 0.55; transform: scale(1.1); }
-  12%, 100% { opacity: 0; transform: scale(1.18); }
+.hero-phone[data-scene="pdp"] .hero-phone__try-beacon {
+  animation: hero-phone-beacon-loop 2s var(--hp-ease) infinite;
+}
+
+@keyframes hero-phone-beacon-loop {
+  0%, 100% { opacity: 0; transform: scale(0.96); }
+  15%, 35% { opacity: 1; transform: scale(1); }
+  22% { opacity: 0.5; transform: scale(1.12); }
 }
 
 .hero-phone__btn {
@@ -411,7 +435,17 @@
 .hero-phone__btn--try {
   background: var(--hp-green);
   color: #fff;
-  animation: hero-phone-try-pulse var(--hp-dur) var(--hp-ease) infinite;
+  animation: none;
+}
+
+.hero-phone[data-scene="pdp"] .hero-phone__btn--try {
+  animation: hero-phone-try-pulse-loop 2s var(--hp-ease) infinite;
+}
+
+@keyframes hero-phone-try-pulse-loop {
+  0%, 100% { box-shadow: 0 0 0 0 rgba(26, 92, 66, 0.5); transform: scale(1); }
+  18% { box-shadow: 0 0 0 10px rgba(26, 92, 66, 0.25); transform: scale(1.04); }
+  28% { transform: scale(0.92); }
 }
 
 .hero-phone__btn--cart { background: #111; color: #fff; }
@@ -419,33 +453,24 @@
 .hero-phone__btn--upload {
   background: var(--hp-green);
   color: #fff;
-  animation: hero-phone-upload-btn var(--hp-dur) var(--hp-ease) infinite;
+  animation: none;
 }
 
-@keyframes hero-phone-try-pulse {
-  0%, 2% { box-shadow: 0 0 0 0 rgba(26, 92, 66, 0.5); transform: scale(1); }
-  4% { box-shadow: 0 0 0 8px rgba(26, 92, 66, 0.35); transform: scale(1.02); }
-  5% { transform: scale(0.92); }
-  7%, 100% { box-shadow: none; transform: scale(1); }
+.hero-phone[data-scene="upload"] .hero-phone__btn--upload {
+  animation: hero-phone-upload-btn-loop 1.5s var(--hp-ease) infinite;
 }
 
-@keyframes hero-phone-upload-btn {
-  0%, 25% { box-shadow: none; transform: scale(1); }
-  26% { box-shadow: 0 0 0 5px rgba(26, 92, 66, 0.3); transform: scale(0.96); }
-  28%, 100% { box-shadow: none; transform: scale(1); }
+@keyframes hero-phone-upload-btn-loop {
+  0%, 55% { box-shadow: none; transform: scale(1); }
+  65% { box-shadow: 0 0 0 6px rgba(26, 92, 66, 0.3); transform: scale(0.96); }
+  75%, 100% { box-shadow: none; transform: scale(1); }
 }
 
 .hero-phone__upload-dim {
   position: absolute;
   inset: 0;
   background: rgba(0, 0, 0, 0.45);
-  animation: hero-phone-dim var(--hp-dur) var(--hp-ease) infinite;
-}
-
-@keyframes hero-phone-dim {
-  0%, 17% { opacity: 0; }
-  19%, 29% { opacity: 1; }
-  31%, 100% { opacity: 0; }
+  opacity: 1;
 }
 
 .hero-phone__upload-sheet {
@@ -457,13 +482,16 @@
   background: #fff;
   border-radius: 1rem 1rem 0 0;
   box-shadow: 0 -8px 32px rgba(0, 0, 0, 0.12);
-  animation: hero-phone-upload-sheet var(--hp-dur) var(--hp-ease) infinite;
+  transform: translateY(0);
 }
 
-@keyframes hero-phone-upload-sheet {
-  0%, 17% { transform: translateY(105%); }
-  19%, 29% { transform: translateY(0); }
-  31%, 100% { transform: translateY(105%); }
+.hero-phone[data-scene="upload"] .hero-phone__upload-sheet {
+  animation: hero-phone-upload-sheet-in 0.55s var(--hp-snap) both;
+}
+
+@keyframes hero-phone-upload-sheet-in {
+  from { transform: translateY(105%); }
+  to { transform: translateY(0); }
 }
 
 .hero-phone__upload-handle {
@@ -503,13 +531,17 @@
 .hero-phone__upload-icon {
   font-size: 1.25rem;
   opacity: 0.35;
-  animation: hero-phone-upload-icon var(--hp-dur) var(--hp-ease) infinite;
+  animation: none;
 }
 
-@keyframes hero-phone-upload-icon {
-  0%, 17% { opacity: 0.35; transform: scale(1); }
-  20% { opacity: 0; transform: scale(0.8); }
-  20.01%, 100% { opacity: 0; }
+.hero-phone[data-scene="upload"] .hero-phone__upload-icon {
+  animation: hero-phone-upload-icon-loop 1.5s var(--hp-ease) infinite;
+}
+
+@keyframes hero-phone-upload-icon-loop {
+  0%, 20% { opacity: 0.35; transform: scale(1); }
+  30% { opacity: 0; transform: scale(0.8); }
+  100% { opacity: 0; }
 }
 
 .hero-phone__upload-thumb {
@@ -519,13 +551,17 @@
   background: linear-gradient(145deg, #e8dcc8 0%, #c4a882 40%, #8b7355 100%);
   opacity: 0;
   transform: scale(0.7);
-  animation: hero-phone-upload-thumb var(--hp-dur) var(--hp-snap) infinite;
+  animation: none;
 }
 
-@keyframes hero-phone-upload-thumb {
-  0%, 20% { opacity: 0; transform: scale(0.7); }
-  22%, 29% { opacity: 1; transform: scale(1); }
-  31%, 100% { opacity: 0; transform: scale(1.05); }
+.hero-phone[data-scene="upload"] .hero-phone__upload-thumb {
+  animation: hero-phone-upload-thumb-loop 1.5s var(--hp-snap) infinite;
+}
+
+@keyframes hero-phone-upload-thumb-loop {
+  0%, 15% { opacity: 0; transform: scale(0.7); }
+  25%, 80% { opacity: 1; transform: scale(1); }
+  100% { opacity: 0; transform: scale(1.05); }
 }
 
 .hero-phone__upload-scan {
@@ -535,14 +571,18 @@
   height: 2px;
   background: linear-gradient(90deg, transparent, var(--hp-violet), transparent);
   opacity: 0;
-  animation: hero-phone-upload-scan var(--hp-dur) linear infinite;
+  animation: none;
 }
 
-@keyframes hero-phone-upload-scan {
-  0%, 21% { top: 0; opacity: 0; }
-  22% { opacity: 1; }
-  27% { top: 100%; opacity: 1; }
-  28%, 100% { opacity: 0; }
+.hero-phone[data-scene="upload"] .hero-phone__upload-scan {
+  animation: hero-phone-upload-scan-loop 1.5s linear infinite;
+}
+
+@keyframes hero-phone-upload-scan-loop {
+  0%, 10% { top: 0; opacity: 0; }
+  15% { opacity: 1; }
+  70% { top: 100%; opacity: 1; }
+  100% { opacity: 0; }
 }
 
 .hero-phone__loading-card {
@@ -724,15 +764,16 @@
   width: 0%;
   border-radius: 999px;
   background: linear-gradient(90deg, var(--hp-violet), #22c55e);
-  animation: hero-phone-progress var(--hp-dur) var(--hp-ease) infinite;
+  animation: none;
 }
 
-@keyframes hero-phone-progress {
-  0%, 28% { width: 0%; }
-  32% { width: 28%; }
-  38% { width: 52%; }
-  44% { width: 78%; }
-  47%, 100% { width: 100%; }
+.hero-phone__scene--loading.is-active .hero-phone__progress-fill {
+  animation: hero-phone-progress-fast 2s var(--hp-ease) forwards;
+}
+
+@keyframes hero-phone-progress-fast {
+  0% { width: 0%; }
+  100% { width: 100%; }
 }
 
 .hero-phone__progress-label {
@@ -744,15 +785,19 @@
 
 .hero-phone__progress-pct::after {
   content: "0";
-  animation: hero-phone-pct var(--hp-dur) steps(1) infinite;
+  animation: none;
 }
 
-@keyframes hero-phone-pct {
-  0%, 28% { content: "0"; }
-  32% { content: "28"; }
-  38% { content: "52"; }
-  44% { content: "78"; }
-  47%, 100% { content: "100"; }
+.hero-phone__scene--loading.is-active .hero-phone__progress-pct::after {
+  animation: hero-phone-pct-fast 2s steps(1) forwards;
+}
+
+@keyframes hero-phone-pct-fast {
+  0% { content: "12"; }
+  25% { content: "38"; }
+  50% { content: "64"; }
+  75% { content: "88"; }
+  100% { content: "100"; }
 }
 
 .hero-phone__loading-steps {
@@ -771,25 +816,38 @@
   background: #f0f0f0;
 }
 
-.hero-phone__loading-steps span:nth-child(1) { animation: hero-phone-step-1 var(--hp-dur) steps(1) infinite; }
-.hero-phone__loading-steps span:nth-child(2) { animation: hero-phone-step-2 var(--hp-dur) steps(1) infinite; }
-.hero-phone__loading-steps span:nth-child(3) { animation: hero-phone-step-3 var(--hp-dur) steps(1) infinite; }
-
-@keyframes hero-phone-step-1 {
-  0%, 28% { color: #aaa; background: #f0f0f0; }
-  29%, 36% { color: #fff; background: var(--hp-violet); }
-  37%, 100% { color: #aaa; background: #f0f0f0; }
+.hero-phone__loading-steps span:nth-child(1),
+.hero-phone__loading-steps span:nth-child(2),
+.hero-phone__loading-steps span:nth-child(3) {
+  animation: none;
 }
 
-@keyframes hero-phone-step-2 {
-  0%, 36% { color: #aaa; background: #f0f0f0; }
-  37%, 42% { color: #fff; background: var(--hp-violet); }
-  43%, 100% { color: #aaa; background: #f0f0f0; }
+.hero-phone__scene--loading.is-active .hero-phone__loading-steps span:nth-child(1) {
+  animation: hero-phone-step-1-fast 2s steps(1) forwards;
 }
 
-@keyframes hero-phone-step-3 {
-  0%, 42% { color: #aaa; background: #f0f0f0; }
-  43%, 100% { color: #fff; background: var(--hp-green); }
+.hero-phone__scene--loading.is-active .hero-phone__loading-steps span:nth-child(2) {
+  animation: hero-phone-step-2-fast 2s steps(1) forwards;
+}
+
+.hero-phone__scene--loading.is-active .hero-phone__loading-steps span:nth-child(3) {
+  animation: hero-phone-step-3-fast 2s steps(1) forwards;
+}
+
+@keyframes hero-phone-step-1-fast {
+  0%, 20% { color: #fff; background: var(--hp-violet); }
+  21%, 100% { color: #aaa; background: #f0f0f0; }
+}
+
+@keyframes hero-phone-step-2-fast {
+  0%, 35% { color: #aaa; background: #f0f0f0; }
+  36%, 55% { color: #fff; background: var(--hp-violet); }
+  56%, 100% { color: #aaa; background: #f0f0f0; }
+}
+
+@keyframes hero-phone-step-3-fast {
+  0%, 55% { color: #aaa; background: #f0f0f0; }
+  56%, 100% { color: #fff; background: var(--hp-green); }
 }
 
 .hero-phone__result-full {
@@ -807,13 +865,17 @@
   z-index: 2;
   background: linear-gradient(105deg, transparent 42%, rgba(255, 255, 255, 0.55) 50%, transparent 58%);
   pointer-events: none;
-  animation: hero-phone-shimmer var(--hp-dur) var(--hp-ease) infinite;
+  animation: none;
 }
 
-@keyframes hero-phone-shimmer {
-  0%, 48% { transform: translateX(-120%); opacity: 0; }
-  50% { opacity: 1; }
-  54% { transform: translateX(120%); opacity: 0; }
+.hero-phone[data-scene="result"] .hero-phone__result-shimmer {
+  animation: hero-phone-shimmer-loop 2s var(--hp-ease) infinite;
+}
+
+@keyframes hero-phone-shimmer-loop {
+  0%, 15% { transform: translateX(-120%); opacity: 0; }
+  25% { opacity: 1; }
+  45% { transform: translateX(120%); opacity: 0; }
   100% { transform: translateX(120%); opacity: 0; }
 }
 
@@ -834,16 +896,21 @@
   background: #111;
   box-shadow: 0 8px 24px rgba(0, 0, 0, 0.25);
   white-space: nowrap;
-  animation: hero-phone-cart-toast var(--hp-dur) var(--hp-snap) infinite;
+  opacity: 0;
+  animation: none;
+}
+
+.hero-phone[data-scene="result"] .hero-phone__cart-toast {
+  animation: hero-phone-cart-toast-loop 2s var(--hp-snap) infinite;
+}
+
+@keyframes hero-phone-cart-toast-loop {
+  0%, 20% { transform: translate(-50%, 120%); opacity: 0; }
+  30% { transform: translate(-50%, 0); opacity: 1; }
+  70%, 100% { transform: translate(-50%, 0); opacity: 0; }
 }
 
 .hero-phone__cart-toast span { color: #4ade80; font-size: 0.6875rem; }
-
-@keyframes hero-phone-cart-toast {
-  0%, 60% { transform: translate(-50%, 120%); opacity: 0; }
-  62% { transform: translate(-50%, 0); opacity: 1; }
-  66%, 100% { transform: translate(-50%, 0); opacity: 0; }
-}
 
 .hero-phone__success-card {
   position: relative;
@@ -863,13 +930,17 @@
   height: 8rem;
   border-radius: 50%;
   background: radial-gradient(circle, rgba(34, 197, 94, 0.35), transparent 70%);
-  animation: hero-phone-success-burst var(--hp-dur) var(--hp-ease) infinite;
+  animation: none;
 }
 
-@keyframes hero-phone-success-burst {
-  0%, 66% { opacity: 0; transform: scale(0.5); }
-  70% { opacity: 1; transform: scale(1.2); }
-  78%, 100% { opacity: 0; transform: scale(1.5); }
+.hero-phone[data-scene="success"] .hero-phone__success-burst {
+  animation: hero-phone-success-burst-loop 2.4s var(--hp-ease) infinite;
+}
+
+@keyframes hero-phone-success-burst-loop {
+  0%, 8% { opacity: 0; transform: scale(0.5); }
+  18% { opacity: 1; transform: scale(1.2); }
+  45%, 100% { opacity: 0; transform: scale(1.5); }
 }
 
 .hero-phone__success-check {
@@ -885,15 +956,19 @@
   justify-content: center;
   margin-bottom: 0.65rem;
   box-shadow: 0 0 32px rgba(34, 197, 94, 0.55);
-  animation: hero-phone-check-pop var(--hp-dur) var(--hp-snap) infinite;
+  animation: none;
+}
+
+.hero-phone[data-scene="success"] .hero-phone__success-check {
+  animation: hero-phone-check-pop-loop 2.4s var(--hp-snap) infinite;
 }
 
 .hero-phone__success-check svg { width: 1.6rem; height: 1.6rem; }
 
-@keyframes hero-phone-check-pop {
-  0%, 66% { transform: scale(0) rotate(-20deg); opacity: 0; }
-  70% { transform: scale(1.2) rotate(8deg); opacity: 1; }
-  74%, 100% { transform: scale(1) rotate(0); opacity: 1; }
+@keyframes hero-phone-check-pop-loop {
+  0%, 5% { transform: scale(0.5); opacity: 0; }
+  15% { transform: scale(1.15); opacity: 1; }
+  22%, 100% { transform: scale(1); opacity: 1; }
 }
 
 .hero-phone__success-title {
@@ -936,19 +1011,17 @@
   background: #fff;
   opacity: 0;
   pointer-events: none;
-  animation: hero-phone-flash var(--hp-dur) linear infinite;
+  animation: none;
 }
 
-@keyframes hero-phone-flash {
-  0%, 14.5% { opacity: 0; }
-  15% { opacity: 0.85; }
-  15.5%, 27.5% { opacity: 0; }
-  28% { opacity: 0.7; }
-  28.5%, 47.5% { opacity: 0; }
-  48% { opacity: 0.75; }
-  48.5%, 66.5% { opacity: 0; }
-  67% { opacity: 0.65; }
-  67.5%, 100% { opacity: 0; }
+.hero-phone__flash.is-on {
+  animation: hero-phone-flash-once 0.32s ease-out forwards;
+}
+
+@keyframes hero-phone-flash-once {
+  0% { opacity: 0; }
+  35% { opacity: 0.75; }
+  100% { opacity: 0; }
 }
 
 .hero-phone__confetti {
@@ -967,15 +1040,19 @@
   height: 8px;
   border-radius: 1px;
   opacity: 0;
-  animation: hero-phone-confetti var(--hp-dur) var(--hp-ease) infinite;
-  animation-delay: calc(var(--i) * 0.04s);
+  animation: none;
   background: hsl(calc(var(--i) * 36), 80%, 55%);
 }
 
-@keyframes hero-phone-confetti {
-  0%, 68% { opacity: 0; transform: translate(-50%, 0) rotate(0deg); }
-  70% { opacity: 1; }
-  82% { opacity: 0; transform: translate(calc(-50% + (var(--i) - 5) * 14px), calc(-60px - var(--i) * 8px)) rotate(calc(var(--i) * 40deg)); }
+.hero-phone[data-scene="success"] .hero-phone__confetti span {
+  animation: hero-phone-confetti-pop 2.4s var(--hp-ease) infinite;
+  animation-delay: calc(var(--i) * 0.06s);
+}
+
+@keyframes hero-phone-confetti-pop {
+  0%, 8% { opacity: 0; transform: translate(-50%, 0) rotate(0deg); }
+  12% { opacity: 1; }
+  70% { opacity: 0; transform: translate(calc(-50% + (var(--i) - 5) * 14px), calc(-60px - var(--i) * 8px)) rotate(calc(var(--i) * 40deg)); }
   100% { opacity: 0; }
 }
 
@@ -995,8 +1072,19 @@
   box-shadow: 0 12px 40px -8px rgba(34, 197, 94, 0.55), 0 0 48px rgba(34, 197, 94, 0.2);
   opacity: 0;
   transform: translate(-50%, 30px) scale(0.6);
-  animation: hero-phone-revenue var(--hp-dur) var(--hp-snap) infinite;
+  animation: none;
   pointer-events: none;
+}
+
+.hero-phone[data-scene="success"] .hero-phone__revenue {
+  animation: hero-phone-revenue-pop 2.4s var(--hp-snap) infinite;
+}
+
+@keyframes hero-phone-revenue-pop {
+  0% { opacity: 0; transform: translate(-50%, 36px) scale(0.55); }
+  12% { opacity: 1; transform: translate(-50%, -4px) scale(1.12); }
+  25%, 75% { opacity: 1; transform: translate(-50%, -18px) scale(1); }
+  100% { opacity: 0; transform: translate(-50%, -40px) scale(0.85); }
 }
 
 .hero-phone__revenue-burst {
@@ -1004,13 +1092,17 @@
   inset: -8px;
   border-radius: inherit;
   border: 2px solid rgba(34, 197, 94, 0.4);
-  animation: hero-phone-revenue-burst var(--hp-dur) var(--hp-ease) infinite;
+  animation: none;
 }
 
-@keyframes hero-phone-revenue-burst {
-  0%, 72% { opacity: 0; transform: scale(0.8); }
-  74% { opacity: 1; transform: scale(1); }
-  80%, 100% { opacity: 0; transform: scale(1.35); }
+.hero-phone[data-scene="success"] .hero-phone__revenue-burst {
+  animation: hero-phone-revenue-burst-pop 2.4s var(--hp-ease) infinite;
+}
+
+@keyframes hero-phone-revenue-burst-pop {
+  0%, 10% { opacity: 0; transform: scale(0.8); }
+  18% { opacity: 1; transform: scale(1); }
+  45%, 100% { opacity: 0; transform: scale(1.35); }
 }
 
 .hero-phone__revenue-icon { font-size: 0.6875rem; color: #22c55e; font-weight: 800; }
@@ -1049,7 +1141,40 @@
   background: radial-gradient(circle at 40% 35%, #fff 0%, #f5d0c5 55%, #e8b4a8 100%);
   border-radius: 50% 50% 45% 45%;
   box-shadow: 0 2px 6px rgba(0, 0, 0, 0.25);
-  animation: hero-phone-finger var(--hp-dur) var(--hp-ease) infinite;
+  animation: none;
+}
+
+.hero-phone[data-scene="pdp"] .hero-phone__finger {
+  animation: hero-phone-finger-pdp 2s var(--hp-ease) infinite;
+}
+
+.hero-phone[data-scene="upload"] .hero-phone__finger {
+  animation: hero-phone-finger-upload 1.5s var(--hp-ease) infinite;
+}
+
+.hero-phone[data-scene="result"] .hero-phone__finger {
+  animation: hero-phone-finger-result 2s var(--hp-ease) infinite;
+}
+
+@keyframes hero-phone-finger-pdp {
+  0%, 65% { opacity: 0; left: 50%; top: 76%; transform: scale(1); }
+  68% { opacity: 1; }
+  72% { opacity: 1; transform: scale(0.86); }
+  78%, 100% { opacity: 0; }
+}
+
+@keyframes hero-phone-finger-upload {
+  0%, 55% { opacity: 0; left: 50%; top: 86%; transform: scale(1); }
+  60% { opacity: 1; }
+  64% { opacity: 1; transform: scale(0.86); }
+  70%, 100% { opacity: 0; }
+}
+
+@keyframes hero-phone-finger-result {
+  0%, 60% { opacity: 0; left: 50%; top: 72%; transform: scale(1); }
+  65% { opacity: 1; }
+  69% { opacity: 1; transform: scale(0.86); }
+  75%, 100% { opacity: 0; }
 }
 
 .hero-phone__finger::after {
@@ -1073,17 +1198,37 @@
   border: 2px solid rgba(26, 92, 66, 0.55);
   opacity: 0;
   pointer-events: none;
-  animation: hero-phone-finger-ring var(--hp-dur) var(--hp-ease) infinite;
+  animation: none;
+}
+
+.hero-phone[data-scene="pdp"] .hero-phone__finger-ring {
+  animation: hero-phone-finger-ring-pdp 2s var(--hp-ease) infinite;
+}
+
+.hero-phone[data-scene="upload"] .hero-phone__finger-ring {
+  animation: hero-phone-finger-ring-upload 1.5s var(--hp-ease) infinite;
+}
+
+@keyframes hero-phone-finger-ring-pdp {
+  0%, 66% { opacity: 0; left: calc(50% - 1.125rem); top: calc(76% - 1.125rem); transform: scale(0.35); }
+  70% { opacity: 0.9; transform: scale(1); }
+  78%, 100% { opacity: 0; transform: scale(1.55); }
+}
+
+@keyframes hero-phone-finger-ring-upload {
+  0%, 56% { opacity: 0; left: calc(50% - 1.125rem); top: calc(86% - 1.125rem); transform: scale(0.35); }
+  62% { opacity: 0.9; transform: scale(1); }
+  70%, 100% { opacity: 0; transform: scale(1.55); }
 }
 
 @keyframes hero-phone-finger {
-  0%, 3% { opacity: 0; left: 62%; top: 52%; transform: scale(1); }
-  4% { opacity: 1; left: 50%; top: 76%; transform: scale(1); }
-  5% { opacity: 1; left: 50%; top: 76%; transform: scale(0.86); }
-  7%, 11% { opacity: 0; }
-  12% { opacity: 1; left: 50%; top: 86%; transform: scale(1); }
-  13% { opacity: 1; transform: scale(0.86); }
-  15%, 52% { opacity: 0; }
+  0%, 1% { opacity: 0; left: 62%; top: 52%; transform: scale(1); }
+  2% { opacity: 1; left: 50%; top: 76%; transform: scale(1); }
+  3% { opacity: 1; left: 50%; top: 76%; transform: scale(0.86); }
+  5%, 9% { opacity: 0; }
+  10% { opacity: 1; left: 50%; top: 86%; transform: scale(1); }
+  11% { opacity: 1; transform: scale(0.86); }
+  13%, 52% { opacity: 0; }
   54% { opacity: 1; left: 50%; top: 72%; transform: scale(1); }
   55% { opacity: 1; transform: scale(0.86); }
   57%, 100% { opacity: 0; }
@@ -1110,56 +1255,5 @@
   .hero-phone__ambient,
   .hero-phone__ring {
     display: none;
-  }
-}
-
-@media (prefers-reduced-motion: reduce) {
-  .hero-phone__device,
-  .hero-phone__scene,
-  .hero-phone__ambient,
-  .hero-phone__ring,
-  .hero-phone__float,
-  .hero-phone__btn--try,
-  .hero-phone__btn--upload,
-  .hero-phone__try-beacon,
-  .hero-phone__scan-line,
-  .hero-phone__scan-grid,
-  .hero-phone__loading-img,
-  .hero-phone__loading-particles span,
-  .hero-phone__loading-bar span.is-active,
-  .hero-phone__progress-fill,
-  .hero-phone__progress-pct::after,
-  .hero-phone__loading-steps span,
-  .hero-phone__success-check,
-  .hero-phone__success-burst,
-  .hero-phone__revenue,
-  .hero-phone__revenue-burst,
-  .hero-phone__finger,
-  .hero-phone__finger-ring,
-  .hero-phone__flash,
-  .hero-phone__confetti span,
-  .hero-phone__cart-toast,
-  .hero-phone__result-shimmer,
-  .hero-phone__upload-thumb,
-  .hero-phone__upload-scan,
-  .hero-phone__pdp-img,
-  .hero-phone__ai-chip-dot {
-    animation: none !important;
-  }
-
-  .hero-phone__scene--pdp { opacity: 1; }
-  .hero-phone__scene--upload,
-  .hero-phone__scene--loading,
-  .hero-phone__scene--result,
-  .hero-phone__scene--success,
-  .hero-phone__revenue,
-  .hero-phone__finger,
-  .hero-phone__finger-ring,
-  .hero-phone__flash,
-  .hero-phone__confetti,
-  .hero-phone__cart-toast,
-  .hero-phone__float,
-  .hero-phone__ring {
-    opacity: 0;
   }
 }
