@@ -242,12 +242,12 @@ function relatedComparisons(locale, depth, data, isApi) {
   if (!others.length) return '';
   const label = locale === 'fr' ? 'Autres comparaisons' : 'Related comparisons';
   const title = locale === 'fr' ? 'Comparer d\'autres alternatives' : 'Compare other alternatives';
-  const cards = others.map((c) => `<a href="${prefix}${c.slug}.html" class="hub-card"><h3>Stylab vs ${c.competitor}</h3><p>${t(c.summary, locale).slice(0, 100)}…</p><span class="arrow">${u.readComparison}</span></a>`).join('');
+  const cards = others.map((c) => `<a href="${prefix}${c.slug}.html" class="hub-card reveal"><h3>Stylab vs ${c.competitor}</h3><p>${t(c.summary, locale).slice(0, 100)}…</p><span class="arrow">${u.readComparison}</span></a>`).join('');
   const allLabel = locale === 'fr' ? 'Voir toutes les comparaisons' : 'View all comparisons';
   return `
         <section class="section section-white"><div class="wrap">
             <div class="section-head reveal"><p class="section-label">${label}</p><h2 class="section-title">${title}</h2></div>
-            <div class="hub-grid reveal">${cards}</div>
+            <div class="hub-grid" data-reveal-stagger>${cards}</div>
             <p class="reveal" style="text-align:center;margin-top:1.5rem;"><a href="${px.compare}">${allLabel} →</a></p>
         </div></section>`;
 }
@@ -257,14 +257,14 @@ function relatedSolutions(locale, depth, currentSlug) {
   const px = paths(locale, depth);
   const others = SOLUTIONS.filter((s) => s.slug !== currentSlug);
   if (!others.length) return '';
-  const cards = others.map((s) => `<a href="${s.slug}.html" class="hub-card"><h3>${t(s.title, locale)}</h3><p>${t(s.lead, locale).slice(0, 100)}…</p><span class="arrow">${u.learnMore}</span></a>`).join('');
+  const cards = others.map((s) => `<a href="${s.slug}.html" class="hub-card reveal"><h3>${t(s.title, locale)}</h3><p>${t(s.lead, locale).slice(0, 100)}…</p><span class="arrow">${u.learnMore}</span></a>`).join('');
   const label = locale === 'fr' ? 'Autres solutions' : 'Related solutions';
   const title = locale === 'fr' ? 'Solutions pour marchands apparel' : 'Solutions for apparel merchants';
   const allLabel = locale === 'fr' ? 'Voir toutes les solutions' : 'View all solutions';
   return `
         <section class="section section-white"><div class="wrap">
             <div class="section-head reveal"><p class="section-label">${label}</p><h2 class="section-title">${title}</h2></div>
-            <div class="hub-grid reveal">${cards}</div>
+            <div class="hub-grid" data-reveal-stagger>${cards}</div>
             <p class="reveal" style="text-align:center;margin-top:1.5rem;"><a href="${px.solutions}">${allLabel} →</a></p>
         </div></section>`;
 }
@@ -341,10 +341,10 @@ function comparePage(locale, depth, data) {
         </div></section>${overviewBlock}
         <section class="section section-white"><div class="wrap reveal">
             <div class="section-head center"><p class="section-label">${u.sideBySide}</p><h2 class="section-title">${u.featureComparison}</h2><p class="section-desc">${t(data.competitorDesc, locale)}</p></div>
-            <div class="compare-table-wrap"><table class="compare-table"><thead><tr><th>${locale === 'fr' ? 'Fonctionnalité' : 'Feature'}</th><th>Stylab</th><th>${comp}</th></tr></thead><tbody>${rows}</tbody></table><p class="compare-scroll-hint">${u.compareScrollHint}</p></div>
-            <div class="two-col">
-                <div class="diff-card"><h3>${u.whenStylab}</h3><p>${t(data.chooseStylab, locale)}</p></div>
-                <div class="diff-card"><h3>${u.whenOther.replace('{name}', comp)}</h3><p>${t(data.chooseOther, locale)}</p></div>
+            <div class="compare-table-wrap reveal"><table class="compare-table"><thead><tr><th>${locale === 'fr' ? 'Fonctionnalité' : 'Feature'}</th><th>Stylab</th><th>${comp}</th></tr></thead><tbody>${rows}</tbody></table><p class="compare-scroll-hint">${u.compareScrollHint}</p></div>
+            <div class="two-col" data-reveal-stagger>
+                <div class="diff-card reveal"><h3>${u.whenStylab}</h3><p>${t(data.chooseStylab, locale)}</p></div>
+                <div class="diff-card reveal"><h3>${u.whenOther.replace('{name}', comp)}</h3><p>${t(data.chooseOther, locale)}</p></div>
             </div>
             <p class="disclaimer">${u.disclaimer}</p>
         </div></section>${evalBlock}${pitfallsBlock}${relatedBlock}${cta(locale, depth)}`;
@@ -364,7 +364,7 @@ function comparePage(locale, depth, data) {
 }
 
 function solutionFeatures(features, locale) {
-  return features.map(f => `<div class="diff-card"><h3>${t(f.title, locale)}</h3><p>${t(f.body, locale)}</p></div>`).join('');
+  return features.map(f => `<div class="diff-card reveal"><h3>${t(f.title, locale)}</h3><p>${t(f.body, locale)}</p></div>`).join('');
 }
 
 function solutionPage(locale, depth, data) {
@@ -376,7 +376,7 @@ function solutionPage(locale, depth, data) {
         <section class="section section-white"><div class="wrap">
             <div class="section-head center reveal"><p class="section-label">${locale === 'fr' ? 'Capacités' : 'Capabilities'}</p>
             <h2 class="section-title">${t(data.featuresTitle || { en: 'What you get with Stylab', fr: 'Ce que Stylab apporte' }, locale)}</h2></div>
-            <div class="diff-grid reveal">${solutionFeatures(data.features, locale)}</div>
+            <div class="diff-grid" data-reveal-stagger>${solutionFeatures(data.features, locale)}</div>
         </div></section>` : '';
   const rolloutLabel = locale === 'fr' ? 'Déploiement' : 'Rollout';
   const rolloutBlock = data.rollout ? `
@@ -502,8 +502,9 @@ function layout({ locale, depth, title, description, body, activeNav, extraScrip
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Geist:wght@400;500;600;700;800&family=Geist+Mono:wght@400;500&display=swap" rel="stylesheet">
-    <link rel="stylesheet" href="${px.assets}home.css">
-    <link rel="stylesheet" href="${px.assets}pages.css">
+    <link rel="stylesheet" href="${px.assets}home.css?v=7">
+    <link rel="stylesheet" href="${px.assets}pages.css?v=2">
+    <script>document.documentElement.classList.add("scroll-anim");</script>
 </head>
 <body class="home page-sub">
     <div class="page-bg" aria-hidden="true">
@@ -551,7 +552,7 @@ function layout({ locale, depth, title, description, body, activeNav, extraScrip
     <div class="sticky-cta">
         ${installBtn(u.install, px.assets)}
     </div>
-    <script src="${px.assets}home.js" defer></script>${extraScripts}
+    <script src="${px.assets}home.js?v=7" defer></script>${extraScripts}
 </body>
 </html>`;
 }
@@ -598,9 +599,9 @@ function generateLocale(locale) {
         <section class="page-hero"><div class="wrap reveal"><p class="pill">${u.compare}</p><h1>${locale === 'fr' ? 'Comment Stylab se compare' : 'How Stylab compares'}</h1><p class="lead">${locale === 'fr' ? 'Guides factuels pour shortlister, piloter et mesurer — pas du SEO générique.' : 'Factual guides to shortlist, pilot, and measure — not generic SEO filler.'}</p></div></section>
         <section class="section section-green"><div class="wrap prose reveal">${t(COMPARE_HUB.intro, locale)}</div></section>
         <section class="section section-white"><div class="wrap"><div class="section-head reveal"><p class="section-label">Shopify</p><h2 class="section-title">${u.footerShopifyAlt}</h2><p class="section-desc">${locale === 'fr' ? 'Apps App Store et essayage mode pour pages produit standard.' : 'App Store apps and fashion try-on for standard product pages.'}</p></div>
-        <div class="hub-grid reveal">${SHOPIFY_COMPARE.map(c => `<a href="${c.slug}.html" class="hub-card"><h3>Stylab vs ${c.competitor}</h3><p>${t(c.summary, locale).slice(0, 130)}…</p><span class="arrow">${u.readComparison}</span></a>`).join('')}</div></div></section>
+        <div class="hub-grid" data-reveal-stagger>${SHOPIFY_COMPARE.map(c => `<a href="${c.slug}.html" class="hub-card reveal"><h3>Stylab vs ${c.competitor}</h3><p>${t(c.summary, locale).slice(0, 130)}…</p><span class="arrow">${u.readComparison}</span></a>`).join('')}</div></div></section>
         <section class="section section-green"><div class="wrap"><div class="section-head reveal"><p class="section-label">API</p><h2 class="section-title">${u.footerApiAlt}</h2><p class="section-desc">${locale === 'fr' ? 'Routes build-your-own si vous avez une équipe technique.' : 'Build-your-own routes if you have an engineering team.'}</p></div>
-        <div class="hub-grid reveal">${API_COMPARE.map(c => `<a href="api/${c.slug}.html" class="hub-card"><h3>Stylab vs ${c.competitor}</h3><p>${t(c.summary, locale).slice(0, 130)}…</p><span class="arrow">${u.readComparison}</span></a>`).join('')}</div></div></section>${cta(locale, 1)}`,
+        <div class="hub-grid" data-reveal-stagger>${API_COMPARE.map(c => `<a href="api/${c.slug}.html" class="hub-card reveal"><h3>Stylab vs ${c.competitor}</h3><p>${t(c.summary, locale).slice(0, 130)}…</p><span class="arrow">${u.readComparison}</span></a>`).join('')}</div></div></section>${cta(locale, 1)}`,
   }));
 
   SHOPIFY_COMPARE.forEach(c => writeFile(`${base}compare/${c.slug}.html`, comparePage(locale, 1, c)));
@@ -616,7 +617,7 @@ function generateLocale(locale) {
     pagePath: `${locale === 'fr' ? '/fr' : ''}/solutions/`,
     body: `<section class="page-hero"><div class="wrap reveal"><p class="pill">${u.solutions}</p><h1>${locale === 'fr' ? 'Pour marchands apparel Shopify' : 'Built for Shopify apparel merchants'}</h1><p class="lead">${t(SOLUTIONS_HUB.heroLead, locale)}</p></div></section>
         <section class="section section-green"><div class="wrap prose reveal">${t(SOLUTIONS_HUB.intro, locale)}</div></section>
-        <section class="section section-white"><div class="wrap hub-grid reveal">${SOLUTIONS.map(s => `<a href="${s.slug}.html" class="hub-card"><h3>${t(s.title, locale)}</h3><p>${t(s.lead, locale).slice(0, 120)}…</p><span class="arrow">${u.learnMore}</span></a>`).join('')}</div></section>${cta(locale, 1)}`,
+        <section class="section section-white"><div class="wrap hub-grid" data-reveal-stagger>${SOLUTIONS.map(s => `<a href="${s.slug}.html" class="hub-card reveal"><h3>${t(s.title, locale)}</h3><p>${t(s.lead, locale).slice(0, 120)}…</p><span class="arrow">${u.learnMore}</span></a>`).join('')}</div></section>${cta(locale, 1)}`,
   }));
 
   SOLUTIONS.forEach(s => writeFile(`${base}solutions/${s.slug}.html`, solutionPage(locale, 1, s)));
@@ -646,13 +647,13 @@ function generateLocale(locale) {
     section: 'resources',
     pagePath: `${locale === 'fr' ? '/fr' : ''}/resources/`,
     body: `<section class="page-hero"><div class="wrap reveal"><p class="pill">${u.footerResources}</p><h1>${locale === 'fr' ? 'Apprendre et lancer' : 'Learn and launch'}</h1></div></section>
-        <section class="section section-white"><div class="wrap hub-grid reveal">
-            <a href="free-tools.html" class="hub-card"><h3>${u.freeTools}</h3><p>${locale === 'fr' ? 'Calculateur usage & checklist' : 'Usage calculator & checklists'}</p><span class="arrow">→</span></a>
-            <a href="blog/" class="hub-card"><h3>${u.blog}</h3><p>Guides</p><span class="arrow">→</span></a>
-            <a href="documentation.html" class="hub-card"><h3>${u.documentation}</h3><p>Install & config</p><span class="arrow">→</span></a>
-            <a href="changelog.html" class="hub-card"><h3>${u.changelog}</h3><p>Updates</p><span class="arrow">→</span></a>
-            <a href="${paths(locale, 1).compare}" class="hub-card"><h3>${u.compare}</h3><p>${locale === 'fr' ? 'Stylab vs Genlook, Antla, Banuba et API' : 'Stylab vs Genlook, Antla, Banuba, and APIs'}</p><span class="arrow">→</span></a>
-            <a href="${paths(locale, 1).solutions}" class="hub-card"><h3>${u.solutions}</h3><p>${locale === 'fr' ? 'Mode, streetwear, enterprise' : 'Fashion, streetwear, enterprise'}</p><span class="arrow">→</span></a>
+        <section class="section section-white"><div class="wrap hub-grid" data-reveal-stagger>
+            <a href="free-tools.html" class="hub-card reveal"><h3>${u.freeTools}</h3><p>${locale === 'fr' ? 'Calculateur usage & checklist' : 'Usage calculator & checklists'}</p><span class="arrow">→</span></a>
+            <a href="blog/" class="hub-card reveal"><h3>${u.blog}</h3><p>Guides</p><span class="arrow">→</span></a>
+            <a href="documentation.html" class="hub-card reveal"><h3>${u.documentation}</h3><p>Install & config</p><span class="arrow">→</span></a>
+            <a href="changelog.html" class="hub-card reveal"><h3>${u.changelog}</h3><p>Updates</p><span class="arrow">→</span></a>
+            <a href="${paths(locale, 1).compare}" class="hub-card reveal"><h3>${u.compare}</h3><p>${locale === 'fr' ? 'Stylab vs Genlook, Antla, Banuba et API' : 'Stylab vs Genlook, Antla, Banuba, and APIs'}</p><span class="arrow">→</span></a>
+            <a href="${paths(locale, 1).solutions}" class="hub-card reveal"><h3>${u.solutions}</h3><p>${locale === 'fr' ? 'Mode, streetwear, enterprise' : 'Fashion, streetwear, enterprise'}</p><span class="arrow">→</span></a>
         </div></section>${cta(locale, 1)}`,
   }));
 
@@ -666,10 +667,10 @@ function generateLocale(locale) {
     pagePath: `${locale === 'fr' ? '/fr' : ''}/resources/free-tools.html`,
     extraScripts: `<script src="${paths(locale, 1).assets}roi-calculator.js"></script>`,
     body: `<section class="page-hero"><div class="wrap reveal"><h1>${u.freeTools}</h1><p class="lead">${locale === 'fr' ? 'Planifiez votre déploiement essayage.' : 'Plan your try-on rollout.'}</p></div></section>
-        <section class="section section-white"><div class="wrap"><div class="diff-grid reveal">
-            <div class="diff-card"><h3>${locale === 'fr' ? 'Checklist readiness' : 'Readiness checklist'}</h3><p>${locale === 'fr' ? 'Photos claires, SKU phares, PDP mobile.' : 'Clear photos, hero SKUs, mobile PDPs.'}</p></div>
-            <div class="diff-card"><h3>${locale === 'fr' ? 'Guide plans' : 'Plan picker'}</h3><p>Free 50 · Starter 300 · Growth 1,000 · Scale 4,000</p></div>
-            <div class="diff-card"><h3>A/B planner</h3><p>50/50 · 30 days · 2–5 products</p></div>
+        <section class="section section-white"><div class="wrap"><div class="diff-grid" data-reveal-stagger>
+            <div class="diff-card reveal"><h3>${locale === 'fr' ? 'Checklist readiness' : 'Readiness checklist'}</h3><p>${locale === 'fr' ? 'Photos claires, SKU phares, PDP mobile.' : 'Clear photos, hero SKUs, mobile PDPs.'}</p></div>
+            <div class="diff-card reveal"><h3>${locale === 'fr' ? 'Guide plans' : 'Plan picker'}</h3><p>Free 50 · Starter 300 · Growth 1,000 · Scale 4,000</p></div>
+            <div class="diff-card reveal"><h3>A/B planner</h3><p>50/50 · 30 days · 2–5 products</p></div>
         </div></div></section>${roiBlock(locale)}${cta(locale, 1)}`,
   }));
 
@@ -705,7 +706,7 @@ function generateLocale(locale) {
     pagePath: `${locale === 'fr' ? '/fr' : ''}/resources/blog/`,
     headExtra: blogIndexHeadMeta(locale),
     body: `<section class="page-hero"><div class="wrap reveal"><p class="breadcrumb"><a href="../index.html">${u.footerResources}</a> / ${u.blog}</p><h1>${u.blog}</h1><p class="lead">${locale === 'fr' ? 'Guides pratiques pour marchands apparel Shopify.' : 'Practical guides for Shopify apparel merchants.'}</p></div></section>
-        <section class="section section-white"><div class="wrap blog-grid reveal">${BLOG_POSTS.map(p => `<a href="${p.slug}.html" class="blog-card"><div class="blog-card-body"><span class="tag">${t(p.tag, locale)}</span><h2>${t(p.title, locale)}</h2><p>${t(p.excerpt, locale)}</p><p class="meta"><time datetime="${p.dateISO}">${p.date}</time></p></div></a>`).join('')}</div></section>${cta(locale, 2)}`,
+        <section class="section section-white"><div class="wrap blog-grid" data-reveal-stagger>${BLOG_POSTS.map(p => `<a href="${p.slug}.html" class="blog-card reveal"><div class="blog-card-body"><span class="tag">${t(p.tag, locale)}</span><h2>${t(p.title, locale)}</h2><p>${t(p.excerpt, locale)}</p><p class="meta"><time datetime="${p.dateISO}">${p.date}</time></p></div></a>`).join('')}</div></section>${cta(locale, 2)}`,
   }));
 
   BLOG_POSTS.forEach(p => {

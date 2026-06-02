@@ -56,29 +56,39 @@ body.page-sub .page-shell {
   margin-inline: auto;
 }
 
-/* Legacy reveal → homepage slide system */
-.reveal {
-  --reveal-x: 0;
-  --reveal-y: 32px;
-  --reveal-scale: 1;
-  --reveal-duration: 0.7s;
-  --reveal-delay: 0s;
-  opacity: 0;
-  transform: translate3d(var(--reveal-x), var(--reveal-y), 0) scale(var(--reveal-scale));
-  transition:
-    opacity var(--reveal-duration) var(--ease) var(--reveal-delay),
-    transform var(--reveal-duration) var(--ease) var(--reveal-delay);
+/* Subpage reveal variants */
+.reveal--left { --reveal-x: -40px; --reveal-y: 0; }
+.reveal--right { --reveal-x: 40px; --reveal-y: 0; }
+.reveal--scale { --reveal-scale: 0.95; --reveal-y: 16px; }
+
+.page-main .section:nth-child(odd) .reveal { --reveal-x: 0; --reveal-y: 28px; }
+.page-main .hub-grid .reveal,
+.page-main .hub-grid .hub-card {
+  --reveal-duration: 0.55s;
 }
 
-.reveal.visible,
-.reveal.is-revealed {
-  opacity: 1;
-  transform: translate3d(0, 0, 0) scale(1);
+.page-main [data-reveal-stagger] > .reveal:nth-child(1),
+.page-main .hub-grid.reveal > .hub-card:nth-child(1) { --reveal-delay: 0.04s; }
+.page-main [data-reveal-stagger] > .reveal:nth-child(2),
+.page-main .hub-grid.reveal > .hub-card:nth-child(2) { --reveal-delay: 0.1s; }
+.page-main [data-reveal-stagger] > .reveal:nth-child(3),
+.page-main .hub-grid.reveal > .hub-card:nth-child(3) { --reveal-delay: 0.16s; }
+.page-main [data-reveal-stagger] > .reveal:nth-child(4),
+.page-main .hub-grid.reveal > .hub-card:nth-child(4) { --reveal-delay: 0.22s; }
+.page-main [data-reveal-stagger] > .reveal:nth-child(5),
+.page-main .hub-grid.reveal > .hub-card:nth-child(5) { --reveal-delay: 0.28s; }
+.page-main [data-reveal-stagger] > .reveal:nth-child(6),
+.page-main .hub-grid.reveal > .hub-card:nth-child(6) { --reveal-delay: 0.34s; }
+
+.page-main .compare-table-wrap.reveal {
+  --reveal-y: 20px;
+  --reveal-duration: 0.75s;
 }
 
-.reveal--left { --reveal-x: -48px; --reveal-y: 0; }
-.reveal--right { --reveal-x: 48px; --reveal-y: 0; }
-.reveal--scale { --reveal-scale: 0.94; --reveal-y: 12px; }
+.page-main .cta-final.reveal {
+  --reveal-scale: 0.96;
+  --reveal-y: 24px;
+}
 
 /* Legacy buttons */
 .page-main .btn-primary,
@@ -826,20 +836,6 @@ body.page-sub .site-footer {
 @media (max-width: 768px) {
   .contact-cards { grid-template-columns: 1fr; }
   .prose table { display: block; overflow-x: auto; }
-}
-
-/* Subpages: show all content immediately (no scroll-reveal hide) */
-body.page-sub .site-header {
-  opacity: 1;
-  transform: none;
-}
-
-body.page-sub .reveal,
-body.page-sub [data-reveal] {
-  opacity: 1 !important;
-  transform: none !important;
-  transition: none !important;
-  will-change: auto;
 }
 
 @media (prefers-reduced-motion: reduce) {

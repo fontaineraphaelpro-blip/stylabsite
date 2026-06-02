@@ -27,8 +27,9 @@
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Geist:wght@400;500;600;700;800&family=Geist+Mono:wght@400;500&display=swap" rel="stylesheet">
-    <link rel="stylesheet" href="../assets/home.css">
-    <link rel="stylesheet" href="../assets/pages.css">
+    <link rel="stylesheet" href="../assets/home.css?v=7">
+    <link rel="stylesheet" href="../assets/pages.css?v=2">
+    <script>document.documentElement.classList.add("scroll-anim");</script>
 </head>
 <body class="home page-sub">
     <div class="page-bg" aria-hidden="true">
@@ -71,10 +72,10 @@
         <a href="https://apps.shopify.com/try-on-stylelab" class="btn btn--primary" target="_blank" rel="noopener"><img class="shopify-icon" src="../assets/shopify-icon-logo.svg" alt="" width="20" height="20" aria-hidden="true">Install on Shopify</a>
     </nav>
     <main class="page-main"><section class="page-hero"><div class="wrap reveal"><h1>Free Tools</h1><p class="lead">Plan your try-on rollout.</p></div></section>
-        <section class="section section-white"><div class="wrap"><div class="diff-grid reveal">
-            <div class="diff-card"><h3>Readiness checklist</h3><p>Clear photos, hero SKUs, mobile PDPs.</p></div>
-            <div class="diff-card"><h3>Plan picker</h3><p>Free 50 · Starter 300 · Growth 1,000 · Scale 4,000</p></div>
-            <div class="diff-card"><h3>A/B planner</h3><p>50/50 · 30 days · 2–5 products</p></div>
+        <section class="section section-white"><div class="wrap"><div class="diff-grid" data-reveal-stagger>
+            <div class="diff-card reveal"><h3>Readiness checklist</h3><p>Clear photos, hero SKUs, mobile PDPs.</p></div>
+            <div class="diff-card reveal"><h3>Plan picker</h3><p>Free 50 · Starter 300 · Growth 1,000 · Scale 4,000</p></div>
+            <div class="diff-card reveal"><h3>A/B planner</h3><p>50/50 · 30 days · 2–5 products</p></div>
         </div></div></section>
         <section class="section section-green"><div class="wrap reveal">
             <div class="section-head center"><p class="section-label">Calculator</p>
@@ -146,6 +147,6 @@
     <div class="sticky-cta">
         <a href="https://apps.shopify.com/try-on-stylelab" class="btn btn--primary" target="_blank" rel="noopener"><img class="shopify-icon" src="../assets/shopify-icon-logo.svg" alt="" width="20" height="20" aria-hidden="true">Install on Shopify</a>
     </div>
-    <script src="../assets/home.js" defer></script><script src="../assets/roi-calculator.js"></script>
+    <script src="../assets/home.js?v=7" defer></script><script src="../assets/roi-calculator.js"></script>
 </body>
 </html>

@@ -28,8 +28,9 @@
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Geist:wght@400;500;600;700;800&family=Geist+Mono:wght@400;500&display=swap" rel="stylesheet">
-    <link rel="stylesheet" href="../../assets/home.css">
-    <link rel="stylesheet" href="../../assets/pages.css">
+    <link rel="stylesheet" href="../../assets/home.css?v=7">
+    <link rel="stylesheet" href="../../assets/pages.css?v=2">
+    <script>document.documentElement.classList.add("scroll-anim");</script>
 </head>
 <body class="home page-sub">
     <div class="page-bg" aria-hidden="true">
@@ -84,10 +85,10 @@
 <p>Remember hidden costs on the API path: image preprocessing, error handling, GDPR/privacy copy, mobile UI, and version changes when models update.</p></div></section>
         <section class="section section-white"><div class="wrap reveal">
             <div class="section-head center"><p class="section-label">Side by side</p><h2 class="section-title">Feature comparison</h2><p class="section-desc">Replicate runs machine learning models in the cloud via API — including try-on models teams can call from custom pipelines.</p></div>
-            <div class="compare-table-wrap"><table class="compare-table"><thead><tr><th>Feature</th><th>Stylab</th><th>Replicate</th></tr></thead><tbody><tr><td>No engineering required</td><td><span class="yes">Merchant app</span></td><td><span class="partial">Dev required</span></td></tr><tr><td>Shopper-facing upload UX</td><td><span class="yes">Included</span></td><td><span class="partial">Build yourself</span></td></tr><tr><td>Pay per success clarity</td><td>Quota on successful try-ons</td><td><span class="partial">Pay per API run — verify model</span></td></tr><tr><td>Model version changes</td><td>Vendor-managed</td><td><span class="partial">Your team adapts pipeline</span></td></tr><tr><td>Merchant analytics dashboard</td><td><span class="yes">Included</span></td><td>Custom</td></tr><tr><td>Shopify billing integration</td><td><span class="yes">Yes</span></td><td><span class="partial">No</span></td></tr></tbody></table><p class="compare-scroll-hint">Swipe horizontally to compare →</p></div>
-            <div class="two-col">
-                <div class="diff-card"><h3>When Stylab is a better fit</h3><p>Choose Stylab when try-on is a merchant feature to launch and measure — not an engineering side project.</p></div>
-                <div class="diff-card"><h3>When Replicate may fit</h3><p>Choose Replicate if you already run custom ML pipelines and need raw model access across multiple generative tasks.</p></div>
+            <div class="compare-table-wrap reveal"><table class="compare-table"><thead><tr><th>Feature</th><th>Stylab</th><th>Replicate</th></tr></thead><tbody><tr><td>No engineering required</td><td><span class="yes">Merchant app</span></td><td><span class="partial">Dev required</span></td></tr><tr><td>Shopper-facing upload UX</td><td><span class="yes">Included</span></td><td><span class="partial">Build yourself</span></td></tr><tr><td>Pay per success clarity</td><td>Quota on successful try-ons</td><td><span class="partial">Pay per API run — verify model</span></td></tr><tr><td>Model version changes</td><td>Vendor-managed</td><td><span class="partial">Your team adapts pipeline</span></td></tr><tr><td>Merchant analytics dashboard</td><td><span class="yes">Included</span></td><td>Custom</td></tr><tr><td>Shopify billing integration</td><td><span class="yes">Yes</span></td><td><span class="partial">No</span></td></tr></tbody></table><p class="compare-scroll-hint">Swipe horizontally to compare →</p></div>
+            <div class="two-col" data-reveal-stagger>
+                <div class="diff-card reveal"><h3>When Stylab is a better fit</h3><p>Choose Stylab when try-on is a merchant feature to launch and measure — not an engineering side project.</p></div>
+                <div class="diff-card reveal"><h3>When Replicate may fit</h3><p>Choose Replicate if you already run custom ML pipelines and need raw model access across multiple generative tasks.</p></div>
             </div>
             <p class="disclaimer">Comparison based on publicly available product information as of May 2026. Features, pricing, and policies may change. Verify details on each vendor's website before making a decision.</p>
         </div></section>
@@ -110,7 +111,7 @@
         </div></section>
         <section class="section section-white"><div class="wrap">
             <div class="section-head reveal"><p class="section-label">Related comparisons</p><h2 class="section-title">Compare other alternatives</h2></div>
-            <div class="hub-grid reveal"><a href="api/vs-fashn-ai.html" class="hub-card"><h3>Stylab vs FASHN AI</h3><p>FASHN AI is a developer try-on API. Stylab is a managed Shopify app — compare build time, billing, a…</p><span class="arrow">Read comparison →</span></a><a href="api/vs-aiuta.html" class="hub-card"><h3>Stylab vs Aiuta</h3><p>Aiuta API vs Stylab Shopify app — when to build custom try-on infrastructure vs install a merchant-r…</p><span class="arrow">Read comparison →</span></a><a href="api/vs-pixelcut.html" class="hub-card"><h3>Stylab vs Pixelcut</h3><p>Pixelcut is a general AI photo suite. Stylab is built for always-on Shopify product page try-on with…</p><span class="arrow">Read comparison →</span></a><a href="api/vs-fal-ai.html" class="hub-card"><h3>Stylab vs Fal AI</h3><p>Fal AI powers generative media APIs. Stylab packages try-on specifically for Shopify apparel merchan…</p><span class="arrow">Read comparison →</span></a></div>
+            <div class="hub-grid" data-reveal-stagger><a href="api/vs-fashn-ai.html" class="hub-card reveal"><h3>Stylab vs FASHN AI</h3><p>FASHN AI is a developer try-on API. Stylab is a managed Shopify app — compare build time, billing, a…</p><span class="arrow">Read comparison →</span></a><a href="api/vs-aiuta.html" class="hub-card reveal"><h3>Stylab vs Aiuta</h3><p>Aiuta API vs Stylab Shopify app — when to build custom try-on infrastructure vs install a merchant-r…</p><span class="arrow">Read comparison →</span></a><a href="api/vs-pixelcut.html" class="hub-card reveal"><h3>Stylab vs Pixelcut</h3><p>Pixelcut is a general AI photo suite. Stylab is built for always-on Shopify product page try-on with…</p><span class="arrow">Read comparison →</span></a><a href="api/vs-fal-ai.html" class="hub-card reveal"><h3>Stylab vs Fal AI</h3><p>Fal AI powers generative media APIs. Stylab packages try-on specifically for Shopify apparel merchan…</p><span class="arrow">Read comparison →</span></a></div>
             <p class="reveal" style="text-align:center;margin-top:1.5rem;"><a href="../../compare/">View all comparisons →</a></p>
         </div></section><section class="section"><div class="wrap"><div class="cta-final reveal"><h2>Add AI try-on to your Shopify product pages</h2><p>Start with a few products, measure shopper engagement, and see whether try-on helps customers buy with more confidence.</p><div class="btns"><a href="https://apps.shopify.com/try-on-stylelab" class="btn btn--primary" target="_blank" rel="noopener"><img class="shopify-icon" src="../../assets/shopify-icon-logo.svg" alt="" width="20" height="20" aria-hidden="true">Install on Shopify</a><a href="../../index.html#journey" class="btn btn--ghost">View live demo</a></div></div></div></section></main>
     <footer class="site-footer">
@@ -162,6 +163,6 @@
     <div class="sticky-cta">
         <a href="https://apps.shopify.com/try-on-stylelab" class="btn btn--primary" target="_blank" rel="noopener"><img class="shopify-icon" src="../../assets/shopify-icon-logo.svg" alt="" width="20" height="20" aria-hidden="true">Install on Shopify</a>
     </div>
-    <script src="../../assets/home.js" defer></script>
+    <script src="../../assets/home.js?v=7" defer></script>
 </body>
 </html>

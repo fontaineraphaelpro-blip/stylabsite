@@ -21,7 +21,7 @@ for (const p of pages) {
   const page = await browser.newPage({ viewport: { width: p.w, height: 900 } });
   const url = 'file:///' + path.join(ROOT, p.file).replace(/\\/g, '/');
   await page.goto(url, { waitUntil: 'domcontentloaded' });
-  await page.waitForTimeout(300);
+  await page.waitForTimeout(600);
 
   const r = await page.evaluate(() => {
     const bodyW = document.body.scrollWidth;
@@ -42,7 +42,8 @@ for (const p of pages) {
     }
     const hidden = [...document.querySelectorAll('.reveal, [data-reveal]')].filter((el) => {
       const s = getComputedStyle(el);
-      return parseFloat(s.opacity) < 0.5 && el.getBoundingClientRect().height > 24;
+      const rect = el.getBoundingClientRect();
+      return parseFloat(s.opacity) < 0.5 && rect.top < window.innerHeight * 0.85 && rect.bottom > 0;
     }).length;
     const container = document.querySelector('.container, .hero__inner, .page-main .wrap');
     let edgePad = null;

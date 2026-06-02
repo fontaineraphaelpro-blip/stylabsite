@@ -28,8 +28,9 @@
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Geist:wght@400;500;600;700;800&family=Geist+Mono:wght@400;500&display=swap" rel="stylesheet">
-    <link rel="stylesheet" href="../../assets/home.css">
-    <link rel="stylesheet" href="../../assets/pages.css">
+    <link rel="stylesheet" href="../../assets/home.css?v=7">
+    <link rel="stylesheet" href="../../assets/pages.css?v=2">
+    <script>document.documentElement.classList.add("scroll-anim");</script>
 </head>
 <body class="home page-sub">
     <div class="page-bg" aria-hidden="true">
@@ -83,10 +84,10 @@
 <p>If your team already integrates Fal for multiple generative features and has frontend resources, adding try-on via API can make sense. If you only need try-on on Shopify PDPs, building on Fal is often slower than installing a purpose-built app.</p></div></section>
         <section class="section section-white"><div class="wrap reveal">
             <div class="section-head center"><p class="section-label">Side by side</p><h2 class="section-title">Feature comparison</h2><p class="section-desc">Fal AI provides fast inference APIs for generative media — useful for teams building multi-model creative pipelines.</p></div>
-            <div class="compare-table-wrap"><table class="compare-table"><thead><tr><th>Feature</th><th>Stylab</th><th>Fal AI</th></tr></thead><tbody><tr><td>One-click Shopify install</td><td><span class="yes">Yes</span></td><td><span class="partial">Custom integration</span></td></tr><tr><td>Try-on-specific merchant admin</td><td><span class="yes">Yes</span></td><td><span class="partial">Build yourself</span></td></tr><tr><td>A/B test storefront impact</td><td><span class="yes">Built-in</span></td><td>Custom</td></tr><tr><td>Predictable merchant pricing</td><td><span class="yes">Plan tiers ($0–$149/mo)</span></td><td>Dev time + API usage</td></tr><tr><td>Scope</td><td><span class="yes">Shopify apparel try-on</span></td><td><span class="yes">Broad generative API platform</span></td></tr><tr><td>Shopper privacy UX (upload flow)</td><td><span class="yes">Included widget copy</span></td><td><span class="partial">Your compliance copy</span></td></tr></tbody></table><p class="compare-scroll-hint">Swipe horizontally to compare →</p></div>
-            <div class="two-col">
-                <div class="diff-card"><h3>When Stylab is a better fit</h3><p>Choose Stylab to validate try-on on Shopify this week with measurement built in — especially if generative API infrastructure is not already on your roadmap.</p></div>
-                <div class="diff-card"><h3>When Fal AI may fit</h3><p>Choose Fal AI when engineers already orchestrate multiple generative models and try-on is one component of a larger product.</p></div>
+            <div class="compare-table-wrap reveal"><table class="compare-table"><thead><tr><th>Feature</th><th>Stylab</th><th>Fal AI</th></tr></thead><tbody><tr><td>One-click Shopify install</td><td><span class="yes">Yes</span></td><td><span class="partial">Custom integration</span></td></tr><tr><td>Try-on-specific merchant admin</td><td><span class="yes">Yes</span></td><td><span class="partial">Build yourself</span></td></tr><tr><td>A/B test storefront impact</td><td><span class="yes">Built-in</span></td><td>Custom</td></tr><tr><td>Predictable merchant pricing</td><td><span class="yes">Plan tiers ($0–$149/mo)</span></td><td>Dev time + API usage</td></tr><tr><td>Scope</td><td><span class="yes">Shopify apparel try-on</span></td><td><span class="yes">Broad generative API platform</span></td></tr><tr><td>Shopper privacy UX (upload flow)</td><td><span class="yes">Included widget copy</span></td><td><span class="partial">Your compliance copy</span></td></tr></tbody></table><p class="compare-scroll-hint">Swipe horizontally to compare →</p></div>
+            <div class="two-col" data-reveal-stagger>
+                <div class="diff-card reveal"><h3>When Stylab is a better fit</h3><p>Choose Stylab to validate try-on on Shopify this week with measurement built in — especially if generative API infrastructure is not already on your roadmap.</p></div>
+                <div class="diff-card reveal"><h3>When Fal AI may fit</h3><p>Choose Fal AI when engineers already orchestrate multiple generative models and try-on is one component of a larger product.</p></div>
             </div>
             <p class="disclaimer">Comparison based on publicly available product information as of May 2026. Features, pricing, and policies may change. Verify details on each vendor's website before making a decision.</p>
         </div></section>
@@ -109,7 +110,7 @@
         </div></section>
         <section class="section section-white"><div class="wrap">
             <div class="section-head reveal"><p class="section-label">Related comparisons</p><h2 class="section-title">Compare other alternatives</h2></div>
-            <div class="hub-grid reveal"><a href="api/vs-fashn-ai.html" class="hub-card"><h3>Stylab vs FASHN AI</h3><p>FASHN AI is a developer try-on API. Stylab is a managed Shopify app — compare build time, billing, a…</p><span class="arrow">Read comparison →</span></a><a href="api/vs-aiuta.html" class="hub-card"><h3>Stylab vs Aiuta</h3><p>Aiuta API vs Stylab Shopify app — when to build custom try-on infrastructure vs install a merchant-r…</p><span class="arrow">Read comparison →</span></a><a href="api/vs-pixelcut.html" class="hub-card"><h3>Stylab vs Pixelcut</h3><p>Pixelcut is a general AI photo suite. Stylab is built for always-on Shopify product page try-on with…</p><span class="arrow">Read comparison →</span></a><a href="api/vs-replicate.html" class="hub-card"><h3>Stylab vs Replicate</h3><p>Replicate hosts try-on models via API. Stylab is managed try-on for Shopify merchants — compare DIY …</p><span class="arrow">Read comparison →</span></a></div>
+            <div class="hub-grid" data-reveal-stagger><a href="api/vs-fashn-ai.html" class="hub-card reveal"><h3>Stylab vs FASHN AI</h3><p>FASHN AI is a developer try-on API. Stylab is a managed Shopify app — compare build time, billing, a…</p><span class="arrow">Read comparison →</span></a><a href="api/vs-aiuta.html" class="hub-card reveal"><h3>Stylab vs Aiuta</h3><p>Aiuta API vs Stylab Shopify app — when to build custom try-on infrastructure vs install a merchant-r…</p><span class="arrow">Read comparison →</span></a><a href="api/vs-pixelcut.html" class="hub-card reveal"><h3>Stylab vs Pixelcut</h3><p>Pixelcut is a general AI photo suite. Stylab is built for always-on Shopify product page try-on with…</p><span class="arrow">Read comparison →</span></a><a href="api/vs-replicate.html" class="hub-card reveal"><h3>Stylab vs Replicate</h3><p>Replicate hosts try-on models via API. Stylab is managed try-on for Shopify merchants — compare DIY …</p><span class="arrow">Read comparison →</span></a></div>
             <p class="reveal" style="text-align:center;margin-top:1.5rem;"><a href="../../compare/">View all comparisons →</a></p>
         </div></section><section class="section"><div class="wrap"><div class="cta-final reveal"><h2>Add AI try-on to your Shopify product pages</h2><p>Start with a few products, measure shopper engagement, and see whether try-on helps customers buy with more confidence.</p><div class="btns"><a href="https://apps.shopify.com/try-on-stylelab" class="btn btn--primary" target="_blank" rel="noopener"><img class="shopify-icon" src="../../assets/shopify-icon-logo.svg" alt="" width="20" height="20" aria-hidden="true">Install on Shopify</a><a href="../../index.html#journey" class="btn btn--ghost">View live demo</a></div></div></div></section></main>
     <footer class="site-footer">
@@ -161,6 +162,6 @@
     <div class="sticky-cta">
         <a href="https://apps.shopify.com/try-on-stylelab" class="btn btn--primary" target="_blank" rel="noopener"><img class="shopify-icon" src="../../assets/shopify-icon-logo.svg" alt="" width="20" height="20" aria-hidden="true">Install on Shopify</a>
     </div>
-    <script src="../../assets/home.js" defer></script>
+    <script src="../../assets/home.js?v=7" defer></script>
 </body>
 </html>
