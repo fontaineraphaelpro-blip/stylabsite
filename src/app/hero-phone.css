@@ -1,6 +1,6 @@
 /* Hero phone demo — full animation system */
 .hero-phone {
-  --hp-dur: var(--hero-phone-duration, 12s);
+  --hp-dur: var(--hero-phone-duration, 10s);
   --hp-ease: cubic-bezier(0.21, 0.47, 0.32, 0.98);
   --hp-snap: cubic-bezier(0.34, 1.4, 0.64, 1);
   --hp-green: #1a5c42;
@@ -10,6 +10,60 @@
   max-width: 300px;
   margin-inline: auto;
 }
+
+.hero-phone--idle .hero-phone__scene--pdp {
+  opacity: 1;
+  transform: scale(1);
+}
+
+.hero-phone--idle .hero-phone__scene:not(.hero-phone__scene--pdp) {
+  opacity: 0;
+}
+
+.hero-phone--idle .hero-phone__ambient,
+.hero-phone--idle .hero-phone__ring,
+.hero-phone--idle .hero-phone__scene,
+.hero-phone--idle .hero-phone__finger,
+.hero-phone--idle .hero-phone__finger-ring,
+.hero-phone--idle .hero-phone__flash,
+.hero-phone--idle .hero-phone__confetti span,
+.hero-phone--idle .hero-phone__revenue,
+.hero-phone--idle .hero-phone__try-beacon,
+.hero-phone--idle .hero-phone__btn--try,
+.hero-phone--idle .hero-phone__pdp-img {
+  animation-play-state: paused !important;
+}
+
+.hero-phone--idle .hero-phone__btn--try {
+  animation: hero-phone-idle-cta 1.4s ease-in-out infinite;
+  animation-play-state: running !important;
+}
+
+.hero-phone--idle .hero-phone__device {
+  animation: hero-phone-idle-float 3s ease-in-out infinite;
+}
+
+.hero-phone--idle .hero-phone__float {
+  animation: hero-phone-float-badge 2.4s ease-in-out infinite;
+}
+
+@keyframes hero-phone-idle-cta {
+  0%, 100% {
+    box-shadow: 0 0 0 0 rgba(26, 92, 66, 0.45);
+    transform: scale(1);
+  }
+
+  50% {
+    box-shadow: 0 0 0 10px rgba(26, 92, 66, 0);
+    transform: scale(1.03);
+  }
+}
+
+@keyframes hero-phone-idle-float {
+  0%, 100% { transform: translateY(0) rotate(0deg); }
+  50% { transform: translateY(-8px) rotate(-0.5deg); }
+}
+
 
 .hero-phone__ambient {
   position: absolute;
@@ -40,10 +94,10 @@
 }
 
 @keyframes hero-phone-ring {
-  0%, 26% { opacity: 0; transform: scale(0.92); }
-  30% { opacity: 0.9; transform: scale(1); }
-  38% { opacity: 0; transform: scale(1.06); }
-  100% { opacity: 0; transform: scale(0.92); }
+  0%, 2% { opacity: 0.75; transform: scale(0.94); }
+  5% { opacity: 1; transform: scale(1); }
+  10% { opacity: 0; transform: scale(1.1); }
+  100% { opacity: 0; transform: scale(0.94); }
 }
 
 .hero-phone__float {
@@ -95,12 +149,27 @@
     0 0 48px -12px rgba(141, 84, 255, 0.45),
     0 36px 72px -28px rgba(0, 0, 0, 0.75),
     inset 0 1px 0 rgba(255, 255, 255, 0.1);
-  animation: hero-phone-float 4s ease-in-out infinite;
+}
+
+.hero-phone--playing .hero-phone__device {
+  animation: hero-phone-float 3.5s ease-in-out infinite, hero-phone-device-in 0.65s var(--hp-ease) both;
 }
 
 @keyframes hero-phone-float {
   0%, 100% { transform: translateY(0) rotate(0deg); }
-  50% { transform: translateY(-10px) rotate(-0.6deg); }
+  50% { transform: translateY(-12px) rotate(-0.8deg); }
+}
+
+@keyframes hero-phone-device-in {
+  0% {
+    opacity: 0.5;
+    transform: translateY(28px) scale(0.9) rotate(2deg);
+  }
+
+  100% {
+    opacity: 1;
+    transform: translateY(0) scale(1) rotate(0deg);
+  }
 }
 
 .hero-phone__island {
@@ -139,36 +208,35 @@
 .hero-phone__scene--success { animation: hero-phone-success-scene var(--hp-dur) var(--hp-ease) infinite; }
 
 @keyframes hero-phone-pdp {
-  0%, 2% { opacity: 0; transform: scale(1.04); }
-  4%, 14% { opacity: 1; transform: scale(1); }
-  16%, 100% { opacity: 0; transform: scale(0.97) translateY(-4px); }
+  0%, 17% { opacity: 1; transform: scale(1); }
+  19%, 100% { opacity: 0; transform: scale(0.96) translateY(-6px); }
 }
 
 @keyframes hero-phone-upload {
-  0%, 14% { opacity: 0; }
-  16%, 26% { opacity: 1; }
-  28%, 100% { opacity: 0; }
+  0%, 17% { opacity: 0; }
+  19%, 29% { opacity: 1; }
+  31%, 100% { opacity: 0; }
 }
 
 @keyframes hero-phone-loading-scene {
-  0%, 26% { opacity: 0; transform: scale(0.94); filter: blur(4px); }
-  28%, 30% { opacity: 1; transform: scale(1); filter: blur(0); }
-  46%, 48% { opacity: 1; transform: scale(1); filter: blur(0); }
-  50%, 100% { opacity: 0; transform: scale(1.03); filter: blur(2px); }
+  0%, 29% { opacity: 0; transform: scale(0.92); filter: blur(4px); }
+  31%, 33% { opacity: 1; transform: scale(1); filter: blur(0); }
+  47%, 49% { opacity: 1; transform: scale(1); filter: blur(0); }
+  51%, 100% { opacity: 0; transform: scale(1.04); filter: blur(2px); }
 }
 
 @keyframes hero-phone-result-scene {
-  0%, 48% { opacity: 0; transform: scale(0.88); }
-  50%, 52% { opacity: 1; transform: scale(1.04); }
-  54%, 66% { opacity: 1; transform: scale(1); }
-  68%, 100% { opacity: 0; transform: scale(0.96); }
+  0%, 49% { opacity: 0; transform: scale(0.86); }
+  51%, 53% { opacity: 1; transform: scale(1.05); }
+  55%, 67% { opacity: 1; transform: scale(1); }
+  69%, 100% { opacity: 0; transform: scale(0.96); }
 }
 
 @keyframes hero-phone-success-scene {
-  0%, 66% { opacity: 0; transform: scale(0.9); }
-  68%, 70% { opacity: 1; transform: scale(1.05); }
-  72%, 86% { opacity: 1; transform: scale(1); }
-  90%, 100% { opacity: 0; transform: scale(0.95); }
+  0%, 67% { opacity: 0; transform: scale(0.88); }
+  69%, 71% { opacity: 1; transform: scale(1.06); }
+  73%, 88% { opacity: 1; transform: scale(1); }
+  92%, 100% { opacity: 0; transform: scale(0.95); }
 }
 
 .hero-phone__store-bar {
@@ -228,9 +296,9 @@
 }
 
 @keyframes hero-phone-img-zoom {
-  0%, 4% { transform: scale(1); }
-  10%, 14% { transform: scale(1.03); }
-  16%, 100% { transform: scale(1); }
+  0%, 3% { transform: scale(1) translateY(0); }
+  8%, 16% { transform: scale(1.06) translateY(-2px); }
+  18%, 100% { transform: scale(1) translateY(0); }
 }
 
 .hero-phone__pdp-badge {
@@ -318,10 +386,10 @@
 }
 
 @keyframes hero-phone-beacon {
-  0%, 6% { opacity: 0; transform: scale(0.9); }
-  8%, 14% { opacity: 1; transform: scale(1); }
-  10% { opacity: 0.6; transform: scale(1.06); }
-  16%, 100% { opacity: 0; transform: scale(1.12); }
+  0%, 2% { opacity: 0.85; transform: scale(0.95); }
+  4%, 10% { opacity: 1; transform: scale(1); }
+  6% { opacity: 0.55; transform: scale(1.1); }
+  12%, 100% { opacity: 0; transform: scale(1.18); }
 }
 
 .hero-phone__btn {
@@ -355,16 +423,16 @@
 }
 
 @keyframes hero-phone-try-pulse {
-  0%, 12% { box-shadow: 0 0 0 0 rgba(26, 92, 66, 0); transform: scale(1); }
-  14% { box-shadow: 0 0 0 6px rgba(26, 92, 66, 0.35); transform: scale(1); }
-  15% { transform: scale(0.94); }
-  17%, 100% { box-shadow: none; transform: scale(1); }
+  0%, 2% { box-shadow: 0 0 0 0 rgba(26, 92, 66, 0.5); transform: scale(1); }
+  4% { box-shadow: 0 0 0 8px rgba(26, 92, 66, 0.35); transform: scale(1.02); }
+  5% { transform: scale(0.92); }
+  7%, 100% { box-shadow: none; transform: scale(1); }
 }
 
 @keyframes hero-phone-upload-btn {
-  0%, 22% { box-shadow: none; transform: scale(1); }
-  23% { box-shadow: 0 0 0 5px rgba(26, 92, 66, 0.3); transform: scale(0.96); }
-  25%, 100% { box-shadow: none; transform: scale(1); }
+  0%, 25% { box-shadow: none; transform: scale(1); }
+  26% { box-shadow: 0 0 0 5px rgba(26, 92, 66, 0.3); transform: scale(0.96); }
+  28%, 100% { box-shadow: none; transform: scale(1); }
 }
 
 .hero-phone__upload-dim {
@@ -375,9 +443,9 @@
 }
 
 @keyframes hero-phone-dim {
-  0%, 14% { opacity: 0; }
-  16%, 26% { opacity: 1; }
-  28%, 100% { opacity: 0; }
+  0%, 17% { opacity: 0; }
+  19%, 29% { opacity: 1; }
+  31%, 100% { opacity: 0; }
 }
 
 .hero-phone__upload-sheet {
@@ -393,9 +461,9 @@
 }
 
 @keyframes hero-phone-upload-sheet {
-  0%, 14% { transform: translateY(105%); }
-  16%, 26% { transform: translateY(0); }
-  28%, 100% { transform: translateY(105%); }
+  0%, 17% { transform: translateY(105%); }
+  19%, 29% { transform: translateY(0); }
+  31%, 100% { transform: translateY(105%); }
 }
 
 .hero-phone__upload-handle {
@@ -455,9 +523,9 @@
 }
 
 @keyframes hero-phone-upload-thumb {
-  0%, 18% { opacity: 0; transform: scale(0.7); }
-  20%, 26% { opacity: 1; transform: scale(1); }
-  28%, 100% { opacity: 0; transform: scale(1.05); }
+  0%, 20% { opacity: 0; transform: scale(0.7); }
+  22%, 29% { opacity: 1; transform: scale(1); }
+  31%, 100% { opacity: 0; transform: scale(1.05); }
 }
 
 .hero-phone__upload-scan {
@@ -471,10 +539,10 @@
 }
 
 @keyframes hero-phone-upload-scan {
-  0%, 19% { top: 0; opacity: 0; }
-  20% { opacity: 1; }
-  24% { top: 100%; opacity: 1; }
-  25%, 100% { opacity: 0; }
+  0%, 21% { top: 0; opacity: 0; }
+  22% { opacity: 1; }
+  27% { top: 100%; opacity: 1; }
+  28%, 100% { opacity: 0; }
 }
 
 .hero-phone__loading-card {
@@ -1009,28 +1077,28 @@
 }
 
 @keyframes hero-phone-finger {
-  0%, 8% { opacity: 0; left: 65%; top: 55%; }
-  10% { opacity: 1; left: 50%; top: 78%; transform: scale(1); }
-  12% { opacity: 1; left: 50%; top: 78%; transform: scale(0.88); }
-  14%, 18% { opacity: 0; }
-  20% { opacity: 1; left: 50%; top: 88%; transform: scale(1); }
-  22% { opacity: 1; transform: scale(0.88); }
-  24%, 56% { opacity: 0; }
-  58% { opacity: 1; left: 50%; top: 74%; transform: scale(1); }
-  60% { opacity: 1; transform: scale(0.88); }
-  62%, 100% { opacity: 0; }
+  0%, 3% { opacity: 0; left: 62%; top: 52%; transform: scale(1); }
+  4% { opacity: 1; left: 50%; top: 76%; transform: scale(1); }
+  5% { opacity: 1; left: 50%; top: 76%; transform: scale(0.86); }
+  7%, 11% { opacity: 0; }
+  12% { opacity: 1; left: 50%; top: 86%; transform: scale(1); }
+  13% { opacity: 1; transform: scale(0.86); }
+  15%, 52% { opacity: 0; }
+  54% { opacity: 1; left: 50%; top: 72%; transform: scale(1); }
+  55% { opacity: 1; transform: scale(0.86); }
+  57%, 100% { opacity: 0; }
 }
 
 @keyframes hero-phone-finger-ring {
-  0%, 9% { opacity: 0; left: calc(50% - 1.125rem); top: calc(78% - 1.125rem); transform: scale(0.4); }
-  11% { opacity: 0.85; transform: scale(1); }
-  14% { opacity: 0; transform: scale(1.5); }
-  19% { opacity: 0; left: calc(50% - 1.125rem); top: calc(88% - 1.125rem); transform: scale(0.4); }
-  21% { opacity: 0.85; transform: scale(1); }
-  24% { opacity: 0; transform: scale(1.5); }
-  57% { opacity: 0; left: calc(50% - 1.125rem); top: calc(74% - 1.125rem); transform: scale(0.4); }
-  59% { opacity: 0.85; transform: scale(1); }
-  62%, 100% { opacity: 0; transform: scale(1.5); }
+  0%, 3% { opacity: 0; left: calc(50% - 1.125rem); top: calc(76% - 1.125rem); transform: scale(0.35); }
+  5% { opacity: 0.9; transform: scale(1); }
+  8% { opacity: 0; transform: scale(1.55); }
+  11% { opacity: 0; left: calc(50% - 1.125rem); top: calc(86% - 1.125rem); transform: scale(0.35); }
+  13% { opacity: 0.9; transform: scale(1); }
+  16% { opacity: 0; transform: scale(1.55); }
+  53% { opacity: 0; left: calc(50% - 1.125rem); top: calc(72% - 1.125rem); transform: scale(0.35); }
+  55% { opacity: 0.9; transform: scale(1); }
+  58%, 100% { opacity: 0; transform: scale(1.55); }
 }
 
 @media (min-width: 1024px) {

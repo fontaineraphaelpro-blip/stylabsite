@@ -4,7 +4,7 @@ import { useEffect, useState } from "react";
 import Image from "next/image";
 import { motion } from "framer-motion";
 import { initVtonDemo } from "@/lib/vton-demo-boot";
-import type { Locale } from "@/lib/i18n";
+import { APP_URL, type Locale } from "@/lib/content";
 
 const PRODUCT_GID = "gid://shopify/Product/15436964036948";
 
@@ -156,6 +156,9 @@ export function VtonDemo({ locale }: { locale: Locale }) {
         data-vton-app-url="https://vton-production-890a.up.railway.app"
         data-vton-product-id="gid://shopify/Product/15436964036948"
         data-vton-product-handle="shadow-stripe-collared-soccer-jersey-4"
+        data-vton-install-cta="1"
+        data-vton-install-url={APP_URL}
+        data-vton-locale={locale}
         hidden
         aria-hidden="true"
       />

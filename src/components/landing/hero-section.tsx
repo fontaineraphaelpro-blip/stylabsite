@@ -15,8 +15,8 @@ export function HeroSection({ locale }: { locale: Locale }) {
       <GridBackground />
       <div className="scan-line" aria-hidden="true" />
 
-      <div className="container relative z-10 grid lg:grid-cols-2 gap-12 items-center">
-        <div className="space-y-6">
+      <div className="container relative z-10 grid lg:grid-cols-2 gap-8 lg:gap-12 items-center">
+        <div className="space-y-6 order-2 lg:order-1">
           <FadeInHero delay={0}>
             <motion.div
               whileHover={{ scale: 1.02, borderColor: "rgba(141,84,255,0.4)" }}
@@ -71,7 +71,12 @@ export function HeroSection({ locale }: { locale: Locale }) {
           </FadeInHero>
         </div>
 
-        <FadeInHero delay={0.32} className="relative flex justify-center lg:justify-end overflow-hidden">
+        <motion.div
+          initial={{ opacity: 0, y: 20, scale: 0.96 }}
+          animate={{ opacity: 1, y: 0, scale: 1 }}
+          transition={{ duration: 0.55, delay: 0.05, ease: [0.21, 0.47, 0.32, 0.98] }}
+          className="relative flex justify-center lg:justify-end overflow-hidden order-1 lg:order-2"
+        >
           <motion.div
             whileHover={{ scale: 1.02 }}
             transition={{ type: "spring", stiffness: 300, damping: 20 }}
@@ -84,7 +89,7 @@ export function HeroSection({ locale }: { locale: Locale }) {
                 : "Animation: product page, AI try-on, result, add to cart, and revenue earned."}
             </p>
           </motion.div>
-        </FadeInHero>
+        </motion.div>
       </div>
     </section>
   );

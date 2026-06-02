@@ -1,17 +1,23 @@
 "use client";
 
+import { useRef } from "react";
 import Image from "next/image";
+import { useInView } from "framer-motion";
 import type { CSSProperties } from "react";
 import type { Locale } from "@/lib/i18n";
 
-const DURATION = 12;
+const DURATION = 10;
 
 export function HeroPhoneDemo({ locale }: { locale: Locale }) {
   const fr = locale === "fr";
+  const rootRef = useRef<HTMLDivElement>(null);
+  const isInView = useInView(rootRef, { once: true, amount: 0.05, margin: "80px 0px 80px 0px" });
 
   return (
     <div
-      className="hero-phone"
+      ref={rootRef}
+      key={isInView ? "playing" : "idle"}
+      className={`hero-phone${isInView ? " hero-phone--playing" : " hero-phone--idle"}`}
       style={{ "--hero-phone-duration": `${DURATION}s` } as CSSProperties}
       aria-hidden="true"
     >
