@@ -81,7 +81,7 @@ export function HeroSection({ locale }: { locale: Locale }) {
           <motion.div
             whileHover={{ scale: 1.02 }}
             transition={{ type: "spring", stiffness: 300, damping: 20 }}
-            className="w-full max-w-[320px]"
+            className="w-full max-w-[340px]"
           >
             <HeroPhoneDemo locale={locale} />
             <p className="sr-only">

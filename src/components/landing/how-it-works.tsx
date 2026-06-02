@@ -2,8 +2,9 @@
 
 import { useRef } from "react";
 import Image from "next/image";
-import { motion, useScroll, useTransform } from "framer-motion";
+import { motion } from "framer-motion";
 import { FadeIn } from "@/components/motion/fade-in";
+import { EASE_PREMIUM } from "@/lib/motion";
 import { type Locale, UI } from "@/lib/content";
 
 const stepIcons = [
@@ -35,12 +36,9 @@ export function HowItWorksSection({ locale }: { locale: Locale }) {
   const t = UI[locale];
   const fr = locale === "fr";
   const ref = useRef<HTMLElement>(null);
-  const { scrollYProgress } = useScroll({ target: ref, offset: ["start 0.7", "end 0.4"] });
-  const lineScale = useTransform(scrollYProgress, [0.1, 0.9], [0, 1]);
-  const lineOpacity = useTransform(scrollYProgress, [0, 0.08, 0.1, 0.9], [0, 0, 1, 1]);
 
   return (
-    <section ref={ref} className="steps-showcase py-24 md:py-32 relative" aria-labelledby="steps-title">
+    <section ref={ref} className="steps-showcase py-24 md:py-32 relative overflow-hidden" aria-labelledby="steps-title">
       <div className="container relative z-10">
         <FadeIn className="text-center max-w-2xl mx-auto mb-16 md:mb-20">
           <p className="section-eyebrow">{t.stepsEyebrow}</p>
@@ -55,14 +53,23 @@ export function HowItWorksSection({ locale }: { locale: Locale }) {
         </FadeIn>
 
         <div className="steps-track relative max-w-5xl mx-auto">
-          {/* Desktop connector line */}
-          <div className="hidden lg:block steps-track__line-wrap" aria-hidden="true">
+          <motion.div
+            className="hidden lg:block steps-track__line-wrap"
+            aria-hidden="true"
+            initial={{ opacity: 0 }}
+            whileInView={{ opacity: 1 }}
+            viewport={{ once: true, amount: 0.35 }}
+            transition={{ duration: 0.3, delay: 0.35, ease: EASE_PREMIUM }}
+          >
             <div className="steps-track__line-bg" />
             <motion.div
               className="steps-track__line-fill"
-              style={{ scaleX: lineScale, opacity: lineOpacity }}
+              initial={{ scaleX: 0, opacity: 0 }}
+              whileInView={{ scaleX: 1, opacity: 1 }}
+              viewport={{ once: true, amount: 0.35 }}
+              transition={{ duration: 1.1, delay: 0.55, ease: EASE_PREMIUM }}
             />
-          </div>
+          </motion.div>
 
           <ol className="grid lg:grid-cols-3 gap-6 lg:gap-8">
             {t.steps.map((step, i) => (
