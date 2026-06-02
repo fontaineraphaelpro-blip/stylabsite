@@ -843,7 +843,7 @@ body.page-sub .site-footer {
   .blog-card:hover,
   .diff-card:hover { transform: none; }
   .reveal.visible,
-  .reveal.is-revealed {
+  .reveal.is-inview {
     opacity: 1;
     transform: none;
     transition: none;

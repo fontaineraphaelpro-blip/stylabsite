@@ -1,0 +1,98 @@
+/* Scroll reveal — standalone, no CSS variables inside transform */
+
+html.js-reveal [data-reveal],
+html.js-reveal .reveal {
+  opacity: 0;
+  transform: translate3d(0, 72px, 0);
+  transition:
+    opacity 0.95s cubic-bezier(0.16, 1, 0.3, 1),
+    transform 0.95s cubic-bezier(0.16, 1, 0.3, 1);
+  transition-delay: var(--reveal-delay, 0s);
+  will-change: opacity, transform;
+}
+
+html.js-reveal [data-reveal="up"],
+html.js-reveal .reveal--up {
+  transform: translate3d(0, 80px, 0);
+}
+
+html.js-reveal [data-reveal="down"],
+html.js-reveal .reveal--down {
+  transform: translate3d(0, -48px, 0);
+}
+
+html.js-reveal [data-reveal="left"],
+html.js-reveal .reveal--left {
+  transform: translate3d(-80px, 0, 0);
+}
+
+html.js-reveal [data-reveal="right"],
+html.js-reveal .reveal--right {
+  transform: translate3d(80px, 0, 0);
+}
+
+html.js-reveal [data-reveal="scale"],
+html.js-reveal .reveal--scale {
+  transform: translate3d(0, 48px, 0) scale(0.92);
+}
+
+html.js-reveal [data-reveal].is-inview,
+html.js-reveal .reveal.is-inview,
+html.js-reveal [data-reveal].visible,
+html.js-reveal .reveal.visible {
+  opacity: 1;
+  transform: none;
+  will-change: auto;
+}
+
+html.js-reveal .site-header {
+  opacity: 0;
+  transform: translate3d(0, -24px, 0);
+  transition: opacity 0.6s cubic-bezier(0.16, 1, 0.3, 1), transform 0.6s cubic-bezier(0.16, 1, 0.3, 1);
+}
+
+html.js-reveal .site-header.is-inview {
+  opacity: 1;
+  transform: none;
+}
+
+.hero__content [data-reveal]:nth-child(1) { --reveal-delay: 0.05s; }
+.hero__content [data-reveal]:nth-child(2) { --reveal-delay: 0.12s; }
+.hero__content [data-reveal]:nth-child(3) { --reveal-delay: 0.19s; }
+.hero__content [data-reveal]:nth-child(4) { --reveal-delay: 0.26s; }
+.hero__content [data-reveal]:nth-child(5) { --reveal-delay: 0.33s; }
+.hero__content [data-reveal]:nth-child(6) { --reveal-delay: 0.4s; }
+
+[data-reveal-stagger] > [data-reveal]:nth-child(1),
+[data-reveal-stagger] > .reveal:nth-child(1) { --reveal-delay: 0.06s; }
+[data-reveal-stagger] > [data-reveal]:nth-child(2),
+[data-reveal-stagger] > .reveal:nth-child(2) { --reveal-delay: 0.14s; }
+[data-reveal-stagger] > [data-reveal]:nth-child(3),
+[data-reveal-stagger] > .reveal:nth-child(3) { --reveal-delay: 0.22s; }
+[data-reveal-stagger] > [data-reveal]:nth-child(4),
+[data-reveal-stagger] > .reveal:nth-child(4) { --reveal-delay: 0.3s; }
+[data-reveal-stagger] > [data-reveal]:nth-child(5),
+[data-reveal-stagger] > .reveal:nth-child(5) { --reveal-delay: 0.38s; }
+[data-reveal-stagger] > [data-reveal]:nth-child(6),
+[data-reveal-stagger] > .reveal:nth-child(6) { --reveal-delay: 0.46s; }
+[data-reveal-stagger] > [data-reveal]:nth-child(7),
+[data-reveal-stagger] > .reveal:nth-child(7) { --reveal-delay: 0.54s; }
+
+@media (prefers-reduced-motion: reduce) {
+  html.js-reveal [data-reveal],
+  html.js-reveal .reveal,
+  html.js-reveal .site-header {
+    opacity: 1;
+    transform: none;
+    transition: none;
+  }
+}
+
+@media (max-width: 768px) {
+  html.js-reveal [data-reveal="left"],
+  html.js-reveal [data-reveal="right"],
+  html.js-reveal .reveal--left,
+  html.js-reveal .reveal--right {
+    transform: translate3d(0, 64px, 0);
+  }
+}
