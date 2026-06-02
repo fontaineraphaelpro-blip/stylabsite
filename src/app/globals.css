@@ -1263,6 +1263,8 @@ body {
   right: 16.666%;
   height: 2px;
   z-index: 0;
+  overflow: hidden;
+  border-radius: 2px;
 }
 
 .steps-track__line-bg {
@@ -1278,7 +1280,7 @@ body {
   background: linear-gradient(90deg, #8d54ff, #c084fc, #8d54ff);
   border-radius: 2px;
   transform-origin: left center;
-  box-shadow: 0 0 20px rgba(141, 84, 255, 0.5);
+  will-change: transform, opacity;
 }
 
 .steps-card {
@@ -1326,15 +1328,6 @@ body {
   background: rgba(141, 84, 255, 0.12);
   border: 1px solid rgba(141, 84, 255, 0.25);
   color: #c4b5fd;
-}
-
-.steps-card__connector {
-  position: absolute;
-  left: 2.25rem;
-  bottom: -1.5rem;
-  width: 2px;
-  height: 1.5rem;
-  background: linear-gradient(180deg, rgba(141, 84, 255, 0.5), transparent);
 }
 
 .steps-card__chip {

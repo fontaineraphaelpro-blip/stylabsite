@@ -36,7 +36,8 @@ export function HowItWorksSection({ locale }: { locale: Locale }) {
   const fr = locale === "fr";
   const ref = useRef<HTMLElement>(null);
   const { scrollYProgress } = useScroll({ target: ref, offset: ["start 0.7", "end 0.4"] });
-  const lineScale = useTransform(scrollYProgress, [0, 0.85], [0, 1]);
+  const lineScale = useTransform(scrollYProgress, [0.1, 0.9], [0, 1]);
+  const lineOpacity = useTransform(scrollYProgress, [0, 0.08, 0.1, 0.9], [0, 0, 1, 1]);
 
   return (
     <section ref={ref} className="steps-showcase py-24 md:py-32 relative" aria-labelledby="steps-title">
@@ -57,7 +58,10 @@ export function HowItWorksSection({ locale }: { locale: Locale }) {
           {/* Desktop connector line */}
           <div className="hidden lg:block steps-track__line-wrap" aria-hidden="true">
             <div className="steps-track__line-bg" />
-            <motion.div className="steps-track__line-fill" style={{ scaleX: lineScale }} />
+            <motion.div
+              className="steps-track__line-fill"
+              style={{ scaleX: lineScale, opacity: lineOpacity }}
+            />
           </div>
 
           <ol className="grid lg:grid-cols-3 gap-6 lg:gap-8">
@@ -73,11 +77,6 @@ export function HowItWorksSection({ locale }: { locale: Locale }) {
                     <span className="steps-card__num">{String(i + 1).padStart(2, "0")}</span>
                     <span className="steps-card__icon">{stepIcons[i]}</span>
                   </div>
-
-                  {/* Mobile vertical connector */}
-                  {i < t.steps.length - 1 && (
-                    <div className="steps-card__connector lg:hidden" aria-hidden="true" />
-                  )}
 
                   <h3 className="text-lg sm:text-xl font-bold mb-2">{step.title}</h3>
                   <p className="text-sm text-zinc-400 leading-relaxed">{step.desc}</p>
