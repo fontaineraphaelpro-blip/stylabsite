@@ -5,8 +5,10 @@
   root.classList.add("js-reveal");
 
   var reduced = false;
-  var scrollReady = false;
-  var SCROLL_MIN = 48;
+  var activated = false;
+  var bootY = 0;
+  var io = null;
+  var scrollItems = [];
 
   try {
     reduced = global.matchMedia("(prefers-reduced-motion: reduce)").matches;
@@ -34,34 +36,47 @@
   function inView(el) {
     var rect = el.getBoundingClientRect();
     var vh = global.innerHeight || document.documentElement.clientHeight || 800;
-    return rect.top < vh * 0.88 && rect.bottom > vh * 0.1;
+    return rect.top < vh * 0.86 && rect.bottom > vh * 0.12;
   }
 
-  function canRevealOnScroll(el) {
-    if (reduced) return true;
-    if (!scrollReady && global.scrollY < SCROLL_MIN) return false;
-    return inView(el);
+  function scanScrollItems() {
+    if (!activated && !reduced) return;
+    scrollItems.forEach(function (el) {
+      if (!isShown(el) && inView(el)) show(el);
+    });
   }
 
-  function collect() {
-    return Array.prototype.slice.call(
-      document.querySelectorAll("[data-reveal], .reveal")
-    );
+  function activate() {
+    if (activated) return;
+    activated = true;
+    scanScrollItems();
+  }
+
+  function maybeActivate() {
+    if (activated || reduced) return;
+    if (Math.abs(global.scrollY - bootY) > 36) activate();
+  }
+
+  function collectScrollItems() {
+    return Array.prototype.slice
+      .call(document.querySelectorAll("[data-reveal], .reveal"))
+      .filter(function (el) {
+        return !inHero(el);
+      });
   }
 
   function boot() {
-    var items = collect();
-    var header = document.getElementById("siteHeader");
-    var heroItems = [];
-    var scrollItems = [];
+    if ("scrollRestoration" in global.history) {
+      global.history.scrollRestoration = "manual";
+    }
+    global.scrollTo(0, 0);
+    bootY = global.scrollY || 0;
 
-    items.forEach(function (el) {
-      if (inHero(el)) heroItems.push(el);
-      else scrollItems.push(el);
-    });
+    scrollItems = collectScrollItems();
+    var header = document.getElementById("siteHeader");
 
     if (reduced) {
-      items.forEach(show);
+      scrollItems.forEach(show);
       if (header) show(header);
       return;
     }
@@ -69,39 +84,20 @@
     if (header) {
       global.setTimeout(function () {
         show(header);
-      }, 30);
+      }, 20);
     }
 
-    heroItems.forEach(function (el, i) {
-      global.setTimeout(function () {
-        show(el);
-      }, 60 + i * 100);
-    });
-
-    function markScrollReady() {
-      if (scrollReady) return;
-      scrollReady = true;
-      scanScrollItems();
-    }
-
-    function scanScrollItems() {
-      scrollItems.forEach(function (el) {
-        if (!isShown(el) && canRevealOnScroll(el)) show(el);
-      });
-    }
-
-    var io = null;
     if ("IntersectionObserver" in global) {
       io = new IntersectionObserver(
         function (entries) {
+          if (!activated) return;
           entries.forEach(function (entry) {
             if (!entry.isIntersecting) return;
-            if (!canRevealOnScroll(entry.target)) return;
             show(entry.target);
             io.unobserve(entry.target);
           });
         },
-        { threshold: 0.12, rootMargin: "0px 0px -8% 0px" }
+        { threshold: 0.14, rootMargin: "0px 0px -10% 0px" }
       );
 
       scrollItems.forEach(function (el) {
@@ -111,7 +107,8 @@
 
     var ticking = false;
     function onScroll() {
-      if (global.scrollY >= SCROLL_MIN) scrollReady = true;
+      maybeActivate();
+      if (!activated) return;
       if (ticking) return;
       ticking = true;
       global.requestAnimationFrame(function () {
@@ -121,18 +118,31 @@
     }
 
     global.addEventListener("scroll", onScroll, { passive: true });
-    global.addEventListener("resize", onScroll, { passive: true });
-    global.addEventListener("wheel", markScrollReady, { passive: true, once: true });
-    global.addEventListener("touchmove", markScrollReady, { passive: true, once: true });
+    global.addEventListener(
+      "wheel",
+      function () {
+        maybeActivate();
+      },
+      { passive: true }
+    );
+    global.addEventListener(
+      "touchmove",
+      function () {
+        maybeActivate();
+      },
+      { passive: true }
+    );
     global.addEventListener("keydown", function (e) {
-      if (e.key === "ArrowDown" || e.key === "PageDown" || e.key === " ") markScrollReady();
+      if (
+        e.key === "ArrowDown" ||
+        e.key === "PageDown" ||
+        e.key === " " ||
+        e.key === "ArrowUp" ||
+        e.key === "PageUp"
+      ) {
+        maybeActivate();
+      }
     });
-
-    global.setTimeout(function () {
-      scrollItems.forEach(function (el) {
-        if (!isShown(el) && inView(el)) show(el);
-      });
-    }, 6000);
   }
 
   if (document.readyState === "loading") {

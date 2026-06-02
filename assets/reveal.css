@@ -1,4 +1,4 @@
-/* Scroll reveal — standalone, no CSS variables inside transform */
+/* Scroll reveal — hero on load (CSS), everything else on scroll */
 
 html.js-reveal [data-reveal],
 html.js-reveal .reveal {
@@ -11,29 +11,21 @@ html.js-reveal .reveal {
   will-change: opacity, transform;
 }
 
-html.js-reveal [data-reveal="up"],
-html.js-reveal .reveal--up {
-  transform: translate3d(0, 80px, 0);
+html.js-reveal .hero [data-reveal] {
+  opacity: 1;
+  transform: none;
+  transition: none;
+  will-change: auto;
 }
 
-html.js-reveal [data-reveal="down"],
-html.js-reveal .reveal--down {
-  transform: translate3d(0, -48px, 0);
-}
+html.js-reveal [data-reveal="left"] { transform: translate3d(-80px, 0, 0); }
+html.js-reveal [data-reveal="right"] { transform: translate3d(80px, 0, 0); }
+html.js-reveal [data-reveal="scale"] { transform: translate3d(0, 48px, 0) scale(0.92); }
 
-html.js-reveal [data-reveal="left"],
-html.js-reveal .reveal--left {
-  transform: translate3d(-80px, 0, 0);
-}
-
-html.js-reveal [data-reveal="right"],
-html.js-reveal .reveal--right {
-  transform: translate3d(80px, 0, 0);
-}
-
-html.js-reveal [data-reveal="scale"],
-html.js-reveal .reveal--scale {
-  transform: translate3d(0, 48px, 0) scale(0.92);
+html.js-reveal .hero [data-reveal="left"],
+html.js-reveal .hero [data-reveal="right"],
+html.js-reveal .hero [data-reveal="scale"] {
+  transform: none;
 }
 
 html.js-reveal [data-reveal].is-inview,
@@ -62,6 +54,7 @@ html.js-reveal .site-header.is-inview {
 .hero__content [data-reveal]:nth-child(4) { --reveal-delay: 0.26s; }
 .hero__content [data-reveal]:nth-child(5) { --reveal-delay: 0.33s; }
 .hero__content [data-reveal]:nth-child(6) { --reveal-delay: 0.4s; }
+.hero__visual[data-reveal] { --reveal-delay: 0.22s; }
 
 [data-reveal-stagger] > [data-reveal]:nth-child(1),
 [data-reveal-stagger] > .reveal:nth-child(1) { --reveal-delay: 0.06s; }

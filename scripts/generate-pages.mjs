@@ -504,8 +504,8 @@ function layout({ locale, depth, title, description, body, activeNav, extraScrip
     <link href="https://fonts.googleapis.com/css2?family=Geist:wght@400;500;600;700;800&family=Geist+Mono:wght@400;500&display=swap" rel="stylesheet">
     <link rel="stylesheet" href="${px.assets}home.css?v=8">
     <link rel="stylesheet" href="${px.assets}pages.css?v=2">
-    <link rel="stylesheet" href="${px.assets}reveal.css?v=1">
-    <style id="reveal-critical">html.js-reveal [data-reveal],html.js-reveal .reveal{opacity:0;transform:translate3d(0,72px,0);transition:opacity .95s cubic-bezier(.16,1,.3,1),transform .95s cubic-bezier(.16,1,.3,1)}html.js-reveal [data-reveal].is-inview,html.js-reveal .reveal.is-inview,html.js-reveal [data-reveal].visible,html.js-reveal .reveal.visible{opacity:1;transform:none}</style>
+    <link rel="stylesheet" href="${px.assets}reveal.css?v=3">
+    <style id="reveal-critical">html.js-reveal [data-reveal],html.js-reveal .reveal{opacity:0;transform:translate3d(0,72px,0);transition:opacity .95s cubic-bezier(.16,1,.3,1),transform .95s cubic-bezier(.16,1,.3,1)}html.js-reveal .hero [data-reveal]{opacity:1;transform:none;transition:none}html.js-reveal [data-reveal].is-inview,html.js-reveal .reveal.is-inview{opacity:1;transform:none}</style>
     <script>document.documentElement.classList.add("js-reveal");</script>
 </head>
 <body class="home page-sub">
@@ -554,7 +554,7 @@ function layout({ locale, depth, title, description, body, activeNav, extraScrip
     <div class="sticky-cta">
         ${installBtn(u.install, px.assets)}
     </div>
-    <script src="${px.assets}reveal.js?v=2"></script>
+    <script src="${px.assets}reveal.js?v=3"></script>
     <script src="${px.assets}home.js?v=8" defer></script>${extraScripts}
 </body>
 </html>`;
