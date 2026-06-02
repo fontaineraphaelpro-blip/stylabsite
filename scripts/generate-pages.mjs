@@ -502,11 +502,11 @@ function layout({ locale, depth, title, description, body, activeNav, extraScrip
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Geist:wght@400;500;600;700;800&family=Geist+Mono:wght@400;500&display=swap" rel="stylesheet">
-    <link rel="stylesheet" href="${px.assets}home.css?v=8">
-    <link rel="stylesheet" href="${px.assets}pages.css?v=2">
-    <link rel="stylesheet" href="${px.assets}reveal.css?v=3">
-    <style id="reveal-critical">html.js-reveal [data-reveal],html.js-reveal .reveal{opacity:0;transform:translate3d(0,72px,0);transition:opacity .95s cubic-bezier(.16,1,.3,1),transform .95s cubic-bezier(.16,1,.3,1)}html.js-reveal .hero [data-reveal]{opacity:1;transform:none;transition:none}html.js-reveal [data-reveal].is-inview,html.js-reveal .reveal.is-inview{opacity:1;transform:none}</style>
     <script>document.documentElement.classList.add("js-reveal");</script>
+    <link rel="stylesheet" href="${px.assets}home.css?v=9">
+    <link rel="stylesheet" href="${px.assets}pages.css?v=3">
+    <link rel="stylesheet" href="${px.assets}reveal.css?v=5">
+    <link rel="stylesheet" href="${px.assets}motion.css?v=1">
 </head>
 <body class="home page-sub">
     <div class="page-bg" aria-hidden="true">
@@ -554,8 +554,8 @@ function layout({ locale, depth, title, description, body, activeNav, extraScrip
     <div class="sticky-cta">
         ${installBtn(u.install, px.assets)}
     </div>
-    <script src="${px.assets}reveal.js?v=3"></script>
-    <script src="${px.assets}home.js?v=8" defer></script>${extraScripts}
+    <script src="${px.assets}reveal.js?v=4"></script>
+    <script src="${px.assets}home.js?v=9" defer></script>${extraScripts}
 </body>
 </html>`;
 }
