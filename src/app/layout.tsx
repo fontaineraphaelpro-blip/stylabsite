@@ -10,7 +10,7 @@ export const metadata: Metadata = {
     template: "%s | Stylab Virtual Try-On",
   },
   description:
-    "AI virtual try-on for Shopify apparel: try the live demo, then install free in ~5 min. 77.8% try-on → add-to-cart on our pilot store.",
+    "AI virtual try-on for Shopify apparel. Try the live demo, install free from the App Store — live in ~5 min.",
   icons: { icon: "/assets/logo.png", apple: "/assets/logo.png" },
 };
 

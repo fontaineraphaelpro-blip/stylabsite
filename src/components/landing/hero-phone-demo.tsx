@@ -89,7 +89,7 @@ export function HeroPhoneDemo({ locale }: { locale: Locale }) {
                 <span />
               </div>
               <p className="hero-phone__loading-sub">
-                {fr ? "~30 secondes" : "~30 seconds"}
+                {fr ? "Quelques instants…" : "Just a moment…"}
               </p>
             </div>
           </div>

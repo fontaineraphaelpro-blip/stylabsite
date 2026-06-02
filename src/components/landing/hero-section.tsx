@@ -57,10 +57,7 @@ export function HeroSection({ locale }: { locale: Locale }) {
           <FadeInHero delay={0.5}>
             <div className="hero-proof">
               <ul className="hero-proof__chips" aria-label={locale === "fr" ? "Avantages" : "Highlights"}>
-                {(locale === "fr"
-                  ? ["50 essayages gratuits/mois", "Sans carte", "En ligne en ~5 min"]
-                  : ["50 free try-ons/mo", "No credit card", "Live in ~5 min"]
-                ).map((chip) => (
+                {t.heroChips.map((chip) => (
                   <li key={chip}>{chip}</li>
                 ))}
               </ul>

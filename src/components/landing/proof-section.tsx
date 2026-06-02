@@ -65,10 +65,6 @@ export function ProofSection({ locale }: { locale: Locale }) {
                   </li>
                 ))}
               </ul>
-              <div className="proof-card__stat" aria-hidden="true">
-                <strong>77.8%</strong>
-                <span>{locale === "fr" ? "essayage → panier" : "try-on → cart"}</span>
-              </div>
             </motion.div>
           </FadeIn>
         </div>

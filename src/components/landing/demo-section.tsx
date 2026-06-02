@@ -10,12 +10,12 @@ import { APP_URL, type Locale, UI, localePath } from "@/lib/content";
 const DEMO_STEPS = {
   en: [
     { n: "01", title: "Upload", desc: "One photo from your phone" },
-    { n: "02", title: "AI preview", desc: "Garment on you in ~30s" },
+    { n: "02", title: "AI preview", desc: "Garment mapped to your photo" },
     { n: "03", title: "Add to cart", desc: "Same PDP flow as shoppers" },
   ],
   fr: [
     { n: "01", title: "Uploadez", desc: "Une photo depuis votre téléphone" },
-    { n: "02", title: "Aperçu IA", desc: "Le vêtement sur vous en ~30 s" },
+    { n: "02", title: "Aperçu IA", desc: "Le vêtement sur votre photo" },
     { n: "03", title: "Ajoutez", desc: "Même parcours que vos clients" },
   ],
 } as const;

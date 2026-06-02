@@ -70,18 +70,6 @@ export function InstallPushSection({ locale }: { locale: Locale }) {
                 </motion.div>
               ))}
 
-              <motion.div
-                initial={{ opacity: 0, scale: 0.95 }}
-                whileInView={{ opacity: 1, scale: 1 }}
-                viewport={{ once: true }}
-                transition={{ delay: 0.45, duration: 0.5 }}
-                className="install-timeline__badge"
-              >
-                <span className="install-timeline__badge-num">50</span>
-                <span className="install-timeline__badge-label">
-                  {locale === "fr" ? "essayages gratuits / mois" : "free try-ons / month"}
-                </span>
-              </motion.div>
             </div>
           </FadeIn>
         </div>

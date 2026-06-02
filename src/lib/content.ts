@@ -20,8 +20,9 @@ export const UI = {
     heroBadge: "Shopify · AI virtual try-on",
     heroTitle: "Turn hesitation into",
     heroTitleAccent: "add to cart",
-    heroLead: "One photo on your product page. ~30 seconds to see the fit — then add to cart.",
-    heroNote: "50 free try-ons/mo · no credit card · live in ~5 min",
+    heroLead: "One photo on your product page. Shoppers see the fit — then add to cart.",
+    heroNote: "No credit card · live in ~5 min · Shopify App Store",
+    heroChips: ["Shopify App Store", "No credit card", "Live in ~5 min"],
     stats: [
       { value: "77.8%", label: "try-on → cart (pilot)" },
       { value: "~30s", label: "preview on PDP" },
@@ -45,7 +46,7 @@ export const UI = {
       },
       {
         title: "Zero risk to start",
-        desc: "50 free try-ons per month. No credit card. Photos processed for preview only — not stored.",
+        desc: "Free plan to start. No credit card. Photos processed for preview only — not stored.",
         icon: "shield",
       },
     ],
@@ -91,7 +92,7 @@ export const UI = {
     ],
     ctaTitle: "Ready to sell with",
     ctaTitleAccent: "confidence",
-    ctaDesc: "Free install · 50 try-ons/mo · live in ~5 min",
+    ctaDesc: "Free install · live in ~5 min",
     ctaDemo: "Try demo again",
     footerTagline:
       "AI virtual try-on for Shopify apparel brands. Help shoppers visualize your products before they buy.",
@@ -110,8 +111,8 @@ export const UI = {
     ],
     proofWithTitle: "With Stylab",
     proofWithItems: [
-      "77.8% try-on → cart on our pilot",
-      "~30s preview locks purchase intent",
+      "Try-on shoppers add to cart with confidence",
+      "Preview without leaving your store",
       "Fewer fit surprises at delivery",
       "Analytics on every session",
     ],
@@ -127,7 +128,7 @@ export const UI = {
       { time: "5 min", title: "First try-on", desc: "Widget live — shoppers can preview" },
     ],
     installChecks: [
-      "50 free try-ons / month",
+      "Free plan included",
       "No credit card required",
       "Photos not stored",
       "Cancel anytime from Shopify",
@@ -148,8 +149,9 @@ export const UI = {
     heroBadge: "Shopify · essayage virtuel IA",
     heroTitle: "Transformez l'hésitation en",
     heroTitleAccent: "ajout au panier",
-    heroLead: "Une photo sur votre fiche produit. ~30 secondes pour voir le rendu — puis ajout au panier.",
-    heroNote: "50 essayages gratuits/mois · sans carte · en ligne en ~5 min",
+    heroLead: "Une photo sur votre fiche produit. Vos clients voient le rendu — puis ajoutent au panier.",
+    heroNote: "Sans carte · en ligne en ~5 min · App Store Shopify",
+    heroChips: ["App Store Shopify", "Sans carte", "En ligne en ~5 min"],
     stats: [
       { value: "77,8 %", label: "essayage → panier (pilote)" },
       { value: "~30 s", label: "aperçu sur PDP" },
@@ -173,7 +175,7 @@ export const UI = {
       },
       {
         title: "Zéro risque pour démarrer",
-        desc: "50 essayages gratuits par mois. Sans carte. Photos traitées pour l'aperçu uniquement.",
+        desc: "Plan gratuit pour démarrer. Sans carte. Photos traitées pour l'aperçu uniquement.",
         icon: "shield",
       },
     ],
@@ -219,7 +221,7 @@ export const UI = {
     ],
     ctaTitle: "Prêt à vendre avec",
     ctaTitleAccent: "confiance",
-    ctaDesc: "Installation gratuite · 50 essayages/mois · ~5 min",
+    ctaDesc: "Installation gratuite · en ligne en ~5 min",
     ctaDemo: "Revoir la démo",
     footerTagline:
       "Essayage virtuel IA pour marques apparel Shopify. Aidez vos clients à visualiser vos produits avant d'acheter.",
@@ -238,8 +240,8 @@ export const UI = {
     ],
     proofWithTitle: "Avec Stylab",
     proofWithItems: [
-      "77,8 % essayage → panier (pilote)",
-      "~30 s pour verrouiller l'intention",
+      "Les clients qui essaient achètent avec plus de confiance",
+      "Aperçu sans quitter votre boutique",
       "Moins de mauvaises surprises à la livraison",
       "Analytics sur chaque session",
     ],
@@ -255,7 +257,7 @@ export const UI = {
       { time: "5 min", title: "1er essayage", desc: "Widget live — vos clients preview" },
     ],
     installChecks: [
-      "50 essayages gratuits / mois",
+      "Plan gratuit inclus",
       "Sans carte bancaire",
       "Photos non stockées",
       "Résiliable depuis Shopify",

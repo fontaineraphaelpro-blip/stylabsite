@@ -27,9 +27,9 @@ const icons: Record<string, ReactNode> = {
 };
 
 const accents = [
-  { stat: "77.8%", labelEn: "try-on → cart", labelFr: "essayage → panier", glow: "features-glow--violet" },
+  { stat: "PDP", labelEn: "widget live", labelFr: "widget actif", glow: "features-glow--violet" },
   { stat: "~5 min", labelEn: "to go live", labelFr: "mise en ligne", glow: "features-glow--cyan" },
-  { stat: "50", labelEn: "free / month", labelFr: "gratuits / mois", glow: "features-glow--emerald" },
+  { stat: "Free", labelEn: "plan to start", labelFr: "plan pour démarrer", glow: "features-glow--emerald" },
 ];
 
 export function FeaturesSection({ locale }: { locale: Locale }) {
