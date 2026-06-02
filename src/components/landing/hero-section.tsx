@@ -85,8 +85,8 @@ export function HeroSection({ locale }: { locale: Locale }) {
             <HeroPhoneDemo locale={locale} />
             <p className="sr-only">
               {locale === "fr"
-                ? "Animation : page produit, essayage IA, résultat, ajout au panier et revenu généré."
-                : "Animation: product page, AI try-on, result, add to cart, and revenue earned."}
+                ? "Animation : page produit, modal widget Stylab, essayage IA, ajout au panier, revenus multipliés."
+                : "Animation: product page, Stylab widget modal, AI try-on, add to cart, multiplied revenue."}
             </p>
           </motion.div>
         </motion.div>

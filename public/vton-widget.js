@@ -2608,56 +2608,107 @@
             }
             .vton-install-cta {
               width: 100%;
-              margin-top: 4px;
-              padding: 14px 12px;
-              border-radius: 14px;
-              background: linear-gradient(135deg, rgba(141, 84, 255, 0.12), rgba(109, 40, 217, 0.08));
-              border: 1px solid rgba(141, 84, 255, 0.28);
-              text-align: center;
+              margin-top: 2px;
               flex-shrink: 0;
             }
             .vton-install-cta__lead {
-              margin: 0 0 10px;
-              font-size: 14px;
-              font-weight: 600;
-              color: #0f172a;
-              letter-spacing: -0.01em;
+              margin: 0 0 8px;
+              font-size: 11px;
+              font-weight: 700;
+              color: #64748b;
+              letter-spacing: 0.08em;
+              text-transform: uppercase;
+              text-align: center;
             }
             .vton-install-cta__btn {
-              display: inline-flex;
+              display: flex;
               align-items: center;
-              justify-content: center;
-              gap: 8px;
+              gap: 12px;
               width: 100%;
-              min-height: 48px;
-              padding: 12px 16px;
-              border-radius: 12px;
-              background: linear-gradient(135deg, #8d54ff, #6d28d9);
-              color: #fff;
-              font-size: 14px;
-              font-weight: 700;
+              padding: 10px 12px 10px 10px;
+              border-radius: 14px;
+              background: #fff;
+              border: 1px solid rgba(15, 23, 42, 0.1);
+              box-shadow: 0 2px 14px rgba(15, 23, 42, 0.07);
               text-decoration: none;
-              box-shadow: 0 4px 20px rgba(109, 40, 217, 0.35);
-              animation: vtonInstallCtaPulse 2.4s ease-in-out infinite;
-              transition: transform 0.2s ease, filter 0.2s ease;
+              color: inherit;
+              transition: transform 0.2s ease, box-shadow 0.2s ease, border-color 0.2s ease;
+              box-sizing: border-box;
             }
             .vton-install-cta__btn:hover {
-              filter: brightness(1.06);
               transform: translateY(-1px);
+              border-color: rgba(141, 84, 255, 0.35);
+              box-shadow: 0 6px 22px rgba(141, 84, 255, 0.14);
             }
-            .vton-install-cta__logo {
-              width: 18px;
-              height: 18px;
+            .vton-install-cta__btn:active {
+              transform: translateY(0);
+            }
+            .vton-install-cta__icon {
+              width: 38px;
+              height: 38px;
+              border-radius: 11px;
+              background: linear-gradient(145deg, #95bf47 0%, #5e8e3e 100%);
+              display: flex;
+              align-items: center;
+              justify-content: center;
               flex-shrink: 0;
+              box-shadow: inset 0 1px 0 rgba(255, 255, 255, 0.22);
+            }
+            .vton-install-cta__icon svg {
+              width: 20px;
+              height: 20px;
               display: block;
             }
-            @keyframes vtonInstallCtaPulse {
-              0%, 100% {
-                box-shadow: 0 4px 20px rgba(109, 40, 217, 0.35);
-              }
-              50% {
-                box-shadow: 0 4px 28px rgba(141, 84, 255, 0.55), 0 0 0 4px rgba(141, 84, 255, 0.12);
-              }
+            .vton-install-cta__label {
+              flex: 1;
+              min-width: 0;
+              display: flex;
+              flex-direction: column;
+              gap: 2px;
+              text-align: left;
+            }
+            .vton-install-cta__title {
+              font-size: 14px;
+              font-weight: 700;
+              color: #0f172a;
+              letter-spacing: -0.02em;
+              line-height: 1.25;
+            }
+            .vton-install-cta__meta {
+              font-size: 11px;
+              font-weight: 500;
+              color: #64748b;
+              line-height: 1.3;
+            }
+            .vton-install-cta__arrow {
+              width: 30px;
+              height: 30px;
+              border-radius: 50%;
+              background: linear-gradient(135deg, #8d54ff, #6d28d9);
+              color: #fff;
+              display: flex;
+              align-items: center;
+              justify-content: center;
+              flex-shrink: 0;
+              box-shadow: 0 4px 14px rgba(109, 40, 217, 0.32);
+            }
+            .vton-install-cta__arrow svg {
+              width: 14px;
+              height: 14px;
+              display: block;
+            }
+            .vton-result-content--demo {
+              gap: 8px;
+            }
+            .vton-result-content--demo .vton-result-image,
+            .vton-result-content--demo .vton-result img {
+              max-height: min(34dvh, 240px);
+            }
+            .vton-result-content--demo .vton-result-lead {
+              font-size: 14px;
+            }
+            .vton-result-content--demo .vton-add-to-cart-btn {
+              padding: 14px 18px;
             }
             .vton-share-block {
               width: 100%;
@@ -2879,7 +2930,10 @@
             .vton-env-mobile .vton-result-content {
               flex: 1;
               min-height: 0;
-              overflow: hidden;
+              overflow-x: hidden;
+              overflow-y: auto;
+              -webkit-overflow-scrolling: touch;
+              overscroll-behavior: contain;
             }
             @media (max-width: 640px) {
               .vton-widget-container {
@@ -3007,6 +3061,32 @@
               .vton-modal-content.has-result {
                 padding: 44px 12px 12px;
                 justify-content: flex-start;
+                overflow-y: auto;
+                overflow-x: hidden;
+              }
+              .vton-install-cta__btn {
+                gap: 10px;
+                padding: 8px 10px 8px 8px;
+              }
+              .vton-install-cta__icon {
+                width: 34px;
+                height: 34px;
+                border-radius: 10px;
+              }
+              .vton-install-cta__icon svg {
+                width: 18px;
+                height: 18px;
+              }
+              .vton-install-cta__title {
+                font-size: 13px;
+              }
+              .vton-install-cta__arrow {
+                width: 28px;
+                height: 28px;
+              }
+              .vton-result-content--demo .vton-result-image,
+              .vton-result-content--demo .vton-result img {
+                max-height: min(32dvh, 190px);
               }
               .vton-funnel-head {
                 margin-bottom: 12px;
@@ -3352,6 +3432,23 @@
           )
           .replace(/\s+/g, ' ')
           .trim();
+      }
+
+      function vtonShopifyIconSvg() {
+        return (
+          '<svg viewBox="0 0 24 24" aria-hidden="true" xmlns="http://www.w3.org/2000/svg">' +
+          '<path fill="#fff" d="M15.34 3.04c-.05-.01-1.04-.24-1.04-.24S13.5 1.9 12.78 1.74c-.73-.17-1.82-.1-2.26-.05-.05-.52-.18-1.03-.4-1.51C9.56-.3 8.52-.05 7.9.46 7.1-.18 6-.06 5.35.58 4.2 1.73 3.99 3.64 4.04 4.52c-1.36.42-2.32.72-2.38.75-.7.22-.72.24-.81.89C1.01 6.53.18 11.92.18 11.92l14.58 2.54V3.04h.58zm-.98 1.09v3.24l-2.98-.52c.03-.93.11-2.18.11-2.18s.55.09 1.08.18c0 0 .96-1.04 1.92-1.63zm-3.02-.52c.01-.76.06-1.49.18-2.16.46-.08.99-.13 1.36-.01.18.56.29 1.2.33 1.89l-1.87-.72zM9.37 2.4c.28-.07.61-.1.94-.06.25.65.42 1.39.47 2.19L9.37 2.4zM7.54 3.17c.15-.22.39-.4.72-.52.14.52.23 1.09.26 1.7l-1.42-.55c.14-.22.29-.43.44-.63z"/>' +
+          '<path fill="#fff" d="M.18 11.92l14.58 2.54s-.13 2.6-.26 3.58c-.1.78-.65 1.47-1.39 1.7-.5.15-3.01.94-3.01.94S7.5 21.98 5.77 22.3c-1.72.32-2.14-.11-2.39-.82-.24-.71-1.65-9.94-1.65-9.94s3.55.82 3.71.86c.16.04.3-.04.38-.18.08-.14 2.56-5.3 2.56-5.3z"/>' +
+          '</svg>'
+        );
+      }
+
+      function vtonInstallCtaArrowSvg() {
+        return (
+          '<svg viewBox="0 0 24 24" aria-hidden="true" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round">' +
+          '<path d="M5 12h14"/><path d="M13 6l6 6-6 6"/>' +
+          '</svg>'
+        );
       }
 
       function vtonShareIconSvg(name) {
@@ -4561,29 +4658,35 @@
           return '';
         }
         var fr = cta.locale === 'fr';
-        var lead = fr ? 'Vous avez aimé ?' : 'Did you like it?';
-        var btn = fr ? 'Installer l\u2019app maintenant' : 'Install the app now';
-        var logo = cta.logoUrl || '/assets/shopify-icon-logo.svg';
-        var logoAbs =
-          logo.indexOf('http') === 0
-            ? logo
-            : window.location.origin + (logo.charAt(0) === '/' ? logo : '/' + logo);
+        var lead = fr ? 'Ça vous plaît ?' : 'Like what you see?';
+        var title = fr ? 'Installer sur Shopify' : 'Install on Shopify';
+        var meta = fr ? 'Gratuit · en ligne en ~5 min' : 'Free · live in ~5 min';
         return (
-          '<div class="vton-install-cta">' +
+          '<aside class="vton-install-cta" aria-label="' +
+          vtonEscapeHtml(fr ? 'Installer Stylab' : 'Install Stylab') +
+          '">' +
           '<p class="vton-install-cta__lead">' +
           vtonEscapeHtml(lead) +
           '</p>' +
           '<a class="vton-install-cta__btn" href="' +
           vtonEscapeHtml(cta.url) +
           '" target="_blank" rel="noopener noreferrer">' +
-          '<img class="vton-install-cta__logo" src="' +
-          vtonEscapeHtml(logoAbs) +
-          '" alt="" width="18" height="18" />' +
-          '<span>' +
-          vtonEscapeHtml(btn) +
+          '<span class="vton-install-cta__icon">' +
+          vtonShopifyIconSvg() +
+          '</span>' +
+          '<span class="vton-install-cta__label">' +
+          '<span class="vton-install-cta__title">' +
+          vtonEscapeHtml(title) +
+          '</span>' +
+          '<span class="vton-install-cta__meta">' +
+          vtonEscapeHtml(meta) +
+          '</span>' +
+          '</span>' +
+          '<span class="vton-install-cta__arrow">' +
+          vtonInstallCtaArrowSvg() +
           '</span>' +
           '</a>' +
-          '</div>'
+          '</aside>'
         );
       }
 
@@ -4620,8 +4723,30 @@
             '<span class="vton-share-btn__label">Share</span></button>'
           : '';
 
+        var liquid = window.VTON_LIQUID || {};
+        var isDemoInstall = !!(liquid.installCta && liquid.installCta.url);
+        var resultContentClass =
+          'vton-result-content' + (isDemoInstall ? ' vton-result-content--demo' : '');
+        var shareBlockHtml = isDemoInstall
+          ? ''
+          : '<div class="vton-share-block">' +
+            '<p class="vton-share-heading">Share your look</p>' +
+            '<div class="' +
+            shareGridClass +
+            '">' +
+            nativeShareBtn +
+            '<button type="button" class="vton-share-btn vton-share-btn--wa" data-vton-action="share-whatsapp">' +
+            vtonShareIconSvg('whatsapp') +
+            '<span class="vton-share-btn__label">WhatsApp</span></button>' +
+            '<button type="button" class="vton-share-btn vton-share-btn--copy" data-vton-action="share-copy" data-vton-label="Copy link">' +
+            vtonShareIconSvg('copy') +
+            '<span class="vton-share-btn__label">Copy link</span></button>' +
+            '</div></div>';
+
         return (
-          '<div class="vton-result-content">' +
+          '<div class="' +
+          resultContentClass +
+          '">' +
           '<img class="vton-result-image" src="' +
           vtonEscapeHtml(state.resultImageUrl) +
           '" alt="Try-on result" />' +
@@ -4643,19 +4768,7 @@
           buttonColor +
           ';">Add to cart</button>' +
           vtonGetInstallCtaHtml() +
-          '<div class="vton-share-block">' +
-          '<p class="vton-share-heading">Share your look</p>' +
-          '<div class="' +
-          shareGridClass +
-          '">' +
-          nativeShareBtn +
-          '<button type="button" class="vton-share-btn vton-share-btn--wa" data-vton-action="share-whatsapp">' +
-          vtonShareIconSvg('whatsapp') +
-          '<span class="vton-share-btn__label">WhatsApp</span></button>' +
-          '<button type="button" class="vton-share-btn vton-share-btn--copy" data-vton-action="share-copy" data-vton-label="Copy link">' +
-          vtonShareIconSvg('copy') +
-          '<span class="vton-share-btn__label">Copy link</span></button>' +
-          '</div></div>' +
+          shareBlockHtml +
           '<button type="button" class="vton-retry-link" data-vton-action="retry">Try another photo</button>' +
           '</div>'
         );

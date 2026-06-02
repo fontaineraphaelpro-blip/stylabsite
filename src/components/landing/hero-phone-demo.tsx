@@ -5,16 +5,40 @@ import Image from "next/image";
 import type { CSSProperties } from "react";
 import type { Locale } from "@/lib/i18n";
 
-const SCENES = ["pdp", "upload", "loading", "result", "success"] as const;
+const SCENES = ["pdp", "upload", "loading", "result", "multiply"] as const;
 type Scene = (typeof SCENES)[number];
 
 const SCENE_MS: Record<Scene, number> = {
-  pdp: 2000,
-  upload: 1500,
-  loading: 2200,
-  result: 2000,
-  success: 2400,
+  pdp: 2400,
+  upload: 2000,
+  loading: 2800,
+  result: 2600,
+  multiply: 3800,
 };
+
+const MULTIPLY_AMOUNTS = [15, 45, 120, 360] as const;
+
+function WidgetStepDots({ active }: { active: 1 | 2 | 3 }) {
+  return (
+    <div className="hero-phone__step-dots" aria-hidden="true">
+      {[1, 2, 3].map((step) => (
+        <span
+          key={step}
+          className={`hero-phone__step-dot${step === active ? " is-active" : step < active ? " is-done" : ""}`}
+        />
+      ))}
+    </div>
+  );
+}
+
+function PersonIcon() {
+  return (
+    <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" aria-hidden="true">
+      <circle cx="12" cy="8" r="4" />
+      <path d="M5 20v-1a7 7 0 0114 0v1" />
+    </svg>
+  );
+}
 
 export function HeroPhoneDemo({ locale }: { locale: Locale }) {
   const fr = locale === "fr";
@@ -50,12 +74,29 @@ export function HeroPhoneDemo({ locale }: { locale: Locale }) {
       return;
     }
     setFlash(true);
-    const timer = setTimeout(() => setFlash(false), 320);
+    const timer = setTimeout(() => setFlash(false), 280);
     return () => clearTimeout(timer);
   }, [scene]);
 
   const sceneClass = (name: Scene) =>
     `hero-phone__scene hero-phone__scene--${name}${scene === name ? " is-active" : ""}`;
+
+  const modalOpen = scene === "upload" || scene === "loading" || scene === "result";
+  const widgetStep: 1 | 2 | 3 =
+    scene === "upload" ? 1 : scene === "loading" ? 2 : 3;
+
+  const funnelLabel =
+    scene === "upload"
+      ? fr
+        ? "Ajoutez votre photo"
+        : "Upload your photo"
+      : scene === "loading"
+        ? fr
+          ? "Génération en cours…"
+          : "Creating your try-on…"
+        : fr
+          ? "Votre essayage"
+          : "Your try-on result";
 
   return (
     <div className="hero-phone hero-phone--playing" data-scene={scene} aria-hidden="true">
@@ -67,7 +108,7 @@ export function HeroPhoneDemo({ locale }: { locale: Locale }) {
       <div className="hero-phone__device">
         <div className="hero-phone__island" />
         <div className="hero-phone__screen">
-          {/* ── 1 · Product page ── */}
+          {/* ── Product page (always underneath) ── */}
           <div className={sceneClass("pdp")}>
             <div className="hero-phone__store-bar">
               <span>←</span>
@@ -108,10 +149,10 @@ export function HeroPhoneDemo({ locale }: { locale: Locale }) {
               </div>
               <div className="hero-phone__try-wrap">
                 <span className="hero-phone__try-beacon" />
-                <button type="button" className="hero-phone__btn hero-phone__btn--try">
-                  <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" aria-hidden="true">
-                    <path d="M12 2a4 4 0 014 4v1h2a2 2 0 012 2v10a2 2 0 01-2 2H6a2 2 0 01-2-2V9a2 2 0 012-2h2V6a4 4 0 014-4z" />
-                  </svg>
+                <button type="button" className="hero-phone__btn hero-phone__btn--try hero-phone__btn--widget">
+                  <span className="hero-phone__btn-icon">
+                    <PersonIcon />
+                  </span>
                   {fr ? "Essayer" : "Try it on"}
                 </button>
               </div>
@@ -121,116 +162,165 @@ export function HeroPhoneDemo({ locale }: { locale: Locale }) {
             </div>
           </div>
 
-          {/* ── 2 · Upload photo ── */}
-          <div className={sceneClass("upload")}>
-            <div className="hero-phone__upload-dim" />
-            <div className="hero-phone__upload-sheet">
-              <div className="hero-phone__upload-handle" />
-              <p className="hero-phone__upload-title">
-                {fr ? "Votre photo" : "Your photo"}
-              </p>
-              <p className="hero-phone__upload-sub">
-                {fr ? "Une selfie suffit — jamais stockée" : "One selfie — never stored"}
-              </p>
-              <div className="hero-phone__upload-zone">
-                <div className="hero-phone__upload-icon" aria-hidden="true">📷</div>
-                <div className="hero-phone__upload-thumb" />
-                <div className="hero-phone__upload-scan" />
-              </div>
-              <button type="button" className="hero-phone__btn hero-phone__btn--upload">
-                {fr ? "Continuer" : "Continue"}
+          {/* ── Real widget modal (upload → loading → result) ── */}
+          <div className={`hero-phone__widget-overlay${modalOpen ? " is-open" : ""}`}>
+            <div className="hero-phone__widget-modal">
+              <button type="button" className="hero-phone__widget-close" aria-hidden="true">
+                ×
               </button>
-            </div>
-          </div>
+              <div className="hero-phone__widget-head">
+                <WidgetStepDots active={modalOpen ? widgetStep : 1} />
+                <p className="hero-phone__widget-label">{modalOpen ? funnelLabel : ""}</p>
+              </div>
 
-          {/* ── 3 · AI processing ── */}
-          <div className={sceneClass("loading")}>
-            <div className="hero-phone__loading-card">
-              <div className="hero-phone__ai-chip">
-                <span className="hero-phone__ai-chip-dot" />
-                {fr ? "Stylab IA" : "Stylab AI"}
-              </div>
-              <div className="hero-phone__loading-bar">
-                <span className="is-done" />
-                <span className="is-active" />
-                <span />
-              </div>
-              <p className="hero-phone__loading-title">
-                {fr ? "Génération en cours…" : "Generating preview…"}
-              </p>
-              <div className="hero-phone__loading-preview">
-                <Image
-                  src="/assets/demo-jersey-main.png"
-                  alt=""
-                  width={200}
-                  height={200}
-                  className="hero-phone__loading-img"
-                />
-                <div className="hero-phone__scan-grid" />
-                <div className="hero-phone__scan-line" />
-                <div className="hero-phone__scan-line hero-phone__scan-line--rev" />
-                <div className="hero-phone__loading-particles">
-                  {Array.from({ length: 6 }).map((_, i) => (
-                    <span key={i} style={{ "--i": i } as CSSProperties} />
-                  ))}
+              <div className="hero-phone__widget-body">
+                <div
+                  className={`hero-phone__widget-panel hero-phone__widget-panel--upload${scene === "upload" ? " is-active" : ""}`}
+                >
+                  <div className="hero-phone__vton-upload">
+                    <div className="hero-phone__vton-upload-visual">
+                      <span className="hero-phone__vton-upload-icon" aria-hidden="true">
+                        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.5">
+                          <path d="M23 19a2 2 0 01-2 2H3a2 2 0 01-2-2V8a2 2 0 012-2h4l2-2h6l2 2h4a2 2 0 012 2z" strokeLinecap="round" strokeLinejoin="round" />
+                          <circle cx="12" cy="13" r="4" />
+                        </svg>
+                      </span>
+                      <p className="hero-phone__vton-upload-title">
+                        {fr ? "Ajoutez votre photo" : "Add your photo"}
+                      </p>
+                      <p className="hero-phone__vton-upload-sub">
+                        {fr ? "Caméra ou galerie · bonne lumière" : "Camera or gallery · good lighting"}
+                      </p>
+                    </div>
+                    <div className="hero-phone__vton-upload-btn">
+                      <span>{fr ? "Choisir une photo" : "Choose photo"}</span>
+                    </div>
+                    <div className="hero-phone__vton-upload-thumb" />
+                    <div className="hero-phone__vton-upload-scan" />
+                  </div>
+                  <p className="hero-phone__vton-privacy">
+                    <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" aria-hidden="true">
+                      <rect x="3" y="11" width="18" height="11" rx="2" />
+                      <path d="M7 11V7a5 5 0 0110 0v4" />
+                    </svg>
+                    {fr ? "Traitement sécurisé · photo non stockée" : "Secure processing · photo not stored"}
+                  </p>
+                  <button type="button" className="hero-phone__vton-generate">
+                    {fr ? "Essayer" : "Try it on"}
+                  </button>
+                </div>
+
+                <div
+                  className={`hero-phone__widget-panel hero-phone__widget-panel--loading${scene === "loading" ? " is-active" : ""}`}
+                >
+                  <div className="hero-phone__vton-loading">
+                    <div className="hero-phone__vton-spinner" />
+                    <p className="hero-phone__vton-loading-text">
+                      {fr ? "Génération de l'essayage" : "Creating your try-on"}
+                      <span className="hero-phone__vton-dots">
+                        <span /><span /><span />
+                      </span>
+                    </p>
+                    <div className="hero-phone__vton-progress-track">
+                      <div className="hero-phone__vton-progress-bar" />
+                    </div>
+                    <div className="hero-phone__vton-progress-meta">
+                      <span className="hero-phone__vton-progress-pct">0%</span>
+                      <span className="hero-phone__vton-progress-time">~30s</span>
+                    </div>
+                    <p className="hero-phone__vton-loading-sub">
+                      {fr ? "Environ 30 secondes en moyenne" : "This usually takes about 30 seconds"}
+                    </p>
+                  </div>
+                </div>
+
+                <div
+                  className={`hero-phone__widget-panel hero-phone__widget-panel--result${scene === "result" ? " is-active" : ""}`}
+                >
+                  <div className="hero-phone__vton-result">
+                    <div className="hero-phone__tryon-frame">
+                      <div className="hero-phone__tryon-user" />
+                      <div className="hero-phone__tryon-shoulders" />
+                      <Image
+                        src="/assets/demo-jersey-main.png"
+                        alt=""
+                        width={220}
+                        height={220}
+                        className="hero-phone__tryon-garment"
+                      />
+                      <div className="hero-phone__tryon-shine" />
+                      <div className="hero-phone__tryon-scan" />
+                    </div>
+                    <p className="hero-phone__vton-result-lead">
+                      {fr ? (
+                        <>
+                          Ajoutez <strong>votre maillot</strong> au panier
+                        </>
+                      ) : (
+                        <>
+                          Add <strong>your jersey</strong> to cart
+                        </>
+                      )}
+                    </p>
+                    <button type="button" className="hero-phone__vton-atc">
+                      {fr ? "Ajouter au panier" : "Add to cart"}
+                    </button>
+                    <div className="hero-phone__vton-cart-toast">
+                      <span>✓</span>
+                      {fr ? "Ajouté au panier" : "Added to cart"}
+                    </div>
+                  </div>
                 </div>
               </div>
-              <div className="hero-phone__progress-track">
-                <div className="hero-phone__progress-fill" />
-              </div>
-              <p className="hero-phone__progress-label">
-                <span className="hero-phone__progress-pct">0</span>%
-              </p>
-              <div className="hero-phone__loading-steps">
-                <span>{fr ? "Analyse" : "Analyze"}</span>
-                <span>{fr ? "Mapping" : "Mapping"}</span>
-                <span>{fr ? "Rendu" : "Render"}</span>
-              </div>
             </div>
           </div>
 
-          {/* ── 4 · Result ── */}
-          <div className={sceneClass("result")}>
-            <div className="hero-phone__result-shimmer" />
-            <Image
-              src="/assets/screenshots/result-modal.png"
-              alt=""
-              width={300}
-              height={640}
-              className="hero-phone__result-full"
-            />
-            <div className="hero-phone__cart-toast">
-              <span>✓</span>
-              {fr ? "Ajouté au panier" : "Added to cart"}
-            </div>
-          </div>
-
-          {/* ── 5 · Success ── */}
-          <div className={sceneClass("success")}>
-            <div className="hero-phone__success-card">
-              <div className="hero-phone__success-burst" />
-              <div className="hero-phone__success-check">
-                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2.5">
-                  <path d="M5 13l4 4L19 7" strokeLinecap="round" strokeLinejoin="round" />
-                </svg>
-              </div>
-              <p className="hero-phone__success-title">
-                {fr ? "Commande sécurisée !" : "Purchase unlocked!"}
+          {/* ── Revenue multiplication finale ── */}
+          <div className={sceneClass("multiply")}>
+            <div className="hero-phone__multiply-bg" />
+            <div className="hero-phone__multiply-content">
+              <p className="hero-phone__multiply-eyebrow">
+                {fr ? "Chaque essayage convertit" : "Every try-on converts"}
               </p>
-              <p className="hero-phone__success-sub">
-                {fr ? "L'essayage a converti ce client" : "Try-on converted this shopper"}
+              <p className="hero-phone__multiply-title">
+                {fr ? "Le gain se multiplie" : "Revenue multiplies"}
               </p>
-              <div className="hero-phone__success-mini">
-                <span>{fr ? "Panier" : "Cart"}</span>
-                <strong>$18.12</strong>
+              <div className="hero-phone__multiply-counter" aria-hidden="true">
+                <span className="hero-phone__multiply-x">×</span>
+                <span className="hero-phone__multiply-num">24</span>
               </div>
+              <p className="hero-phone__multiply-sub">
+                {fr ? "clients convertis ce mois-ci" : "shoppers converted this month"}
+              </p>
+              <div className="hero-phone__multiply-stack">
+                {MULTIPLY_AMOUNTS.map((amount, i) => (
+                  <span
+                    key={amount}
+                    className="hero-phone__multiply-chip"
+                    style={{ "--i": i } as CSSProperties}
+                  >
+                    +${amount}
+                  </span>
+                ))}
+              </div>
+              <div className="hero-phone__multiply-total">
+                <span className="hero-phone__multiply-total-label">
+                  {fr ? "Revenu additionnel" : "Extra revenue"}
+                </span>
+                <strong className="hero-phone__multiply-total-value">+$360</strong>
+              </div>
+              <p className="hero-phone__multiply-tagline">
+                {fr
+                  ? "Votre boutique vend pendant que vos clients essaient"
+                  : "Your store sells while shoppers try on"}
+              </p>
             </div>
           </div>
 
           {/* Overlays */}
           <div className={`hero-phone__flash${flash ? " is-on" : ""}`} />
           <div className="hero-phone__confetti">
-            {Array.from({ length: 10 }).map((_, i) => (
+            {Array.from({ length: 12 }).map((_, i) => (
               <span key={i} style={{ "--i": i } as CSSProperties} />
             ))}
           </div>
@@ -239,7 +329,7 @@ export function HeroPhoneDemo({ locale }: { locale: Locale }) {
             <span className="hero-phone__revenue-icon">↑</span>
             <span className="hero-phone__revenue-amount">+$15</span>
             <span className="hero-phone__revenue-label">
-              {fr ? "revenu moyen" : "avg. revenue"}
+              {fr ? "par essayage" : "per try-on"}
             </span>
           </div>
           <div className="hero-phone__finger" />

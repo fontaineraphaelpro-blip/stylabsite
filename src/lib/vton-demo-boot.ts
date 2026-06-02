@@ -55,7 +55,6 @@ export function bootVtonDemo(): boolean {
               slot.getAttribute("data-vton-install-url") ||
               "https://apps.shopify.com/try-on-stylelab",
             locale: slot.getAttribute("data-vton-locale") || "en",
-            logoUrl: "/assets/shopify-icon-logo.svg",
           }
         : null,
     demoHighlight: slot.getAttribute("data-vton-install-cta") === "1",
@@ -179,7 +178,7 @@ export function loadVtonWidgetScript(): Promise<void> {
 
   return new Promise((resolve, reject) => {
     const script = document.createElement("script");
-    script.src = "/vton-widget.js?v=8";
+    script.src = "/vton-widget.js?v=9";
     script.defer = true;
     script.dataset.vtonWidget = "1";
     script.onload = () => resolve();
