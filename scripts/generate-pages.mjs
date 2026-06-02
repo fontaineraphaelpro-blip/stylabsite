@@ -554,7 +554,7 @@ function layout({ locale, depth, title, description, body, activeNav, extraScrip
     <div class="sticky-cta">
         ${installBtn(u.install, px.assets)}
     </div>
-    <script src="${px.assets}reveal.js?v=1"></script>
+    <script src="${px.assets}reveal.js?v=2"></script>
     <script src="${px.assets}home.js?v=8" defer></script>${extraScripts}
 </body>
 </html>`;

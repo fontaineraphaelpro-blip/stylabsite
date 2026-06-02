@@ -5,6 +5,9 @@
   root.classList.add("js-reveal");
 
   var reduced = false;
+  var scrollReady = false;
+  var SCROLL_MIN = 48;
+
   try {
     reduced = global.matchMedia("(prefers-reduced-motion: reduce)").matches;
   } catch (e) {}
@@ -19,15 +22,25 @@
 
   function show(el) {
     if (isShown(el)) return;
-    void el.offsetWidth;
-    el.classList.add("is-inview");
-    el.classList.add("visible");
+    global.requestAnimationFrame(function () {
+      global.requestAnimationFrame(function () {
+        if (isShown(el)) return;
+        el.classList.add("is-inview");
+        el.classList.add("visible");
+      });
+    });
   }
 
-  function viewportGate(el) {
+  function inView(el) {
     var rect = el.getBoundingClientRect();
     var vh = global.innerHeight || document.documentElement.clientHeight || 800;
-    return rect.top < vh * 0.92 && rect.bottom > vh * 0.06;
+    return rect.top < vh * 0.88 && rect.bottom > vh * 0.1;
+  }
+
+  function canRevealOnScroll(el) {
+    if (reduced) return true;
+    if (!scrollReady && global.scrollY < SCROLL_MIN) return false;
+    return inView(el);
   }
 
   function collect() {
@@ -65,52 +78,61 @@
       }, 60 + i * 100);
     });
 
-    function scan() {
+    function markScrollReady() {
+      if (scrollReady) return;
+      scrollReady = true;
+      scanScrollItems();
+    }
+
+    function scanScrollItems() {
       scrollItems.forEach(function (el) {
-        if (!isShown(el) && viewportGate(el)) show(el);
+        if (!isShown(el) && canRevealOnScroll(el)) show(el);
       });
     }
 
-    scan();
-
+    var io = null;
     if ("IntersectionObserver" in global) {
-      var io = new IntersectionObserver(
+      io = new IntersectionObserver(
         function (entries) {
           entries.forEach(function (entry) {
             if (!entry.isIntersecting) return;
+            if (!canRevealOnScroll(entry.target)) return;
             show(entry.target);
             io.unobserve(entry.target);
           });
         },
-        { threshold: 0.01, rootMargin: "0px 0px -40px 0px" }
+        { threshold: 0.12, rootMargin: "0px 0px -8% 0px" }
       );
 
       scrollItems.forEach(function (el) {
-        if (!isShown(el)) io.observe(el);
+        io.observe(el);
       });
     }
 
     var ticking = false;
     function onScroll() {
+      if (global.scrollY >= SCROLL_MIN) scrollReady = true;
       if (ticking) return;
       ticking = true;
       global.requestAnimationFrame(function () {
-        scan();
+        scanScrollItems();
         ticking = false;
       });
     }
 
     global.addEventListener("scroll", onScroll, { passive: true });
     global.addEventListener("resize", onScroll, { passive: true });
-    global.addEventListener("load", scan, { once: true });
+    global.addEventListener("wheel", markScrollReady, { passive: true, once: true });
+    global.addEventListener("touchmove", markScrollReady, { passive: true, once: true });
+    global.addEventListener("keydown", function (e) {
+      if (e.key === "ArrowDown" || e.key === "PageDown" || e.key === " ") markScrollReady();
+    });
 
-    global.setTimeout(scan, 120);
-    global.setTimeout(scan, 600);
     global.setTimeout(function () {
       scrollItems.forEach(function (el) {
-        if (!isShown(el) && viewportGate(el)) show(el);
+        if (!isShown(el) && inView(el)) show(el);
       });
-    }, 1800);
+    }, 6000);
   }
 
   if (document.readyState === "loading") {
