@@ -14,7 +14,7 @@ import { FaqSection } from "@/components/landing/faq-section";
 
 export default function FrHomePage() {
   return (
-    <div className="relative min-h-screen overflow-x-hidden">
+    <div className="relative min-h-screen bg-black">
       <MarketingAmbient />
       <Navbar locale="fr" variant="home" />
       <main className="pt-16 pb-24 md:pb-0">

@@ -1105,6 +1105,12 @@
   .hero-phone { max-width: 320px; margin-inline: 0; }
   .hero-phone__float--live { right: -2%; }
   .hero-phone__float--ai { left: -4%; }
+
+  /* Radial glows bleed to viewport edges on wide screens */
+  .hero-phone__ambient,
+  .hero-phone__ring {
+    display: none;
+  }
 }
 
 @media (prefers-reduced-motion: reduce) {

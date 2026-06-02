@@ -178,7 +178,7 @@ export function loadVtonWidgetScript(): Promise<void> {
 
   return new Promise((resolve, reject) => {
     const script = document.createElement("script");
-    script.src = "/vton-widget.js?v=6";
+    script.src = "/vton-widget.js?v=7";
     script.defer = true;
     script.dataset.vtonWidget = "1";
     script.onload = () => resolve();

@@ -12,7 +12,7 @@ export function MarketingShell({
   children: React.ReactNode;
 }) {
   return (
-    <div className="relative min-h-screen overflow-x-hidden">
+    <div className="relative min-h-screen bg-black">
       <MarketingAmbient />
       <Navbar locale={locale} variant="marketing" />
       <main className="pt-24 pb-24 md:pb-16">{children}</main>

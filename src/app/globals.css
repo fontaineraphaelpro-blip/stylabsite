@@ -15,13 +15,16 @@
 html {
   scroll-behavior: smooth;
   overflow-x: clip;
+  background: #000;
+  scrollbar-gutter: stable;
 }
 
 body {
-  background: var(--color-background);
+  background: #000;
   color: var(--color-foreground);
   font-family: var(--font-sans);
   -webkit-font-smoothing: antialiased;
+  overflow-x: clip;
 }
 
 /* ── Grid backgrounds ──────────────────────────────────── */
@@ -359,6 +362,34 @@ body {
 
 .container--wide {
   max-width: 1440px;
+}
+
+@media (min-width: 1280px) {
+  .container {
+    max-width: min(94vw, 1560px);
+    padding-inline: clamp(1.25rem, 2.5vw, 2.5rem);
+  }
+
+  .container--wide {
+    max-width: min(96vw, 1680px);
+  }
+
+  /* Pure black edge-to-edge — no side luminance bands on desktop */
+  .bg-grid,
+  .bg-gradient-radial-top,
+  .bg-gradient-radial-wide,
+  .features-showcase__grid,
+  .demo-showcase__grid,
+  .proof-showcase__grid,
+  .install-push__glow {
+    display: none !important;
+  }
+
+  .demo-frame__card {
+    box-shadow:
+      0 0 0 1px rgba(141, 84, 255, 0.15),
+      0 24px 80px rgba(0, 0, 0, 0.55);
+  }
 }
 
 .section-eyebrow {
@@ -947,7 +978,7 @@ body {
 .demo-frame__glow {
   position: absolute;
   inset: -20% -10%;
-  background: radial-gradient(ellipse 60% 50% at 50% 50%, rgba(141, 84, 255, 0.25), transparent 70%);
+  background: linear-gradient(180deg, rgba(141, 84, 255, 0.12) 0%, transparent 55%);
   pointer-events: none;
   z-index: 0;
 }
