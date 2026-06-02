@@ -1,9 +1,9 @@
 "use client";
 
-import Image from "next/image";
+import Link from "next/link";
 import { motion } from "framer-motion";
 import { FadeIn } from "@/components/motion/fade-in";
-import { APP_URL, type Locale, UI } from "@/lib/content";
+import { type Locale, UI, localePath } from "@/lib/content";
 
 export function ProofSection({ locale }: { locale: Locale }) {
   const t = UI[locale];
@@ -74,10 +74,9 @@ export function ProofSection({ locale }: { locale: Locale }) {
         </div>
 
         <FadeIn delay={0.24} className="text-center mt-10">
-          <a href={APP_URL} className="btn btn--primary btn--lg" target="_blank" rel="noopener">
-            <Image src="/assets/shopify-icon-logo.svg" alt="" width={18} height={18} />
-            {t.proofCta}
-          </a>
+          <Link href={`${localePath(locale)}#journey`} className="text-sm text-purple-400 hover:text-purple-300 transition-colors">
+            {locale === "fr" ? "Tester le widget en live →" : "Try the live widget →"}
+          </Link>
         </FadeIn>
       </div>
     </section>

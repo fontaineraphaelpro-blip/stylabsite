@@ -45,13 +45,12 @@ export function HeroSection({ locale }: { locale: Locale }) {
 
           <FadeInHero delay={0.35}>
             <div className="flex flex-wrap gap-3">
-              <a href={APP_URL} className="btn btn--primary btn--lg" target="_blank" rel="noopener">
-                <Image src="/assets/shopify-icon-logo.svg" alt="" width={18} height={18} />
-                {t.installLong}
-              </a>
-              <Link href={`${localePath(locale)}#journey`} className="btn btn--ghost btn--lg">
+              <Link href={`${localePath(locale)}#journey`} className="btn btn--primary btn--lg">
                 {locale === "fr" ? "Essayer en live" : "Try it live"}
               </Link>
+              <a href={APP_URL} className="btn btn--ghost btn--lg" target="_blank" rel="noopener">
+                {locale === "fr" ? "Installer gratuit" : "Install free"}
+              </a>
             </div>
           </FadeInHero>
 

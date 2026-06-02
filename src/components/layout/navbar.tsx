@@ -59,8 +59,7 @@ export function Navbar({ locale, variant = "marketing" }: NavbarProps) {
                 {t.otherLang}
               </Link>
             </nav>
-            <a href={APP_URL} className="btn btn--primary" target="_blank" rel="noopener">
-              <Image src="/assets/shopify-icon-logo.svg" alt="" width={18} height={18} />
+            <a href={APP_URL} className="btn btn--ghost text-sm" target="_blank" rel="noopener">
               {t.install}
             </a>
           </div>
@@ -97,7 +96,7 @@ export function Navbar({ locale, variant = "marketing" }: NavbarProps) {
               <Link href={otherHref} className="text-sm py-2" onClick={() => setOpen(false)}>
                 {locale === "en" ? "Français" : "English"}
               </Link>
-              <a href={APP_URL} className="btn btn--primary mt-2" target="_blank" rel="noopener">
+              <a href={APP_URL} className="btn btn--ghost mt-2" target="_blank" rel="noopener">
                 {t.install}
               </a>
             </div>

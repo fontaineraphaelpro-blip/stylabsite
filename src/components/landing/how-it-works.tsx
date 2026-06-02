@@ -4,8 +4,7 @@ import { useRef } from "react";
 import Image from "next/image";
 import { motion, useScroll, useTransform } from "framer-motion";
 import { FadeIn } from "@/components/motion/fade-in";
-import { EASE_PREMIUM } from "@/lib/motion";
-import { APP_URL, type Locale, UI } from "@/lib/content";
+import { type Locale, UI } from "@/lib/content";
 
 const stepIcons = [
   (
@@ -109,21 +108,6 @@ export function HowItWorksSection({ locale }: { locale: Locale }) {
             ))}
           </ol>
         </div>
-
-        <FadeIn delay={0.4} className="text-center mt-14">
-          <motion.a
-            href={APP_URL}
-            className="btn btn--primary btn--lg inline-flex"
-            target="_blank"
-            rel="noopener"
-            whileHover={{ scale: 1.03 }}
-            whileTap={{ scale: 0.98 }}
-            transition={{ ease: EASE_PREMIUM }}
-          >
-            <Image src="/assets/shopify-icon-logo.svg" alt="" width={18} height={18} />
-            {fr ? "Installer gratuitement sur Shopify" : "Install free on Shopify"}
-          </motion.a>
-        </FadeIn>
       </div>
     </section>
   );

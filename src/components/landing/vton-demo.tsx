@@ -3,7 +3,6 @@
 import { useEffect, useState } from "react";
 import Image from "next/image";
 import { motion, AnimatePresence } from "framer-motion";
-import { APP_URL } from "@/lib/data";
 import { initVtonDemo } from "@/lib/vton-demo-boot";
 import type { Locale } from "@/lib/i18n";
 
@@ -160,17 +159,12 @@ export function VtonDemo({ locale }: { locale: Locale }) {
                   </div>
                 </form>
 
-                <div className="flex flex-col gap-2 mt-3 sm:mt-4 text-xs text-zinc-500">
-                  <span className="flex items-center gap-1">
-                    <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" className="w-3.5 h-3.5 shrink-0">
-                      <rect x="3" y="11" width="18" height="11" rx="2" />
-                      <path d="M7 11V7a5 5 0 0110 0v4" />
-                    </svg>
-                    {fr ? "Photo non stockée" : "Photo not stored"}
-                  </span>
-                  <a href={APP_URL} target="_blank" rel="noopener" className="hover:text-white transition-colors truncate">
-                    {fr ? "Installer sur ma boutique →" : "Install on my store →"}
-                  </a>
+                <div className="flex items-center gap-1 mt-3 sm:mt-4 text-xs text-zinc-500">
+                  <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" className="w-3.5 h-3.5 shrink-0">
+                    <rect x="3" y="11" width="18" height="11" rx="2" />
+                    <path d="M7 11V7a5 5 0 0110 0v4" />
+                  </svg>
+                  {fr ? "Photo non stockée" : "Photo not stored"}
                 </div>
               </div>
             </div>

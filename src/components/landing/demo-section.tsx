@@ -1,7 +1,6 @@
 "use client";
 
 import Link from "next/link";
-import Image from "next/image";
 import { useRef } from "react";
 import { motion, useScroll, useTransform } from "framer-motion";
 import { FadeIn } from "@/components/motion/fade-in";
@@ -103,14 +102,16 @@ export function CtaSection({ locale }: { locale: Locale }) {
             </h2>
             <p className="text-zinc-400 mb-8">{t.ctaDesc}</p>
             <div className="flex flex-wrap justify-center gap-3">
-              <a href={APP_URL} className="btn btn--primary btn--lg" target="_blank" rel="noopener">
-                <Image src="/assets/shopify-icon-logo.svg" alt="" width={18} height={18} />
-                {locale === "fr" ? "Installer sur Shopify" : "Install on Shopify"}
-              </a>
-              <Link href={`${localePath(locale)}#journey`} className="btn btn--ghost btn--lg">
+              <Link href={`${localePath(locale)}#journey`} className="btn btn--primary btn--lg">
                 {t.ctaDemo}
               </Link>
             </div>
+            <p className="mt-6 text-sm text-zinc-500">
+              {locale === "fr" ? "Prêt à installer ? " : "Ready to install? "}
+              <a href={APP_URL} className="text-purple-400 hover:underline" target="_blank" rel="noopener">
+                {locale === "fr" ? "App Store Shopify →" : "Shopify App Store →"}
+              </a>
+            </p>
           </div>
         </FadeIn>
       </div>
