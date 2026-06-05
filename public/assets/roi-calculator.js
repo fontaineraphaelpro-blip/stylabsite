@@ -16,7 +16,7 @@
   var outNote = document.getElementById('out-note');
 
   var PLANS = [
-    { name: 'Free', limit: 50, price: 0 },
+    { name: 'Free', limit: 10, price: 0 },
     { name: 'Starter', limit: 300, price: 19 },
     { name: 'Growth', limit: 1000, price: 49 },
     { name: 'Scale', limit: 4000, price: 149 },

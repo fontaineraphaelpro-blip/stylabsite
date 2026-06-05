@@ -31,7 +31,7 @@ Stylab helps Shopify merchants add a virtual fitting room to product pages witho
 
 | Plan | Price | Successful try-ons / month |
 |------|-------|----------------------------|
-| Free | $0 | 50 |
+| Free | $0 | 10 |
 | Starter | $19 | 300 |
 | Growth | $49 | 1,000 |
 | Scale | $149 | 4,000 |

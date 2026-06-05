@@ -76,7 +76,7 @@ export const SHOPIFY_COMPARE = [
       row('Built-in A/B testing (try-on vs control)', 'Included on all plans', 'Not highlighted in public materials'),
       row('Usage billing model', 'Successful try-ons count toward quota', 'Usage-based plans — verify terms'),
       row('Per-product flat-lay upload', 'Yes — private garment reference', 'Product image picker'),
-      row('Free plan (monthly try-ons)', '50 successful try-ons', '10 try-ons (verify current pricing)'),
+      row('Free plan (monthly try-ons)', '10 successful try-ons', '10 try-ons (verify current pricing)'),
       row('Mid-tier plan (price / quota)', '$49 / 1,000 try-ons (Growth)', '$29 / 250 try-ons (verify current)'),
       row('Email lead capture + Klaviyo', 'Not core focus', 'Yes on paid plans'),
       row('AI Studio for product content', 'No — try-on focused', 'Genlook Studio'),
@@ -130,7 +130,7 @@ export const SHOPIFY_COMPARE = [
       row('Built-in A/B testing', 'Included on all plans', 'Verify on vendor site'),
       row('Successful-only quota billing', 'Yes — verify in admin', 'Check current plan terms'),
       row('Per-product flat-lay upload', 'Yes', 'Verify in product settings'),
-      row('Free plan try-ons / month', '50 successful try-ons', 'Check current offer'),
+      row('Free plan try-ons / month', '10 successful try-ons', 'Check current offer'),
       row('Add-to-cart analytics', 'Dashboard included', 'Verify metrics available'),
       row('Mobile PDP widget', 'Yes', 'Yes — test on your theme'),
       row('Enable try-on per product', 'Yes', 'Verify workflow'),
@@ -209,7 +209,7 @@ export const SHOPIFY_COMPARE = [
     rows: [
       row('Self-serve Shopify install', 'Yes — App Store', 'Typically sales-led — verify'),
       row('A/B test try-on vs control', 'Built-in', 'Not standard — verify'),
-      row('Free entry plan', '50 try-ons/mo', 'Contact sales — verify'),
+      row('Free entry plan', '10 try-ons/mo', 'Contact sales — verify'),
       row('Jewelry + apparel', 'Apparel-focused', 'Broader fashion / jewelry'),
       row('Omnichannel / in-store', 'Shopify PDP focus', 'Common use case — verify'),
       row('Per-product enablement', 'Yes', 'Verify workflow'),
@@ -249,7 +249,7 @@ export const SHOPIFY_COMPARE = [
       row('Shopify integration', 'Native app', 'Verify current Shopify offer'),
       row('Built-in A/B testing', 'Yes', 'Unlikely — verify'),
       row('Successful-only billing', 'Yes', 'Check plan terms'),
-      row('Free plan', '50 try-ons/mo', 'Varies — verify'),
+      row('Free plan', '10 try-ons/mo', 'Varies — verify'),
       row('Flat-lay garment upload', 'Yes', 'Verify'),
       row('Add-to-cart tracking', 'Yes', 'Verify'),
     ],
@@ -289,7 +289,7 @@ export const SHOPIFY_COMPARE = [
       row('A/B test included', 'All plans', 'Unlikely — verify'),
       row('Custom flat-lay for AI', 'Yes', 'Unknown — test on your SKUs'),
       row('Add-to-cart tracking', 'Yes', 'Varies — verify'),
-      row('Free plan entry', '50 try-ons/mo', 'Verify on vendor site'),
+      row('Free plan entry', '10 try-ons/mo', 'Verify on vendor site'),
       row('Per-product activation', 'Yes', 'Verify'),
     ],
     chooseStylab: {
@@ -407,7 +407,7 @@ export const API_COMPARE = [
     rows: [
       row('Shopify PDP widget', 'Included', 'Custom build required'),
       row('Merchant admin UI', 'Yes', 'Build yourself'),
-      row('Free / entry tier', '50 try-ons/mo', 'API credits vary'),
+      row('Free / entry tier', '10 try-ons/mo', 'API credits vary'),
       row('A/B test try-on vs control', 'Built-in', 'Custom'),
       row('Engineering required', 'No', 'Yes'),
       row('Billing predictability for merchants', 'Shopify plan tiers', 'Usage-based API'),
@@ -646,7 +646,7 @@ export const SOLUTIONS = [
 <li><strong>Run a 30-day A/B test</strong> — compare try-on vs control buckets. See our <a href="../resources/blog/ab-test-virtual-try-on.html">A/B guide</a>.</li>
 <li><strong>Scale what works</strong> — enable more SKUs, upgrade plan when usage grows. Only successful try-ons count toward your quota.</li>
 </ol>
-<p>Plans start free (50 successful try-ons/month). <a href="../index.html#pricing">View pricing</a> or <a href="../index.html#try-it">try the live demo</a>.</p>`,
+<p>Plans start free (10 successful try-ons/month). <a href="../index.html#pricing">View pricing</a> or <a href="../index.html#try-it">try the live demo</a>.</p>`,
       fr: `<ol>
 <li><strong>Installer depuis l'App Store Shopify</strong> — sans modifier le thème. Le widget apparaît sur les produits activés.</li>
 <li><strong>Choisir 3–5 SKU phares</strong> — best-sellers, nouveautés saison ou produits à fort trafic PDP et questions de fit.</li>
@@ -654,7 +654,7 @@ export const SOLUTIONS = [
 <li><strong>Lancer un A/B 30 jours</strong> — essayage vs contrôle. Voir le <a href="../resources/blog/ab-test-virtual-try-on.html">guide A/B</a>.</li>
 <li><strong>Scaler ce qui fonctionne</strong> — activer plus de SKU, upgrader le plan avec l'usage. Seuls les essayages réussis comptent.</li>
 </ol>
-<p>Plans gratuits (50 essayages réussis/mois). <a href="../index.html#pricing">Voir les tarifs</a> ou <a href="../index.html#try-it">essayer la démo live</a>.</p>`,
+<p>Plans gratuits (10 essayages réussis/mois). <a href="../index.html#pricing">Voir les tarifs</a> ou <a href="../index.html#try-it">essayer la démo live</a>.</p>`,
     },
     bullets: {
       en: ['Enable try-on on hero SKUs and new drops', 'Upload flat-lay photos for cleaner AI results', 'Measure add-to-cart after try-on', 'A/B test try-on vs control'],
@@ -702,7 +702,7 @@ export const SOLUTIONS = [
       },
       {
         title: { en: 'Free plan to validate', fr: 'Plan gratuit pour valider' },
-        body: { en: 'Start with 50 successful try-ons/month — enough to test a drop before upgrading.', fr: 'Commencez avec 50 essayages réussis/mois — suffisant pour tester un drop avant d\'upgrader.' },
+        body: { en: 'Start with 10 successful try-ons/month — enough to validate on 1–2 SKUs before upgrading.', fr: 'Commencez avec 10 essayages réussis/mois — suffisant pour valider sur 1–2 SKU avant d\'upgrader.' },
       },
     ],
     rolloutTitle: { en: 'Roll out try-on on your next drop', fr: 'Déployer l\'essayage sur votre prochain drop' },
@@ -723,8 +723,8 @@ export const SOLUTIONS = [
 <p>Voyez l'essayage live sur <a href="https://remadeicons.shop/products/shadow-stripe-collared-soccer-jersey-4" target="_blank" rel="noopener">REMADE ICONS</a> ou sur la <a href="../index.html#try-it">démo du site</a>.</p>`,
     },
     bullets: {
-      en: ['Hoodies, jerseys, graphic tees', 'Mobile-first widget', 'Enable try-on per SKU', 'Free: 50 successful try-ons/mo'],
-      fr: ['Hoodies, maillots, tees graphiques', 'Widget mobile-first', 'Activation par SKU', 'Gratuit : 50 essayages réussis/mo'],
+      en: ['Hoodies, jerseys, graphic tees', 'Mobile-first widget', 'Enable try-on per SKU', 'Free: 10 successful try-ons/mo'],
+      fr: ['Hoodies, maillots, tees graphiques', 'Widget mobile-first', 'Activation par SKU', 'Gratuit : 10 essayages réussis/mo'],
     },
   },
   {

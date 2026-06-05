@@ -4,10 +4,11 @@ import { useMemo, useState } from "react";
 import { motion } from "framer-motion";
 import { FadeIn } from "@/components/motion/fade-in";
 import { EASE_PREMIUM } from "@/lib/motion";
+import { FREE_TRYONS_PER_MONTH } from "@/lib/content";
 import type { Locale } from "@/lib/i18n";
 
 const PLANS = [
-  { name: "Free", limit: 50, price: 0 },
+  { name: "Free", limit: FREE_TRYONS_PER_MONTH, price: 0 },
   { name: "Starter", limit: 300, price: 19 },
   { name: "Growth", limit: 1000, price: 49 },
   { name: "Scale", limit: 4000, price: 149 },

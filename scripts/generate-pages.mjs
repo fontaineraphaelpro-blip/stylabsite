@@ -672,7 +672,7 @@ function generateLocale(locale) {
     body: `<section class="page-hero"><div class="wrap reveal"><h1>${u.freeTools}</h1><p class="lead">${locale === 'fr' ? 'Planifiez votre déploiement essayage.' : 'Plan your try-on rollout.'}</p></div></section>
         <section class="section section-white"><div class="wrap"><div class="diff-grid" data-reveal-stagger>
             <div class="diff-card reveal"><h3>${locale === 'fr' ? 'Checklist readiness' : 'Readiness checklist'}</h3><p>${locale === 'fr' ? 'Photos claires, SKU phares, PDP mobile.' : 'Clear photos, hero SKUs, mobile PDPs.'}</p></div>
-            <div class="diff-card reveal"><h3>${locale === 'fr' ? 'Guide plans' : 'Plan picker'}</h3><p>Free 50 · Starter 300 · Growth 1,000 · Scale 4,000</p></div>
+            <div class="diff-card reveal"><h3>${locale === 'fr' ? 'Guide plans' : 'Plan picker'}</h3><p>Free 10 · Starter 300 · Growth 1,000 · Scale 4,000</p></div>
             <div class="diff-card reveal"><h3>A/B planner</h3><p>50/50 · 30 days · 2–5 products</p></div>
         </div></div></section>${roiBlock(locale)}${cta(locale, 1)}`,
   }));

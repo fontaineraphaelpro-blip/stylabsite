@@ -22,7 +22,7 @@ export function FreeToolsView({ locale }: { locale: Locale }) {
             },
             {
               title: fr ? "Guide plans" : "Plan picker",
-              body: "Free 50 · Starter 300 · Growth 1,000 · Scale 4,000",
+              body: "Free 10 · Starter 300 · Growth 1,000 · Scale 4,000",
             },
             { title: "A/B planner", body: "50/50 · 30 days · 2–5 products" },
           ]}

@@ -108,7 +108,7 @@ export const GENLOOK_COMPARE = {
     { feature: { en: 'Built-in A/B testing (try-on vs control)', fr: 'A/B testing intégré (essayage vs contrôle)' }, stylab: { en: 'Included on all plans', fr: 'Inclus sur tous les plans' }, other: { en: 'Not highlighted', fr: 'Non mis en avant' } },
     { feature: { en: 'Pay only for successful try-ons', fr: 'Payer uniquement les essayages réussis' }, stylab: { en: 'Yes', fr: 'Oui' }, other: { en: 'Usage-based plans', fr: 'Plans à l\'usage' } },
     { feature: { en: 'Per-product flat-lay upload', fr: 'Upload flat-lay par produit' }, stylab: { en: 'Yes', fr: 'Oui' }, other: { en: 'Product image picker', fr: 'Choix d\'image produit' } },
-    { feature: { en: 'Free plan (monthly try-ons)', fr: 'Plan gratuit (essayages/mois)' }, stylab: { en: '50 successful try-ons', fr: '50 essayages réussis' }, other: { en: '10 try-ons (listed pricing)', fr: '10 essayages (tarifs affichés)' } },
+    { feature: { en: 'Free plan (monthly try-ons)', fr: 'Plan gratuit (essayages/mois)' }, stylab: { en: '10 successful try-ons', fr: '10 essayages réussis' }, other: { en: '10 try-ons (listed pricing)', fr: '10 essayages (tarifs affichés)' } },
     { feature: { en: 'Growth plan price / quota', fr: 'Plan croissance prix / quota' }, stylab: { en: '$49 / 1,000 try-ons', fr: '49 $ / 1 000 essayages' }, other: { en: '$29 / 250 try-ons', fr: '29 $ / 250 essayages' } },
     { feature: { en: 'Email lead capture + Klaviyo', fr: 'Capture email + Klaviyo' }, stylab: { en: 'Not core focus', fr: 'Pas le focus principal' }, other: { en: 'Yes (paid plans)', fr: 'Oui (plans payants)' } },
     { feature: { en: 'AI Studio for product content', fr: 'Studio IA contenu produit' }, stylab: { en: 'No', fr: 'Non' }, other: { en: 'Genlook Studio', fr: 'Genlook Studio' } },
@@ -777,7 +777,7 @@ export const BLOG_POSTS = [
 
 <h2>Plans at a glance</h2>
 <ul>
-<li><strong>Free — $0 / 50 try-ons</strong> — proof of concept on 1–3 SKUs with low traffic</li>
+<li><strong>Free — $0 / 10 try-ons</strong> — proof of concept on 1–3 SKUs with low traffic</li>
 <li><strong>Starter — $19 / 300</strong> — small catalog pilots and seasonal drops</li>
 <li><strong>Growth — $49 / 1,000</strong> — multiple hero SKUs with steady mobile traffic</li>
 <li><strong>Scale — $149 / 4,000</strong> — broader catalog or paid traffic spikes</li>
@@ -829,7 +829,7 @@ export const BLOG_POSTS = [
 
 <h2>Plans en un coup d'œil</h2>
 <ul>
-<li><strong>Free — 0 $ / 50 essayages</strong> — preuve de concept sur 1–3 SKU faible trafic</li>
+<li><strong>Free — 0 $ / 10 essayages</strong> — preuve de concept sur 1–3 SKU faible trafic</li>
 <li><strong>Starter — 19 $ / 300</strong> — pilotes petit catalogue et drops saisonniers</li>
 <li><strong>Growth — 49 $ / 1 000</strong> — plusieurs SKU phares trafic mobile régulier</li>
 <li><strong>Scale — 149 $ / 4 000</strong> — catalogue élargi ou pics trafic payant</li>

@@ -5,6 +5,8 @@ export const SITE_URL = "https://www.stylabtryon.site";
 
 export type Locale = "en" | "fr";
 
+export const FREE_TRYONS_PER_MONTH = 10;
+
 export const UI = {
   en: {
     lang: "en" as const,
@@ -24,7 +26,7 @@ export const UI = {
     stats: [
       { value: "77.8%", label: "try-on → cart (pilot)" },
       { value: "~30s", label: "preview on PDP" },
-      { value: "50", label: "free try-ons / mo" },
+      { value: String(FREE_TRYONS_PER_MONTH), label: "free try-ons / mo" },
     ],
     featuresEyebrow: "Why merchants install",
     featuresTitle: "Built for conversion,",
@@ -73,7 +75,7 @@ export const UI = {
     faqs: [
       {
         q: "Is installation free?",
-        a: "Yes — 50 successful try-ons per month on the free plan. No credit card. Upgrade through Shopify when you need more.",
+        a: `Yes — ${FREE_TRYONS_PER_MONTH} successful try-ons per month on the free plan. No credit card. Upgrade through Shopify when you need more.`,
       },
       {
         q: "Do I need a developer?",
@@ -161,7 +163,7 @@ export const UI = {
     stats: [
       { value: "77,8 %", label: "essayage → panier (pilote)" },
       { value: "~30 s", label: "aperçu sur PDP" },
-      { value: "50", label: "essayages gratuits / mois" },
+      { value: String(FREE_TRYONS_PER_MONTH), label: "essayages gratuits / mois" },
     ],
     featuresEyebrow: "Pourquoi les marchands installent",
     featuresTitle: "Conçu pour convertir,",
@@ -210,7 +212,7 @@ export const UI = {
     faqs: [
       {
         q: "L'installation est-elle gratuite ?",
-        a: "Oui — 50 essayages réussis par mois en gratuit. Sans carte. Upgrade via Shopify si besoin.",
+        a: `Oui — ${FREE_TRYONS_PER_MONTH} essayages réussis par mois en gratuit. Sans carte. Upgrade via Shopify si besoin.`,
       },
       {
         q: "Faut-il un développeur ?",
