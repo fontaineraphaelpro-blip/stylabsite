@@ -51,5 +51,24 @@ ${urls.join('\n')}
 </urlset>
 `;
 
+const robots = `User-agent: *
+Allow: /
+
+User-agent: GPTBot
+Allow: /
+
+User-agent: Claude-Web
+Allow: /
+
+User-agent: Google-Extended
+Allow: /
+
+Sitemap: ${SITE}/sitemap.xml
+`;
+
+const publicDir = path.join(ROOT, 'public');
+fs.mkdirSync(publicDir, { recursive: true });
+fs.writeFileSync(path.join(publicDir, 'sitemap.xml'), xml, 'utf8');
+fs.writeFileSync(path.join(publicDir, 'robots.txt'), robots, 'utf8');
 fs.writeFileSync(path.join(ROOT, 'sitemap.xml'), xml, 'utf8');
-console.log(`Wrote sitemap.xml (${urls.length} URLs)`);
+console.log(`Wrote public/sitemap.xml + public/robots.txt (${urls.length} URLs)`);
